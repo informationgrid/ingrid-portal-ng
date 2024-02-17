@@ -58,11 +58,12 @@ ARG GRAV_VERSION=latest
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
     unzip grav-admin.zip && \
-    mv -T /var/www/grav-admin /var/www/html && \
+    mkdir /var/www/html/ingrid-portal-ng && \
+    mv -T /var/www/grav-admin /var/www/html/ingrid-portal-ng && \
     rm grav-admin.zip
 
 # Create cron job for Grav maintenance scripts
-RUN (crontab -l; echo "* * * * * cd /var/www/html;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -
+RUN (crontab -l; echo "* * * * * cd /var/www/html/ingrid-portal-ng;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -
 
 # Return to root user
 USER root
