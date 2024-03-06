@@ -1,1 +1,10 @@
 /.idea/
+/plugins/admin/
+/plugins/devtools/
+/plugins/email/
+/plugins/error/
+/plugins/flex-objects/
+/plugins/form/
+/plugins/login/
+/plugins/markdown-notices/
+/plugins/problems/

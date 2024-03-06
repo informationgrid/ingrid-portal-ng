@@ -10,6 +10,8 @@ services:
     volumes:
       - ./develop/admin.yaml:/var/www/html/user/accounts/admin.yaml
       - ./themes:/var/www/html/user/themes
+      - ./pages:/var/www/html/user/pages
+      - ./plugins:/var/www/html/user/plugins
 
 volumes:
   grav:

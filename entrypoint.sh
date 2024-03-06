@@ -3,17 +3,21 @@
 THEME=${THEME:-ingrid}
 GRAV_FOLDER=${GRAV_FOLDER:-html}
 
-sed -ri "s/theme: quark/theme: ${THEME}/" /var/www/html/user/config/system.yaml
+sed -ri "s/theme: quark/theme: ${THEME}/" /usr/share/grav-admin/user/config/system.yaml
 mkdir -p /var/www/"$GRAV_FOLDER"
 cd /var/www/"$GRAV_FOLDER"
 
+#           --exclude /vendor/ \
 rsync -rlD --delete \
            --exclude /backup/ \
            --exclude /logs/ \
            --exclude /tmp/ \
-           --exclude /vendor/ \
-           /var/www/html/ /var/www/"$GRAV_FOLDER"
+           --exclude /user/accounts/admin.yaml \
+           --exclude /user/themes \
+           --exclude /user/pages \
+           /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 
+mkdir -p assets backup cache images logs tmp
 #           --exclude /user/ \
 #mv html/user/plugins portal-ng/user/
 

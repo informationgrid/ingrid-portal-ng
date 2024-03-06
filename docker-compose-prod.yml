@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  apache:
+    image: httpd:2.4
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ./develop/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./develop/proxy.conf:/usr/local/apache2/conf/extra/ingrid.conf
+      - grav:/var/www/portal-ng
+    ports:
+      - 80:80
+    networks: 
+      - grav-frontend
+
+  grav-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+#    user: root
+    environment:
+      - GRAV_FOLDER=portal-ng
+    volumes:
+      - grav:/var/www/portal-ng
+      - ./develop/admin.yaml:/var/www/html/user/accounts/admin.yaml
+#      - ./themes:/var/www/html/user/themes
+    networks:
+      - grav-frontend
+
+volumes:
+  grav:
+    
+networks:
+  grav-frontend:
