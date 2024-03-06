@@ -1,79 +1,81 @@
-FROM php:7.4-apache
-LABEL maintainer="wemove <contact@wemove.com>"
+FROM php:8.3-fpm-bullseye
 
-# Enable Apache Rewrite + Expires Module
-RUN a2enmod rewrite expires && \
-    sed -i 's/ServerTokens OS/ServerTokens ProductOnly/g' \
-    /etc/apache2/conf-available/security.conf
+SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
-# Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    unzip \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    libyaml-dev \
-    libzip4 \
-    libzip-dev \
-    zlib1g-dev \
-    libicu-dev \
-    g++ \
-    git \
-    cron \
-    vim \
-    && docker-php-ext-install opcache \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install intl \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install zip \
-    && rm -rf /var/lib/apt/lists/*
+# renovate: datasource=github-tags depName=getgrav/grav versioning=semver
+ENV GRAV_VERSION 1.7.44
+# renovate: datasource=github-tags depName=krakjoe/apcu versioning=semver
+ENV PHP_APCU_VERSION v5.1.23
+# renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
+ENV PHP_YAML_VERSION 2.2.3
 
-# set recommended PHP.ini settings
-# see https://secure.php.net/manual/en/opcache.installation.php
-RUN { \
-    echo 'opcache.memory_consumption=128'; \
-    echo 'opcache.interned_strings_buffer=8'; \
-    echo 'opcache.max_accelerated_files=4000'; \
-    echo 'opcache.revalidate_freq=2'; \
-    echo 'opcache.fast_shutdown=1'; \
-    echo 'opcache.enable_cli=1'; \
-    echo 'upload_max_filesize=128M'; \
-    echo 'post_max_size=128M'; \
-    echo 'expose_php=off'; \
-    } > /usr/local/etc/php/conf.d/php-recommended.ini
+RUN groupadd --system foo; \
+    useradd --no-log-init --system --gid foo --create-home foo; \
+    \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+        git \
+        unzip \
+        rsync \
+        gosu \
+        ##### Run dependencies
+        libzip4 \
+        libyaml-0-2 \
+        libpng16-16 \
+        libjpeg62-turbo \
+        libwebp6 \
+        libfreetype6 \
+        ##### Build dependencies
+        libwebp-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libfreetype6-dev \
+        libyaml-dev \
+        libzip-dev \
+    ; \
+    docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
+	docker-php-ext-install -j "$(nproc)" \
+        zip \
+        gd \
+        opcache \
+    ; \
+    pecl install apcu-${PHP_APCU_VERSION:1}; \
+    pecl install yaml-$PHP_YAML_VERSION; \
+    \
+    docker-php-ext-enable \
+        apcu \
+        yaml \
+    ; \
+    apt-get purge -y --auto-remove \
+        libwebp-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libfreetype6-dev \
+        libyaml-dev \
+        libzip-dev \
+    ; \
+    rm -rf /var/lib/apt/lists/*; \
+    \
+    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"; 
 
-RUN pecl install apcu \
-    && pecl install yaml-2.0.4 \
-    && docker-php-ext-enable apcu yaml
-
-# Set user to www-data
-RUN chown www-data:www-data /var/www
-USER www-data
-
-# Define Grav specific version of Grav or use latest stable
-ARG GRAV_VERSION=latest
-
-# Install grav
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
     unzip grav-admin.zip && \
-    mkdir /var/www/html/ingrid-portal-ng && \
-    mv -T /var/www/grav-admin /var/www/html/ingrid-portal-ng && \
+    mv -T /var/www/grav-admin /var/www/html && \
     rm grav-admin.zip
 
-# Create cron job for Grav maintenance scripts
-RUN (crontab -l; echo "* * * * * cd /var/www/html/ingrid-portal-ng;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -
+# COPY OUR ADDITIONAL THEMES AND PLUGINS
+COPY themes /var/www/html/user/themes
 
-# Return to root user
-USER root
+RUN chown -R --from=root:root www-data:www-data /var/www/html
+                   
+                    
+#USER www-data
 
-# Copy init scripts
-# COPY docker-entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
+#COPY grav.ini $PHP_INI_DIR/conf.d/
 
-# provide container inside image for data persistence
-VOLUME ["/var/www/html"]
+EXPOSE 9000
 
-# ENTRYPOINT ["/entrypoint.sh"]
-# CMD ["apache2-foreground"]
-CMD ["sh", "-c", "cron && apache2-foreground"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["php-fpm"]
