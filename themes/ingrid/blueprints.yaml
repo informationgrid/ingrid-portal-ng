@@ -1,0 +1,32 @@
+name: Ingrid
+slug: ingrid
+type: theme
+version: 0.1.0
+description: Base InGrid Theme
+icon: rebel
+author:
+  name: wemove
+  email: contact@wemove.com
+homepage: https://github.com/wemove/grav-theme-ingrid
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/wemove/grav-theme-ingrid/issues
+readme: https://github.com/wemove/grav-theme-ingrid/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool

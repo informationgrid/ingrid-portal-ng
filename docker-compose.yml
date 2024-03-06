@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  grav:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    ports:
+      - 8080:80
+    volumes:
+      - ./develop/admin.yaml:/var/www/html/user/accounts/admin.yaml
+      - ./themes:/var/www/html/user/themes
+
+volumes:
+  grav:

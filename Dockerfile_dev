@@ -1,0 +1,33 @@
+FROM php:8.1-apache
+
+ENV GRAV_VERSION 1.7.44
+
+# Update system
+RUN apt-get update
+
+# Install dependencies
+RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip
+
+# Configure and install PHP extensions
+RUN docker-php-ext-configure gd --with-jpeg
+RUN docker-php-ext-install zip gd
+
+WORKDIR /var/www
+RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
+    unzip grav-admin.zip && \
+    mv -T /var/www/grav-admin /var/www/html && \
+    rm grav-admin.zip
+    
+RUN chown -R --from=root:root www-data:www-data /var/www/html
+                    
+COPY entrypoint.sh /entrypoint.sh
+
+# Enable mod_rewrite for Apache
+RUN a2enmod rewrite
+
+USER www-data
+RUN cd html &&  \
+    bin/gpm install devtools
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2-foreground"]
