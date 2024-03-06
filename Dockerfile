@@ -60,13 +60,13 @@ RUN groupadd --system foo; \
 
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
-    unzip -qq grav-admin.zip -d /usr/share/grav && \
+    unzip -qq grav-admin.zip -d /usr/share -x "grav-admin/user/themes/*" -x "grav-admin/user/pages/*" && \
     rm grav-admin.zip
 
 # COPY OUR ADDITIONAL THEMES AND PLUGINS
-COPY themes /usr/share/grav/user/themes
-COPY plugins /usr/share/grav/user/plugins
-COPY pages /usr/share/grav/user/pages
+COPY themes /usr/share/grav-admin/user/themes
+COPY plugins /usr/share/grav-admin/user/plugins
+COPY pages /usr/share/grav-admin/user/pages
 
 COPY entrypoint.sh /entrypoint.sh
 #COPY grav.ini $PHP_INI_DIR/conf.d/

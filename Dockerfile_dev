@@ -6,7 +6,7 @@ ENV GRAV_VERSION 1.7.44
 RUN apt-get update
 
 # Install dependencies
-RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip rsync gosu
+RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip
 
 # Configure and install PHP extensions
 RUN docker-php-ext-configure gd --with-jpeg
@@ -14,18 +14,19 @@ RUN docker-php-ext-install zip gd
 
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
-    unzip -qq grav-admin.zip -d /usr/share && \
+    unzip grav-admin.zip && \
+    cp -rT /var/www/grav-admin /var/www/html && \
     rm grav-admin.zip
     
-RUN chown -R www-data:www-data /usr/share/grav-admin
+RUN chown -R --from=root:root www-data:www-data /var/www/html
                     
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint_dev.sh /entrypoint.sh
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
 USER www-data
-RUN cd /usr/share/grav-admin &&  \
+RUN cd html &&  \
     bin/gpm install devtools
 
 ENTRYPOINT ["/entrypoint.sh"]
