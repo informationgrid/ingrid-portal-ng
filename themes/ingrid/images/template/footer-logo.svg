@@ -1,0 +1,27 @@
+<!--
+  **************************************************-
+  InGrid Portal Base
+  ==================================================
+  Copyright (C) 2014 - 2019 wemove digital solutions GmbH
+  ==================================================
+  Licensed under the EUPL, Version 1.1 or – as soon they will be
+  approved by the European Commission - subsequent versions of the
+  EUPL (the "Licence");
+  
+  You may not use this work except in compliance with the Licence.
+  You may obtain a copy of the Licence at:
+  
+  http://ec.europa.eu/idabc/eupl5
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the Licence is distributed on an "AS IS" basis,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the Licence for the specific language governing permissions and
+  limitations under the Licence.
+  **************************************************#
+  -->
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="23" viewBox="0 0 90 23">
+    <g fill="#28225B">
+        <path d="M0 .19h2.315v22.62H0V.19zM20.284 22.808L8.772 4.67v18.14H6.456V.19H8.65l11.513 18.075V.19h2.314V22.81h-2.193zM40.597 20.426C38.86 22.302 36.79 23 34.475 23c-2.375 0-4.325-.89-5.847-2.48-2.194-2.286-2.133-5.113-2.133-9.02s-.062-6.734 2.133-9.02C30.15.89 32.038 0 34.475 0c5.025 0 7.584 3.432 8.162 7.243h-4.264c-.487-2.128-1.735-3.303-3.898-3.303-1.157 0-2.102.476-2.71 1.206-.823.953-1.035 2.002-1.035 6.354s.212 5.433 1.034 6.385c.61.73 1.554 1.176 2.71 1.176 1.28 0 2.315-.476 3.016-1.27.7-.826.975-1.842.975-3.018v-.858h-3.99V10.23h8.194v3.303c-.002 3.272-.55 5.242-2.073 6.893zM58.167 22.808l-4.232-9.02H50.89v9.02h-4.235V.19h8.498c4.417 0 7.035 3.146 7.035 6.926 0 3.177-1.856 5.146-3.96 5.94l4.844 9.752h-4.905zM54.877 4.13H50.89v5.973h3.988c1.857 0 3.077-1.238 3.077-2.986 0-1.748-1.22-2.986-3.077-2.986zM65.963.19h4.233v22.62h-4.233V.19zM87.8 20.648c-1.432 1.494-3.473 2.16-5.727 2.16h-7.827V.192h7.827c2.254 0 4.295.668 5.727 2.16 2.437 2.542 2.193 5.655 2.193 9.055 0 3.398.244 6.702-2.193 9.243zm-2.954-15.12c-.73-.92-1.706-1.398-3.168-1.398H78.48v14.74h3.198c1.462 0 2.437-.477 3.168-1.397.79-1.017.913-2.637.913-6.067 0-3.433-.123-4.86-.914-5.878z"/>
+    </g>
+</svg>

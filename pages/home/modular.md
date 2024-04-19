@@ -7,6 +7,7 @@ content:
         by: default
         custom:
             - _search
+            - _warning
             - _categories
             - _news
             - _inform

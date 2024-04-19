@@ -1,0 +1,30 @@
+<!--
+  **************************************************-
+  InGrid Portal Base
+  ==================================================
+  Copyright (C) 2014 - 2019 wemove digital solutions GmbH
+  ==================================================
+  Licensed under the EUPL, Version 1.1 or – as soon they will be
+  approved by the European Commission - subsequent versions of the
+  EUPL (the "Licence");
+  
+  You may not use this work except in compliance with the Licence.
+  You may obtain a copy of the Licence at:
+  
+  http://ec.europa.eu/idabc/eupl5
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the Licence is distributed on an "AS IS" basis,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the Licence for the specific language governing permissions and
+  limitations under the Licence.
+  **************************************************#
+  -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.07 211.05" preserveAspectRatio="none">
+    <path opacity=".15" fill="#999" d="M-.002 211.05h323.074V0"/>
+    <path opacity=".2" fill="#999" d="M323.07 0L130.678 211.05H323.07"/>
+    <path opacity=".1" fill="#999" d="M263.057 211.048h60.015V0l-.346.226"/>
+    <path opacity=".15" fill="#999" d="M-499.978 191.91h323.074V-19.136"/>
+    <path opacity=".2" fill="#999" d="M-176.906-19.137L-369.298 191.91h192.392"/>
+    <path opacity=".1" fill="#999" d="M-236.92 191.91h60.016V-19.138l-.346.226"/>
+</svg>
