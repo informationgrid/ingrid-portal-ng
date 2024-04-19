@@ -1,0 +1,24 @@
+{% set hit = hit %}
+{% set title = hit.title %}
+{% set url = hit.url %}
+{% set summary = hit.summary %}
+
+<div class="data">
+    <div class="teaser-data search #if($isMoreId)is-active#end">
+        <div class="helper icon">
+            <span class="ic-ic-webseiten"></span>
+            <span class="text">Webseite</span>
+        </div>
+        <a href="{{ url }}" title="{{ title }}" target="_blank" class="external-link">
+            <h2 class="header">{{ title }}</h2>
+        </a>
+        {% if summary %}
+            <p class="data-text">
+                {{ summary }}
+            </p>
+        {% endif %}
+        <p>
+            <a href="{{ url }}" title="{{ url }}" target="_blank" class="external-link">{{ url }}</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="banner home">
+    <a id="search"></a>
+    <div class="home-wrapper" style="background-image: url('/decorations/layout/ingrid/images/template/drops-big.svg');">
+        <div class="row align-center">
+            <div class="large-20 columns dark">
+                {% if page.header.search_title %}
+                <h1>InGrid</h1>
+                <h1 class="green">Indexieren, Recherchieren, Visualisieren und Teilen<span class="ic-ic-asterisc"></span></h1>
+                <div class="indent">
+                    <span class="ic-ic-asterisc"></span>
+                    <p class="intro">von Datenquellen, Metadaten und Kartendiensten</p>
+                </div>
+                {% endif %}
+
+                <form action="{{ page.find('search') }}" class="input-search" method="get" name="SearchForm" id="SearchForm" onsubmit="">
+                    <input type="text" class="input-search-field" placeholder="Suchbegriff eingeben" id="qrystr" name="q" value="{{ search_result_query }}">
+                    <button class="button round hide-for-medium">
+                        <span class="ic-ic-lupe"></span>
+                    </button>
+                    <button class="button large show-for-medium">
+                        Suche
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{# Zeitbezug #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_time }}"></a>
+    {{ hit_macros.render_section_title("time_reference")}}
+    <div class="row columns">
+    {# Zeitbezug #}
+        {% include 'partials/detail/metadata/parts/description/detail_metadata_description_time.html.twig' %}
+    {# Zeitbezug der Ressource #}
+        {% include 'partials/detail/metadata/parts/description/detail_metadata_description_time_resource.html.twig' %}
+    </div>
+</div>

@@ -1,0 +1,378 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?t4sgfv');
+  src:  url('../fonts/icomoon.eot?t4sgfv#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?t4sgfv') format('truetype'),
+    url('../fonts/icomoon.woff?t4sgfv') format('woff'),
+    url('../fonts/icomoon.svg?t4sgfv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ic-"], [class*=" ic-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-ic-A:before {
+  content: "\e959";
+}
+.ic-ic-B:before {
+  content: "\e95a";
+}
+.ic-ic-L:before {
+  content: "\e95b";
+}
+.ic-ic-N:before {
+  content: "\e95c";
+}
+.ic-ic-R:before {
+  content: "\e95d";
+}
+.ic-ic-Z:before {
+  content: "\e95e";
+}
+.ic-ic-abfall:before, .ic-ic-UVPG-12:before {
+  content: "\e944";
+}
+.ic-ic-administration:before {
+  content: "\e95f";
+}
+.ic-ic-aktuelles:before {
+  content: "\e971";
+}
+.ic-ic-angle-down:before {
+  content: "\e922";
+}
+.ic-ic-angle-left:before {
+  content: "\e923";
+}
+.ic-ic-angle-right:before {
+  content: "\e924";
+}
+.ic-ic-angle-up:before {
+  content: "\e925";
+}
+.ic-ic-apfel:before, .ic-ic-UVPG-7:before {
+  content: "\e945";
+}
+.ic-ic-arrow:before {
+  content: "\e929";
+}
+.ic-ic-arrow-left:before {
+  content: "\e926";
+}
+.ic-ic-arrow-long-right:before {
+  content: "\e927";
+}
+.ic-ic-arrow-right:before {
+  content: "\e928";
+}
+.ic-ic-asterisc:before {
+  content: "\e92a";
+}
+.ic-ic-auslandische-vorhaben:before {
+  content: "\e900";
+}
+.ic-ic-auslandische-vorhaben1:before {
+  content: "\e946";
+}
+.ic-ic-baustoffe:before, .ic-ic-UVPG-2:before {
+  content: "\e947";
+}
+.ic-ic-bauvorhaben:before {
+  content: "\e901";
+}
+.ic-ic-bergbau:before {
+  content: "\e902";
+}
+.ic-ic-buildings:before, .ic-ic-UVPG-18:before {
+  content: "\e948";
+}
+.ic-ic-bullet:before {
+  content: "\e92b";
+}
+.ic-ic-calendar:before {
+  content: "\e968";
+}
+.ic-ic-center:before {
+  content: "\e92c";
+}
+.ic-ic-check:before {
+  content: "\e92d";
+}
+.ic-ic-check-circle:before {
+  content: "\e967";
+}
+.ic-ic-chemie:before, .ic-ic-UVPG-4:before {
+  content: "\e949";
+}
+.ic-ic-chemische-erzeugnisse:before {
+  content: "\e903";
+}
+.ic-ic-cicle:before, .ic-ic-UVPG-8:before {
+  content: "\e94a";
+}
+.ic-ic-cog:before {
+  content: "\e914";
+}
+.ic-ic-colapse:before {
+  content: "\e915";
+}
+.ic-ic-comments:before {
+  content: "\e916";
+}
+.ic-ic-cross:before {
+  content: "\e92e";
+}
+.ic-ic-daten:before {
+  content: "\e92f";
+}
+.ic-ic-datenkataloge:before {
+  content: "\e970";
+}
+.ic-ic-diamond:before, .ic-ic-UVPG-15:before {
+  content: "\e94b";
+}
+.ic-ic-dienste:before {
+  content: "\e96f";
+}
+.ic-ic-double-arrow-left:before {
+  content: "\e930";
+}
+.ic-ic-double-arrow-right:before {
+  content: "\e931";
+}
+.ic-ic-download:before {
+  content: "\e932";
+}
+.ic-ic-einheit:before {
+  content: "\e904";
+}
+.ic-ic-external:before {
+  content: "\e966";
+}
+.ic-ic-eye:before {
+  content: "\e917";
+}
+.ic-ic-facebook:before {
+  content: "\e933";
+}
+.ic-ic-filter:before {
+  content: "\e965";
+}
+.ic-ic-fire:before, .ic-ic-UVPG-1:before {
+  content: "\e94c";
+}
+.ic-ic-flurbereinigung:before, .ic-ic-UVPG-16:before {
+  content: "\e94d";
+}
+.ic-ic-forst:before, .ic-ic-UVPG-17:before {
+  content: "\e94e";
+}
+.ic-ic-forstliche:before {
+  content: "\e905";
+}
+.ic-ic-hamburger:before {
+  content: "\e934";
+}
+.ic-ic-hamburger-logged-user:before {
+  content: "\e960";
+}
+.ic-ic-hilfe:before {
+  content: "\e964";
+}
+.ic-ic-holz:before {
+  content: "\e906";
+}
+.ic-ic-industrie:before, .ic-ic-UVPG-10:before {
+  content: "\e94f";
+}
+.ic-ic-info:before {
+  content: "\e935";
+}
+.ic-ic-inspire:before {
+  content: "\e96e";
+}
+.ic-ic-intituition:before {
+  content: "\e96d";
+}
+.ic-ic-karte:before {
+  content: "\e96c";
+}
+.ic-ic-karten:before {
+  content: "\e936";
+}
+.ic-ic-katalog:before {
+  content: "\e961";
+}
+.ic-ic-kernenergie:before {
+  content: "\e907";
+}
+.ic-ic-lagerung:before, .ic-ic-UVPG-9:before {
+  content: "\e950";
+}
+.ic-ic-leitung:before, .ic-ic-UVPG-19:before {
+  content: "\e951";
+}
+.ic-ic-leitungsanlagen:before {
+  content: "\e908";
+}
+.ic-ic-linkedin:before {
+  content: "\e937";
+}
+.ic-ic-literatur:before {
+  content: "\e918";
+}
+.ic-ic-location:before {
+  content: "\e938";
+}
+.ic-ic-lock-closed:before {
+  content: "\e919";
+}
+.ic-ic-lock-open:before {
+  content: "\e91a";
+}
+.ic-ic-lupe:before {
+  content: "\e939";
+}
+.ic-ic-lupe-zoom:before {
+  content: "\e91b";
+}
+.ic-ic-mailto:before {
+  content: "\e93a";
+}
+.ic-ic-map-pin:before {
+  content: "\e93b";
+}
+.ic-ic-messwerte:before {
+  content: "\e909";
+}
+.ic-ic-metadaten:before {
+  content: "\e962";
+}
+.ic-ic-metall:before, .ic-ic-UVPG-3:before {
+  content: "\e952";
+}
+.ic-ic-minus:before {
+  content: "\e93c";
+}
+.ic-ic-nahrung:before {
+  content: "\e90a";
+}
+.ic-ic-oberflachen:before, .ic-ic-UVPG-5:before {
+  content: "\e953";
+}
+.ic-ic-oberflaechen:before {
+  content: "\e90b";
+}
+.ic-ic-opendata:before {
+  content: "\e96b";
+}
+.ic-ic-people:before {
+  content: "\e90c";
+}
+.ic-ic-phone:before {
+  content: "\e91c";
+}
+.ic-ic-plus:before {
+  content: "\e93d";
+}
+.ic-ic-projekt:before {
+  content: "\e96a";
+}
+.ic-ic-quote:before {
+  content: "\e93e";
+}
+.ic-ic-radioactive:before, .ic-ic-UVPG-11:before {
+  content: "\e954";
+}
+.ic-ic-road:before, .ic-ic-UVPG-14:before {
+  content: "\e955";
+}
+.ic-ic-share:before {
+  content: "\e93f";
+}
+.ic-ic-sonstige-industrieanlagen:before {
+  content: "\e90d";
+}
+.ic-ic-stahl:before {
+  content: "\e90e";
+}
+.ic-ic-star:before {
+  content: "\e91d";
+}
+.ic-ic-steine-und-erde:before {
+  content: "\e90f";
+}
+.ic-ic-timeline-bullet:before {
+  content: "\e940";
+}
+.ic-ic-tree:before, .ic-ic-UVPG-6:before {
+  content: "\e956";
+}
+.ic-ic-triangle-down:before {
+  content: "\e91e";
+}
+.ic-ic-triangle-up:before {
+  content: "\e91f";
+}
+.ic-ic-twitter:before {
+  content: "\e941";
+}
+.ic-ic-user:before {
+  content: "\e963";
+}
+.ic-ic-user-circle:before {
+  content: "\e969";
+}
+.ic-ic-verkehrsvorhaben:before {
+  content: "\e910";
+}
+.ic-ic-verwertung:before {
+  content: "\e911";
+}
+.ic-ic-view-colapsed:before {
+  content: "\e920";
+}
+.ic-ic-view-expanded:before {
+  content: "\e921";
+}
+.ic-ic-waermeerzeugung:before {
+  content: "\e912";
+}
+.ic-ic-wasser:before, .ic-ic-UVPG-13:before {
+  content: "\e957";
+}
+.ic-ic-wasserwirtschaft:before {
+  content: "\e913";
+}
+.ic-ic-webseiten:before {
+  content: "\e972";
+}
+.ic-ic-whatsapp:before {
+  content: "\e942";
+}
+.ic-ic-xing:before {
+  content: "\e943";
+}
+.ic-ic-zulassungsverfahren:before {
+  content: "\e958";
+}
+.ic-ic-fax:before {
+  content: "\e973";
+}
+.ic-ic-copy:before {
+  content: "\e949";
+}

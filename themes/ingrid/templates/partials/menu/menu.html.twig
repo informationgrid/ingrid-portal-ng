@@ -1,0 +1,4 @@
+{% import 'macros/header/macros.html.twig' as macros %}
+{% set menu_site = theme_var('menu_site') %}
+
+{{ macros.nav_menu_loop(menu_site, pages) }}

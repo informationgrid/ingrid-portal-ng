@@ -1,0 +1,175 @@
+{# Navigation #}
+<div class="accordion accordion-filter-group filter" data-accordion data-allow-all-closed="true" role="tablist">
+    <div class="accordion-item accordion-item-filter-group" data-accordion-item>
+        <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab" id="detail-accordion-label" aria-expanded="false" aria-selected="false">Inhalt</a>
+        <div class="accordion-content filter-wrapper" data-tab-content role="tabpanel" aria-labelledby="detail-accordion-label" aria-hidden="true" id="detail-content-accordion">
+            <ul class="accordion filter-group nav-group" data-accordion data-allow-all-closed="true" role="tablist">
+            {# Übersicht #}
+                {% if hasOverview %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_overview }}" class="accordion-title js-anchor-target" aria-controls="{{ hash_overview }}-accordion" role="tab" id="{{ hash_overview }}-accordion-label">
+                            <span class="text">Übersicht</span>
+                        </a>
+                        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-labelledby="{{ hash_overview }}-accordion-label" aria-hidden="true" id="{{ hash_overview }}-accordion">
+                            <div class="boxes">
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Beschreibung #}
+                {% if hasDescription or hasTime %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_description }}" class="accordion-title js-anchor-target" aria-controls="{{ hash_description }}-accordion" role="tab" id="{{ hash_description }}-accordion-label">
+                            <span class="text">Beschreibung</span>
+                        </a>
+                        {% if isTimeInDescription %}
+                            {% include 'partials/detail/metadata/parts/navigation/detail_metadata_navigation_time_description.html.twig' %}
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {# Bibliografische Angaben #}
+                {% include 'partials/detail/metadata/parts/navigation/detail_metadata_navigation_bibliographies.html.twig' %}
+            {# Zeitbezug #}
+                {% if not isTimeInDescription %}
+                    {% include 'partials/detail/metadata/parts/navigation/detail_metadata_navigation_time.html.twig' %}
+                {% endif %}
+            {# Darstellung #}
+                {% if hasArea %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_area }}"  class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_area }}-accordion-label">
+                            <span class="text">Raumbezug</span>
+                        </a>
+                        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_area }}-accordion-label" id="{{ hash_area }}-accordion">
+                            <div class="boxes">
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Verweise und Downloads #}
+                {% if hasLinks %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_links }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_links }}-accordion-label">
+                            <span class="text">Verweise und Downloads</span>
+                        </a>
+                        <div class="accordion-content" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_links }}-accordion-label" id="{{ hash_links }}-accordion">
+                            <div class="boxes">
+                                {% if accessUrl|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_access_url" %}
+                                    {% set tmpTitle = "URL des Zugangs" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if linkDownloadRefs|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_downloads" %}
+                                    {% set tmpTitle = "Downloads" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if linkRefss|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_info_links" %}
+                                    {% set tmpTitle = "Querverweise" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if otherLinkRefs|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_www_references" %}
+                                    {% set tmpTitle = "Weitere Verweise" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if subordinatedLinkRefs|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_subordinated_references" %}
+                                    {% set tmpTitle = "Untergeordnete Objekte" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if superiorLinkRefs|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_superior_references" %}
+                                    {% set tmpTitle = "Übergeordnete Objekte" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Nutzung #}
+                {% if hasUse %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_use }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_use }}-accordion-label">
+                            <span class="text">Nutzung</span>
+                        </a>
+                        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_use }}-accordion-label" id="{{ hash_use }}-accordion">
+                            <div class="boxes">
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Kontakt #}
+                {% if hasContact %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_contact }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_contact }}-accordion-label">
+                            <span class="text">Kontakt</span>
+                        </a>
+                        <div class="accordion-content" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_contact }}-accordion-label" id="{{ hash_contact }}-accordion">
+                            <div class="boxes">
+                            {% set tmpCount = 0 %}
+                            {% for item in contactRefs %}
+                                {% set tmpHash = hash_contact ~ "_contact-" ~ tmpCount %}
+                                {% set tmpTitle = item.role %}
+                                {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% set tmpCount = tmpCount + 1 %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Fachinformationen #}
+                {% if hasInfo %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_info }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_info }}-accordion-label">
+                            <span class="text">Fachinformationen</span>
+                        </a>
+                        <div class="accordion-content" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_info }}-accordion-label" id="{{ hash_info }}-accordion">
+                            <div class="boxes">
+                                {% if infoRefs|length > 0 %}
+                                    {% set tmpHash = hash_info ~ "_technical_information" %}
+                                    {% set tmpTitle = "Informationen zum Datensatz" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if infoRefs|length > 0 %}
+                                    {% set tmpHash = hash_info ~ "_additional_information" %}
+                                    {% set tmpTitle = "Zusatzinformationen" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                                {% if infoRefs|length > 0 %}
+                                    {% set tmpHash = hash_info ~ "_fs_keywords" %}
+                                    {% set tmpTitle = "Schlagworte" %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Datenqualität #}
+                {% if hasDataquality %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_dataquality }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_dataquality }}-accordion-label">
+                            <span class="text">Datenqualität</span>
+                        </a>
+                        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_dataquality }}-accordion-label" id="{{ hash_dataquality }}-accordion">
+                            <div class="boxes">
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {# Metadatensatz #}
+                {% if hasMetadataInfo %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#{{ hash_metadata_info }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_metadata_info }}-accordion-label">
+                            <span class="text">Metadatensatz</span>
+                        </a>
+                        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_metadata_info }}-accordion-label" id="{{ hash_metadata_info }}-accordion">
+                            <div class="boxes">
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

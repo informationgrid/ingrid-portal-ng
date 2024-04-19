@@ -1,0 +1,127 @@
+{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+
+{# theme_var #}
+{% set isTimeInDescription = theme_var('detail_hit_time_in_description') %}
+{% set sortAddressTyp = theme_var('detail_hit_address_order') %}
+{% set sortContactByType = theme_var('detail_hit_contact_order') %}
+
+{# var #}
+{% set hit = hit %}
+{% set title = getMetadataTitle(hit) %}
+{% set class = getMetadataType(hit) %}
+{% set className = "TODO" %}
+{% set summary = getMetadataSummary(hit) %}
+{% set timeRefs = getMetadataTimeRefs(hit) %}
+{% set mapRefs = getMetadataMapRefs(hit) %}
+{% set linkRefs = getMetadataLinkRefs(hit) %}
+{% set useRefs = getMetadataUseRefs(hit) %}
+{% set infoRefs = getMetadataInfoRefs(hit) %}
+{% set metaInfoRefs = getMetadataMetaInfoRefs(hit) %}
+{% set contactRefs = getMetadataContactRefs(hit)|sortContacts(sortContactByType) %}
+{% set linkDownloadRefs = linkRefs|filterLinks("download") %}
+{% set linkObjectRefs = linkRefs|filterLinks("object") %}
+{% set linkSubordinatedRefs = linkRefs|filterLinks("subordinated") %}
+{% set linkSuperiorRefs = linkRefs|filterLinks("superior") %}
+{# labels #}
+{% set hash_overview = "detail_overview" %}
+{% set hash_description = "detail_description" %}
+{% set hash_area = "detail_area" %}
+{% set hash_links = "detail_links" %}
+{% set hash_use = "detail_use" %}
+{% set hash_info = "detail_info" %}
+{% set hash_dataquality = "detail_dataquality" %}
+{% set hash_additional = "detail_additional" %}
+{% set hash_contact = "detail_contact" %}
+{% set hash_metadata_info = "metadata_info" %}
+{% set hash_bibliographical_info = "bibliographical_info" %}
+{% set hash_time = "detail_time" %}
+{# booleans #}
+{% set hasOverview = (links|length > 0 or useConstraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
+{% set hasDescription = (alternateTitle or summary) %}
+{% set hasTime = (timeRefs|length > 0) %}
+{% set hasTimeData = (timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime or timeRefs.status or  timeRefs.period or timeRefs.interval or (timeRefs.measureValue and timeRefs.measureUnit)) %}
+{% set hasTimeResource = (timeRefs.timeDate.creation or timeRefs.timeDate.publication or timeRefs.timeDate.revision) %}
+{% set hasArea = (mapRefs|length > 0) %}
+{% set hasLinks = (linkRefs|length > 0) %}
+{% set hasUse = (useRefs|length > 0) %}
+{% set hasAdditional = "detail_additional" %}
+{% set hasContact = (contactRefs|length > 0) %}
+{% set hasInfo = (infoRefs|length > 0) %}
+{% set hasDataquality = (dataQualityRef|length > 0) %}
+{% set hasMetadataInfo = (metaInfoRefs|length > 0) %}
+{% set hasBibliographicalInfo = false %}
+
+<div class="detail" id="detail">
+    <div class="banner-noimage m-filter">
+        <div class="page-wrapper" style="background-image: url('/decorations/layout/ingrid/images/template/drops-subpage.svg');">
+            <div class="row">
+                <div class="xsmall-24 large-6 xlarge-6 columns">
+                    <a class="helper icon" href="$searchLink" title="Alle Suchergebnisse" rel="noopener noreferrer">
+                        <span class="ic-ic-arrow-left"></span>
+                        <span class="text text-normal">Alle Suchergebnisse</span>
+                    </a>
+                </div>
+                <div class="xsmall-24 large-18 xlarge-18 columns">
+                    <div class="helper icon">
+                        {{ hit_macros.render_metadata_icon(class, className) }}
+                    </div>
+                    <h2>{{ title }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row nav-content search-filtered">
+    {# Navigation #}
+        <div class="xsmall-24 large-6 xlarge-6 columns">
+            {% include 'partials/detail/metadata/parts/navigation/detail_metadata_navigation.html.twig' %}
+        </div>
+        <a class="anchor" id="{{ hash_overview }}"></a>
+        <div class="xsmall-24 large-18 xlarge-18 columns">
+    {# FactSheet #}
+            {% if hasOverview %}
+                {% include 'partials/detail/metadata/parts/factsheet/detail_metadata_factsheet.html.twig' %}
+            {% endif %}
+    {# Beschreibung #}
+            {% if hasDescription %}
+                {% include 'partials/detail/metadata/parts/description/detail_metadata_description.html.twig' %}
+            {% endif %}
+    {# Bibliografische Angaben #}
+            {% if hasBibliographicalInfo %}
+                {% include 'partials/detail/metadata/parts/bibliographical_info/detail_metadata_bibliographical_info.html.twig' %}
+            {% endif %}
+        {# Zeitbezug #}
+            {% if not isTimeInDescription and hasTime %}
+                {% include 'partials/detail/metadata/parts/time/detail_metadata_time.html.twig' %}
+            {% endif %}
+        {# Raumbezug #}
+            {% if hasArea %}
+                {% include 'partials/detail/metadata/parts/area/detail_metadata_area.html.twig' %}
+            {% endif %}
+        {# Verweise und Downloads #}
+            {% if hasLinks %}
+                {% include 'partials/detail/metadata/parts/links/detail_metadata_links.html.twig' %}
+            {% endif %}
+        {# Nutzung #}
+            {% if hasUse %}
+                {% include 'partials/detail/metadata/parts/use/detail_metadata_use.html.twig' %}
+            {% endif %}
+        {# Kontakt #}
+            {% if hasContact %}
+                {% include 'partials/detail/metadata/parts/contact/detail_metadata_contact.html.twig' %}
+            {% endif %}
+        {# Fachinformationen #}
+            {% if hasInfo %}
+                {% include 'partials/detail/metadata/parts/information/detail_metadata_information.html.twig' %}
+            {% endif %}
+        {# Datenqualität #}
+            {% if hasDataquality %}
+                {% include 'partials/detail/metadata/parts/dataquality/detail_metadata_dataquality.html.twig' %}
+            {% endif %}
+        {# Infos zur Datensatzbeschreibung #}
+            {% if hasMetadataInfo %}
+                {% include 'partials/detail/metadata/parts/metadata_info/detail_metadata_metadata_info.html.twig' %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

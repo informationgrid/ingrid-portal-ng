@@ -1,0 +1,45 @@
+<div id="map" class="map-ingrid map-full" style="width:100%;position:fixed;z-index:0;">
+    <div class="map-filter">
+      <h5 class="show-for-large">Verfahrenstypen</h5>
+      <ul class="accordion filter-group" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+        <li class="accordion-item" data-accordion-item>
+            <a class="accordion-title hide-for-large" aria-controls="legend-accordion" role="tab" id="legend-accordion-label" aria-expanded="false" aria-selected="false">
+                <span class="text">Verfahrenstypen</span>
+            </a>
+            <div class="accordion-content" data-tab-content role="tabpanel" aria-labelledby="legend-accordion-label" id="legend-accordion" aria-hidden="true" >
+            </div>
+            <a style="display:none" class="accordion-title hide-for-large" aria-controls="legend-accordion" role="tab" id="legend-accordion-label-landscape" aria-expanded="false" aria-selected="false">
+                <span class="text">Verfahrenstypen</span>
+            </a>
+        </li>
+      </ul>
+    </div>
+</div>
+{% set map_config = theme_var('map') %}
+<script>
+    var enablePopUp = true;
+    var smallIcons = false;
+    var osm = getWMTSLayer('{{ map.leaflet.bg.layer.wmts.url }}', '', '', 1);
+    var map = addLeafletMap([osm]);
+</script>
+
+{% include 'partials/leaflet/geocoder.html.twig' %}
+{% include 'partials/leaflet/marker.html.twig' %}
+
+<script>
+    addLeafletHomeControl(map, 'Zoom auf initialen Kartenausschnitt', 'bottomright', 'ic-ic-center', mapBounds, '', '23px');
+    map.zoomControl.setPosition('bottomright');
+    window.onresize = resizeIframe;
+    resizeIframe();
+    
+    function pageY(elem) {
+        return elem.offsetParent ? (elem.offsetTop + pageY(elem.offsetParent)) : elem.offsetTop;
+    }
+    function resizeIframe(){
+        var buffer = 0;
+        var height = document.documentElement.clientHeight;
+        height -= pageY(document.getElementById('map'))+ buffer ;
+        height = (height < 0) ? 0 : height;
+        document.getElementById('map').style.height = height + 'px';
+    }
+</script>

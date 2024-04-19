@@ -1,0 +1,45 @@
+name: InGrid Search Result
+slug: ingrid-search-result
+type: plugin
+version: 0.1.0
+description: Get InGrid search results
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-search-result
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-search-result/issues
+docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-search-result/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    api_url:
+      type: text
+      label: PLUGIN_INGRID_SEARCH_RESULT.API_URL
+      help: PLUGIN_INGRID_SEARCH_RESULT.API_URL_HELP
+      default: 'https://dev.informationgrid.eu/api?'
+    hits_num:
+      type: number
+      label: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER
+      help: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER_HELP
+      default: 10
+      validate:
+        min: 1
+        max: 100

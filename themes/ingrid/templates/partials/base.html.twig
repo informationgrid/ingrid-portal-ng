@@ -9,62 +9,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'partials/metadata.html.twig' %}
 
-    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}" />
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
     <link rel="canonical" href="{{ page.canonical(true)|e }}" />
 {% endblock head %}
 
 {% block stylesheets %}
-    {% do assets.addCss('https://unpkg.com/purecss@1.0.0/build/pure-min.css', 100) %}
-    {% do assets.addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 99) %}
+    {% do assets.addCss('theme://css-compiled/main.css', 98) %}
     {% do assets.addCss('theme://css/custom.css', 98) %}
+    {% if page.header.hasLeaflet %}
+        {% include 'partials/header/leaflet/css.html.twig' %}
+    {% endif %}
+    {% if page.header.hasImageSwiper %}
+        {% include 'partials/header/swiper/css.html.twig' %}
+    {% endif %}
+    
 {% endblock %}
 
 {% block javascripts %}
-    {% do assets.addJs('jquery', 100) %}
+    {% do assets.addJs('theme://js/modernizr.custom.min.js') %}
+    {% do assets.addJs('jquery') %}
+    {% do assets.addJs('theme://js/jquery/nicescroll/jquery.nicescroll.min.js') %}
+    {% do assets.addJs('theme://js/jquery/foundation/foundation.min.js') %}
+    {% do assets.addJs('theme://js/jquery/select2/select2.full.js') %}
+    {% do assets.addJs('theme://js/main.js') %}
+    {% do assets.addJs('theme://js/ingrid.js') %}
+
+    {% if page.header.hasLeaflet %}
+        {% include 'partials/header/leaflet/javascript.html.twig' %}
+    {% endif %}
+    {% if page.header.hasImageSwiper %}
+        {% include 'partials/header/swiper/javascript.html.twig' %}
+    {% endif %}
 {% endblock %}
 
 {% block assets deferred %}
     {{ assets.css()|raw }}
     {{ assets.js()|raw }}
 {% endblock %}
+
 </head>
 <body id="top" class="{{ page.header.body_classes|e }}">
+    <div class="container">
+    {% block menu %}
+        {% include 'partials/menu.html.twig' %}
+    {% endblock %}
 
-{% block header %}
-    <div class="header">
-        <div class="wrapper padding">
-            <a class="logo left" href="{{ home_url|e }}">
-                <i class="fa fa-rebel"></i>
-                {{ config.site.title|e }}
-            </a>
-            {% block header_navigation %}
-            <nav class="main-nav">
-                {% include 'partials/navigation.html.twig' %}
-            </nav>
-            {% endblock %}
-        </div>
-    </div>
-{% endblock %}
+    {% block header %}
+        {% include 'partials/header.html.twig' %}
+    {% endblock %}
 
-{% block body %}
-    <section id="body">
-        <div class="wrapper padding">
+    {% block body %}
+        {% block content_header %}{% endblock %}
         {% block content %}{% endblock %}
-        </div>
-    </section>
-{% endblock %}
+    {% endblock %}
 
-{% block footer %}
-    <div class="footer text-center">
-        <div class="wrapper padding">
-            <p><a href="https://getgrav.org">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="https://trilby.media">Trilby Media, LLC</a>.</p>
-        </div>
+    {% if page.header.footer_disabled != true %}
+        {% block footer %}
+            {% include 'partials/footer.html.twig' %}
+        {% endblock %}
+    {% endif %}
+    {% block bottom %}
+        {% include 'partials/footer/javascript.html.twig' %}
+        {{ assets.js('bottom')|raw }}
+    {% endblock %}
+    <script>
+    $('.js-anchor-target').anchorTarget();
+</script>
+
+<!-- Anchor navigation -->
+<script>
+    $('.js-anchor-navigation').anchorNavigation();
+</script>
     </div>
-{% endblock %}
 
-{% block bottom %}
-    {{ assets.js('bottom')|raw }}
-{% endblock %}
 
 </body>
 </html>

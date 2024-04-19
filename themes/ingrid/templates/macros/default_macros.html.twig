@@ -1,0 +1,15 @@
+{% macro render_error_msg(msg) %}
+    <div class="columns">
+        <div class="row alert">
+            <div class="columns">
+                <p class="error no-margin">
+                    <span class="alert-text">{{ msg }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_section_title(title) %}
+    <h3>{{ title }}</h3>
+{% endmacro %}

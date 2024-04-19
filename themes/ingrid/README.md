@@ -4,4 +4,4 @@ The **Ingrid** Theme is for [Grav CMS](http://github.com/getgrav/grav).  This RE
 
 ## Description
 
-Base InGrid Theme
+InGrid Theme

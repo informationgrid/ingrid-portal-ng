@@ -1,0 +1,29 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block bottom %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header_navigation %}
+    {{  parent() }}
+{% endblock %}
+
+{% block hero %}
+    {% for module in page.collection() if module.template == 'modular/hero' %}
+        <div id="{{ module.menu|hyphenize }}"></div>
+        {{ module.content|raw }}
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+    <div class="body" role="main">
+    {% for module in page.collection() if module.template != 'modular/hero' %}
+        <div id="{{ module.menu|hyphenize }}"></div>
+        {{ module.content|raw }}
+    {% endfor %}
+    </div>
+{% endblock %}

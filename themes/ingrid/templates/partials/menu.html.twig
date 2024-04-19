@@ -1,0 +1,5 @@
+{% set header_menu_dropdown = theme_var('header_menu_dropdown') %}
+        
+{% if header_menu_dropdown %}
+    {% include 'partials/menu/menu.html.twig' %}
+{% endif %}

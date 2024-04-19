@@ -1,0 +1,42 @@
+<script>
+
+    var resultMarker;
+
+    function addNominatimGeocoder(map) {
+        /*** Nominatim Geocoder ***/
+                // OSM Geocoder
+        const osmGeocoder = new L.Control.Geocoder({
+                    geocoder: L.Control.Geocoder.nominatim({
+                        serviceUrl: "$leafletGeocoderServiceUrl",
+                        geocodingQueryParams: { countrycodes: 'de' }
+                    }),
+                    collapsed: false,
+                    position: 'topright',
+                    placeholder: '$MESSAGES.getString("common.mapclient.geocoder.search.placeholder")',
+                    defaultMarkGeocode: false,
+                    errorMessage: '$MESSAGES.getString("common.mapclient.geocoder.search.errormessage")'
+                }).addTo(map);
+
+        // handle geocoding result event
+        osmGeocoder.on('markgeocode', e => {
+            // remove previous marker if present
+            if (resultMarker) {
+                map.removeLayer(resultMarker)
+            }
+            // to review result object
+            console.log(e);
+            // coordinates for result
+            const coords = [e.geocode.center.lat, e.geocode.center.lng];
+            // center map on result
+            map.setView(coords, 12);
+            // popup for location
+            resultMarker = L.marker(coords);
+            resultMarker.addTo(map);
+            // add popup to marker with result text
+            // resultMarker.bindPopup(e.geocode.name).openPopup();
+        });
+    }
+
+    addNominatimGeocoder(map);
+
+</script>

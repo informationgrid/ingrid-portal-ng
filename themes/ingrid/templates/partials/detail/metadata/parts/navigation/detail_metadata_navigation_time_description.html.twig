@@ -1,0 +1,19 @@
+{# Zeitbezug #}
+<div class="accordion-content {% if not hasTimeData and not hasTimeResource %}is-hidden{% endif %}" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_description }}-accordion-label" id="{{ hash_description }}-accordion">
+    <div class="boxes">
+        {% if hasTimeData %}
+            {% set tmpHash = hash_description ~ "_time_reference" %}
+            {% set tmpTitle = "" %}
+            {% if class == 1 or class == 3 or class == 5 or class == 6 %}
+                {% set tmpTitle = "time_reference_content" %}
+            {% else %}
+                {% set tmpTitle = "time_reference" %}
+            {% endif %}
+            {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+        {% endif %}
+        {% if hasTimeResource %}
+            {% set tmpHash = hash_description ~ "_time_reference_record" %}
+            {{ hit_macros.render_sub_navigation("time_reference_record", tmpHash) }}
+        {% endif %}
+    </div>
+</div>

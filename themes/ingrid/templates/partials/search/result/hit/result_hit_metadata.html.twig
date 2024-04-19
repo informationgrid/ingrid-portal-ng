@@ -1,0 +1,48 @@
+{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+{% set partner_logo = theme_var('search_partner_logo_enabled') %}
+
+{% set counter = counter %}
+{% set hit = hit %}
+{% set uuid = getHitUuid(hit) %}
+{% set class = getHitClass(hit) %}
+{% set className = getHitClassName(hit) %}
+{% set title = getHitTitle(hit) %}
+{% set summary = getHitSummary(hit) %}
+{% set types = getHitTypes(hit) %}
+{% set time = getHitTime(hit) %}
+{% set partner = getHitPartner(hit) %}
+{% set isOpendata = getHitIsOpendata(hit) %}
+{% set isInspire = getHitIsInspire(hit) %}
+{% set hasAccessContraint = getHitHasAccessContraint(hit) %}
+
+{% set detailLink = "/trefferanzeige?doccuid=" ~ uuid %}
+
+<div class="data">
+    <div class="teaser-data search">
+        {% if uuid %}
+            <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
+        {% endif %}
+        {{ hit_macros.render_hit_types(types, true) }}
+        {% if partner_logo %}
+            {{ hit_macros.render_hit_logo(partner) }}
+        {% endif %}
+        <div class="helper icon">
+            {{ hit_macros.render_metadata_icon(class, className) }}
+        </div>
+        {{ hit_macros.render_hit_searchterm(isInspire, isOpendata, hasAccessContraint) }}
+        <a href="{{ detailLink }}" title="{{ title }}">
+            <h2 class="header">{{ title }}</h2>
+        </a>
+        {{ hit_macros.render_hit_time("Aktualität der Daten", time) }}
+        {% if summary %}
+        <p class="data-text">
+            {{ summary }}
+        </p>
+        {% endif %}
+        {{ hit_macros.render_hit_types(types, true, true) }}
+        <a href="{{ detailLink }}" title="{{ title }}">
+            <span class="ic-ic-arrow arrow"></span>
+        </a>
+        {% include 'partials/search/result/hit/metadata/expand/result_hit_expand.html.twig' with {hit:hit, counter: counter} %}
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% set footer_logo = theme_var('footer_logo') %}
+{% set footer_logo_enabled = theme_var('footer_logo_enabled') %}
+
+{% if footer_logo_enabled %}
+<div class="logo">
+    <a href="{{ home_url }}" title="Startseite von InGrid-Portal">
+        {% if footer_logo %}
+            {% set footer_logo_file = (footer_logo|first).name %}
+        {% else %}
+            {% set footer_logo_file = 'footer-logo.svg' %}
+        {% endif %}
+        <img class="footer__logo" src="{{ url('theme://images/logo/' ~ footer_logo_file) }}" alt="InGrid-Portal - Indexieren, Recherchieren, Visualisieren, Teilen">
+    </a>
+</div>
+{% endif %}

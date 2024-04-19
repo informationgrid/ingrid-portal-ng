@@ -1,0 +1,33 @@
+{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+
+{% set counter = counter %}
+{% set hit = hit %}
+{% set uuid = getHitUuid(hit) %}
+{% set class = getHitClass(hit) %}
+{% set className = getHitClassName(hit) %}
+{% set title = getHitTitle(hit) %}
+{% set summary = getHitSummary(hit) %}
+
+{% set detailLink = "/trefferanzeige?doccuid=" ~ uuid ~ "&type=address" %}
+
+<div class="data">
+    <div class="teaser-data search">
+        {% if uuid %}
+            <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
+        {% endif %}
+        <div class="helper icon">
+            {{ hit_macros.render_address_icon(class, className) }}
+        </div>
+        <a href="{{ detailLink }}" title="{{ title }}">
+            <h2 class="header">{{ title }}</h2>
+        </a>
+        {% if summary %}
+        <p class="data-text">
+            {{ summary }}
+        </p>
+        {% endif %}
+        <a href="{{ detailLink }}" title="{{ title }}">
+            <span class="ic-ic-arrow arrow"></span>
+        </a>
+    </div>
+</div>

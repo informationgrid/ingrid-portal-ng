@@ -1,0 +1,142 @@
+enabled: true
+production-mode: true
+grid-size: grid-lg
+header-fixed: true
+header-animated: true
+header-dark: false
+header-transparent: false
+sticky-footer: true
+streams:
+  schemes:
+    theme:
+      type: ReadOnlyStream
+      prefixes:
+        '': [user/themes/metaver, user/themes/ingrid]
+header_logo_enabled: true
+header_logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
+header_menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
+header_menu_dropdown: true
+header_shrink: true
+footer_logo_enabled: true
+footer_copyright_text: null
+footer_copyright_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+footer_menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+hit_csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
+search_hit_csw_enabled: true
+search_partner_logo_enabled: false
+detail_hit_csw_enabled: true
+detail_hit_time_in_description: true
+detail_hit_address_order:
+  - '3'
+  - '0'
+  - '1'
+  - '2'
+detail_hit_contact_order:
+  - pointOfContact
+  - distributor
+  - publisher
+  - owner
+  - processor
+  - author
+map:
+  enabled: true
+  url: /ingrid-webmap-client/frontend/prd
+  leaflet:
+    enabled: false
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
+        wms: { url: null, name: null }
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+        opacity: 1
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+measure_enabled: true
+measure_url: /ingrid-portal-apps/measures/index.html
+header_logo: {  }
+footer_logo: {  }
+menu_main:
+  -
+    path: search
+    title: Suche
+    icon: ic-ic-lupe
+  -
+    path: map
+    title: Karte
+    icon: ic-ic-karten
+  -
+    path: catalog
+    title: Kataloge
+    icon: ic-ic-datenkataloge
+menu_site:
+  -
+    path: search
+    title: Suche
+    highlighted: true
+  -
+    path: map
+    title: Karte
+    highlighted: true
+  -
+    path: catalog
+    title: Kataloge
+    highlighted: true
+  -
+    path: about
+    title: 'Über InGrid'
+    highlighted: true
+  -
+    path: datasource
+    title: Datenquellen
+    highlighted: true
+  -
+    path: provider
+    title: Informationsanbieter
+    highlighted: true
+  -
+    path: help
+    title: Hilfe
+    highlighted: false
+  -
+    path: contact
+    title: Kontakt
+    highlighted: false
+  -
+    path: sitemap
+    title: Sitemap
+    highlighted: false
+  -
+    path: imprint
+    title: Impressum
+    highlighted: false
+  -
+    path: privacy
+    title: Datenschutz
+    highlighted: false
+  -
+    path: accessibility
+    title: Barrierefreiheit
+    highlighted: false
+menu_footer:
+  -
+    path: help
+    title: Hilfe
+  -
+    path: contact
+    title: Kontakt
+  -
+    path: sitemap
+    title: Sitemap
+  -
+    path: imprint
+    title: Impressum
+  -
+    path: privacy
+    title: Datenschutz
+  -
+    path: accessibility
+    title: Barrierefreiheit

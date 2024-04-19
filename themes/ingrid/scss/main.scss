@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto-Bold.eot');
+  src: url('../fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../fonts/Roboto-Medium.eot');
+  src: url('../fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/Roboto-Regular.eot');
+  src: url('../fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'RobotoSlab-Bold';
+  src: url('../fonts/RobotoSlab-Bold.eot');
+  src: url('../fonts/RobotoSlab-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/RobotoSlab-Bold.woff') format('woff');
+}
+
+@import '_uvp-icon-font';
+@import 'vendor/foundation';
+@import 'vendor/select2.css';
+@import 'vendor/leaflet/leaflet.css';
+@import 'vendor/leaflet/MarkerCluster.css';
+@import 'vendor/leaflet/MarkerCluster.Default.css';
+@import '_settings';
+@import '_variables';
+
+//@include foundation-everything;
+
+@include foundation-global-styles;
+//@include foundation-xy-grid-classes;
+//@include foundation-grid;
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+@include foundation-typography;
+@include foundation-forms;
+@include foundation-button;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-responsive-embed;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-sticky;
+//@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+
+@import '_uvp';
+@import '_custom-inputs';
+@import '_uvp-media-queries';
+
+/* STYLEGUIDE SPECIALS */
+
+$sg-color: #b900df;
+
+/* styleguide navbar */
+.sg-nav {
+  background-color: $sg-color;
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      padding: 0;
+      margin: 10px 15px;
+
+      a {
+        color: white;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing:1px;
+      }
+    }
+    li::before {
+      content: "";
+    }
+  }
+}
+
+/* styleguide headlines */
+.sg-headline {
+  font-family: 'Roboto-Bold';
+  color: $sg-color;
+  text-transform: uppercase;
+  border-bottom: 1px solid $sg-color;
+  padding-bottom: .5rem;
+  margin: 1.5rem 0 1rem 0;
+}
+
+h4.sg-headline {
+  font-size: 24px;
+  margin: 3.5rem 0 2.5rem 0;
+}
+
+h6.sg-headline { font-family: 'Roboto-Regular'; }
+
+/* styleguide color boxes */
+.sg-colorbox {
+  display: inline-block;
+  height: 112px;
+  width: 107px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+.sg-gradientbox {
+  display: inline-block;
+  height: 125px;
+  width: 252px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+.sg_one { background-color: $green-blue; }
+.sg_two { background-color: $green-jelly; }
+.sg_three { background-color: $green-inch; }
+.sg_four { background-color: $blue-midnight; }
+.sg_five { background-color: $blue-rhapsody; }
+.sg_six { background-color: $blue-prov; }
+.sg_seven { background-color: $blue-light; }
+.sg_eight { background-color: $blue-sky; }
+.sg_nine { background-color: $white-cascade; }
+.sg_ten { background-color: $blue; }
+.sg_eleven { background-color: $red; }
+.sg_twelve { background-color: $orange; }
+.sg_thirteen { background-color: $green; }
+
+.sg_gradone { background-image: linear-gradient(to bottom right, $green-inch, $green-jelly); }
+.sg_gradtwo { background-image: linear-gradient(to bottom right, $green-blue, $green-jelly); }

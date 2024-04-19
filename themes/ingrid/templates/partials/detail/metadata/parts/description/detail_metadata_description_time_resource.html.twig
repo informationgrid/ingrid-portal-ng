@@ -1,0 +1,14 @@
+{# Zeitbezug der Ressource #}
+
+{% if hasTimeResource %}
+    <div class="sub-section">
+        <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference_record"{% else %}id="{{ hash_time }}_time_reference_record"{% endif %}></a>
+        {{ hit_macros.render_group_title("time_reference_record") }}
+{# Erstellung #}
+        {{ hit_macros.render_section_text_label("creation", timeRefs.timeDate.creation ) }}
+{# Publikation #}
+        {{ hit_macros.render_section_text_label("publication", timeRefs.timeDate.publication ) }}
+{# letzte Änderung #}
+        {{ hit_macros.render_section_text_label("revision", timeRefs.timeDate.revision ) }}
+    </div>
+{% endif %}

@@ -1,0 +1,12 @@
+{# Bibliografische Angaben #}
+{% if bibliographies|length > 0 or doiIdType or citations|length > 0 %}
+    <li class="accordion-item" data-accordion-item>
+        <a href="#{{ hash_bibliographical_info }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_bibliographical_info }}-accordion-label">
+            <span class="text">Bibliografische Angaben</span>
+        </a>
+        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_bibliographical_info }}-accordion-label" id="{{ hash_bibliographical_info }}-accordion">
+            <div class="boxes">
+            </div>
+        </div>
+    </li>
+{% endif %}

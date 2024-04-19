@@ -1,0 +1,15 @@
+{% set logo = theme_var('header_logo') %}
+{% set header_logo_enabled = theme_var('header_logo_enabled') %}
+
+{% if header_logo_enabled %}
+<div class="logo" role="banner">
+    <a href="{{ home_url }}" title="Startseite von InGrid-Portal">
+    {% if logo %}
+        {% set header_logo_file = (logo|first).name %}
+    {% else %}
+        {% set header_logo_file = 'logo.svg' %}
+    {% endif %}
+        <img src="{{ url('theme://images/logo/' ~ header_logo_file)  }}" alt="{{ site.title }}" />
+    </a>
+</div>
+{% endif %}

@@ -1,0 +1,24 @@
+{
+  "name": "khanh-toan-tran/ingrid-search-result",
+  "type": "grav-plugin",
+  "description": "Get InGrid search results",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-search-result",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Khanh Toan Tran",
+      "email": "khanh.toan.tran@wemove.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\IngridSearchResult\\": "classes/"
+    },
+    "classmap":  ["ingrid-search-result.php"]
+  }
+}

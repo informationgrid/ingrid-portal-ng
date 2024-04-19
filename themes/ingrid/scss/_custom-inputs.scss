@@ -1,0 +1,404 @@
+@import '_variables';
+
+.form-element {
+  .control {
+    display: block;
+    position: relative;
+    font-family: 'Roboto-Regular';
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 400;
+    color: $blue-midnight;
+    cursor: pointer;
+    padding-top: 2px;
+    padding-left: 34px;
+    margin: 8px 0;
+    
+    &:focus-within {
+      text-decoration: underline;
+    }
+  }
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control__indicator {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 23px;
+  height: 23px;
+  background: $white;
+  border: 1px solid $neutral-blue;
+  border-radius: 3px;
+}
+.form-element.boxed .control__indicator {
+  top: 1px;
+}
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+.map .control__indicator {
+  background: #303030;
+  border: 1px solid $blue-prov;
+}
+.nr-results {
+  float: right;
+  color: $blue-prov;
+  padding-right: 8px;
+}
+.map.blue .control__indicator {
+  background: $blue;
+  border: 1px solid $blue;
+}
+.map.red .control__indicator {
+  background: #d63e2a;
+  border: 1px solid #d63e2a;
+}
+.map.purple .control__indicator {
+    background: #d252b9;
+    border: 1px solid #d252b9;
+}
+.map.orange .control__indicator {
+  background: $orange;
+  border: 1px solid $orange;
+}
+.map.green .control__indicator {
+  background: $green;
+  border: 1px solid $green;
+}
+
+/* Hover and focus states */
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  background: $white;
+}
+.map .control:hover input ~ .control__indicator,
+.map .control input:focus ~ .control__indicator {
+  background: #303030;
+}
+.map.blue .control:hover input ~ .control__indicator,
+.map.blue .control input:focus ~ .control__indicator {
+  background: $blue;
+}
+.map.red .control:hover input ~ .control__indicator,
+.map.red .control input:focus ~ .control__indicator {
+  background: #d63e2a;
+}
+.map.purple .control:hover input ~ .control__indicator,
+.map.purple .control input:focus ~ .control__indicator {
+  background: #d252b9;
+}
+.map.orange .control:hover input ~ .control__indicator,
+.map.orange .control input:focus ~ .control__indicator {
+  background: $orange;
+}
+.map.green .control:hover input ~ .control__indicator,
+.map.green .control input:focus ~ .control__indicator {
+  background: $green;
+}
+
+/* Checked state */
+.control input:checked ~ .control__indicator {
+  background: $white;
+  border: 1px solid $green-jelly;
+}
+.control input:focus {
+  ~ .control__indicator {
+    background: $white;
+    border: 1px solid $dark-midnight !important;
+    box-shadow: 0 0 0 1px $dark-midnight;
+  }
+}
+.map .control input:checked ~ .control__indicator {
+  background: #303030;
+}
+.map.blue .control input:checked ~ .control__indicator {
+  background: $blue;
+}
+.map.red .control input:checked ~ .control__indicator {
+  background: #d63e2a;
+}
+.map.purple .control input:checked ~ .control__indicator {
+  background: #d252b9;
+}
+.map.orange .control input:checked ~ .control__indicator {
+  background: $orange;
+}
+.map.green .control input:checked ~ .control__indicator {
+  background: $green;
+}
+
+/* Hover state whilst checked */
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: $white;
+}
+.map .control:hover input:not([disabled]):checked ~ .control__indicator,
+.map .control input:checked:focus ~ .control__indicator {
+  background: #303030;
+}
+.map.blue .control:hover input:not([disabled]):checked ~ .control__indicator,
+.map.blue .control input:checked:focus ~ .control__indicator {
+  background: $blue;
+}
+.map.red .control:hover input:not([disabled]):checked ~ .control__indicator,
+.map.red .control input:checked:focus ~ .control__indicator {
+  background: #d63e2a;
+}
+.map.purple .control:hover input:not([disabled]):checked ~ .control__indicator,
+.map.purple .control input:checked:focus ~ .control__indicator {
+  background: #d252b9;
+}
+.map.orange .control:hover input:not([disabled]):checked ~ .control__indicator,
+.map.orange .control input:checked:focus ~ .control__indicator {
+  background: $orange;
+}
+.map.green .control:hover input:not([disabled]):checked ~ .control__indicator,
+.map.green .control input:checked:focus ~ .control__indicator {
+  background: $green;
+}
+
+/* Disabled state */
+.control input:disabled ~ .control__indicator {
+  pointer-events: none;
+  opacity: .6;
+  background: #e6e6e6;
+}
+
+/* Check mark */
+.control__indicator:after {
+  position: absolute;
+  display: none;
+  content: '';
+}
+
+/* Show check mark */
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+
+/* Checkbox tick */
+.control--checkbox .control__indicator:after {
+  top: 4px;
+  left: 8px;
+  width: 5px;
+  height: 12px;
+  transform: rotate(45deg);
+  border: solid $green-jelly;
+  border-width: 0 3px 3px 0;
+}
+.map .control--checkbox .control__indicator:after {
+  border: solid $white;
+  border-width: 0 3px 3px 0;
+}
+
+/* Disabled tick colour */
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+/* Radio button inner circle */
+.control--radio .control__indicator:after {
+  top: 6px;
+  left: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: $green-jelly;
+}
+
+/* Disabled circle colour */
+.control--radio input:disabled ~ .control__indicator:after {
+  background: #7b7b7b;
+}
+
+/* select2 */
+.select2-dropdown { background-color: transparent; }
+.select2-container--default .select2-selection--single, 
+.select2-container--default .select2-selection--multiple{
+  height:36px;
+  border: 1px solid $blue-light;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px 0px $blue-light;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered, 
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  font-family: 'Roboto-Regular';
+  font-size: 14px;
+  color: $blue-prov;
+  line-height: 36px;
+  padding-left: 16px;
+  padding-right: 40px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  display: none;
+}
+.select2-container--default .select2-selection--single::after {
+  position: absolute;
+  top: 8px;
+  right: 18px;
+  content: '\e922';
+  font-family: 'icomoon';
+  font-size: 16px;
+  color: $green-jelly;
+}
+.select2-container--default.select2-container--open .select2-selection--single::after {
+  content: '\e925';
+}
+.select2-container--open .select2-dropdown--below,
+.select2-container--open .select2-dropdown--above {
+  border: none;
+}
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single, 
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+  border-radius: 25px;
+  border-bottom: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.select2-container--focus .select2-selection {
+  border: $input-border-focus;
+}
+
+/* select2 dropdown */
+ul.select2-results__options {
+  border: $input-border-focus;
+  border-radius: 25px;
+  border-top: none;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  box-shadow: 0px 2px 5px 0px $blue-light;
+
+  li { margin: 0; }
+}
+ul.select2-results__options li::before, 
+ul.select2-selection__rendered li::before { content: ""; }
+.select2-results__option, 
+.select2-container--default .select2-results__option--highlighted[aria-selected], 
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: $white;
+  font-size: 16px;
+  color: $blue-prov;
+  padding: 8px 16px;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: $blue-sky;
+}
+/* select2 dropdown above */
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--single, .select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple {
+  border-radius: 25px;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.select2-container--open .select2-dropdown--above {
+  ul.select2-results__options {
+    border: $input-border-focus;
+    border-radius: 25px;
+    border-bottom: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+  }
+}
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple { box-shadow: none; }
+
+/* select2 location */
+.select2-container--default .select2-selection--multiple {
+  box-shadow: inset 0px 1px 1px $neutral-blue;
+}
+.select2-selection.select2-selection--multiple::after {
+  position: absolute;
+  top: 8px;
+  right: 18px;
+  content: '\e917';
+  font-family: 'icomoon';
+  font-size: 22px;
+  color: $green-jelly;
+}
+.select2-container .select2-search--inline .select2-search__field {
+  text-indent: 0;
+  margin: 0;
+}
+.select2-container .select2-search--inline .select2-search__field:focus::placeholder {
+  color: $blue-prov;
+}
+ul#select2-location-results {
+  max-height: initial;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  padding-left: 24px;
+}
+.select2-container--default .select2-results__group, 
+#select2-location-results .select2-results__options--nested .select2-results__option {
+  padding: 8px 16px 8px 48px;
+}
+.select2-container--default .select2-results__group {
+  font-weight: 400;
+}
+#select2-location-results .select2-results__option {
+  position: relative;
+}
+.select2-results__group::before {
+  position: absolute;
+  top: 8px;
+  left: 25px;
+  content: '\e916';
+  font-family: 'icomoon';
+  font-size: 15px;
+  color: $blue-prov;
+}
+.select2-results__options.select2-results__options--nested {
+  border: none !important;
+  box-shadow: none;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  line-height: 28px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* switch - checkbox */
+.switch-wrapper { margin-top: 16px; }
+.switch-label, .switch {
+  display: inline-block;
+  vertical-align: middle;
+}
+.switch-label {
+  font-family: 'Roboto-Bold';
+  font-size: 14px;
+  color: $blue-midnight;
+  margin-right: 3rem;
+}
+.switch.tiny {
+  .switch-paddle { width: 31px; }
+  .switch-paddle::after {
+    top: 2px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+  }
+  input:checked ~ .switch-paddle::after { left: 16px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

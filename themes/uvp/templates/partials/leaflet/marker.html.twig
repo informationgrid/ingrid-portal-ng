@@ -1,0 +1,839 @@
+<script>
+    function showMarker(m) {
+        if(m.target.uuid){
+            jQuery.get('$restUrlBBOX'+'?uuid='+m.target.uuid).done(function(data) {
+                var d = JSON.parse(data);
+                // create an orange rectangle
+                m.target.bbox=L.rectangle(d, {color: "blue", weight: 3, fill: false});
+                if(map){
+                    map.addLayer(m.target.bbox);
+                }
+            });
+        }
+    }
+    
+    function hideMarker(m) {
+        if(m.target.bbox){
+            if(map){
+                map.removeLayer(m.target.bbox);
+            }
+        }
+    }
+
+    var mapSizeX;
+    var popupMarkerSize;
+    var popupMarkerOptions = {};
+    
+    if(map){
+        if(map._size){
+            mapSizeX = map._size.x;
+        }
+    }
+    
+    if(mapSizeX){
+        if(mapSizeX < 310){
+            popupMarkerOptions = {
+                maxWidth: 180
+            };
+        }
+    }
+
+    // "Zulassungsverfahren" markers
+    var mapMarkers10 = L.markerClusterGroup({
+        id: 'mapMarkers10',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-10' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    var mapMarkers10_time = L.markerClusterGroup({
+        id: 'mapMarkers10_time',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-10' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    // "Ausländische Verfahren" markers
+    var mapMarkers11 = L.markerClusterGroup({
+        id: 'mapMarkers11',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-11' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    var mapMarkers11_time = L.markerClusterGroup({
+        id: 'mapMarkers11_time',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-11' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    // "Raumordnungsverfahren" markers
+    var mapMarkers13 = L.markerClusterGroup({
+        id: 'mapMarkers13',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-13' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    var mapMarkers13_time = L.markerClusterGroup({
+        id: 'mapMarkers13_time',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-13' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    // "Linienbestimmungen" markers
+    var mapMarkers14 = L.markerClusterGroup({
+        id: 'mapMarkers14',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-14' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    var mapMarkers14_time = L.markerClusterGroup({
+        id: 'mapMarkers14_time',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-14' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    // "Negative Vorprüfungen" markers
+    var mapMarkers12 = L.markerClusterGroup({
+        id: 'mapMarkers12',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-12' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    var mapMarkers12_time = L.markerClusterGroup({
+        id: 'mapMarkers12_time',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-12' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    // "Bebauungsplänen" markers
+    var mapMarkersDevPlan = L.markerClusterGroup({
+        id: 'mapMarkersDevPlan',
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            if(smallIcons){
+             c += ' light';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-dev-plan' + c, iconSize: new L.Point(40, 40) });
+        }
+    });
+    
+    jQuery.get("$restUrlLegendCounter")
+    .done(function(data, textStatus, jqxhr) {
+        var mapFilter = $('.map-filter ul li div');
+        var overlayers = {};
+#parse ('/WEB-INF/templates/global/include_leaflet_marker_legend.vm')
+
+        var mapFilterXs = $('.map-filter-xs');
+        if(mapFilterXs && mapFilterXs.length > 0) {
+            if(legendCounter){
+                if(legendCounter.countMarker1){
+                    createLegendEntry(map, mapFilterXs, [mapMarkers10], 'blue', 'mapMarkers10', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
+                }
+                if(legendCounter.countMarker4){
+                    createLegendEntry(map, mapFilterXs, [mapMarkers12], 'orange', 'mapMarkers12', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
+                }
+                if(legendCounter.countMarker2){
+                    createLegendEntry(map, mapFilterXs, [mapMarkers13], 'red', 'mapMarkers13', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
+                }
+                if(legendCounter.countMarker5){
+                    createLegendEntry(map, mapFilterXs, [mapMarkers14], 'purple', 'mapMarkers14', 'Linienbestimmungen', 'li', 'style="padding:0px"');
+                }
+                if(legendCounter.countMarker3){
+                    createLegendEntry(map, mapFilterXs, [mapMarkers11], 'black', 'mapMarkers11', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
+                }
+                if(legendCounter.countMarkerDevPlan){
+                    createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
+                }
+            }
+        }
+        if(map){
+            map.on('layeradd', onOverlayAdd);
+            var mapParamLayer = '$mapParamLayer';
+            var mapParamLayers = [];
+            if(mapParamLayer.length === 0) {
+                if($checkedCategoryDevPlan) {
+                    mapParamLayers.push('blp');
+                }
+                if($checkedCategory10) {
+                    mapParamLayers.push('zv');
+                }
+                if($checkedCategory11) {
+                    mapParamLayers.push('av');
+                }
+                if($checkedCategory12) {
+                    mapParamLayers.push('nv');
+                }
+                if($checkedCategory13) {
+                    mapParamLayers.push('ro');
+                }
+                if($checkedCategory14) {
+                    mapParamLayers.push('li');
+                }
+            } else {
+                mapParamLayers = mapParamLayer.split(',');
+            }
+            if(mapParamLayers.indexOf('blp') > -1){
+                if(mapMarkersDevPlan) {
+                    map.addLayer(mapMarkersDevPlan);
+                    $('#mapMarkersDevPlan').prop('checked', true);
+                    if(mapParamLayers.indexOf('blp') === -1) {
+                        mapParamLayers.push('blp');
+                    }
+                }
+            }
+            if(mapParamLayers.indexOf('zv') > -1){
+                if(mapMarkers10 || mapMarkers10_time) {
+                    $('#mapMarkers10').prop('checked', true);
+                    var checkboxTime = $('#mapMarkers10_time');
+                    if(checkboxTime.is(':checked')) {
+                        map.addLayer(mapMarkers10_time);
+                        checkboxTime.closest('.control-group').removeClass('is-hidden');
+                    } else {
+                        map.addLayer(mapMarkers10);
+                    }
+                    if(mapParamLayers.indexOf('zv') === -1) {
+                        mapParamLayers.push('zv');
+                    }
+                }
+            }
+            if(mapParamLayers.indexOf('av') > -1){
+                if(mapMarkers11 || mapMarkers11_time) {
+                    $('#mapMarkers11').prop('checked', true);
+                    var checkboxTime = $('#mapMarkers11_time');
+                    if(checkboxTime.is(':checked')) {
+                        map.addLayer(mapMarkers11_time);
+                        checkboxTime.closest('.control-group').removeClass('is-hidden');
+                    } else {
+                        map.addLayer(mapMarkers11);
+                    }
+                    if(mapParamLayers.indexOf('av') === -1) {
+                        mapParamLayers.push('av');
+                    }
+                }
+            }
+            if(mapParamLayers.indexOf('ro') > -1){
+                if(mapMarkers13 || mapMarkers13_time) {
+                    $('#mapMarkers13').prop('checked', true);
+                    var checkboxTime = $('#mapMarkers13_time');
+                    if(checkboxTime.is(':checked')) {
+                        map.addLayer(mapMarkers13_time);
+                        checkboxTime.closest('.control-group').removeClass('is-hidden');
+                    } else {
+                        map.addLayer(mapMarkers13);
+                    }
+                    if(mapParamLayers.indexOf('ro') === -1) {
+                        mapParamLayers.push('ro');
+                    }
+                }
+            }
+            if(mapParamLayers.indexOf('li') > -1){
+                if(mapMarkers14 || mapMarkers14_time) {
+                    $('#mapMarkers14').prop('checked', true);
+                    var checkboxTime = $('#mapMarkers14_time');
+                    if(checkboxTime.is(':checked')) {
+                        map.addLayer(mapMarkers14_time);
+                        checkboxTime.closest('.control-group').removeClass('is-hidden');
+                    } else {
+                        map.addLayer(mapMarkers14);
+                    }
+                    if(mapParamLayers.indexOf('li') === -1) {
+                        mapParamLayers.push('li');
+                    }
+                }
+            }
+            if(mapParamLayers.indexOf('nv') > -1){
+                if(mapMarkers12 || mapMarkers12_time) {
+                    $('#mapMarkers12').prop('checked', true);
+                    var checkboxTime = $('#mapMarkers12_time');
+                    if(checkboxTime.is(':checked')) {
+                        map.addLayer(mapMarkers12_time);
+                        checkboxTime.closest('.control-group').removeClass('is-hidden');
+                    } else {
+                        map.addLayer(mapMarkers12);
+                    }
+                    if(mapParamLayers.indexOf('nv') === -1) {
+                        mapParamLayers.push('nv');
+                    }
+                }
+            }
+            if(mapParamLayers.length > 0) {
+                updateQueryStringParameter('layer', mapParamLayers.toString());
+            } 
+        }
+    })
+    .fail(function () {
+    });
+
+    var mapPosition = '$mapPosition';
+    var mapExtent = '$mapExtent';
+    var mapLat;
+    var mapLng;
+    var mapZoom;
+    var mapBounds;
+    var mapParamExtent = '$mapParamExtent';
+    if(mapParamExtent) {
+        mapParamExtent = mapParamExtent.split(',');
+    }
+    if(mapPosition){
+        mapLat = parseFloat('$mapPosition.get(0)');
+        mapLng = parseFloat('$mapPosition.get(1)');
+        mapZoom = parseFloat('$mapPosition.get(2)');
+    }
+    
+    if('$mapParamN' && '$mapParamE' && '$mapParamZoom') {
+        mapLat = parseFloat('$mapParamN') || mapLat;
+        mapLng = parseFloat('$mapParamE') || mapLng;
+        mapZoom = parseFloat('$mapParamZoom') || mapZoom;
+        map.setView(new L.LatLng(mapLat, mapLng), mapZoom);
+    } else if(mapParamExtent && mapParamExtent.length === 4){
+        mapBounds = L.latLngBounds(
+          L.latLng(parseFloat(mapParamExtent[0]),
+            parseFloat(mapParamExtent[1])),
+          L.latLng(parseFloat(mapParamExtent[2]),
+          parseFloat(mapParamExtent[3]))
+        );
+    } else if('$selectedMap.webmapclientCoords'.indexOf("y1") > -1){
+        mapBounds = L.latLngBounds(
+          L.latLng(parseFloat('$selectedMap.webmapclientCoords.y1'),
+            parseFloat('$selectedMap.webmapclientCoords.x1')),
+          L.latLng(parseFloat('$selectedMap.webmapclientCoords.y2'),
+          parseFloat('$selectedMap.webmapclientCoords.x2'))
+        );
+    } else if('$mapExtent'){
+        mapBounds = L.latLngBounds(
+          L.latLng(parseFloat('$mapExtent.get(0)'),
+            parseFloat('$mapExtent.get(1)')),
+          L.latLng(parseFloat('$mapExtent.get(2)'),
+          parseFloat('$mapExtent.get(3)'))
+        );
+    }
+    if(mapBounds){
+        map.fitBounds(mapBounds);
+    } else if('$mapExtent'){
+        mapBounds = L.latLngBounds(
+          L.latLng(parseFloat('$mapExtent.get(0)'),
+            parseFloat('$mapExtent.get(1)')),
+          L.latLng(parseFloat('$mapExtent.get(2)'),
+          parseFloat('$mapExtent.get(3)'))
+        );
+    }
+    map.on('moveend', function(e){
+        var mapLatLng = this.getCenter();
+        if(mapLatLng) {
+            mapLat = this.getCenter().lat.toFixed(2);
+            mapLng = this.getCenter().lng.toFixed(2);
+            updateQueryStringParameter('N', mapLat);
+            updateQueryStringParameter('E', mapLng);
+        }
+        if(this.getZoom()) {
+            mapZoom = this.getZoom();
+            updateQueryStringParameter('zoom', mapZoom);
+        }
+    });
+    
+
+    function onOverlayAdd(e){
+        var paramLayers = [];
+        if(e.layer.options.id === 'mapMarkersDevPlan') {
+            if("$restUrlUVPDevPlan") {
+                if(mapMarkersDevPlan.getLayers().length === 0){
+                    map.spin(true);
+                    var marker = 'mapMarkersDevPlan';
+                    var markerColor = 'green';
+                    loadMarkers("$restUrlUVPDevPlan", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers10') {
+            if(mapMarkers10.getLayers().length === 0) {
+                if("$restUrlMarker") {
+                    map.spin(true);
+                    var marker = 'mapMarkers10';
+                    var markerColor = 'blue';
+                    loadMarkers("$restUrlMarker", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers10_time') {
+            if(mapMarkers10_time.getLayers().length === 0) {
+                if("$restUrlMarker_time") {
+                    map.spin(true);
+                    var marker = 'mapMarkers10_time';
+                    var markerColor = 'blue';
+                    loadMarkers("$restUrlMarker_time", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers13') {
+            if(mapMarkers13.getLayers().length === 0) {
+                if("$restUrlMarker2") {
+                    map.spin(true);
+                    var marker = 'mapMarkers13';
+                    var markerColor = 'red';
+                    loadMarkers("$restUrlMarker2", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers13_time') {
+            if(mapMarkers13_time.getLayers().length === 0) {
+                if("$restUrlMarker2_time") {
+                    map.spin(true);
+                    var marker = 'mapMarkers13_time';
+                    var markerColor = 'red';
+                    loadMarkers("$restUrlMarker2_time", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers14') {
+            if(mapMarkers14.getLayers().length === 0) {
+                if("$restUrlMarker5") {
+                    map.spin(true);
+                    var marker = 'mapMarkers14';
+                    var markerColor = 'purple';
+                    loadMarkers("$restUrlMarker5", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers14_time') {
+            if(mapMarkers14_time.getLayers().length === 0) {
+                if("$restUrlMarker5_time") {
+                    map.spin(true);
+                    var marker = 'mapMarkers14_time';
+                    var markerColor = 'purple';
+                    loadMarkers("$restUrlMarker5_time", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers11') {
+            if(mapMarkers11.getLayers().length === 0) {
+                if("$restUrlMarker3") {
+                    map.spin(true);
+                    var marker = 'mapMarkers11';
+                    var markerColor = 'black';
+                    loadMarkers("$restUrlMarker3", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers11_time') {
+            if(mapMarkers11_time.getLayers().length === 0) {
+                if("$restUrlMarker3_time") {
+                    map.spin(true);
+                    var marker = 'mapMarkers11_time';
+                    var markerColor = 'black';
+                    loadMarkers("$restUrlMarker3_time", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers12') {
+            if(mapMarkers12.getLayers().length === 0) {
+                if("$restUrlMarker4") {
+                    map.spin(true);
+                    var marker = 'mapMarkers12';
+                    var markerColor = 'orange';
+                    loadMarkers("$restUrlMarker4", 0, marker, markerColor, map);
+                }
+            }
+        } else if(e.layer.options.id === 'mapMarkers12_time') {
+            if(mapMarkers12_time.getLayers().length === 0) {
+                if("$restUrlMarker4_time") {
+                    map.spin(true);
+                    var marker = 'mapMarkers12_time';
+                    var markerColor = 'orange';
+                    loadMarkers("$restUrlMarker4_time", 0, marker, markerColor, map);
+                }
+            }
+        }
+    }
+
+    function getIcon(smallIcons, iconColor, enablePopUp) {
+        var icon; 
+        if(smallIcons){
+            icon = L.icon({
+                iconUrl: '/decorations/layout/ingrid/images/pins/icon_pin_small_' + iconColor + '.png',
+                iconSize: [6, 6], 
+                iconAnchor: [3, 3]
+            });
+        } else {
+             icon = L.AwesomeMarkers.icon({
+                markerColor: iconColor,
+                className: enablePopUp ? 'awesome-marker' : 'awesome-marker leaflet-interactive-disable',
+                prefix: 'icon'
+            });
+        }
+        return icon;
+    }
+    
+    function createPopUp(title, procedure, categories, steps, id, iplug) {
+        var popUpHtml = '';
+        if(procedure && procedure.length > 0){
+            popUpHtml += '<div class="helper text"><small>' + procedure + '</small></div>';
+        }
+        
+        popUpHtml += '<a href="$renderResponse.encodeURL('/portal/search-detail.psml')?docuuid=' + id + '#if($detailUseParamPlugid)&plugid=' + iplug + '#end" target="_blank" title="' + title + '"><h5>' + title + '</h5></a>';
+        
+        if(categories && categories.length > 0){
+            var categoryList = [];
+            for (category in categories){
+                var value = categories[category].name;
+                var id = categories[category].id;
+                if(categoryList.indexOf(value) === -1){
+                    popUpHtml += '<div class="helper icon">';
+                    popUpHtml += '<span class="ic-ic-' + id + '"></span>';
+                    popUpHtml += '<span class="text">' + value + '</span>';
+                    popUpHtml += '</div>';
+                    categoryList.push(value);
+                }
+            }
+        }
+        if(steps && steps.length > 0){
+            popUpHtml += '<h6 class="no-margin">Letzter Verfahrensschritt:</h6>';
+            popUpHtml += '<p>' + steps[steps.length - 1] + '</p>';
+        }
+        return popUpHtml;
+    }
+
+    function createMarker(mapMarkers, a, iconColor) {
+        var title = a[2];
+        var uuid = a[3];
+        var iplug = a[4];
+        var popUpHtml = 'Bitte warten ...';
+        var icon = getIcon(smallIcons, iconColor, enablePopUp);
+        var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title, icon: icon, interactive: !smallIcons });
+        marker.uuid = uuid;
+        marker.bbox = null;
+        marker.iplug = iplug;
+        if(enablePopUp){
+            marker.bindPopup(popUpHtml, popupMarkerOptions);
+            marker.on('click', onMapClick);
+            marker.on('popupopen', showMarker);
+            marker.on('popupclose', hideMarker);
+            
+        }
+        mapMarkers.addLayer(marker);
+    }
+
+    function createMarkerBLP(mapMarkers, a, iconColor) {
+        var id = a.id;
+        var name = a.name;
+        var lat = a.lat;
+        var lon = a.lon;
+        var iplug = a.iplug;
+        var popUpHtml = 'Bitte warten ...';
+        var icon = getIcon(smallIcons, iconColor, enablePopUp); 
+        var marker = L.marker(new L.LatLng(lat,lon), { title: name, icon: icon, interactive: !smallIcons });
+        marker.bbox = null;
+        marker.lat = lat;
+        marker.lon = lon;
+        marker.iplug = iplug;
+        if(enablePopUp){
+            marker.on('click', onMapClickBLP);
+            marker.bindPopup(popUpHtml, popupMarkerOptions);
+            marker.on('popupopen', showMarker);
+            marker.on('popupclose', hideMarker);
+        }
+        mapMarkers.addLayer(marker);
+    }
+
+    function onMapClick(e) {
+        var popup = e.target.getPopup();
+        map.spin(true);
+        jQuery.get("$restUrlMarkerDetail?uuid=" + e.target.uuid  + '&iplug=' + e.target.iplug)
+        .done(function(data, textStatus, jqxhr) {
+            map.spin(false);
+            var title = e.target.options.title;
+            var uuid = e.target.uuid;
+            var procedure = data[0];
+            var categories = data[1];
+            var steps = data[2];
+            var iplug = e.target.iplug;
+            popup.setContent( createPopUp(title, procedure, categories, steps, uuid, iplug) );
+            popup.update();
+        })
+        .fail(function () {
+          map.spin(false);
+        });
+    };
+
+    function onMapClickBLP(e) {
+        var popup = e.target.getPopup();
+        var title = e.target.options.title;
+        var x1 = e.target.lon;
+        var y1 = e.target.lat;
+        var iplug = e.target.iplug;
+        map.spin(true);
+        jQuery.get('$restUrlUVPDevPlanDetail?title=' + title + '&x1=' + x1 + '&y1=' + y1 + '&iplug=' + iplug)
+        .done(function(data, textStatus, jqxhr) {
+            map.spin(false);
+            title = e.target.options.title;
+            var descr = data.descr;
+            var polygon = data.polygon;
+            var bpinfos = data.bpinfos;
+            var popUpHtml = '';
+            if(enablePopUp){
+                popUpHtml += '<h5>' + title + '</h5>';
+                if(descr && descr .length > 0){
+                    popUpHtml += '<h6 class="no-margin">Mitgliedsgemeinden:</h6>';
+                    popUpHtml += '<p class="leaflet-hyphens">' + descr + '</p>';
+                }
+                
+                if(bpinfos && bpinfos.length > 0){
+                    popUpHtml += '<h6 class="no-margin">Nutzen Sie die folgenden Links um zu den Bauleitplanungs-Seiten zu gelangen:</h6>';
+                    for (var j = 0; j < bpinfos.length; j++) {
+                        var bpinfo = bpinfos[j];
+                        if(bpinfo.url){
+                            var url = bpinfo.url;
+                            if(url.indexOf("http") === -1){
+                                url = "http://" + url;
+                            }
+                            if(bpinfo.tags){
+                                var tags = [].concat(bpinfo.tags);
+                                for (var k = 0; k < tags.length; k++) {
+                                    var tag = tags[k];
+                                    if(tag){
+                                        var title;
+                                        if(tag === "v"){
+                                            title = 'Wirksame/rechtskr&auml;ftige Bauleitpl&auml;ne';
+                                        }else if(tag === "p"){
+                                            title = 'Bauleitpl&auml;ne im Beteiligungsverfahren';
+                                        }else if(tag === "v_fnp"){
+                                            title = 'Wirksame/rechtskr&auml;ftige Fl&auml;chennutzungspl&auml;ne';
+                                        }else if(tag === "p_fnp"){
+                                            title = 'Fl&auml;chennutzungspl&auml;ne im Beteiligungsverfahren';
+                                        }else if(tag === "v_bp"){
+                                            title = 'Wirksame/rechtskr&auml;ftige Bebauungspl&auml;ne';
+                                        }else if(tag === "p_bp"){
+                                            title = 'Bebauungspl&auml;ne im Beteiligungsverfahren';
+                                        }
+                                        if(title){
+                                            popUpHtml += '<a class="icon" href="' + url + '" target="_blank"><span class="ic-ic-arrow"></span><span class="text">' + title + '</span></a>';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            popup.setContent( popUpHtml );
+            popup.update();
+        })
+        .fail(function () {
+          map.spin(false);
+        });
+    };
+    
+    function createLegendEntry(map, mapFilter, markers, color, id, title, paramEntry, style, restUrlTime){
+        var html = '<div class="form-element boxed map ' + color + '" ' + style + '>';
+        html += '<div class="input-check">' +
+            '<div class="control-group">' +
+            '<label class="control control--checkbox" for="' + id + '">' +
+            '<input id="' + id + '" name="' + id + '" type="checkbox">' +
+            '<span class="control__indicator"></span>' +
+            title + '</label>' +
+            '</div>';
+        if(markers.length > 1 && restUrlTime && restUrlTime.length > 0) {
+            html += '<div class="control-group is-hidden">' +
+                '<label class="control toggle" title="$MESSAGES.getString("common.toggle.approval.date.tooltip")">' +
+                '<input id="' + id + '_time" name="' + id + '_time" type="checkbox" checked>' +
+                '<span class="toggle-slider round"></span>' +
+                '</label>' +
+                '<span class="toggle-label checked">$MESSAGES.getString("common.toggle.approval.date.on")</span>'+
+                '<span class="toggle-label unchecked is-hidden">$MESSAGES.getString("common.toggle.approval.date.off")</span>'+
+                '</div>';
+        }
+        html += '</div></div>';
+        mapFilter.append( html );
+
+        var legendEntry = $('#' + id);
+        var checkboxTime = $('#' + id + '_time');
+
+        legendEntry.on('change', function() {
+            var paramLayer = getQueryStringParameter('layer');
+            var paramLayers = [];
+            if(paramLayer) {
+                paramLayers = paramLayer.split(',');
+            }
+            const index = paramLayers.indexOf(paramEntry);
+            if (legendEntry.is(':checked')) {
+                if(checkboxTime.length > 0) {
+                    if(checkboxTime.is(':checked')) {
+                        map.addLayer(markers[0]);
+                    } else {
+                        map.addLayer(markers[1]);
+                    }
+                    checkboxTime.closest('.control-group').removeClass('is-hidden');
+                } else {
+                    map.addLayer(markers[0]);
+                }
+                if(index === -1) {
+                    paramLayers.push(paramEntry);
+                }
+            } else {
+                if(checkboxTime.length > 0) {
+                    map.removeLayer(markers[0]);
+                    map.removeLayer(markers[1]);
+                    checkboxTime.closest('.control-group').addClass('is-hidden');
+                } else {
+                    map.removeLayer(markers[0]);
+                }
+                if (index > -1) {
+                  paramLayers.splice(index, 1);
+                }
+            }
+            updateQueryStringParameter('layer', paramLayers.toString());
+        });
+
+        if(markers.length > 1) {
+            checkboxTime.on('change', function() {
+                if (legendEntry.is(':checked')) {
+                    var checkLabel = checkboxTime.closest('.control-group').find('.toggle-label.checked');
+                    var uncheckLabel = checkboxTime.closest('.control-group').find('.toggle-label.unchecked');
+
+                    if ($(this).is(':checked')) {
+                        map.addLayer(markers[0]);
+                        map.removeLayer(markers[1]);
+                        checkLabel.removeClass('is-hidden');
+                        uncheckLabel.addClass('is-hidden');
+                    } else {
+                        map.addLayer(markers[1]);
+                        map.removeLayer(markers[0]);
+                        uncheckLabel.removeClass('is-hidden');
+                        checkLabel.addClass('is-hidden');
+                    }
+                }
+            });
+        }
+    };
+    
+    function loadMarkers(url, startPage, marker, markerColor, map) {
+        jQuery.get(url + "?startPage=" + startPage + "&marker=" + marker + "&markerColor=" + markerColor)
+        .done(function(data, textStatus, jqxhr) {
+            startPage += 1;
+            if(data != "") {
+                loadMarkers(url, startPage, marker, markerColor, map);
+            } else {
+                map.spin(false);
+            }
+        })
+        .fail(function () {
+            map.spin(false);
+        });
+    }
+</script>

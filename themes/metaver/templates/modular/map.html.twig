@@ -1,0 +1,50 @@
+{% set grid_size = theme_var('grid-size') %}
+{% set image = page.media.images|first %}
+
+<iframe id="iframe_map" src="https://uvp-verbund.de" allowfullscreen style="height: 531px;"></iframe>
+
+<style>
+#iframe_map {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  border: 0;
+}
+</style>
+
+<script>
+var buffer = 0; //scroll bar buffer
+var iframe = document.getElementById('iframe_map');
+var urlParams = location.search;
+var url = '$mapUrl' + '?lang=$lang';
+var editParams = '';
+var editParamsE = '';
+var editParamsN = '';
+var editParamsZ = '';
+var isBackHistory = false;
+var mapUserId = '$mapUserId';
+
+
+// .onload doesn't work with IE8 and older.
+if (iframe.attachEvent) {
+    iframe.attachEvent('onload', resizeIframe);
+} else {
+    iframe.onload=resizeIframe;
+}
+
+// Resize map
+window.onresize = resizeIframe;
+
+function pageY(elem) {
+    return elem.offsetParent ? (elem.offsetTop + pageY(elem.offsetParent)) : elem.offsetTop;
+}
+
+function resizeIframe() {
+    var height = document.documentElement.clientHeight;
+    height -= pageY(document.getElementById('iframe_map'))+ buffer ;
+    height = (height < 0) ? 0 : height;
+    document.getElementById('iframe_map').style.height = height + 'px';
+}
+
+
+</script>

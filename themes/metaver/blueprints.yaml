@@ -1,0 +1,22 @@
+name: MetaVer
+slug: metaver
+type: theme
+version: 0.1.0
+description: MetaVer Theme
+icon: microchip
+author:
+  name: wemove
+  email: contact@wemove.com
+  url: https://www.wemove.com
+homepage: https://github.com/getgrav/grav-theme-ingrid
+demo: https://demo.getgrav.org/onepage-skeleton
+keywords: ingrid, spectre, theme, core, modern, fast, responsive, html5, css3
+bugs: https://github.com/getgrav/grav-theme-ingrid/issues
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+extends@:
+  type: default
+  context: blueprints://ingrid

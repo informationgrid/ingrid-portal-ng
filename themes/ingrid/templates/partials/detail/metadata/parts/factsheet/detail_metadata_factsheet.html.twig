@@ -1,0 +1,86 @@
+{# FactSheet #}
+
+<div class="data">
+    <div class="teaser-data search row is-active">
+        <div class="xsmall-24 small-24 #if($tool.hasContent($mapImage) && $tool.hasContent($mapImage.elements))medium-14 large-14 xlarge-14#end columns">
+        {# Durch die Ressource abgedeckte Zeitspanne #}
+            #set($atTime = $TOOL.getDateValueWithoutTimeFromXPath($xPathListTimeTimePeriodInstantPosition))
+            #set($beginTime = $TOOL.getDateValueWithoutTimeFromXPath($xPathListTimeTimePeriodBeginPosition))
+            #set($endTime = $TOOL.getDateValueWithoutTimeFromXPath($xPathListTimeTimePeriodEndPosition))
+            #set($fromType = $TOOL.getDateValueWithoutTimeFromXPath($xPathListTimeTimePeriodEndIndeterminatePosition))
+
+            #set($toIndeterminate = "")
+            #if($tool.hasContent($fromType) && $fromType == 'now')
+            #set($toIndeterminate = $MESSAGES.getString('search.detail.time.untilNow'))
+            #else
+            #set($toIndeterminate = $MESSAGES.getString('search.detail.time.untilUnknown'))
+            #end
+
+            #if($tool.hasContent($beginTime) || $tool.hasContent($endTime) || $tool.hasContent($atTime))
+                #if($type == 1 || $type == 3 || $type == 5 || $type == 6)
+                    #set($tmpTitle = "time_reference_content")
+                #else
+                    #set($tmpTitle = "time_reference")
+                #end
+                #if($tool.hasContent($atTime))
+                    #renderTextLabelAbove($MESSAGES.getString($tmpTitle) "$MESSAGES.getString('search.detail.time.at') $atTime")
+                #elseif($beginTime == $endTime)
+                    #renderTextLabelAbove($MESSAGES.getString($tmpTitle) "$MESSAGES.getString('search.detail.time.at') $beginTime")
+                #elseif($beginTime && !$endTime)
+                    #renderTextLabelAbove($MESSAGES.getString($tmpTitle) "$MESSAGES.getString('search.detail.time.since') $beginTime$toIndeterminate")
+                #elseif(!$beginTime && $endTime)
+                    #renderTextLabelAbove($MESSAGES.getString($tmpTitle) "$MESSAGES.getString('search.detail.time.until') $endTime")
+                #elseif($beginTime != $endTime)
+                    #renderTextLabelAbove($MESSAGES.getString($tmpTitle) "$MESSAGES.getString('search.detail.time.from') $beginTime $MESSAGES.getString('search.detail.time.to') $endTime")
+                #end
+            #end
+        {# URL des Zugangs #}
+            #if($getAccessUrl && $getAccessUrl.size() > 0)
+            <div class="sub-section sub-section-unlined">
+                #set($tmpTitle = $MESSAGES.getString("access_url"))
+                #set($tmpCount = $getAccessUrl.size())
+                #if($tmpCount)
+                    #set($tmpTitle = $tmpTitle + " <span>(${tmpCount})</span>")
+                #end
+                #renderLinkListImageLimit($tmpTitle $getAccessUrl false false 2 "")
+            </div>
+            #end
+        {# Downloads #}
+            #if($getDownloads && $getDownloads.size() > 0)
+            <div class="sub-section sub-section-unlined">
+                #set($tmpTitle = $MESSAGES.getString("downloads"))
+                #set($tmpCount = $getDownloads.size())
+                #if($tmpCount)
+                    #set($tmpTitle = $tmpTitle + " <span>(${tmpCount})</span>")
+                #end
+                #renderLinkListImageLimit($tmpTitle $getDownloads false false 2 "")
+            </div>
+            #end
+        {# Links #}
+            #if($getLinks && $getLinks.size() > 0)
+            <div class="sub-section sub-section-unlined">
+                #set($tmpTitle = $MESSAGES.getString("search.detail.info.links"))
+                #set($tmpCount = $getLinks.size())
+                #if($tmpCount)
+                    #set($tmpTitle = $tmpTitle + " <span>(${tmpCount})</span>")
+                #end
+                #renderLinkListImageLimit($tmpTitle $getLinks false false 2 "")
+            </div>
+            #end
+        {# Zitat für diesen Datensatz #}
+            #parse("/WEB-INF/templates/detail/parts/metadata/factsheet/factsheet_citation.vm")
+        {# Lizenz #}
+            #parse("/WEB-INF/templates/detail/parts/metadata/factsheet/factsheet_license.vm")
+        {# Zugriffsbeschränkungen #}
+            #parse("/WEB-INF/templates/detail/parts/metadata/factsheet/factsheet_restriction.vm")
+        {# BAW Auftrag #}
+            #parse("/WEB-INF/templates/detail/parts/metadata/factsheet/factsheet_aggregate_data_set_name.vm")
+        {# Kontakt #}
+            #if($xPathUsePointOfContactSortNodes && $xPathUsePointOfContactSortNodes.size() > 0)
+                #renderMultiLineAddresses("" $xPathUsePointOfContactSortNodes false true)
+            #end
+        </div>
+        {# Zeige in Karte #}
+        #parse("/WEB-INF/templates/detail/parts/metadata/detail_metadata_part_map_image.vm")
+    </div>
+</div>

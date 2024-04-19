@@ -1,0 +1,25 @@
+{% set hits = hits ?? [] %}
+<div class="results-index">
+    <div class="row">
+        {% include 'partials/search/result/result_counter.html.twig' %}
+    </div>
+</div>
+<div class="filters-active">
+</div>
+{% if hits|length > 0 %}
+    {% set hitCounter = 0 %}
+    {% for hit in hits %}
+        {% set datatypes = getHitDatatypes(hit) %}
+        {% if in_array('address', datatypes) %}
+            {% include 'partials/search/result/hit/result_hit_address.html.twig' with {hit:hit, counter: hitCounter} %}
+        {% elseif in_array('www', datatypes) %}
+            {% include 'partials/search/result/hit/result_hit_www.html.twig' with {hit:hit} %}
+        {% else %}
+            {% include 'partials/search/result/hit/result_hit_metadata.html.twig' with {hit:hit, counter: hitCounter} %}
+        {% endif %}
+        {% set hitCounter = hitCounter + 1 %}
+  {% endfor %}
+  {% include 'partials/search/result/result_counter_bottom.html.twig' %}
+{% else %}
+    <p><strong>$MESSAGES.getString('common.result.noResults')</strong><br /><br /></p>
+{% endif %}

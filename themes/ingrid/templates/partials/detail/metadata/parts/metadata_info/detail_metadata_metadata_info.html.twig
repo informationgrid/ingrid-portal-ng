@@ -1,0 +1,22 @@
+{# Zusatzinformationen #}
+
+<div class="section">
+    <a class="anchor" id="${hashDetail9}"></a>
+    #renderSectionTitle($MESSAGES.getString("subject_metadata_info"))
+## Objekt-ID
+    #renderTextTable($MESSAGES.getString("t01_object.obj_id") $TOOL.getValueFromXPath("./gmd:fileIdentifier"))
+## Datum
+    #parse("/WEB-INF/templates/detail/parts/metadata/metadata_info/metadata_info_datestamp.vm")
+## Sprache Metadatensatz
+    #renderTextTable($MESSAGES.getString("t01_object.metadata_language") $TOOL.getLanguageValue($TOOL.getValueFromXPath($xPathAdditionalInfoLanguageCode)))
+## Weitere
+    #parse("/WEB-INF/templates/detail/parts/metadata/metadata_info/metadata_info_others.vm")
+## Datensatz/Datenserie
+    #parse("/WEB-INF/templates/detail/parts/metadata/metadata_info/metadata_info_data_set_series.vm")
+## XML Darstellung 
+    #renderLinkTable($MESSAGES.getString("xml_link_label") $getXML)
+## Ansprechpartner (Metadatum)
+    #parse("/WEB-INF/templates/detail/parts/metadata/metadata_info/metadata_info_metadatum.vm")
+## Metadatenquellen
+    #parse("/WEB-INF/templates/detail/parts/metadata/metadata_info/metadata_info_source.vm")
+</div>

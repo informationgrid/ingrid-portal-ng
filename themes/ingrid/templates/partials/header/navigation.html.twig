@@ -1,0 +1,8 @@
+{% import 'macros/header/macros.html.twig' as macros %}
+
+{% set menu_main = theme_var('menu_main') %}
+
+<div class="menu-tab-row" role="navigation" aria-label="Navigation Header">
+{{ macros.nav_loop(menu_main, pages) }}
+</div>
+

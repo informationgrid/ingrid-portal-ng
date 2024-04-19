@@ -1,0 +1,32 @@
+{# Bibliografische Angaben #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_bibliographical_info }}"></a>
+    #renderSectionTitle($MESSAGES.getString("bibliographical_info"))
+    <div class="row columns">
+    ## Literaturverweise
+        #parse("/WEB-INF/templates/detail/parts/metadata/bibliographical_info/bibliographical_info_bibliography.vm")
+    ## Zitat für diesen Datensatz
+        #parse("/WEB-INF/templates/detail/parts/metadata/bibliographical_info/bibliographical_info_citation.vm")
+    ## Digital Object Identifier (DOI)
+    #if($doiIdType)
+        #set($doiTable = {})
+        #set($put = $doiTable.put("type", "table"))
+        #set($put = $doiTable.put("title", $MESSAGES.getString("doi")))
+        #set($put = $doiTable.put("head", [$MESSAGES.getString('doi.id'), $MESSAGES.getString('doi.type')]))
+        #set($list = [])
+        #if($doiIdType.id)
+            #set($add = $list.add("$doiIdType.id"))
+        #else
+            #set($add = $list.add(""))
+        #end
+        #if($doiIdType.type)
+            #set($add = $list.add("$doiIdType.type"))
+        #else
+            #set($add = $list.add(""))
+        #end
+        #set($put = $doiTable.put("body", [$list]))
+        #renderTable($doiTable [0])
+    #end
+    </div>
+</div>

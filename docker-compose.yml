@@ -11,7 +11,11 @@ services:
       - ./develop/admin.yaml:/var/www/html/user/accounts/admin.yaml
       - ./themes:/var/www/html/user/themes
       - ./pages:/var/www/html/user/pages
-      - ./plugins:/var/www/html/user/plugins
-
+      - ./plugins/ingrid-rss:/var/www/html/user/plugins/ingrid-rss
+      - ./plugins/ingrid-detail:/var/www/html/user/plugins/ingrid-detail
+      - ./plugins/ingrid-search-result:/var/www/html/user/plugins/ingrid-search-result
+      - ./plugins/admin/blueprints/ingrid/default.yaml:/var/www/html/user/plugins/admin/blueprints/ingrid/default.yaml
+      - ./develop/data/test:/var/www/html/user/data/test
+      - ./develop/config:/var/www/html/user/localhost/config
 volumes:
   grav:

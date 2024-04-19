@@ -1,0 +1,92 @@
+name: InGrid RSS
+slug: ingrid-rss
+type: plugin
+version: 0.1.0
+description: RSS save and read for InGrid
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-rss
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-rss/issues
+docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-rss/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    rss_status:
+      type: rssstatus
+      label: RSS Index Status
+
+    scheduled_index.enabled:
+      type: toggle
+      label: Enable Index Scheduled Job
+      help: Use the Grav Scheduler to kick off a background index job
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    scheduled_index.at:
+      type: cron
+      label: Scheduled Job Frequency
+      size: medium
+      help: Use 'cron' format
+      default: '0 */3 * * *'
+      placeholder: '0 */3 * * *'
+
+    scheduled_index.logs:
+      type: text
+      label: Scheduled Job Log File
+      placeholder: 'logs/tntsearch-index.out'
+      size: medium
+
+    rss_fieldset:
+      type: fieldset
+      title: RSS
+      help: Lege die Rss fest
+      text: Lege die Rss fest
+      fields:
+        rss_links:
+          type: list
+          label: RSS
+          style: vertical
+          controls: bottom
+          collapsed: true
+          default: []
+          fields:
+            .ident:
+              type: text
+              label: URL
+            .summary:
+              type: text
+              label: Beschreibung
+            .provider:
+              type: text
+              label: Anbieter
+            .language:
+              type: text
+              label: Sprache
+            .category:
+              type: text
+              label: Katgorie

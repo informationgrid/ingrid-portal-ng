@@ -1,0 +1,182 @@
+{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+
+{# theme_var #}
+{% set sortAddressTyp = theme_var('detail_hit_address_order') %}
+
+{# var #}
+{% set hit = hit %}
+{% set title = getAddressTitle(hit) %}
+{% set class = getAddressType(hit) %}
+{% set className = "TODO" %}
+{% set summary = getAddressSummary(hit) %}
+{% set contactRefs = getAddressContactRefs(hit) %}
+{% set linkRefs = getAddressLinkRefs(hit) %}
+{% set linkObjectRefs = linkRefs|filterLinks("object") %}
+{% set linkSubordinatedRefs = linkRefs|filterLinks("subordinated") %}
+{% set linkSuperiorRefs = linkRefs|filterLinks("superior") %}
+{# labels #}
+{% set hash_overview = "detail_overview" %}
+{% set hash_description = "detail_description" %}
+{% set hash_links = "detail_links" %}
+{% set hash_links_linkObjectRefs = "detail_links_objects" %}
+{% set hash_links_linkSubordinatedRefs = "detail_links_subordinated" %}
+{% set hash_links_linkSuperiorRefs = "detail_links_superior" %}
+{% set label_overview = "Übersicht" %}
+{% set label_description = "Beschreibung" %}
+{% set label_links = "Verweise" %}
+{% set label_links_linkObjectRefs = "Datenbezüge" %}
+{% set label_links_linkSubordinatedRefs = "Übergeordnete Adressen" %}
+{% set label_links_linkSuperiorRefs = "Untergeordnete Adressen" %}
+
+<div class="banner-noimage m-filter">
+    <div class="page-wrapper" style="background-image: url('/decorations/layout/ingrid/images/template/drops-subpage.svg');">
+        <div class="row">
+            <div class="xsmall-24 large-6 xlarge-6 columns">
+                <a class="helper icon" href="$searchLink" title="Alle Suchergebnisse" rel="noopener noreferrer">
+                    <span class="ic-ic-arrow-left"></span>
+                    <span class="text text-normal">Alle Suchergebnisse</span>
+                </a>
+            </div>
+            <div class="xsmall-24 large-18 xlarge-18 columns">
+                <div class="helper icon">
+                    {{ hit_macros.render_address_icon(class, className) }}
+                </div>
+                <h2>{{ title }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row nav-content search-filtered">
+    {# Navigation #}
+    <div class="xsmall-24 large-6 xlarge-6 columns">
+        <div class="accordion accordion-filter-group filter" data-accordion data-allow-all-closed="true" role="tablist">
+            <div class="accordion-item accordion-item-filter-group" data-accordion-item>
+                <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab" id="detail-accordion-label" aria-expanded="false" aria-selected="false">Inhalt</a>
+                <div class="accordion-content filter-wrapper" data-tab-content role="tabpanel" aria-labelledby="detail-accordion-label" aria-hidden="true" id="detail-content-accordion">
+                    <ul class="accordion filter-group nav-group" data-accordion data-allow-all-closed="true" role="tablist">
+                    {# Übersicht #}
+                        {% if contact %}
+                        <li class="accordion-item" data-accordion-item>
+                            <a href="#{{ hash_overview }}" class="accordion-title js-anchor-target" aria-controls="{{ hash_overview }}-accordion" role="tab" id="{{ hash_overview }}-accordion-label">
+                                <span class="text">{{ label_overview }}</span>
+                            </a>
+                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-labelledby="{{ hash_overview }}-accordion-label" aria-hidden="true" id="${hashDetail0}-accordion">
+                                <div class="boxes">
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                    {# Beschreibung #}
+                        {% if summary %}
+                        <li class="accordion-item" data-accordion-item>
+                            <a href="#{{ hash_description }}" class="accordion-title js-anchor-target">
+                                <span class="text">{{ label_description }}</span>
+                            </a>
+                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-labelledby="{{ hash_description }}-accordion-label" aria-hidden="true" id="{{ hash_description }}-accordion">
+                                <div class="boxes">
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                    {# Verweise #}
+                        {% if linkRefs|length > 0 %}
+                        <li class="accordion-item" data-accordion-item>
+                            <a href="#{{ hash_links }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_links }}-accordion-label">
+                                <span class="text">{{ label_links }}</span>
+                            </a>
+                            <div class="accordion-content" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_links }}-accordion-label" id="{{ hash_links }}-accordion">
+                                <div class="boxes">
+                                    {% if linkObjectRefs|length > 0 %}
+                                        {{ hit_macros.render_sub_navigation(label_links_linkObjectRefs, hash_links_linkObjectRefs) }}
+                                    {% endif %}
+                                    {% if linkSuperiorRefs|length > 0 %}
+                                        {{ hit_macros.render_sub_navigation(label_links_linkSuperiorRefs, hash_links_linkSuperiorRefs) }}
+                                    {% endif %}
+                                    {% if linkSubordinatedRefs|length > 0 %}
+                                        {{ hit_macros.render_sub_navigation(label_links_linkSubordinatedRefs, hash_links_linkSubordinatedRefs) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="anchor" id="detail_overview"></a>
+    <div class="xsmall-24 large-18 xlarge-18 columns">
+    {# FactSheet #}
+    {% if contactRefs %}
+        <div class="data">
+            <div class="teaser-data search row is-active">
+                <div class="xsmall-24 small-24 columns">
+            {# Adressen #}
+                {{ hit_macros.render_contact_facts("Kontakt", contactRefs, sortAddressTyp) }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {# Beschreibung #}
+    {% if summary or alternateTitle %}
+        <div class="section">
+            <a class="anchor" id="{{ hash_description }}"></a>
+            {{ hit_macros.render_section_title(label_description) }}
+            <div class="row columns">
+                {% if alternateTitles %}
+                {# Kurzname #}
+                    {% for alternateTitle in alternateTitles %}
+                        <p class="slab-bold">{{ alternateTitle }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% if summary %}
+                {# Beschreibung #}
+                <div class="js-expand-box js-expand-text js-non-expand-text">
+                    <div class="js-expand-text-content">
+                    {{ summary }}
+                    </div>
+                    <div class="desc-fade"></div>
+                </div>
+                <button type="button" class="js-open-expand-text button outline is-hidden" title="$MESSAGES.getString('search.detail.info.more')">
+                    $MESSAGES.getString('search.detail.info.more')
+                </button>
+                <button type="button" class="js-close-expand-text button outline is-hidden" title="$MESSAGES.getString('search.detail.info.less')">
+                    $MESSAGES.getString('search.detail.info.less')
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {# Verweise #}
+    {% if linkRefs %}
+        <div class="section">
+            <a class="anchor" id="{{ hash_links }}"></a>
+            {{ hit_macros.render_section_title(label_links) }}
+            {# Daten­bezüge  #}
+                {% if linkObjectRefs %}
+                    <div class="sub-section sub-section-unlined">
+                        <a class="anchor" id="{{ hash_links_linkObjectRefs }}"></a>
+                        {{ hit_macros.render_object_links(label_links_linkObjectRefs, linkObjectRefs)}}
+                    </div>
+                {% endif %}
+            {# Übergeordnete Adressen #}
+                {% if linkSuperiorRefs %}
+                    <div class="sub-section sub-section-unlined">
+                        <a class="anchor" id="{{ hash_links_linkSuperiorRefs }}"></a>
+                        {{ hit_macros.render_address_links(label_links_linkSuperiorRefs, linkSuperiorRefs)}}
+                    </div>
+                {% endif %}
+            {# Untergeordnete Adressen #}
+                {% if linkSubordinatedRefs %}
+                    <div class="sub-section sub-section-unlined">
+                        <a class="anchor" id="{{ hash_links_linkSubordinatedRefs }}"></a>
+                        {{ hit_macros.render_address_links(label_links_linkSubordinatedRefs, linkSubordinatedRefs)}}
+                    </div>
+                 {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</div>
+
+{% do view.registerCssFile("/resources/css/global.css") %}

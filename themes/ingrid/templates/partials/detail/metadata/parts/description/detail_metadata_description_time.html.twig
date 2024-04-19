@@ -1,0 +1,45 @@
+{# Zeitbezug #}
+
+{% if hasTimeData %}
+    <div class="sub-section">
+        <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference"{% else %}id="{{ hash_time }}_time_reference"{% endif %}></a>
+        {% if class == 1 or class == 3 or class == 5 or class == 6 %}
+            {% set tmpTitle = "time_reference_content" %}
+        {% else %}
+            {% set tmpTitle = "time_reference" %}
+        {% endif %}
+        {{ hit_macros.render_group_title(tmpTitle) }}
+
+    {# Durch die Ressource abgedeckte Zeitspanne #}
+        {% set toIndeterminate = "" %}
+        {% if timRef.fromType and timRef.fromType == "now" %}
+            {% set toIndeterminate = "search.detail.time.untilNow" %}
+        {% else %}
+            {% set toIndeterminate = "search.detail.time.untilUnknown" %}
+        {% endif %}
+        {% if timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime %}
+            {% if timeRefs.atTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "search.detail.time.at " ~ timeRefs.atTime) }}
+            {% elseif timeRefs.beginTime == timeRefs.endTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "search.detail.time.at " ~ timeRefs.beginTime) }}
+            {% elseif timeRefs.beginTime and timeRefs.endTime is null %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "search.detail.time.since " ~ timeRefs.beginTime ~ toIndeterminate) }}
+            {% elseif timeRefs.beginTime is null and timeRefs.endTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "search.detail.time.until " ~ timeRefs.endTime) }}
+            {% elseif timeRefs.beginTime != timeRefs.endTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "search.detail.time.from " ~ timeRefs.beginTime ~ " search.detail.time.to " ~ timeRefs.endTime) }}
+            {% endif %}
+        {% endif %}
+    {# Zeitliche Genauigkeit #}
+        {{ hit_macros.render_section_text_label("search.detail.time.measurement", timeRefs.measureValue ~ timeRefs.measureUnit) }}
+    {# Status #}
+        {{ hit_macros.render_section_text_label("t01_object.time_status", timeRefs.status, "text-capitalize") }}
+    {# Periodizität #}
+        {{ hit_macros.render_section_text_label("t01_object.time_period", timeRefs.period, "text-capitalize") }}
+    {# Intervall der Erhebung #}
+        {{ hit_macros.render_section_text_label("t01_object.time_interval", timeRefs.interval) }}
+    {# Erläuterung zum Zeitbezug #}
+        {{ hit_macros.render_section_text_label("t01_object.time_descr", timeRefs.descr) }}
+    </div>
+{% endif %}
+

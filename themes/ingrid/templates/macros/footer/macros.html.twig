@@ -1,0 +1,18 @@
+{% macro footer_nav_loop(menu, pages) %}
+  {% import _self as macros %}
+  {% for menuentry in menu %}
+    {% set page_active = '' %}
+    {% set page_url = '' %}
+    {% for p in pages.children.visible %}
+      {% if menuentry.path == p.folder %}
+        {% set page_active = (p.active or p.activeChild) ? 'active' : '' %}
+        {% set page_url = p.url %}
+      {% endif %}
+    {% endfor %}
+    {% if page_url is not empty %}
+      <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ menuentry.title | e }}">
+        <span>{{ menuentry.title | e }}</span>
+      </a>
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

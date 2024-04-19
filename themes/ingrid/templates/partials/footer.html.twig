@@ -1,0 +1,22 @@
+{% import 'macros/footer/macros.html.twig' as macros %}
+
+{% set footer_copyright_class = theme_var('footer_copyright_class') %}
+{% set footer_menu_class = theme_var('footer_menu_class') %}
+{% set menu_footer = theme_var('menu_footer') %}
+
+<footer>
+    <div class="footer">
+        <hr>
+        <div class="row">
+            <div class="{{ footer_copyright_class }} columns">
+                {% include 'partials/footer/logo.html.twig' %}
+                {% include 'partials/footer/copyright.html.twig' %}
+            </div>
+            <div class="{{ footer_menu_class }} columns">
+                <div class="footer-menu-entries" role="navigation" aria-label="Navigation Footer">
+                    {{ macros.footer_nav_loop(menu_footer, pages) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
