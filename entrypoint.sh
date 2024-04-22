@@ -11,6 +11,8 @@ rsync -rlD --delete \
            --exclude /backup/ \
            --exclude /logs/ \
            --exclude /tmp/ \
+           --exclude /plugins/admin/blueprints/ingrid \
+           --exclude /user/config/ \
            --exclude /user/accounts/admin.yaml \
            /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 
