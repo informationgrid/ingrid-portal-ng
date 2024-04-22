@@ -67,7 +67,6 @@ RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GR
 COPY themes /usr/share/grav-admin/user/themes
 COPY plugins /usr/share/grav-admin/user/plugins
 COPY pages /usr/share/grav-admin/user/pages
-COPY config /usr/share/grav-admin/user/config
 COPY data /usr/share/grav-admin/user/data
 
 COPY entrypoint.sh /entrypoint.sh
