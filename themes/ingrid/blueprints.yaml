@@ -19,4 +19,4 @@ dependencies:
 
 extends@:
   type: default
-  context: blueprints://ingrid
+  context: user://themes/ingrid/blueprints/ingrid

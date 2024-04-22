@@ -1,0 +1,491 @@
+form:
+  validation: loose
+  fields:
+
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+
+## Tab system
+        tab_system:
+          type: tab
+          title: System
+
+          fields:
+
+            header_section:
+              type: section
+              title: Header
+              underline: true
+
+            header_logo_enabled:
+              type: toggle
+              label: Header Logo enabled
+              help: Disable or enable logo
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            header_logo:
+              type: file
+              label: Header Logo
+              size: large
+              destination: 'theme://images/logo'
+              multiple: false
+              markdown: true
+              description: Will be used instead of default logo `theme://images/logo/logo.svg`
+              accept:
+                - image/*
+
+            header_logo_class:
+              type: text
+              label: Logo Breite
+              help: Trage Sie hier die möglichen Breiten des Copyright ein.
+              default: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
+
+            header_menu_class:
+              type: text
+              label: Menu Breite
+              help: Trage Sie hier die möglichen Breiten des Copyright ein.
+              default: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
+
+            header_menu_dropdown:
+                type: toggle
+                label: Dropdown in Menu
+                highlight: 1
+                default: 1
+                options:
+                  1: PLUGIN_ADMIN.ENABLED
+                  0: PLUGIN_ADMIN.DISABLED
+                validate:
+                  type: bool
+
+            header_shrink:
+              type: toggle
+              label: Header shrink enabled
+              help: Disable or enable logo
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer_section:
+              type: section
+              title: Footer
+              underline: true
+
+            footer_logo_enabled:
+              type: toggle
+              label: Footer Logo enabled
+              help: Disable or enable logo
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer_logo:
+              type: file
+              label: Footer Logo
+              size: large
+              destination: 'theme://images/logo'
+              multiple: false
+              markdown: true
+              description: Will be used instead of default logo `theme://images/logo/footer-logo.svg`
+              accept:
+                - image/*
+
+            footer_copyright_text:
+              type: text
+              label: Copyright
+              help: Trage Sie hier Ihren Copyright ein.
+              default: 'Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz'
+
+            footer_copyright_class:
+              type: text
+              label: Copyright Breite
+              help: Trage Sie hier die möglichen Breiten des Copyright ein.
+              default: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+
+            footer_menu_class:
+              type: text
+              label: Menu Breite
+              help: Trage Sie hier die möglichen Breiten des Copyright ein.
+              default: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+
+            system_section:
+              type: section
+              title: Menüs
+              underline: true
+
+            menu_main_fieldset:
+              type: fieldset
+              title: Hauptmenü
+              help: Definiere dein Hauptmenü
+              text: Das Hauptmenü wird im Header des Portals angezeigt.
+              collapsed: true
+              collapsible: true
+              fields:
+                menu_main:
+                  type: list
+                  label: Hauptmenü
+                  style: vertical
+                  controls: bottom
+                  collapsed: true
+
+                  fields:
+                    .ident:
+                      id: key
+                      label: ID
+                    .path:
+                      type: text
+                      label: Pfad
+                    .title:
+                      type: text
+                      label: Titel
+                    .icon:
+                      type: text
+                      label: Icon
+
+            menu_site_fieldset:
+              type: fieldset
+              title: Seitenmenü
+              help: Definiere dein Seitenmenü.
+              text: Das Seitenmenü wird mit dem Button "Menü" angezeigt.
+              collapsed: true
+              collapsible: true
+              fields:
+                menu_site:
+                  type: list
+                  label: Seitenmenü
+                  style: vertical
+                  controls: bottom
+                  collapsed: true
+
+                  fields:
+                    .ident:
+                      id: key
+                      label: ID
+                    .path:
+                      type: text
+                      label: Pfad
+                    .title:
+                      type: text
+                      label: Titel
+                    .highlighted:
+                      type: toggle
+                      label: Hauptmenü
+                      help: Markieren Sie diesen Eintrag als ein 'Hauptmenü'.
+                      highlight: 1
+                      default: 0
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+                      validate:
+                        type: bool
+
+            menu_footer_fieldset:
+              type: fieldset
+              title: Fußmenü
+              help: Definiere dein Fußmenü.
+              text: Das Fußmenü wird wird am Ende jeder Seite angezeigt..
+              collapsed: true
+              collapsible: true
+              fields:
+                menu_footer:
+                  type: list
+                  label: Fußmenü
+                  style: vertical
+                  controls: bottom
+                  collapsed: true
+
+                  fields:
+                    .ident:
+                      id: key
+                      label: ID
+                    .path:
+                      type: text
+                      label: Pfad
+                    .title:
+                      type: text
+                      label: Titel
+
+## Tab search
+        tab_search:
+          type: tab
+          title: Treffer
+
+          fields:
+
+            hit_section:
+              type: section
+              title: Allgemein
+              underline: true
+
+            hit_csw_url:
+              type: text
+              label: Link zum InGrid Interface-CSW
+              help: Trage Sie hier die URL zum InGrid Interface-CSW ein.
+              default: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
+
+            search_hit_section:
+              type: section
+              title: Suchergebnis
+              underline: true
+
+            search_hit_csw_enabled:
+              type: toggle
+              label: XML-Darstellung anzeigen
+              help: Darstellung des Links zur XML-Darstellung (CSW).
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            search_partner_logo_enabled:
+              type: toggle
+              label: Partner Wappen anzeigen
+              help: Aktivieren Sie die Darstellung der Partner Wappen.
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            detail_hit_section:
+              type: section
+              title: Detaildarstellung
+              underline: true
+
+            detail_hit_csw_enabled:
+              type: toggle
+              label: XML-Darstellung anzeigen
+              help: Darstellung des Links zur XML-Darstellung (CSW).
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            detail_hit_time_in_description:
+              type: toggle
+              label: Zeitbezug in der Beschreibung anzeigen
+              help: Stellt den Zeitbezug in der Detaildarstellung dar.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            detail_hit_address_order:
+                type: selectize
+                selectize:
+                    options:
+                        - text: "Institution"
+                          value: "0"
+                        - text: "Einheit"
+                          value: "1"
+                        - text: "Person"
+                          value: "2"
+                        - text: "Freie Adresse"
+                          value: "3"
+                label: Sortierung Adress-Typ
+                help: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+                validate:
+                    type: commalist
+                default: ["3","0","1","2"]
+
+            detail_hit_contact_order:
+                type: selectize
+                selectize:
+                    options:
+                        - text: "Ansprechpartner"
+                          value: "pointOfContact"
+                        - text: "Vertrieb"
+                          value: "distributor"
+                        - text: "Herausgeber"
+                          value: "publisher"
+                        - text: "Eigentümer"
+                          value: "owner"
+                        - text: "Bearbeiter"
+                          value: "processor"
+                        - text: "Autor"
+                          value: "author"
+                label: Sortierung Kontaktliste
+                help: Sortiert die Kontakte nach der festgelegten Reihenfolge
+                validate:
+                    type: commalist
+                default: ["pointOfContact","distributor","publisher","owner","processor","author"]
+
+## Tab map
+        tab_map:
+          type: tab
+          title: Karte
+
+          fields:
+
+            map_section:
+              type: section
+              title: Karte
+              underline: true
+
+            map.enabled:
+              type: toggle
+              label: Karte aktivieren
+              help: Aktivieren Sie hier die Karte.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            map.url:
+              type: text
+              label: Link zur Karte
+              help: Trage Sie hier die URL zur Karte.
+              default: '/ingrid-webmap-client/frontend/prd'
+
+            map.leaflet.section:
+              type: section
+              title: Leaflet
+              underline: true
+
+            map.leaflet.enabled:
+              type: toggle
+              label: Leaflet als Karte verwenden
+              help: Aktivieren Sie hier die Karte.
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            map.leaflet.epsg:
+              type: text
+              label: EPSG der Karte
+              help: Trage Sie hier den EPSG der Karte ein
+              default: '3857'
+
+            map.leaflet.bg.layer.wmts.url:
+              type: text
+              label: WMTS URL
+              help: Trage Sie hier die WMTS URL ein.
+              default: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+
+            map.leaflet.bg.layer.wms.url:
+              type: text
+              label: WMS URL
+              help: Trage Sie hier die WMS URL ein.
+              default: ''
+
+            map.leaflet.bg.layer.wms.name:
+              type: text
+              label: WMS Layer Namen
+              help: Trage Sie hier die WMS Layer Namen ein.
+              default: ''
+
+            map.leaflet.bg.layer.attribution:
+              type: text
+              label: Leaflet Hintergrundkarte Attribution
+              help: Trage Sie hier die Attribution ein.
+              default: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+
+            map.leaflet.bg.layer.opacity:
+              type: range
+              label: Sichtbarkeit der Hintergrundkarte
+              default: 1
+              validate:
+                min: 0
+                max: 1
+                step: 0.1
+
+            map.leaflet.bbox.color:
+              type: colorpicker
+              label: Leaflet BoundingBox-Farbe
+              help: Trage Sie hier die gewünschte Farbe in Hex-Format ein (z.B. #000000)
+              default: '#3278B9'
+
+            map.leaflet.bbox.opacity:
+              type: range
+              label: Sichtbarkeit der BoundingBox
+              default: 0.2
+              validate:
+                min: 0
+                max: 1
+                step: 0.1
+
+            map.leaflet.bbox.weight:
+              type: range
+              label: Linienbreite der BoundingBox
+              default: 1
+              validate:
+                min: 1
+                max: 5
+                step: 1
+
+            map.leaflet.bbox.inverted:
+              type: toggle
+              label: BoundingBox invertiert darstellen.
+              help: ''
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+
+## Tab measure
+        tab_measure:
+          type: tab
+          title: Messwerte
+
+          fields:
+
+            measure_section:
+              type: section
+              title: Messwerte
+              underline: true
+
+            measure_enabled:
+              type: toggle
+              label: Messwerte-Client aktivieren
+              help: Aktivieren Sie hier den Messwerte-Client.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            measure_url:
+              type: text
+              label: Link zur Karte
+              help: Trage Sie hier die URL zur Karte.
+              default: '/ingrid-portal-apps/measures/index.html'
