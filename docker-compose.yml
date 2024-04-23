@@ -1,18 +1,18 @@
-version: '3'
-
 services:
   grav:
     build:
       context: .
       dockerfile: Dockerfile_dev
+#    user: root
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
-      - 8080:80
+      - "8080:80"
+    network_mode: bridge
     volumes:
       - ./develop/admin.yaml:/var/www/html/user/accounts/admin.yaml
-      - ./themes:/var/www/html/user/themes
-      - ./pages:/var/www/html/user/pages
-      - ./plugins:/var/www/html/user/plugins
+      - ./user/themes:/var/www/html/user/themes
+      - ./user/pages:/var/www/html/user/pages
+      - ./user/plugins:/var/www/html/user/plugins
       - ./data/test:/var/www/html/user/data/test
       - ./develop/config:/var/www/html/user/localhost/config
-volumes:
-  grav:

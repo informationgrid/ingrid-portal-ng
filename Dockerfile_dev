@@ -6,7 +6,7 @@ ENV GRAV_VERSION 1.7.44
 RUN apt-get update
 
 # Install dependencies
-RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip
+RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip vim
 
 # Configure and install PHP extensions
 RUN docker-php-ext-configure gd --with-jpeg
@@ -19,8 +19,10 @@ RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GR
     rm grav-admin.zip
     
 RUN chown -R --from=root:root www-data:www-data /var/www/html
+RUN pecl install xdebug
                     
 COPY entrypoint_dev.sh /entrypoint.sh
+COPY develop/99-xdebug.ini /usr/local/etc/php/conf.d/99-xdebug.ini
 
 # Enable mod_rewrite for Apache
 RUN a2enmod rewrite
