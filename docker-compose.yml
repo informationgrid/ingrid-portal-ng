@@ -4,6 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile_dev
     user: root
+    environment:
+      - INGRID_API=https://api.dev.informationgrid.eu/
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:

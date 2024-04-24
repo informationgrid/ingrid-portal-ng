@@ -1,6 +1,5 @@
 enabled: true
 active: true
 route: /search
-api_url: 'https://api.dev.informationgrid.eu/'
 hits_num: 10
 mocking: true

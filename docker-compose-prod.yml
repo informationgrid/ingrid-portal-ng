@@ -19,6 +19,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - GRAV_FOLDER=portal-ng
+      - INGRID_API=https://api.dev.informationgrid.eu/
     volumes:
       - grav:/var/www/portal-ng
     networks:

@@ -13,7 +13,7 @@ class SearchServiceImpl implements SearchService
 
     function __construct($grav)
     {
-        $this->api = $grav['config']->get('plugins.ingrid-search-result.api_url');
+        $this->api = getenv('INGRID_API');
         $this->hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
         $this->client = new Client(['base_uri' => $this->api]);
     }
