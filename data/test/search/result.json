@@ -4,209 +4,225 @@
   "numPage": 1,
   "hits": [
     {
-      "uuid": "metadata-NPWHV58561",
-      "metaClass": 1,
-      "metaClassName": "Geodatensatz",
-      "partner": "ni",
-      "title": "Beispiel Objekt",
-      "summary": "Digitales echtfarb Orthofotomosaik - Kachel 4_03. Aufgenommen mit dem Kamerasystem DMC während der Befliegung des Niedersächsischen Wattenmeeres 2003. Datentiefe 16-bit, Bodenpixelauflösung 32cm. Referenzsystem Gauss-Krüger Zone 3. Digital true colour orthoimage mosaic - tile 4_03, recorded during the aerial flight 2003. Colour depth 16-bit, ground resolution 32cm. Reference system Gauss-Krüger zone 3.",
-      "shortname": null,
-      "datatypes": [
-        "metadata"
-      ],
-      "isOpendata": true,
-      "isInspire": false,
-      "hasAccessContraint": false,
-      "time": {
-        "type": "von",
-        "t1": "06.08.2003",
-        "t2": "06.08.2003"
-      },
-      "bboxes": [
-        {
-          "title": "Test",
-          "x1": 7.12244,
-          "y1": 53.63962,
-          "x2": 7.21471,
-          "y2": 53.67693
-        }
-      ],
-      "wkt": "",
-      "geom": "",
-      "links": [
-        {
-          "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
-          "title": null,
-          "descr": "Test",
-          "kind": "preview"
+      "_source": {
+        "uuid": "metadata-NPWHV58561",
+        "metaClass": 1,
+        "metaClassName": "Geodatensatz",
+        "partner": "ni",
+        "title": "Beispiel Objekt",
+        "summary": "Digitales echtfarb Orthofotomosaik - Kachel 4_03. Aufgenommen mit dem Kamerasystem DMC während der Befliegung des Niedersächsischen Wattenmeeres 2003. Datentiefe 16-bit, Bodenpixelauflösung 32cm. Referenzsystem Gauss-Krüger Zone 3. Digital true colour orthoimage mosaic - tile 4_03, recorded during the aerial flight 2003. Colour depth 16-bit, ground resolution 32cm. Reference system Gauss-Krüger zone 3.",
+        "shortname": null,
+        "datatypes": [
+          "metadata"
+        ],
+        "isOpendata": true,
+        "isInspire": false,
+        "hasAccessContraint": false,
+        "time": {
+          "type": "von",
+          "t1": "06.08.2003",
+          "t2": "06.08.2003"
         },
-        {
-          "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
-          "title": null,
-          "descr": "Test",
-          "kind": "preview"
-        },
-        {
-          "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
-          "title": "predefined ATOM",
-          "format": "WMS",
-          "kind": "access"
-        },
-        {
-          "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
-          "title": "predefined ATOM",
-          "format": "ATOM",
-          "kind": "download"
-        },
-        {
-          "url": "https://mdi.niedersachsen.de/geoserver/Kegelrobben/ows?service=wfs&Version=2.0.0&request=GetFeature&typeName=Kegelrobben:Kegelrobben_2010_2011_ETRS_89&outputFormat=text/xml;%20subtype=gml/3.2",
-          "format": "WFS",
-          "kind": "download"
-        },
-        {
-          "url": "http://bkg-test.informationgrid.eu/trefferanzeige?docuuid=5F5DF8CC-8950-49E4-8743-5F50F035431A",
-          "title": "INSPIRE-WFS CORINE Land Cover – 5ha (2012)",
-          "format": "WFS",
-          "kind": "reference",
-          "metaClass": 3,
-          "metaClass_name": "Geodatendienst"
-        },
-        {
-          "url": "https://wemove.com",
-          "title": "wemove",
-          "format": "HTML",
-          "kind": "other"
-        },
-        {
-          "url": "https://eintracht.de",
-          "title": "SGE",
-          "format": "HTML",
-          "kind": "other"
-        }
-      ],
-      "licenses": [
-        {
-          "url": "https://www.govdata.de/dl-de/by-2-0",
-          "title": "Datenlizenz Deutschland - Namensnennung - Version 2.0"
-        },
-        {
-          "text": "<p>Die Daten sind urheberrechtlich geschützt. Sie werden nur gegen Entgelt abgegeben. Es gelten die Regelungen der Richtlinie über Gebühren für die Bereitstellung und Nutzung von Geobasisdaten der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland (AdV-Gebührenrichtlinie in ihrer jeweils gültigen Fassung – AdV-GR: <a class=\"intext\" href=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\" target=\"_blank\" title=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\"><span>https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/</span></a>). Für den Erwerb von Nutzungsrechten wenden Sie sich bitte an die Zentrale Stelle Geotopographie der AdV/Dienstleistungszentrum (DLZ) des Bundesamt für Kartographie und Geodäsie: <a class=\"intext\" href=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\" target=\"_blank\" title=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\"><span>https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html</span></a>. Der Quellenvermerk ist zu beachten.</p>"
-        }
-      ],
-      "types": ["HTML", "WMS"],
-      "map_url": "https://inspire.brandenburg.de/services/hb_bbk_wms?SERVICE=WMS&Request=GetCapabilities"
+        "bboxes": [
+          {
+            "title": "Test",
+            "x1": 7.12244,
+            "y1": 53.63962,
+            "x2": 7.21471,
+            "y2": 53.67693
+          }
+        ],
+        "wkt": "",
+        "geom": "",
+        "links": [
+          {
+            "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
+            "title": null,
+            "descr": "Test",
+            "kind": "preview"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
+            "title": null,
+            "descr": "Test",
+            "kind": "preview"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
+            "title": "predefined ATOM",
+            "format": "WMS",
+            "kind": "access"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
+            "title": "predefined ATOM",
+            "format": "ATOM",
+            "kind": "download"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/geoserver/Kegelrobben/ows?service=wfs&Version=2.0.0&request=GetFeature&typeName=Kegelrobben:Kegelrobben_2010_2011_ETRS_89&outputFormat=text/xml;%20subtype=gml/3.2",
+            "format": "WFS",
+            "kind": "download"
+          },
+          {
+            "url": "http://bkg-test.informationgrid.eu/trefferanzeige?docuuid=5F5DF8CC-8950-49E4-8743-5F50F035431A",
+            "title": "INSPIRE-WFS CORINE Land Cover – 5ha (2012)",
+            "format": "WFS",
+            "kind": "reference",
+            "metaClass": 3,
+            "metaClass_name": "Geodatendienst"
+          },
+          {
+            "url": "https://wemove.com",
+            "title": "wemove",
+            "format": "HTML",
+            "kind": "other"
+          },
+          {
+            "url": "https://eintracht.de",
+            "title": "SGE",
+            "format": "HTML",
+            "kind": "other"
+          }
+        ],
+        "licenses": [
+          {
+            "url": "https://www.govdata.de/dl-de/by-2-0",
+            "title": "Datenlizenz Deutschland - Namensnennung - Version 2.0"
+          },
+          {
+            "text": "<p>Die Daten sind urheberrechtlich geschützt. Sie werden nur gegen Entgelt abgegeben. Es gelten die Regelungen der Richtlinie über Gebühren für die Bereitstellung und Nutzung von Geobasisdaten der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland (AdV-Gebührenrichtlinie in ihrer jeweils gültigen Fassung – AdV-GR: <a class=\"intext\" href=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\" target=\"_blank\" title=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\"><span>https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/</span></a>). Für den Erwerb von Nutzungsrechten wenden Sie sich bitte an die Zentrale Stelle Geotopographie der AdV/Dienstleistungszentrum (DLZ) des Bundesamt für Kartographie und Geodäsie: <a class=\"intext\" href=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\" target=\"_blank\" title=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\"><span>https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html</span></a>. Der Quellenvermerk ist zu beachten.</p>"
+          }
+        ],
+        "types": [
+          "HTML",
+          "WMS"
+        ],
+        "map_url": "https://inspire.brandenburg.de/services/hb_bbk_wms?SERVICE=WMS&Request=GetCapabilities"
+      }
     },
     {
-      "uuid": "metadata-NPWHV58561",
-      "metaClass": 1,
-      "metaClassName": "Geodatensatz",
-      "partner": "ni",
-      "title": "Beispiel Objekt WKT",
-      "summary": "Digitales echtfarb Orthofotomosaik - Kachel 4_03. Aufgenommen mit dem Kamerasystem DMC während der Befliegung des Niedersächsischen Wattenmeeres 2003. Datentiefe 16-bit, Bodenpixelauflösung 32cm. Referenzsystem Gauss-Krüger Zone 3. Digital true colour orthoimage mosaic - tile 4_03, recorded during the aerial flight 2003. Colour depth 16-bit, ground resolution 32cm. Reference system Gauss-Krüger zone 3.",
-      "shortname": null,
-      "datatypes": [
-        "metadata"
-      ],
-      "isOpendata": true,
-      "isInspire": false,
-      "hasAccessContraint": false,
-      "time": {
-        "type": "von",
-        "t1": "06.08.2003",
-        "t2": "06.08.2003"
-      },
-      "bboxes": [
-        {
-          "title": "Test",
-          "x1": 7.12244,
-          "y1": 53.63962,
-          "x2": 7.21471,
-          "y2": 53.67693
-        }
-      ],
-      "wkt": "{\"type\":\"GeometryCollection\",\"geometries\":[{\"type\":\"Point\",\"coordinates\":[8.70166,50.112709]},{\"type\":\"LineString\",\"coordinates\":[[8.70166,50.112709],[8.703326,50.112734],[8.703579,50.112551],[8.7043,50.111438]]},{\"type\":\"Polygon\",\"coordinates\":[[[8.7014534906,50.112807567],[8.7014373974,50.1125667605],[8.7015071348,50.1124394766],[8.7018665508,50.1124704376],[8.7019523815,50.1128557281],[8.701753898,50.1128213273],[8.7014534906,50.112807567]]]}]}",
-      "geom": "",
-      "links": [
-        {
-          "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
-          "title": null,
-          "descr": "Test",
-          "kind": "preview"
+      "_source": {
+        "uuid": "metadata-NPWHV58561",
+        "metaClass": 1,
+        "metaClassName": "Geodatensatz",
+        "partner": "ni",
+        "title": "Beispiel Objekt WKT",
+        "summary": "Digitales echtfarb Orthofotomosaik - Kachel 4_03. Aufgenommen mit dem Kamerasystem DMC während der Befliegung des Niedersächsischen Wattenmeeres 2003. Datentiefe 16-bit, Bodenpixelauflösung 32cm. Referenzsystem Gauss-Krüger Zone 3. Digital true colour orthoimage mosaic - tile 4_03, recorded during the aerial flight 2003. Colour depth 16-bit, ground resolution 32cm. Reference system Gauss-Krüger zone 3.",
+        "shortname": null,
+        "datatypes": [
+          "metadata"
+        ],
+        "isOpendata": true,
+        "isInspire": false,
+        "hasAccessContraint": false,
+        "time": {
+          "type": "von",
+          "t1": "06.08.2003",
+          "t2": "06.08.2003"
         },
-        {
-          "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
-          "title": null,
-          "descr": "Test",
-          "kind": "preview"
-        },
-        {
-          "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
-          "title": "predefined ATOM",
-          "format": "WMS",
-          "kind": "access"
-        },
-        {
-          "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
-          "title": "predefined ATOM",
-          "format": "ATOM",
-          "kind": "download"
-        },
-        {
-          "url": "https://mdi.niedersachsen.de/geoserver/Kegelrobben/ows?service=wfs&Version=2.0.0&request=GetFeature&typeName=Kegelrobben:Kegelrobben_2010_2011_ETRS_89&outputFormat=text/xml;%20subtype=gml/3.2",
-          "format": "WFS",
-          "kind": "download"
-        },
-        {
-          "url": "http://bkg-test.informationgrid.eu/trefferanzeige?docuuid=5F5DF8CC-8950-49E4-8743-5F50F035431A",
-          "title": "INSPIRE-WFS CORINE Land Cover – 5ha (2012)",
-          "format": "WFS",
-          "kind": "reference",
-          "metaClass": 3,
-          "metaClass_name": "Geodatendienst"
-        },
-        {
-          "url": "https://wemove.com",
-          "title": "wemove",
-          "format": "HTML",
-          "kind": "other"
-        },
-        {
-          "url": "https://eintracht.de",
-          "title": "SGE",
-          "format": "HTML",
-          "kind": "other"
-        }
-      ],
-      "licenses": [
-        {
-          "url": "https://www.govdata.de/dl-de/by-2-0",
-          "title": "Datenlizenz Deutschland - Namensnennung - Version 2.0"
-        },
-        {
-          "text": "<p>Die Daten sind urheberrechtlich geschützt. Sie werden nur gegen Entgelt abgegeben. Es gelten die Regelungen der Richtlinie über Gebühren für die Bereitstellung und Nutzung von Geobasisdaten der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland (AdV-Gebührenrichtlinie in ihrer jeweils gültigen Fassung – AdV-GR: <a class=\"intext\" href=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\" target=\"_blank\" title=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\"><span>https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/</span></a>). Für den Erwerb von Nutzungsrechten wenden Sie sich bitte an die Zentrale Stelle Geotopographie der AdV/Dienstleistungszentrum (DLZ) des Bundesamt für Kartographie und Geodäsie: <a class=\"intext\" href=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\" target=\"_blank\" title=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\"><span>https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html</span></a>. Der Quellenvermerk ist zu beachten.</p>"
-        }
-      ],
-      "types": ["HTML", "WMS"],
-      "map_url": "https://inspire.brandenburg.de/services/hb_bbk_wms?SERVICE=WMS&Request=GetCapabilities"
+        "bboxes": [
+          {
+            "title": "Test",
+            "x1": 7.12244,
+            "y1": 53.63962,
+            "x2": 7.21471,
+            "y2": 53.67693
+          }
+        ],
+        "wkt": "{\"type\":\"GeometryCollection\",\"geometries\":[{\"type\":\"Point\",\"coordinates\":[8.70166,50.112709]},{\"type\":\"LineString\",\"coordinates\":[[8.70166,50.112709],[8.703326,50.112734],[8.703579,50.112551],[8.7043,50.111438]]},{\"type\":\"Polygon\",\"coordinates\":[[[8.7014534906,50.112807567],[8.7014373974,50.1125667605],[8.7015071348,50.1124394766],[8.7018665508,50.1124704376],[8.7019523815,50.1128557281],[8.701753898,50.1128213273],[8.7014534906,50.112807567]]]}]}",
+        "geom": "",
+        "links": [
+          {
+            "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
+            "title": null,
+            "descr": "Test",
+            "kind": "preview"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/preview_browser_metadata/NPWHV58561-4_03rgb.jpg",
+            "title": null,
+            "descr": "Test",
+            "kind": "preview"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
+            "title": "predefined ATOM",
+            "format": "WMS",
+            "kind": "access"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/INSPIRE/Daten/Luftbilder_RGB_2003/4_03rgb.tif",
+            "title": "predefined ATOM",
+            "format": "ATOM",
+            "kind": "download"
+          },
+          {
+            "url": "https://mdi.niedersachsen.de/geoserver/Kegelrobben/ows?service=wfs&Version=2.0.0&request=GetFeature&typeName=Kegelrobben:Kegelrobben_2010_2011_ETRS_89&outputFormat=text/xml;%20subtype=gml/3.2",
+            "format": "WFS",
+            "kind": "download"
+          },
+          {
+            "url": "http://bkg-test.informationgrid.eu/trefferanzeige?docuuid=5F5DF8CC-8950-49E4-8743-5F50F035431A",
+            "title": "INSPIRE-WFS CORINE Land Cover – 5ha (2012)",
+            "format": "WFS",
+            "kind": "reference",
+            "metaClass": 3,
+            "metaClass_name": "Geodatendienst"
+          },
+          {
+            "url": "https://wemove.com",
+            "title": "wemove",
+            "format": "HTML",
+            "kind": "other"
+          },
+          {
+            "url": "https://eintracht.de",
+            "title": "SGE",
+            "format": "HTML",
+            "kind": "other"
+          }
+        ],
+        "licenses": [
+          {
+            "url": "https://www.govdata.de/dl-de/by-2-0",
+            "title": "Datenlizenz Deutschland - Namensnennung - Version 2.0"
+          },
+          {
+            "text": "<p>Die Daten sind urheberrechtlich geschützt. Sie werden nur gegen Entgelt abgegeben. Es gelten die Regelungen der Richtlinie über Gebühren für die Bereitstellung und Nutzung von Geobasisdaten der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland (AdV-Gebührenrichtlinie in ihrer jeweils gültigen Fassung – AdV-GR: <a class=\"intext\" href=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\" target=\"_blank\" title=\"https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/\"><span>https://www.adv-online.de/AdV-Produkte/Bezugsbedingungen/</span></a>). Für den Erwerb von Nutzungsrechten wenden Sie sich bitte an die Zentrale Stelle Geotopographie der AdV/Dienstleistungszentrum (DLZ) des Bundesamt für Kartographie und Geodäsie: <a class=\"intext\" href=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\" target=\"_blank\" title=\"https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html\"><span>https://www.bkg.bund.de/DE/Service/Kontakt/kontakt.html</span></a>. Der Quellenvermerk ist zu beachten.</p>"
+          }
+        ],
+        "types": [
+          "HTML",
+          "WMS"
+        ],
+        "map_url": "https://inspire.brandenburg.de/services/hb_bbk_wms?SERVICE=WMS&Request=GetCapabilities"
+      }
+    }, 
+    {
+      "_source": {
+        "title": "Beispiel SE-Treffer",
+        "url": "https://wemove.com",
+        "summary": "Die wemove Homepage.",
+        "types": [
+          "HTML"
+        ],
+        "datatypes": [
+          "www"
+        ]
+      }
     },
     {
-      "title": "Beispiel SE-Treffer",
-      "url": "https://wemove.com",
-      "summary": "Die wemove Homepage.",
-      "types": ["HTML"],
-      "datatypes": [
-        "www"
-      ]
-    },
-    {
-      "uuid": "2897E745-601E-4964-B3B3-38A8C2C4BBFE",
-      "title": "Beispiel Adresse",
-      "metaClass": 3,
-      "metaClassName": "Freie Adresse",
-      "summary": "Beschreibung der Adresse",
-      "datatypes": [
-        "address"
-      ]
+      "_source": {
+        "uuid": "2897E745-601E-4964-B3B3-38A8C2C4BBFE",
+        "title": "Beispiel Adresse",
+        "metaClass": 3,
+        "metaClassName": "Freie Adresse",
+        "summary": "Beschreibung der Adresse",
+        "datatypes": [
+          "address"
+        ]
+      }
     }
   ]
 }

@@ -1,10 +1,11 @@
 <?php
+
 namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
+use Grav\Common\GPM\Response;
 use Grav\Common\Plugin;
 use Grav\Common\Twig\Twig;
-use Grav\Common\GPM\Response;
 
 /**
  * Class IngridSearchResultPlugin
@@ -12,6 +13,9 @@ use Grav\Common\GPM\Response;
  */
 class IngridSearchResultPlugin extends Plugin
 {
+
+    var SearchService $service;
+
     /**
      * @return array
      *
@@ -54,11 +58,15 @@ class IngridSearchResultPlugin extends Plugin
         }
 
         // Load classes
-        require_once __DIR__ . '/classes/SearchResult.php';
-        require_once __DIR__ . '/classes/SearchResultHit.php';
+        require_once __DIR__ . '/model/SearchResult.php';
+        require_once __DIR__ . '/model/SearchResultHit.php';
+        require_once __DIR__ . '/services/SearchService.php';
+        require_once __DIR__ . '/services/SearchServiceImpl.php';
+        require_once __DIR__ . '/services/SearchServiceMock.php';
 
-        $uri = $this->grav['uri'];
         $config = $this->config();
+        $this->service = $config['mocking'] ? new SearchServiceMock($this->grav) : new SearchServiceImpl($this->grav);
+        $uri = $this->grav['uri'];
 
         $route = $config['route'] ?? null;
         if ($route && $route == $uri->path()) {
@@ -76,17 +84,16 @@ class IngridSearchResultPlugin extends Plugin
         echo "<script>console.log('InGrid Search result');</script>";
     }
 
-    public function onTwigSiteVariables() {
-        
+    public function onTwigSiteVariables()
+    {
+
         if (!$this->isAdmin()) {
-            $query="";
+            $query = "";
             $tmpQuery = $this->grav['uri']->query('q');
             if (!is_null($tmpQuery)) {
                 $query = $tmpQuery;
             }
-            $api = $this->grav['config']->get('plugins.ingrid-search-result.api_url');
-            $hitsNum = $this->grav['config']->get('plugins.ingrid-search-result.hits_num');
-            $results = SearchResult::getResults($api, $query, $hitsNum);
+            $results = $this->service->getSearchResults($query);
 
             $this->grav['twig']->twig_vars['search_result_query'] = $query;
             $this->grav['twig']->twig_vars['search_result_numOfHits'] = $results->getNumOfHits();

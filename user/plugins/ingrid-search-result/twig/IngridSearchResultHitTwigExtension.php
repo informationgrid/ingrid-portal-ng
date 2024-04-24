@@ -147,7 +147,7 @@ class IngridSearchResultHitTwigExtension extends GravExtension
         $output = [];
         if($links) {
             $output = array_filter($links, function($v) use ($kind) { 
-                return $v["kind"] == $kind; 
+                return $v->kind == $kind; 
             
             });
         }
