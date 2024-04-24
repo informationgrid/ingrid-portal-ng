@@ -26,7 +26,7 @@ class SearchServiceImpl implements SearchService
         $output->setNumOfHits($result->totalHits ?? 0);
         $output->setNumOfPages($result->numOfPages ?? 0);
         $output->setNumPage($result->numPage ?? 0);
-        $output->setHits(SearchResultHit::parseHits($result->hits ?? null));
+        $output->setHits(SearchResponseTransformer::parseHits($result->hits ?? null));
         return $output;
     }
 

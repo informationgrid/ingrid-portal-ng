@@ -20,6 +20,14 @@
     "psr-4": {
       "Grav\\Plugin\\IngridSearchResult\\": "services/"
     },
-    "classmap":  ["ingrid-search-result.php"]
+    "classmap":  ["ingrid-search-result.php"],
+    "files": [
+      "model/SearchResult.php",
+      "model/SearchResultHit.php",
+      "services/SearchService.php",
+      "services/SearchServiceImpl.php",
+      "services/SearchServiceMock.php",
+      "services/SearchResponseTransformer.php"
+    ]
   }
 }

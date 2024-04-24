@@ -11,5 +11,5 @@ return array(
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
-    'Grav\\Plugin\\IngridSearchResult\\' => array($baseDir . '/classes'),
+    'Grav\\Plugin\\IngridSearchResult\\' => array($baseDir . '/services'),
 );

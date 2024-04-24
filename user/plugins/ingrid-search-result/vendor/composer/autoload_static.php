@@ -10,6 +10,12 @@ class ComposerStaticInitbc684162e668785e8690996788bb8c0e
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '1232477c250dfbbf09b86070eb06b33e' => __DIR__ . '/../..' . '/model/SearchResult.php',
+        '263e804792165c524d868951cfd25c94' => __DIR__ . '/../..' . '/model/SearchResultHit.php',
+        '2f38f6113ba339754592a9dea3854f95' => __DIR__ . '/../..' . '/services/SearchService.php',
+        '0acaa8c649723c2430af95ecf35a5d0e' => __DIR__ . '/../..' . '/services/SearchServiceImpl.php',
+        'a3dd22d46266d7567fcd3222f33c5d6d' => __DIR__ . '/../..' . '/services/SearchServiceMock.php',
+        'a44a1284427c62895c5a84df3d4f1c20' => __DIR__ . '/../..' . '/services/SearchResponseTransformer.php',
     );
 
     public static $prefixLengthsPsr4 = array (

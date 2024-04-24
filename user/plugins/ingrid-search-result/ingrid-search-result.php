@@ -57,13 +57,6 @@ class IngridSearchResultPlugin extends Plugin
             return;
         }
 
-        // Load classes
-        require_once __DIR__ . '/model/SearchResult.php';
-        require_once __DIR__ . '/model/SearchResultHit.php';
-        require_once __DIR__ . '/services/SearchService.php';
-        require_once __DIR__ . '/services/SearchServiceImpl.php';
-        require_once __DIR__ . '/services/SearchServiceMock.php';
-
         $config = $this->config();
         $this->service = $config['mocking'] ? new SearchServiceMock($this->grav) : new SearchServiceImpl($this->grav);
         $uri = $this->grav['uri'];
