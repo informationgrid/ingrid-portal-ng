@@ -20,6 +20,9 @@ RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GR
     
 RUN chown -R --from=root:root www-data:www-data /var/www/html
 RUN pecl install xdebug
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
                     
 COPY entrypoint_dev.sh /entrypoint.sh
 COPY develop/99-xdebug.ini /usr/local/etc/php/conf.d/99-xdebug.ini

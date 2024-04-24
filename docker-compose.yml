@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_dev
-#    user: root
+    user: root
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
