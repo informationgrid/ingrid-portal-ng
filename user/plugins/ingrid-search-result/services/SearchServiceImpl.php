@@ -3,13 +3,14 @@
 namespace Grav\Plugin;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class SearchServiceImpl implements SearchService
 {
 
-    private $api;
-    private $hitsNum;
-    private $client;
+    private string $api;
+    private int $hitsNum;
+    private Client $client;
 
     function __construct($grav)
     {
@@ -18,6 +19,9 @@ class SearchServiceImpl implements SearchService
         $this->client = new Client(['base_uri' => $this->api]);
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function getSearchResults($query): SearchResult
     {
         $apiResponse = $this->client->request('POST', 'portal/search', [
@@ -28,7 +32,7 @@ class SearchServiceImpl implements SearchService
         $output->setNumOfHits($result->totalHits ?? 0);
         $output->setNumOfPages($result->numOfPages ?? 0);
         $output->setNumPage($result->numPage ?? 0);
-        $output->setHits(SearchResponseTransformer::parseHits($result->hits ?? null));
+        $output->setHits(SearchResponseTransformerClassic::parseHits($result->hits ?? null));
         return $output;
     }
 

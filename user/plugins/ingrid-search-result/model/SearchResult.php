@@ -2,56 +2,46 @@
 
 namespace Grav\Plugin;
 
-use Grav\Common\GPM\Response;
-
 class SearchResult
 {
-    /** @var int */
-    var $numOfHits;
-    /** @var int */
-    var $numOfPages;
-    /** @var int */
-    var $numPage;
+    var int $numOfHits;
+    var int $numOfPages;
+    var int $numPage;
     /** @var SearchResultHit[] */
-    var $hits;
+    var array $hits;
 
 
-    public function getNumOfHits()
+    public function getNumOfHits(): int
     {
         return $this->numOfHits;
     }
     
-    public function setNumOfHits($numOfHits)
+    public function setNumOfHits($numOfHits): void
     {
         $this->numOfHits = $numOfHits;
     }
     
-    public function getNumOfPages()
+    public function getNumOfPages(): int
     {
         return $this->numOfPages;
     }
     
-    public function setNumOfPages($numOfPages)
+    public function setNumOfPages($numOfPages): void
     {
         $this->numOfPages = $numOfPages;
     }
 
-    public function getNumPage()
+    public function getNumPage(): int
     {
         return $this->numPage;
     }
     
-    public function setNumPage($numPage)
+    public function setNumPage($numPage): void
     {
         $this->numPage = $numPage;
     }
 
-    public function getHits() : array
-    {
-        return $this->hits ?? [];
-    }
-    
-    public function setHits($hits)
+    public function setHits($hits): void
     {
         $this->hits = $hits;
     }

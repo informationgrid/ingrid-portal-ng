@@ -2,19 +2,16 @@
 
 namespace Grav\Plugin;
 
-class SearchResponseTransformer
+class SearchResponseTransformerClassic
 {
     public static function parseHits(array $hits): array
     {
-        $output = [];
-        foreach ($hits as $hit) {
-            array_push($output, self::parseHit($hit->_source));
-        }
-        return $output;
+        return array_map('self::parseHit', $hits);
     }
 
-    private static function parseHit($value): SearchResultHit
+    private static function parseHit($esHit): SearchResultHit
     {
+        $value = $esHit->_source;
         $hit = new SearchResultHit();
         $hit->setUuid($value->{"t01_object.obj_id"} ?? null);
         $hit->setMetaClass($value->metaClass ?? null);

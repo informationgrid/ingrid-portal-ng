@@ -3,7 +3,6 @@
 namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
-use Grav\Common\GPM\Response;
 use Grav\Common\Plugin;
 use Grav\Common\Twig\Twig;
 
@@ -58,7 +57,9 @@ class IngridSearchResultPlugin extends Plugin
         }
 
         $config = $this->config();
-        $this->service = $config['mocking'] ? new SearchServiceMock($this->grav) : new SearchServiceImpl($this->grav);
+        $this->service = $config['mocking']
+            ? new SearchServiceMock()
+            : new SearchServiceImpl($this->grav);
         $uri = $this->grav['uri'];
 
         $route = $config['route'] ?? null;
