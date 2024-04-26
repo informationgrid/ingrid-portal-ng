@@ -5,6 +5,7 @@
   "keywords": ["plugin"],
   "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-search-result",
   "license": "MIT",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Khanh Toan Tran",
@@ -27,7 +28,8 @@
       "services/SearchService.php",
       "services/SearchServiceImpl.php",
       "services/SearchServiceMock.php",
-      "services/SearchResponseTransformer.php"
+      "services/SearchResponseTransformer.php",
+      "services/ElasticsearchService.php"
     ]
   }
 }

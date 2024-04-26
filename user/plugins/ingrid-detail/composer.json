@@ -5,6 +5,7 @@
   "keywords": ["plugin"],
   "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-detail",
   "license": "MIT",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Khanh Toan Tran",
@@ -19,6 +20,15 @@
     "psr-4": {
       "Grav\\Plugin\\InGridDetail\\": "classes/"
     },
-    "classmap":  ["ingrid-detail.php"]
+    "classmap":  ["ingrid-detail.php"],
+    "files": [
+      "/classes/detail/parser/address/DetailAddressParser.php",
+      "/classes/detail/parser/address/DetailAddressParserIdf.php",
+      "/classes/detail/parser/metadata/DetailMetadataParser.php",
+      "/classes/detail/parser/metadata/DetailMetadataParserIdf.php",
+      "/classes/detail/models/DetailAddress.php",
+      "/classes/detail/models/DetailMetadata.php",
+      "/classes/utils/IdfHelper.php"
+    ]
   }
 }

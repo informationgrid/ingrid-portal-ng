@@ -16,6 +16,16 @@ Username: admin
 Password: admin
 ```
 
+### Recommended Plugins for IntelliJ
+
+* Php Plugin
+* Twig
+* Symfony Support
+  * enable plugin and configure Twig/Template and add namespace:
+    * Namespace: <empty>
+    * Project-Path: user/themes/ingrid/templates
+    * Type: ADD_PATH
+
 ### Debugging
 
 In IntelliJ you need to have the Python plugin installed. Then you need to run `Run -> Start Listening for PHP Debug Connections` and set your breakpoints in your php-files.

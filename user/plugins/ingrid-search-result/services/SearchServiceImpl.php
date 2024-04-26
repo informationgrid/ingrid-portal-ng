@@ -20,7 +20,9 @@ class SearchServiceImpl implements SearchService
 
     public function getSearchResults($query): SearchResult
     {
-        $apiResponse = $this->client->request('POST', 'portal/search', []);
+        $apiResponse = $this->client->request('POST', 'portal/search', [
+            'body' => ElasticsearchService::convertToQuery($query)
+        ]);
         $result = json_decode($apiResponse->getBody()->getContents());
         $output = new SearchResult();
         $output->setNumOfHits($result->totalHits ?? 0);

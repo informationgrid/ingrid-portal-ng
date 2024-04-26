@@ -81,11 +81,7 @@ class IngridSearchResultPlugin extends Plugin
     {
 
         if (!$this->isAdmin()) {
-            $query = "";
-            $tmpQuery = $this->grav['uri']->query('q');
-            if (!is_null($tmpQuery)) {
-                $query = $tmpQuery;
-            }
+            $query = $this->grav['uri']->query('q') ?: "";
             $results = $this->service->getSearchResults($query);
 
             $this->grav['twig']->twig_vars['search_result_query'] = $query;

@@ -4,6 +4,6 @@ namespace Grav\Plugin;
 
 interface SearchService
 {
-    public function getSearchResults($query);
+    public function getSearchResults($query) : SearchResult;
     
 }

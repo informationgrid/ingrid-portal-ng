@@ -55,15 +55,6 @@ class InGridDetailPlugin extends Plugin
             return;
         }
 
-        // Load classes
-        require_once __DIR__ . '/classes/detail/parser/address/DetailAddressParser.php';
-        require_once __DIR__ . '/classes/detail/parser/address/DetailAddressParserIdf.php';
-        require_once __DIR__ . '/classes/detail/parser/metadata/DetailMetadataParser.php';
-        require_once __DIR__ . '/classes/detail/parser/metadata/DetailMetadataParserIdf.php';
-        require_once __DIR__ . '/classes/detail/models/DetailAddress.php';
-        require_once __DIR__ . '/classes/detail/models/DetailMetadata.php';
-        require_once __DIR__ . '/classes/utils/IdfHelper.php';
-
         $uri = $this->grav['uri'];
         $config = $this->config();
 

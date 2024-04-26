@@ -1,4 +1,3 @@
-{% set hits = hits ?? [] %}
 <div class="results-index">
     <div class="row">
         {% include 'partials/search/result/result_counter.html.twig' %}
@@ -6,9 +5,9 @@
 </div>
 <div class="filters-active">
 </div>
-{% if hits|length > 0 %}
+{% if search_result_hits|length > 0 %}
     {% set hitCounter = 0 %}
-    {% for hit in hits %}
+    {% for hit in search_result_hits %}
         {% set datatypes = getHitDatatypes(hit) %}
         {% if in_array('address', datatypes) %}
             {% include 'partials/search/result/hit/result_hit_address.html.twig' with {hit:hit, counter: hitCounter} %}

@@ -1,4 +1,4 @@
-{% set hits = search_result_hits %}
+
 
 <div id="searchResult" class="row search-filtered">
     {% include 'partials/search/filter.html.twig' %}
@@ -6,6 +6,6 @@
       {% include 'partials/search/filter/filter_facets.html.twig' %}
     </div>
     <div id="results" class="xsmall-24 large-16 xlarge-18 columns">
-      {% include 'partials/search/result.html.twig' with { hits: hits }%}
+      {% include 'partials/search/result.html.twig' %}
     </div>
 </div>

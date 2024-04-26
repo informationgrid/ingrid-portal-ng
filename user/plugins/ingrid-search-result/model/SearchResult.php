@@ -44,7 +44,7 @@ class SearchResult
 
     public function getHits()
     {
-        return $this->hits;
+        return $this->hits ?? [];
     }
     
     public function setHits($hits)
