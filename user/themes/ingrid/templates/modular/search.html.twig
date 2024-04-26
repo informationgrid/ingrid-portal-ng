@@ -11,7 +11,7 @@
                     <p class="intro">von Datenquellen, Metadaten und Kartendiensten</p>
                 </div>
                 {% endif %}
-                <form action="/search" class="input-search" method="get" name="SearchForm" id="SearchForm" onsubmit="">
+                <form action="{{ base_url }}/search" class="input-search" method="get" name="SearchForm" id="SearchForm" onsubmit="">
                     <input type="text" class="input-search-field" placeholder="Suchbegriff eingeben" id="qrystr" name="q" value="{{ query }}">
                     <button class="button round hide-for-medium">
                         <span class="ic-ic-lupe"></span>
