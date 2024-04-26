@@ -9,16 +9,11 @@ class ElasticsearchService
 
     static function convertToQuery($query): string
     {
-        $result = new stdClass();
-        $result->query = new stdClass();
-
         if ($query == "") {
-            $result->query->match_all = new stdClass();
+            $result = array( "match_all" => new stdClass());
         } else {
-            $result->query->simple_query_string = new stdClass();
-            $result->query->simple_query_string->query = $query;
-//        $result->query->simple_query_string->fields = "content";
+            $result = array("simple_query_string" => array("query" => $query));
         }
-        return json_encode($result);
+        return json_encode(array("query" => $result));
     }
 }

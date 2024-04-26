@@ -2,45 +2,33 @@
 {% set partner_logo = theme_var('search_partner_logo_enabled') %}
 
 {% set counter = counter %}
-{% set hit = hit %}
-{% set uuid = getHitUuid(hit) %}
-{% set class = getHitClass(hit) %}
-{% set className = getHitClassName(hit) %}
-{% set title = getHitTitle(hit) %}
-{% set summary = getHitSummary(hit) %}
-{% set types = getHitTypes(hit) %}
-{% set time = getHitTime(hit) %}
-{% set partner = getHitPartner(hit) %}
-{% set isOpendata = getHitIsOpendata(hit) %}
-{% set isInspire = getHitIsInspire(hit) %}
-{% set hasAccessContraint = getHitHasAccessContraint(hit) %}
 
-{% set detailLink = "/trefferanzeige?doccuid=" ~ uuid %}
+{% set detailLink = "/trefferanzeige?doccuid=" ~ hit.uuid %}
 
 <div class="data">
     <div class="teaser-data search">
-        {% if uuid %}
+        {% if hit.uuid %}
             <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
         {% endif %}
-        {{ hit_macros.render_hit_types(types, true) }}
+        {{ hit_macros.render_hit_types(hit.types, true) }}
         {% if partner_logo %}
-            {{ hit_macros.render_hit_logo(partner) }}
+            {{ hit_macros.render_hit_logo(hit.partner) }}
         {% endif %}
         <div class="helper icon">
-            {{ hit_macros.render_metadata_icon(class, className) }}
+            {{ hit_macros.render_metadata_icon(hit.metaClass, hit.metaClassName) }}
         </div>
-        {{ hit_macros.render_hit_searchterm(isInspire, isOpendata, hasAccessContraint) }}
-        <a href="{{ detailLink }}" title="{{ title }}">
-            <h2 class="header">{{ title }}</h2>
+        {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint) }}
+        <a href="{{ detailLink }}" title="{{ hit.title }}">
+            <h2 class="header">{{ hit.title }}</h2>
         </a>
-        {{ hit_macros.render_hit_time("Aktualität der Daten", time) }}
-        {% if summary %}
+        {{ hit_macros.render_hit_time("Aktualität der Daten", hit.time) }}
+        {% if hit.summary %}
         <p class="data-text">
-            {{ summary }}
+            {{ hit.summary }}
         </p>
         {% endif %}
-        {{ hit_macros.render_hit_types(types, true, true) }}
-        <a href="{{ detailLink }}" title="{{ title }}">
+        {{ hit_macros.render_hit_types(hit.types, true, true) }}
+        <a href="{{ detailLink }}" title="{{ hit.title }}">
             <span class="ic-ic-arrow arrow"></span>
         </a>
         {% include 'partials/search/result/hit/metadata/expand/result_hit_expand.html.twig' with {hit:hit, counter: counter} %}

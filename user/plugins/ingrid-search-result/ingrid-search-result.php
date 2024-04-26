@@ -84,11 +84,8 @@ class IngridSearchResultPlugin extends Plugin
             $query = $this->grav['uri']->query('q') ?: "";
             $results = $this->service->getSearchResults($query);
 
-            $this->grav['twig']->twig_vars['search_result_query'] = $query;
-            $this->grav['twig']->twig_vars['search_result_numOfHits'] = $results->getNumOfHits();
-            $this->grav['twig']->twig_vars['search_result_numOfPages'] = $results->getNumOfPages();
-            $this->grav['twig']->twig_vars['search_result_numPage'] = $results->getNumPage();
-            $this->grav['twig']->twig_vars['search_result_hits'] = $results->getHits();
+            $this->grav['twig']->twig_vars['search_result'] = $results;
+            $this->grav['twig']->twig_vars['query'] = $query;
         }
     }
 

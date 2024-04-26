@@ -6,9 +6,13 @@ use Grav\Common\GPM\Response;
 
 class SearchResult
 {
+    /** @var int */
     var $numOfHits;
+    /** @var int */
     var $numOfPages;
+    /** @var int */
     var $numPage;
+    /** @var SearchResultHit[] */
     var $hits;
 
 
@@ -42,7 +46,7 @@ class SearchResult
         $this->numPage = $numPage;
     }
 
-    public function getHits()
+    public function getHits() : array
     {
         return $this->hits ?? [];
     }
