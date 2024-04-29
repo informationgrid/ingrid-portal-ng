@@ -1,7 +1,7 @@
 {# @var hit \Grav\Plugin\SearchResultHit #}
 {% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
 
-{% set detailLink = "/trefferanzeige?doccuid=" ~ hit.uuid ~ "&type=address" %}
+{% set detailLink = base_url ~ "/detail?docuuid=" ~ hit.uuid ~ "&type=address" %}
 
 <div class="data">
     <div class="teaser-data search">

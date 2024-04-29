@@ -1,12 +1,12 @@
 <?php
+
 namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
+use Grav\Common\GPM\Response;
 use Grav\Common\Plugin;
 use Grav\Common\Twig\Twig;
-use Grav\Common\GPM\Response;
-use Laminas\Xml\Security as XmlSecurity;
-use SimpleXMLElement;
+use GuzzleHttp\Client;
 
 /**
  * Class InGridDetailPlugin
@@ -74,14 +74,15 @@ class InGridDetailPlugin extends Plugin
         echo "<script>console.log('InGrid Detail');</script>";
     }
 
-    public function onTwigSiteVariables() {
-            
+    public function onTwigSiteVariables()
+    {
+
         if (!$this->isAdmin()) {
             $uuid = $this->grav['uri']->query('docuuid');
             $type = $this->grav['uri']->query('type');
             $testIDF = $this->grav['uri']->query('testIDF');
-            
-            $api = $this->grav['config']->get('plugins.ingrid-detail.api_url');
+
+            $api = getenv('INGRID_API');
 
             if (empty($type)) {
                 $type = "metadata";
@@ -93,9 +94,14 @@ class InGridDetailPlugin extends Plugin
             $response = null;
 
             if ($testIDF) {
-                $response = file_get_contents('user-data://test/detail/'.$type.'/idf/'.$testIDF);
+                $response = file_get_contents('user-data://test/detail/' . $type . '/idf/' . $testIDF);
             } else if ($uuid && $api) {
-                $response = Response::get($host);
+//                $response = Response::get($host);
+                $client = new Client(['base_uri' => $api]);
+                $responseContent = $client->request('POST', 'portal/search', [
+                    'body' => $this->transformQuery($uuid)
+                ])->getBody()->getContents();
+                $response = json_decode($responseContent)->hits[0]->_source->idf;
             }
 
             if ($response) {
@@ -129,6 +135,12 @@ class InGridDetailPlugin extends Plugin
         require_once(__DIR__ . '/twig/DetailMetadataTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new DetailAddressTwigExtension());
         $this->grav['twig']->twig->addExtension(new DetailMetadataTwigExtension());
+    }
+
+    private function transformQuery(string $uuid): string
+    {
+        $query = array("query" => array("ids" => array("values" => array($uuid))));
+        return json_encode($query);
     }
 
 }

@@ -195,7 +195,7 @@ class DetailMetadataParserIdf
             }
 
             $streets = [];
-            $tmpStreets = IdfHelper::getNodeList($tmpNode, "./gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString/text()");
+            $tmpStreets = IdfHelper::getNodeList($tmpNode, "./gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString/text()") ?? [];
             foreach ($tmpStreets as $tmpStreet) {
                 $tmpArray = explode(',', $tmpStreet);
                 foreach ($tmpArray as $tmp) {
