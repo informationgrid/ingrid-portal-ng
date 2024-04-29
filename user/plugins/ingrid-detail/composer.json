@@ -14,7 +14,8 @@
     }
   ],
   "require": {
-    "php": ">=7.1.3"
+    "php": ">=8.3",
+    "guzzlehttp/guzzle": "^7.0"
   },
   "autoload": {
     "psr-4": {
@@ -22,13 +23,13 @@
     },
     "classmap":  ["ingrid-detail.php"],
     "files": [
-      "/classes/detail/parser/address/DetailAddressParser.php",
-      "/classes/detail/parser/address/DetailAddressParserIdf.php",
-      "/classes/detail/parser/metadata/DetailMetadataParser.php",
-      "/classes/detail/parser/metadata/DetailMetadataParserIdf.php",
-      "/classes/detail/models/DetailAddress.php",
-      "/classes/detail/models/DetailMetadata.php",
-      "/classes/utils/IdfHelper.php"
+      "classes/detail/parser/address/DetailAddressParser.php",
+      "classes/detail/parser/address/DetailAddressParserIdf.php",
+      "classes/detail/parser/metadata/DetailMetadataParser.php",
+      "classes/detail/parser/metadata/DetailMetadataParserIdf.php",
+      "classes/detail/models/DetailAddress.php",
+      "classes/detail/models/DetailMetadata.php",
+      "classes/utils/IdfHelper.php"
     ]
   }
 }

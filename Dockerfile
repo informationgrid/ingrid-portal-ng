@@ -72,6 +72,7 @@ COPY data /usr/share/grav-admin/user/data
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-search-result && composer update
+RUN cd /usr/share/grav-admin/user/plugins/ingrid-detail && composer update
 
 COPY entrypoint.sh /entrypoint.sh
 #COPY grav.ini $PHP_INI_DIR/conf.d/
