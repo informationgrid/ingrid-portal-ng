@@ -2,47 +2,16 @@
 
 namespace Grav\Plugin;
 
-class SearchResult
+readonly class SearchResult
 {
-    var int $numOfHits;
-    var int $numOfPages;
-    var int $numPage;
-    /** @var SearchResultHit[] */
-    var array $hits;
 
-
-    public function getNumOfHits(): int
+    public function __construct(
+        public int   $numOfHits,
+        public int   $numOfPages,
+        public int   $numPage,
+        /** @var SearchResultHit[] */
+        public array $hits)
     {
-        return $this->numOfHits;
-    }
-    
-    public function setNumOfHits($numOfHits): void
-    {
-        $this->numOfHits = $numOfHits;
-    }
-    
-    public function getNumOfPages(): int
-    {
-        return $this->numOfPages;
-    }
-    
-    public function setNumOfPages($numOfPages): void
-    {
-        $this->numOfPages = $numOfPages;
     }
 
-    public function getNumPage(): int
-    {
-        return $this->numPage;
-    }
-    
-    public function setNumPage($numPage): void
-    {
-        $this->numPage = $numPage;
-    }
-
-    public function setHits($hits): void
-    {
-        $this->hits = $hits;
-    }
 }

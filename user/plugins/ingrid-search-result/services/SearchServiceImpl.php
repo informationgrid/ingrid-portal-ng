@@ -28,12 +28,12 @@ class SearchServiceImpl implements SearchService
             'body' => ElasticsearchService::convertToQuery($query)
         ]);
         $result = json_decode($apiResponse->getBody()->getContents());
-        $output = new SearchResult();
-        $output->setNumOfHits($result->totalHits ?? 0);
-        $output->setNumOfPages($result->numOfPages ?? 0);
-        $output->setNumPage($result->numPage ?? 0);
-        $output->setHits(SearchResponseTransformerClassic::parseHits($result->hits ?? null));
-        return $output;
+        return new SearchResult(
+            numOfHits: $result->totalHits ?? 0,
+            numOfPages: $result->numOfPages ?? 0,
+            numPage: $result->numPage ?? 0,
+            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null)
+        );
     }
 
 }

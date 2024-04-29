@@ -9,12 +9,12 @@ class SearchServiceMock implements SearchService
     {
         $response = file_get_contents('user-data://test/search/result.json');
         $result = json_decode($response) ?? [];
-        $output = new SearchResult();
-        $output->setNumOfHits($result->numOfHits ?? 0);
-        $output->setNumOfPages($result->numOfPages ?? 0);
-        $output->setNumPage($result->numPage ?? 0);
-        $output->setHits(SearchResponseTransformerClassic::parseHits($result->hits ?? null));
-        return $output;
+        return new SearchResult(
+            numOfHits: $result->numOfHits ?? 0,
+            numOfPages: $result->numOfPages ?? 0,
+            numPage: $result->numPage ?? 0,
+            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null)
+        );
     }
 
 }
