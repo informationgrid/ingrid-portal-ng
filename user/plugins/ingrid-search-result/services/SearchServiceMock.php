@@ -5,7 +5,7 @@ namespace Grav\Plugin;
 class SearchServiceMock implements SearchService
 {
 
-    public function getSearchResults($query): SearchResult
+    public function getSearchResults(string $query, int $page): SearchResult
     {
         $response = file_get_contents('user-data://test/search/result.json');
         $result = json_decode($response) ?? [];

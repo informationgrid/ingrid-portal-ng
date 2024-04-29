@@ -83,7 +83,8 @@ class IngridSearchResultPlugin extends Plugin
 
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: "";
-            $results = $this->service->getSearchResults($query);
+            $page = $this->grav['uri']->query('page') ?: 0;
+            $results = $this->service->getSearchResults($query, $page);
 
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['query'] = $query;
@@ -92,8 +93,8 @@ class IngridSearchResultPlugin extends Plugin
 
     public function onTwigExtensions()
     {
-        require_once(__DIR__ . '/twig/IngridSearchResultHitTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new IngridSearchResultHitTwigExtension());
+//        require_once(__DIR__ . '/twig/IngridSearchResultHitTwigExtension.php');
+//        $this->grav['twig']->twig->addExtension(new IngridSearchResultHitTwigExtension());
     }
 
 }

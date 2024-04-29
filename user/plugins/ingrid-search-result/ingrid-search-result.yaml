@@ -3,3 +3,10 @@ active: true
 route: /search
 hits_num: 10
 mocking: false
+facets: {
+  doc-types: {
+    "terms": {
+      "field": "t01_object.obj_class"
+    }
+  }
+}
