@@ -16,7 +16,7 @@ class ElasticsearchService
         }
         return json_encode(array(
             "from" => $page * $hitsNum,
-            "size" => $hitsNum + 5,
+            "size" => $hitsNum,
             "query" => $result,
             "aggs" => $aggs
         ));

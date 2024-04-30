@@ -139,7 +139,7 @@ class InGridDetailPlugin extends Plugin
 
     private function transformQuery(string $uuid): string
     {
-        $query = array("query" => array("ids" => array("values" => array($uuid))));
+        $query = array("query" => array("term" => array("t01_object.obj_id" => $uuid)));
         return json_encode($query);
     }
 

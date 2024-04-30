@@ -1,5 +1,1 @@
-enabled: true
-active: true
-route: /search
-hits_num: 10
-mocking: true
+mocking: false
