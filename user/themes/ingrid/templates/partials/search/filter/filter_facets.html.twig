@@ -1,14 +1,50 @@
 {# @var facets_config \Grav\Plugin\FacetConfig[] #}
 
 <div id="facets">
-    <div>
-    {% for item in facets_config %}
-        {{ item.label }}
-        <ul>
-            {% for bucket in search_result.facets[item.id].buckets %}
-                <li>{{ bucket.key }} -> {{ bucket.doc_count }}</li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+    <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true" role="tablist">
+        <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
+            <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab"
+               id="facet-content-accordion-label" aria-expanded="false" aria-selected="false"
+               aria-controls="facet-content-accordion"><span>Filter</span></a>
+            <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content="" role="tabpanel"
+                 aria-labelledby="facet-content-accordion-label" aria-hidden="true" id="facet-content-accordion"
+                 style="overflow: hidden; outline: none;" tabindex="1">
+                <div class="boxes">
+                    {% for item in facets_config %}
+                        <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
+                            data-allow-all-closed="true" role="tablist">
+                            <li class="accordion-item is-active" data-accordion-item="">
+                                <a href="#" class="accordion-title" aria-controls="type-accordion" role="tab"
+                                   id="type-accordion-label" aria-expanded="true" aria-selected="true">
+                                    <span class="text">{{ item.label }}</span>
+                                </a>
+                                <div class="accordion-content" data-tab-content="" role="tabpanel"
+                                     aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
+                                     style="display: block;">
+                                    <div class="boxes">
+                                        {% for bucket in search_result.facets[item.id].buckets %}
+                                            <div class="form-element boxed">
+                                                <div class="input-check">
+                                                    <div class="control-group">
+                                                        <label class="control  control--checkbox " for="facet-inspire">
+                                                            <input id="facet-inspire" type="checkbox"
+                                                                   onclick=""
+                                                                   autocomplete="off">
+                                                            <span class="control__indicator"></span>
+                                                            <span class="nr-results">({{ bucket.doc_count }})</span>
+                                                            <span class="text">{{ bucket.key }}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
