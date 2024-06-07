@@ -1,0 +1,14 @@
+{# @var facets_config \Grav\Plugin\FacetConfig[] #}
+
+<div id="facets">
+    <div>
+    {% for item in facets_config %}
+        {{ item.label }}
+        <ul>
+            {% for bucket in search_result.facets[item.id].buckets %}
+                <li>{{ bucket.key }} -> {{ bucket.doc_count }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </div>
+</div>

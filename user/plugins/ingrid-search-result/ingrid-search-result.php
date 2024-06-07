@@ -88,6 +88,7 @@ class IngridSearchResultPlugin extends Plugin
 
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['query'] = $query;
+            $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
         }
     }
 

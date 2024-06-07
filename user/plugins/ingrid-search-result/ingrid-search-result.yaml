@@ -1,12 +1,26 @@
 enabled: true
 active: true
 route: /search
+route-detail: /detail
 hits_num: 10
 mocking: false
-facets: {
-  doc-types: {
-    "terms": {
-      "field": "t01_object.obj_class"
+facet_config: [
+  {
+    id: "doc-types",
+    label: "Dokumententyp",
+    query: {
+      "terms": {
+        "field": "t01_object.obj_class"
+      }
     }
-  }
-}
+  },
+  {
+    id: "provider",
+    label: "Anbieter",
+    query: {
+      "terms": {
+        "field": "provider"
+      }
+    }
+  },
+]

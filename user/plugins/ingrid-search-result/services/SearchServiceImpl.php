@@ -9,16 +9,19 @@ class SearchServiceImpl implements SearchService
 {
 
     private string $api;
-    private array $facets;
+    private $facets;
     private int $hitsNum;
     private Client $client;
     private $log;
 
+
     function __construct($grav)
     {
+        $facet_config = $grav['config']->get('plugins.ingrid-search-result.facet_config');
+
         $this->api = getenv('INGRID_API');
         $this->hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
-        $this->facets = $grav['config']->get('plugins.ingrid-search-result.facets');
+        $this->facets = $this->mapFacets($facet_config);
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];
     }
@@ -39,20 +42,29 @@ class SearchServiceImpl implements SearchService
             numOfHits: $result->totalHits ?? 0,
             numOfPages: $result->numOfPages ?? 0,
             numPage: $result->numPage ?? 0,
-            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null)
+            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null),
+            facets: (array)$result->aggregations ?? []
         );
     }
 
-    /**
-     * @param string $query
-     * @param int $page
-     * @return string
-     */
-    public function transformQuery(string $query, int $page): string
+    private function transformQuery($query, $page): string
     {
         $result = ElasticsearchService::convertToQuery($query, $this->facets, $page, $this->hitsNum);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;
+    }
+
+    /**
+     * @param FacetConfig[] $facets
+     * @return object
+     */
+    private function mapFacets(array $facets): object
+    {
+        $result = array();
+        foreach ($facets as $facet) {
+            $result[$facet['id']] = $facet['query'];
+        }
+        return (object)$result;
     }
 
 }
