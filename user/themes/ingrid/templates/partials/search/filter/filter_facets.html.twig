@@ -1,5 +1,6 @@
 {# @var facets_config \Grav\Plugin\FacetConfig[] #}
 
+<form action="{{ uri }}" method="post" name="updateFacets" id="updateFacets">
 <div id="facets">
     <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true" role="tablist">
         <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
@@ -26,9 +27,13 @@
                                             <div class="form-element boxed">
                                                 <div class="input-check">
                                                     <div class="control-group">
-                                                        <label class="control  control--checkbox " for="facet-inspire">
-                                                            <input id="facet-inspire" type="checkbox"
-                                                                   onclick=""
+                                                        <label class="control  control--checkbox " for="facet-{{ item.id }}-{{ bucket.key }}">
+                                                            <input id="facet-{{ item.id }}-{{ bucket.key }}" type="checkbox" name="{{ item.id }}[]"
+                                                                   value="{{ bucket.key }}"
+                                                                    {% if bucket.key in selected_facets[item.id] %}
+                                                                   checked
+                                                                   {% endif %}
+                                                                   onchange="submitForm()"
                                                                    autocomplete="off">
                                                             <span class="control__indicator"></span>
                                                             <span class="nr-results">({{ bucket.doc_count }})</span>
@@ -48,3 +53,10 @@
         </div>
     </div>
 </div>
+</form>
+
+<script>
+    function submitForm() {
+        document.getElementById('updateFacets').submit();
+    }
+</script>

@@ -13,7 +13,8 @@ class SearchServiceMock implements SearchService
             numOfHits: $result->numOfHits ?? 0,
             numOfPages: $result->numOfPages ?? 0,
             numPage: $result->numPage ?? 0,
-            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null)
+            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null),
+            facets: []
         );
     }
 

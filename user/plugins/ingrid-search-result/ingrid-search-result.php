@@ -76,6 +76,10 @@ class IngridSearchResultPlugin extends Plugin
     public function onPageInitialized(): void
     {
         echo "<script>console.log('InGrid Search result');</script>";
+        $uri = $this->grav['uri'];
+        if ($uri->path() === '/search' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->handleCheckboxSubmission();
+        }
     }
 
     public function onTwigSiteVariables()
@@ -89,13 +93,48 @@ class IngridSearchResultPlugin extends Plugin
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
+            $this->grav['twig']->twig_vars['selected_facets'] = $this->getSelectedFacets();
         }
     }
 
     public function onTwigExtensions()
     {
-//        require_once(__DIR__ . '/twig/IngridSearchResultHitTwigExtension.php');
-//        $this->grav['twig']->twig->addExtension(new IngridSearchResultHitTwigExtension());
+    }
+
+    private function handleCheckboxSubmission(): void
+    {
+        $inputOptions = $_POST;
+        $current_url = $this->grav['uri']->url;
+
+        $uri = $this->grav['uri'];
+        // Get the full current URL without query parameters
+        $base_url = $uri->base() . $uri->path();
+
+        $current_query = $uri->query();  // This retrieves the entire query string
+
+        // Parse the existing query string to an array
+        parse_str($current_query, $params);
+
+        foreach ($inputOptions as $key => $value) {
+            $params[$key] = $value;  // Add or update the 'newparam'
+
+            // Check if the new parameter is already there to avoid endless redirection
+            if ($uri->param($key) !== $value) {
+                // Build the new query string with all parameters
+                $query_string = http_build_query($params);
+
+                // Construct the new URL with the updated query string
+                $new_url = $base_url . '?' . $query_string;
+
+                // Redirect to the new URL
+                $this->grav->redirect($new_url);
+            }
+        }
+    }
+
+    private function getSelectedFacets()
+    {
+        return $this->grav['uri']->query(null, true);
     }
 
 }
