@@ -5,6 +5,27 @@ en:
     HITS_NUMBER: Number of hits
     HITS_NUMBER_HELP: Define number of hits
 de:
+  facet-label:
+    special-types: Ergebnistypen
+    doc-types: Metadaten
+    partner: Anbieter
+  doc-types:
+    0: Fachaufgabe
+    1: Geodatensatz
+    2: Literatur
+    3: Geodatendienst
+    4: Projekt
+    5: Datensammlung
+    6: Information
+  special-types:
+    inspire: INSPIRE
+    open-data: Open Data
+    websites: Webseiten
+    maps: Karten
+    adv: AdV
+  partner:
+    be: Berlin
+    bund: Bund
   PLUGIN_INGRID_SEARCH_RESULT:
     API_URL: InGrid-API-URL
     API_URL_HELP: InGrid-API-URL eintragen

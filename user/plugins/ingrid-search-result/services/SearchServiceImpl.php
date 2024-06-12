@@ -13,15 +13,16 @@ class SearchServiceImpl implements SearchService
     private int $hitsNum;
     private Client $client;
     private $log;
+    private array $facet_config;
 
 
     function __construct($grav)
     {
-        $facet_config = $grav['config']->get('plugins.ingrid-search-result.facet_config');
+        $this->facet_config = $grav['config']->get('plugins.ingrid-search-result.facet_config');
 
         $this->api = getenv('INGRID_API');
         $this->hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
-        $this->facets = $this->mapFacets($facet_config);
+        $this->facets = $this->mapFacets($this->facet_config);
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];
     }
@@ -43,7 +44,7 @@ class SearchServiceImpl implements SearchService
             numOfPages: $result->numOfPages ?? 0,
             numPage: $result->numPage ?? 0,
             hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null),
-            facets: (array)$result->aggregations ?? []
+            facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config),
         );
     }
 
@@ -62,7 +63,13 @@ class SearchServiceImpl implements SearchService
     {
         $result = array();
         foreach ($facets as $facet) {
-            $result[$facet['id']] = $facet['query'];
+            if (property_exists((object)$facet, 'queries')) {
+                foreach ($facet['queries'] as $subfacet_id => $subfacet_value) {
+                    $result[$subfacet_id] = $subfacet_value;
+                }
+            } else {
+                $result[$facet['id']] = $facet['query'];
+            }
         }
         return (object)$result;
     }

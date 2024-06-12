@@ -11,6 +11,7 @@ readonly class SearchResult
         public int   $numPage,
         /** @var SearchResultHit[] */
         public array $hits,
+        /** @var FacetResult[] */
         public array $facets
     )
     {

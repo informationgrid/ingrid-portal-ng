@@ -25,6 +25,8 @@
     "files": [
       "model/SearchResult.php",
       "model/SearchResultHit.php",
+      "model/FacetResult.php",
+      "model/FacetItem.php",
       "services/SearchService.php",
       "services/SearchServiceImpl.php",
       "services/SearchServiceMock.php",

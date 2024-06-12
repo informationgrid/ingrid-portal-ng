@@ -6,6 +6,70 @@ hits_num: 10
 mocking: false
 facet_config: [
   {
+    id: "special-types",
+    label: "Ergebnistypen",
+    queries: {
+      "inspire": {
+        "filter": {
+          "term": {
+            "t04_search.searchterm": "inspireidentifiziert"
+          }
+        }
+      },
+      "open-data": {
+        "filter": {
+          "bool": {
+            "should": [
+              {
+                "term": {
+                  "t04_search.searchterm": "opendata"
+                }
+              },
+              {
+                "term": {
+                  "t04_search.searchterm": "opendataident"
+                }
+              }
+            ]
+          }
+        }
+
+      },
+      "websites": {
+        "filter": {
+          "term": {
+            "datatype": "www"
+          }
+        }
+      },
+      "maps": {
+        "filter": {
+          "term": {
+            "capabilities_url": "http.*"
+          }
+        }
+      },
+      "adv": {
+        "filter": {
+          "bool": {
+            "should": [
+              {
+                "term": {
+                  "t04_search.searchterm": "AdVMIS"
+                }
+              },
+              {
+                "term": {
+                  "t04_search.searchterm": "AdV"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
     id: "doc-types",
     label: "Dokumententyp",
     query: {
@@ -15,11 +79,11 @@ facet_config: [
     }
   },
   {
-    id: "provider",
+    id: "partner",
     label: "Anbieter",
     query: {
       "terms": {
-        "field": "provider"
+        "field": "partner"
       }
     }
   },

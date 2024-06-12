@@ -15,8 +15,9 @@ http_x_forwarded:
   port: true
   ip: true
 languages:
-  supported: null
-  default_lang: null
+  supported:
+    - de
+  default_lang: de
   include_default_lang: true
   include_default_lang_file_extension: true
   translations: true

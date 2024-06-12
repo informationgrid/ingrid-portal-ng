@@ -1,58 +1,64 @@
 {# @var facets_config \Grav\Plugin\FacetConfig[] #}
+{# @var search_result \Grav\Plugin\SearchResult #}
 
+{{ search_result.facets['partner'].dynamic.bund.docCount }}
 <form action="{{ uri }}" method="post" name="updateFacets" id="updateFacets">
-<div id="facets">
-    <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true" role="tablist">
-        <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
-            <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab"
-               id="facet-content-accordion-label" aria-expanded="false" aria-selected="false"
-               aria-controls="facet-content-accordion"><span>Filter</span></a>
-            <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content="" role="tabpanel"
-                 aria-labelledby="facet-content-accordion-label" aria-hidden="true" id="facet-content-accordion"
-                 style="overflow: hidden; outline: none;" tabindex="1">
-                <div class="boxes">
-                    {% for item in facets_config %}
-                        <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
-                            data-allow-all-closed="true" role="tablist">
-                            <li class="accordion-item is-active" data-accordion-item="">
-                                <a href="#" class="accordion-title" aria-controls="type-accordion" role="tab"
-                                   id="type-accordion-label" aria-expanded="true" aria-selected="true">
-                                    <span class="text">{{ item.label }}</span>
-                                </a>
-                                <div class="accordion-content" data-tab-content="" role="tabpanel"
-                                     aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
-                                     style="display: block;">
-                                    <div class="boxes">
-                                        {% for bucket in search_result.facets[item.id].buckets %}
-                                            <div class="form-element boxed">
-                                                <div class="input-check">
-                                                    <div class="control-group">
-                                                        <label class="control  control--checkbox " for="facet-{{ item.id }}-{{ bucket.key }}">
-                                                            <input id="facet-{{ item.id }}-{{ bucket.key }}" type="checkbox" name="{{ item.id }}[]"
-                                                                   value="{{ bucket.key }}"
-                                                                    {% if bucket.key in selected_facets[item.id] %}
-                                                                   checked
-                                                                   {% endif %}
-                                                                   onchange="submitForm()"
-                                                                   autocomplete="off">
-                                                            <span class="control__indicator"></span>
-                                                            <span class="nr-results">({{ bucket.doc_count }})</span>
-                                                            <span class="text">{{ bucket.key }}</span>
-                                                        </label>
+    <div id="facets">
+        <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true"
+             role="tablist">
+            <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
+                <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab"
+                   id="facet-content-accordion-label" aria-expanded="false" aria-selected="false"
+                   aria-controls="facet-content-accordion"><span>Filter</span></a>
+                <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content=""
+                     role="tabpanel"
+                     aria-labelledby="facet-content-accordion-label" aria-hidden="true" id="facet-content-accordion"
+                     style="outline: none;" tabindex="1">
+                    <div class="boxes">
+                        {% for item in search_result.facets %}
+                            <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
+                                data-allow-all-closed="true" role="tablist">
+                                <li class="accordion-item is-active" data-accordion-item="">
+                                    <a href="#" class="accordion-title" aria-controls="type-accordion" role="tab"
+                                       id="type-accordion-label" aria-expanded="true" aria-selected="true">
+                                        <span class="text">{{ ('facet-label.' ~ item.id) | t}}</span>
+                                    </a>
+                                    <div class="accordion-content" data-tab-content="" role="tabpanel"
+                                         aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
+                                         style="display: block;">
+                                        <div class="boxes">
+                                            {% for bucket in item.items %}
+                                                <div class="form-element boxed">
+                                                    <div class="input-check">
+                                                        <div class="control-group">
+                                                            <label class="control control--checkbox "
+                                                                   for="facet-{{ item.id }}-{{ bucket.value }}">
+                                                                <input id="facet-{{ item.id }}-{{ bucket.value }}"
+                                                                       type="checkbox" name="{{ item.id }}[]"
+                                                                       value="{{ bucket.value }}"
+                                                                        {% if bucket.value in selected_facets[item.id] %}
+                                                                            checked
+                                                                        {% endif %}
+                                                                       onchange="submitForm()"
+                                                                       autocomplete="off">
+                                                                <span class="control__indicator"></span>
+                                                                <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                <span class="text">{{ (item.id ~ '.' ~ bucket.value) | t }}</span>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        {% endfor %}
+                                            {% endfor %}
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    {% endfor %}
+                                </li>
+                            </ul>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 
 <script>
