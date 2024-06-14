@@ -1,8 +1,7 @@
 {# @var facets_config \Grav\Plugin\FacetConfig[] #}
 {# @var search_result \Grav\Plugin\SearchResult #}
 
-{{ search_result.facets['partner'].dynamic.bund.docCount }}
-<form action="{{ uri }}" method="post" name="updateFacets" id="updateFacets">
+<form action="{{ base_url }}/search?{{ uri.query }}" method="post" name="updateFacets" id="updateFacets">
     <div id="facets">
         <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true"
              role="tablist">

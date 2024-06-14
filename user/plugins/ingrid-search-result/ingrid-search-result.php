@@ -107,7 +107,7 @@ class IngridSearchResultPlugin extends Plugin
 
         $uri = $this->grav['uri'];
         // Get the full current URL without query parameters
-        $base_url = $uri->base() . $uri->path();
+        $base_url = $uri->path();
 
         $query_string = array();
         foreach ($inputOptions as $key => $value) {
