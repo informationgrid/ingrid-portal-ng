@@ -18,7 +18,7 @@ languages:
   supported:
     - de
   default_lang: de
-  include_default_lang: true
+  include_default_lang: false
   include_default_lang_file_extension: true
   translations: true
   translations_fallback: true

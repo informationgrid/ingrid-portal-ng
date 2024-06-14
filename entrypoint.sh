@@ -17,6 +17,7 @@ rsync -rlD --delete \
 sed -ri "s/theme: quark/theme: ${THEME}/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
 sed -ri "s/supported: null/supported:\n    - de/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
 sed -ri "s/default_lang: null/default_lang: de/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
+sed -ri "s/include_default_lang: true/include_default_lang: false/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
 mkdir -p assets backup cache images logs tmp
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2
