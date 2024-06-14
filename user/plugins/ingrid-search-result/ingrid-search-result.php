@@ -88,7 +88,7 @@ class IngridSearchResultPlugin extends Plugin
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: "";
             $page = $this->grav['uri']->query('page') ?: 0;
-            $results = $this->service->getSearchResults($query, $page);
+            $results = $this->service->getSearchResults($query, $page, $this->getSelectedFacets());
 
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['query'] = $query;
@@ -104,32 +104,26 @@ class IngridSearchResultPlugin extends Plugin
     private function handleCheckboxSubmission(): void
     {
         $inputOptions = $_POST;
-        $current_url = $this->grav['uri']->url;
 
         $uri = $this->grav['uri'];
         // Get the full current URL without query parameters
         $base_url = $uri->base() . $uri->path();
 
-        $current_query = $uri->query();  // This retrieves the entire query string
-
-        // Parse the existing query string to an array
-        parse_str($current_query, $params);
-
+        $query_string = array();
         foreach ($inputOptions as $key => $value) {
             $params[$key] = $value;  // Add or update the 'newparam'
 
             // Check if the new parameter is already there to avoid endless redirection
             if ($uri->param($key) !== $value) {
                 // Build the new query string with all parameters
-                $query_string = http_build_query($params);
-
-                // Construct the new URL with the updated query string
-                $new_url = $base_url . '?' . $query_string;
-
-                // Redirect to the new URL
-                $this->grav->redirect($new_url);
+                $query_string[] = http_build_query($params);
             }
         }
+        // Construct the new URL with the updated query string
+        $new_url = $base_url . '?' . join('&', $query_string);
+
+        // Redirect to the new URL
+        $this->grav->redirect($new_url);
     }
 
     private function getSelectedFacets()

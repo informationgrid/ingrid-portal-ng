@@ -10,62 +10,76 @@ facet_config: [
     label: "Ergebnistypen",
     queries: {
       "inspire": {
-        "filter": {
-          "term": {
-            "t04_search.searchterm": "inspireidentifiziert"
+        query: {
+          "filter": {
+            "term": {
+              "t04_search.searchterm": "inspireidentifiziert"
+            }
           }
-        }
+        },
+        search: "t04_search.searchterm:inspireidentifiziert"
       },
       "open-data": {
-        "filter": {
-          "bool": {
-            "should": [
-              {
-                "term": {
-                  "t04_search.searchterm": "opendata"
+        query: {
+          "filter": {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "t04_search.searchterm": "opendata"
+                  }
+                },
+                {
+                  "term": {
+                    "t04_search.searchterm": "opendataident"
+                  }
                 }
-              },
-              {
-                "term": {
-                  "t04_search.searchterm": "opendataident"
-                }
-              }
-            ]
+              ]
+            }
           }
-        }
-
+        },
+        search: "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
       },
       "websites": {
-        "filter": {
-          "term": {
-            "datatype": "www"
+        query: {
+          "filter": {
+            "term": {
+              "datatype": "www"
+            }
           }
-        }
+        },
+        search: "datatype:www"
       },
       "maps": {
-        "filter": {
-          "term": {
-            "capabilities_url": "http.*"
+        query: {
+          "filter": {
+            "term": {
+              "capabilities_url": "http.*"
+            }
           }
-        }
+        },
+        search: "capabilities_url:http.*"
       },
       "adv": {
-        "filter": {
-          "bool": {
-            "should": [
-              {
-                "term": {
-                  "t04_search.searchterm": "AdVMIS"
+        query: {
+          "filter": {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "t04_search.searchterm": "advmis"
+                  }
+                },
+                {
+                  "term": {
+                    "t04_search.searchterm": "adv"
+                  }
                 }
-              },
-              {
-                "term": {
-                  "t04_search.searchterm": "AdV"
-                }
-              }
-            ]
+              ]
+            }
           }
-        }
+        },
+        search: "t04_search.searchterm:AdVMIS t04_search.searchterm:AdV"
       }
     }
   },
@@ -76,7 +90,8 @@ facet_config: [
       "terms": {
         "field": "t01_object.obj_class"
       }
-    }
+    },
+    search: "t01_object.obj_class:%d"
   },
   {
     id: "partner",
@@ -85,6 +100,7 @@ facet_config: [
       "terms": {
         "field": "partner"
       }
-    }
+    },
+    search: "partner:%s"
   },
 ]
