@@ -1,5 +1,3 @@
-{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
-
 {# theme_var #}
 {% set isTimeInDescription = theme_var('detail_hit_time_in_description') %}
 {% set sortAddressTyp = theme_var('detail_hit_address_order') %}
@@ -7,121 +5,131 @@
 
 {# var #}
 {% set hit = hit %}
-{% set title = getMetadataTitle(hit) %}
-{% set class = getMetadataType(hit) %}
+{% set uuid = hit.uuid %}
+{% set title = hit.title %}
+{% set class = hit.type %}
 {% set className = "TODO" %}
-{% set summary = getMetadataSummary(hit) %}
-{% set timeRefs = getMetadataTimeRefs(hit) %}
-{% set mapRefs = getMetadataMapRefs(hit) %}
-{% set linkRefs = getMetadataLinkRefs(hit) %}
-{% set useRefs = getMetadataUseRefs(hit) %}
-{% set infoRefs = getMetadataInfoRefs(hit) %}
-{% set metaInfoRefs = getMetadataMetaInfoRefs(hit) %}
-{% set contactRefs = getMetadataContactRefs(hit)|sortContacts(sortContactByType) %}
-{% set linkDownloadRefs = linkRefs|filterLinks("download") %}
-{% set linkObjectRefs = linkRefs|filterLinks("object") %}
-{% set linkSubordinatedRefs = linkRefs|filterLinks("subordinated") %}
-{% set linkSuperiorRefs = linkRefs|filterLinks("superior") %}
-{# labels #}
-{% set hash_overview = "detail_overview" %}
-{% set hash_description = "detail_description" %}
-{% set hash_area = "detail_area" %}
-{% set hash_links = "detail_links" %}
-{% set hash_use = "detail_use" %}
-{% set hash_info = "detail_info" %}
-{% set hash_dataquality = "detail_dataquality" %}
-{% set hash_additional = "detail_additional" %}
-{% set hash_contact = "detail_contact" %}
-{% set hash_metadata_info = "metadata_info" %}
-{% set hash_bibliographical_info = "bibliographical_info" %}
-{% set hash_time = "detail_time" %}
+{% set accessConstraint = hit.accessConstraint %}
+
+{# Vorschau #}
+{% set previews = hit.previews %}
+
+{# Beschreibung #}
+{% set summary = hit.summary %}
+
+{# Zeitbezug #}
+{% set timeRefs = {} %}
+{% set timeRefs = addKeyValue(timeRefs, "atTime", hit.time_atTime) %}
+{% set timeRefs = addKeyValue(timeRefs, "beginTime", hit.time_beginTime) %}
+{% set timeRefs = addKeyValue(timeRefs, "endTime", hit.time_endTime) %}
+{% set timeRefs = addKeyValue(timeRefs, "fromType", hit.time_fromType) %}
+{% set timeRefs = addKeyValue(timeRefs, "status", hit.time_status) %}
+{% set timeRefs = addKeyValue(timeRefs, "period", hit.time_period) %}
+{% set timeRefs = addKeyValue(timeRefs, "interval", hit.time_interval) %}
+{% set timeRefs = addKeyValue(timeRefs, "descr", hit.time_descr) %}
+{% set timeRefs = addKeyValue(timeRefs, "creation", hit.time_creation) %}
+{% set timeRefs = addKeyValue(timeRefs, "publication", hit.time_publication) %}
+{% set timeRefs = addKeyValue(timeRefs, "revision", hit.time_revision) %}
+{% set timeRefs = addKeyValue(timeRefs, "measureValue", hit.time_measureValue) %}
+{% set timeRefs = addKeyValue(timeRefs, "measureUnit", hit.time_measureUnit) %}
+
+{# Raumbezug #}
+{% set mapRefs = {} %}
+{% set mapRefs = addKeyValue(mapRefs, "geographicElement", hit.map_geographicElement) %}
+{% set mapRefs = addKeyValue(mapRefs, "regionKey", hit.map_regionKey) %}
+{% set mapRefs = addKeyValue(mapRefs, "areaHeight", hit.map_areaHeight) %}
+{% set mapRefs = addKeyValue(mapRefs, "loc_descr", hit.map_loc_descr) %}
+{% set mapRefs = addKeyValue(mapRefs, "polygon_wkt", hit.map_polygon_wkt) %}
+{% set mapRefs = addKeyValue(mapRefs, "referencesystem_id", hit.map_referencesystem_id) %}
+
+{# Verweise und Downloads #}
+{% set linkRefs = {} %}
+{% set linkRefs = addKeyValue(linkRefs, "links", hit.links) %}
+{% set linkRefs = addKeyValue(linkRefs, "parent_uuid", hit.parent_uuid) %}
+
+{% set linkAccessRefs = linkRefs.links|filterLinks("access") %}
+{% set linkDownloadRefs = linkRefs.links|filterLinks("download") %}
+{% set linkObjectRefs = linkRefs.links|filterLinks("object") %}
+{% set linkOtherRefs = linkRefs.links|filterLinks("other") %}
+{% set linkSubordinatedRefs = linkRefs.links|filterLinks("subordinated") %}
+{% set linkSuperiorRefs = linkRefs.links|filterLinks("superior") %}
+
+
+{# Nutzung #}
+{% set useRefs = {} %}
+{% set useRefs = addKeyValue(useRefs, "useLimitations", hit.use_useLimitations) %}
+{% set useRefs = addKeyValue(useRefs, "accessConstraints", hit.use_accessConstraints) %}
+{% set useRefs = addKeyValue(useRefs, "useConstraints", hit.use_useConstraints) %}
+
+{# Fachinformationen #}
+{% set infoRefs = hit.info %}
+
+{% set infoRefs_additional = {} %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "publish_id", hit.info_additional_publish_id) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "usage", hit.info_additional_usage) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "purpose", hit.info_additional_purpose) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "legal_basis", hit.info_additional_legal_basis) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "export_criteria", hit.info_additional_export_criteria) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "language_code", hit.info_additional_language_code) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "conformity", hit.info_additional_conformity) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "dataformat", hit.info_additional_dataformat) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "geodatalink", hit.info_additional_geodatalink) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "media", hit.info_additional_media) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "order_instructions", hit.info_additional_order_instructions) %}
+
+{% set infoRefs_keyword = {} %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "inspire_themes", hit.info_keywords_inspire_themes) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "priority_dataset", hit.info_keywords_priority_dataset) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "spatial_scope", hit.info_keywords_spatial_scope) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "gemet_concepts", hit.info_keywords_gemet_concepts) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "adv_group", hit.info_keywords_adv_group) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "invekos", hit.info_keywords_invekos) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "topic_category", hit.info_keywords_topic_category) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "search_terms", hit.info_keywords_search_terms) %}
+
+{# Kontakt #}
+{% set contactRefs = hit.contacts %}
+
+{# Metadaten Informationen #}
+{% set metaInfoRefs = {} %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "uuid", hit.meta_info_uuid) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "mod_time", hit.meta_info_mod_time) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "lang", hit.meta_info_lang) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "hierarchy_level", hit.meta_info_hierarchy_level) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "contact_meta", hit.meta_info_contact_meta) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_data_source_name", hit.meta_info_plug_data_source_name) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_providers", hit.meta_info_plug_providers) %}
+
+{# Datenqualität #}
+{% set dataQualityRefs = {} %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "completenessOmission", hit.data_quality_completenessOmission) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "accuracyVertical", hit.data_quality_accuracyVertical) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "accuracyGeographic", hit.data_quality_accuracyGeographic) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "completenessCommission", hit.data_quality_completenessCommission) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "conceptualConsistency", hit.data_quality_conceptualConsistency) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "domainConsistency", hit.data_quality_domainConsistency) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "formatConsistency", hit.data_quality_formatConsistency) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "topologicalConsistency", hit.data_quality_topologicalConsistency) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "temporalConsistency", hit.data_quality_temporalConsistency) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "thematicClassificationCorrectness", hit.data_quality_thematicClassificationCorrectness) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "nonQuantitativeAttributeAccuracy", hit.data_quality_nonQuantitativeAttributeAccuracy) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "quantitativeAttributeAccuracy", hit.data_quality_quantitativeAttributeAccuracy) %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "relativeInternalPositionalAccuracy", hit.data_quality_relativeInternalPositionalAccuracy) %}
+
 {# booleans #}
 {% set hasOverview = (links|length > 0 or useConstraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
 {% set hasDescription = (alternateTitle or summary) %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% set hasTimeData = (timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime or timeRefs.status or  timeRefs.period or timeRefs.interval or (timeRefs.measureValue and timeRefs.measureUnit)) %}
-{% set hasTimeResource = (timeRefs.timeDate.creation or timeRefs.timeDate.publication or timeRefs.timeDate.revision) %}
+{% set hasTimeResource = (timeRefs.creation or timeRefs.publication or timeRefs.revision) %}
 {% set hasArea = (mapRefs|length > 0) %}
 {% set hasLinks = (linkRefs|length > 0) %}
 {% set hasUse = (useRefs|length > 0) %}
 {% set hasAdditional = "detail_additional" %}
 {% set hasContact = (contactRefs|length > 0) %}
-{% set hasInfo = (infoRefs|length > 0) %}
+{% set hasInfo = (infoRefs_additional|length > 0 or infoRefs_keyword|length > 0 ) %}
 {% set hasDataquality = (dataQualityRefs|length > 0) %}
 {% set hasMetadataInfo = (metaInfoRefs|length > 0) %}
 {% set hasBibliographicalInfo = false %}
 
-<div class="detail" id="detail">
-    <div class="banner-noimage m-filter">
-        <div class="page-wrapper" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
-            <div class="row">
-                <div class="xsmall-24 large-6 xlarge-6 columns">
-                    <a class="helper icon" href="$searchLink" title="Alle Suchergebnisse" rel="noopener noreferrer">
-                        <span class="ic-ic-arrow-left"></span>
-                        <span class="text text-normal">Alle Suchergebnisse</span>
-                    </a>
-                </div>
-                <div class="xsmall-24 large-18 xlarge-18 columns">
-                    <div class="helper icon">
-                        {{ hit_macros.render_metadata_icon(class, className) }}
-                    </div>
-                    <h2>{{ title }}</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row nav-content search-filtered">
-    {# Navigation #}
-        <div class="xsmall-24 large-6 xlarge-6 columns">
-            {% include 'partials/detail/metadata/parts/navigation/detail_metadata_navigation.html.twig' %}
-        </div>
-        <a class="anchor" id="{{ hash_overview }}"></a>
-        <div class="xsmall-24 large-18 xlarge-18 columns">
-    {# FactSheet #}
-            {% if hasOverview %}
-                {% include 'partials/detail/metadata/parts/factsheet/detail_metadata_factsheet.html.twig' %}
-            {% endif %}
-    {# Beschreibung #}
-            {% if hasDescription %}
-                {% include 'partials/detail/metadata/parts/description/detail_metadata_description.html.twig' %}
-            {% endif %}
-    {# Bibliografische Angaben #}
-            {% if hasBibliographicalInfo %}
-                {% include 'partials/detail/metadata/parts/bibliographical_info/detail_metadata_bibliographical_info.html.twig' %}
-            {% endif %}
-        {# Zeitbezug #}
-            {% if not isTimeInDescription and hasTime %}
-                {% include 'partials/detail/metadata/parts/time/detail_metadata_time.html.twig' %}
-            {% endif %}
-        {# Raumbezug #}
-            {% if hasArea %}
-                {% include 'partials/detail/metadata/parts/area/detail_metadata_area.html.twig' %}
-            {% endif %}
-        {# Verweise und Downloads #}
-            {% if hasLinks %}
-                {% include 'partials/detail/metadata/parts/links/detail_metadata_links.html.twig' %}
-            {% endif %}
-        {# Nutzung #}
-            {% if hasUse %}
-                {% include 'partials/detail/metadata/parts/use/detail_metadata_use.html.twig' %}
-            {% endif %}
-        {# Kontakt #}
-            {% if hasContact %}
-                {% include 'partials/detail/metadata/parts/contact/detail_metadata_contact.html.twig' %}
-            {% endif %}
-        {# Fachinformationen #}
-            {% if hasInfo %}
-                {% include 'partials/detail/metadata/parts/information/detail_metadata_information.html.twig' %}
-            {% endif %}
-        {# Datenqualität #}
-            {% if hasDataquality %}
-                {% include 'partials/detail/metadata/parts/dataquality/detail_metadata_dataquality.html.twig' %}
-            {% endif %}
-        {# Infos zur Datensatzbeschreibung #}
-            {% if hasMetadataInfo %}
-                {% include 'partials/detail/metadata/parts/metadata_info/detail_metadata_metadata_info.html.twig' %}
-            {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

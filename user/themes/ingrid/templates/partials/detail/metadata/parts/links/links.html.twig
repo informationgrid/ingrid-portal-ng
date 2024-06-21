@@ -1,0 +1,58 @@
+{# Verweise und Downloads #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_links }}"></a>
+    {{ hit_macros.render_section_title("SEARCH_DETAIL.REFERENCES_TAB"|t) }}
+    <div class="row columns">
+    {# URL des Zugangs #}
+        {% if linkAccessRefs and linkAccessRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
+            <a class="anchor" id="{{ hash_links }}_access_url"></a>
+            {{ hit_macros.render_section_link_image_list(tmpTitle, linkAccessRefs, "external") }}
+        </div>
+        {% endif %}
+    {# Downloads #}
+        {% if linkDownloadRefs and linkDownloadRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.DOWNLOADS"|t %}
+            <a class="anchor" id="{{ hash_links }}_downloads"></a>
+            {{ hit_macros.render_section_link_image_list(tmpTitle, linkDownloadRefs, "download") }}
+        </div>
+        {% endif %}
+    {# Links #}
+        {% if linkObjectRefs and linkObjectRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.INFO_LINKS"|t %}
+            <a class="anchor" id="{{ hash_links }}_info_links"></a>
+            {{ hit_macros.render_section_link_image_list(tmpTitle, linkObjectRefs) }}
+        </div>
+        {% endif %}
+    {# Weitere Verweise #}
+        {% if linkOtherRefs and linkOtherRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.WWW_REFERENCES"|t %}
+            <a class="anchor" id="{{ hash_links }}_www_references"></a>
+            {{ hit_macros.render_section_link_image_list(tmpTitle, linkOtherRefs, "external") }}
+        </div>
+        {% endif %}
+    {# Untergeordnete Objekte #}
+        {% if linkSubordinatedRefs and linkSubordinatedRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.SUBORDINATED_REFERENCES"|t %}
+            <a class="anchor" id="{{ hash_links }}_subordinated_references"></a>
+            {{ hit_macros.render_section_link_image_list(tmpTitle, linkSubordinatedRefs) }}
+        </div>
+        {% endif %}
+    {# Übergeordnetet Objekte #}
+        {% if linkSuperiorRefs and linkSuperiorRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.SUPERIOR_REFERENCES"|t %}
+            <a class="anchor" id="{{ hash_links }}_superior_references"></a>
+            {{ hit_macros.render_section_link_image_list(tmpTitle, linkSuperiorRefs) }}
+        </div>
+        {% endif %}
+    {# Identifikator des übergeordneten Metadatensatzes #}
+        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_PARENT_IDENTIFIER"|t, linkRefs.parent_uuid ) }}
+    </div>
+</div>

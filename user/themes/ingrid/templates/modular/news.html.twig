@@ -6,7 +6,7 @@
         <div class="teaser-data-projects" id="rss_news_teaser">
             <div class="row">
                 <div class="columns text-center">
-                    <h2>Aktuelles</h2>
+                    <h2>{{ "RSS.TITLE"|t }}</h2>
                 </div>
             </div>
             <div class="row">
@@ -43,7 +43,7 @@
                             </p>
                             {% endif %}
                             {% if provider %}
-                            <h6 class="no-margin">Anbieter</h6>
+                            <h6 class="no-margin">{{ "RSS.PROVIDER"|t }}</h6>
                             <p>{{ provider }}</p>
                             {% endif %}
                             <a target="_blank" class="external-link" href="{{ url }}" title="{{ title }}">
@@ -56,7 +56,7 @@
             </div>
             <div class="row">
                 <div class="columns text-center">
-                    <button type="button" class="button outline" onclick="location.href='/neuigkeiten'" title="Neuste Meldungen">Weitere Meldungen<span class="ic-ic-angle-down"></span>
+                    <button type="button" class="button outline" onclick="location.href='{{ page.find('/rss').url }}'" title="Neuste Meldungen">{{ "RSS.ALL_NEWS"|t }}<span class="ic-ic-angle-down"></span>
                     </button>
                 </div>
             </div>

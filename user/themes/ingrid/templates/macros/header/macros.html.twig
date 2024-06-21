@@ -3,17 +3,19 @@
   {% for menuentry in menu %}
     {% set page_active = '' %}
     {% set page_url = '' %}
+    {% set page_title = '' %}
     {% for p in pages.children.visible %}
       {% if menuentry.path == p.folder %}
         {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
         {% set page_url = p.url %}
+        {% set page_title = p.title %}
       {% endif %}
     {% endfor %}
     {% if page_url is not empty %}
-      <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ menuentry.title|e }}">
+      <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
         <div class="link-menu-tab">
             {% if menuentry.icon %}<span class="ic {{menuentry.icon}}"></span>{% endif %}
-            <span class="text">{{ menuentry.title |e }}</span>
+            <span class="text">{{ page_title|t|e }}</span>
         </div>
       </a>
     {% endif %}
@@ -30,18 +32,19 @@
       <div class="highlighted">
       {% for menuentry in menu %}
         {% if menuentry.highlighted %}
-        
           {% set page_active = '' %}
           {% set page_url = '' %}
+          {% set page_title = '' %}
           {% for p in pages.children.visible %}
             {% if menuentry.path == p.folder %}
               {% set page_active = (p.active or p.activeChild) ? 'is-active' : '' %}
               {% set page_url = p.url %}
+              {% set page_title = p.title %}
             {% endif %}
           {% endfor %}
           {% if page_url is not empty %}
-            <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ menuentry.title |e }}">
-              <span class="text">{{ menuentry.title |e }}</span>
+            <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_title|t|e }}">
+              <span class="text">{{ page_title|t|e }}</span>
             </a>
           {% endif %}
         {% endif %}
@@ -51,15 +54,17 @@
         {% if not menuentry.highlighted %}
           {% set page_active = '' %}
           {% set page_url = '' %}
+          {% set page_title = '' %}
           {% for p in pages.children.visible %}
             {% if menuentry.path == p.folder %}
               {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
               {% set page_url = p.url %}
+              {% set page_title = p.title %}
             {% endif %}
           {% endfor %}
           {% if page_url is not empty %}
-            <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ menuentry.title |e }}">
-              <span class="text">{{ menuentry.title |e }}</span>
+            <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_title|t|e }}">
+              <span class="text">{{ page_title|t|e }}</span>
             </a>
           {% endif %}
         {% endif %}
@@ -67,6 +72,6 @@
     </div>
     <div class="menu-sub-links">
     </div>
-  </div> 
+  </div>
 
 {% endmacro %}

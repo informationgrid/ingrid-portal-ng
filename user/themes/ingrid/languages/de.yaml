@@ -1,0 +1,811 @@
+PAGES:
+  HOME: Startseite
+  SEARCH: Suche
+  MAP: Karten
+  MEASURE: Messwerte
+  CATALOG: Kataloge
+  API: API
+  API_CONTENT: API Übersicht
+  ABOUT: Über InGrid
+  PROVIDER: Informationsanbieter
+  DATASOURCE: Datenquellen
+  HELP: Hilfe
+  CONTACT: Kontakt
+  SITEMAP: Sitemap
+  IMPRINT: Impressum
+  PRIVACY: DATENSCHUTZ
+  ACCESSIBILITY: Barrierefreiheit
+  RSS: Neuigkeiten
+  DETAIL: Detail
+
+COMMON:
+  GENERAL_YES: Ja
+  GENERAL_NO: Nein
+  ALT_ICON_INTERN: interner Link
+  ALT_ICON_EXTERN: externer Link
+  ALT_ICON_ACTIVE: aktiver Link
+  ALT_ICON_SAVE: Icon Diskette
+  ALT_ICON_PLUS: Icon Plus
+  ALT_ICON_MINUS: Icon Minus
+  ALT_ICON_DOWN: nach unten
+  ALT_ICON_CLOCK: Sanduhr Ikon
+  ALT_ICON_SNS: SNS Logo
+  ALT_ICON_FOLDER: Icon Ordner
+  ALT_IMAGE_PREVIEW: Vorschaubild
+  TOOLTIP_LINK_EXTERN: Link öffnet in neuem Fenster
+  TOOLTIP_LINK_EXTERN_RESULT: Treffer anzeigen - Neues Fenster öffnet sich
+  TOOLTIP_LINK_EXTERN_DOCUMENT: Link öffnet {0} Dokument in neuem Fenster
+  TOOLTIP_LINK_EXTERN_SNS: Ein Dienst vom Semantic Network Service. Link öffnet in neuem Fenster
+  RESULT_SHOWMAP_TOOLTIP: Ergebnis als interaktive Karte anzeigen lassen
+  RESULT_SHOWMAP_TOOLTIP_SHORT: Kartenansicht öffnen
+  FORM_BUTTON_SUBMIT_TOOLTIP: Ihre Mitteilung absenden
+  FORM_BUTTON_SHOW_TOOLTIP: Suchergebnisse anzeigen
+  FORM_BUTTON_SAVE_TOOLTIP: Auswahl speichern
+  RESULT_SHOWSERVICE_TOOLTIP: Zeige den Dienst, der für die Darstellung verwendet wird
+  RESULT_SHOWCOUPLEDRESOURCE_TOOLTIP: Zeige die gekoppelte Resource zu diesem Dienst (Kartenobjekt)
+  RESULT_SHOW_XML: XML anzeigen
+  FORM_CRITERIA: Auswahlkriterien
+  FORM_SELECTALL: ------ Alles auswählen ------
+  FORM_PARTNER: Partner
+  FORM_GROUPING: Gruppierung
+  FORM_GROUPING_NO: Keine
+  FORM_GROUPING_PARTNER: Partner
+  FORM_GROUPING_PROVIDER: Informationsanbieter
+  FORM_GROUPING_DOMAIN: Domäne
+  FORM_BUTTON_SHOW: Anzeigen
+  FORM_BUTTON_SUBMIT: Absenden
+  FORM_BUTTON_SAVE: Speichern
+  FORM_BUTTON_DELETE: Löschen
+  FORM_BUTTON_RELOAD: Neu laden
+  FORM_QUERYSTRING: Suchbegriff
+  FORM_ERROR: Fehler im Formular_
+  RESULT_HITS: Treffer
+  RESULT_NOTITLE: Kein Titel
+  RESULT_PARTNER: Partner
+  RESULT_PROVIDER: Anbieter
+  RESULT_SOURCE: Quelle
+  RESULT_SHOWMAP: Kartenansicht öffnen
+  RESULT_SHOWCOORD: Zeige Punktkoordinaten
+  RESULT_SHOWCOORD_UNKNOWN: Unbekannt
+  RESULT_HASACCESSCONTRAINTS: Zugang geschützt
+  RESULT_EMPTY: Suchergebnis ist leer
+  RESULT_GROUP_HEADER: Gruppierte Ergebnisse für
+  RESULT_GROUP_SHOWALL: Zeige alle Ergebnisse für
+  RESULT_FILTER_HEADER: Nur Ergebnisse für
+  RESULT_NORESULTS: Keine Suchergebnisse gefunden.
+  RESULT_INTERRUPTED: Die Ausgabe der Suchergebnisse wurde vorzeitig unterbrochen.
+  RESULT_COUNTER_CATALOG: '<h3><strong class="search-result-hits">{0} - {1}</strong> von <strong>{2}</strong> Ergebnissen in <strong>{3}</strong></h3>'
+  RESULT_COUNTER_CATALOG_WITHSEARCHVALUE: '<h3><strong class="search-result-hits">{0}<strong> Ergebnisse zu "<strong>{1}</strong>"</h3>'
+  RESULT_COUNTER_CATALOG_GROUPED: '<h3><strong class="search-result-hits">{0}</strong> Ergebnisse in <strong>{1}</strong></h3>'
+  RESULT_COUNTER_RANKED: '<h3><strong class="search-result-hits">{0} - {1}</strong> von <strong>{2}</strong> Ergebnissen</h3>'
+  RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<h3><strong class="search-result-hits">{0}</strong> Ergebnisse zu <strong>"{1}"</strong></h3>'
+  RESULT_COUNTER_RANKED_GROUPED: '<h3><strong class="search-result-hits">{0}</strong> Ergebnisse</h3>'
+  RESULT_NAVIGATION_RANKED: (Seite <strong>{0}</strong> von <strong>{1}</strong>)
+  RESULT_NAVIGATION_RANKED_GROUPED: (Seite <strong>{0}</strong>)
+  RESULT_SEARCH_FOR: Suche nach
+  RESULT_SHOWSERVICE: Zeige Dienst
+  RESULT_SHOWCOUPLEDRESOURCE: Zeige Kartenobjekt
+  MAPS_PAGE_TITLE: Karten
+  MAPS_ERROR_NOFRAMES: Leider kann Ihr Browser keine iframes darstellen.
+  MAPS_LOAD_WMC: Karte laden
+  SEARCH_TYPE_ADDRESS: (Adressen)
+  SEARCH_TYPE_RESEARCH: (Forschungsprojekte)
+  SEARCH_TYPE_LAW: (Rechtsvorschriften)
+  MAPS_ERROR_NONAME: Bitte geben Sie einen Namen an
+  UDK_ADR_CLASS_NAME_0: Institution
+  UDK_ADR_CLASS_NAME_1: Einheit
+  UDK_ADR_CLASS_NAME_2: Person
+  UDK_ADR_CLASS_NAME_3: Freie Adresse
+  KML_PLACEMARK_TITLE: Titel
+  KML_PLACEMARK_DESCRIPTION: Beschreibung
+  KML_PLACEMARK_LONGITUDE: Länge
+  KML_PLACEMARK_LATITUDE: Breite
+  SNS_TOPIC_REF_COMMUNITYTYPE: Gemeinde
+  SNS_TOPIC_REF_DISTRICTTYPE: Kreis
+  SNS_TOPIC_REF_NATIONTYPE: Staat
+  SNS_TOPIC_REF_STATETYPE: Bundesland
+  SNS_TOPIC_REF_CATCHMENTAREATYPE: Wassereinzugsgebiet
+  SNS_TOPIC_REF_ISLANDTYPE: Insel
+  SNS_TOPIC_REF_LANDSCAPETYPE: Landschaft
+  SNS_TOPIC_REF_MOUNTAINTYPE: Berg
+  SNS_TOPIC_REF_MOUNTAINSTYPE: Gebirge
+  SNS_TOPIC_REF_NATURALLANDSCAPETYPE: Naturraum
+  SNS_TOPIC_REF_BIOSPHERETYPE: Biosphäre
+  SNS_TOPIC_REF_NATIONALPARKTYPE: Nationalpark
+  SNS_TOPIC_REF_NATURALPARKTYPE: Naturpark
+  SNS_TOPIC_REF_PROTECTEDAREATYPE: Schutzgebiet
+  SNS_TOPIC_REF_CHANNELTYPE: Kanal
+  SNS_TOPIC_REF_LAKETYPE: See
+  SNS_TOPIC_REF_RESERVOIRTYPE: Stausee
+  SNS_TOPIC_REF_RIVERTYPE: Fluss
+  SNS_TOPIC_REF_SEATYPE: Meer
+  SNS_TOPIC_REF_USE6TYPE: Gemeinde
+  SNS_TOPIC_REF_USE5TYPE: Gemeindeverband
+  SNS_TOPIC_REF_USE4TYPE: Region/Landkreis
+  SNS_TOPIC_REF_USE3TYPE: Regierungsbezirk
+  SNS_TOPIC_REF_USE2TYPE: Bundesland
+  SNS_TOPIC_REF_URBANDISTRICTTYPE: Stadtbezirk
+  SNS_TOPIC_REF_QUARTERTYPE: Stadtteil
+  RESULT_PARTNER_BUND: Bund
+  RESULT_PARTNER_BB: Brandenburg
+  RESULT_PARTNER_BE: Berlin
+  RESULT_PARTNER_BW: Baden-Württemberg
+  RESULT_PARTNER_BY: Bayern
+  RESULT_PARTNER_HB: Bremen
+  RESULT_PARTNER_HE: Hessen
+  RESULT_PARTNER_HH: Hamburg
+  RESULT_PARTNER_MV: Mecklenburg-Vorpommern
+  RESULT_PARTNER_NI: Niedersachsen
+  RESULT_PARTNER_NW: Nordrhein-Westfalen
+  RESULT_PARTNER_RP: Rheinland-Pfalz
+  RESULT_PARTNER_SH: Schleswig-Holstein
+  RESULT_PARTNER_SL: Saarland
+  RESULT_PARTNER_SN: Sachsen
+  RESULT_PARTNER_ST: Sachsen-Anhalt
+  RESULT_PARTNER_TH: Thüringen
+  PASSWORD_STRENGTH_WORST: Ganz Schlecht
+  PASSWORD_STRENGTH_BAD: Schlecht
+  PASSWORD_STRENGTH_WEAK: Schwach
+  PASSWORD_STRENGTH_GOOD: Gut
+  PASSWORD_STRENGTH_STRONG: Stark
+  SERVICE_TYPE_VIEW: WMS
+  SERVICE_TYPE_WMS: WMS
+  SERVICE_TYPE_CSW: CSW
+  SERVICE_TYPE_DISCOVERY: XML
+  SERVICE_TYPE_DOWNLOAD: WFS
+  SERVICE_TYPE_JSON: JSON
+  SERVICE_TYPE_ZIP: ZIP
+  SERVICE_TYPE_PDF: PDF
+  SERVICE_TYPE_COUPLED: Gekoppelte Daten
+  SERVICE_TYPE_PREDEFINED_ATOM: ATOM
+  SERVICE_TYPE_OGC: api_features=API Feature
+  SERVICE_TYPE_OGCAPIFEATURE: API Feature
+  XML_LINK: Metadaten als XML herunterladen
+  XML_LINK_LABEL: XML Darstellung
+  RDF_LINK: Daten als RDF herunterladen
+  RDF_LINK_LABEL: RDF/XML
+  DETAIL_ARROW_PREFIX:
+  LANGUAGE_TITLE: Sprache:
+  STEPS_UVP_PHASE1: Öffentliche Auslegung
+  STEPS_UVP_PHASE2: Erörterungstermin
+  STEPS_UVP_PHASE3: Entscheidung über die Zulassung
+  TOGGLE_APPROVAL_DATE: Nur aktuelle
+  TOGGLE_APPROVAL_DATE_ON: "Nur aktuelle: ein"
+  TOGGLE_APPROVAL_DATE_OFF: "Nur aktuelle: aus"
+  TOGGLE_APPROVAL_DATE_TOOLTIP: Im letzten Jahr bearbeitete sowie laufende Verfahren.
+  MAPCLIENT_GEOCODER_SEARCH_PLACEHOLDER: "Suche: z.B. nach Hannover ..."
+  MAPCLIENT_GEOCODER_SEARCH_ERRORMESSAGE: Keine Ergebnisse ...
+  PLACE: Ort
+  PLACE_NORTH: Nord
+  PLACE_EAST: Ost
+  PLACE_SOUTH: Süd
+  PLACE_WEST: West
+  LINK_COPY: Link in die Zwischenablage kopieren
+  LINK_COPY_HELP: Um eine verlinkte Datei direkt im Dateiexplorer zu öffnen, können Sie über die Icons <img src=&quot;/decorations/layout/ingrid/images/template/windows.png&quot; width=&quot;25&quot;> (Windows) <img src=&quot;/decorations/layout/ingrid/images/template/linux.png&quot; width=&quot;25&quot;> (Linux) den Dateipfad zu der Datei im Langfristspeicher in die Zwischenablage kopieren. Um die Datei über den Browser herunterzuladen, klicken Sie einfach den Link.
+  LINK_COPY_SUCCESS: Link kopiert!
+
+SEARCH:
+  TITLE_SEARCH: Suche
+  TITLE_RESULT: Suchergebnis
+  QUERY_SEARCH: Suche
+  QUERY_INITIAL: Suchbegriff eingeben
+  QUERY_SUBMIT: Suche
+  ERROR_QUERYFormat: 'Ungültige Suchanfrage, wie z.B. fehlerhafte Verwendung von Sonderzeichen oder schliessende Zeichen fehlen (Klammern etc.). <br>Weitere Informationen über InGrid Suchanfragen finden Sie unter <a target="_blank" href="https://www.ingrid-oss.eu/latest/system/querysyntax.html" title="InGrid Query">InGrid Query</a>.'
+  PORTLET_TITLE_1: InGrid
+  PORTLET_TITLE_2: Indexieren, Recherchieren, Visualisieren und Teilen
+  PORTLET_TITLE_3: von Datenquellen, Metadaten und Kartendiensten
+
+CATEGORIES:
+  TITLE: Stöbern Sie in diesen Kategorien
+
+RSS:
+  TITLE: Aktuelles
+  PROVIDER: Anbieter
+  ALL_NEWS: Weitere Meldungen
+
+SEARCH_DETAIL:
+  ERROR_NO_DETAILS_AVAILABLE: Keine Detailinformationen verfügbar.
+  LEGAL_BASIS: Weitere Rechtliche Grundlagen
+  REFERENCES: Verweise
+  SUPERIOR_REFERENCES: Übergeordnete Objekte
+  SUBORDINATED_REFERENCES: Untergeordnete Objekte
+  CITATION: Zitat für diesen Datensatz
+  BIBLIOGRAPHY: Literaturverzeichnis
+  BIBLIOGRAPHICAL_INFO: Bibliografische Angaben
+  CROSS_REFERENCES: Querverweise
+  CROSS_REFERENCES_OUT: Querverweise
+  CROSS_REFERENCES_IN: Querverweise von
+  COUPLED_DATA: Daten
+  COUPLED_SERVICE: Dienste
+  DOWNLOADS: Downloads
+  WWW_REFERENCES: Weitere Verweise
+  ACCESS_URL: URL des Zugangs
+  ADDRESSES: Adressen
+  ADDRESS: Adresse
+  SUPERIOR_ADDRESS: Übergeordnete Adresse
+  SUBORDINATED_ADDRESSES: Untergeordnete Adressen
+  POSTBOX_LABEL: Postfach
+  SUBJECT_REFERENCE: Fachbezug
+  SPACIAL_REFERENCE: Raumbezug
+  TIME_REFERENCE: Zeitbezug
+  TIME_REFERENCE_CONTENT: Aktualität der Daten
+  TIME_REFERENCE_RECORD: Aktualität des Datensatzes
+  AVAILABILITY: Verfügbarkeit
+  DATA_FORMAT: Datenformat
+  INFO_LIMIT_REFERENCES: '<p style="text-align: center;padding: 10px 0 0 0;"><b>Hinweis:</b> Es werden nur die ersten 100 Verweise angezeigt!</p>'
+  TECHNICAL_INFORMATION: Informationen zum Datensatz
+  ADDITIONAL_INFORMATION: Zusatzinformationen
+  SEARCH_TERMS: Suchbegriffe
+  INSPIRE_THEMES: INSPIRE-Themen
+  PRIORITY_DATASET: INSPIRE Priority Dataset
+  SPATIAL_SCOPE: INSPIRE - Räumlicher Anwendungsbereich
+  ADV_GROUP: AdV-Produktgruppe
+  GEMET_CONCEPTS: GEMET-Concepts
+  INSPIRE_INVEKOS: INSPIRE-InVeKoS
+  LAST_CHANGED: letzte Änderung am:
+  OBJECT_CLASS: (Objektklasse)
+  DATARELATIONS: Datenbezüge
+  DATARELATIONS_NEXT: weitere Datenbezüge
+  DATARELATIONS_ADDRESSES: Datenbezüge aller nachgeordneter Adressen
+  DATARELATIONS_ADDRESSES_NEXT: weitere Datenbezüge nachgeordneter Adressen
+  GENERATED: Generiert am
+  CATEGORY: (Kategorie)
+  TIME_FROM:
+  TIME_TO: -
+  TIME_UNTIL: bis
+  TIME_SINCE: seit
+  TIME_UNTILNOW: , gegenwärtig aktuell
+  TIME_UNTILUNKNOWN: , gegenwärtige Aktualität unklar
+  TIME_AT:
+  TIME_MEASUREMENT: Zeitliche Genauigkeit
+  IPLUG_NAME_POSTFIX_UDK_ADDRESS: (Adressen)
+  IPLUG_NAME_POSTFIX_UDK_OBJECT: (Objekte)
+  BACK: Zurück zu InGrid-Portal
+  BACK_TO_RESULTS: Alle Suchergebnisse
+  CONTACT: Kontakt
+  USAGE: Nutzung
+  SUBJECT_METADATA_INFO: Informationen zum Metadatensatz
+  SUBJECT_METADATA_INFO_TAB: Metadatensatz
+  GEODATA_LINK: Geodatenlink
+  THESAURUS: Verschlagwortung
+  ADDITIONAL_INFORMATION_TAB: Zusatzinformationen
+  SUBJECT_REFERENCE_TAB: Fachinformationen
+  REFERENCES_TAB: Verweise und Downloads
+  SPACIAL_REFERENCE_TAB: Raumbezug
+  GENERAL_TAB: Übersicht
+  AVAILABILITY_TAB: Nutzung
+  GEOTHESAURUS_SPACIAL_REFERENCE: Lage der Geodaten (in WGS84)
+  SPATIAL_REF_VALUE_X1: SW Länge/Breite
+  SPATIAL_REF_VALUE_Y1: NO Länge/Breite
+  SPATIAL_REF_VALUE_X2: Ost/O
+  SPATIAL_REF_VALUE_Y2: Nord/N
+  POINTOFCONTACT_METADATA: Metadatum
+  POINTOFCONTACT_SERVICE: Dienst / Service
+  PREVIEW: Vorschau
+  T01_OBJECT_OBJ_ID: Objekt-ID
+  T01_OBJECT_PARENT_IDENTIFIER: Identifikator des übergeordneten Metadatensatzes
+  T01_OBJECT_ORG_ID: Objekt-ID eines Fremdsystems
+  T01_OBJECT_CAT_ID: ID des Katalogs
+  T01_OBJECT_ROOT: IstRootKnoten
+  T01_OBJECT_OBJ_CLASS: ID der Objektklasse
+  T01_OBJECT_DATASET_ALTERNATE_NAME: Kurzbezeichnung
+  T01_OBJECT_LOC_DESCR: Erläuterung zum Raumbezug
+  T01_OBJECT_POLYGON_WKT: Begrenzungspolygon als WKT
+  T01_OBJECT_TIME_FROM: Durch die Ressource abgedeckte Zeitspanne > von
+  T01_OBJECT_TIME_TO: Durch die Ressource abgedeckte Zeitspanne > bis
+  T01_OBJECT_TIME_TYPE: "Zeitbezug: am, seit (bis: Zeitpunkt des Abrufs), seit (bis: unbekannter Zeitpunkt), von"
+  T01_OBJECT_TIME_DESCR: Erläuterung zum Zeitbezug
+  T01_OBJECT_TIME_PERIOD: Periodizität
+  T01_OBJECT_TIME_INTERVAL: Intervall der Erhebung
+  T01_OBJECT_TIME_ALLE: Intervall (alle)
+  T01_OBJECT_TIME_STATUS: Status
+  T01_OBJECT_AVAIL_ACCESS_NOTE: Nutzungsanmerkung
+  T01_OBJECT_PUBLISH_ID: Veröffentlichung
+  T01_OBJECT_PUBLISH_ID_1: Internet
+  T01_OBJECT_PUBLISH_ID_2: Intranet
+  T01_OBJECT_PUBLISH_ID_3: amtsintern
+  T01_OBJECT_METADATA_CHARACTER_SET: Zeichensatz des Metadatensatzes
+  T01_OBJECT_DATASET_CHARACTER_SET: Zeichensatz des Datensatzes
+  T01_OBJECT_METADATA_STANDARD_NAME: Metadatenstandardname
+  T01_OBJECT_METADATA_STANDARD_VERSION: Metadatenstandardversion
+  T01_OBJECT_VERTICAL_EXTENT: Höhe
+  T01_OBJECT_VERTICAL_EXTENT_MINIMUM: Minimum
+  T01_OBJECT_VERTICAL_EXTENT_MAXIMUM: Maximum
+  T01_OBJECT_VERTICAL_EXTENT_UNIT: Maßeinheit
+  T01_OBJECT_VERTICAL_EXTENT_VDATUM: Vertikaldatum
+  T01_OBJECT_INFO_NOTE: Herstellungszweck
+  T01_OBJECT_DATASET_USAGE: Eignung / Nutzung
+  T01_OBJECT_METADATA_LANGUAGE: Sprache Metadatensatz
+  T01_OBJECT_DATA_LANGUAGE: Sprache des Datensatzes
+  T01_OBJECT_FEES: Kosten
+  T01_OBJECT_ORDERING_INSTRUCTIONS: Bestellinformationen
+  T01_OBJECT_CREATE_ID: Erstellt von
+  T01_OBJECT_MOD_ID: Geändert von
+  T01_OBJECT_CREATE_TIME: Erstellt am
+  T01_OBJECT_MOD_TIME: Aktualität der Metadaten
+  T01_OBJECT_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_METHOD: Herstellungsprozess
+  T011_OBJ_GEO_COORD: Raumbezug
+  T011_OBJ_GEO_REFERENCESYSTEM_ID: Koordinatensystem
+  T011_OBJ_GEO_REC_EXACT: Lagegenauigkeit
+  T011_OBJ_GEO_REC_GRADE: Erfassungsgrad
+  T011_OBJ_GEO_COVERAGE: Datendefizit
+  T011_OBJ_GEO_SPECIAL_BASE: Fachliche Grundlage
+  T011_OBJ_GEO_DATA_BASE: Datengrundlage
+  T011_OBJ_GEO_HIERARCHY_LEVEL: Datensatz / Datenserie  
+  T011_OBJ_GEO_VECTOR_TOPOLOGY_LEVEL: Topologieinformation
+  T011_OBJ_GEO_POS_ACCURACY_VERTICAL: Höhengenauigkeit
+  T011_OBJ_GEO_KEYC_INCL_W_DATASET: "Schlüsselkatalog: Im Datensatz vorhanden"
+  T011_OBJ_GEO_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_SCALE: Erstellungsmaßstab
+  T011_OBJ_GEO_SCALE_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_SCALE_LINE: Zeilennummer
+  T011_OBJ_GEO_SCALE_SCALE: Maßstab
+  T011_OBJ_GEO_SCALE_RESOLUTION_GROUND: Bodenauflösung
+  T011_OBJ_GEO_SCALE_RESOLUTION_SCAN: Scanauflösung
+  T012_OBJ_OBJ_OBJECT_FROM_ID: Elternobjekt
+  T012_OBJ_OBJ_OBJECT_TO_ID: "Verweise: Objekt-ID"
+  T012_OBJ_OBJ_TYP: "Verweise: Beziehungstyp"
+  T012_OBJ_OBJ_LINE: Zeilennummer
+  T012_OBJ_OBJ_SPECIAL_REF: Fachlicher Bezug (Objekt-Objekt)
+  T012_OBJ_OBJ_SPECIAL_NAME: Feldname / Verweisbeziehung
+  T012_OBJ_OBJ_DESCR: Verweisname (erw. Auswahlliste)
+  T012_OBJ_OBJ_MOD_TYPE: Änderungsflag
+  T012_OBJ_ADR_ADR_ID: Adressverweise
+  T012_OBJ_ADR_OBJ_ID: Adressen
+  T012_OBJ_ADR_TYP: Adresstyp
+  T012_OBJ_ADR_TYP0: Auskunft
+  T012_OBJ_ADR_TYP1: Datenhalter
+  T012_OBJ_ADR_TYP2: Datenverantwortung
+  T012_OBJ_ADR_TYP3: Anbieter
+  T012_OBJ_ADR_TYP4: Benutzer
+  T012_OBJ_ADR_TYP5: Vertrieb
+  T012_OBJ_ADR_TYP6: Herkunft
+  T012_OBJ_ADR_TYP7: Datenerfassung
+  T012_OBJ_ADR_TYP8: Auswertung
+  T012_OBJ_ADR_TYP9: Herausgeber
+  T012_OBJ_ADR_TYP11: Autor
+  T012_OBJ_ADR_TYP999: Sonstige Angaben
+  T012_OBJ_ADR_LINE: Zeilennummer
+  T012_OBJ_ADR_SPECIAL_REF: "Adresse: Fachlicher Bezug"
+  T012_OBJ_ADR_SPECIAL_NAME: "Adresse: Feldname / Verweisbeziehung"
+  T012_OBJ_ADR_MOD_TIME: Änderungsdatum
+  T012_OBJ_ADR_MOD_TYPE: Änderungsflag
+  T015_LEGIST_OBJ_ID: Objekt-ID
+  T015_LEGIST_LINE: Zeilennummer
+  T015_LEGIST_NAME: Weitere rechtliche Grundlagen
+  T015_LEGIST_MOD_TYPE: Änderungsflag
+  T0112_MEDIA_OPTION_OBJ_ID: Objekt-ID
+  T0112_MEDIA_OPTION_LINE: Zeilennummer
+  T0112_MEDIA_OPTION_MEDIUM: Medien
+  T0112_MEDIA_OPTION_MEDIUM_NAME: Medium
+  T0112_MEDIA_OPTION_TRANSFER_SIZE: Datenvolumen
+  T0112_MEDIA_OPTION_MEDIUM_NOTE: Speicherort
+  T0112_MEDIA_OPTION_MOD_TYPE: Änderungsflag
+  T0110_AVAIL_FORMAT_OBJ_ID: Objekt-ID
+  T0110_AVAIL_FORMAT_LINE: Zeilennummer
+  T0110_AVAIL_FORMAT_NAME: Name
+  T0110_AVAIL_FORMAT_VERSION: Version
+  T0110_AVAIL_FORMAT_FILE_DECOMPRESSION_TECHNIQUE: Kompressionstechnik
+  T0110_AVAIL_FORMAT_SPECIFICATION: Spezifikation
+  T0110_AVAIL_FORMAT_MOD_TYPE: Änderungsflag
+  T04_SEARCH_OBJ_ID: Objekt-ID
+  T04_SEARCH_TYPE: Verschlagwortungstyp
+  T04_SEARCH_LINE: Zeilennummer
+  T04_SEARCH_CAT_ID: Katalog ID
+  T04_SEARCH_SEARCHTERM: Freie Suchbegriffe
+  T04_SEARCH_TH_DESC_NO: Thesaurusbegriff Nummer
+  T04_SEARCH_MOD_TYPE: Änderungsflag
+  T017_URL_REF_OBJ_ID: Objekt-ID
+  T017_URL_REF_LINE: Zeilennummer
+  T017_URL_REF_URL_LINK: URL-Verweis
+  T017_URL_REF_SPECIAL_REF: Fachlicher Bezug (URL-Verweis)
+  T017_URL_REF_SPECIAL_NAME: Feldname / Verweisbeziehung (URL-Verweis)
+  T017_URL_REF_DATATYPE: URL-Verweis > Datentyp
+  T017_URL_REF_VOLUME: URL-Verweis > Datenvolumen
+  T017_URL_REF_ICON: URL-Verweis > URL für ein Icon
+  T017_URL_REF_ICON_TEXT: URL-Verweis > URL für einen Text
+  T017_URL_REF_DESCR: Erläuterung zum Verweis
+  T017_URL_REF_CONTENT: Bezeichnung des Verweises
+  T017_URL_REF_URL_TYPE: URL-Typ
+  T017_URL_REF_MOD_TYPE: Änderungsflag
+  T0113_DATASET_REFERENCE_OBJ_ID: Objekt-ID
+  T0113_DATASET_REFERENCE_LINE: Zeilennummer
+  T0113_DATASET_REFERENCE_REFERENCE_DATE: Zeitbezug der Ressource > Wert
+  T0113_DATASET_REFERENCE_TYPE: Zeitbezug der Ressource > Typ
+  T0113_DATASET_REFERENCE_TYPE1: Erstellung
+  T0113_DATASET_REFERENCE_TYPE2: Publikation
+  T0113_DATASET_REFERENCE_TYPE3: Letzte Änderung
+  T0113_DATASET_REFERENCE_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_SPATIAL_REP_OBJ_ID: Object-ID
+  T011_OBJ_GEO_SPATIAL_REP_LINE: Zeilennummer
+  T011_OBJ_GEO_SPATIAL_REP_TYPE: Digitale Repräsentation
+  T011_OBJ_GEO_SPATIAL_REP_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_TOPIC_CAT_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_TOPIC_CAT_LINE: Zeilennummer
+  T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY: ISO-Themenkategorien
+  T011_OBJ_GEO_TOPIC_CAT_MOD_TYPE: Änderungsflag
+  T011_TOWNSHIP_OBJ_ID: Objekt-ID
+  T011_TOWNSHIP_LINE: Zeilennummer
+  T011_TOWNSHIP_TOWNSHIP_NO: Administrative Einheit (Gemeindenummer)
+  T011_TOWNSHIP_MOD_TYPE: Änderungsflag
+  T01_ST_BBOX_LOC_TOWN_NO: Schlüsselfeld für WGS84-Koordinaten
+  T01_ST_BBOX_X1: Bounding-Box > Rechts1 (WGS84)
+  T01_ST_BBOX_Y2: Bounding-Box > Hoch2 (WGS84)
+  T01_ST_BBOX_X2: Bounding-Box > Rechts2 (WGS84)
+  T01_ST_BBOX_Y1: Bounding-Box > Hoch1 (WGS84)
+  T02_ADDRESS_ADR_ID: Adress-ID
+  T02_ADDRESS_ORG_ADR_ID: Orginal Adress-ID eines Fremdsystems
+  T02_ADDRESS_ROOT: IstRootAdresse
+  T02_ADDRESS_TYP: Adresstyp
+  T02_ADDRESS_INSTITUTION: Institution / übergeordnete Einheit(en)
+  T02_ADDRESS_LASTNAME: Nachname
+  T02_ADDRESS_FIRSTNAME: Vorname (nur Person)
+  T02_ADDRESS_ADDRESS: Anrede (Auswahlliste)
+  T02_ADDRESS_TITLE: Titel (nur Person)
+  T02_ADDRESS_STREET: Straße / Hausnummer
+  T02_ADDRESS_STATE_ID: Landkennzeichen
+  T02_ADDRESS_POSTCODE: Postleitzahl (Ort)
+  T02_ADDRESS_CITY: Ort
+  T02_ADDRESS_POSTBOX_PC: Postleitzahl zum Postfach
+  T02_ADDRESS_POSTBOX: Postfach
+  T02_ADDRESS_JOB: Funktion, Aufgabe
+  T02_ADDRESS_DESCR: Notizen
+  T02_ADDRESS_CAT_ID: Katalog-ID
+  T02_ADDRESS_CREATE_ID: Erstellt von
+  T02_ADDRESS_CREATE_TIME: Erstellt am
+  T02_ADDRESS_MOD_ID: Zuletzt geändert von
+  T02_ADDRESS_MOD_TIME: Letzte Änderung der Metadaten
+  T02_ADDRESS_MOD_TYPE: Änderungsflag
+  T02_ADDRESS_HOURS_OF_SERVICE: Servicezeiten
+  T011_OBJ_SERV_OBJ_ID: Object-ID
+  T011_OBJ_SERV_TYPE: Klassifikation des Dienstes
+  T011_OBJ_SERV_TYPE_ART: Art des Dienstes
+  T011_OBJ_SERV_SCALE: Erstellungsmaßstab
+  T011_OBJ_SERV_SCALE_SCALE: Maßstab
+  T011_OBJ_SERV_SCALE_RESOLUTION_GROUND: Bodenauflösung
+  T011_OBJ_SERV_SCALE_RESOLUTION_SCAN: Scanauflösung
+  T011_OBJ_SERV_HISTORY: Historie
+  T011_OBJ_SERV_ENVIRONMENT: Systemumgebung
+  T011_OBJ_SERV_BASE: Basisdaten
+  T011_OBJ_SERV_DESCRIPTION: Erläuterung zum Fachbezug
+  T011_OBJ_SERV_MOD_TYPE: Änderungsflag
+  T011_OBJ_SERV_URL: Service-Url
+  T011_OBJ_SERV_URL_NAME: Name
+  T011_OBJ_SERV_URL_URL: Url
+  T011_OBJ_SERV_URL_DESCRIPTION: Beschreibung
+  T011_OBJ_SERV_VERSION_OBJ_ID: Object-ID
+  T011_OBJ_SERV_VERSION_LINE: Zeilennummer
+  T011_OBJ_SERV_VERSION_VERSION: Version
+  T011_OBJ_SERV_VERSION_MOD_TYPE: Änderungsflag
+  T011_OBJ_SERV_OPERATION: Operation
+  T011_OBJ_SERV_OPERATION_OBJ_ID: Object-ID
+  T011_OBJ_SERV_OPERATION_LINE: Zeilennummer
+  T011_OBJ_SERV_OPERATION_NAME: Name der Operation
+  T011_OBJ_SERV_OPERATION_DESCR: Beschreibung der Operation
+  T011_OBJ_SERV_OPERATION_INVOCATION_NAME: Aufruf der Operation
+  T011_OBJ_SERV_OPERATION_MOD_TYPE: Änderungsflag
+  T011_OBJ_SERV_OP_PLATFORM_OBJ_ID: Object-ID
+  T011_OBJ_SERV_OP_PLATFORM_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_PLATFORM_DCP_LINE: Zeilennummer DCP
+  T011_OBJ_SERV_OP_PLATFORM_PLATFORM: Unterstützte Plattformen
+  T011_OBJ_SERV_OP_PLATFORM_MOD_TYPE: Änderungsflag
+  T01_ST_CLASS_CLASS_ID: Objektklassen Primärschlüssel
+  T01_ST_CLASS_CLASS_NAME: UDK-Klasse Bezeichnung
+  T01_ST_CLASS_USED: notwendig für UDK-Z
+  T01_ST_CLASS_MOD_TYPE: Änderungsflag
+  T01_ST_REGION_LOC_TOWN_NO: Gemeindenummer (8 stellig)
+  T01_ST_REGION_REGION_ID: Gemarkung, Stadtteil usw. (4 stellig)
+  T01_ST_REGION_REGION: Region
+  T01_ST_TOWNSHIP_LOC_TOWN_NO: Gemeindenummer
+  T01_ST_TOWNSHIP_STATE: Bundesand
+  T01_ST_TOWNSHIP_DISTRICT: Regierungsbezirk
+  T01_ST_TOWNSHIP_COUNTRY: Landkreis
+  T01_ST_TOWNSHIP_TOWNSHIP: Gemeinde
+  T011_OBJ_DATA_OBJ_ID: Objekt-ID
+  T011_OBJ_DATA_BASE: Datengrundlage/Methode
+  T011_OBJ_DATA_DESCRIPTION: Erläuterung zum Fachbezug
+  T011_OBJ_DATA_MOD_TYPE: Änderungsflag
+  T011_OBJ_DATA_PARA: Inhalte der Datensammlung/Datenbank
+  T011_OBJ_DATA_PARA_OBJ_ID: Objekt-ID
+  T011_OBJ_DATA_PARA_LINE: Zeilennummer
+  T011_OBJ_DATA_PARA_PARAMETER: Parameter
+  T011_OBJ_DATA_PARA_UNIT: Ergänzende Angaben
+  T011_OBJ_DATA_PARA_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_KEYC: Schlüsselkatalog
+  T011_OBJ_GEO_KEYC_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_KEYC_LINE: Zeilennummer
+  T011_OBJ_GEO_KEYC_SUBJECT_CAT: Titel
+  T011_OBJ_GEO_KEYC_KEY_DATE: Datum
+  T011_OBJ_GEO_KEYC_EDITION: Version
+  T011_OBJ_GEO_KEYC_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_SUPPLINFO_DESCR: Bemerkungen
+  T011_OBJ_GEO_SUPPLINFO_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_SUPPLINFO_LINE: Zeilennummer
+  T011_OBJ_GEO_SUPPLINFO_FEATURE_TYPE: Sachdaten / Attributinformationen
+  T011_OBJ_GEO_SUPPLINFO_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_SYMC: Symbolkatalog
+  T011_OBJ_GEO_SYMC_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_SYMC_LINE: Zeilennummer
+  T011_OBJ_GEO_SYMC_SYMBOL_CAT: Titel
+  T011_OBJ_GEO_SYMC_SYMBOL_DATE: Datum
+  T011_OBJ_GEO_SYMC_EDITION: Version
+  T011_OBJ_GEO_SYMC_MOD_TYPE: Änderungsflag
+  T011_OBJ_GEO_VECTOR: Vektorformat
+  T011_OBJ_GEO_VECTOR_OBJ_ID: Objekt-ID
+  T011_OBJ_GEO_VECTOR_GEOMETRIC_OBJECT_TYPE: Geometrietyp
+  T011_OBJ_GEO_VECTOR_GEOMETRIC_OBJECT_COUNT: Elementanzahl
+  T011_OBJ_GEO_VECTOR_MOD_TYPE: Änderungsflag
+  T011_OBJ_LITERATUR_OBJ_ID: Objekt-ID
+  T011_OBJ_LITERATUR_AUTOR: Autor/Verfasser
+  T011_OBJ_LITERATUR_TYP: Dokumenttyp
+  T011_OBJ_LITERATUR_PUBLISH_IN: Erschienen in
+  T011_OBJ_LITERATUR_VOLUME: Band, Heft
+  T011_OBJ_LITERATUR_SIDES: Seiten
+  T011_OBJ_LITERATUR_PUBLISH_YEAR: Erscheinungsjahr
+  T011_OBJ_LITERATUR_PUBLISH_LOC: Erscheinungsort
+  T011_OBJ_LITERATUR_LOC: Standort
+  T011_OBJ_LITERATUR_DOC_INFO: Weitere bibliographische Angaben
+  T011_OBJ_LITERATUR_BASE: Basisdaten
+  T011_OBJ_LITERATUR_ISBN: ISBN-Nummer des Dokumentes
+  T011_OBJ_LITERATUR_PUBLISHING: Verlag
+  T011_OBJ_LITERATUR_DESCRIPTION: Erläuterung zum Fachbezug
+  T011_OBJ_LITERATUR_PUBLISHER: Herausgeber
+  T011_OBJ_LITERATUR_MOD_TYPE: Änderungsflag
+  T011_OBJ_PROJECT_OBJ_ID: Objekt-ID
+  T011_OBJ_PROJECT_LEADER: Projektleiter
+  T011_OBJ_PROJECT_MEMBER: Beteiligte
+  T011_OBJ_PROJECT_DESCRIPTION: Erläuterung zum Fachbezug
+  T011_OBJ_PROJECT_MOD_TYPE: Änderungsflag
+  T011_OBJ_SERV_OP_CONNPOINT_OBJ_ID: Objekt-ID
+  T011_OBJ_SERV_OP_CONNPOINT_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_CONNPOINT_CONN_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_CONNPOINT_CONNECT_POINT: Zugriffsadresse
+  T011_OBJ_SERV_OP_CONNPOINT_MOD_TYPE: Änderungsflag
+  T011_OBJ_SERV_OP_DEPENDS_OBJ_ID: Objekt-ID
+  T011_OBJ_SERV_OP_DEPENDS_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_DEPENDS_DEP_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_DEPENDS_DEPENDS_ON: Abhängigkeit
+  T011_OBJ_SERV_OP_DEPENDS_MOD_TYPE: Änderungsflag
+  T011_OBJ_SERV_OP_PARA_OBJ_ID: Objekt-ID
+  T011_OBJ_SERV_OP_PARA_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_PARA_PARA_LINE: Zeilennummer
+  T011_OBJ_SERV_OP_PARA_NAME: Parametername
+  T011_OBJ_SERV_OP_PARA_DIRECTION: Parameter > Richtung
+  T011_OBJ_SERV_OP_PARA_DESCR: Parameter > Beschreibung
+  T011_OBJ_SERV_OP_PARA_OPTIONAL: Parameter > Ist Optional
+  T011_OBJ_SERV_OP_PARA_REPEATABILITY: Parameter > Mehrfachangabe möglich
+  T011_OBJ_SERV_OP_PARA_MOD_TYPE: Änderungsflag
+  T0111_ENV_CLASS_OBJ_ID: Objekt-ID
+  T0111_ENV_CLASS_LINE: Zeilennummer
+  T0111_ENV_CLASS_NAME: Namen
+  T0111_ENV_CLASS_MOD_TYPE: Änderungsflag
+  T0111_ST_ENV_CLASS_ENV_ID: ID
+  T0111_ST_ENV_CLASS_ENV_DESCR: Langname
+  T014_INFO_IMPART_OBJ_ID: Objekt-ID
+  T014_INFO_IMPART_LINE: Zeilennummer
+  T014_INFO_IMPART_NAME: XML-Export-Kriterium
+  T014_INFO_IMPART_MOD_TYPE: Änderungsflag
+  T016_OLE_REF_OBJ_ID: Objekt-ID
+  T016_OLE_REF_LINE: Zeilennummer
+  T016_OLE_REF_TYP: OLE-Typ
+  T016_OLE_REF_OLE_OBJECT: OLE-Objekt (Pfad+Dateiname)
+  T016_OLE_REF_SPECIAL_REF: "OLE-Objekt: Fachlicher Bezug"
+  T016_OLE_REF_SPECIAL_NAME: "OLE-Objekt: Feldname / Verweisbeziehung"
+  T016_OLE_REF_CONTENT: "OLE-Objekt: Bezeichnung des Verweises"
+  T016_OLE_REF_RECORD_ID: "OLE-Objekt: Datensatzidentifikation"
+  T016_OLE_REF_DESCR: "OLE-Objekt: Erläuterung zum Verweis"
+  T016_OLE_REF_MOD_TYPE: Änderungsflag
+  T019_COORDINATES_OBJ_ID: Objekt-ID
+  T019_COORDINATES_LINE: Zeilennummer
+  T019_COORDINATES_BEZUG: Region oder Naturraum
+  T019_COORDINATES_LOC_X_KOORD1: Bounding-Box > Rechts1 (Gauss-Krüger)
+  T019_COORDINATES_LOC_Y_KOORD1: Bounding-Box > Hoch1 (Gauss-Krüger)
+  T019_COORDINATES_LOC_X_KOORD2: Bounding-Box > Rechts2 (Gauss-Krüger)
+  T019_COORDINATES_LOC_Y_KOORD2: Bounding-Box > Hoch2 (Gauss-Krüger)
+  T019_COORDINATES_GEO_X1: Bounding-Box > Rechts1 (WGS84)
+  T019_COORDINATES_GEO_Y1: Bounding-Box > Hoch1 (WGS84)
+  T019_COORDINATES_GEO_X2: Bounding-Box > Rechts2 (WGS84)
+  T019_COORDINATES_GEO_Y2: Bounding-Box > Hoch2 (WGS84)
+  T019_COORDINATES_MOD_TYPE: Änderungsflag
+  T021_COMMUNICATION_ADR_ID: Adress-ID
+  T021_COMMUNICATION_LINE: Zeilennummer
+  T021_COMMUNICATION_COMM_TYPE: Kommunikation > Art
+  T021_COMMUNICATION_COMM_TYPE_PHONE: Telefon
+  T021_COMMUNICATION_COMM_TYPE_FAX: Fax
+  T021_COMMUNICATION_COMM_TYPE_EMAIL: E-Mail
+  T021_COMMUNICATION_COMM_TYPE_UNKNOWN: unbekannt
+  T021_COMMUNICATION_COMM_VALUE: Kommunikation > Verbindungsdaten
+  T021_COMMUNICATION_DESCR: Kommunikation > Beschreibung der Verbindung
+  T021_COMMUNICATION_MOD_TYPE: Änderungsflag
+  T022_ADR_ADR_ADR_FROM_ID: ID der Elternadresse
+  T022_ADR_ADR_ADR_TO_ID: ID der Kindadresse
+  T022_ADR_ADR_MOD_TYPE: Änderungsflag
+  T03_CATALOGUE_COUNTRY: Staat-ID
+  T03_CATALOGUE_STATE: Landes-ID
+  T03_CATALOGUE_CATALOGUE: Katalogname
+  T03_CATALOGUE_DEFAULT_FLAG: Standardkatalog
+  T03_CATALOGUE_CREATE_ID: Ersteller ID
+  T03_CATALOGUE_CREATE_TIME: Erstellungsdatum
+  T03_CATALOGUE_MOD_ID: Bearbeiter ID
+  T03_CATALOGUE_MOD_TIME: Veränderungsdatum/-zeit
+  T03_CATALOGUE_MOD_TYPE: Änderungsflag
+  T05_USER_USER_ID: Eindeutige Benutzer-ID
+  T05_USER_CAT_ID: Katalog-ID
+  T05_USER_USER_NAME: Benutzername für die Anmeldung
+  T05_USER_PASSWORD: Passwort für die Benutzeranmeldung
+  T05_USER_GROUP_FLAG: Benutzergruppe
+  T05_USER_ADDRESS_ID: Adress-ID
+  T05_USER_LINK_TO: Verknüpfung nach
+  T05_USER_CREATE_ID: Ersteller ID
+  T05_USER_CREATE_TIME: Erstellungsdatum
+  T05_USER_MOD_ID: Bearbeiter ID
+  T05_USER_MOD_TIME: Veränderungsdatum /-zeit
+  T05_USER_MOD_TYPE: Änderungsflag
+  T051_USER_LINK_USER_FROM_ID: Nutzer der Rechte vergibt
+  T051_USER_LINK_USER_TO_ID: Nutzer an die Rechte weitergegeben werden
+  T051_USER_LINK_LINE: Zeilennummer
+  T052_USER_ACCOUNT_USER_ID: Benutzer-ID
+  T052_USER_ACCOUNT_OBJ_ID: Objekt-ID
+  T052_USER_ACCOUNT_CREATE_TIME: Erstellungsdatum
+  T053_USER_OPTION_USER_ID: Benutzer-ID
+  T053_USER_OPTION_OPTION_ID: Options-ID
+  T053_USER_OPTION_ENTRY: ?
+  T053_USER_OPTION_MOD_TIME: Geändert am
+  T07_COUNTRY_COUNTRY_ID: Staat-ID
+  T07_COUNTRY_COUNTRY: Name des Staates
+  T07_COUNTRY_MOD_TIME: Geändert am
+  T07_COUNTRY_MOD_TYPE: Änderungsflag
+  T071_STATE_COUNTRY_ID: Staat-ID
+  T071_STATE_STATE_ID: Kürzel des Bundeslandes
+  T071_STATE_STATE: Name des Bundeslandes
+  T071_STATE_LOC_TOWN_NO: ID des Bundeslandes
+  T071_STATE_MOD_TIME: Geändert am
+  T071_STATE_MOD_TYPE: Änderungsflag
+  T08_ATTR_ATTR_ID: Attribut-ID
+  T08_ATTR_OBJ_ID: Objekt-ID
+  T08_ATTR_DATA: Dateninhalt des freien Feldes
+  T08_ATTR_MOD_TYPE: Änderungsflag
+  T08_ATTRLIST_ATTR_ID: Attribut-ID
+  T08_ATTRLIST_COUNTER: Zeilennummer
+  T08_ATTRLIST_DATA: Daten
+  T08_ATTRLIST_MOD_TYPE: Änderungsflag
+  T08_ATTRTYP_ATTR_ID: Attribut-ID
+  T08_ATTRTYP_LINE: Zeilennummer
+  T08_ATTRTYP_CAT_ID: Katalog-ID
+  T08_ATTRTYP_ATTR_NAME: Attributname (Feldname)
+  T08_ATTRTYP_XPOS: x-Position auf der Benutzeroberfläche
+  T08_ATTRTYP_YPOS: y-Position auf der Benutzeroberfläche
+  T08_ATTRTYP_LENGTH: Feldlänge
+  T08_ATTRTYP_CLASS: UDK-Klasse
+  T08_ATTRTYP_TYP: Feldtyp
+  T08_ATTRTYP_MOD_TYPE: Änderungsflag
+  T0114_ENV_TOPIC: Themen
+  T0114_ENV_CATEGORY: UmweltKategorien
+  OBJECT_CONFORMITY: Konformität
+  OBJECT_CONFORMITY_SPECIFICATION: Spezifikation der Konformität
+  OBJECT_CONFORMITY_DEGREE_VALUE: Grad der Konformität
+  OBJECT_CONFORMITY_PUBLICATION_DATE: Spezifikationsdatum
+  OBJECT_CONFORMITY_EXPLANATION: Geprüft mit
+  T011_OBJ_GEO_DATASOURCE_UUID: Identifikator der Datenquelle
+  OBJECT_ACCESS: Zugriffsbeschränkungen und Nutzungsbedingungen
+  OBJECT_ACCESS_RESTRICTION_VALUE: Zugriffsbeschränkungen
+  OBJECT_ACCESS_TERMS_OF_USE: Anwendungseinschränkungen
+  OBJECT_ACCESS_LICENSE: Nutzungsbedingungen
+  ADDITIONAL_FIELDS: Zusatzfelder
+  DETAIL_DESCRIPTION: Beschreibung
+  DETAIL_POSITION: Abteilung
+  FS_INSTITUTION: Institution
+  FS_PROJECTLEADER: Projektleiter
+  FS_PARTICIPANTS: Beteiligte
+  FS_PROJECT_EXECUTING_ORGANISATION: Projektträger
+  FS_RUNTIME_FROM: "Laufzeit: von"
+  FS_RUNTIME_TO: "Laufzeit: bis"
+  FS_KEYWORDS: Schlagworte
+  FS_GEO_REFERENCE: Raumbezug
+  FS_ENV_CLASS: Umweltklassen
+  FS_INVOLVED_ORGANISATIONS: Zusammenarbeitende Institutionen
+  POSTAL_COUNTRY_CODE_DE: D
+  POSTAL_COUNTRY_CODE_EN: UK
+  ISO_LANGUAGE_CODE_DE: Deutsch
+  ISO_LANGUAGE_CODE_EN: Englisch
+  DOWNLOAD: Datei herunterladen
+  DOWNLOAD_ZIP: ZIP
+  DOWNLOAD_ZIP_TITLE: Alle Dokumente als ZIP-Datei herunterladen
+  DOWNLOAD_ZIP_PREPARE: Dokumentenarchiv (Zip) wird erstellt ...
+  DATA_QUALITY: Datenqualität
+  DATA_QUALITY_TABLE_HEADER1: Art der Messung
+  DATA_QUALITY_TABLE_HEADER2: Wert
+  DATA_QUALITY_TABLE_HEADER3: Parameter
+  DATA_QUALITY_TABLE109_TITLE: Datenüberschuss
+  DATA_QUALITY_TABLE110_TITLE: Datendefizit
+  DATA_QUALITY_TABLE112_TITLE: Konzeptionelle Konsistenz
+  DATA_QUALITY_TABLE113_TITLE: Konsistenz des Wertebereichs
+  DATA_QUALITY_TABLE114_TITLE: Formatkonsistenz
+  DATA_QUALITY_TABLE115_TITLE: Topologische Konsistenz
+  DATA_QUALITY_TABLE117_TITLE: Absolute Positionsgenauigkeit
+  DATA_QUALITY_TABLE120_TITLE: Zeitliche Genauigkeit
+  DATA_QUALITY_TABLE125_TITLE: Korrektheit der thematischen Klassifizierung
+  DATA_QUALITY_TABLE126_TITLE: Genauigkeit nicht-quantitativer Attribute
+  DATA_QUALITY_TABLE127_TITLE: Genauigkeit quantitativer Attribute
+  DATA_QUALITY_TABLE128_TITLE: Relative Positionsgenauigkeit
+  PORTAL_INSTITUTION: InGrid-Portal
+  CONSTRAINTS_USE_LINK: '%s<a class="icon external-link" target="_blank" href="%s"><span class="ic-ic-external"></span><span class= "text">%s</span></a>%s'
+  CONSTRAINTS_USE_LINK_NONAME: '%s<a class="icon external-link" target="_blank" href="%s"><span class="ic-ic-external"></span><span class="text">%s</span></a>'
+  DOI: Digital Object Identifier (DOI)
+  DOI_ID: ID
+  DOI_TYPE: Typ
+  DOI_DATASET: Data set
+  REGIONKEY: Regionalschlüssel
+  INFO_MORE: Mehr
+  INFO_LESS: Weniger
+  INFO_LINKS_MORE: Alle Links
+  INFO_LINKS_LESS: Weniger Links
+  INFO_LINKS: Querverweise
+  SHOWGETCAPABILITYURL: GetCapabilities Dokument
+  SHOWGETCAPABILITYURLRESTRICTED: GetCapabilities Dokument (Zugang beschränkt)
+  SHOWGETCAPABILITYURL_TITLE: GetCapabilities anzeigen
+  METADATA_SOURCE: Metadatenquelle
+  CONSTRAINTS_USE_COSTRAINTS_SOURCE: Quellenvermerk:
+  UVP_TIME: Zuletzt geändert
+  UVP_DESC: Allgemeine Vorhabenbeschreibung
+  UVP_CATEGORY: UVP-Kategorie
+  UVP_MAP: Raumbezug
+  UVP_MAP_COORDS: Koordinaten:
+  UVP_MAP_ZOOM: Zoom auf initialen Kartenausschnitt
+  UVP_ADDRESS: Adressen
+  UVP_ADDRESS_TYPE: Ansprechpartner
+  UVP_ADDRESS_TYPE_MAIL: E-Mail:
+  UVP_ADDRESS_TYPE_TEL: Telefon:
+  UVP_ADDRESS_TYPE_FAX: Fax:
+  UVP_ADDRESS_TYPE_URL: URL:
+  UVP_STEPS: Verfahrensschritte
+  UVP_PHASE1_DATE: Zeitraum der Auslegung
+  UVP_PHASE1_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Auslegungsinformationen.
+  UVP_PHASE1_DOC_TECHNICALDOCS: Auslegungsinformationen
+  UVP_PHASE1_DOC_APPLICATIONDOCS: UVP-Bericht, ggf. Antragsunterlagen
+  UVP_PHASE1_DOC_REPORTSRECOMMENDATIONSDOCS: Berichte und Empfehlungen
+  UVP_PHASE1_DOC_MOREDOCS: Weitere Unterlagen
+  UVP_PHASE1_DOC_PUBLICATIONDOCS: Bekanntmachung
+  UVP_PHASE2_DATE: Zeitraum der Erörterung
+  UVP_PHASE2_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Informationen zum Erörterungstermin.
+  UVP_PHASE2_DOC_CONSIDERATIONDOCS: Informationen zum Erörterungstermin
+  UVP_PHASE3_DATE: Datum der Entscheidung
+  UVP_PHASE3_DOC_APPROVALDOCS: Auslegungsinformationen
+  UVP_PHASE3_DOC_DESIGNDOCS: Entscheidung
+  UVP_NEG_DATE: Datum der Entscheidung
+  UVP_NEG_DOC_UVPNEGATIVERELEVANTDOCS: Ergebnis der UVP-Vorprüfung
+  MEASUREMENT_INFOMETHOD: Verfahren
+  MEASUREMENT_SPATIALORIENTATION: Räumlichkeit
+  MEASUREMENT_MEASUREMENTFREQUENCY: Frequenz der Messung [s]
+  MEASUREMENT_DATAQUALITYDESCRIPTION: Beschreibung der Datenqualität
+  MEASUREMENT_MEASUREMENTDEPTH: Messtiefe
+  MEASUREMENT_MEASUREMENTDEPTH_DEPTH: Messtiefe
+  MEASUREMENT_MEASUREMENTDEPTH_UOM: Maßeinheit
+  MEASUREMENT_MEASUREMENTDEPTH_VERTICALCRS: Höhenbezugssystem
+  MEASUREMENT_MEANWATERLEVEL: Gemittelter Wasserstand, auf den sich die Messwerte beziehen
+  MEASUREMENT_MEANWATERLEVEL_WATERLEVEL: Wasserstand
+  MEASUREMENT_MEANWATERLEVEL_UOM: Maßeinheit
+  MEASUREMENT_GAUGEDATUM: Pegelnullpunkt
+  MEASUREMENT_GAUGEDATUM_DATUM: Pegelnullpunkt
+  MEASUREMENT_GAUGEDATUM_UOM: Maßeinheit
+  MEASUREMENT_GAUGEDATUM_VERTICALCRS: Höhenbezugssystem
+  MEASUREMENT_GAUGEDATUM_DESCRIPTION: Beschreibung
+  MEASUREMENT_MEASUREMENTDEVICE: Messgerät
+  MEASUREMENT_MEASUREMENTDEVICE_NAME: Gerätename
+  MEASUREMENT_MEASUREMENTDEVICE_ID: Geräte-ID
+  MEASUREMENT_MEASUREMENTDEVICE_MODEL: Gerätemodell
+  MEASUREMENT_MEASUREMENTDEVICE_DESCRIPTION: Beschreibung
+  MEASUREMENT_MEASUREDQUANTITIES: Zielparameter und -Größen
+  MEASUREMENT_MEASUREDQUANTITIES_NAME: Name
+  MEASUREMENT_MEASUREDQUANTITIES_TYPE: Art
+  MEASUREMENT_MEASUREDQUANTITIES_UOM: Maßeinheit
+  MEASUREMENT_MEASUREDQUANTITIES_CALCULATIONFORMULA: Formel/Funktion
+  GEOMETRICS_CONTEXT: Geometrie-Kontext
+  GEOMETRICS_CONTEXT_TYPE: Typ
+  GEOMETRICS_CONTEXT_NAME: Name
+  GEOMETRICS_CONTEXT_DESCRIPTION: Beschreibung
+  GEOMETRICS_CONTEXT_FEATURE_CODE: Code
+  GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Beschreibung
+  IDENTIFIKATOR: Identifikator

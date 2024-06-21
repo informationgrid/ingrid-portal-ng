@@ -5,7 +5,7 @@ namespace Grav\Plugin;
 class DetailAddressParserIdf
 {
 
-    public static function parse($node, $uuid){
+    public static function parse($node, $uuid, $dataSourceName, $provider){
         echo "<script>console.log('InGrid Detail parse address with " . $uuid . "');</script>";
 
         $address = new DetailAddress();

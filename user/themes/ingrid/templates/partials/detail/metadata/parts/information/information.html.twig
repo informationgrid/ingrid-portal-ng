@@ -1,0 +1,12 @@
+{# Information #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_info }}"></a>
+    {{ hit_macros.render_section_title("SEARCH_DETAIL.SUBJECT_REFERENCE_TAB"|t) }}
+    <div class="row columns">
+    {# Informationen zum Datensatz #}
+        {% include 'partials/detail/metadata/parts/information/information_type.html.twig' %}
+    {# Zusatzinformationen #}
+        {% include 'partials/detail/metadata/parts/information/information_additional.html.twig' %}
+    </div>
+</div>

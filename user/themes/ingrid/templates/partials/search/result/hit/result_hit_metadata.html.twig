@@ -1,8 +1,7 @@
 {% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
 {% set partner_logo = theme_var('search_partner_logo_enabled') %}
 
-{% set detailLink = base_url ~ "/detail?docuuid=" ~ hit.uuid %}
-
+{% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid %}
 <div class="data">
     <div class="teaser-data search">
         {% if hit.uuid %}

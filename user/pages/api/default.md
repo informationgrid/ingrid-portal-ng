@@ -1,7 +1,9 @@
 ---
-title: Api
-content_title: Api Übersicht
+title: PAGES.API
+content_title: PAGES.API_CONTENT
 visible: true
+routes:
+  default: '/api'
 ---
 
 <div class="search-filtered row content-small">
@@ -37,7 +39,7 @@ visible: true
                                     SensorThings API (STA)
                                 </h2>
                                 <p>
-                                    Die SensorThings API (STA) ist eine vom Open Geospatial Consortium (OGC) entwickelte Anwendungsprogrammierschnittstelle zum Management von Sensoren und Aktoren im Internet der Ding (IoT) . 
+                                    Die SensorThings API (STA) ist eine vom Open Geospatial Consortium (OGC) entwickelte Anwendungsprogrammierschnittstelle zum Management von Sensoren und Aktoren im Internet der Ding (IoT) .
                                 </p>
                                 <a class="icon" href="https://iot.hamburg.de" target="_blank" title="MQTT-Broker: iot.hamburg.de">
                                     <span class="ic-ic-arrow"></span>

@@ -7,7 +7,7 @@
 {% endmacro %}
 
 {% macro render_fact_title (title, class) %}
-    <h4 
+    <h4
     {% if class %}
     class="{{ class }}"
     {% endif %}
@@ -34,7 +34,7 @@
       {# Freie Adresse #}
       <span class="ic-ic-mailto"
     {% else %}
-      <span 
+      <span
     {% endif %}
 
     {% if altTitle %}
@@ -59,27 +59,27 @@
 {% macro render_metadata_icon (class, title, altTitle) %}
     {% if class == 0 %}
       {# Fachaufgabe #}
-      <span class="ic-ic-zulassungsverfahren" 
+      <span class="ic-ic-zulassungsverfahren"
     {% elseif class == 1 %}
       {# Geodatensatz #}
-      <span class="ic-ic-karte" 
+      <span class="ic-ic-karte"
     {% elseif class == 2 %}
       {# Literatur #}
-      <span class="ic-ic-katalog" 
+      <span class="ic-ic-katalog"
     {% elseif class == 3 %}
       {# Geodatendienst #}
-      <span class="ic-ic-dienste" 
+      <span class="ic-ic-dienste"
     {% elseif class == 4 %}
       {# Projekt #}
-      <span class="ic-ic-projekt" 
+      <span class="ic-ic-projekt"
     {% elseif class == 5 %}
       {# Datensammlung #}
-      <span class="ic-ic-metadaten" 
+      <span class="ic-ic-metadaten"
     {% elseif class == 6 %}
       {# Informationssystem #}
-      <span class="ic-ic-chemie" 
+      <span class="ic-ic-chemie"
     {% else %}
-      <span 
+      <span
     {% endif %}
 
     {% if altTitle %}
@@ -88,7 +88,9 @@
       title="{{ title }}"
     {% endif %}
     ></span>
-    <span class="text">{{ title }}</span>
+    {% if title %}
+      <span class="text">{{ title }}</span>
+    {% endif %}
 {% endmacro %}
 
 {% macro render_hit_searchterm (isInspire, isOpendata, isSecure) %}
@@ -203,6 +205,7 @@
   {% set previews = item.previews %}
 
 {# Titel #}
+  {{ previews|length }}
   {% if previews|length > 0 %}
     <div class="image">
       <div class="helper icon">
@@ -230,7 +233,7 @@
           <div class="swiper-slide">
             <p class="caption">
               <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
-                <img class="preview_image" 
+                <img class="preview_image"
                   {% if "https" in preview %}
                     src="./" data-src="$graphic"
                   {% else %}
@@ -254,7 +257,7 @@
         <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
             <img class="preview_image"
               {% if "https:" in preview %}
-                src="./" data-src="{{ preview }}" 
+                src="./" data-src="{{ preview }}"
               {% else %}
                 src="{{ preview }}"
               {% endif %}
@@ -297,10 +300,6 @@
   {% for item in items if not break %}
     {% set role = item.role %}
     {% set addresses = item.addresses %}
-    {% set streets = item.streets %}
-    {% set postcode = item.postcode %}
-    {% set city = item.city %}
-    {% set country = item.country %}
     {% set mail = item.mail %}
     {% set phone = item.phone %}
     {% set facsimile = item.facsimile %}
@@ -329,32 +328,6 @@
             {% endif %}
         {% endfor %}
     {% endfor %}
-    
-    {# Street #}
-    {% if streets %}
-      {% set countStreets = 0 %}
-      {% for street in streets %}
-        {{ street }}
-        {% set countStreets = countStreets + 1 %}
-        {% if countStreets < streets|length %}
-          <br>
-        {% endif %}
-      {% endfor %}
-      <br>
-    {% endif %}
-    {# Postcode #}
-    {% if postcode %}
-      {{ postcode }}
-    {% endif %}
-    {# City #}
-    {% if city %}
-      {{ city }}
-      <br>
-    {% endif %}
-    {# Country #}
-    {% if country %}
-      {{ country }}
-    {% endif %}
     </p>
     {# E-Mail #}
     {% if mail %}
@@ -404,8 +377,8 @@
 {% endmacro %}
 
 {% macro render_contact (items, sortAddressTyp, hash) %}
-    {% set tmpCount = 0 %}
     {% for item in items %}
+        {% set num = loop.index - 1 %}
         {% set role = item.role %}
         {% set addresses = item.addresses %}
         {% set streets = item.streets %}
@@ -420,7 +393,7 @@
 
         <div class="sub-section">
             <div class="table table--lined">
-                <a class="anchor" id="{{ hash }}_contact-{{ tmpCount }}"></a>
+                <a class="anchor" id="{{ hash }}_contact-{{ num }}"></a>
                 <h5>{{ role }}</h5>
                 <table>
                     <tr>
@@ -442,11 +415,10 @@
                                 {% endfor %}
                             {# Street #}
                                 {% if streets %}
-                                    {% set countStreets = 0 %}
                                     {% for street in streets %}
+                                        {% set numStreet = loop.index %}
                                         {{ street }}
-                                        {% set countStreets = countStreets + 1 %}
-                                        {% if countStreets < streets|length %}
+                                        {% if numStreet < streets|length %}
                                           <br>
                                         {% endif %}
                                     {% endfor %}
@@ -514,7 +486,6 @@
                 </table>
             </div>
         </div>
-        {% set tmpCount = tmpCount + 1 %}
     {% endfor %}
 {% endmacro %}
 
@@ -540,3 +511,320 @@
     </div>
   {% endif %}
 {% endmacro %}
+
+{% macro render_section_link_label (title, linkTitle, link, type, css) %}
+  {% if link %}
+    <div class="table table--lined">
+        <table>
+            <tr>
+                {% if title %}
+                    <th>{{ title }}</th>
+                {% endif %}
+                <td>
+                    <div>
+                        <a target="_blank" class="icon external-link" href="{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
+                            {% if type == "external" %}
+                              <span class="ic-ic-external"></span>
+                            {% elseif type == "download" %}
+                              <span class="ic-ic-download"></span>
+                            {% endif %}
+                            <span class="text">{{ linkTitle }}</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_section_text_label_table_list (title, entries, css, json) %}
+  {% if entries and entries|length > 0 %}
+    <div class="table table--lined">
+        <table>
+            <tr>
+            {% if title %}
+                <th>{{ title }}</th>
+            {% endif %}
+                <td>
+                    <div class="text-list">
+                    {% for entry in entries %}
+                        <p class="list-item">{{ entry|raw }}</p>
+                    {% endfor %}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_section_text_label_list (title, entries, css, json) %}
+  {% if entries and entries|length > 0 %}
+    {% if title %}
+        <h4>{{ title }}</h4>
+    {% endif %}
+    <div class="text-list">
+    {% for entry in entries %}
+        <p class="list-item">{{ entry|raw }}</p>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_section_teaser_label_list (title, entries, css) %}
+  {% if entries and entries|length > 0 %}
+    <div class="table list">
+        <table>
+            <tr>
+            {% if title %}
+                <td>{{ title }}</td>
+            {% endif %}
+                <td>
+                    {% for entry in entries %}
+                        <span class="list_entry">{{ entry }}</span>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_section_link_image_list (title, entries, type, isFacts, breakListCounter) %}
+  {% if entries and entries|length > 0 %}
+    {% set isDownload = false %}
+    {% set isExternal = false %}
+
+    {% if type == "external" %}
+        {% set isExternal = true %}
+    {% elseif type == "download" %}
+        {% set isDownload = true %}
+    {% endif %}
+
+    {% if title %}
+      <h4>
+        {{ title }}
+        <span>({{ entries|length }})</span>
+      </h4>
+    {% endif %}
+    <div class="document-list">
+    {% set break = false %}
+    {% for entry in entries if not break %}
+      {% set num = loop.index - 1 %}
+      <div class="list-item">
+        {% if entry.uuid or entry.cswUrl %}
+          <div class="image">
+        {% else %}
+          <div >
+        {% endif %}
+              {% set link = "" %}
+              {% if entry.uuid %}
+                {% set link = "?docuuid=" ~ entry.uuid %}
+              {% elseif entry.url %}
+                {% set link = entry.url %}
+              {% elseif entry.cswUrl %}
+                {% set link = "?cswUrl=" ~ entry.cswUrl %}
+              {% endif %}
+              {% if entry.metaClass and isFacts is not sameas(true) %}
+              <div class="helper icon">
+                {{ _self.render_metadata_icon(entry.metaClass, 'TODO', 'TODO') }}
+              </div>
+              {% endif %}
+              {% if link %}
+                <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title }}">
+                  {% if isExternal %}
+                      <span class="ic-ic-external"></span>
+                  {% elseif isDownload %}
+                      <span class="ic-ic-download"></span>
+                  {% endif %}
+                  {% if entry.metaClass and isFacts is sameas(true) %}
+                      {{ _self.render_metadata_icon(entry.metaClass, null, 'TODO') }}
+                  {% endif %}
+                  <span class="text">{{ entry.title }}</span>
+                </a>
+              {% else %}
+                <p>{{ entry.title }}<p>
+              {% endif %}
+              {% if entry.linkInfo %}
+                  <small class="text">$entry.linkInfo</small>
+              {% endif %}
+              {% if entry.attachedToField %}
+                  <small>{{ entry.attachedToField }}</small>
+              {% endif %}
+              {% if entry.previews and entry.previews|length > 0 %}
+                {% if entry.previews|length > 1 %}
+                {% else %}
+                  <div class="preview">
+                        {% set tmpUrl = entry.previews[0] %}
+                        <a target="_blank" class="external-link" href="{{ tmpUrl }}" title="{{ entry.title }}" rel="noopener noreferrer">
+                            <img class="preview_image" {% if "https" in tmpUrl %} src="./" data-src="{{ tmpUrl }}" {% else %} src="{{ tmpUrl }}"{% endif %} title="$stringTool.htmlescape($entry.title)" title="{{ entry.title }}" alt="img" {#onerror="$loadDefaultMapImage"#}>
+                            <noscript>
+                                <img class="preview_image" src="{{ tmpUrl }}" title="{{ entry.title }}" alt="img">
+                            </noscript>
+                        </a>
+                    </div>
+                {% endif %}
+              {% endif %}
+              {% if entry.description %}
+                <div class="description">
+                  <small class="description">{{ entry.description }}</small>
+                </div>
+              {% endif %}
+              {% if entry.extMapUrl %}
+                <a #if($mapLinksNewTab)target="_blank"#end class="button outline pill" href="$entry.extMapUrl" title="$MESSAGES.getString('common.result.showMap.tooltip')">
+                    $MESSAGES.getString('common.result.showMap')
+                </a>
+              {% elseif entry.mapLink %}
+                <a #if($mapLinksNewTab)target="_blank"#end class="button outline pill" href="$renderResponse.encodeURL('/portal/main-maps.psml')?layers=$entry.mapLink" title="$MESSAGES.getString('common.result.showMap.tooltip')">
+                    $MESSAGES.getString('common.result.showMap')
+                </a>
+              {% endif %}
+          </div>
+      </div>
+      {% if breakListCounter and num >= breakListCounter -1 %}
+        {% set break = true %}
+      {% endif %}
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_section_table (title, header, entries, increaseColumns, additionalRows, setCenter) %}
+  {% if entries and entries|length > 0 %}
+    <div class="table">
+      {% if title %}
+        <h5>{{ title }}</h5>
+      {% endif %}
+      <table>
+      {% if header and header|length > 0 %}
+        <thead>
+          <tr>
+          {% for head in header %}
+            {% set num = loop.index - 1 %}
+            {% set isIncreaseColumn = false %}
+            {% if increaseColumns %}
+                {% if num in increaseColumns %}
+                    {% set isIncreaseColumn = true %}
+                {% endif %}
+            {% endif %}
+            <th {% if isIncreaseColumn %}class="column--increase"{% endif %} {% if setCenter %}style="text-align:center;"{% endif %}>{{ head }}</th>
+          {% endfor %}
+          </tr>
+        </thead>
+      {% endif %}
+      {% for items in entries %}
+        <tr>
+        {% for item in items %}
+          {% set num = loop.index - 1 %}
+          {% if item.type == "text" %}
+            <td>{{ item.value }}</td>
+          {% elseif item.type == "date" %}
+            <td>{{ item.value|date("d.m.Y", false) }}</td>
+          {% elseif item.type == "link" %}
+            <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
+          {% elseif item.type == "symbol" %}
+            <td class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
+            {% if item.value == "true" %}
+              <span class="ic-ic-check" title="{{ item.title }}"></span>
+            {% elseif item.value == "false" %}
+               <span class="ic-ic-cross" title="{{ item.title }}"></span>
+            {% else %}
+             <span class="ic-ic-minus" title="{{ item.title }}"></span>
+            {% endif %}
+            </td>
+          {% else %}
+           <td></td>
+          {% endif %}
+        {% endfor %}
+          </tr>
+      {% endfor %}
+      </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_section_table_list (title, header, entries) %}
+  {% if entries and entries|length > 0 %}
+    <div class="table table--lined--list">
+      {% if title %}
+        <h5>{{ title }}</h5>
+      {% endif %}
+      <table>
+      {% for head in header %}
+        {% set num = loop.index - 1 %}
+        <tr>
+          <th>{{ head }}</th>
+          <td>
+          {% set items = entries[num] %}
+          {% for item in items %}
+            <p>{{ item }}</p>
+          {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_multi_images (entries) %}
+  {% if entries and entries|length > 0 %}
+    {% set canSwipe = false %}
+    {% if entries|length > 1 %}
+      {% set canSwipe = true %}
+    {% endif %}
+
+    {% if canSwipe %}
+    <div class="swiper-container swiper-container-background">
+      <div class="swiper-wrapper">
+    {% else %}
+    <div class="swiper-container-background">
+    {% endif %}
+
+    {% if canSwipe %}
+      {% for entry in entries %}
+        <div class="swiper-slide">
+          <p class="caption">
+            <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.url }}" rel="noopener noreferrer">
+              <img class="preview_image"{% if entry.url starts with 'https' %} src="{{ entry.url }}" {% else %} src="./" data-src="{{ entry.url }}" {% endif %} title="{{ entry.descr ?? entry.url }}" alt="img" onerror="$loadDefaultMapImage">
+              <noscript>
+                <img class="preview_image" src="{{ entry.url }}" title="{{ entry.url }}" alt="img">
+              </noscript>
+            </a>
+          </p>
+          {% if entry.descr %}
+          <p class="caption">{{ entry.descr }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      {% set entry = entries[0] %}
+      {% if entry %}
+      <div class="swiper-slide">
+        <p class="caption">
+          <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.url }}" rel="noopener noreferrer">
+            <img class="preview_image"{% if entry.url starts with 'https' %} src="{{ entry.url }}" {% else %} src="./" data-src="{{ entry.url }}" {% endif %} title="{{ entry.descr ?? entry.url }}" alt="img" onerror="$loadDefaultMapImage">
+            <noscript>
+              <img class="preview_image" src="{{ entry.url }}" title="{{ entry.url }}" alt="img">
+            </noscript>
+          </a>
+        </p>
+        {% if entry.descr %}
+          <p class="caption">{{ entry.descr }}</p>
+        {% endif %}
+      </div>
+      {% endif %}
+    {% endif %}
+    {% if canSwipe %}
+        </div>
+      {% if entries|length > 1 %}
+        <div class="swiper-pagination"></div>
+      {% endif %}
+      </div>
+    {% else %}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+

@@ -1,6 +1,8 @@
 ---
-title: Suche
+title: PAGES.SEARCH
 visible: true
+routes:
+  default: '/freitextsuche'
 hasImageSwiper: true
 hasLeaflet: true
 content:

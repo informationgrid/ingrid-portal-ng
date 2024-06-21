@@ -1,6 +1,8 @@
 ---
-title: Startseite
+title: PAGES.HOME
 visible: true
+routes:
+  default: '/startseite'
 content:
     items: '@self.modular'
     order:

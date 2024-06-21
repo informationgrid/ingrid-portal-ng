@@ -20,6 +20,12 @@ form:
               title: Header
               underline: true
 
+            header_title_extend:
+              type: text
+              label: Header Titel erweitern
+              help: Erweitern Sie den Header Titel.
+              default: 'InGrid Portal'
+
             header_logo_enabled:
               type: toggle
               label: Header Logo enabled
@@ -151,9 +157,6 @@ form:
                     .path:
                       type: text
                       label: Pfad
-                    .title:
-                      type: text
-                      label: Titel
                     .icon:
                       type: text
                       label: Icon
@@ -180,9 +183,6 @@ form:
                     .path:
                       type: text
                       label: Pfad
-                    .title:
-                      type: text
-                      label: Titel
                     .highlighted:
                       type: toggle
                       label: Hauptmenü
@@ -217,9 +217,6 @@ form:
                     .path:
                       type: text
                       label: Pfad
-                    .title:
-                      type: text
-                      label: Titel
 
 ## Tab search
         tab_search:
@@ -239,6 +236,12 @@ form:
               help: Trage Sie hier die URL zum InGrid Interface-CSW ein.
               default: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
 
+            hit_rdf_url:
+              type: text
+              label: Link zum InGrid Interface-RDF
+              help: Trage Sie hier die URL zum InGrid Interface-RDF ein.
+              default: ''
+
             search_hit_section:
               type: section
               title: Suchergebnis
@@ -246,10 +249,22 @@ form:
 
             search_hit_csw_enabled:
               type: toggle
-              label: XML-Darstellung anzeigen
-              help: Darstellung des Links zur XML-Darstellung (CSW).
+              label: ISO-Darstellung anzeigen
+              help: Darstellung des Links zur ISO-Darstellung.
               highlight: 1
               default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            search_hit_rdf_enabled:
+              type: toggle
+              label: RDF-Darstellung anzeigen
+              help: Darstellung des Links zur RDF-Darstellung.
+              highlight: 1
+              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -275,10 +290,22 @@ form:
 
             detail_hit_csw_enabled:
               type: toggle
-              label: XML-Darstellung anzeigen
-              help: Darstellung des Links zur XML-Darstellung (CSW).
+              label: ISO-Darstellung anzeigen
+              help: Darstellung des Links zur ISO-Darstellung.
               highlight: 1
               default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            detail_hit_rdf_enabled:
+              type: toggle
+              label: RDF-Darstellung anzeigen
+              help: Darstellung des Links zur RDF-Darstellung.
+              highlight: 1
+              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED

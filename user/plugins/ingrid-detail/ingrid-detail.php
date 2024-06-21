@@ -92,6 +92,8 @@ class InGridDetailPlugin extends Plugin
             $address_config = $this->grav['config']->get('plugins.ingrid-search-result.address');
 
             $response = null;
+            $dataSourceName = null;
+            $provider = null;
 
             if ($testIDF) {
                 $response = file_get_contents('user-data://test/detail/' . $type . '/idf/' . $testIDF);
@@ -102,6 +104,7 @@ class InGridDetailPlugin extends Plugin
                     'body' => $this->transformQuery($uuid)
                 ])->getBody()->getContents();
                 $response = json_decode($responseContent)->hits[0]->_source->idf;
+                $dataSourceName = json_decode($responseContent)->hits[0]->_source->dataSourceName;
             }
 
             if ($response) {
@@ -118,10 +121,10 @@ class InGridDetailPlugin extends Plugin
 
                 if ($type == "address") {
                     $parser = new DetailAddressParser();
-                    $hit = $parser->parse($content, $address_config);
+                    $hit = $parser->parse($content, $dataSourceName, $provider);
                 } else {
                     $parser = new DetailMetadataParser();
-                    $hit = $parser->parse($content, $metadata_config);
+                    $hit = $parser->parse($content, $dataSourceName, $provider);
                 }
                 $this->grav['twig']->twig_vars['detail_type'] = $type;
                 $this->grav['twig']->twig_vars['hit'] = $hit;
@@ -139,7 +142,7 @@ class InGridDetailPlugin extends Plugin
 
     private function transformQuery(string $uuid): string
     {
-        $query = array("query" => array("term" => array("t01_object.obj_id" => $uuid)));
+        $query = array("query" => array("ids" => array("values" => array($uuid))));
         return json_encode($query);
     }
 

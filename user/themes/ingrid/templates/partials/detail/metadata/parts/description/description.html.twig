@@ -1,0 +1,36 @@
+{# Beschreibung #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_description }}"></a>
+    {{ hit_macros.render_section_title("SEARCH_DETAIL.DETAIL_DESCRIPTION"|t)}}
+    <div class="row columns">
+    {# Kurzbezeichnung #}
+        {% if alternateTitle %}
+            {% for altTitle in hit.altTitle %}
+                <p class="slab-bold">{{ altTitle }}</p>
+            {% endfor %}
+        {% endif %}
+    {# Beschreibung #}
+        {% if summary %}
+        <div class="js-expand-box js-expand-text js-non-expand-text">
+            <div class="js-expand-text-content">
+                {{ hit_macros.render_section_text(summary|raw)}}
+            </div>
+            <div class="desc-fade"></div>
+        </div>
+        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+        </button>
+        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+        </button>
+        {% endif %}
+    {# Zeitbezug #}
+        {% if isTimeInDescription %}
+            {# Zeitbezug #}
+                {% include 'partials/detail/metadata/parts/description/description_time.html.twig' %}
+            {# Zeitbezug der Ressource #}
+                {% include 'partials/detail/metadata/parts/description/description_time_resource.html.twig' %}
+        {% endif %}
+    </div>
+</div>

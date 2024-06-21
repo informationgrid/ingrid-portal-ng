@@ -1,6 +1,8 @@
 ---
-title: Informationsanbieter
+title: PAGES.PROVIDER
 visible: true
+routes:
+  default: '/informationsanbieter'
 ---
 
 <div class="search-filtered row content-small">

@@ -3,9 +3,9 @@
 <div class="detail">
 {% if hit %}
     {% if detail_type == "address" %}
-        {% include 'partials/detail/address/detail_address.html.twig' with {hit:hit} %}
+        {% include 'partials/detail/address/detail_address.html.twig' %}
     {% elseif detail_type == "metadata" %}
-        {% include 'partials/detail/metadata/detail_metadata.html.twig' with {hit:hit} %}
+        {% include 'partials/detail/metadata/detail_metadata.html.twig' %}
     {% else %}
         {{ default_macros.render_error_msg("Keine Detailinformationen verfügbar.") }}
     {% endif %}

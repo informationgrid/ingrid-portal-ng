@@ -1,6 +1,8 @@
 ---
-title: Hilfe
+title: PAGES.HELP
 visible: true
+routes:
+  default: '/hilfe'
 ---
 
 # Page Titlewemove

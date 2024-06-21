@@ -8,9 +8,9 @@
                 <div class="large-20 columns dark">
                     <h1>
                         {% if page.header.content_title %}
-                            {{ page.header.content_title }}
+                            {{ page.header.content_title|t }}
                         {% else %}
-                            {{ page.header.title }}
+                            {{ page.header.title|t }}
                         {% endif %}
                     </h1>
                 </div>

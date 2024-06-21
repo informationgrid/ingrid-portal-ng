@@ -1,6 +1,8 @@
 ---
-title: Datenschutz
+title: PAGES.PRIVACY
 visible: true
+routes:
+  default: '/datenschutz'
 ---
 
 # Page Titlewemove

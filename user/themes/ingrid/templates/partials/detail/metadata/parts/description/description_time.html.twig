@@ -1,0 +1,45 @@
+{# Zeitbezug #}
+
+{% if hasTimeData %}
+    <div class="sub-section">
+        <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference"{% else %}id="{{ hash_time }}_time_reference"{% endif %}></a>
+        {% if class == 1 or class == 3 or class == 5 or class == 6 %}
+            {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
+        {% else %}
+            {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE"|t %}
+        {% endif %}
+        {{ hit_macros.render_group_title(tmpTitle) }}
+
+    {# Durch die Ressource abgedeckte Zeitspanne #}
+        {% set toIndeterminate = "" %}
+        {% if timRef.fromType and timRef.fromType == "now" %}
+            {% set toIndeterminate = "SEARCH_DETAIL.TIME_UNTILNOW"|t %}
+        {% else %}
+            {% set toIndeterminate = "SEARCH_DETAIL.TIME_UNTILUNKNOWN"|t %}
+        {% endif %}
+        {% if timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime %}
+            {% if timeRefs.atTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "SEARCH_DETAIL.TIME_AT"|t ~ " " ~ timeRefs.atTime|date("d.m.Y", false)) }}
+            {% elseif timeRefs.beginTime == timeRefs.endTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "SEARCH_DETAIL.TIME_AT"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false)) }}
+            {% elseif timeRefs.beginTime and timeRefs.endTime is null %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "SEARCH_DETAIL.TIME_SINCE"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ toIndeterminate) }}
+            {% elseif timeRefs.beginTime is null and timeRefs.endTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "SEARCH_DETAIL.TIME_UNTIL"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)) }}
+            {% elseif timeRefs.beginTime != timeRefs.endTime %}
+                {{ hit_macros.render_section_text_label(tmpTitle, "SEARCH_DETAIL.TIME_FROM"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ " " ~ "SEARCH_DETAIL.TIME_TO"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)) }}
+            {% endif %}
+        {% endif %}
+    {# Zeitliche Genauigkeit #}
+        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.TIME_MEASUREMENT"|t, timeRefs.measureValue ~ timeRefs.measureUnit) }}
+    {# Status #}
+        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_TIME_STATUS"|t, timeRefs.status, "text-capitalize") }}
+    {# Periodizität #}
+        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.period, "text-capitalize") }}
+    {# Intervall der Erhebung #}
+        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_TIME_INTERVAL"|t, timeRefs.interval) }}
+    {# Erläuterung zum Zeitbezug #}
+        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_TIME_DESCR"|t, timeRefs.descr) }}
+    </div>
+{% endif %}
+

@@ -1,6 +1,8 @@
 ---
-title: Datenquellen 
+title: PAGES.DATASOURCE
 visible: true
+routes:
+  default: '/datenquellen'
 ---
 
 <div class="search-filtered row content-small">

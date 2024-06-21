@@ -4,15 +4,18 @@
         <div class="row align-center">
             <div class="large-20 columns dark">
                 {% if page.header.search_title %}
-                <h1>InGrid</h1>
-                <h1 class="green">Indexieren, Recherchieren, Visualisieren und Teilen<span class="ic-ic-asterisc"></span></h1>
+                {% set title = "SEARCH.PORTLET_TITLE_1"|t %}
+                {% if title %}
+                <h1>{{ title }}</h1>
+                {% endif %}
+                <h1 class="green">{{ "SEARCH.PORTLET_TITLE_2"|t }}<span class="ic-ic-asterisc"></span></h1>
                 <div class="indent">
                     <span class="ic-ic-asterisc"></span>
-                    <p class="intro">von Datenquellen, Metadaten und Kartendiensten</p>
+                    <p class="intro">{{ "SEARCH.PORTLET_TITLE_3"|t }}</p>
                 </div>
                 {% endif %}
-                <form action="{{ base_url }}/search" class="input-search" method="get" name="SearchForm" id="SearchForm" onsubmit="">
-                    <input type="text" class="input-search-field" placeholder="Suchbegriff eingeben" id="qrystr" name="q" value="{{ query }}">
+                <form action="{{ page.find('/search').url }}" class="input-search" method="get" name="SearchForm" id="SearchForm" onsubmit="">
+                    <input type="text" class="input-search-field" placeholder="{{ "SEARCH.QUERY_INITIAL"|t }}" id="qrystr" name="q" value="{{ query }}">
                     <button class="button round hide-for-medium">
                         <span class="ic-ic-lupe"></span>
                     </button>

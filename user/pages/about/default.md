@@ -1,5 +1,5 @@
 ---
-title: Über INGRID 
+title: PAGES.ABOUT
 visible: true
 routes:
   default: '/portrait'

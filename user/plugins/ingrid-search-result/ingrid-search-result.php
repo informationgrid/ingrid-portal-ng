@@ -76,8 +76,7 @@ class IngridSearchResultPlugin extends Plugin
     public function onPageInitialized(): void
     {
         echo "<script>console.log('InGrid Search result');</script>";
-        $uri = $this->grav['uri'];
-        if ($uri->path() === '/search' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($this->grav['page']->slug() === 'search' && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->handleCheckboxSubmission();
         }
     }

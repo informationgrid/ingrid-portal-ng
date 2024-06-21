@@ -1,6 +1,8 @@
 ---
-title: Kontakt
+title: PAGES.CONTACT
 visible: true
+routes:
+  default: '/kontakt'
 ---
 
 # Page Titlewemove

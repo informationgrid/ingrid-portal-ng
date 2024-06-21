@@ -1,7 +1,7 @@
 enabled: true
 active: true
-route: /search
-route-detail: /detail
+route: /freitextsuche
+route-detail: /trefferanzeige
 hits_num: 10
 mocking: false
 facet_config: [

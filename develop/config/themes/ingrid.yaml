@@ -7,7 +7,7 @@ header_menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
 header_menu_dropdown: true
 header_shrink: true
 footer_logo_enabled: true
-footer_copyright_text: null
+footer_copyright_text: 'Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz'
 footer_copyright_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
 footer_menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
 hit_csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
@@ -51,97 +51,76 @@ footer_logo: {  }
 menu_main:
   -
     path: search
-    title: Suche
     icon: ic-ic-lupe
   -
     path: map
-    title: Karte
     icon: ic-ic-karten
   -
     path: measure
-    title: Messwerte
     icon: ic-ic-chemie
   -
     path: catalog
-    title: Kataloge
     icon: ic-ic-datenkataloge
   -
     path: api
-    title: Api
     icon: ic-ic-center
 menu_site:
   -
     path: search
-    title: Suche
     highlighted: true
   -
     path: map
-    title: Karte
     highlighted: true
   -
     path: measure
-    title: Messwerte
     highlighted: true
   -
     path: catalog
-    title: Kataloge
     highlighted: true
   -
     path: api
-    title: Api
     highlighted: true
   -
     path: about
-    title: 'Über InGrid'
     highlighted: true
   -
     path: datasource
-    title: Datenquellen
     highlighted: true
   -
     path: provider
-    title: Informationsanbieter
     highlighted: true
   -
     path: help
-    title: Hilfe
     highlighted: false
   -
     path: contact
-    title: Kontakt
     highlighted: false
   -
     path: sitemap
-    title: Sitemap
     highlighted: false
   -
     path: imprint
-    title: Impressum
     highlighted: false
   -
     path: privacy
-    title: Datenschutz
     highlighted: false
   -
     path: accessibility
-    title: Barrierefreiheit
     highlighted: false
 menu_footer:
   -
     path: help
-    title: Hilfe
   -
     path: contact
-    title: Kontakt
   -
     path: sitemap
-    title: Sitemap
   -
     path: imprint
-    title: Impressum
   -
     path: privacy
-    title: Datenschutz
   -
     path: accessibility
-    title: Barrierefreiheit
+hit_rdf_url: null
+search_hit_rdf_enabled: false
+detail_hit_rdf_enabled: false
+header_title_extend: 'InGrid Portal'

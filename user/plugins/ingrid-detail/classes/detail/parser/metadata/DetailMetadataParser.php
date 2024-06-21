@@ -10,11 +10,11 @@ class DetailMetadataParser
 
     }
 
-    public static function parse($content){
-        $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
+    public static function parse($content, $dataSourceName, $provider) {
+       $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
         if (!is_null($rootNode)) {
-            $uuid = IdfHelper::getNode($rootNode, './gmd:fileIdentifier/gco:CharacterString/text()');
-            return DetailMetadataParserIdf::parse($rootNode, $uuid);
+            $uuid = IdfHelper::getNodeValue($rootNode, './gmd:fileIdentifier/gco:CharacterString');
+            return DetailMetadataParserIdf::parse($rootNode, $uuid, $dataSourceName, $provider);
         }
     }
 

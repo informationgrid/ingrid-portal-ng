@@ -1,0 +1,66 @@
+{# FactSheet #}
+
+<div class="data">
+    <div class="teaser-data search row is-active">
+        <div class="xsmall-24 small-24 {% if previews %}medium-14 large-14 xlarge-14{% endif %} columns">
+        {# Durch die Ressource abgedeckte Zeitspanne #}
+            {% if class == 1 or class == 3 or class == 5 or class == 6 %}
+                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
+            {% else %}
+                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE"|t %}
+            {% endif %}
+            {% set toIndeterminate = "" %}
+            {% if timeRefs.fromType and timeRefs.fromType == "now" %}
+                {% set toIndeterminate = "SEARCH_DETAIL.TIME_UNTILNOW"|t %}
+            {% else %}
+                {% set toIndeterminate = "SEARCH_DETAIL.TIME_UNTILUNKNOWN"|t %}
+            {% endif %}
+            {% if timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime %}
+                {% if timeRefs.atTime %}
+                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_AT"|t ~ " " ~ timeRefs.atTime|date("d.m.Y", false)]) }}
+                {% elseif timeRefs.beginTime == timeRefs.endTime %}
+                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_AT"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false)]) }}
+                {% elseif timeRefs.beginTime and timeRefs.endTime is null %}
+                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_SINCE"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ toIndeterminate]) }}
+                {% elseif timeRefs.beginTime is null and timeRefs.endTime %}
+                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_UNTIL"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
+                {% elseif timeRefs.beginTime != timeRefs.endTime %}
+                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_FROM"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ " " ~ "SEARCH_DETAIL.TIME_TO"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
+                {% endif %}
+            {% endif %}
+        {# URL des Zugangs #}
+            {% if linkAccessRefs and linkAccessRefs|length > 0 %}
+            <div class="sub-section sub-section-unlined">
+                {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
+                {{ hit_macros.render_section_link_image_list(tmpTitle, linkAccessRefs, "external", false, 2) }}
+            </div>
+            {% endif %}
+        {# Downloads #}
+            {% if linkDownloadRefs and linkDownloadRefs|length > 0 %}
+            <div class="sub-section sub-section-unlined">
+                {% set tmpTitle = "SEARCH_DETAIL.DOWNLOADS"|t %}
+                {{ hit_macros.render_section_link_image_list(tmpTitle, linkDownloadRefs, "download", false, 2) }}
+            </div>
+            {% endif %}
+        {# Links #}
+            {% if linkObjectRefs and linkObjectRefs|length > 0 %}
+            <div class="sub-section sub-section-unlined">
+                {% set tmpTitle = "SEARCH_DETAIL.INFO_LINKS"|t %}
+                {{ hit_macros.render_section_link_image_list(tmpTitle, linkObjectRefs, null, true, 2) }}
+            </div>
+            {% endif %}
+        {# Zitat für diesen Datensatz #}
+            {% include 'partials/detail/metadata/parts/factsheet/factsheet_citation.html.twig' ignore missing %}
+        {# Lizenz #}
+            {% include 'partials/detail/metadata/parts/factsheet/factsheet_license.html.twig' %}
+        {# Zugriffsbeschränkungen #}
+            {% include 'partials/detail/metadata/parts/factsheet/factsheet_restriction.html.twig' ignore missing %}
+        {# BAW Auftrag #}
+            {% include 'partials/detail/metadata/parts/factsheet/factsheet_aggregate_data_set_name.html.twig' ignore missing %}
+        {# Kontakt #}
+            {{ hit_macros.render_contact_facts("", contactRefs, sortAddressTyp) }}
+        </div>
+        {# Zeige in Karte #}
+         {% include 'partials/detail/metadata/parts/factsheet/factsheet_preview.html.twig' %}
+    </div>
+</div>

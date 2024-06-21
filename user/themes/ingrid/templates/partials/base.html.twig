@@ -1,9 +1,11 @@
+{% set header_title_extend = theme_var('header_title_extend') %}
+
 <!DOCTYPE html>
 <html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
 <head>
 {% block head %}
     <meta charset="utf-8" />
-    <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+    <title>{% if header.title %}{{ header.title|t|e }} | {% endif %}{{ header_title_extend|e }}</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +24,7 @@
     {% if page.header.hasImageSwiper %}
         {% include 'partials/header/swiper/css.html.twig' %}
     {% endif %}
-    
+
 {% endblock %}
 
 {% block javascripts %}
@@ -50,36 +52,55 @@
 </head>
 <body id="top" class="{{ page.header.body_classes|e }}">
     <div class="container">
-    {% block menu %}
-        {% include 'partials/menu.html.twig' %}
-    {% endblock %}
-
-    {% block header %}
-        {% include 'partials/header.html.twig' %}
-    {% endblock %}
-
-    {% block body %}
-        {% block content_header %}{% endblock %}
-        {% block content %}{% endblock %}
-    {% endblock %}
-
-    {% if page.header.footer_disabled != true %}
-        {% block footer %}
-            {% include 'partials/footer.html.twig' %}
+        {% block menu %}
+            {% include 'partials/menu.html.twig' %}
         {% endblock %}
-    {% endif %}
-    {% block bottom %}
-        {% include 'partials/footer/javascript.html.twig' %}
-        {{ assets.js('bottom')|raw }}
-    {% endblock %}
-    <script>
-    $('.js-anchor-target').anchorTarget();
-</script>
 
-<!-- Anchor navigation -->
-<script>
-    $('.js-anchor-navigation').anchorNavigation();
-</script>
+        {% block header %}
+            {% include 'partials/header.html.twig' %}
+        {% endblock %}
+
+        {% block body %}
+            {% block content_header %}{% endblock %}
+            {% block content %}{% endblock %}
+        {% endblock %}
+
+        {% if page.header.footer_disabled != true %}
+            {% block footer %}
+                {% include 'partials/footer.html.twig' %}
+            {% endblock %}
+        {% endif %}
+        {% block bottom %}
+            {% include 'partials/footer/javascript.html.twig' %}
+            {{ assets.js('bottom')|raw }}
+        {% endblock %}
+
+        <script>
+        $('.js-anchor-target').anchorTarget();
+        </script>
+
+        <!-- Anchor navigation -->
+        <script>
+            $('.js-anchor-navigation').anchorNavigation();
+        </script>
+        {% if page.header.hasImageSwiper %}
+            <script>
+            var mySwiper = new Swiper ('.swiper-container', {
+                grabCursor: true,
+                pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+                },
+                navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+                },
+                scrollbar: {
+                el: '.swiper-scrollbar'
+                },
+            });
+            </script>
+        {% endif %}
     </div>
 
 
