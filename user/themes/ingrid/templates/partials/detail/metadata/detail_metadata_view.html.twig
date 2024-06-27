@@ -50,7 +50,7 @@
             {% endif %}
     {# Bibliografische Angaben #}
             {% if hasBibliographicalInfo %}
-                {% include 'partials/detail/metadata/parts/bibliographical_info/bibliographical_info.html.twig' %}
+                {% include 'partials/detail/metadata/parts/bibliographical_info/bibliographical_info.html.twig' ignore missing %}
             {% endif %}
     {# Zeitbezug #}
             {% if not isTimeInDescription and hasTime %}

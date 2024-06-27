@@ -1,0 +1,84 @@
+{# Karte #}
+{% if coords %}
+
+    {% set map_bg_wms = theme_var('map.leaflet.bg.layer.wms') %}
+    {% set map_bbox_wkt = theme_var('map.leaflet.bbox.wkt') %}
+    {% set map_bbox_bwastr = theme_var('map.leaflet.bbox.bwastr') %}
+
+    {% include 'partials/global/map/leaflet.html.twig' %}
+    <div id="map_{{ mapId }}" class="map-ingrid" style="height:320px; margin-bottom: 24px;"></div>
+
+    <script>
+        {% if isMoreId %}
+            $('#map_{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');
+        {% endif %}
+        var coords = {{ coords|json_encode( )|raw }};
+        var bounds_{{ mapId }};
+        var boundsX1_{{ mapId }};
+        var boundsY1_{{ mapId }};
+        var boundsX2_{{ mapId }};
+        var boundsY2_{{ mapId }};
+        var y1_{{ mapId }};
+        var x1_{{ mapId }};
+        var y2_{{ mapId }};
+        var x2_{{ mapId }};
+
+        coords.forEach(function(coord) {
+            var tmpBounds_{{ mapId }} = coord;
+            y1_{{ mapId }} = tmpBounds_{{ mapId }}.southBoundLatitude;
+            x1_{{ mapId }} = tmpBounds_{{ mapId }}.westBoundLongitude;
+            y2_{{ mapId }} = tmpBounds_{{ mapId }}.northBoundLatitude;
+            x2_{{ mapId }} = tmpBounds_{{ mapId }}.eastBoundLongitude;
+
+
+            if (y1_{{ mapId }} && x1_{{ mapId }} && y2_{{ mapId }} && x2_{{ mapId }}) {
+                if(y1_{{ mapId }} !== 0 && x1_{{ mapId }} !== 0 && y2_{{ mapId }} !== 0 && x2_{{ mapId }} !== 0) {
+                    if(!boundsX1_{{ mapId }} || x1_{{ mapId }} < boundsX1_{{ mapId }}) {
+                        boundsX1_{{ mapId }} = x1_{{ mapId }};
+                    }
+
+                    if(!boundsY1_{{ mapId }} || y1_{{ mapId }} < boundsY1_{{ mapId }}) {
+                        boundsY1_{{ mapId }} = y1_{{ mapId }};
+                    }
+
+                    if(!boundsX2_{{ mapId }} || x2_{{ mapId }} > boundsX2_{{ mapId }}) {
+                        boundsX2_{{ mapId }} = x2_{{ mapId }};
+                    }
+
+                    if(!boundsY2_{{ mapId }} || y2_{{ mapId }} > boundsY2_{{ mapId }}) {
+                        boundsY2_{{ mapId }} = y2_{{ mapId }};
+                    }
+                    var southWest_{{ mapId }} = L.latLng(boundsY1_{{ mapId }}, boundsX1_{{ mapId }});
+                    var northEast_{{ mapId }} = L.latLng(boundsY2_{{ mapId }}, boundsX2_{{ mapId }});
+                    bounds_{{ mapId }} = L.latLngBounds(southWest_{{ mapId }}, northEast_{{ mapId }});
+                }
+            }
+        });
+        var bgLayer = getOSMLayer('');
+        var map_{{ mapId }} = addLeafletMapWithId('map_{{ mapId }}', bgLayer, bounds_{{ mapId }}, null , 10);
+        {% if map_bg_wms.url and map_bg_wms.name %}
+            bgLayer = getWMSLayer('{{ map_bg_wms.url }}', '{{ map_bg_wms.name }}', '');
+        {% endif %}
+        {% if isDetail %}
+            map_{{ mapId }}.gestureHandling.enable();
+        {% else %}
+            disableLeafletMapTouchControl(map_{{ mapId }});
+        {% endif %}
+        if(bounds_{{ mapId }}) {
+            map_{{ mapId }}.fitBounds(bounds_{{ mapId }});
+        }
+        {% if wkt and map_bbox_wkt %}
+            addLayerWKT(map_{{ mapId }}, '{{ wkt }}', coords);
+        {% elseif bwastr and map_bbox_bwastr %}
+            addLayerBWaStr(map_{{ mapId }}, $bwastr, '', '{{ wkt }}', coords);
+        {% else %}
+            addLayerBounds(map_{{ mapId }}, coords);
+        {% endif %}
+        {% if isMoreId %}
+            $('#map_{{ mapId }}').closest('.js-expander-content').addClass('is-hidden');
+        {% endif %}
+        {% if isDetail %}
+            addLeafletHomeControl(map_{{ mapId }}, 'Zoom auf initialen Kartenausschnitt', 'topleft', 'ic-ic-center', bounds_{{ mapId }} ? bounds_{{ mapId }} : map_{{ mapId }}.getBounds(), '', '23px');
+        {% endif %}
+    </script>
+{% endif %}

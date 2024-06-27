@@ -12,9 +12,9 @@
                     }),
                     collapsed: false,
                     position: 'topright',
-                    placeholder: '$MESSAGES.getString("common.mapclient.geocoder.search.placeholder")',
+                    placeholder: '{{ "COMMON.MAPCLIENT_GEOCODER_SEARCH_PLACEHOLDER"|t }}',
                     defaultMarkGeocode: false,
-                    errorMessage: '$MESSAGES.getString("common.mapclient.geocoder.search.errormessage")'
+                    errorMessage: '{{ "COMMON.MAPCLIENT_GEOCODER_SEARCH_ERRORMESSAGE"|t }}'
                 }).addTo(map);
 
         // handle geocoding result event

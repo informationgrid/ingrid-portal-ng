@@ -103,8 +103,11 @@ class InGridDetailPlugin extends Plugin
                 $responseContent = $client->request('POST', 'portal/search', [
                     'body' => $this->transformQuery($uuid)
                 ])->getBody()->getContents();
-                $response = json_decode($responseContent)->hits[0]->_source->idf;
-                $dataSourceName = json_decode($responseContent)->hits[0]->_source->dataSourceName;
+                $hits = json_decode($responseContent)->hits;
+                if(count($hits) > 0) {
+                    $response = $hits[0]->_source->idf;
+                    $dataSourceName = $hits[0]->_source->dataSourceName;
+                }
             }
 
             if ($response) {
@@ -128,6 +131,7 @@ class InGridDetailPlugin extends Plugin
                 }
                 $this->grav['twig']->twig_vars['detail_type'] = $type;
                 $this->grav['twig']->twig_vars['hit'] = $hit;
+                $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"];
             }
         }
     }

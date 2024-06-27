@@ -476,7 +476,31 @@ form:
 
             map.leaflet.bbox.inverted:
               type: toggle
-              label: BoundingBox invertiert darstellen.
+              label: BoundingBox invertiert darstellen
+              help: ''
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            map.leaflet.bbox.wkt:
+              type: toggle
+              label: WKT darstellen
+              help: ''
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            map.leaflet.bbox.bwastr:
+              type: toggle
+              label: BWaStr darstellen
               help: ''
               highlight: 1
               default: 0

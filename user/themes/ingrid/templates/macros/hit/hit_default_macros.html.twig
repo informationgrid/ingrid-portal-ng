@@ -98,8 +98,8 @@
     <div class="icon--info">
     {% if isSecure %}
       <div class="helper icon info">
-          <span class="ic-ic-lock-closed" title="$MESSAGES.getString("common.result.hasAccessContraints")"></span>
-          <span class="text">$MESSAGES.getString("common.result.hasAccessContraints")</span>
+          <span class="ic-ic-lock-closed" title="{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}"></span>
+          <span class="text">{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}</span>
       </div>
     {% endif %}
     {% if isInspire %}
@@ -350,7 +350,7 @@
     {# Fax #}
     {% if facsimile %}
     <div>
-        <a class="icon" href="{{ facsimile }}" title="{{ facsimile }}">
+        <a class="icon" href="fax:{{ facsimile }}" title="{{ facsimile }}">
             <span class="ic-ic-fax"></span>
             <span class="text">{{ facsimile }}</span>
         </a>
@@ -522,11 +522,13 @@
                 {% endif %}
                 <td>
                     <div>
-                        <a target="_blank" class="icon external-link" href="{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
+                        <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
                             {% if type == "external" %}
                               <span class="ic-ic-external"></span>
                             {% elseif type == "download" %}
                               <span class="ic-ic-download"></span>
+                            {% elseif type == "mail" %}
+                              <span class="ic-ic-mailto"></span>
                             {% endif %}
                             <span class="text">{{ linkTitle }}</span>
                         </a>
@@ -672,12 +674,12 @@
                 </div>
               {% endif %}
               {% if entry.extMapUrl %}
-                <a #if($mapLinksNewTab)target="_blank"#end class="button outline pill" href="$entry.extMapUrl" title="$MESSAGES.getString('common.result.showMap.tooltip')">
-                    $MESSAGES.getString('common.result.showMap')
+                <a #if($mapLinksNewTab)target="_blank"#end class="button outline pill" href="$entry.extMapUrl" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                    {{ "COMMON.RESULT_SHOWMAP"|t }}
                 </a>
               {% elseif entry.mapLink %}
-                <a #if($mapLinksNewTab)target="_blank"#end class="button outline pill" href="$renderResponse.encodeURL('/portal/main-maps.psml')?layers=$entry.mapLink" title="$MESSAGES.getString('common.result.showMap.tooltip')">
-                    $MESSAGES.getString('common.result.showMap')
+                <a #if($mapLinksNewTab)target="_blank"#end class="button outline pill" href="$renderResponse.encodeURL('/portal/main-maps.psml')?layers=$entry.mapLink" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                    {{ "COMMON.RESULT_SHOWMAP"|t }}
                 </a>
               {% endif %}
           </div>

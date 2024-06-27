@@ -43,7 +43,7 @@ map:
       color: '#3278B9'
       opacity: 0.2
       weight: 1
-      inverted: false
+      inverted: 1
 measure_enabled: true
 measure_url: /ingrid-portal-apps/measures/index.html
 header_logo: {  }

@@ -4,6 +4,8 @@
     <a class="anchor" id="{{ hash_area }}"></a>
     {{ hit_macros.render_section_title("SEARCH_DETAIL.SPACIAL_REFERENCE_TAB"|t)}}
     <div class="row columns">
+    {# Karte #}
+        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, isDetail: true, mapId: 'detail' }%}
     {# Geothesaurus-Raumbezug #}
         {% set header = [
             "",
@@ -20,7 +22,7 @@
             "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_UNIT"|t,
             "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_VDATUM"|t,
         ] %}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight, [0]) }}
+        {{ hit_macros.render_section_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight) }}
     {# Erläuterung zum Raumbezug #}
         {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.loc_descr) }}
     {# Begrenzungspolygon als WKT #}

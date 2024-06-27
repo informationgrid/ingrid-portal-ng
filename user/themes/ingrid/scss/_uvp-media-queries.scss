@@ -204,7 +204,10 @@
   .teaser-data {
     padding: 24px 24px;
 
-    .text-wrapper { padding: 40px; }
+    .text-wrapper {
+        padding: 40px;
+        min-height: 420px;
+    }
     .map-wrapper { margin: 0 0; }
     .header {
       font-size: 24px !important;

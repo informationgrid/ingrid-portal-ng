@@ -74,14 +74,14 @@ COMMON:
   RESULT_FILTER_HEADER: Nur Ergebnisse für
   RESULT_NORESULTS: Keine Suchergebnisse gefunden.
   RESULT_INTERRUPTED: Die Ausgabe der Suchergebnisse wurde vorzeitig unterbrochen.
-  RESULT_COUNTER_CATALOG: '<h3><strong class="search-result-hits">{0} - {1}</strong> von <strong>{2}</strong> Ergebnissen in <strong>{3}</strong></h3>'
-  RESULT_COUNTER_CATALOG_WITHSEARCHVALUE: '<h3><strong class="search-result-hits">{0}<strong> Ergebnisse zu "<strong>{1}</strong>"</h3>'
-  RESULT_COUNTER_CATALOG_GROUPED: '<h3><strong class="search-result-hits">{0}</strong> Ergebnisse in <strong>{1}</strong></h3>'
-  RESULT_COUNTER_RANKED: '<h3><strong class="search-result-hits">{0} - {1}</strong> von <strong>{2}</strong> Ergebnissen</h3>'
-  RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<h3><strong class="search-result-hits">{0}</strong> Ergebnisse zu <strong>"{1}"</strong></h3>'
-  RESULT_COUNTER_RANKED_GROUPED: '<h3><strong class="search-result-hits">{0}</strong> Ergebnisse</h3>'
-  RESULT_NAVIGATION_RANKED: (Seite <strong>{0}</strong> von <strong>{1}</strong>)
-  RESULT_NAVIGATION_RANKED_GROUPED: (Seite <strong>{0}</strong>)
+  RESULT_COUNTER_CATALOG: '%d - %d von %d Ergebnissen in %s'
+  RESULT_COUNTER_CATALOG_WITHSEARCHVALUE: '%d Ergebnisse zu "%s"'
+  RESULT_COUNTER_CATALOG_GROUPED: '%d Ergebnisse in %s'
+  RESULT_COUNTER_RANKED: '%d - %d von %d Ergebnissen'
+  RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '%d Ergebnisse zu "%s"'
+  RESULT_COUNTER_RANKED_GROUPED: '%d Ergebnisse'
+  RESULT_NAVIGATION_RANKED: '(Seite %d von %d)'
+  RESULT_NAVIGATION_RANKED_GROUPED: '(Seite %d)'
   RESULT_SEARCH_FOR: Suche nach
   RESULT_SHOWSERVICE: Zeige Dienst
   RESULT_SHOWCOUPLEDRESOURCE: Zeige Kartenobjekt

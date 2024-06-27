@@ -378,7 +378,10 @@ $abbr-underline: 1px dotted $black !default;
       border: 0;
     }
   }
-
+  a.intext {
+    display: inline !important;
+    word-break: break-all;
+  }
   // Horizontal rule
   hr {
     clear: both;

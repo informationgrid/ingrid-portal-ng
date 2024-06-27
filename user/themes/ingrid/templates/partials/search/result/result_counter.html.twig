@@ -1,5 +1,9 @@
 <div>
     <h3>
-    {{ search_result.numOfHits }} Ergebnisse zu "{{ query }}"
+    {% if query is empty %}
+        {{ "COMMON.RESULT_COUNTER_RANKED_GROUPED"|t(search_result.numOfHits) }}
+    {% else %}
+        {{ "COMMON.RESULT_COUNTER_CATALOG_WITHSEARCHVALUE"|t(search_result.numOfHits, query) }}
+    {% endif %}
     </h3>
 </div>

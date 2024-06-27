@@ -11,15 +11,6 @@ class IdfHelper
 
     }
 
-    public static function nodeExists($node, string $xpath)
-    {
-        for ($node->rewind(); $node->valid(); $node->next()) {
-            if ($node->hasChildren()) {
-                var_dump($node->current());
-            }
-        }
-    }
-
     public static function getNode($node, string $xpath)
     {
         $tmpNode = $node->xpath($xpath);

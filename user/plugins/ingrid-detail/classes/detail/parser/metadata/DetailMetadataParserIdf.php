@@ -152,7 +152,8 @@ class DetailMetadataParserIdf
 
     public static function getMapRefs($node, &$metadata)
     {
-        self::getGeographicElement($node, $metadata);
+        self::getBBoxes($node, $metadata);
+        self::getGeographicElements($node, $metadata);
         $regionKey = IdfHelper::getNode($node, "./idf:regionKey");
         self::getAreaHeight($node, $metadata);
         $loc_descr = IdfHelper::getNode($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]");
@@ -164,7 +165,37 @@ class DetailMetadataParserIdf
         $metadata["map_referencesystem_id"] = $referencesystem_id;
     }
 
-    public static function getGeographicElement($node, &$metadata)
+    public static function getBBoxes($node, &$metadata)
+    {
+        $array = array();
+        $geographicIdentifiers = [];
+        $tmpNodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicDescription/gmd:geographicIdentifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]");
+        foreach ($tmpNodes as $tmpNode) {
+            $value = (string) IdfHelper::getNodeValue($tmpNode, ".");
+            array_push($geographicIdentifiers, $value);
+        }
+
+        $tmpNodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox");
+        $count = 0;
+        foreach ($tmpNodes as $tmpNode) {
+            $item = [];
+
+            $value = $geographicIdentifiers[$count];
+            $map = array ();
+            $map["title"] = $value;
+
+            $map["westBoundLongitude"] = (float)IdfHelper::getNodeValue($tmpNode, "./gmd:westBoundLongitude/gco:Decimal");
+            $map["southBoundLatitude"] = (float)IdfHelper::getNodeValue($tmpNode, "./gmd:southBoundLatitude/gco:Decimal");
+            $map["eastBoundLongitude"] = (float)IdfHelper::getNodeValue($tmpNode, "./gmd:eastBoundLongitude/gco:Decimal");
+            $map["northBoundLatitude"] = (float)IdfHelper::getNodeValue($tmpNode, "./gmd:northBoundLatitude/gco:Decimal");
+
+            array_push($array, $map);
+            $count++;
+        }
+        $metadata["map_bboxes"] = $array;
+    }
+
+    public static function getGeographicElements($node, &$metadata)
     {
         $array = array();
         $geographicIdentifiers = [];
@@ -644,14 +675,19 @@ class DetailMetadataParserIdf
         $metadata["info_additional_media"] = $media;
         $metadata["info_additional_order_instructions"] = $order_instructions;
 
-        $inspire_themes = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'INSPIRE')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $priority_dataset = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'priority')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $inspire_themes = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'INSPIRE themes')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $priority_dataset = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'INSPIRE priority')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
         $spatial_scope = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Spatial scope')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
         $gemet_concepts = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Concepts')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
         $adv_group = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]");
         $invekos = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'IACS Data')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
         $topic_category = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:topicCategory/gmd:MD_TopicCategoryCode");
-        $search_terms = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'UMTHES')]|.]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $search_terms = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords
+        [./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*
+            [self::gco:CharacterString or self::gmx:Anchor]
+            [not(contains(text(), 'Further legal basis')) and not(contains(text(), 'INSPIRE themes')) and not(contains(text(), 'INSPIRE priority')) and contains(text(), 'UMTHES')]
+            or count(./gmd:MD_Keywords/gmd:thesaurusName) = 0
+        ]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
 
         $metadata["info_keywords_inspire_themes"] = $inspire_themes;
         $metadata["info_keywords_priority_dataset"] = $priority_dataset;
@@ -973,16 +1009,16 @@ class DetailMetadataParserIdf
         $completenessOmission = self::getReport($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessOmission", "completeness omission (rec_grade)", "Rate of missing items");
         $accuracyVertical = self::getReport($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy", "vertical", "Mean value of positional uncertainties (1D)");
         $accuracyGeographic = self::getReport($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AbsoluteExternalPositionalAccuracy", "geographic", "Mean value of positional uncertainties (2D)");
-        $completenessCommission = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessCommission");
-        $conceptualConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_ConceptualConsistency");
-        $domainConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency");
-        $formatConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_FormatConsistency");
-        $topologicalConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency");
-        $temporalConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TemporalConsistency");
-        $thematicClassificationCorrectness = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_ThematicClassificationCorrectness");
-        $nonQuantitativeAttributeAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_NonQuantitativeAttributeAccuracy");
-        $quantitativeAttributeAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_QuantitativeAttributeAccuracy");
-        $relativeInternalPositionalAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_RelativeInternalPositionalAccuracy");
+        $completenessCommission = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_CompletenessCommission[./gmd:nameOfMeasure]");
+        $conceptualConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_ConceptualConsistency[./gmd:nameOfMeasure]");
+        $domainConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency[./gmd:nameOfMeasure]");
+        $formatConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_FormatConsistency[./gmd:nameOfMeasure]");
+        $topologicalConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TopologicalConsistency[./gmd:nameOfMeasure]");
+        $temporalConsistency = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_TemporalConsistency[./gmd:nameOfMeasure]");
+        $thematicClassificationCorrectness = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_ThematicClassificationCorrectness[./gmd:nameOfMeasure]");
+        $nonQuantitativeAttributeAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_NonQuantitativeAttributeAccuracy[./gmd:nameOfMeasure]");
+        $quantitativeAttributeAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_QuantitativeAttributeAccuracy[./gmd:nameOfMeasure]");
+        $relativeInternalPositionalAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_RelativeInternalPositionalAccuracy[./gmd:nameOfMeasure]");
 
         $metadata["data_quality_completenessOmission"] = $completenessOmission;
         $metadata["data_quality_accuracyVertical"] = $accuracyVertical;

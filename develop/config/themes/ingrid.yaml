@@ -124,3 +124,5 @@ hit_rdf_url: null
 search_hit_rdf_enabled: false
 detail_hit_rdf_enabled: false
 header_title_extend: 'InGrid Portal'
+username: admin
+password: admin

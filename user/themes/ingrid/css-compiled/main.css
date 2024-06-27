@@ -2902,6 +2902,11 @@ a img {
   border: 0;
 }
 
+a.intext {
+  display: inline !important;
+  word-break: break-all;
+}
+
 hr {
   clear: both;
   max-width: 100%;
@@ -8253,6 +8258,9 @@ header a.icon.is-selected {
 .teaser-data .helper, .teaser-data p {
   color: #3A566D;
 }
+.teaser-data p {
+  overflow-wrap: break-word;
+}
 .teaser-data .arrow {
   font-size: 40px;
   float: right;
@@ -8328,6 +8336,10 @@ a.data:hover {
 .teaser-data.search .data-text {
   height: auto;
   margin-bottom: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 .teaser-data.search .js-expander-content {
   padding: 24px 0 0;
@@ -8718,6 +8730,10 @@ footer .footer-top-link:hover {
   max-width: 300px;
   vertical-align: top;
   text-align: left;
+  overflow-wrap: break-word;
+}
+.search-filtered .table table tr td:first-child {
+  overflow-wrap: break-word;
 }
 .search-filtered .table table a:not(.button) {
   font-size: 16px;
@@ -8755,19 +8771,19 @@ footer .footer-top-link:hover {
   font-size: 34px;
   color: #67b92f;
 }
-.search-filtered .table table .text-list .list-item {
+.search-filtered .table table .text-list div.list-item {
   margin-bottom: 16px;
   padding-bottom: 8px;
 }
-.search-filtered .table table .text-list .list-item > a, .search-filtered .table table .text-list .list-item > span {
+.search-filtered .table table .text-list div.list-item > a, .search-filtered .table table .text-list div.list-item > span {
   line-height: 18px;
   display: block;
   margin-top: 4px;
 }
-.search-filtered .table table .text-list .list-item > br {
+.search-filtered .table table .text-list div.list-item > br {
   display: none;
 }
-.search-filtered .table table .text-list .list-item:last-child {
+.search-filtered .table table .text-list div.list-item:last-child {
   margin-bottom: 4px;
   padding-bottom: 0;
 }
@@ -8879,6 +8895,13 @@ footer .footer-top-link:hover {
   margin-right: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.search-filtered .document-list .list-item a span[class^=ic-] {
+  float: left;
+  margin-top: 3px;
+}
+.search-filtered .document-list .list-item a span.text {
+  display: block;
 }
 .search-filtered .document-list .list-item a.button {
   display: inline-block;
@@ -9528,7 +9551,7 @@ meter[value="5"]::-moz-meter-bar {
   margin: 24px 0;
 }
 
-.js-expand-text .js-expand-text-content:before, .image div.description:before, .no-image div.description:before {
+.js-expand-text .js-expand-text-content:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -9546,31 +9569,34 @@ meter[value="5"]::-moz-meter-bar {
   background: none;
 }
 
-.image div.description:before {
-  background: linear-gradient(rgba(255, 255, 255, 0) 100px, #fff);
-  pointer-events: none;
-}
-
-.no-image div.description:before {
-  background: linear-gradient(rgba(255, 255, 255, 0) 35px, #fff);
-  pointer-events: none;
-}
-
 .image div.description, .no-image div.description {
   position: relative;
 }
 
-.image div.description small.description, .no-image div.description small.description {
+.image div.description small.description, .no-image div.description small.description, div.download small.description {
   display: block;
   overflow: hidden;
 }
 
 .image div.description small.description {
-  max-height: 145px;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
 }
 
 .no-image div.description small.description {
-  max-height: 70px;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+div.download small.description {
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 #searchResult {
@@ -10342,6 +10368,10 @@ span.text-break {
   clear: both;
 }
 
+div.description {
+  overflow: hidden;
+}
+
 /* colors */
 /* UVP colors */
 .form-element .control {
@@ -10987,6 +11017,7 @@ ul#select2-location-results {
   }
   .teaser-data .text-wrapper {
     padding: 40px;
+    min-height: 420px;
   }
   .teaser-data .map-wrapper {
     margin: 0 0;

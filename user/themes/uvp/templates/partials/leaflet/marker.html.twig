@@ -11,7 +11,7 @@
             });
         }
     }
-    
+
     function hideMarker(m) {
         if(m.target.bbox){
             if(map){
@@ -23,13 +23,13 @@
     var mapSizeX;
     var popupMarkerSize;
     var popupMarkerOptions = {};
-    
+
     if(map){
         if(map._size){
             mapSizeX = map._size.x;
         }
     }
-    
+
     if(mapSizeX){
         if(mapSizeX < 310){
             popupMarkerOptions = {
@@ -242,7 +242,7 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-dev-plan' + c, iconSize: new L.Point(40, 40) });
         }
     });
-    
+
     jQuery.get("$restUrlLegendCounter")
     .done(function(data, textStatus, jqxhr) {
         var mapFilter = $('.map-filter ul li div');
@@ -384,7 +384,7 @@
             }
             if(mapParamLayers.length > 0) {
                 updateQueryStringParameter('layer', mapParamLayers.toString());
-            } 
+            }
         }
     })
     .fail(function () {
@@ -405,7 +405,7 @@
         mapLng = parseFloat('$mapPosition.get(1)');
         mapZoom = parseFloat('$mapPosition.get(2)');
     }
-    
+
     if('$mapParamN' && '$mapParamE' && '$mapParamZoom') {
         mapLat = parseFloat('$mapParamN') || mapLat;
         mapLng = parseFloat('$mapParamE') || mapLng;
@@ -456,7 +456,7 @@
             updateQueryStringParameter('zoom', mapZoom);
         }
     });
-    
+
 
     function onOverlayAdd(e){
         var paramLayers = [];
@@ -563,11 +563,11 @@
     }
 
     function getIcon(smallIcons, iconColor, enablePopUp) {
-        var icon; 
+        var icon;
         if(smallIcons){
             icon = L.icon({
                 iconUrl: '/decorations/layout/ingrid/images/pins/icon_pin_small_' + iconColor + '.png',
-                iconSize: [6, 6], 
+                iconSize: [6, 6],
                 iconAnchor: [3, 3]
             });
         } else {
@@ -579,15 +579,15 @@
         }
         return icon;
     }
-    
+
     function createPopUp(title, procedure, categories, steps, id, iplug) {
         var popUpHtml = '';
         if(procedure && procedure.length > 0){
             popUpHtml += '<div class="helper text"><small>' + procedure + '</small></div>';
         }
-        
+
         popUpHtml += '<a href="$renderResponse.encodeURL('/portal/search-detail.psml')?docuuid=' + id + '#if($detailUseParamPlugid)&plugid=' + iplug + '#end" target="_blank" title="' + title + '"><h5>' + title + '</h5></a>';
-        
+
         if(categories && categories.length > 0){
             var categoryList = [];
             for (category in categories){
@@ -624,7 +624,7 @@
             marker.on('click', onMapClick);
             marker.on('popupopen', showMarker);
             marker.on('popupclose', hideMarker);
-            
+
         }
         mapMarkers.addLayer(marker);
     }
@@ -636,7 +636,7 @@
         var lon = a.lon;
         var iplug = a.iplug;
         var popUpHtml = 'Bitte warten ...';
-        var icon = getIcon(smallIcons, iconColor, enablePopUp); 
+        var icon = getIcon(smallIcons, iconColor, enablePopUp);
         var marker = L.marker(new L.LatLng(lat,lon), { title: name, icon: icon, interactive: !smallIcons });
         marker.bbox = null;
         marker.lat = lat;
@@ -692,7 +692,7 @@
                     popUpHtml += '<h6 class="no-margin">Mitgliedsgemeinden:</h6>';
                     popUpHtml += '<p class="leaflet-hyphens">' + descr + '</p>';
                 }
-                
+
                 if(bpinfos && bpinfos.length > 0){
                     popUpHtml += '<h6 class="no-margin">Nutzen Sie die folgenden Links um zu den Bauleitplanungs-Seiten zu gelangen:</h6>';
                     for (var j = 0; j < bpinfos.length; j++) {
@@ -738,7 +738,7 @@
           map.spin(false);
         });
     };
-    
+
     function createLegendEntry(map, mapFilter, markers, color, id, title, paramEntry, style, restUrlTime){
         var html = '<div class="form-element boxed map ' + color + '" ' + style + '>';
         html += '<div class="input-check">' +
@@ -750,12 +750,12 @@
             '</div>';
         if(markers.length > 1 && restUrlTime && restUrlTime.length > 0) {
             html += '<div class="control-group is-hidden">' +
-                '<label class="control toggle" title="$MESSAGES.getString("common.toggle.approval.date.tooltip")">' +
+                '<label class="control toggle" title="{{ "COMMON.TOGGLE_APPROVAL_DATE_TOOLTIP"|t }}">' +
                 '<input id="' + id + '_time" name="' + id + '_time" type="checkbox" checked>' +
                 '<span class="toggle-slider round"></span>' +
                 '</label>' +
-                '<span class="toggle-label checked">$MESSAGES.getString("common.toggle.approval.date.on")</span>'+
-                '<span class="toggle-label unchecked is-hidden">$MESSAGES.getString("common.toggle.approval.date.off")</span>'+
+                '<span class="toggle-label checked">{{ "COMMON.TOGGLE_APPROVAL_DATE_ON"|t }}</span>'+
+                '<span class="toggle-label unchecked is-hidden">{{ "COMMON_TOGGLE_APPROVAL_DATE_OFF"|t }}</span>'+
                 '</div>';
         }
         html += '</div></div>';
@@ -821,7 +821,7 @@
             });
         }
     };
-    
+
     function loadMarkers(url, startPage, marker, markerColor, map) {
         jQuery.get(url + "?startPage=" + startPage + "&marker=" + marker + "&markerColor=" + markerColor)
         .done(function(data, textStatus, jqxhr) {

@@ -28,7 +28,7 @@
 
 {% if downloads|length > 0
     or references|length > 0
-    or access|length > 0 
+    or access|length > 0
     or others|length > 0
     or previews|length > 0
     or bboxes|length > 0
@@ -36,7 +36,7 @@
     or mapUrl
     or mapUrlClient
 %}
-    
+
     <a id="{{ hitOpenId }}" class="js-expander {% if isHitOpen %}is-hidden{% endif %}" title="Mehr Infos" href="#" {% if bboxes|length > 0 %}onclick="resizeMap({{ hitMapId }})"{% endif %}>
         <span class="icon  ic-ic-plus"></span>
         <span class="text">Mehr Infos</span>
@@ -203,7 +203,7 @@
                         </div>
                     {% endif %}
                 {% endif %}
-                
+
                 {% if previews|length > 0 and bboxes|length > 0 %}
                         </div>
                         <div class="swiper-pagination"></div>
@@ -214,7 +214,7 @@
 {# Kartenansicht #}
                 {% if mapUrlClient or mapUrl %}
                 <p class="caption">
-                    <a target="_blank" class="button small" href="{{ mapUrlClient ?? mapUrl }}" title="$MESSAGES.getString('common.result.showMap.tooltip')">
+                    <a target="_blank" class="button small" href="{{ mapUrlClient ?? mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
                         Kartenansicht anzeigen
                     </a>
                 </p>

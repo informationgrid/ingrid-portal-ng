@@ -19,5 +19,5 @@
   {% endfor %}
   {% include 'partials/search/result/result_counter_bottom.html.twig' %}
 {% else %}
-    <p><strong>$MESSAGES.getString('common.result.noResults')</strong><br /><br /></p>
+    <p><strong>{{ "COMMON.RESULT_NORESULTS"|t }}</strong><br /><br /></p>
 {% endif %}

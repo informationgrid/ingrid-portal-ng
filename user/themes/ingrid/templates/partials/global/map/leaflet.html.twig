@@ -1,0 +1,229 @@
+{% set map_epsg = theme_var('map.leaflet.epsg') %}
+{% set map_bg_wmts = theme_var('map.leaflet.bg.layer.wmts') %}
+{% set map_bg_wms = theme_var('map.leaflet.bg.layer.wms') %}
+{% set map_bg_attribution = theme_var('map.leaflet.bg.layer.attribution') %}
+{% set map_bg_opacity = theme_var('map.leaflet.bg.layer.opacity') %}
+
+{% set map_bboxColor  = theme_var('map.leaflet.bbox.color') %}
+{% set map_bboxFillOpacity  = theme_var('map.leaflet.bbox.opacity') %}
+{% set map_bboxWeight  = theme_var('map.leaflet.bbox.weight') %}
+{% set map_bboxInverted  = theme_var('map.leaflet.bbox.Inverted') %}
+<script>
+    function getOSMLayer(attribution) {
+        var osmUrl = '{{ map_bg_wmts.url }}';
+        var osmAttrib = '{{ map_bg_attribution|raw }}';
+        var osmOpacity = '{{ map_bg_opacity }}';
+        if (attribution) {
+            osmAttrib = osmAttrib + "" + attribution;
+        }
+        return new L.TileLayer(osmUrl, {
+            attribution: osmAttrib,
+            opacity: osmOpacity
+        });
+    }
+
+    function getWMSLayer(layerUrl, layerName, attribution) {
+        var osmAttrib = '{{ map_bg_attribution|raw }}';
+        var osmOpacity = '{{ map_bg_opacity }}';
+        if (attribution) {
+            osmAttrib += attribution;
+        }
+        return new L.tileLayer.wms(layerUrl, {
+            layers: layerName,
+            attribution: osmAttrib,
+            opacity: osmOpacity
+        });
+    }
+
+    function addLeafletMap(baselayers, bounds, latlng, zoom) {
+        return addLeafletMapWithId('map', baselayers, bounds, latlng, zoom);
+    }
+
+    function addLeafletMapWithId(mapId, baselayers, bounds, latlng, zoom) {
+        var epsg = L.CRS.EPSG3857;
+        if ('{{ map_epsg }}'.length > 0) {
+            epsg = L.CRS.EPSG{{ map_epsg }};
+        }
+        var map = new L.Map(mapId, {
+            crs: epsg,
+            layers: baselayers
+        });
+        map.attributionControl.setPrefix('<a href="https://leafletjs.com" title="Leaflet">Leaflet</a>');
+        if (bounds) {
+            map.fitBounds(bounds);
+        } else if (latlng) {
+            map.setView(latlng, zoom || 6);
+        } else {
+            map.setView(new L.LatLng(51.3, 10), 6);
+        }
+        return map;
+    }
+
+    function addLeafletHomeControl(map, title, position, icon, bounds, padding, fontSize) {
+        var HomeControl = L.Control.extend({
+            options: {
+                position: position ? position : 'topleft'
+            },
+            onAdd: function (map) {
+                var container = L.DomUtil.create('div', 'leaflet-control-home leaflet-bar');
+                var link = L.DomUtil.create('a', icon, container);
+                link.href = '#';
+                if (padding) {
+                    link.style.padding = padding;
+                }
+                if (fontSize) {
+                    link.style.fontSize = fontSize;
+                }
+                link.title = title;
+                L.DomEvent.addListener(link, 'click', this._homeClick, this);
+                return container;
+            },
+            _homeClick: function (e) {
+                L.DomEvent.stop(e);
+                if (bounds) {
+                    var features = [];
+                    map.eachLayer(function (layer) {
+                        if (layer && layer.getBounds) {
+                            features.push(layer);
+                        }
+                    })
+                    if (features.length > 0) {
+                        bounds = L.featureGroup(features).getBounds();
+                    }
+                    map.fitBounds(bounds);
+                }
+            }
+        });
+        map.addControl(new HomeControl({}));
+    }
+
+    function resizeMap(map) {
+        if (map) {
+            map._onResize();
+        }
+    }
+
+    function disableLeafletMapTouchControl(map) {
+        map.removeControl(map.zoomControl);
+        map.dragging.disable();
+        map.zoomControl.disable();
+        map.touchZoom.disable();
+        map.doubleClickZoom.disable();
+        map.scrollWheelZoom.disable();
+        map.boxZoom.disable();
+        map.keyboard.disable();
+    }
+
+function addLayerBWaStr(map, ids, restUrlBWaStr, wkt, bboxes) {
+  var promises = [];
+  ids.forEach(function(id){
+    var request =  $.ajax({
+      url: restUrlBWaStr + '?id=' + id[0] + '&von=' + id[1] + '&bis=' + id[2],
+      dataType: 'json',
+      success: function (data) {
+        return data;
+      }
+    });
+    promises.push( request);
+  });
+  if(promises.length > 0) {
+    map.spin(true);
+    Promise.all(promises).then((values) => {
+      var features = [];
+      values.forEach(function(data){
+        var geometry = data.geometry;
+        if (geometry) {
+          var geojsonObject = {
+            'type': 'FeatureCollection',
+            'features': [{
+              'type': 'Feature',
+              'geometry': {
+                'type': geometry.type,
+                'coordinates': geometry.coordinates
+              }
+            }]
+          };
+          var featureLayer = L.geoJson(geojsonObject, {});
+          featureLayer.bindTooltip('<b>' + data.bwastr_name + ' (' + data.bwastrid + ')</b><br>' + data.strecken_name, {direction: 'center'});
+          features.push(featureLayer);
+        }
+      });
+      if(features.length > 0) {
+        var featureGroup = L.featureGroup(features).addTo(map);
+        map.fitBounds(featureGroup.getBounds());
+        map.spin(false);
+      } else {
+        if(wkt) {
+          addLayerWKT(map, wkt, bboxes);
+        } else if (bboxes) {
+          addLayerBounds(map, bboxes);
+        }
+        map.spin(false);
+      }
+    });
+  } else {
+    if(wkt) {
+      addLayerWKT(map, wkt, bboxes);
+    } else if (bboxes) {
+      addLayerBounds(map, bboxes);
+    }
+  }
+}
+
+function addLayerWKT(map, wkt, bboxes) {
+  var features = L.geoJSON(JSON.parse(wkt));
+  if(features) {
+      features.addTo(map);
+      map.fitBounds(features.getBounds());
+  } else {
+      addLayerBounds(map, bboxes);
+  }
+}
+
+function addLayerBounds(map, bboxes) {
+  {% if map_bboxInverted %}
+    var geojson = [];
+    bboxes.forEach(function(bbox) {
+      var y1Coord = bbox.southBoundLatitude;
+      var x1Coord = bbox.westBoundLongitude;
+      var y2Coord = bbox.northBoundLatitude;
+      var x2Coord = bbox.eastBoundLongitude;
+      if(y1Coord !== 0 && x1Coord !== 0 && y2Coord !== 0 && x2Coord !== 0) {
+        if(x1Coord === x2Coord && y1Coord === y2Coord) {
+        } else {
+          var mapLayerBounds = L.rectangle([[y1Coord, x1Coord], [y2Coord, x2Coord]], {});
+          geojson.push(mapLayerBounds.toGeoJSON());
+        }
+      }
+    });
+    L.geoJson(geojson, {
+      invert: true,
+      color: '{{ map_bboxColor }}',
+      fillOpacity: {{ map_bboxFillOpacity }},
+      weight: {{ map_bboxWeight }} || 1
+    }).addTo(map);
+  {% else %}
+    bboxes.forEach(function(bbox) {
+      var y1Coord = bbox.southBoundLatitude;
+      var x1Coord = bbox.westBoundLongitude;
+      var y2Coord = bbox.northBoundLatitude;
+      var x2Coord = bbox.eastBoundLongitude;
+      if(y1Coord !== 0 && x1Coord !== 0 && y2Coord !== 0 && x2Coord !== 0) {
+        if(x1Coord === x2Coord && y1Coord === y2Coord) {
+          var marker = L.marker([y1Coord, x1Coord]);
+          marker.bindTooltip(bbox.title, {direction: 'center'});
+          map.addLayer(marker);
+        } else {
+          var mapLayerBounds = L.rectangle([[y1Coord, x1Coord], [y2Coord, x2Coord]], {
+            color: '{{ map_bboxColor }}',
+            fillOpacity: {{ map_bboxFillOpacity }},
+            weight: {{ map_bboxWeight }} || 1
+          });
+          mapLayerBounds.bindTooltip(bbox.title, {direction: 'center'});
+          map.addLayer(mapLayerBounds);
+        }
+      }
+    });
+  {% endif %}
+}
+</script>
