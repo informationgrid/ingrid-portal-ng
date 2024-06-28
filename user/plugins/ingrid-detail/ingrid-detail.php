@@ -126,7 +126,7 @@ class InGridDetailPlugin extends Plugin
                 }
                 $this->grav['twig']->twig_vars['detail_type'] = $type;
                 $this->grav['twig']->twig_vars['hit'] = $hit;
-                //$this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"];
+                $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"];
             }
         }
     }
