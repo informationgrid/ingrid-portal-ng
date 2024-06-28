@@ -293,6 +293,7 @@ class DetailMetadataParserIdf
     {
         $array = array();
 
+        // Querverweise
         $xpathExpression = "./idf:crossReference[not(@uuid=preceding::idf:crossReference/@uuid)]";
         $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
         foreach ($tmpNodes as $tmpNode) {
@@ -316,9 +317,10 @@ class DetailMetadataParserIdf
             array_push($array, $item);
         }
 
+        // Querverweise
         $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download') and (./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]='coupled')]";
         if ($type == "1")
-            $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download') and not(./*/*/gmd:URL[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'getcap')] and (./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]='coupled'))]";
+            $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download') and not(./*/*/gmd:URL[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'getcap')]) and (./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]='coupled')]";
         elseif($type == "6")
             $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download') and (./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]='coupled')]";
 
@@ -338,7 +340,8 @@ class DetailMetadataParserIdf
             array_push($array, $item);
         }
 
-        $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions[not(./gmd:MD_DigitalTransferOptions/gmd:onLine/*/idf:attachedToField[@entry-id='9990']) and not(./gmd:MD_DigitalTransferOptions/gmd:onLine/*/gmd:function/*/@codeListValue='download')]/gmd:MD_DigitalTransferOptions/gmd:onLine";
+        // Weitere Verweise
+        $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download')]";
         $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
         foreach ($tmpNodes as $tmpNode) {
             $url = IdfHelper::getNodeValue($tmpNode, "./*/gmd:linkage/gmd:URL");
@@ -359,6 +362,7 @@ class DetailMetadataParserIdf
             array_push($array, $item);
         }
 
+        // Download
         $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[./*/idf:attachedToField[@entry-id='9990'] or ./*/gmd:function/*/@codeListValue='download']";
         $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
         foreach ($tmpNodes as $tmpNode) {
@@ -380,6 +384,7 @@ class DetailMetadataParserIdf
             array_push($array, $item);
         }
 
+        // Übergeordnete Objekte
         $xpathExpression = "./idf:superiorReference";
         $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
         foreach ($tmpNodes as $tmpNode) {
@@ -403,6 +408,7 @@ class DetailMetadataParserIdf
             array_push($array, $item);
         }
 
+        // Untergeordnete Objekte
         $xpathExpression = "./idf:subordinatedReference";
         $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
         foreach ($tmpNodes as $tmpNode) {
@@ -426,6 +432,7 @@ class DetailMetadataParserIdf
             array_push($array, $item);
         }
 
+        // URL des Zuganges
         if ($type == 3) {
             $xpathExpression = "./gmd:identificationInfo/*/srv:containsOperations/srv:SV_OperationMetadata[./srv:operationName/*[self::gco:CharacterString or self::gmx:Anchor][contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), '=getcap')]]/srv:connectPoint";
             $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);

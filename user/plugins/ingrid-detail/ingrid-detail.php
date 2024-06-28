@@ -81,6 +81,7 @@ class InGridDetailPlugin extends Plugin
             $uuid = $this->grav['uri']->query('docuuid');
             $type = $this->grav['uri']->query('type');
             $testIDF = $this->grav['uri']->query('testIDF');
+            $cswUrl = $this->grav['uri']->query('cswUrl');
 
             $api = getenv('INGRID_API') ?? $this->grav['config']->get('plugins.ingrid-detail.api_url');
 
@@ -97,6 +98,8 @@ class InGridDetailPlugin extends Plugin
 
             if ($testIDF) {
                 $response = file_get_contents('user-data://test/detail/' . $type . '/idf/' . $testIDF);
+            } else if ($cswUrl) {
+                $response = file_get_contents($cswUrl);
             } else if ($uuid && $api) {
 //                $response = Response::get($host);
                 $client = new Client(['base_uri' => $api]);
