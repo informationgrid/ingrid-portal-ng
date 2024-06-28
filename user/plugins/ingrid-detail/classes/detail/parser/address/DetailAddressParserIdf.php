@@ -16,7 +16,7 @@ class DetailAddressParserIdf
         $address["summary"] = IdfHelper::getNodeValue($node, "./gmd:positionName/*[self::gco:CharacterString or self::gmx:Anchor]");
         self::getContacts($node, $address);
         self::getLinks($node, $address);
-        var_dump($address);
+        //var_dump($address);
         return $address;
     }
 
@@ -123,7 +123,7 @@ class DetailAddressParserIdf
     public static function getLinks($node, &$address)
     {
         $array = array();
-        $nodes = $node->xpath('idf:objectReference');
+        $nodes = IdfHelper::getNodeList($node, 'idf:objectReference');
         foreach ($nodes as $tmpNode) {
             $uuid = $tmpNode->attributes()->uuid;
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
@@ -148,7 +148,7 @@ class DetailAddressParserIdf
             );
             array_push($array, $item);
         }
-        $nodes = $node->xpath('idf:subordinatedParty');
+        $nodes = IdfHelper::getNodeList($node, 'idf:subordinatedParty');
         foreach ($nodes as $tmpNode) {
             $uuid = $tmpNode->attributes()->uuid;
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
@@ -162,7 +162,7 @@ class DetailAddressParserIdf
             array_push($array, $item);
         }
 
-        $nodes = $node->xpath('idf:superiorParty');
+        $nodes = IdfHelper::getNodeList($node, 'idf:superiorParty');
         foreach ($nodes as $tmpNode) {
             $uuid = $tmpNode->attributes()->uuid;
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
