@@ -3,11 +3,11 @@ namespace Grav\Plugin;
 
 use Grav\Common\Twig\Extension\GravExtension;
 
-class DetailMetadataTwigExtension extends GravExtension
+class DetailTwigExtension extends GravExtension
 {
     public function getName()
     {
-        return 'DetailMetadataTwigExtension';
+        return 'DetailTwigExtension';
     }
 
     // Functions
@@ -18,7 +18,7 @@ class DetailMetadataTwigExtension extends GravExtension
         ];
     }
 
-    public function addKeyValueToMap($map, $key, $value) 
+    public function addKeyValueToMap($map, $key, $value)
     {
         if ($key && $value) {
             $map[$key] = $value;
@@ -39,8 +39,8 @@ class DetailMetadataTwigExtension extends GravExtension
     {
         $output = [];
         if($links) {
-            $output = array_filter($links, function($v) use ($kind) { 
-                return $v["kind"] == $kind; 
+            $output = array_filter($links, function($v) use ($kind) {
+                return $v["kind"] == $kind;
             });
         }
         return $output;

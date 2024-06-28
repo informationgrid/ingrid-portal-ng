@@ -205,7 +205,6 @@
   {% set previews = item.previews %}
 
 {# Titel #}
-  {{ previews|length }}
   {% if previews|length > 0 %}
     <div class="image">
       <div class="helper icon">
@@ -295,11 +294,15 @@
   </div>
 {% endmacro %}
 
-{% macro render_contact_facts (title, items, sortAddressTyp) %}
+{% macro render_contact_facts (title, items, sortAddressTyp, isAddress) %}
   {% set break = false %}
   {% for item in items if not break %}
     {% set role = item.role %}
     {% set addresses = item.addresses %}
+    {% set streets = item.streets %}
+    {% set postcode = item.postcode %}
+    {% set city = item.city %}
+    {% set country = item.country %}
     {% set mail = item.mail %}
     {% set phone = item.phone %}
     {% set facsimile = item.facsimile %}
@@ -329,6 +332,34 @@
         {% endfor %}
     {% endfor %}
     </p>
+    {% if isAddress %}
+        <p>
+        {# Street #}
+        {% if streets %}
+            {% for street in streets %}
+                {% set numStreet = loop.index %}
+                {{ street }}
+                {% if numStreet < streets|length %}
+                  <br>
+                {% endif %}
+            {% endfor %}
+            <br>
+        {% endif %}
+        {# Postcode #}
+        {% if postcode %}
+            {{ postcode }}
+        {% endif %}
+        {# City #}
+        {% if city %}
+            {{ city }}
+            <br>
+        {% endif %}
+        {# Country #}
+        {% if country %}
+            {{ country }}
+        {% endif %}
+        </p>
+    {% endif %}
     {# E-Mail #}
     {% if mail %}
     <div>

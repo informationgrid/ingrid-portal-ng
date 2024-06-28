@@ -82,7 +82,7 @@ class InGridDetailPlugin extends Plugin
             $type = $this->grav['uri']->query('type');
             $testIDF = $this->grav['uri']->query('testIDF');
 
-            $api = getenv('INGRID_API');
+            $api = getenv('INGRID_API') ?? $this->grav['config']->get('plugins.ingrid-detail.api_url');
 
             if (empty($type)) {
                 $type = "metadata";
@@ -101,7 +101,7 @@ class InGridDetailPlugin extends Plugin
 //                $response = Response::get($host);
                 $client = new Client(['base_uri' => $api]);
                 $responseContent = $client->request('POST', 'portal/search', [
-                    'body' => $this->transformQuery($uuid)
+                    'body' => $this->transformQuery($uuid, $type)
                 ])->getBody()->getContents();
                 $hits = json_decode($responseContent)->hits;
                 if(count($hits) > 0) {
@@ -112,15 +112,7 @@ class InGridDetailPlugin extends Plugin
 
             if ($response) {
                 $content = simplexml_load_string($response);
-                $content->registerXPathNamespace('idf', 'http://www.portalu.de/IDF/1.0');
-                $content->registerXPathNamespace('gco', 'http://www.isotc211.org/2005/gco');
-                $content->registerXPathNamespace('gmd', 'http://www.isotc211.org/2005/gmd');
-                $content->registerXPathNamespace('gml', 'http://www.opengis.net/gml/3.2');
-                $content->registerXPathNamespace('gmx', 'http://www.isotc211.org/2005/gmx');
-                $content->registerXPathNamespace('gts', 'http://www.isotc211.org/2005/gts');
-                $content->registerXPathNamespace('srv', 'http://www.isotc211.org/2005/srv');
-                $content->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
-                $content->registerXPathNamespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance');
+                IdfHelper::registerNamespaces($content);
 
                 if ($type == "address") {
                     $parser = new DetailAddressParser();
@@ -131,22 +123,24 @@ class InGridDetailPlugin extends Plugin
                 }
                 $this->grav['twig']->twig_vars['detail_type'] = $type;
                 $this->grav['twig']->twig_vars['hit'] = $hit;
-                $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"];
+                //$this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"];
             }
         }
     }
 
     public function onTwigExtensions()
     {
-        require_once(__DIR__ . '/twig/DetailAddressTwigExtension.php');
-        require_once(__DIR__ . '/twig/DetailMetadataTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new DetailAddressTwigExtension());
-        $this->grav['twig']->twig->addExtension(new DetailMetadataTwigExtension());
+        require_once(__DIR__ . '/twig/DetailTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new DetailTwigExtension());
     }
 
-    private function transformQuery(string $uuid): string
+    private function transformQuery(string $uuid, string $type): string
     {
-        $query = array("query" => array("ids" => array("values" => array($uuid))));
+        $indexField = "t01_object.obj_id";
+        if($type == "address") {
+            $indexField = "t02_address.adr_id";
+        }
+        $query = array("query" => array("query_string" => array("query" => $indexField . ":\"" . $uuid . "\"")));
         return json_encode($query);
     }
 

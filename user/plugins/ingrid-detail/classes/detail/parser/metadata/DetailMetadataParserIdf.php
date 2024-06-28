@@ -14,7 +14,7 @@ class DetailMetadataParserIdf
         $metadata["type"] = self::getType($node);
         $metadata["title"] = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["altTitle"] = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $metadata["summary"] = IdfHelper::getNodeValue($node, "./idf:abstract/*[self::gco:CharacterString or self::gmx:Anchor] | ./gmd:abstract/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $metadata["summary"] = IdfHelper::getNodeValue($node, "./idf:abstract/*[self::gco:CharacterString or self::gmx:Anchor] | ./gmd:identificationInfo/*/gmd:abstract/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["accessConstraint"] = IdfHelper::getNodeValue($node, "./idf:hasAccessConstraint");
         self::getPreviews($node, $metadata);
         self::getTimeRefs($node, $metadata);
@@ -125,15 +125,15 @@ class DetailMetadataParserIdf
         ## Zeitbezug der Ressource
         $tmpValue = IdfHelper::getNode($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[./gmd:date]");
         if ($tmpValue) {
-            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'creation']/gmd:date/gco:DateTime");
+            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'creation']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {
                 $metadata["time_creation"] = $tmpValue;
             }
-            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'publication']/gmd:date/gco:DateTime");
+            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'publication']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {
                 $metadata["time_publication"] = $tmpValue;
             }
-            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'revision']/gmd:date/gco:DateTime");
+            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'revision']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {
                 $metadata["time_revision"] = $tmpValue;
             }
@@ -180,7 +180,7 @@ class DetailMetadataParserIdf
         foreach ($tmpNodes as $tmpNode) {
             $item = [];
 
-            $value = $geographicIdentifiers[$count];
+            $value = count($geographicIdentifiers) > $count ? $geographicIdentifiers[$count] : "";
             $map = array ();
             $map["title"] = $value;
 
@@ -210,7 +210,7 @@ class DetailMetadataParserIdf
         foreach ($tmpNodes as $tmpNode) {
             $item = [];
 
-            $value = $geographicIdentifiers[$count];
+            $value = count($geographicIdentifiers) > $count ? $geographicIdentifiers[$count] : "";
             $map = array ();
             $map["value"] = $value;
             $map["type"] = "text";
@@ -549,7 +549,6 @@ class DetailMetadataParserIdf
                 "uuid" => $uuid,
                 "type" => $type,
                 "role" => $role,
-                "title" => $title,
                 "addresses" => $addresses,
                 "streets" => $streets,
                 "postcode" => $postcode,
@@ -749,7 +748,7 @@ class DetailMetadataParserIdf
             array_push($item, $map);
 
             $map = array ();
-            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:date/gmd:CI_Date/gmd:date/gco:DateTime");
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:date/gmd:CI_Date/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($value) {
                 $map["value"] = $value;
                 $map["type"] = "date";
@@ -784,7 +783,7 @@ class DetailMetadataParserIdf
             array_push($item, $map);
 
             $map = array ();
-            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:date/gmd:CI_Date/gmd:date/gco:DateTime");
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:date/gmd:CI_Date/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($value) {
                 $map["value"] = $value;
                 $map["type"] = "date";

@@ -1,2 +1,4 @@
 {# Nutzungsbedingungen (useConstraints) #}
-{{ hit_macros.render_section_text_label_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, [useRefs.useConstraints[0]]) }}
+{% if useRefs.useConstraints %}
+    {{ hit_macros.render_section_text_label_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, [useRefs.useConstraints[0]]) }}
+{% endif %}
