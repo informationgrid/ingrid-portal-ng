@@ -34,7 +34,7 @@ form:
       type: text
       label: PLUGIN_INGRID_SEARCH_RESULT.API_URL
       help: PLUGIN_INGRID_SEARCH_RESULT.API_URL_HELP
-      default: 'https://dev.informationgrid.eu/api?'
+      default: 'https://api.dev.informationgrid.eu/'
     hits_num:
       type: number
       label: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER

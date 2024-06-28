@@ -43,7 +43,7 @@ class SearchResponseTransformerClassic
             $bboxes = array($value->x1, $value->y1, $value->x2, $value->y2);
         }
         return new SearchResultHit(
-            $value->{"t01_object.obj_id"} ?? null,
+            $value->{"t01_object.obj_id"} ?? $value->{"t02_address.adr_id"} ?? null,
             $value->{"t01_object.obj_class"} ?? $value->metaClass ?? null,
             $value->metaClassName ?? null,
             self::toArray($value->partner ?? null),
