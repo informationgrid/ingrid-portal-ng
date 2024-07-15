@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<de.ingrid.codelists.model.CodeList><id>5154</id><name>Objektklasse 3 - Version des Dienstes - WCTS</name><description/><defaultEntry/><entries><de.ingrid.codelists.model.CodeListEntry><id>1</id><description/><localisations><de>OGC:CTS 1.0</de><iso>OGC:CTS 1.0</iso><en>OGC:CTS 1.0</en></localisations><data/><fields><de>OGC:CTS 1.0</de><iso>OGC:CTS 1.0</iso><en>OGC:CTS 1.0</en></fields></de.ingrid.codelists.model.CodeListEntry></entries><lastModified>1720448336275</lastModified></de.ingrid.codelists.model.CodeList>
