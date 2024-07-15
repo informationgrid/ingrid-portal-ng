@@ -12,6 +12,7 @@ class DetailMetadataParserIdf
         $metadata["uuid"] = $uuid;
         $metadata["parent_uuid"] = IdfHelper::getNodeValue($node, "./gmd:parentIdentifier/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["type"] = self::getType($node);
+        $metadata["type_name"] = CodelistHelper::getCodelistEntry(["8000"], $metadata["type"], "de");
         $metadata["title"] = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["altTitle"] = IdfHelper::getNodeValueListCodelistCompare($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]", ["8010"], "de", false);
         $metadata["summary"] = IdfHelper::getNodeValue($node, "./idf:abstract/*[self::gco:CharacterString or self::gmx:Anchor] | ./gmd:identificationInfo/*/gmd:abstract/*[self::gco:CharacterString or self::gmx:Anchor]");
