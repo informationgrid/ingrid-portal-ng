@@ -34,12 +34,27 @@ class IdfHelper
         return null;
     }
 
-    public static function getNodeValue($node, string $xpath)
+    public static function getNodeValue($node, string $xpath, array $codelist = null, string $lang = null)
     {
         self::registerNamespaces($node);
         $tmpNode = $node->xpath($xpath);
         if ($tmpNode) {
-            return (string) $tmpNode[0];
+            $value = (string) $tmpNode[0];
+            if ($codelist && $lang) {
+                $codelistValue = CodelistHelper::getCodelistEntry($codelist, $value, $lang);
+                if ($codelistValue == null) {
+                    $codelistValue = CodelistHelper::getCodelistEntryByIso($codelist, $value, $lang);
+                }
+                if ($codelistValue == null) {
+                    $codelistValue = CodelistHelper::getCodelistEntryByData($codelist, $value, $lang);
+                }
+                if ($codelistValue == null) {
+                    $codelistValue = $value;
+                }
+                return $codelistValue;
+            } else {
+                return $value;
+            }
         }
         return null;
     }
@@ -54,14 +69,50 @@ class IdfHelper
         return [];
     }
 
-    public static function getNodeValueList($node, string $xpath)
+    public static function getNodeValueList($node, string $xpath, array $codelist = null, string $lang = null)
     {
         self::registerNamespaces($node);
         $array = array();
         $tmpNodes = $node->xpath($xpath);
         foreach ($tmpNodes as $tmpNode) {
-            if($tmpNode) {
-            array_push($array, (string) $tmpNode);
+            if ($tmpNode) {
+                $value = (string) $tmpNode;
+                if ($codelist && $lang) {
+                    $codelistValue = CodelistHelper::getCodelistEntry($codelist, $value, $lang);
+                    if ($codelistValue == null) {
+                        $codelistValue = CodelistHelper::getCodelistEntryByIso($codelist, $value, $lang);
+                    }
+                    if ($codelistValue == null) {
+                        $codelistValue = CodelistHelper::getCodelistEntryByData($codelist, $value, $lang);
+                    }
+                    if ($codelistValue == null) {
+                        $codelistValue = $value;
+                    }
+                    array_push($array, $codelistValue);
+                } else {
+                    array_push($array, $value);
+                }
+            }
+        }
+        return $array;
+    }
+
+    public static function getNodeValueListCodelistCompare($node, string $xpath, array $codelist = null, string $lang = null, bool $addEqual = true)
+    {
+        self::registerNamespaces($node);
+        $array = array();
+        $tmpNodes = $node->xpath($xpath);
+        foreach ($tmpNodes as $tmpNode) {
+            if ($tmpNode) {
+                $value = (string) $tmpNode;
+                if ($codelist && $lang) {
+                    $codelistValue = CodelistHelper::getCodelistEntryByCompare($codelist, $value, $lang, $addEqual);
+                    if ($codelistValue) {
+                        array_push($array, $codelistValue);
+                    }
+                } else {
+                    array_push($array, $value);
+                }
             }
         }
         return $array;

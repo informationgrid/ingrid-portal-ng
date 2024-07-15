@@ -2,7 +2,7 @@
 
 <div class="section">
     <a class="anchor" id="{{ hash_description }}"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.DETAIL_DESCRIPTION"|t)}}
+    {{ hit_macros.render_title("SEARCH_DETAIL.DETAIL_DESCRIPTION"|t)}}
     <div class="row columns">
     {# Kurzbezeichnung #}
         {% if alternateTitle %}
@@ -14,7 +14,7 @@
         {% if summary %}
         <div class="js-expand-box js-expand-text js-non-expand-text">
             <div class="js-expand-text-content">
-                {{ hit_macros.render_section_text(summary|raw)}}
+                {{ hit_macros.render_text(summary)}}
             </div>
             <div class="desc-fade"></div>
         </div>

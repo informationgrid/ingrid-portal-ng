@@ -23,10 +23,11 @@
     },
     "classmap":  ["ingrid-detail.php"],
     "files": [
-      "classes/detail/parser/address/DetailAddressParser.php",
-      "classes/detail/parser/address/DetailAddressParserIdf.php",
-      "classes/detail/parser/metadata/DetailMetadataParser.php",
-      "classes/detail/parser/metadata/DetailMetadataParserIdf.php",
+      "classes/detail/address/DetailAddressParser.php",
+      "classes/detail/address/parser/DetailAddressParserIdf.php",
+      "classes/detail/metadata/DetailMetadataParser.php",
+      "classes/detail/metadata/parser/DetailMetadataParserIdf.php",
+      "classes/detail/metadata/parser/DetailGenericParserIdf.php",
       "classes/utils/IdfHelper.php"
     ]
   }

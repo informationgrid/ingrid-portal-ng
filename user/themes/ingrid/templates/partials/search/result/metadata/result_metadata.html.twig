@@ -1,5 +1,8 @@
-{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+{% import 'macros/hit_macros.html.twig' as hit_macros %}
+
 {% set partner_logo = theme_var('search_partner_logo_enabled') %}
+{% set summary_lines_limit = theme_var('search_summary_lines_limit') %}
+{% set summary_replace_newline = theme_var('search_summary_replace_newline') %}
 
 {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid %}
 <div class="data">
@@ -9,25 +12,25 @@
         {% endif %}
         {{ hit_macros.render_hit_types(hit.types, true) }}
         {% if partner_logo %}
-            {{ hit_macros.render_hit_logo(hit.partner) }}
+            {{ hit_macros.render_hit_logo(hit.partners[0]) }}
         {% endif %}
         <div class="helper icon">
-            {{ hit_macros.render_metadata_icon(hit.metaClass, hit.metaClassName) }}
+            {{ hit_macros.render_metadata_icon(hit.type, hit.type_name) }}
         </div>
         {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint) }}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>
         </a>
-        {{ hit_macros.render_hit_time("Aktualität der Daten", hit.time) }}
+        {{ hit_macros.render_hit_time("COMMON.TIME_TYPE"|t , hit.time) }}
         {% if hit.summary %}
-        <p class="data-text">
-            {{ hit.summary }}
+        <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
+            {{ hit.summary|replace({'\n': summary_replace_newline})|raw }}
         </p>
         {% endif %}
         {{ hit_macros.render_hit_types(hit.types, true, true) }}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <span class="ic-ic-arrow arrow"></span>
         </a>
-        {% include 'partials/search/result/hit/metadata/expand/result_hit_expand.html.twig' with {hit:hit, counter: counter} %}
+        {% include 'partials/search/result/metadata/expand/expand.html.twig' with {hit:hit, counter: counter} %}
     </div>
 </div>

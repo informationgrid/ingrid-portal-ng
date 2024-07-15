@@ -10,6 +10,7 @@
 {% set class = hit.type %}
 {% set className = "TODO" %}
 {% set accessConstraint = hit.accessConstraint %}
+{% set partners = partners %}
 
 {# Vorschau #}
 {% set previews = hit.previews %}
@@ -67,7 +68,6 @@
 {% set infoRefs = {} %}
 {% if hit.info %}
     {% switch class %}
-        {% case '0' %}
         {% case '1' %}
             {% set infoRefs = addKeyValue(infoRefs, "identifierCode", hit.info.identifierCode) %}
             {% set infoRefs = addKeyValue(infoRefs, "spatialRepresentations", hit.info.spatialRepresentations) %}
@@ -125,6 +125,7 @@
             {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.info.supplementalInformation) %}
     {% endswitch %}
 {% endif %}
+
 {% set infoRefs_additional = {} %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "publish_id", hit.info_additional_publish_id) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "usage", hit.info_additional_usage) %}

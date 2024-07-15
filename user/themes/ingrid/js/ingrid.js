@@ -492,3 +492,42 @@ function elementInViewport(el) {
         (left + width) <= (window.pageXOffset + window.innerWidth)
     );
 }
+
+function loadDefaultMapImage(elem, partner, theme) {
+    elem.onerror = null;
+    var image = 'image_map';
+    if(partner && partner != 'bund') {
+      image += '_' + partner;
+    }
+    var defaultImage = theme + '/maps/' + image + '.png';
+    if(elem) {
+      elem.src = defaultImage;
+      var src = elem.dataset.src;
+      if(src) {
+        src = src.trim();
+        if(src.indexOf('http:') > -1) {
+          var http = new XMLHttpRequest();
+          http.open('GET', src, true);
+          http.onreadystatechange = function() {
+            if (this.readyState == this.DONE) {
+              if (this.status === 200) {
+                if(this.response && this.response !== src){
+                  elem.src = this.response;
+                }
+                elem.removeAttribute('data-src');
+              }
+            }
+          };
+          http.send();
+          return ('');
+        } else {
+          elem.removeAttribute('data-src');
+        }
+      } else {
+        var anchor = $(elem).parent('a');
+        if(anchor) {
+          anchor.attr('href', defaultImage);
+        }
+      }
+    }
+  }

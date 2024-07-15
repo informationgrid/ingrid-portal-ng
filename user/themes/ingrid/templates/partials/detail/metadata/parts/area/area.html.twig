@@ -1,20 +1,23 @@
 {# Raumbezug #}
 
+{% set reference_system_link = theme_var('detail_hit_reference_system_link') %}
+{% set reference_system_link_replace = theme_var('detail_hit_reference_system_link_replace') %}
+
 <div class="section">
     <a class="anchor" id="{{ hash_area }}"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.SPACIAL_REFERENCE_TAB"|t)}}
+    {{ hit_macros.render_title("SEARCH_DETAIL.SPACIAL_REFERENCE_TAB"|t)}}
     <div class="row columns">
     {# Karte #}
-        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, isDetail: true, mapId: 'detail' }%}
+        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, isDetail: true, mapId: 'map_detail' }%}
     {# Geothesaurus-Raumbezug #}
         {% set header = [
             "",
             "SEARCH_DETAIL.SPATIAL_REF_VALUE_X1"|t,
             "SEARCH_DETAIL.SPATIAL_REF_VALUE_Y1"|t,
         ] %}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.GEOTHESAURUS_SPACIAL_REFERENCE"|t, header, mapRefs.geographicElement, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.GEOTHESAURUS_SPACIAL_REFERENCE"|t, header, mapRefs.geographicElement, [0]) }}
     {# Regionalschlüssel #}
-        {{ hit_macros.render_section_link_label("SEARCH_DETAIL.REGIONKEY"|t, mapRefs.regionKey.key, mapRefs.regionKey.url, "external") }}
+        {{ hit_macros.render_link_label("SEARCH_DETAIL.REGIONKEY"|t, mapRefs.regionKey.key, mapRefs.regionKey.url, "external") }}
     {# Höhe #}
         {% set header = [
             "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_MINIMUM"|t,
@@ -22,12 +25,12 @@
             "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_UNIT"|t,
             "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_VDATUM"|t,
         ] %}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight) }}
     {# Erläuterung zum Raumbezug #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.loc_descr) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.loc_descr) }}
     {# Begrenzungspolygon als WKT #}
-        {{ hit_macros.render_section_text_label_table_list("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt) }}
+        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt) }}
     {# Raumbezugssystem #}
-        {{ hit_macros.render_section_text_label_table_list("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, mapRefs.referencesystem_id) }}
+        {{ hit_macros.render_label_text_to_link_table_list("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, mapRefs.referencesystem_id, reference_system_link, detail_hit_reference_system_link_replace) }}
     </div>
 </div>

@@ -11,42 +11,42 @@
             {% endif %}
             {% set toIndeterminate = "" %}
             {% if timeRefs.fromType and timeRefs.fromType == "now" %}
-                {% set toIndeterminate = "SEARCH_DETAIL.TIME_UNTILNOW"|t %}
+                {% set toIndeterminate = "COMMON.TIME_UNTILNOW"|t %}
             {% else %}
-                {% set toIndeterminate = "SEARCH_DETAIL.TIME_UNTILUNKNOWN"|t %}
+                {% set toIndeterminate = "COMMON.TIME_UNTILUNKNOWN"|t %}
             {% endif %}
             {% if timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime %}
                 {% if timeRefs.atTime %}
-                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_AT"|t ~ " " ~ timeRefs.atTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_AT"|t ~ " " ~ timeRefs.atTime|date("d.m.Y", false)]) }}
                 {% elseif timeRefs.beginTime == timeRefs.endTime %}
-                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_AT"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_AT"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false)]) }}
                 {% elseif timeRefs.beginTime and timeRefs.endTime is null %}
-                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_SINCE"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ toIndeterminate]) }}
+                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_SINCE"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ toIndeterminate]) }}
                 {% elseif timeRefs.beginTime is null and timeRefs.endTime %}
-                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_UNTIL"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_UNTIL"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
                 {% elseif timeRefs.beginTime != timeRefs.endTime %}
-                    {{ hit_macros.render_section_text_label_list(tmpTitle, ["SEARCH_DETAIL.TIME_FROM"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ " " ~ "SEARCH_DETAIL.TIME_TO"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_FROM"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
                 {% endif %}
             {% endif %}
         {# URL des Zugangs #}
             {% if linkAccessRefs and linkAccessRefs|length > 0 %}
             <div class="sub-section sub-section-unlined">
                 {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
-                {{ hit_macros.render_section_link_image_list(tmpTitle, linkAccessRefs, "external", false, 2) }}
+                {{ hit_macros.render_link_image_list(tmpTitle, linkAccessRefs, "external", false, 2) }}
             </div>
             {% endif %}
         {# Downloads #}
             {% if linkDownloadRefs and linkDownloadRefs|length > 0 %}
             <div class="sub-section sub-section-unlined">
                 {% set tmpTitle = "SEARCH_DETAIL.DOWNLOADS"|t %}
-                {{ hit_macros.render_section_link_image_list(tmpTitle, linkDownloadRefs, "download", false, 2) }}
+                {{ hit_macros.render_link_image_list(tmpTitle, linkDownloadRefs, "download", false, 2) }}
             </div>
             {% endif %}
         {# Links #}
             {% if linkObjectRefs and linkObjectRefs|length > 0 %}
             <div class="sub-section sub-section-unlined">
                 {% set tmpTitle = "SEARCH_DETAIL.INFO_LINKS"|t %}
-                {{ hit_macros.render_section_link_image_list(tmpTitle, linkObjectRefs, null, true, 2) }}
+                {{ hit_macros.render_link_image_list(tmpTitle, linkObjectRefs, null, true, 2, partners) }}
             </div>
             {% endif %}
         {# Zitat für diesen Datensatz #}

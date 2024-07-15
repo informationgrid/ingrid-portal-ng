@@ -10,11 +10,11 @@
 {% if search_result.hits|length > 0 %}
     {% for hit in search_result.hits %}
         {% if in_array('address', hit.datatypes) %}
-            {% include 'partials/search/result/hit/result_hit_address.html.twig' with {hit:hit, counter: loop.index0} %}
+            {% include 'partials/search/result/address/result_address.html.twig' with {hit:hit, counter: loop.index0} %}
         {% elseif in_array('www', hit.datatypes) %}
-            {% include 'partials/search/result/hit/result_hit_www.html.twig' with {hit:hit} %}
+            {% include 'partials/search/result/www/result_www.html.twig' with {hit:hit} %}
         {% else %}
-            {% include 'partials/search/result/hit/result_hit_metadata.html.twig' with {hit:hit, counter: loop.index0} %}
+            {% include 'partials/search/result/metadata/result_metadata.html.twig' with {hit:hit, counter: loop.index0} %}
         {% endif %}
   {% endfor %}
   {% include 'partials/search/result/result_counter_bottom.html.twig' %}

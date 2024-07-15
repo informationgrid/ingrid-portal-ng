@@ -3,8 +3,7 @@
 
 <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="post" name="updateFacets" id="updateFacets">
     <div id="facets">
-        <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true"
-             role="tablist">
+        <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true" role="tablist">
             <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
                 <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab"
                    id="facet-content-accordion-label" aria-expanded="false" aria-selected="false"
@@ -61,6 +60,23 @@
 </form>
 
 <script>
+
+    $('.filter .filter-wrapper').niceScroll({
+        cursorcolor:"#5e788d",
+        cursorwidth:"8px",
+        cursorborderradius: "6px",
+    });
+
+    $(window).scroll(function(){
+        $(".filter .filter-wrapper").getNiceScroll().resize();
+    });
+
+    $('.filter .accordion-title').bind('click',function(){
+        setTimeout(function(){
+        $(".filter .filter-wrapper").getNiceScroll().resize();
+        }, 500);
+    });
+
     function submitForm() {
         document.getElementById('updateFacets').submit();
     }

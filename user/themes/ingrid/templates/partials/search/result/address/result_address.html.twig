@@ -1,5 +1,5 @@
 {# @var hit \Grav\Plugin\SearchResultHit #}
-{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+{% import 'macros/hit_macros.html.twig' as hit_macros %}
 
 {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid ~ "&type=address" %}
 
@@ -9,7 +9,7 @@
             <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
         {% endif %}
         <div class="helper icon">
-            {{ hit_macros.render_address_icon(hit.metaClass, hit.metaClassName) }}
+            {{ hit_macros.render_address_icon(hit.type, ("COMMON.UDK_ADR_CLASS_NAME_" ~ hit.type)|t) }}
         </div>
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>

@@ -9350,6 +9350,10 @@ h2 .anchor:target {
   padding-bottom: 30px;
 }
 
+.swiper-wrapper, .swiper-slide {
+  height: unset !important;
+}
+
 .swiper-pagination-bullet {
   background: #349980 !important;
 }

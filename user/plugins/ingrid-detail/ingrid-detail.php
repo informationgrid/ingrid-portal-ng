@@ -94,7 +94,8 @@ class InGridDetailPlugin extends Plugin
 
             $response = null;
             $dataSourceName = null;
-            $provider = null;
+            $partners = null;
+            $providers = null;
 
             if ($testIDF) {
                 $response = file_get_contents('user-data://test/detail/' . $type . '/idf/' . $testIDF);
@@ -110,6 +111,7 @@ class InGridDetailPlugin extends Plugin
                 if(count($hits) > 0) {
                     $response = $hits[0]->_source->idf;
                     $dataSourceName = $hits[0]->_source->dataSourceName;
+                    $partners = $hits[0]->_source->partner;
                 }
             }
 
@@ -119,14 +121,15 @@ class InGridDetailPlugin extends Plugin
 
                 if ($type == "address") {
                     $parser = new DetailAddressParser();
-                    $hit = $parser->parse($content, $dataSourceName, $provider);
+                    $hit = $parser->parse($content, $uuid, $dataSourceName, $providers);
                 } else {
                     $parser = new DetailMetadataParser();
-                    $hit = $parser->parse($content, $dataSourceName, $provider);
+                    $hit = $parser->parse($content, $uuid, $dataSourceName, $providers);
                 }
                 $this->grav['twig']->twig_vars['detail_type'] = $type;
                 $this->grav['twig']->twig_vars['hit'] = $hit;
-                $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"];
+                $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"] ?? null;
+                $this->grav['twig']->twig_vars['partners'] = $partners;
             }
         }
     }

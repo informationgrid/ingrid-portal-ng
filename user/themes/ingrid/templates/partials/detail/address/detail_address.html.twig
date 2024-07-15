@@ -1,4 +1,4 @@
-{% import 'macros/hit/hit_default_macros.html.twig' as hit_macros %}
+{% import 'macros/hit_macros.html.twig' as hit_macros %}
 
 {# theme_var #}
 {% set sortAddressTyp = theme_var('detail_hit_address_order') %}
@@ -121,7 +121,7 @@
     {% if summary or alternateTitle %}
         <div class="section">
             <a class="anchor" id="{{ hash_description }}"></a>
-            {{ hit_macros.render_section_title(label_description) }}
+            {{ hit_macros.render_title(label_description) }}
             <div class="row columns">
                 {% if alternateTitles %}
                 {# Kurzname #}
@@ -151,12 +151,12 @@
     {% if linkRefs %}
         <div class="section">
             <a class="anchor" id="{{ hash_links }}"></a>
-            {{ hit_macros.render_section_title(label_links) }}
+            {{ hit_macros.render_title(label_links) }}
             {# Daten­bezüge  #}
                 {% if linkObjectRefs %}
                     <div class="sub-section sub-section-unlined">
                         <a class="anchor" id="{{ hash_links_linkObjectRefs }}"></a>
-                        {{ hit_macros.render_object_links(label_links_linkObjectRefs, linkObjectRefs)}}
+                        {{ hit_macros.render_object_links(label_links_linkObjectRefs, linkObjectRefs, partners)}}
                     </div>
                 {% endif %}
             {# Übergeordnete Adressen #}

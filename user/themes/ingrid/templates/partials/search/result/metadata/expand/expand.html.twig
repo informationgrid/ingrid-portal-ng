@@ -1,0 +1,43 @@
+{% set search_hit_csw_enabled = theme_var('search_hit_csw_enabled') %}
+{% set search_hit_csw_url = theme_var('hit_csw_url') %}
+{% set map_leaflet_config = theme_var('map.leaflet') %}
+{% set search_hit_links_max = theme_var('search_hit_links_max') %}
+
+{% set counter = counter %}
+{% set hit = hit %}
+{% set uuid = hit.uuid %}
+{% set partners = hit.partners %}
+{% set links = hit.links %}
+{% set downloads = links|filterLinks("download") %}
+{% set references = links|filterLinks("reference") %}
+{% set access = links|filterLinks("access") %}
+{% set others = links|filterLinks("other") %}
+{% set previews = hit.additional_html_1 %}
+{% set bboxes = hit.map_bboxes %}
+{% set wkt = hit.wkt %}
+{% set license = hit.license %}
+{% set mapUrl = hit.mapUrl %}
+{% set mapUrlClient = hit.mapUrlClient %}
+
+{% set param_hit_open = uri.query('more') %}
+{% set hitsOpen = param_hit_open|split(',') %}
+{% set hitOpenId = 'hit_open_' ~ counter %}
+{% set isHitOpen = hitOpenId in hitsOpen %}
+{% set hitMapId = 'hit_map_' ~ counter %}
+
+{% set hitOpenId = 'hit_open_' ~ counter %}
+{% set moreIdLinks = counter ~ "_more_links" %}
+
+
+{% if downloads|length > 0
+    or references|length > 0
+    or access|length > 0
+    or others|length > 0
+    or previews|length > 0
+    or bboxes|length > 0
+    or wkt
+    or mapUrl
+    or mapUrlClient
+%}
+    {% include 'partials/search/result/metadata/expand/expand_view.html.twig' %}
+{% endif %}

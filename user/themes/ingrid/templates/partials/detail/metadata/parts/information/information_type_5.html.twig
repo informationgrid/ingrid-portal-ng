@@ -1,20 +1,20 @@
 {# Datensammlung #}
 <div class="sub-section">
     <a class="anchor" id="{{ hash_info }}_technical_information"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
+    {{ hit_macros.render_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
     {# Schlüsselkatalog: im Datensatz vorhanden #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
     {# Schlüsselkatalog #}
         {% set header = [
             "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_SUBJECT_CAT"|t,
             "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_KEY_DATE"|t,
             "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_EDITION"|t,
         ] %}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
     {# Inhalte der Datensammlung/Datenbank #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_DATA_PARA_PARAMETER"|t ~ " (" ~ "SEARCH_DETAIL.T011_OBJ_DATA_PARA_UNIT"|t ~ ")", infoRefs.data_para) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_DATA_PARA_PARAMETER"|t ~ " (" ~ "SEARCH_DETAIL.T011_OBJ_DATA_PARA_UNIT"|t ~ ")", infoRefs.data_para) }}
     {# Methode/Datengrundlage #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_DATA_BASE"|t, infoRefs.data_base) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_DATA_BASE"|t, infoRefs.data_base) }}
     {# Erläuterungen zum Fachbezug #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_DATA_DESCRIPTION"|t, infoRefs.data_description) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_DATA_DESCRIPTION"|t, infoRefs.data_description) }}
 </div>

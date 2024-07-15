@@ -247,6 +247,32 @@ form:
               title: Suchergebnis
               underline: true
 
+            search_summary_replace_newline:
+              type: text
+              label: Zeilenumbrüche des Beschreibungstextes ersetzen
+              help: Lege die Zeilenumbrüche des Beschreibungstextes fest.
+              default: ' '
+              validate:
+                type: text
+
+            search_summary_lines_limit:
+              type: text
+              label: Maximale Zeilenanzahl an Beschreibungstext
+              help: Lege die maximale Zeilenanzahl an Beschreibungstext fest.
+              min: 1
+              default: 5
+              validate:
+                type: number
+
+            search_hit_links_max:
+              type: text
+              label: Maximale Anzahl der Verweise und Downloads
+              help: Lege die maximale Anzahl der dargestellten Verweise und Downloads fest.
+              min: 1
+              default: 5
+              validate:
+                type: number
+
             search_hit_csw_enabled:
               type: toggle
               label: ISO-Darstellung anzeigen
@@ -287,6 +313,18 @@ form:
               type: section
               title: Detaildarstellung
               underline: true
+
+            detail_hit_reference_system_link:
+              type: text
+              label: Link zur Reference-System
+              help: Trage Sie hier die URL zum Reference-System.
+              default: 'https://epsg.io/'
+
+            detail_hit_reference_system_link_replace:
+              type: text
+              label: Reference-Systemen ersetzen
+              help: Ersetzen des Teilstring bei den Reference-Systemen.
+              default: 'urn:ogc:def:crs:'
 
             detail_hit_csw_enabled:
               type: toggle

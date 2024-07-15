@@ -13,15 +13,15 @@ class DetailMetadataParserIdf
         $metadata["parent_uuid"] = IdfHelper::getNodeValue($node, "./gmd:parentIdentifier/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["type"] = self::getType($node);
         $metadata["title"] = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $metadata["altTitle"] = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $metadata["altTitle"] = IdfHelper::getNodeValueListCodelistCompare($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]", ["8010"], "de", false);
         $metadata["summary"] = IdfHelper::getNodeValue($node, "./idf:abstract/*[self::gco:CharacterString or self::gmx:Anchor] | ./gmd:identificationInfo/*/gmd:abstract/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["accessConstraint"] = IdfHelper::getNodeValue($node, "./idf:hasAccessConstraint");
-        self::getPreviews($node, $metadata);
+        $metadata["previews"] = self::getPreviews($node);
         self::getTimeRefs($node, $metadata);
         self::getMapRefs($node, $metadata);
-        self::getLinkRefs($node, $metadata["type"], $metadata);
+        $metadata["links"] = self::getLinkRefs($node, $metadata["type"]);
         self::getUseRefs($node, $metadata);
-        self::getContactRefs($node, $metadata);
+        $metadata["contacts"] = self::getContactRefs($node, $metadata);
         self::getInfoRefs($node, $metadata["type"], $metadata);
         self::getDataQualityRefs($node, $metadata);
         self::getMetaInfoRefs($node, $uuid, $dataSourceName, $provider, $metadata);
@@ -29,7 +29,7 @@ class DetailMetadataParserIdf
         return $metadata;
     }
 
-    public static function getPreviews($node, &$metadata)
+    private static function getPreviews($node)
     {
         $array = array();
         $tmpNodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/gmd:graphicOverview/gmd:MD_BrowseGraphic");
@@ -41,10 +41,10 @@ class DetailMetadataParserIdf
             $map["descr"] = $descr;
             array_push($array, $map);
         }
-        $metadata["previews"] = $array;
+        return $array;
     }
 
-    public static function getType($node)
+    private static function getType($node)
     {
         $hierachyLevel = "";
         $hierachyLevelNode = IdfHelper::getNode($node, "./gmd:hierarchyLevel/gmd:MD_ScopeCode");
@@ -75,7 +75,7 @@ class DetailMetadataParserIdf
         }
     }
 
-    public static function getTimeRefs($node, &$metadata)
+    private static function getTimeRefs($node, &$metadata)
     {
         ## Durch die Ressource abgedeckte Zeitspanne
         $tmpValue = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent/gml:TimeInstant/gml:timePosition");
@@ -101,13 +101,13 @@ class DetailMetadataParserIdf
         ## Status
         $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:status/gmd:MD_ProgressCode/@codeListValue");
         if ($tmpValue) {
-            $metadata["time_status"] = $tmpValue;
+            $metadata["time_status"] = CodelistHelper::getCodelistEntryByIso(["523"], $tmpValue, "de");
         }
 
         ## Periodizität
         $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue");
         if ($tmpValue) {
-            $metadata["time_period"] = $tmpValue;
+            $metadata["time_period"] = CodelistHelper::getCodelistEntryByIso(["518"], $tmpValue, "de");
         }
 
         ## Intervall der Erhebung
@@ -129,9 +129,9 @@ class DetailMetadataParserIdf
             if ($tmpValue) {
                 $metadata["time_creation"] = $tmpValue;
             }
-            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'publication']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
+            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'privateation']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {
-                $metadata["time_publication"] = $tmpValue;
+                $metadata["time_privateation"] = $tmpValue;
             }
             $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'revision']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {
@@ -150,22 +150,43 @@ class DetailMetadataParserIdf
         }
     }
 
-    public static function getMapRefs($node, &$metadata)
+    private static function getMapRefs($node, &$metadata)
     {
-        self::getBBoxes($node, $metadata);
-        self::getGeographicElements($node, $metadata);
         $regionKey = IdfHelper::getNode($node, "./idf:regionKey");
-        self::getAreaHeight($node, $metadata);
         $loc_descr = IdfHelper::getNode($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]");
         $polygon_wkt = IdfHelper::getNode($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_BoundingPolygon/gmd:polygon");
-        $referencesystem_id = IdfHelper::getNodeValueList($node, "./gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]");
         $metadata["map_regionKey"] = $regionKey;
         $metadata["map_loc_descr"] = $loc_descr;
         $metadata["map_polygon_wkt"] = $polygon_wkt;
-        $metadata["map_referencesystem_id"] = $referencesystem_id;
+        $metadata["map_bboxes"] = self::getBBoxes($node);
+        $metadata["map_geographicElement"] = self::getGeographicElements($node);
+        $metadata["map_areaHeight"] = self::getAreaHeight($node);
+        $metadata["map_referencesystem_id"] = self::getReferences($node);
     }
 
-    public static function getBBoxes($node, &$metadata)
+    private static function getReferences($node)
+    {
+        $array = array();
+        $tmpNodes = IdfHelper::getNodeList($node, "./gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier");
+        foreach ($tmpNodes as $tmpNode) {
+            $code = (string) IdfHelper::getNodeValue($tmpNode, "./gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]");
+            $codeSpace = (string) IdfHelper::getNodeValue($tmpNode, "./gmd:codeSpace/*[self::gco:CharacterString or self::gmx:Anchor]");
+            if ($code && $codeSpace) {
+                if (str_contains($code, "EPSG")) {
+                    array_push($array, $code);
+                } else {
+                    array_push($array, $codeSpace . ":" . $code);
+                }
+            } else if ($codeSpace) {
+                array_push($array, $codeSpace);
+            } else if ($code) {
+                array_push($array, $code);
+            }
+        }
+        return $array;
+    }
+
+    private static function getBBoxes($node)
     {
         $array = array();
         $geographicIdentifiers = [];
@@ -178,7 +199,6 @@ class DetailMetadataParserIdf
         $tmpNodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox");
         $count = 0;
         foreach ($tmpNodes as $tmpNode) {
-            $item = [];
 
             $value = count($geographicIdentifiers) > $count ? $geographicIdentifiers[$count] : "";
             $map = array ();
@@ -192,10 +212,10 @@ class DetailMetadataParserIdf
             array_push($array, $map);
             $count++;
         }
-        $metadata["map_bboxes"] = $array;
+        return $array;
     }
 
-    public static function getGeographicElements($node, &$metadata)
+    private static function getGeographicElements($node)
     {
         $array = array();
         $geographicIdentifiers = [];
@@ -244,10 +264,10 @@ class DetailMetadataParserIdf
             array_push($array, $item);
             $count++;
         }
-        $metadata["map_geographicElement"] = $array;
+        return $array;
     }
 
-    public static function getAreaHeight($node, &$metadata)
+    private static function getAreaHeight($node)
     {
         $array = array();
         $tmpNodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:verticalElement/gmd:EX_VerticalExtent");
@@ -266,18 +286,18 @@ class DetailMetadataParserIdf
             $map["type"] = "text";
             array_push($item, $map);
 
-            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:verticalCS/gml:VerticalCS/gml:axis/gml:CoordinateSystemAxis/@uom");
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:verticalCS/gml:VerticalCS/gml:axis/gml:CoordinateSystemAxis/@uom", ["102"], "de");
             $map = array ();
             $map["value"] = $value;
             $map["type"] = "text";
             array_push($item, $map);
 
-            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:verticalDatum/gml:VerticalDatum/gml:name");
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:verticalDatum/gml:VerticalDatum/gml:name", ["101"], "de");
             if(is_null($value) || empty($value)) {
-                $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:verticalDatum/gml:VerticalDatum/gml:identifier");
+                $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:verticalDatum/gml:VerticalDatum/gml:identifier", ["101"], "de");
             }
             if(is_null($value) || empty($value)) {
-                $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:name");
+                $value = IdfHelper::getNodeValue($tmpNode, "./gmd:verticalCRS/gml:VerticalCRS/gml:name", ["101"], "de");
             }
             $map = array ();
             $map["value"] = $value;
@@ -286,10 +306,10 @@ class DetailMetadataParserIdf
 
             array_push($array, $item);
         }
-        $metadata["map_areaHeight"] = $array;
+        return $array;
     }
 
-    public static function getLinkRefs($node, $type, &$metadata)
+    private static function getLinkRefs($node, $type)
     {
         $array = array();
 
@@ -300,7 +320,7 @@ class DetailMetadataParserIdf
             $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $title = IdfHelper::getNodeValue($tmpNode, "./idf:objectName");
             $description = IdfHelper::getNodeValue($tmpNode, "./idf:description");
-            $metaClass = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
+            $type = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
             $previews = IdfHelper::getNodeValueList($tmpNode, "./idf:graphicOverview");
             $extMapUrl = IdfHelper::getNodeList($tmpNode, "./idf:extMapUrl");
             $mapUrl = IdfHelper::getNodeList($tmpNode, "./idf:mapUrl");
@@ -308,7 +328,8 @@ class DetailMetadataParserIdf
                 "uuid" => $uuid,
                 "title" => $title,
                 "description" => $description,
-                "metaClass" => $metaClass,
+                "type" => $type,
+                "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, "de"),
                 "previews" => $previews,
                 "extMapUrl" => $extMapUrl,
                 "mapUrl" => $mapUrl,
@@ -329,11 +350,12 @@ class DetailMetadataParserIdf
             $title = IdfHelper::getNodeValue($tmpNode, "./*/gmd:name/*[self::gco:CharacterString or self::gmx:Anchor]");
             $description = IdfHelper::getNodeValue($tmpNode, "./*/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]");
             $cswUrl = IdfHelper::getNodeValue($tmpNode, "./*/gmd:linkage/gmd:URL");
-            $metaClass = "1";
+            $type = "1";
             $item = array (
-                "title" => $title,
+                "title" => $title ?? $cswUrl,
                 "description" => $description,
-                "metaClass" => $metaClass,
+                "type" => $type,
+                "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, "de"),
                 "cswUrl" => $cswUrl,
                 "kind" => "object",
             );
@@ -352,7 +374,7 @@ class DetailMetadataParserIdf
             $size = IdfHelper::getNodeValue($tmpNode, "./*/gmd:MD_DigitalTransferOptions/gmd:transferSize");
             $item = array (
                 "url" => $url,
-                "title" => $title,
+                "title" => $title ?? $url,
                 "description" => $description,
                 "attachedToField" => $attachedToField,
                 "applicationProfile" => $applicationProfile,
@@ -374,7 +396,7 @@ class DetailMetadataParserIdf
             $size = IdfHelper::getNodeValue($tmpNode, "./*/gmd:MD_DigitalTransferOptions/gmd:transferSize");
             $item = array (
                 "url" => $url,
-                "title" => $title,
+                "title" => $title ?? $url,
                 "description" => $description,
                 "attachedToField" => $attachedToField,
                 "applicationProfile" => $applicationProfile,
@@ -391,7 +413,7 @@ class DetailMetadataParserIdf
             $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $title = IdfHelper::getNodeValue($tmpNode, "./idf:objectName");
             $description = IdfHelper::getNodeValue($tmpNode, "./idf:description");
-            $metaClass = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
+            $type = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
             $previews = IdfHelper::getNodeValueList($tmpNode, "./idf:graphicOverview");
             $extMapUrl = IdfHelper::getNodeList($tmpNode, "./idf:extMapUrl");
             $mapUrl = IdfHelper::getNodeList($tmpNode, "./idf:mapUrl");
@@ -399,7 +421,8 @@ class DetailMetadataParserIdf
                 "uuid" => $uuid,
                 "title" => $title,
                 "description" => $description,
-                "metaClass" => $metaClass,
+                "type" => $type,
+                "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, "de"),
                 "previews" => $previews,
                 "extMapUrl" => $extMapUrl,
                 "mapUrl" => $mapUrl,
@@ -415,7 +438,7 @@ class DetailMetadataParserIdf
             $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $title = IdfHelper::getNodeValue($tmpNode, "./idf:objectName");
             $description = IdfHelper::getNodeValue($tmpNode, "./idf:description");
-            $metaClass = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
+            $type = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
             $previews = IdfHelper::getNodeList($tmpNode, "./idf:graphicOverview");
             $extMapUrl = IdfHelper::getNodeList($tmpNode, "./idf:extMapUrl");
             $mapUrl = IdfHelper::getNodeList($tmpNode, "./idf:mapUrl");
@@ -423,7 +446,8 @@ class DetailMetadataParserIdf
                 "uuid" => $uuid,
                 "title" => $title,
                 "description" => $description,
-                "metaClass" => $metaClass,
+                "type" => $type,
+                "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, "de"),
                 "previews" => $previews,
                 "extMapUrl" => $extMapUrl,
                 "mapUrl" => $mapUrl,
@@ -470,24 +494,85 @@ class DetailMetadataParserIdf
                 array_push($array, $item);
             }
         }
-        $metadata["links"] = $array;
+        return $array;
     }
 
-    public static function getUseRefs($node, &$metadata)
+    private static function getUseRefs($node, &$metadata)
     {
-        $useLimitations = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $useConstraints = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue='otherRestrictions']/gmd:otherConstraints/*[self::gco:CharacterString or self::gmx:Anchor][starts-with(text(),'{')]");
-        if (empty($useConstraints)) {
-            $useConstraints = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints[gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue='otherRestrictions']/gmd:otherConstraints/*[self::gco:CharacterString or self::gmx:Anchor][not(starts-with(text(),'{'))]");
-        }
-        $accessConstraints = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints[./gmd:accessConstraints/gmd:MD_RestrictionCode[contains(@codeListValue, 'otherRestrictions')]]/gmd:otherConstraints/*[self::gco:CharacterString or self::gmx:Anchor]");
-
-        $metadata["use_useLimitations"] = $useLimitations;
-        $metadata["use_accessConstraints"] = $accessConstraints;
-        $metadata["use_useConstraints"] = $useConstraints;
+        $metadata["use_useConstraints"] = self::getUseConstraints($node);
+        $metadata["use_accessConstraints"] = self::getAccessConstraints($node);
+        $metadata["use_useLimitations"] = self::getUseLimitations($node);
     }
 
-    public static function getContactRefs($node, &$metadata)
+    private static function getUseConstraints($node) {
+        $array = array();
+
+        $nodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints[./gmd:useConstraints]");
+        foreach ($nodes as $tmpNode) {
+            $restriction = IdfHelper::getNodeValue($tmpNode, "./gmd:useConstraints/gmd:MD_RestrictionCode[not(contains(@codeListValue, 'otherRestrictions'))]", ["524"], "de");
+
+            $values = IdfHelper::getNodeValueList($tmpNode, "./gmd:otherConstraints/*[self::gco:CharacterString or self::gmx:Anchor]");
+            foreach ($values as $value) {
+                array_push($array, self::removeConstraintPrefix($value));
+            }
+        }
+        return array(
+            "restriction" => $restriction,
+            "constraints" => $array,
+        );
+    }
+
+    private static function removeConstraintPrefix($value) {
+        if (str_starts_with($value, "Nutzungseinschränkungen:")) {
+            $value = str_replace("Nutzungseinschränkungen:", "", $value);
+        }
+        if (str_starts_with($value, "Nutzungsbedingungen:")) {
+            $value = str_replace("Nutzungsbedingungen:", "", $value);
+        }
+        return $value;
+    }
+
+    private static function getAccessConstraints($node) {
+        $array = array();
+        $nodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints[./gmd:accessConstraints]");
+        foreach ($nodes as $tmpNode) {
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:accessConstraints/gmd:MD_RestrictionCode[not(contains(@codeListValue, 'otherRestrictions'))]");
+            if ($value) {
+                if (!in_array($value, $array)) {
+                    array_push($array, $value);
+                }
+            } else {
+                $value = IdfHelper::getNodeValue($tmpNode, "./gmd:otherConstraints/*[self::gco:CharacterString or self::gmx:Anchor][not(starts-with(text(),'{'))]");
+                if ($value) {
+                    if (!in_array($value, $array)) {
+                        array_push($array, $value);
+                    }
+                }
+            }
+        }
+        return array(
+            "constraints" => $array,
+        );
+    }
+
+    private static function getUseLimitations($node) {
+        $array = array();
+
+        $nodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation");
+        foreach ($nodes as $tmpNode) {
+            $value = IdfHelper::getNodeValue($tmpNode, "./*[self::gco:CharacterString or self::gmx:Anchor]");
+            if ($value) {
+                if (!in_array($value, $array)) {
+                    array_push($array, self::removeConstraintPrefix($value));
+                }
+            }
+        }
+        return array(
+            "constraints" => $array,
+        );
+    }
+
+    private static function getContactRefs($node)
     {
         $array = array();
         $nodes = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/gmd:pointOfContact/*");
@@ -556,6 +641,7 @@ class DetailMetadataParserIdf
                 "uuid" => $uuid,
                 "type" => $type,
                 "role" => $role,
+                "role_name" => CodelistHelper::getCodelistEntryByIso(["505"], $role, "de"),
                 "addresses" => $addresses,
                 "streets" => $streets,
                 "postcode" => $postcode,
@@ -569,19 +655,19 @@ class DetailMetadataParserIdf
             );
             array_push($array, $item);
         }
-        $metadata["contacts"] = $array;
+        return $array;
     }
 
-    public static function getInfoRefs($node, $type, &$metadata)
+    private static function getInfoRefs($node, $type, &$metadata)
     {
 
         $array = array();
         $xpathExpression = "./gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Service')]]/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["classifications"] = IdfHelper::getNodeValueList($node, $xpathExpression);
+        $array["classifications"] = IdfHelper::getNodeValueList($node, $xpathExpression, ["5200"], "de");
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:statement/*[self::gco:CharacterString or self::gmx:Anchor]";
         $array["lineageStatement"] = IdfHelper::getNodeValue($node, $xpathExpression);
         $xpathExpression = "./gmd:identificationInfo/*/srv:serviceType/gco:LocalName";
-        $array["serviceType"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        $array["serviceType"] = IdfHelper::getNodeValue($node, $xpathExpression, ["2000"], "de");
         $xpathExpression = "./gmd:identificationInfo/*/srv:serviceTypeVersion/*[self::gco:CharacterString or self::gmx:Anchor]";
         $array["serviceTypeVersions"] = IdfHelper::getNodeValueList($node, $xpathExpression);
         $array["resolutions"] = self::getResolutions($node);
@@ -602,7 +688,7 @@ class DetailMetadataParserIdf
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:identifier/*/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]";
         $array["identifierCode"] = IdfHelper::getNodeValue($node, $xpathExpression);
         $xpathExpression = "./gmd:identificationInfo/*/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode/@codeListValue";
-        $array["spatialRepresentations"] = IdfHelper::getNodeValueList($node, $xpathExpression);
+        $array["spatialRepresentations"] = IdfHelper::getNodeValueList($node, $xpathExpression, ["526"], "de");
         $xpathExpression = "./gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:includedWithDataset/gco:Boolean";
         $array["includedWithDataset"] = IdfHelper::getNodeValue($node, $xpathExpression);
         $xpathExpression = "./gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:featureTypes/gco:LocalName";
@@ -685,15 +771,15 @@ class DetailMetadataParserIdf
         $priority_dataset = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'INSPIRE priority')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
         $spatial_scope = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Spatial scope')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
         $gemet_concepts = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Concepts')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $adv_group = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $adv_group = IdfHelper::getNodeValueListCodelistCompare($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]", ["8010"], "de");
         $invekos = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'IACS Data')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $topic_category = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:topicCategory/gmd:MD_TopicCategoryCode");
+        $topic_category = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:topicCategory/gmd:MD_TopicCategoryCode", ["527"], "de");
         $search_terms = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords
         [./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*
             [self::gco:CharacterString or self::gmx:Anchor]
             [not(contains(text(), 'Further legal basis')) and not(contains(text(), 'INSPIRE themes')) and not(contains(text(), 'INSPIRE priority')) and contains(text(), 'UMTHES')]
             or count(./gmd:MD_Keywords/gmd:thesaurusName) = 0
-        ]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        ]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]", ["6400"], "de");
 
         $metadata["info_keywords_inspire_themes"] = $inspire_themes;
         $metadata["info_keywords_priority_dataset"] = $priority_dataset;
@@ -713,7 +799,7 @@ class DetailMetadataParserIdf
         foreach ($tmpNodes as $tmpNode) {
             $item = [];
             $map = array ();
-            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:topologyLevel/gmd:MD_TopologyLevelCode/@codeListValue");
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:topologyLevel/gmd:MD_TopologyLevelCode/@codeListValue", ["528"], "de");
             if ($value) {
                 $map["value"] = $value;
                 $map["type"] = "text";
@@ -721,7 +807,7 @@ class DetailMetadataParserIdf
             array_push($item, $map);
 
             $map = array ();
-            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:geometricObjects/gmd:MD_GeometricObjects/gmd:geometricObjectType/gmd:MD_GeometricObjectTypeCode/@codeListValue");
+            $value = IdfHelper::getNodeValue($tmpNode, "./gmd:geometricObjects/gmd:MD_GeometricObjects/gmd:geometricObjectType/gmd:MD_GeometricObjectTypeCode/@codeListValue", ["515"], "de");
             if ($value) {
                 $map["value"] = $value;
                 $map["type"] = "text";
@@ -875,7 +961,7 @@ class DetailMetadataParserIdf
     private static function getConformities($node)
     {
         $array = [];
-        $tmpNodes = IdfHelper::getNodeList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency") ?? [];
+        $tmpNodes = IdfHelper::getNodeList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency[./gmd:result/gmd:DQ_ConformanceResult]") ?? [];
         foreach ($tmpNodes as $tmpNode) {
             $item = [];
             $map = array ();
@@ -904,14 +990,20 @@ class DetailMetadataParserIdf
                 if (!is_null($value)) {
                     $map["value"] = $value;
                     $map["type"] = "symbol";
-                    $map["title"] = "TODO FROM CODELIST 6000";
+                    $title = CodelistHelper::getCodelistEntry(["6000"], "3", "de");
+                    if (strcmp($value, "true") == 0) {
+                        $title = CodelistHelper::getCodelistEntry(["6000"], "1", "de");
+                    } elseif (strcmp($value, "false") == 0) {
+                        $title = CodelistHelper::getCodelistEntry(["6000"], "2", "de");
+                    }
+                    $map["title"] = $title;
                 }
             }
             array_push($item, $map);
 
             $map = array ();
             $value = IdfHelper::getNodeValue($tmpNode, "./gmd:result/gmd:DQ_ConformanceResult/gmd:explanation/*[self::gco:CharacterString or self::gmx:Anchor]");
-            if ($value) {
+            if ($value && strcasecmp($value, "see the referenced specification") != 0) {
                 $map["value"] = $value;
                 $map["type"] = "text";
             }
@@ -1094,10 +1186,10 @@ class DetailMetadataParserIdf
     {
         $mod_time = IdfHelper::getNodeValue($node, "./gmd:dateStamp/gco:Date");
         $lang = IdfHelper::getNodeValue($node, "./gmd:language/gmd:LanguageCode/@codeListValue");
-        $hierarchy_level = IdfHelper::getNodeValue($node, "./gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue");
+        $hierarchy_level = IdfHelper::getNodeValue($node, "./gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue", ["525"], "de");
         $contact_meta = array (
             "mail" => IdfHelper::getNodeValue($node, "./gmd:contact/*/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/*[self::gco:CharacterString or self::gmx:Anchor]"),
-            "role" => IdfHelper::getNodeValue($node, "./gmd:contact/*/gmd:role/gmd:CI_RoleCode/@codeListValue")
+            "role" => IdfHelper::getNodeValue($node, "./gmd:contact/*/gmd:role/gmd:CI_RoleCode/@codeListValue", ["505"], "de")
         );
         $plug_data_source_name = "TODO";
         $plug_providers = ["TODO"];

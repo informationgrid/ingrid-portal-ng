@@ -9,12 +9,12 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
-      - "8080:80"
+      - "8000:80"
     network_mode: bridge
     volumes:
       - ./develop/admin.yaml:/var/www/html/user/accounts/admin.yaml
       - ./user/themes:/var/www/html/user/themes
       - ./user/pages:/var/www/html/user/pages
       - ./user/plugins:/var/www/html/user/plugins
-      - ./data/test:/var/www/html/user/data/test
+      - ./data:/var/www/html/user/data
       - ./develop/config:/var/www/html/user/localhost/config

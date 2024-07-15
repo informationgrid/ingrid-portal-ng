@@ -88,7 +88,6 @@ class IngridSearchResultPlugin extends Plugin
             $query = $this->grav['uri']->query('q') ?: "";
             $page = $this->grav['uri']->query('page') ?: 0;
             $results = $this->service->getSearchResults($query, $page, $this->getSelectedFacets());
-
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
@@ -98,6 +97,8 @@ class IngridSearchResultPlugin extends Plugin
 
     public function onTwigExtensions()
     {
+        require_once(__DIR__ . '/twig/IngridSearchResultHitTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new IngridSearchResultHitTwigExtension());
     }
 
     private function handleCheckboxSubmission(): void

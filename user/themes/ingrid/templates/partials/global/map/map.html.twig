@@ -6,11 +6,11 @@
     {% set map_bbox_bwastr = theme_var('map.leaflet.bbox.bwastr') %}
 
     {% include 'partials/global/map/leaflet.html.twig' %}
-    <div id="map_{{ mapId }}" class="map-ingrid" style="height:320px; margin-bottom: 24px;"></div>
+    <div id="{{ mapId }}" class="map-ingrid" style="height:320px; margin-bottom: 24px;"></div>
 
     <script>
         {% if isMoreId %}
-            $('#map_{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');
+            $('#{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');
         {% endif %}
         var coords = {{ coords|json_encode( )|raw }};
         var bounds_{{ mapId }};
@@ -55,30 +55,30 @@
             }
         });
         var bgLayer = getOSMLayer('');
-        var map_{{ mapId }} = addLeafletMapWithId('map_{{ mapId }}', bgLayer, bounds_{{ mapId }}, null , 10);
+        var {{ mapId }} = addLeafletMapWithId('{{ mapId }}', bgLayer, bounds_{{ mapId }}, null , 10);
         {% if map_bg_wms.url and map_bg_wms.name %}
             bgLayer = getWMSLayer('{{ map_bg_wms.url }}', '{{ map_bg_wms.name }}', '');
         {% endif %}
         {% if isDetail %}
-            map_{{ mapId }}.gestureHandling.enable();
+            {{ mapId }}.gestureHandling.enable();
         {% else %}
-            disableLeafletMapTouchControl(map_{{ mapId }});
+            disableLeafletMapTouchControl({{ mapId }});
         {% endif %}
         if(bounds_{{ mapId }}) {
-            map_{{ mapId }}.fitBounds(bounds_{{ mapId }});
+            {{ mapId }}.fitBounds(bounds_{{ mapId }});
         }
         {% if wkt and map_bbox_wkt %}
-            addLayerWKT(map_{{ mapId }}, '{{ wkt }}', coords);
+            addLayerWKT({{ mapId }}, '{{ wkt }}', coords);
         {% elseif bwastr and map_bbox_bwastr %}
-            addLayerBWaStr(map_{{ mapId }}, $bwastr, '', '{{ wkt }}', coords);
+            addLayerBWaStr({{ mapId }}, $bwastr, '', '{{ wkt }}', coords);
         {% else %}
-            addLayerBounds(map_{{ mapId }}, coords);
+            addLayerBounds({{ mapId }}, coords);
         {% endif %}
         {% if isMoreId %}
-            $('#map_{{ mapId }}').closest('.js-expander-content').addClass('is-hidden');
+            $('#{{ mapId }}').closest('.js-expander-content').addClass('is-hidden');
         {% endif %}
         {% if isDetail %}
-            addLeafletHomeControl(map_{{ mapId }}, 'Zoom auf initialen Kartenausschnitt', 'topleft', 'ic-ic-center', bounds_{{ mapId }} ? bounds_{{ mapId }} : map_{{ mapId }}.getBounds(), '', '23px');
+            addLeafletHomeControl({{ mapId }}, 'Zoom auf initialen Kartenausschnitt', 'topleft', 'ic-ic-center', bounds_{{ mapId }} ? bounds_{{ mapId }} : {{ mapId }}.getBounds(), '', '23px');
         {% endif %}
     </script>
 {% endif %}

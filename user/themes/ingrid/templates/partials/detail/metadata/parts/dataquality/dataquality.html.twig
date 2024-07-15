@@ -2,7 +2,7 @@
 
 <div class="section">
     <a class="anchor" id="{{ hash_dataquality }}"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.DATA_QUALITY"|t) }}
+    {{ hit_macros.render_title("SEARCH_DETAIL.DATA_QUALITY"|t) }}
 
     {% set header = [
         "SEARCH_DETAIL.DATA_QUALITY_TABLE_HEADER1"|t,
@@ -11,40 +11,40 @@
     ] %}
     <div class="row columns">
     {# Datendefizit #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_COVERAGE"|t, dataQualityRefs.completenessOmission) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_COVERAGE"|t, dataQualityRefs.completenessOmission) }}
     {# Höhengenauigkeit (m) #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_POS_ACCURACY_VERTICAL"|t, dataQualityRefs.accuracyVertical) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_POS_ACCURACY_VERTICAL"|t, dataQualityRefs.accuracyVertical) }}
    {# Lagegenauigkeit (m) #}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_REC_EXACT"|t, dataQualityRefs.accuracyGeographic) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_REC_EXACT"|t, dataQualityRefs.accuracyGeographic) }}
     {# Datenüberschuss #}
         {# set($headCodeList = ["7109"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE109_TITLE"|t, header, dataQualityRefs.completenessCommission, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE109_TITLE"|t, header, dataQualityRefs.completenessCommission, [0]) }}
     {# Konzeptionelle Konsistenz #}
         {# set($headCodeList = ["7112"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE112_TITLE"|t, header, dataQualityRefs.conceptualConsistency, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE112_TITLE"|t, header, dataQualityRefs.conceptualConsistency, [0]) }}
     {# Konsistenz des Wertebereichs #}
         {# set($headCodeList = ["7113"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE113_TITLE"|t, header, dataQualityRefs.domainConsistency, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE113_TITLE"|t, header, dataQualityRefs.domainConsistency, [0]) }}
     {# Formatkonsistenz #}
         {# set($headCodeList = ["7114"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE114_TITLE"|t, header, dataQualityRefs.formatConsistency, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE114_TITLE"|t, header, dataQualityRefs.formatConsistency, [0]) }}
     {# Topologische Konsistenz #}
         {# set($headCodeList = ["7115"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE115_TITLE"|t, header, dataQualityRefs.topologicalConsistency, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE115_TITLE"|t, header, dataQualityRefs.topologicalConsistency, [0]) }}
     {# Zeitliche Genauigkeit #}
         {# set($headCodeList = ["7120"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE120_TITLE"|t, header, dataQualityRefs.temporalConsistency, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE120_TITLE"|t, header, dataQualityRefs.temporalConsistency, [0]) }}
     {# Korrektheit der thematischen Klassifizierung #}
         {# set($headCodeList = ["7125"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE125_TITLE"|t, header, dataQualityRefs.thematicClassificationCorrectness, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE125_TITLE"|t, header, dataQualityRefs.thematicClassificationCorrectness, [0]) }}
     {# Genauigkeit nicht-quantitativer Attribute #}
         {# set($headCodeList = ["7126"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE126_TITLE"|t, header, dataQualityRefs.nonQuantitativeAttributeAccuracy, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE126_TITLE"|t, header, dataQualityRefs.nonQuantitativeAttributeAccuracy, [0]) }}
     {# Genauigkeit quantitativer Attribute #}
         {# set($headCodeList = ["7127"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE127_TITLE"|t, header, dataQualityRefs.quantitativeAttributeAccuracy, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE127_TITLE"|t, header, dataQualityRefs.quantitativeAttributeAccuracy, [0]) }}
     {# Relative Positionsgenauigkeit #}
         {# set($headCodeList = ["7128"]) #}
-        {{ hit_macros.render_section_table("SEARCH_DETAIL.DATA_QUALITY_TABLE128_TITLE"|t, header, dataQualityRefs.relativeInternalPositionalAccuracy, [0]) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE128_TITLE"|t, header, dataQualityRefs.relativeInternalPositionalAccuracy, [0]) }}
     </div>
 </div>

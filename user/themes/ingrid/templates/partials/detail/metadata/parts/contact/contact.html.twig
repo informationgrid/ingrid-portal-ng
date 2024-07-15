@@ -2,8 +2,8 @@
 
 <div class="section">
     <a class="anchor" id="{{ hash_contact }}"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.CONTACT"|t)}}
+    {{ hit_macros.render_title("SEARCH_DETAIL.CONTACT"|t)}}
     <div class="row columns">
-        {{ hit_macros.render_contact(contactRefs, sortAddressTyp, hash_contact) }}
+        {{ hit_macros.render_contact(contactRefs|sortContacts(sortContactByType), sortAddressTyp, hash_contact) }}
     </div>
 </div>

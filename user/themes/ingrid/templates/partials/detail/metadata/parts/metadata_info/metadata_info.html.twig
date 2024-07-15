@@ -1,33 +1,33 @@
 {# Zusatzinformationen #}
 <div class="section">
     <a class="anchor" id="{{ hash_metadata_info }}"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
+    {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
 {# Objekt-ID #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
 {# Datum #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time|date("d.m.Y", false)) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time|date("d.m.Y", false)) }}
 {# Sprache Metadatensatz #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Weitere #}
     {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_others.html.twig' %}
 {# Datensatz/Datenserie #}
     {% if class == 1 %}
-        {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
+        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
     {% endif %}
 {# XML Darstellung  #}
     {% set displayISOXML = theme_var('detail_hit_csw_enabled') %}
     {% set cswURL = theme_var('hit_csw_url') %}
     {% if displayISOXML and cswURL %}
-        {{ hit_macros.render_section_link_label("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, cswURL ~ uuid, "download") }}
+        {{ hit_macros.render_link_label("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, cswURL ~ uuid, "download") }}
     {% endif %}
 {# RDF Darstellung  #}
     {% set rdfURL = theme_var('detail_hit_rdf_enabled') %}
     {% set displayRDFXML = theme_var('hit_rdf_url') %}
     {% if displayRDFXML and rdfURL %}
-        {{ hit_macros.render_section_link_label("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
+        {{ hit_macros.render_link_label("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
-    {{ hit_macros.render_section_link_label(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, metaInfoRefs.contact_meta.mail, "mail" ) }}
+    {{ hit_macros.render_link_label(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, metaInfoRefs.contact_meta.mail, "mail" ) }}
 {# Metadatenquellen #}
     {% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
     <div class="table table--lined">

@@ -1,4 +1,4 @@
-{% macro render_section_title (title) %}
+{% macro render_title (title) %}
     <h3>{{ title }}</h3>
 {% endmacro %}
 
@@ -136,19 +136,19 @@
       <b>{{ title }}</b>:
     {% endif %}
     {% if "seitX" in time.type and time.t1 %}
-      <span>seit {{ time.t1 }}, gegenwärtig aktuell</span>
+      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}, gegenwärtig aktuell</span>
     {% elseif "seit" in time.type and time.t1 %}
-      <span>seit {{ time.t1 }}, gegenwärtige Aktualität unklar</span>
+      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}, gegenwärtige Aktualität unklar</span>
     {% elseif "von" in time.type and time.t1 and time.t2 %}
       {% if time.t1 is same as(time.t2) %}
         <span>{{ time.t1 }}</span>
       {% else %}
-        <span>{{ time.t1 }} - {{ time.t2 }}</span>
+        <span>{{ time.t1  ~ " " ~  "COMMON.TIME_UNTIL"|t ~ " " ~ time.t2 }}</span>
       {% endif %}
     {% elseif "am" in time.type and time.t0 %}
       <span>{{ time.t0 }}</span>
     {% elseif "bis" in time.type and time.t2 %}
-      <span>bis {{ time.t2 }}</span>
+      <span>{{ "COMMON.TIME_UNTIL"|t ~ " " ~  time.t2 }}</span>
     {% endif %}
   </div>
   {% endif %}
@@ -163,7 +163,7 @@
   </h4>
 {% endmacro %}
 
-{% macro render_object_links (title, items) %}
+{% macro render_object_links (title, items, partners) %}
   {% if title %}
     <h4>{{ title }} ({{ items|length }})</h4>
   {% endif %}
@@ -171,7 +171,7 @@
     <div class="document-list">
       {% for item in items %}
         <div class="list-item">
-          {{ _self.render_metadata_link(item) }}
+          {{ _self.render_metadata_link(item, partners) }}
         </div>
       {% endfor %}
     </div>
@@ -193,7 +193,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_metadata_link (item) %}
+{% macro render_metadata_link (item, partners) %}
   {% set uuid = item.uuid %}
   {% set type = item.type %}
   {% set title = item.title %}
@@ -232,15 +232,9 @@
           <div class="swiper-slide">
             <p class="caption">
               <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
-                <img class="preview_image"
-                  {% if "https" in preview %}
-                    src="./" data-src="$graphic"
-                  {% else %}
-                    src="$graphic"
-                  {% endif %}
-                  title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this,&apos;${plugPartner}&apos;);">
+                <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
                 <noscript>
-                  <img class="preview_image" src="$graphic" title="{{ title }}" alt="img">
+                  <img class="preview_image" src="{{ preview }}" title="{{ title }}" alt="img">
                 </noscript>
               </a>
             </p>
@@ -254,13 +248,7 @@
     <div class="preview">
       {% for preview in previews %}
         <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
-            <img class="preview_image"
-              {% if "https:" in preview %}
-                src="./" data-src="{{ preview }}"
-              {% else %}
-                src="{{ preview }}"
-              {% endif %}
-              title="{{ title }}" alt="img" {#onerror="$loadDefaultMapImage"#}>
+            <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
             <noscript>
               <img class="preview_image" src="{{ preview }}" title="{{ title }}" alt="img">
             </noscript>
@@ -271,7 +259,7 @@
 {# Beschreibung #}
   {% if description %}
     <div class="description">
-      <small class="description">{{ description }}</small>
+      <small class="description">{{ convertUrlInText(description)|raw }}</small>
     </div>
   {% endif %}
   </div>
@@ -399,8 +387,8 @@
     {# Servicezeiten #}
     {% if service_time %}
     <div>
-        Servicezeiten
-        {{ service_time }}
+        {{ "SEARCH_DETAIL.T02_ADDRESS_HOURS_OF_SERVICE"|t }}
+        {{ service_time|raw }}
     </div>
     {% endif %}
     {% set break = true %}
@@ -411,6 +399,7 @@
     {% for item in items %}
         {% set num = loop.index - 1 %}
         {% set role = item.role %}
+        {% set role_name = item.role_name %}
         {% set addresses = item.addresses %}
         {% set streets = item.streets %}
         {% set postcode = item.postcode %}
@@ -425,7 +414,7 @@
         <div class="sub-section">
             <div class="table table--lined">
                 <a class="anchor" id="{{ hash }}_contact-{{ num }}"></a>
-                <h5>{{ role }}</h5>
+                <h5>{{ role_name }}</h5>
                 <table>
                     <tr>
                         <td>
@@ -508,8 +497,8 @@
                         {# Servicezeiten #}
                             {% if service_time %}
                             <div>
-                                Servicezeiten
-                                {{ service_time }}
+                                {{ "SEARCH_DETAIL.T02_ADDRESS_HOURS_OF_SERVICE"|t }}
+                                {{ service_time|raw }}
                             </div>
                             {% endif %}
                         </td>
@@ -520,13 +509,13 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro render_section_text (text) %}
+{% macro render_text (text) %}
   {% if text %}
-    <p>{{ text }}</p>
+    <p>{{ convertUrlInText(text)|raw }}</p>
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_text_label (title, text, css) %}
+{% macro render_text_label (title, text, css) %}
   {% if text %}
     <div class="table table--lined">
         <table>
@@ -535,7 +524,7 @@
                     <th>{{ title }}</th>
                 {% endif %}
                 <td>
-                    <p {% if css %}class="{{ css }}"{% endif %}>{{ text }}</p>
+                    <p {% if css %}class="{{ css }}"{% endif %}>{{ text|raw }}</p>
                 </td>
             </tr>
         </table>
@@ -543,7 +532,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_link_label (title, linkTitle, link, type, css) %}
+{% macro render_link_label (title, linkTitle, link, type, css) %}
   {% if link %}
     <div class="table table--lined">
         <table>
@@ -571,7 +560,42 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_text_label_table_list (title, entries, css, json) %}
+{% macro render_text_label_table_list (title, entries, listPreset, css) %}
+  {% if entries and entries|length > 0 %}
+    <div class="table table--lined">
+        <table>
+            <tr>
+            {% if title %}
+                <th>{{ title }}</th>
+            {% endif %}
+                <td>
+                    <div class="text-list">
+                    {% if listPreset %}
+                      <span>{{ listPreset }}</span>
+                    {% endif %}
+                    {% for entry in entries %}
+                        {% set entryToJson = entry|json_decode() %}
+                        {% if entryToJson.url is not empty %}
+                          <p class="list-item">
+                              <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                                  <span class="ic-ic-external"></span>
+                                  <span class="text">{{ entryToJson.name }}</span>
+                              </a>
+                              {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ entryToJson.quelle }}
+                          </p>
+                        {% else %}
+                          <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_label_text_to_link_table_list (title, entries, url) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined">
         <table>
@@ -582,7 +606,16 @@
                 <td>
                     <div class="text-list">
                     {% for entry in entries %}
-                        <p class="list-item">{{ entry|raw }}</p>
+                        {% if url %}
+                          <div>
+                              <a target="_blank" class="icon external-link" href="{{ entry|replace({'EPSG:': url, replaceString: ''}) }}" title="{{ entry }}" rel="noopener noreferrer">
+                                  <span class="ic-ic-external"></span>
+                                  <span class="text">{{ entry|replace({replaceString: ''}) }}</span>
+                              </a>
+                          </div>
+                        {% else %}
+                          <p class="list-item">{{ entry|replace({replaceString: ''}) }}</p>
+                        {% endif %}
                     {% endfor %}
                     </div>
                 </td>
@@ -592,20 +625,34 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_text_label_list (title, entries, css, json) %}
+{% macro render_text_label_list (title, entries, listPreset, css, json) %}
   {% if entries and entries|length > 0 %}
     {% if title %}
         <h4>{{ title }}</h4>
     {% endif %}
     <div class="text-list">
+    {% if listPreset %}
+      <span>{{ listPreset }}</span>
+    {% endif %}
     {% for entry in entries %}
-        <p class="list-item">{{ entry|raw }}</p>
+        {% set entryToJson = entry|json_decode() %}
+        {% if entryToJson.url is not empty %}
+            <p class="list-item">
+                <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                    <span class="ic-ic-external"></span>
+                    <span class="text">{{ entryToJson.name }}</span>
+                </a>
+                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ entryToJson.quelle }}
+            </p>
+        {% else %}
+            <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
+        {% endif %}
     {% endfor %}
     </div>
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_teaser_label_list (title, entries, css) %}
+{% macro render_teaser_label_list (title, entries, css) %}
   {% if entries and entries|length > 0 %}
     <div class="table list">
         <table>
@@ -624,7 +671,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_link_image_list (title, entries, type, isFacts, breakListCounter) %}
+{% macro render_link_image_list (title, entries, type, isFacts, breakListCounter, partners) %}
   {% if entries and entries|length > 0 %}
     {% set isDownload = false %}
     {% set isExternal = false %}
@@ -659,9 +706,9 @@
               {% elseif entry.cswUrl %}
                 {% set link = "?cswUrl=" ~ entry.cswUrl %}
               {% endif %}
-              {% if entry.metaClass and isFacts is not sameas(true) %}
+              {% if entry.type is not empty and isFacts is not sameas(true) %}
               <div class="helper icon">
-                {{ _self.render_metadata_icon(entry.metaClass, 'TODO', 'TODO') }}
+                {{ _self.render_metadata_icon(entry.type, entry.type_name, entry.type_name) }}
               </div>
               {% endif %}
               {% if link %}
@@ -671,8 +718,8 @@
                   {% elseif isDownload %}
                       <span class="ic-ic-download"></span>
                   {% endif %}
-                  {% if entry.metaClass and isFacts is sameas(true) %}
-                      {{ _self.render_metadata_icon(entry.metaClass, null, 'TODO') }}
+                  {% if entry.type and isFacts is sameas(true) %}
+                      {{ _self.render_metadata_icon(entry.type, null, 'TODO') }}
                   {% endif %}
                   <span class="text">{{ entry.title }}</span>
                 </a>
@@ -683,15 +730,34 @@
                   <small class="text">$entry.linkInfo</small>
               {% endif %}
               {% if entry.attachedToField %}
-                  <small>{{ entry.attachedToField }}</small>
+                  <small>{{ convertUrlInText(entry.attachedToField)|raw }}</small>
               {% endif %}
               {% if entry.previews and entry.previews|length > 0 %}
                 {% if entry.previews|length > 1 %}
+                  <div class="preview">
+                      <div class="swiper-container swiper-container-background">
+                          <div class="swiper-wrapper">
+                          {% for preview in entry.previews %}
+                              <div class="swiper-slide">
+                                  <p class="caption">
+                                      <a target="_blank" class="external-link" href="{{ preview }}" title="{{ entry.title }}" rel="noopener noreferrer">
+                                          <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ entry.title }}" title="{{ entry.title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                                          <noscript>
+                                              <img class="preview_image" src="{{ preview }}" title="{{ entry.title }}" alt="img">
+                                          </noscript>
+                                      </a>
+                                  </p>
+                              </div>
+                          {% endfor %}
+                          </div>
+                          <div class="swiper-pagination"></div>
+                      </div>
+                  </div>
                 {% else %}
                   <div class="preview">
                         {% set tmpUrl = entry.previews[0] %}
                         <a target="_blank" class="external-link" href="{{ tmpUrl }}" title="{{ entry.title }}" rel="noopener noreferrer">
-                            <img class="preview_image" {% if "https" in tmpUrl %} src="./" data-src="{{ tmpUrl }}" {% else %} src="{{ tmpUrl }}"{% endif %} title="$stringTool.htmlescape($entry.title)" title="{{ entry.title }}" alt="img" {#onerror="$loadDefaultMapImage"#}>
+                            <img class="preview_image"{% if 'http:' in  tmpUrl %} src="./" data-src={% else %} src={% endif %}"{{ tmpUrl }}" title="{{ entry.title }}" title="{{ entry.title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
                             <noscript>
                                 <img class="preview_image" src="{{ tmpUrl }}" title="{{ entry.title }}" alt="img">
                             </noscript>
@@ -701,7 +767,7 @@
               {% endif %}
               {% if entry.description %}
                 <div class="description">
-                  <small class="description">{{ entry.description }}</small>
+                  <small class="description">{{ convertUrlInText(entry.description)|raw }}</small>
                 </div>
               {% endif %}
               {% if entry.extMapUrl %}
@@ -723,7 +789,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_table (title, header, entries, increaseColumns, additionalRows, setCenter) %}
+{% macro render_table (title, header, entries, increaseColumns, additionalRows, setCenter) %}
   {% if entries and entries|length > 0 %}
     <div class="table">
       {% if title %}
@@ -777,7 +843,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_section_table_list (title, header, entries) %}
+{% macro render_table_list (title, header, entries) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined--list">
       {% if title %}
@@ -801,7 +867,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_multi_images (entries) %}
+{% macro render_multi_images (entries, partners) %}
   {% if entries and entries|length > 0 %}
     {% set canSwipe = false %}
     {% if entries|length > 1 %}
@@ -814,13 +880,12 @@
     {% else %}
     <div class="swiper-container-background">
     {% endif %}
-
     {% if canSwipe %}
       {% for entry in entries %}
         <div class="swiper-slide">
           <p class="caption">
             <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.url }}" rel="noopener noreferrer">
-              <img class="preview_image"{% if entry.url starts with 'https' %} src="{{ entry.url }}" {% else %} src="./" data-src="{{ entry.url }}" {% endif %} title="{{ entry.descr ?? entry.url }}" alt="img" onerror="$loadDefaultMapImage">
+              <img class="preview_image"{% if 'http:' in  entry.url %} src="./" data-src={% else %} src={% endif %}"{{ entry.url }}" title="{{ entry.descr ?? entry.url }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
               <noscript>
                 <img class="preview_image" src="{{ entry.url }}" title="{{ entry.url }}" alt="img">
               </noscript>
@@ -837,7 +902,7 @@
       <div class="swiper-slide">
         <p class="caption">
           <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.url }}" rel="noopener noreferrer">
-            <img class="preview_image"{% if entry.url starts with 'https' %} src="{{ entry.url }}" {% else %} src="./" data-src="{{ entry.url }}" {% endif %} title="{{ entry.descr ?? entry.url }}" alt="img" onerror="$loadDefaultMapImage">
+            <img class="preview_image"{% if 'http:' in  entry.url %} src="./" data-src={% else %} src={% endif %}"{{ entry.url }}" title="{{ entry.descr ?? entry.url }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
             <noscript>
               <img class="preview_image" src="{{ entry.url }}" title="{{ entry.url }}" alt="img">
             </noscript>

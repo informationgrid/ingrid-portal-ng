@@ -1,7 +1,7 @@
 {# Geodatensatz #}
 <div class="sub-section">
     <a class="anchor" id="{{ hash_info }}_technical_information"></a>
-    {{ hit_macros.render_section_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
+    {{ hit_macros.render_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
 {# Identifikator #}
     {% include 'partials/detail/metadata/parts/information/information_type_1_identificator.html.twig' %}
 {# Messdaten #}
@@ -14,7 +14,7 @@
         "SEARCH_DETAIL.T011_OBJ_GEO_VECTOR_GEOMETRIC_OBJECT_TYPE"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_VECTOR_GEOMETRIC_OBJECT_COUNT"|t,
     ] %}
-    {{ hit_macros.render_section_table("SEARCH_DETAIL.T011_OBJ_GEO_VECTOR"|t, header, infoRefs.vectors, [0]) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_VECTOR"|t, header, infoRefs.vectors, [0]) }}
 {# Erstellungsmaßstab #}
     {% set header = [
         "SEARCH_DETAIL.T011_OBJ_SERV_SCALE_SCALE"|t,
@@ -28,33 +28,33 @@
             infoRefs.resolutions.dpis,
         ] %}
     {% endif %}
-    {{ hit_macros.render_section_table_list("SEARCH_DETAIL.T011_OBJ_SERV_SCALE"|t, header, entries) }}
+    {{ hit_macros.render_table_list("SEARCH_DETAIL.T011_OBJ_SERV_SCALE"|t, header, entries) }}
 {# Systemumgebung #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
 {# Fachliche Grundlage #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
 {# Datengrundlage #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
 {# Herstellungsprozess #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_METHOD"|t, infoRefs.processStepDescription) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_METHOD"|t, infoRefs.processStepDescription) }}
 {# Symbolkatalog #}
     {% set header = [
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_SYMBOL_CAT"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_SYMBOL_DATE"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_EDITION"|t,
     ] %}
-    {{ hit_macros.render_section_table("SEARCH_DETAIL.T011_OBJ_GEO_SYMC"|t, header, infoRefs.symbolCatalogues, [0]) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_SYMC"|t, header, infoRefs.symbolCatalogues, [0]) }}
 {# Schlüsselkatalog: im Datensatz vorhanden #}
-    {{ hit_macros.render_section_text_label("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
+    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
 {# Schlüsselkatalog #}
     {% set header = [
         "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_SUBJECT_CAT"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_KEY_DATE"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_EDITION"|t,
     ] %}
-    {{ hit_macros.render_section_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
 {# Sachdaten/Attributinformation #}
-    {{ hit_macros.render_section_text_label_table_list("SEARCH_DETAIL.T011_OBJ_GEO_SUPPLINFO_FEATURE_TYPE"|t, infoRefs.featureTypes) }}
+    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_GEO_SUPPLINFO_FEATURE_TYPE"|t, infoRefs.featureTypes) }}
 {# Geometrie-Kontext #}
     {% include 'partials/detail/metadata/parts/information/information_type_1_geometrie_context.html.twig' ignore missing %}
 {# Anzeige der Bemerkungen #}
