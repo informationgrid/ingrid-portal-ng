@@ -32,7 +32,7 @@ class CodelistHelper
         foreach ($codelistIds as $codelistId) {
             $codelist = self::getCodelist($codelistId);
             if ($codelist) {
-                $codelistEntry = self::getNode($codelist, "//de.ingrid.codelists.model.CodeListEntry[./localisations/" . $lang . " = '". $entryId ."']");
+                $codelistEntry = self::getNode($codelist, "//de.ingrid.codelists.model.CodeListEntry[./localisations/iso = '". $entryId ."']");
                 if ($codelistEntry) {
                     $codelistEntryLang = self::getNode($codelistEntry, "./localisations/" . $lang);
                     return $codelistEntryLang;
