@@ -1,0 +1,80 @@
+name: InGrid Codelist
+slug: ingrid-codelist
+type: plugin
+version: 0.1.0
+description: Load InGrid codelist job
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-codelist
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-codelist/issues
+docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-codelist/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    codelist.codelist_api.url:
+      type: text
+      label: PLUGIN_INGRID_CODELIST.API_URL
+      help: PLUGIN_INGRID_CODELIST.API_URL_HELP
+      default: https://dev.informationgrid.eu/codelist-repo/rest/getCodelists
+
+    codelist.codelist_api.user:
+      type: text
+      label: PLUGIN_INGRID_CODELIST.API_URL_USER
+      help: PLUGIN_INGRID_CODELIST.API_URL_USER_HELP
+      default: ''
+
+    codelist.codelist_api.pass:
+      type: text
+      label: PLUGIN_INGRID_CODELIST.API_URL_PASS
+      help: PLUGIN_INGRID_CODELIST.API_URL_PASS_HELP
+      default: ''
+
+    codelist.scheduled_index.status:
+      type: codelist_index_status
+      label: Codelist Index Status
+
+    codelist.scheduled_index.enabled:
+      type: toggle
+      label: Enable Index Scheduled Job
+      help: Use the Grav Scheduler to kick off a background index job
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    codelist.scheduled_index.at:
+      type: cron
+      label: Scheduled Job Frequency
+      size: medium
+      help: Use 'cron' format
+      default: '0 */3 * * *'
+      placeholder: '0 */3 * * *'
+
+    codelist.scheduled_index.logs:
+      type: text
+      label: Scheduled Job Log File
+      default: 'logs/codelist-index.out'
+      size: medium

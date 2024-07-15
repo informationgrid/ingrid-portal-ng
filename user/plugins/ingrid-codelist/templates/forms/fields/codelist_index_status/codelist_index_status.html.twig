@@ -1,0 +1,16 @@
+{% extends "forms/field.html.twig" %}
+
+{% block input %}
+    <div class="form-list-wrapper {{ field.size }}">
+        <div class="index-status">
+            {% if index_status.status %}
+                <button id="codelist_index" class="button reindex codelist_reindex">Re-Indexing Codelist</button>
+                <span class="status success"><i class="fa fa-book"></i> {{ index_status.msg }}</span>
+            {% else %}
+                <button id="codelist_index" class="button critical codelist_reindex">Indexing Codelist</button>
+                <span class="status error"><i class="fa fa-warning"></i> {{ index_status.msg }}</span>
+            {% endif %}
+            <div class="warning error-details"></div>
+        </div>
+    </div>
+{% endblock %}
