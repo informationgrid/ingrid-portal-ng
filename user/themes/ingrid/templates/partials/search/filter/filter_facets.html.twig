@@ -53,6 +53,7 @@
                                 </li>
                             </ul>
                         {% endfor %}
+                        {% include 'partials/search/filter/facet_area.html.twig' %}
                     </div>
                 </div>
             </div>
@@ -65,3 +66,5 @@
         document.getElementById('updateFacets').submit();
     }
 </script>
+
+{% do assets.addJs('theme://js/htmx.min.js', {group: 'bottom'}) %}
