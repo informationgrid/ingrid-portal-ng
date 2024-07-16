@@ -577,7 +577,7 @@ form:
               title: Messwerte
               underline: true
 
-            measure_enabled:
+            measure.enabled:
               type: toggle
               label: Messwerte-Client aktivieren
               help: Aktivieren Sie hier den Messwerte-Client.
@@ -589,8 +589,50 @@ form:
               validate:
                 type: bool
 
-            measure_url:
+            measure.url:
               type: text
               label: Link zur Karte
               help: Trage Sie hier die URL zur Karte.
-              default: '/ingrid-portal-apps/measures/index.html'
+              default: 'https://dev.informationgrid.eu/ingrid-portal-apps/measures/index.html'
+
+            measure.elastic:
+              type: text
+              label: Link zur Karte
+              help: Trage Sie hier die URL zur Karte.
+              default: 'https://dev.informationgrid.eu/elastic-measure/'
+
+            measure.networks.exclude:
+              type: selectize
+              selectize:
+                options:
+                  - text: "luen"
+                    value: "luen"
+                  - text: "nlwkn"
+                    value: "nlwkn"
+                  - text: "odl"
+                    value: "odl"
+                  - text: "uba"
+                    value: "uba"
+              label: Sortierung Adress-Typ
+              help: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+              validate:
+                  type: commalist
+              default: []
+
+            measure.networks.initial:
+              type: selectize
+              selectize:
+                options:
+                  - text: "luen"
+                    value: "luen"
+                  - text: "nlwkn"
+                    value: "nlwkn"
+                  - text: "odl"
+                    value: "odl"
+                  - text: "uba"
+                    value: "uba"
+              label: Sortierung Adress-Typ
+              help: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+              validate:
+                  type: commalist
+              default: ["luen"]
