@@ -1,12 +1,9 @@
 <style>
-  #iframe_measure { height: 100%; }
-  .embed-container { width: 100%; position: absolute; bottom: 0; top: 157px;}
-  @media screen and (max-width: 939px) {
-    .embed-container { top: 117px; }
-  }
-  @media screen and (max-width: 767px) {
-    .embed-container { top: 60px; }
-  }
+    #iframe_measure { height: 100%; width: 100%; border: 0; }
+    .embed-container { width: 100%; position: absolute; bottom: 0; top: 80px; }
+    @media print, screen and (min-width: 35em) {
+        .embed-container { top: 120px;}
+    }
 </style>
 
 {% set measure_url = theme_var('measure.url') %}
