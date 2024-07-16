@@ -1,3 +1,14 @@
+<style>
+  #iframe_measure { height: 100%; }
+  .embed-container { width: 100%; position: absolute; bottom: 0; top: 157px;}
+  @media screen and (max-width: 939px) {
+    .embed-container { top: 117px; }
+  }
+  @media screen and (max-width: 767px) {
+    .embed-container { top: 60px; }
+  }
+</style>
+
 {% set measure_url = theme_var('measure.url') %}
 {% set measure_url_elastic = theme_var('measure.elastic') %}
 {% set measure_networks_exclude = theme_var('measure.networks.exclude')|join('","') %}
