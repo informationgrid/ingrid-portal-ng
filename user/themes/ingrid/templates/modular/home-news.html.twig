@@ -1,0 +1,124 @@
+{% set rss_feeds_limit = theme_var('home.rss.feeds.limit') %}
+
+{% set hits = rss_feeds %}
+<div class="row">
+    <a id="news.teaser.title"></a>
+    <div class="columns">
+        <div class="teaser-data-projects" id="rss_news_teaser">
+            <div class="row">
+                <div class="columns text-center">
+                    <h2>{{ "RSS_PAGE.TITLE"|t }}</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% set break = false %}
+                {% for hit in hits if not break %}
+                    {% if loop.index == rss_feeds_limit %}
+                        {% set break = true %}
+                    {% endif %}
+                    {% set title = hit.title %}
+                    {% set summary = hit.summary %}
+                    {% set url = hit.url %}
+                    {% set date = hit.date %}
+                    {% set time = hit.time %}
+                    {% set provider = hit.provider %}
+                    <div class="xsmall-24 small-24 medium-12 large-12 xlarge-12 columns">
+                        <div class="teaser-data search">
+                            <div>
+                                {% if date or time %}
+                                <small class="bx-bot-0">
+                                    {% if date %}
+                                    <span class="tx-darker">
+                                        <strong>{{ date }}</strong>
+                                    </span>
+                                    {% endif %}
+                                    {% if time %}
+                                    <span class="tx-light">{{ time }}</span>
+                                    {% endif %}
+                                </small>
+                                {% endif %}
+                                <a target="_blank" class="external-link" href="{{ url }}" title="{{ title }}">
+                                    <h2 class="header">
+                                        {{ title }}
+                                    </h2>
+                                </a>
+                                {% if summary %}
+                                <p>
+                                    {{ summary }}
+                                </p>
+                                {% endif %}
+                                {% if provider %}
+                                <h6 class="no-margin">{{ "RSS_PAGE.PROVIDER"|t }}</h6>
+                                <p>{{ provider }}</p>
+                                {% endif %}
+                                <a target="_blank" class="external-link" href="{{ url }}" title="{{ title }}">
+                                    <span class="ic-ic-arrow arrow"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="columns text-center">
+                    <button type="button" class="button outline" onclick="location.href='{{ page.find('/rss').url }}'" title="Neuste Meldungen">{{ "RSS_PAGE.ALL_NEWS"|t }}<span class="ic-ic-angle-down"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function resizeTeaserData() {
+            var parent = $('#rss_news_teaser');
+            var teaserDatas = parent.find(".teaser-data");
+            var teaserHeaders = parent.find(".teaser-data .header");
+            var height = 0;
+
+            if (teaserHeaders) {
+                var prevHeaderHeight = 0;
+                var headerHeight = 0;
+                for (var i = 0; i < teaserHeaders.length; i++) {
+                    var teaserHeader = $(teaserHeaders[i]);
+                    teaserHeader.removeAttr("style");
+                    if ((i + 1) % 2 == 0) {
+                        headerHeight = teaserHeader.height();
+                        if (prevHeaderHeight > headerHeight) {
+                            teaserHeader.height(prevHeaderHeight);
+                            $(teaserHeaders[i - 1]).height(prevHeaderHeight);
+                        } else {
+                            teaserHeader.height(headerHeight);
+                            $(teaserHeaders[i - 1]).height(headerHeight);
+                        }
+                    } else {
+                        prevHeaderHeight = teaserHeader.height();
+                    }
+                }
+            }
+
+            if (teaserDatas) {
+                var prevDataHeight = 0;
+                var dataHeight = 0;
+                for (var i = 0; i < teaserDatas.length; i++) {
+                    var teaserData = $(teaserDatas[i]);
+                    teaserData.removeAttr("style");
+                    if ((i + 1) % 2 == 0) {
+                        dataHeight = teaserData.height();
+                        if (prevDataHeight > dataHeight) {
+                            teaserData.height(prevDataHeight);
+                            $(teaserDatas[i - 1]).height(prevDataHeight);
+                        } else {
+                            teaserData.height(dataHeight);
+                            $(teaserDatas[i - 1]).height(dataHeight);
+                        }
+                    } else {
+                        prevDataHeight = teaserData.height();
+                    }
+                }
+            }
+        }
+
+        window.onresize = resizeTeaserData;
+        window.onload = resizeTeaserData
+    </script>
+</div>

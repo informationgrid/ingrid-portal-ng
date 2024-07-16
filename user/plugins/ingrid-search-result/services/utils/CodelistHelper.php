@@ -95,7 +95,11 @@ class CodelistHelper
     }
 
     private static function getCodelist(string $codelistId){
-        $response = file_get_contents('user-data://codelists/codelist_' . $codelistId . '.xml');
+        $response = null;
+        try {
+            $response = file_get_contents('user-data://codelists/codelist_' . $codelistId . '.xml');
+        } catch (\Throwable $th) {
+        }
         return simplexml_load_string($response);
     }
 

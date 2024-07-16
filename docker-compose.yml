@@ -17,4 +17,5 @@ services:
       - ./user/pages:/var/www/html/user/pages
       - ./user/plugins:/var/www/html/user/plugins
       - ./data:/var/www/html/user/data
+      - ./logs:/var/www/html/logs
       - ./develop/config:/var/www/html/user/localhost/config

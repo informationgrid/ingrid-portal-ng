@@ -1,2 +1,0 @@
-<?xml version="1.0"?>
-<de.ingrid.codelists.model.CodeList><id>150304</id><name>TestCodeliste</name><description>Beschreibung</description><defaultEntry>-1</defaultEntry><entries><de.ingrid.codelists.model.CodeListEntry><id>123</id><description>Beschreibung des Elementes</description><localisations><de>TestObjekt</de></localisations><data>ID: 123; Test: Test; URI: https://www.google.de; </data><fields><de>TestObjekt</de></fields></de.ingrid.codelists.model.CodeListEntry></entries><lastModified>1720448336275</lastModified></de.ingrid.codelists.model.CodeList>

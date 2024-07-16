@@ -19,6 +19,11 @@
     "psr-4": {
       "Grav\\Plugin\\IngridRss\\": "classes/"
     },
-    "classmap":  ["ingrid-rss.php"]
+    "classmap":  ["ingrid-rss.php"],
+    "files": [
+      "classes/RssIndex.php",
+      "classes/RssResult.php"
+    ]
+
   }
 }

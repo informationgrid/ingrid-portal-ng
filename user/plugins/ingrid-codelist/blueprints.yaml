@@ -70,11 +70,11 @@ form:
       label: Scheduled Job Frequency
       size: medium
       help: Use 'cron' format
-      default: '0 */3 * * *'
-      placeholder: '0 */3 * * *'
+      default: '0 * * * *'
+      placeholder: '0 * * * *'
 
     codelist.scheduled_index.logs:
       type: text
       label: Scheduled Job Log File
-      default: 'logs/codelist-index.out'
+      default: 'logs/ingrid-codelist-index.out'
       size: medium

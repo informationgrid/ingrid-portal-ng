@@ -31,11 +31,11 @@ form:
       validate:
         type: bool
 
-    rss_status:
-      type: rssstatus
+    rss.scheduled_index.status:
+      type: rss_index_status
       label: RSS Index Status
 
-    scheduled_index.enabled:
+    rss.scheduled_index.enabled:
       type: toggle
       label: Enable Index Scheduled Job
       help: Use the Grav Scheduler to kick off a background index job
@@ -47,27 +47,27 @@ form:
       validate:
         type: bool
 
-    scheduled_index.at:
+    rss.scheduled_index.at:
       type: cron
       label: Scheduled Job Frequency
       size: medium
       help: Use 'cron' format
-      default: '0 */3 * * *'
-      placeholder: '0 */3 * * *'
+      default: '0 * * * *'
+      placeholder: '0 * * * *'
 
-    scheduled_index.logs:
+    rss.scheduled_index.logs:
       type: text
       label: Scheduled Job Log File
-      placeholder: 'logs/tntsearch-index.out'
+      placeholder: 'logs/ingrid-rss-index.out'
       size: medium
 
-    rss_fieldset:
+    rss.feeds:
       type: fieldset
       title: RSS
       help: Lege die Rss fest
       text: Lege die Rss fest
       fields:
-        rss_links:
+        .links:
           type: list
           label: RSS
           style: vertical
@@ -75,7 +75,7 @@ form:
           collapsed: true
           default: []
           fields:
-            .ident:
+            .url:
               type: text
               label: URL
             .summary:
@@ -84,9 +84,9 @@ form:
             .provider:
               type: text
               label: Anbieter
-            .language:
+            .lang:
               type: text
               label: Sprache
             .category:
               type: text
-              label: Katgorie
+              label: Kategorie

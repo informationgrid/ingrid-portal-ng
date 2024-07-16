@@ -1,2 +1,0 @@
-<?xml version="1.0"?>
-<de.ingrid.codelists.model.CodeList><id>7125</id><name>Datenqualit&#xE4;t - Korrektheit der thematischen Klassifizierung - Art der Messung</name><description/><defaultEntry/><entries><de.ingrid.codelists.model.CodeListEntry><id>1</id><description/><localisations><de>Misclassification rate</de><en>Misclassification rate</en></localisations><data/><fields><de>Misclassification rate</de><en>Misclassification rate</en></fields></de.ingrid.codelists.model.CodeListEntry></entries><lastModified>1720448336275</lastModified></de.ingrid.codelists.model.CodeList>

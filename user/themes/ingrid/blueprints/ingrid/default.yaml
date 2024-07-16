@@ -219,6 +219,22 @@ form:
                       label: Pfad
 
 ## Tab search
+        tab_home:
+          type: tab
+          title: Startseite
+
+          fields:
+
+            home.rss.feeds.limit:
+              type: text
+              label: Maximale Anzahl der RSS Feeds
+              help: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+              min: 1
+              default: 6
+              validate:
+                type: number
+
+## Tab search
         tab_search:
           type: tab
           title: Treffer

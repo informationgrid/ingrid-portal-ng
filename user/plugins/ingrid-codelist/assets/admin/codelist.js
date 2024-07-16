@@ -5,7 +5,7 @@
             Request = Grav.default.Utils.request;
             Toastr = Grav.default.Utils.toastr;
         }
-        var indexer = $('#codelist_index, #admin-nav-quick-tray .codelist_reindex'),
+        var indexer = $('#codelist-index, #admin-nav-quick-tray .codelist-reindex'),
             current = null, currentTray = null;
         if (!indexer.length) { return; }
 
@@ -13,8 +13,8 @@
             e.preventDefault();
             var target = $(e.target),
                 isTray = target.closest('#admin-nav-quick-tray').length,
-                status = indexer.siblings('.codelist_status'),
-                errorDetails = indexer.siblings('.codelist_error-details');
+                status = indexer.siblings('.codelist-status'),
+                errorDetails = indexer.siblings('.codelist-error-details');
             current = status.clone(true);
 
             console.log(isTray);

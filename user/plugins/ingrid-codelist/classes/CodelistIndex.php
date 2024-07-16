@@ -23,7 +23,7 @@ class CodelistIndex
 
         foreach($codelists as $codelist) {
             $id = $codelist["id"];
-            self::writeXmlFile($codelist, "user-data://codelists/codelist_" . $id . ".xml");
+            self::writeXmlFile($codelist, "user-data://codelists", "codelist_" . $id . ".xml");
         }
         $result = array(
             "status" => array(
@@ -32,21 +32,23 @@ class CodelistIndex
             ),
             "data" => $codelists
         );
-        self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://codelists/codelists.json");
+        self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://codelists", "codelists.json");
     }
 
-    private static function writeJsonFile(string $json, string $path)
+    private static function writeJsonFile(string $json, string $dir, string $file)
     {
-        $fp = fopen($path, "w");
+        mkdir($dir);
+        $fp = fopen($dir . "/" . $file, "w");
         fwrite($fp, $json);
         fclose($fp);
     }
 
-    private static function writeXmlFile(array $json, string $path)
+    private static function writeXmlFile(array $json, string $dir, string $file)
     {
         $xml = new SimpleXMLElement('<de.ingrid.codelists.model.CodeList/>');
         self::arrayToXml($json, $xml);
-        $fp = fopen($path, "w");
+        mkdir($dir);
+        $fp = fopen($dir . "/" . $file, "w");
         fwrite($fp, $xml->asXML());
         fclose($fp);
     }

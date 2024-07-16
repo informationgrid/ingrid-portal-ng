@@ -1,3 +1,5 @@
 enabled: true
 active: true
-route: /
+routes:
+  - /
+  - /neuigkeiten
