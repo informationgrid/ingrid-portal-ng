@@ -1,0 +1,65 @@
+
+
+#search-map-overlay {
+    position: fixed;
+    padding-top: 265px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: none;
+}
+
+#search-map-big {
+    height: 500px;
+    border: 1px solid #004F80;
+    border-radius: 4px;
+}
+
+#nominatim {
+    position: relative;
+    float: left;
+    bottom: 485px;
+    left: 52px;
+    width: 350px;
+    max-width: 75%;
+    z-index: 30000;
+}
+
+#search-map .open-map-icon {
+    width: 30px;
+    height: 30px;
+    background-image: linear-gradient(transparent, transparent), url(../images/maps/open-map.svg);
+    background-size: 30px 30px;
+}
+
+#search-map .delete-icon {
+    width: 30px;
+    height: 30px;
+    background-image: linear-gradient(transparent, transparent), url(../images/maps/trash.svg);
+    background-size: 30px 30px;
+}
+
+#nominatim{
+    position:relative;
+    float:left;
+    bottom: 485px;
+    left:52px;
+    width:350px;
+    max-width: 75%;
+    z-index:30000
+}
+#nominatim-result{
+    background-color: rgba(255, 255, 255, 0.6);
+}
+#spatial-buttons{
+    position:relative;
+    float:right;
+    bottom: 90px;
+    right:30px;
+    margin-left: -250px;
+    z-index:30000
+}
+#spatial-buttons #spatial-cancel{
+    background-color: #F6F6F6;
+}

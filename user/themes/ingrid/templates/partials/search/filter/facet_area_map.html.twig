@@ -1,0 +1,91 @@
+{% do assets.addJs('theme://js/map.js') %}
+
+<form class="input-search" method="get" action="${searchURL}">
+    <div id="search-map" style="height: 200px;"></div>
+</form>
+
+<script>
+    var bbox = null;
+    var url = new URL(location.href);
+    var splittedBbox = url.searchParams.get("bbox").split(",");
+    if (splittedBbox.length === 4) {
+        bbox = [[splittedBbox[1], splittedBbox[0]],[splittedBbox[3], splittedBbox[2]]]
+    }
+
+    var triggerNominatimOnInput = true;
+
+    initSearchMap(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        'https://nominatim.openstreetmap.org/search?q={query}&format=json&countrycodes={countries}',
+        triggerNominatimOnInput,
+        bbox);
+
+    function init_autocomplete(url) {
+        window.addEventListener("click", function (event) {
+            $('#suggestion-result').hide();
+        });
+
+        $('#search-field').on('input', function (e) {
+            suggestion_select = -1;
+            $.get(url.replace('queryInput', $('#search-field').val()), function (data) {
+                var result = '<ul>';
+                data.suggestions.forEach(function (item) {
+
+                    result += '<li onClick="$(\'#search-field\').val(\'' + item + '\');$(\'#search-field\')[0].form.submit();" title="' + item + '">' + item;
+                });
+                result += '</ul>';
+                $('#suggestion-result').empty();
+                $('#suggestion-result').append(result);
+                if (data.suggestions.length > 0)
+                    $('#suggestion-result').show();
+                else
+                    $('#suggestion-result').hide();
+            });
+        });
+
+        var suggestion_select = -1;
+        $('#search-field').on('keydown', function (e) {
+            var keycode = (e.keyCode ? e.keyCode : e.which);
+            if (keycode == '13') {
+                if (suggestion_select > -1 && $('#suggestion-result').children().length > 0) {
+                    var childs = $('#suggestion-result').children().get(0).children
+                    if (suggestion_select >= 0 && suggestion_select < childs.length) {
+                        childs[suggestion_select].click();
+                    }
+                }
+            } else if (keycode == '27' || keycode == '9') {
+                var childs = $('#suggestion-result').children().get(0).children
+                if (suggestion_select >= 0 && suggestion_select < childs.length) {
+                    childs[suggestion_select].classList.remove("suggestion-selected");
+                }
+                suggestion_select = -1;
+                $('#suggestion-result').hide();
+            } else if (keycode == '38' || keycode == '40') {
+                if ($('#suggestion-result').children().length > 0) {
+                    $('#suggestion-result').show();
+                    var childs = $('#suggestion-result').children().get(0).children
+
+                    if (suggestion_select >= 0 && suggestion_select < childs.length) {
+                        childs[suggestion_select].classList.remove("suggestion-selected");
+                    }
+
+                    if (keycode == '38')
+                        suggestion_select--;
+                    else if (keycode == '40')
+                        suggestion_select++;
+
+                    if (suggestion_select >= childs.length)
+                        suggestion_select = -1;
+                    if (suggestion_select < -1)
+                        suggestion_select = childs.length - 1;
+
+                    if (suggestion_select >= 0 && suggestion_select < childs.length) {
+                        childs[suggestion_select].classList.add("suggestion-selected");
+                    }
+
+                }
+            }
+
+        });
+    }
+</script>

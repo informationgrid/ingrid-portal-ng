@@ -48,12 +48,14 @@
                                                     </div>
                                                 </div>
                                             {% endfor %}
+                                            {% if (item.id == "bbox") %}
+                                                {% include 'partials/search/filter/facet_area_map.html.twig' %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </li>
                             </ul>
                         {% endfor %}
-                        {% include 'partials/search/filter/facet_area.html.twig' %}
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ de:
     special-types: Ergebnistypen
     doc-types: Metadaten
     partner: Anbieter
+    bbox: Auf Karte festlegen
   doc-types:
     0: Fachaufgabe
     1: Geodatensatz

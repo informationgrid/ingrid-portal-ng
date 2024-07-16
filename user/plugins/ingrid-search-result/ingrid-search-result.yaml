@@ -88,7 +88,8 @@ facet_config: [
     label: "Dokumententyp",
     query: {
       "terms": {
-        "field": "t01_object.obj_class"
+        "field": "t01_object.obj_class",
+        "exclude": "1000"
       }
     },
     search: "t01_object.obj_class:%d"
@@ -103,4 +104,9 @@ facet_config: [
     },
     search: "partner:%s"
   },
+  {
+    id: "bbox",
+    label: "Auf Karte festlegen",
+    filter: "{\"range\": {\"x1\": {\"gte\": %f } } }"
+  }
 ]
