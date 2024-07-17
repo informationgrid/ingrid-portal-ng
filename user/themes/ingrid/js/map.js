@@ -1,23 +1,22 @@
-
-var searchMapSmall;
-var searchMapBig;
-var drawControl;
-var editableLayers;
-
+let searchMapSmall;
+let searchMapBig;
+let drawControl;
+let editableLayers;
+let nominatim_select = -1;
 
 function applyLocation() {
-    var bounds = searchMapBig.getBounds();
+    let bounds = searchMapBig.getBounds();
     if (editableLayers.getLayers()[0]) {
         bounds = editableLayers.getLayers()[0].getBounds();
 
     }
-    var north = bounds.getNorth().toString();
+    let north = bounds.getNorth().toString();
     north = north.substring(0, north.indexOf('.') + 4);
-    var south = bounds.getSouth().toString();
+    let south = bounds.getSouth().toString();
     south = south.substring(0, south.indexOf('.') + 4);
 
-    var east = bounds.getEast();
-    var west = bounds.getWest();
+    let east = bounds.getEast();
+    let west = bounds.getWest();
 
     if (east - west >= 360) {
         east = 180.0;
@@ -44,28 +43,28 @@ function applyLocation() {
     if (west.indexOf('.') > -1)
         west = west.substring(0, west.indexOf('.') + 4);
 
-    var bbox = west + ',' + north + ',' + east + ',' + south;
-    var url = new URL(location.href);
+    const bbox = west + ',' + north + ',' + east + ',' + south;
+    const url = new URL(location.href);
     url.searchParams.set("bbox", bbox);
 
     location.href = url.toString();
 }
 
-function nominatimSearch(e, nominatim_select, nominatimUrl, isBoundary) {
-    var keycode = (e.keyCode ? e.keyCode : e.which);
-    if (keycode == '13') {
+function nominatimSearch(e, nominatimUrl, isBoundary) {
+    let keycode = (e.keyCode ? e.keyCode : e.which);
+    if (keycode === 13) {
         if (nominatim_select > -1 && $('#nominatim-result').children().length > 0) {
-            var childs = $('#nominatim-result').children().get(0).children
+            const childs = $('#nominatim-result').children().get(0).children
             if (nominatim_select >= 0 && nominatim_select < childs.length) {
                 childs[nominatim_select].click();
             }
         } else {
             $.get(nominatimUrl, {q: $('#nominatim-query').val(), format: 'json'}, function (data) {
-                var result = '<ul>';
+                let result = '<ul>';
 
                 data.filter(isBoundary).forEach(function (item) {
-                    var bounds = '[[' + item['boundingbox'][1] + ', ' + item['boundingbox'][2] + '],[' + item['boundingbox'][0] + ', ' + item['boundingbox'][3] + ']]';
-                    result += '<li onClick="f(' + bounds + ');nominatim_select = -1;$(\'#nominatim-result\').hide();" title="' + item['display_name'] + '">' + item['display_name'];
+                    const bounds = '[[' + item['boundingbox'][1] + ', ' + item['boundingbox'][2] + '],[' + item['boundingbox'][0] + ', ' + item['boundingbox'][3] + ']]';
+                    result += '<li onClick="f(' + bounds + ');" title="' + item['display_name'] + '">' + item['display_name'];
                 });
                 result += '</ul>';
                 $('#nominatim-result').empty();
@@ -77,18 +76,18 @@ function nominatimSearch(e, nominatim_select, nominatimUrl, isBoundary) {
             });
             nominatim_select = -1;
         }
-    } else if (keycode == '38' || keycode == '40') {
+    } else if (keycode === 38 || keycode === 40) {
         if ($('#nominatim-result').children().length > 0) {
             $('#nominatim-result').show();
-            var childs = $('#nominatim-result').children().get(0).children
+            const childs = $('#nominatim-result').children().get(0).children
 
             if (nominatim_select >= 0 && nominatim_select < childs.length) {
                 childs[nominatim_select].classList.remove("nominatim-selected");
             }
 
-            if (keycode == '38')
+            if (keycode === 38)
                 nominatim_select--;
-            else if (keycode == '40')
+            else if (keycode === 40)
                 nominatim_select++;
 
             if (nominatim_select >= childs.length)
@@ -141,9 +140,9 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
 
     L.Control.Edit = L.Control.extend({
         onAdd: function(map) {
-            var span = L.DomUtil.create('span', 'sr-only');
+            const span = L.DomUtil.create('span', 'sr-only');
 
-            var a = L.DomUtil.create('a', 'open-map-icon');
+            let a = L.DomUtil.create('a', 'open-map-icon');
 
             a.title = "Raumbezug definieren"
             if(bbox){
@@ -155,7 +154,7 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
 
                 initMap()});
 
-            var div = L.DomUtil.create('div',  'leaflet-draw-toolbar leaflet-bar');
+            const div = L.DomUtil.create('div',  'leaflet-draw-toolbar leaflet-bar');
             div.appendChild(a);
 
             if(bbox) {
@@ -164,7 +163,9 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
                 a.title = "Raumbezug entfernen"
                 a.appendChild(span);
                 a.addEventListener('click', function (e) {
-                    location.href = resetUrl;
+                    const url = new URL(location.href);
+                    url.searchParams.delete("bbox");
+                    location.href = url.toString();
                 });
 
                 div.appendChild(a);
@@ -218,7 +219,7 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
     initMap();
 
 
-    var drawPluginOptions = {
+    const drawPluginOptions = {
         position: 'topright',
         draw: {
             polygon: false,
@@ -323,18 +324,18 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
     searchMapBig.addControl(drawControl);
 
     searchMapBig.on('draw:created', function(e) {
-        var layer = e.layer;
+        const layer = e.layer;
 
         editableLayers.clearLayers();
         editableLayers.addLayer(layer);
     });
-    searchMapBig.on('draw:deletestart', function(e) {
+    searchMapBig.on('draw:deletestart', function() {
         setTimeout(removeSpatial, 10);
     });
-    searchMapBig.on('draw:editstart', function(e) {
+    searchMapBig.on('draw:editstart', function() {
         $(".leaflet-draw-actions").hide();
     });
-    searchMapBig.on('draw:drawstart', function(e) {
+    searchMapBig.on('draw:drawstart', function() {
         $(".leaflet-draw-actions").hide();
     });
     function removeSpatial(){
@@ -346,19 +347,17 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
         return item['class'] === 'boundary';
     }
 
-    var nominatim_select = -1;
-
     $('#spatial-send').on('click', function(){ applyLocation(); });
-    $('#nominatim-query').on('keydown', function(e){ nominatimSearch(e, nominatim_select, nominatimUrl, isBoundary); });
+    $('#nominatim-query').on('keydown', function(e) { nominatimSearch(e, nominatimUrl, isBoundary); });
 
     if(triggerNominatimOnInput) {
-        $('#nominatim-query').on('input', function (e) {
+        $('#nominatim-query').on('input', function () {
             nominatim_select = -1;
             $.get(nominatimUrl, {q: $('#nominatim-query').val(), format: 'json'}, function (data) {
-                var result = '<ul>';
+                let result = '<ul>';
                 data.filter(isBoundary).forEach(function (item) {
-                    var bounds = '[[' + item['boundingbox'][1] + ', ' + item['boundingbox'][2] + '],[' + item['boundingbox'][0] + ', ' + item['boundingbox'][3] + ']]';
-                    result += '<li onClick="f(' + bounds + ');nominatim_select = -1;$(\'#nominatim-result\').hide();" title="' + item['display_name'] + '">' + item['display_name'];
+                    const bounds = '[[' + item['boundingbox'][1] + ', ' + item['boundingbox'][2] + '],[' + item['boundingbox'][0] + ', ' + item['boundingbox'][3] + ']]';
+                    result += '<li onClick="f(' + bounds + ');" title="' + item['display_name'] + '">' + item['display_name'];
                 });
                 result += '</ul>';
                 $('#nominatim-result').empty();
@@ -373,88 +372,9 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
 }
 
 function f(bounds){
-    var layer = L.rectangle(bounds, {color: '#3278B9', weight: 1});
+    const layer = L.rectangle(bounds, {color: '#3278B9', weight: 1});
 
     editableLayers.clearLayers();
     editableLayers.addLayer(layer);
     searchMapBig.fitBounds(bounds,{padding: [15,15]});
-}
-
-function initResultMap(id, tileLayerUrl, dragAndZoom, geoJSON, spatialText){
-
-    var mapOptions = {};
-    if(!dragAndZoom){
-        mapOptions = {
-            zoomControl: false,
-            scrollWheelZoom: false,
-            dragging: false}
-    }
-
-    var map = L.map('mapid-'+id, mapOptions).setView([52, 10], 4);
-
-
-    L.tileLayer(tileLayerUrl, {
-        maxZoom: 18,
-        attribution: 'Kartendaten &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> Mitwirkende',
-        useCache: true
-    }).addTo(map);
-    L.control.zoom(false);
-    map.attributionControl.setPrefix('');
-
-
-    var allBounds = createSpatialLayer(map, geoJSON, spatialText);
-    map.invalidateSize();
-    map.fitBounds(allBounds,{padding: [5,5]});
-}
-
-function createSpatialLayer(map, geoJSON, spatialText){
-    var type = geoJSON['type'].toLowerCase();
-
-    var allBounds = [];
-
-    if (type === 'geometrycollection'){
-        var subgeometries = geoJSON['geometries'];
-        for(var i=0; i < subgeometries.length; i++){
-            allBounds.push(createSpatialLayer(map, subgeometries[i], spatialText));
-        }
-    }
-    else if(type === 'envelope'){
-        var bounds = geoJSON['coordinates'];
-        allBounds.push(bounds);
-        var layer = L.rectangle(bounds, {color: '#3278B9', weight: 1});
-        if(spatialText != null && spatialText.trim() !== '')
-            layer.bindTooltip(spatialText, {direction: 'center'});
-        layer.addTo(map);
-    }
-    else if(type === 'linestring' || type === 'multilinestring'){
-        var bounds = geoJSON['coordinates'];
-        allBounds.push(bounds);
-        var layer = L.polyline(bounds, {color: '#3278B9', weight: 1});
-        if(spatialText != null && spatialText.trim() !== '')
-            layer.bindTooltip(spatialText, {direction: 'center'});
-        layer.addTo(map);
-    }
-    else if(type === 'point' || type === 'multipoint'){
-        for(var i = 0; i < geoJSON['coordinates'].length; i++) {
-            for(var j = 0; j < geoJSON['coordinates'][i].length; j++) {
-                var point = geoJSON['coordinates'][i][j];
-                var bounds = [[(point[0] + 0.2),(point[1] + 0.2)],
-                    [(point[0] - 0.2), (point[1] - 0.2) ]];
-                allBounds.push(bounds);
-                var layer = L.marker(point, {color: '#3278B9', weight: 1});
-                if(spatialText != null && spatialText.trim() !== '')
-                    layer.bindTooltip(spatialText, {direction: 'center'});
-                layer.addTo(map);
-            }
-        }
-    }
-    else {
-        var bounds = geoJSON['coordinates'];
-        allBounds.push(bounds);
-        var layer = L.polygon(bounds, {color: '#3278B9', weight: 1});
-        if(spatialText != null && spatialText.trim() !== '')
-            layer.bindTooltip(spatialText, {direction: 'center'});
-        layer.addTo(map);
-    }
-    return allBounds;
 }
