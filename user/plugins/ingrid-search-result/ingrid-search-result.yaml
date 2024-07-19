@@ -108,5 +108,46 @@ facet_config: [
     id: "bbox",
     label: "Auf Karte festlegen",
     filter: "{\"range\": {\"x1\": {\"gte\": %f } } }"
+  },
+  {
+    id: "actuality",
+    queries: {
+      "lastMonth": {
+        query: {
+          "filter": {
+            "range": {
+              "modified": {
+                "gte": "now-1M"
+              }
+            }
+          }
+        },
+        search: ""
+      },
+      "lastThreeMonth": {
+        query: {
+          "filter": {
+            "range": {
+              "modified": {
+                "gte": "now-3M"
+              }
+            }
+          }
+        },
+        search: ""
+      },
+      "lastYear": {
+        query: {
+          "filter": {
+            "range": {
+              "modified": {
+                "gte": "now-1y"
+              }
+            }
+          }
+        },
+        search: ""
+      }
+    }
   }
 ]

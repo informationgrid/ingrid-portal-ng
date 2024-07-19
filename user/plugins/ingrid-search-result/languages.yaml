@@ -10,6 +10,11 @@ de:
     doc-types: Metadaten
     partner: Anbieter
     bbox: Auf Karte festlegen
+    actuality: Aktualität
+  actuality:
+    lastMonth: "letzter Monat"
+    lastThreeMonth: "letzte 3 Monat"
+    lastYear: "letztes Jahr"
   doc-types:
     0: Fachaufgabe
     1: Geodatensatz
