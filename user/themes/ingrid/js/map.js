@@ -110,20 +110,14 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
     $('#spatial-filter-group').show();
     $('#spatial-content-tab').show();
 
-    $("#search-map-overlay").on('click', function(e){
-        closeMapOverlay();
-    });
     $("#spatial-cancel").on('click', function(e){
         closeMapOverlay();
     });
-    $("#search-map-row").on('click', function(e){
-        e.stopPropagation();
-    });
+
     function closeMapOverlay(){
-        $('#search-map-overlay').hide()
         $('#nominatim-query').val('');
         $('#nominatim-result').empty();
-        $('#nominatim-result').hide();
+        document.querySelector("#search-map-overlay").close()
     }
 
     searchMapSmall = L.map('search-map').setView([52, 10], 4);
@@ -149,10 +143,12 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
                 a.title = "Raumbezug ändern"
             }
             a.appendChild(span);
-            a.addEventListener('click', function(e){$('#search-map-overlay').show();
+            a.addEventListener('click', function(e){
+                document.querySelector("#search-map-overlay").show();
                 searchMapBig.invalidateSize();
 
-                initMap()});
+                initMap()
+            });
 
             const div = L.DomUtil.create('div',  'leaflet-draw-toolbar leaflet-bar');
             div.appendChild(a);
