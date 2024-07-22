@@ -1,7 +1,7 @@
 .header__logo {
     width: auto;
   }
-  
+
   *, *::before, *::after {
       box-sizing: border-box;
   }
@@ -11,24 +11,24 @@
   .footer__logo {
       width: 11.75rem;
   }
-  
+
   @media screen and (min-width: 480px) {
     .popup {
       left: 50%;
       margin-left: -15rem;
     }
   }
-  
+
   /* INGRID */
-  
+
   h1, h2, h3 {
     color: #333333;
   }
-  
+
   .dark h1, .dark h2, .dark p, .dark a, .dark abbr {
     color: #333333;
   }
-  
+
   h6 {
     color: #333333;
   }
@@ -180,7 +180,7 @@
   .banner.home .home-wrapper .indent span {
     color: #0E8637;
   }
-  
+
   .accordion-title {
     color: #0E8637;
     background-color: #EEEEEE;
@@ -211,7 +211,7 @@
     width: 35px;
     height: 35px;
   }
-  
+
   .accordion-content button.button.round  span[class^="ic-"] {
     top: 7px;
     left: 1px;
@@ -233,25 +233,25 @@
   .teaser-data .helper.icon {
     margin-bottom: 24px;
   }
-  
+
   .teaser-data.search .js-expander-content .button {
     border: 1px solid #0E8637;
   }
-  
+
   .teaser-data.search .js-expander-content .button:hover {
     background-color: #666666;
     color: #FFFFFF;
   }
-  
+
   .tabs-content {
     background: transparent;
   }
-  
+
   .midnight {
     padding: 24px 0 72px !important;
     background: transparent;
   }
-  
+
   .teaser .teaser-link {
     color: #0E8637;
   }
@@ -406,12 +406,12 @@
   footer .footer-top-link {
     background-color: #0E8637;
   }
-  
+
   footer .footer-top-link:hover,
   footer .footer-top-link:focus {
     background-color: #666666;
   }
-  
+
   .select2-container--default .select2-selection--single::after {
     color: #0E8637;
   }
@@ -421,7 +421,7 @@
   .accordion-content {
     color: #0E8637;
   }
-  
+
   .nested-group-sub label {
     color: #0E8637;
   }
@@ -474,7 +474,7 @@
     margin-left: -.5em;
     fill: #fff;
   }
-  
+
   .nav-desktop__dropdown {
     z-index: 1;
     display: none;
@@ -511,7 +511,7 @@
   .nav__desktop-icon {
     left: 1.125rem;
   }
-  
+
   .similar-accordion {
     padding: 0px 24px 24px;
   }
@@ -525,14 +525,14 @@
   header .menu-tab-row .menu-tab {
     display: none;
   }
-  
+
   .swiper-pagination-bullet {
     background: #0E8637 !important;
   }
   .swiper-button-next, .swiper-button-prev {
     color: #0E8637 !important;
   }
-  
+
   @media print, screen and (min-width: 35em) {
     .embed-container {
       top: 80px !important;
@@ -580,11 +580,11 @@
     .search-filtered .accordion.accordion-filter-group .accordion-title.accordion-title-filter-group {
       background-color: #4EAD46;
     }
-  
+
     .hide-for-large.filter .accordion.accordion-filter-group {
       background-color: #0E8637;
     }
-    
+
     .hide-for-large.filter .accordion.accordion-filter-group .accordion-title.accordion-title-filter-group {
       background-color: #0E8637;
     }
@@ -630,7 +630,7 @@
       display: none;
     }
   }
-  @media print, screen and (min-width: 64em) { 
+  @media print, screen and (min-width: 64em) {
     .embed-container {
       top: 120px !important;
     }
@@ -656,12 +656,12 @@
       padding: 64px 0 40px;
     }
   }
-  
+
   /* search */
   .teaser-data .arrow {
       font-size: 40px;
   }
-  
+
   /* detail */
   .page-wrapper .ic-ic-arrow-left {
       -webkit-transform: rotate(180deg);
@@ -673,39 +673,39 @@
   .page-wrapper .ic-ic-arrow-left::before {
       content: "\e929";
   }
-  
+
   .search-filtered .table {
       margin-bottom: 4px;
   }
-  
+
   .search-filtered .table thead {
       color: #333333;
   }
-  
+
   .search-filtered .table table {
       background-color: #F6F6F6;
   }
   .search-filtered .table.table--lined table th:first-child, .search-filtered .table.list table tr td:first-child {
       color: #333333;
   }
-  
+
   .search-filtered .table h4, .search-filtered .table h5 {
       color: #333333;
   }
-  
+
   .search-filtered .teaser-data.is-active h2.header,
   .search-filtered .teaser-data.is-active .arrow {
       color: #0E8637;
   }
-  
+
   h4, h5 {
     color: #333333;
   }
-  
+
   .results-index .result-text {
       color: #3a566d;
   }
-  
+
   .js-expander-toggle-all a.icon:hover,
   .js-expander-toggle-all a.icon.is-active {
       background: #0E8637;
@@ -718,11 +718,11 @@
   .nr-results {
       color: #3a566d;
   }
-  
+
   span.icon span {
       color: #0E8637;
   }
-  
+
   footer .footer-buttons-bar .login-buttons .button.is-active {
     border: 1px solid #085468;
     background: #085468;
@@ -734,4 +734,3 @@
   .login-form:before {
     border-color: transparent transparent transparent #085468 !important;
   }
-  

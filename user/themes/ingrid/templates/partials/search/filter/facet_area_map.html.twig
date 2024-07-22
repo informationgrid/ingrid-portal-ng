@@ -1,0 +1,23 @@
+{% do assets.addJs('theme://js/map.js') %}
+
+<div id="search-map" style="height: 200px;"></div>
+
+<script>
+    let bbox = null;
+    const url = new URL(location.href);
+    let bboxParameter = url.searchParams.get("bbox");
+    if (bboxParameter) {
+        const splittedBbox = bboxParameter.split(",");
+        if (splittedBbox.length === 4) {
+            bbox = [[splittedBbox[1], splittedBbox[0]], [splittedBbox[3], splittedBbox[2]]]
+        }
+    }
+
+    const triggerNominatimOnInput = true;
+
+    initSearchMap(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        'https://nominatim.openstreetmap.org/search?q={query}&format=json&countrycodes={countries}',
+        triggerNominatimOnInput,
+        bbox);
+</script>

@@ -92,6 +92,7 @@ class IngridSearchResultPlugin extends Plugin
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
             $this->grav['twig']->twig_vars['selected_facets'] = $this->getSelectedFacets();
+            $this->grav['twig']->twig_vars['facetMapCenter'] = array(51.3,10,5);
         }
     }
 
@@ -110,15 +111,11 @@ class IngridSearchResultPlugin extends Plugin
         $base_url = $uri->path();
 
         $query_string = array();
-        foreach ($inputOptions as $key => $value) {
-            $params[$key] = $value;  // Add or update the 'newparam'
 
-            // Check if the new parameter is already there to avoid endless redirection
-            if ($uri->param($key) !== $value) {
-                // Build the new query string with all parameters
-                $query_string[] = http_build_query($params);
-            }
-        }
+        $coords = $this->getCoordinates($inputOptions);
+        $inputOptions = $this->cleanupParameters($inputOptions);
+        // Build the new query string with all parameters
+        $query_string[] = http_build_query($inputOptions).$coords;
         // Construct the new URL with the updated query string
         $new_url = $base_url . '?' . join('&', $query_string);
 
@@ -129,6 +126,34 @@ class IngridSearchResultPlugin extends Plugin
     private function getSelectedFacets()
     {
         return $this->grav['uri']->query(null, true);
+    }
+
+    /**
+     * @param array $inputOptions
+     * @return string
+     */
+    public function getCoordinates(array $inputOptions): string
+    {
+        $coords = "";
+        if (property_exists((object)$inputOptions, "x1") && $inputOptions["x1"] != "") {
+            $coords = "&coords=" . "x1:" . $inputOptions["x1"] . ",y1:" . $inputOptions["y1"] . ",x2:" . $inputOptions["x2"] . ",y2:" . $inputOptions["y2"];
+        }
+        return $coords;
+    }
+
+    /**
+     * @param array $inputOptions
+     * @return array
+     */
+    public function cleanupParameters(array $inputOptions): array
+    {
+        unset($inputOptions["x1"]);
+        unset($inputOptions["y1"]);
+        unset($inputOptions["x2"]);
+        unset($inputOptions["y2"]);
+        unset($inputOptions["areaid"]);
+        unset($inputOptions["action"]);
+        return $inputOptions;
     }
 
 }

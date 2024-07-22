@@ -47,6 +47,9 @@
                                                     </div>
                                                 </div>
                                             {% endfor %}
+                                            {% if (item.id == "bbox") %}
+                                                {% include 'partials/search/filter/facet_area_map.html.twig' %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </li>
@@ -81,3 +84,5 @@
         document.getElementById('updateFacets').submit();
     }
 </script>
+
+{% do assets.addJs('theme://js/htmx.min.js', {group: 'bottom'}) %}

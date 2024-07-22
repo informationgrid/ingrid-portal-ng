@@ -18,7 +18,9 @@
 {% block stylesheets %}
     {% do assets.addCss('theme://css-compiled/main.css', 98) %}
     {% do assets.addCss('theme://css/custom.css', 98) %}
+    {% do assets.addCss('theme://css/leaflet-custom.css', 98) %}
     {% if page.header.hasLeaflet %}
+        {% do assets.addCss('theme://js/leaflet/plugins/leaflet.draw/leaflet.draw.css', 98) %}
         {% include 'partials/header/leaflet/css.html.twig' %}
     {% endif %}
     {% if page.header.hasImageSwiper %}
