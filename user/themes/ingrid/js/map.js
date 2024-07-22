@@ -373,4 +373,6 @@ function f(bounds){
     editableLayers.clearLayers();
     editableLayers.addLayer(layer);
     searchMapBig.fitBounds(bounds,{padding: [15,15]});
+    nominatim_select = -1;
+    $('#nominatim-result').hide();
 }

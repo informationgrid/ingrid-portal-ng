@@ -48,7 +48,12 @@ class ElasticsearchService
                 if (property_exists((object)$foundObject, 'search')) {
                     $result[] = sprintf($foundObject['search'], $selectionValue[0]);
                 } else if (property_exists((object)$foundObject, 'queries')) {
-                    $result[] = $foundObject['queries'][$selectionValue[0]]['search'];
+                    $facet1 = $foundObject['queries'][$selectionValue[0]];
+                    if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
+                        $filter[] = json_encode($facet1['query']['filter']);
+                    } else {
+                        $result[] = $foundObject['queries'][$selectionValue[0]]['query'];
+                    }
                 } else if (property_exists((object)$foundObject, 'filter')) {
                     $filter[] = sprintf($foundObject['filter'], ...explode(",", $selectionValue));
                 }
@@ -61,7 +66,7 @@ class ElasticsearchService
 
         return (object)array(
             "query" => $result_query,
-            "filter" => join(",", $filter)
+            "filter" => '{"bool": { "must": [ '.join(",", $filter).']}}'
         );
     }
 

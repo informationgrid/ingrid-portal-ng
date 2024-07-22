@@ -121,8 +121,7 @@ facet_config: [
               }
             }
           }
-        },
-        search: ""
+        }
       },
       "lastThreeMonth": {
         query: {
@@ -133,8 +132,7 @@ facet_config: [
               }
             }
           }
-        },
-        search: ""
+        }
       },
       "lastYear": {
         query: {
@@ -145,8 +143,7 @@ facet_config: [
               }
             }
           }
-        },
-        search: ""
+        }
       }
     }
   }
