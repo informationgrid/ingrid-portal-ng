@@ -6,7 +6,24 @@
     </div>
 </div>
 <div class="filters-active">
+    <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="post" name="removeFacet" id="removeFacet">
+        <input type="hidden" name="removeFacet" value="true" />
+        {% for facet, value in selected_facets %}
+            {% for facetItem in value %}
+                <button type="submit" id="{{ facet }}" class="button pill" name="{{ facet }}" value="{{ facetItem }}">
+                    {{ ('facet-label.' ~ facet) | t}}: {{ (facet ~ '.' ~ facetItem) | t }}
+                    <span class="ic-ic-cross"></span>
+                </button>
+            {% endfor %}
+        {% endfor %}
+        {% if selected_facets|length > 0 %}
+            <a type="reset" href="{{ page.find('/search').url }}?q={{ uri.query('q') }}" class="button pill">
+                Alle Einschränkungen löschen
+            </a>
+        {% endif %}
+    </form>
 </div>
+
 {% if search_result.hits|length > 0 %}
     {% for hit in search_result.hits %}
         {% if in_array('address', hit.datatypes) %}

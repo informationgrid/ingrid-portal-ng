@@ -1,7 +1,7 @@
 {# @var facets_config \Grav\Plugin\FacetConfig[] #}
 {# @var search_result \Grav\Plugin\SearchResult #}
 
-<form action="{{ page.find('/search').url }}?{{ uri.query }}" method="post" name="updateFacets" id="updateFacets">
+<form action="{{ page.find('/search').url }}?{{ uri.query }}&q={{ query }}" method="post" name="updateFacets" id="updateFacets">
     <div id="facets">
         <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true" role="tablist">
             <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
