@@ -9,6 +9,12 @@
     <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="post" name="removeFacet" id="removeFacet">
         <input type="hidden" name="removeFacet" value="true" />
         {% for facet, value in selected_facets %}
+            {% if facet == 'bbox' %}
+                <button type="submit" id="{{ facet }}" class="button pill" name="{{ facet }}" value="{{ facet }}">
+                    Raumbezug: {{ value }}
+                    <span class="ic-ic-cross"></span>
+                </button>
+            {% endif %}
             {% for facetItem in value %}
                 <button type="submit" id="{{ facet }}" class="button pill" name="{{ facet }}" value="{{ facetItem }}">
                     {{ ('facet-label.' ~ facet) | t}}: {{ (facet ~ '.' ~ facetItem) | t }}
