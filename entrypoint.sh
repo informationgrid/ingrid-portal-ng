@@ -24,10 +24,20 @@ else
                /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 fi
 
-sed -ri "s/theme: quark/theme: ${THEME}/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
-sed -ri "s/supported: null/supported:\n    - de/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
-sed -ri "s/default_lang: null/default_lang: de/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
-sed -ri "s/include_default_lang: true/include_default_lang: false/" /var/www/"$GRAV_FOLDER"/user/config/system.yaml
+SYSTEM_YAML=/var/www/"$GRAV_FOLDER"/user/config/system.yaml
+
+# add language part to yaml if it doesn't exist yet
+if ! grep -q "^languages:" "$SYSTEM_YAML"; then
+  echo "languages:" >> "$SYSTEM_YAML"
+    echo "  supported:" >> "$SYSTEM_YAML"
+    echo "    - de" >> "$SYSTEM_YAML"
+    echo "  default_lang: de" >> "$SYSTEM_YAML"
+fi
+
+sed -ri "s/theme: quark/theme: ${THEME}/" "$SYSTEM_YAML"
+sed -ri "s/supported: null/supported:\n    - de/" "$SYSTEM_YAML"
+sed -ri "s/default_lang: null/default_lang: de/" "$SYSTEM_YAML"
+sed -ri "s/include_default_lang: true/include_default_lang: false/" "$SYSTEM_YAML"
 mkdir -p assets backup cache images logs tmp
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2
