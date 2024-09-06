@@ -24,20 +24,38 @@ else
                /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 fi
 
+ADMIN_YAML=/var/www/"$GRAV_FOLDER"/user/accounts/admin.yaml
+
+if [ ! -f "$ADMIN_YAML" ] && [ -n "$ADMIN_PASSWORD" ]; then
+  cp /usr/share/grav-admin/user/accounts/admin.yaml.template "$ADMIN_YAML"
+  hashed_password=$(htpasswd -bnBC 8 "" "$ADMIN_PASSWORD" | grep -oP '\$2[ayb]\$.{56}')
+  echo "Password hash: $hashed_password"
+  sed -ri "s/email:/email: ${ADMIN_EMAIL}/" "$ADMIN_YAML"
+  sed -ri "s/fullname:/fullname: ${ADMIN_FULL_NAME}/" "$ADMIN_YAML"
+  sed -ri "s/hashed_password:/hashed_password: ${hashed_password}/" "$ADMIN_YAML"
+fi
+
 SYSTEM_YAML=/var/www/"$GRAV_FOLDER"/user/config/system.yaml
 
 # add language part to yaml if it doesn't exist yet
 if ! grep -q "^languages:" "$SYSTEM_YAML"; then
   echo "languages:" >> "$SYSTEM_YAML"
-    echo "  supported:" >> "$SYSTEM_YAML"
-    echo "    - de" >> "$SYSTEM_YAML"
-    echo "  default_lang: de" >> "$SYSTEM_YAML"
+  echo "  supported:" >> "$SYSTEM_YAML"
+  echo "    - de" >> "$SYSTEM_YAML"
+  echo "  default_lang: de" >> "$SYSTEM_YAML"
+else
+  sed -ri "s/supported: null/supported:\n    - de/" "$SYSTEM_YAML"
+  sed -ri "s/default_lang: null/default_lang: de/" "$SYSTEM_YAML"
+  sed -ri "s/include_default_lang: true/include_default_lang: false/" "$SYSTEM_YAML"
 fi
 
-sed -ri "s/theme: quark/theme: ${THEME}/" "$SYSTEM_YAML"
-sed -ri "s/supported: null/supported:\n    - de/" "$SYSTEM_YAML"
-sed -ri "s/default_lang: null/default_lang: de/" "$SYSTEM_YAML"
-sed -ri "s/include_default_lang: true/include_default_lang: false/" "$SYSTEM_YAML"
+if ! grep -q "^pages:" "$SYSTEM_YAML"; then
+  echo "pages:" >> "$SYSTEM_YAML"
+  echo "  theme: ${THEME}" >> "$SYSTEM_YAML"
+else
+  sed -ri "s/theme: quark/theme: ${THEME}/" "$SYSTEM_YAML"
+fi
+
 mkdir -p assets backup cache images logs tmp
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2

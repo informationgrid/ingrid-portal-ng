@@ -10,7 +10,7 @@ services:
       - grav:/var/www/portal-ng
     ports:
       - 80:80
-    networks: 
+    networks:
       - grav-frontend
 
   grav-prod:
@@ -20,6 +20,9 @@ services:
     environment:
       - GRAV_FOLDER=portal-ng
       - INGRID_API=https://api.dev.informationgrid.eu/
+      - ADMIN_PASSWORD=admin
+      - ADMIN_EMAIL=admin@test.de
+      - ADMIN_FULL_NAME=The Admin
     volumes:
       - grav:/var/www/portal-ng
     networks:
@@ -27,6 +30,6 @@ services:
 
 volumes:
   grav:
-    
+
 networks:
   grav-frontend:

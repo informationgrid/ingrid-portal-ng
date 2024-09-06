@@ -1,0 +1,11 @@
+state: enabled
+email:
+fullname:
+title: Administrator
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password:

@@ -9,6 +9,9 @@ ENV PHP_APCU_VERSION v5.1.23
 # renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
 ENV PHP_YAML_VERSION 2.2.3
 
+ENV ADMIN_EMAIL portal@test.de
+ENV ADMIN_FULL_NAME "The Admin"
+
 RUN groupadd --system foo; \
     useradd --no-log-init --system --gid foo --create-home foo; \
     \
@@ -32,6 +35,7 @@ RUN groupadd --system foo; \
         libfreetype6-dev \
         libyaml-dev \
         libzip-dev \
+        apache2-utils \
     ; \
     docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
@@ -68,6 +72,7 @@ COPY user/themes /usr/share/grav-admin/user/themes
 COPY user/plugins /usr/share/grav-admin/user/plugins
 COPY user/pages /usr/share/grav-admin/user/pages
 COPY data /usr/share/grav-admin/user/data
+COPY user/accounts /usr/share/grav-admin/user/accounts
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
