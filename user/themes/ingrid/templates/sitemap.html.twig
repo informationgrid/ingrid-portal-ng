@@ -20,10 +20,12 @@
                                             {% set page_title = p.title %}
                                         {% endif %}
                                     {% endfor %}
-                                    <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
-                                        <span class="ic-ic-arrow-right"></span>
-                                        <span class="text">{{ page_title|t|e }}</span>
-                                    </a>
+                                    {% if page_url %}
+                                        <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
+                                            <span class="ic-ic-arrow-right"></span>
+                                            <span class="text">{{ page_title|t|e }}</span>
+                                        </a>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -40,10 +42,12 @@
                                         {% set page_title = p.title %}
                                     {% endif %}
                                     {% endfor %}
-                                    <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
-                                        <span class="ic-ic-arrow-right"></span>
-                                        <span class="text">{{ page_title|t|e }}</span>
-                                    </a>
+                                    {% if page_url %}
+                                        <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
+                                            <span class="ic-ic-arrow-right"></span>
+                                            <span class="text">{{ page_title|t|e }}</span>
+                                        </a>
+                                    {% endif %}
                                 {% endif %}
                             {% endfor %}
                         </div>
