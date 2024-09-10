@@ -1,0 +1,21 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% import 'macros/default_macros.html.twig' as default_macros %}
+
+    <div class="detail">
+    {% if hit %}
+        {% if hit.html %}
+            {% include 'partials/detail/generic/detail_generic.html.twig' %}
+        {% elseif detail_type == "address" %}
+            {% include 'partials/detail/address/detail_address.html.twig' %}
+        {% elseif detail_type == "metadata" %}
+            {% include 'partials/detail/metadata/detail_metadata.html.twig' %}
+        {% else %}
+            {{ default_macros.render_error_msg("Keine Detailinformationen verfügbar.") }}
+        {% endif %}
+    {% else %}
+        {{ default_macros.render_error_msg("Keine Detailinformationen verfügbar.") }}
+    {% endif %}
+    </div>
+{% endblock %}

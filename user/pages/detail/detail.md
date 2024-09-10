@@ -6,10 +6,5 @@ routes:
   default: '/trefferanzeige'
 hasImageSwiper: true
 hasLeaflet: true
-content:
-    items: '@self.modular'
-    order:
-        by: default
-        custom:
-            - _detail
+content_header_disabled: true
 ---

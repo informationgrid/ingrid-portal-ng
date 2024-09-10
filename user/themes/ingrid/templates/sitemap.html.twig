@@ -14,11 +14,11 @@
                                     {% set page_url = '' %}
                                     {% set page_title = '' %}
                                     {% for p in pages.children.visible %}
-                                    {% if entry.path == p.folder %}
-                                        {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
-                                        {% set page_url = p.url %}
-                                        {% set page_title = p.title %}
-                                    {% endif %}
+                                        {% if entry.path == p.folder %}
+                                            {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+                                            {% set page_url = p.url %}
+                                            {% set page_title = p.title %}
+                                        {% endif %}
                                     {% endfor %}
                                     <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
                                         <span class="ic-ic-arrow-right"></span>

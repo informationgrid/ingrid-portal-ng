@@ -1,0 +1,56 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set hits = rss_feeds %}
+
+    <div class="search-filtered row content-small">
+        <div class="columns">
+            <h3>{{ "RSS_PAGE.ARCHIVE_HEADER"|t }}</h3>
+            {% for hit in hits%}
+                {% set title = hit.title %}
+                {% set summary = hit.summary %}
+                {% set url = hit.url %}
+                {% set date = hit.date %}
+                {% set time = hit.time %}
+                {% set provider = hit.provider %}
+                <div class="teaser-data search">
+                    <div>
+                        {% if date or time %}
+                        <small class="bx-bot-0">
+                            {% if date %}
+                            <span class="tx-darker">
+                                <strong>{{ date }}</strong>
+                            </span>
+                            {% endif %}
+                            {% if time %}
+                            <span class="tx-light">{{ time }}</span>
+                            {% endif %}
+                        </small>
+                        {% endif %}
+                        <a target="_blank" class="external-link" href="{{ url }}" title="{{ title }}">
+                            <h2 class="header">
+                                {{ title }}
+                            </h2>
+                        </a>
+                        {% if summary %}
+                        <p>
+                            {{ summary }}
+                        </p>
+                        {% endif %}
+                        {% if provider %}
+                        <h6 class="no-margin">{{ "RSS_PAGE.PROVIDER"|t }}</h6>
+                        <p>{{ provider }}</p>
+                        {% endif %}
+                        <a target="_blank" class="external-link" href="{{ url }}" title="{{ title }}">
+                            <span class="ic-ic-arrow arrow"></span>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            <a class="icon" href="{{ page.find('/home').url }}">
+                <span class="ic-ic-arrow-left"></span>
+                <span class="text">{{ "RSS_PAGE.ARCHIVE_BACK"|t }}</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
