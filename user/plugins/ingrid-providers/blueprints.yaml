@@ -1,0 +1,36 @@
+name: Ingrid Providers
+slug: ingrid-providers
+type: plugin
+version: 0.1.0
+description: Listen partners and providers
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-providers
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-providers/issues
+docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-providers/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    partner_query:
+      type: text
+      label: Elasticsearch query
+      help: Add Elasticsearch query instead of codelist to get partners and providers

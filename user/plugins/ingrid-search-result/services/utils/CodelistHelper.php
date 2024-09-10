@@ -94,6 +94,52 @@ class CodelistHelper
         return null;
     }
 
+    public static function getCodelistPartners(){
+        $partners = array();
+        try {
+            $codelistPartner = self::getCodelist('110');
+            if ($codelistPartner) {
+                $entries = self::getNodeList($codelistPartner, '//de.ingrid.codelists.model.CodeListEntry');
+                foreach ($entries as $entry) {
+                    $fields = self::getNode($entry, './fields');
+                    $id = self::getNodeValue($entry, './id');
+                    if ($fields) {
+                        $partner = array();
+                        $ident = self::getNodeValue($fields, './ident');
+                        $name = self::getNodeValue($fields, './name');
+                        $partner['name'] = $name;
+                        $partner['ident'] = $ident;
+                        $partner['providers'] = array();
+                        $partners[$id] = $partner;
+                    }
+                }
+            }
+            $codelistProvider = self::getCodelist('111');
+            if ($codelistProvider) {
+                $entries = self::getNodeList($codelistProvider, '//de.ingrid.codelists.model.CodeListEntry');
+                foreach ($entries as $entry) {
+                    $fields = self::getNode($entry, './fields');
+                    $id = self::getNodeValue($entry, './id');
+                    if ($fields) {
+                        $provider = array();
+                        $partnerKey = self::getNodeValue($fields, './sortkey_partner');
+                        $ident = self::getNodeValue($fields, './ident');
+                        $name = self::getNodeValue($fields, './name');
+                        $url = self::getNodeValue($fields, './url');
+                        $provider['name'] = $name;
+                        $provider['ident'] = $ident;
+                        $provider['url'] = $url;
+                        if ($partners[$partnerKey]) {
+                            $partners[$partnerKey]['providers'][$id]= $provider;
+                        }
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+        }
+        return $partners;
+    }
+
     private static function getCodelist(string $codelistId){
         $response = null;
         try {
