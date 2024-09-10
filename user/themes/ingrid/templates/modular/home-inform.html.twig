@@ -1,15 +1,9 @@
 <div class="about">
     <a id="teaser.ingridInform.title"></a>
     <div class="about-wrapper dark" style="background-image: url('{{ url('theme://images/template/drops-small.svg') }}');">
-        <h2 class="hide-for-large">
-            <span style="text-transform: none;">InGrid INFORMIERT</span>
-        </h2>
         <div class="row">
             <div class="xsmall-24 medium-12 large-14 columns">
-                <h2 class="show-for-large">
-                    <span style="text-transform: none;">InGrid INFORMIERT</span>
-                </h2>
-                <p>Bitte ergänzen...</p>
+                {{ page.content|raw }}
             </div>
             <div class="medium-12 large-10 columns show-for-medium">
                 <div class="img-wrapper">
