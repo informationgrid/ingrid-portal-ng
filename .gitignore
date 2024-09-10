@@ -11,8 +11,11 @@
 /user/plugins/ingrid-search-result/vendor/
 /user/plugins/ingrid-detail/vendor/
 /user/plugins/ingrid-providers/vendor/
+/user/plugins/ingrid-rss/vendor/
+/user/plugins/ingrid-codelist/vendor/
 /user/themes/ingrid/node_modules
 /logs
 /data/codelists/
 /data/feeds/
-
+/data/flex/
+/data/notifications/
