@@ -1,25 +1,5 @@
 {% extends 'partials/base.html.twig' %}
 
-{% block content_header %}
-    {% if page.header.content_header_disabled is null %}
-    <div class="banner subpage ">
-        <div class="subpage-wrapper" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
-            <div class="row align-center">
-                <div class="large-20 columns dark">
-                    <h1>
-                        {% if page.header.content_title %}
-                            {{ page.header.content_title|t }}
-                        {% else %}
-                            {{ page.header.title|t }}
-                        {% endif %}
-                    </h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-{% endblock %}
-
 {% block content %}
     <div class="body" role="main">
         {{ page.content|raw }}

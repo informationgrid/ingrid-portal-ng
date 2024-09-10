@@ -1,0 +1,90 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set map = theme_var('map') %}
+    <iframe id="iframe_map" src="{{ map.url }}" allowfullscreen></iframe>
+
+    <script>
+        var buffer = 0; //scroll bar buffer
+        var iframe = document.getElementById('iframe_map');
+        var urlParams = location.search;
+        var url = '{{ map.url }}' + urlParams;
+        var editParams = '';
+        var editParamsE = '';
+        var editParamsN = '';
+        var editParamsZ = '';
+        var isBackHistory = false;
+
+        // Add iFrame 'src'
+        iframe.src = url;
+
+        // .onload doesn't work with IE8 and older.
+        if (iframe.attachEvent) {
+            iframe.attachEvent('onload', resizeIframe);
+        } else {
+            iframe.onload=resizeIframe;
+        }
+
+        // Resize map
+        window.onresize = resizeIframe;
+
+        function pageY(elem) {
+            return elem.offsetParent ? (elem.offsetTop + pageY(elem.offsetParent)) : elem.offsetTop;
+        }
+
+        function resizeIframe() {
+            var height = document.documentElement.clientHeight;
+            height -= pageY(document.getElementById('iframe_map'))+ buffer ;
+            height = (height < 0) ? 0 : height;
+            document.getElementById('iframe_map').style.height = height + 'px';
+        }
+
+        // Change params
+        function onParamChange(params) {
+            var newParams = '?';
+            var key = [];
+            var paramsE = params.E || '';
+            var paramsN = params.N || '';
+            var paramsZoom = params.zoom || '';
+            var isPushState = false;
+
+            for (var i in params) {
+                key.push(i);
+            };
+
+            key.forEach(function (s, i, o) {
+                if (s == 'lang') {
+                newParams = newParams + '' + s + '=' + 'de';
+                } else if (s == 'layers') {
+                newParams = newParams + '' + s + '=' + encodeURIComponent(params[s]);
+                } else {
+                newParams = newParams + '' + s + '=' + params[s];
+                }
+                if (i < o.length - 1) {
+                newParams = newParams + '&';
+                }
+            });
+
+            if (paramsE !== '' &&
+                paramsN !== '' &&
+                paramsZoom !== '') {
+                if ((paramsE !== editParamsE && editParamsE !== '' &&
+                    paramsN !== editParamsN && editParamsN !== '') ||
+                    paramsZoom !== editParamsZ && editParamsZ !== '' ) {
+                if (newParams && !isBackHistory) {
+                    isPushState = true;
+                }
+                }
+                editParamsE = paramsE;
+                editParamsN = paramsN;
+                editParamsZ = paramsZoom;
+            }
+            if (isPushState) {
+                window.history.pushState({id:newParams, params: params}, '', newParams );
+            } else {
+                window.history.replaceState({id:newParams, params: params}, '', newParams );
+            }
+            isBackHistory = false;
+        }
+    </script>
+{% endblock %}
