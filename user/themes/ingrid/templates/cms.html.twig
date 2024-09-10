@@ -1,0 +1,11 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="body" role="main">
+        <div class="search-filtered row content-small">
+            <div class="columns">
+                {{ page.content|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
