@@ -1,0 +1,55 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set menu_site = theme_var('menu_site') %}
+    <div class="body" role="main">
+        <div class="search-filtered row content-small">
+            <div class="columns">
+                <div class="sitemap">
+                    {% if menu_site %}
+                        <h4>{{ "SITEMAP.AREA_MAIN"|t|e }}</h4>
+                        <div class="link-list">
+                            {% for entry in menu_site %}
+                                {% if entry.highlighted is sameas(true) %}
+                                    {% set page_url = '' %}
+                                    {% set page_title = '' %}
+                                    {% for p in pages.children.visible %}
+                                    {% if entry.path == p.folder %}
+                                        {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+                                        {% set page_url = p.url %}
+                                        {% set page_title = p.title %}
+                                    {% endif %}
+                                    {% endfor %}
+                                    <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
+                                        <span class="ic-ic-arrow-right"></span>
+                                        <span class="text">{{ page_title|t|e }}</span>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <h4>{{ "SITEMAP.AREA_FOOTER"|t|e }}</h4>
+                        <div class="link-list">
+                            {% for entry in menu_site %}
+                                {% if entry.highlighted is sameas(false) %}
+                                    {% set page_url = '' %}
+                                    {% set page_title = '' %}
+                                    {% for p in pages.children.visible %}
+                                    {% if entry.path == p.folder %}
+                                        {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+                                        {% set page_url = p.url %}
+                                        {% set page_title = p.title %}
+                                    {% endif %}
+                                    {% endfor %}
+                                    <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
+                                        <span class="ic-ic-arrow-right"></span>
+                                        <span class="text">{{ page_title|t|e }}</span>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
