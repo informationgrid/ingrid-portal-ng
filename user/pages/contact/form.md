@@ -30,6 +30,7 @@ form:
           label: CONTACT.FORM_MESSAGE
           size: long
           placeholder: CONTACT.FORM_MESSAGE
+          autofocus: on
           type: textarea
           outerclasses: form-element
           validate:
@@ -38,7 +39,6 @@ form:
         - name: user_firstname
           label: CONTACT.FORM_FIRSTNAME
           placeholder: CONTACT.FORM_FIRSTNAME
-          autofocus: on
           autocomplete: on
           type: text
           outerclasses: form-element
@@ -48,7 +48,6 @@ form:
         - name: user_lastname
           label: CONTACT.FORM_LASTNAME
           placeholder: CONTACT.FORM_LASTNAME
-          autofocus: on
           autocomplete: on
           type: text
           outerclasses: form-element
@@ -58,7 +57,6 @@ form:
         - name: user_organisation
           label: CONTACT.FORM_COMPANY
           placeholder: CONTACT.FORM_COMPANY
-          autofocus: on
           autocomplete: on
           type: text
           outerclasses: form-element
