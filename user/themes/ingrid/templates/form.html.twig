@@ -1,0 +1,13 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set menu_site = theme_var('menu_site') %}
+    <div class="body" role="main">
+        <div class="search-filtered row content-small">
+            <div class="columns">
+                {{ page.content|raw }}
+                {% include 'forms/form.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

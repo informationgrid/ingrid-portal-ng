@@ -1040,3 +1040,41 @@ SEARCH_DETAIL:
 SITEMAP:
     AREA_MAIN: Hauptbereich
     AREA_FOOTER: Fußbereich
+
+CONTACT:
+    FORM: Kontaktformular
+    FORM_MESSAGE: Ihre Nachricht, Fragen oder Anregungen
+    FORM_REQUIRED: '* Pflichtangaben'
+    FORM_FIRSTNAME: Vorname
+    FORM_LASTNAME: Nachname
+    FORM_COMPANY: Organisation, Firma (optional)
+    FORM_PHONE: Telefon (optional)
+    FORM_EMAIL: E-Mail-Adresse
+    FORM_ACTIVITY: Tätigkeitsbereich (optional)
+    FORM_UPLOAD: 'Datei anhängen (optional):<span class="clearer"></span>(max.'
+    FORM_SUBJECT: Ihr Anliegen in einen Satz gefasst
+    FORM_TECHNICAL: Ich habe eine technische Frage zur Website oder möchte eine Störung melden. (optional)
+    FORM_NAME: Name (optional)
+    REPORT_EMAIL_AREA_OF_PROFESSION_SCHUL: Schüler
+    REPORT_EMAIL_AREA_OF_PROFESSION_HAND: Handwerk/Technik
+    REPORT_EMAIL_AREA_OF_PROFESSION_UMWE: Dienstleistungen
+    REPORT_EMAIL_AREA_OF_PROFESSION_BEHO: Anbieter
+    REPORT_EMAIL_AREA_OF_PROFESSION_LEHRE: Lehrer
+    REPORT_EMAIL_AREA_OF_PROFESSION_UNIV: Universität
+    REPORT_EMAIL_AREA_OF_PROFESSION_MEDI: Medien
+    REPORT_EMAIL_AREA_OF_PROFESSION_ANDE: Anderes
+    ERROR_NOMESSAGE: Bitte geben Sie Ihre Nachricht ein
+    ERROR_NOFIRSTNAME: Bitte geben Sie Ihren Vornamen ein
+    ERROR_NOLASTNAME: Bitte geben Sie Ihren Nachnamen ein
+    ERROR_NOEMAIL: Bitte geben Sie eine E-Mail-Adresse an
+    ERROR_EMAILNOTVALID: Die eingegebene E-Mail-Adresse ist nicht gültig
+    ERROR_UPLOAD: Der von Ihnen ausgewählten Anhang überschreitet die maximale Größ_
+    ERROR_NOSUBJECT: Bitte trage Sie Ihr Anliegen ein_
+    REPORT_EMAIL_SUBJECT: Nachricht von InGrid-Portal-NG
+    REPORT_EMAIL_AREA_OF_PROFESSION_NONE: Keine Auswahl
+    REPORT_EMAIL_TECHNICAL: Technische Frage
+    SUCCESS_TITLE: Vielen Dank für Ihre Nachricht!
+    SUCCESS: Ihre Anfrage wurde erfolgreich an die InGrid-Portal-Redaktion versendet.
+    SUCCESS_LINK: Zurück zur Kontakt-Seite
+    INTRO_PRAEEMAIL_TOOLTIP: Ihre Nachricht, Fragen oder Anregungen direkt an wemove digital solutions GmbH
+    DATA_SUMMARY: Hier die Zusammenfassung dessen, was du geschrieben hast:
