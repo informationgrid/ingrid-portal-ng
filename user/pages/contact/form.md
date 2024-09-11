@@ -64,7 +64,7 @@ form:
         - name: user_email
           label: CONTACT.FORM_EMAIL
           placeholder: CONTACT.FORM_EMAIL
-          type: text
+          type: email
           outerclasses: form-element
           validate:
             rule: email
