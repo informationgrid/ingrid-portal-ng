@@ -29,10 +29,9 @@ ADMIN_YAML=/var/www/"$GRAV_FOLDER"/user/accounts/admin.yaml
 if [ ! -f "$ADMIN_YAML" ] && [ -n "$ADMIN_PASSWORD" ]; then
   cp /usr/share/grav-admin/user/accounts/admin.yaml.template "$ADMIN_YAML"
   hashed_password=$(htpasswd -bnBC 8 "" "$ADMIN_PASSWORD" | grep -oP '\$2[ayb]\$.{56}')
-  echo "Password hash: $hashed_password"
   sed -ri "s/email:/email: ${ADMIN_EMAIL}/" "$ADMIN_YAML"
   sed -ri "s/fullname:/fullname: ${ADMIN_FULL_NAME}/" "$ADMIN_YAML"
-  sed -ri "s/hashed_password:/hashed_password: ${hashed_password}/" "$ADMIN_YAML"
+  echo "hashed_password: ${hashed_password}" >> "$ADMIN_YAML"
 fi
 
 SYSTEM_YAML=/var/www/"$GRAV_FOLDER"/user/config/system.yaml
@@ -43,6 +42,7 @@ if ! grep -q "^languages:" "$SYSTEM_YAML"; then
   echo "  supported:" >> "$SYSTEM_YAML"
   echo "    - de" >> "$SYSTEM_YAML"
   echo "  default_lang: de" >> "$SYSTEM_YAML"
+  echo "  include_default_lang: false" >> "$SYSTEM_YAML"
 else
   sed -ri "s/supported: null/supported:\n    - de/" "$SYSTEM_YAML"
   sed -ri "s/default_lang: null/default_lang: de/" "$SYSTEM_YAML"
