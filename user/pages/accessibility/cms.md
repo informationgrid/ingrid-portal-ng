@@ -32,5 +32,5 @@ Die Schlichtungsstelle nach § 9 d NBGG hat die Aufgabe, Streitigkeiten zwischen
 
 Direkt kontaktieren können Sie die Schlichtungsstelle unter:
 
-Telefon: [0511/120-4010](tel:+495111204010)<br>
+Telefon: [0511/120-4010](tel:+495111204010)
 E-Mail: [schlichtungsstelle@ms.niedersachsen.de](mailto:schlichtungsstelle@ms.niedersachsen.de)
