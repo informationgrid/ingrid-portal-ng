@@ -9,8 +9,11 @@ class CodelistIndex
     {
     }
 
-    public static function indexJob(string $codelist_api, string $user, string $pass)
+    public static function indexJob(string $codelist_api = null, string $user = null, string $pass = null, $gravLang)
     {
+        $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_UNSUCCESS']);
+        $status = false;
+
         $opts = [
             "http" => [
                 "method" => "GET",
@@ -20,19 +23,33 @@ class CodelistIndex
         $context = stream_context_create($opts);
         $response = file_get_contents($codelist_api, false, $context);
         $codelists = json_decode($response, true);
-
-        foreach($codelists as $codelist) {
-            $id = $codelist["id"];
-            self::writeXmlFile($codelist, "user-data://codelists", "codelist_" . $id . ".xml");
+        $time = date("d.m.Y h:i", time());
+        if ($codelists) {
+            foreach($codelists as $codelist) {
+                $id = $codelist["id"];
+                self::writeXmlFile($codelist, "user-data://codelists", "codelist_" . $id . ".xml");
+            }
+            $result = array(
+                "status" => array(
+                    "time" => $time,
+                    "count" => count($codelists)
+                ),
+                "data" => $codelists
+            );
+            self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://codelists", "codelists.json");
+            $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_SUCCESS', count($codelists), $time]);
+            $status = true;
+        } else {
+            $path = 'user-data://codelists/codelists.json';
+            if(file_exists($path)) {
+                $response = file_get_contents($path);
+                $result = json_decode($response, true);
+                $result["status"]["error"] = $time;
+                self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://codelists", "codelists.json");
+            }
         }
-        $result = array(
-            "status" => array(
-                "time" => date("d.m.Y h:i:sa", time()),
-                "count" => count($codelists)
-            ),
-            "data" => $codelists
-        );
-        self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://codelists", "codelists.json");
+
+        return [$status, $msg];
     }
 
     private static function writeJsonFile(string $json, string $dir, string $file)

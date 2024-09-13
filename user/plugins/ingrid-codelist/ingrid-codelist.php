@@ -114,8 +114,8 @@ class InGridCodelistPlugin extends Plugin
             if (!$controller->authorizeTask('reindexCodelist', ['admin.configuration', 'admin.super'])) {
                 $json_response = [
                     'status'  => 'error',
-                    'message' => '<i class="fa fa-warning"></i> Index not created',
-                    'details' => 'Insufficient permissions to reindex the search engine database.'
+                    'message' => '<i class="fa fa-warning"></i> '. $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_EMPTY']),
+                    'details' => $this->grav['language']->translate(['INDEXING_UNPERMISSION'])
                 ];
                 echo json_encode($json_response);
                 exit;
@@ -126,7 +126,7 @@ class InGridCodelistPlugin extends Plugin
             // disable execution time
             set_time_limit(0);
 
-            list($status, $msg, $output) = static::indexJob($this->codelist_api, $this->codelist_api_user, $this->codelist_api_pass);
+            list($status, $msg, $output) = self::indexJob($this->codelist_api, $this->codelist_api_user, $this->codelist_api_pass);
 
             $json_response = [
                 'status'  => $status ? 'success' : 'error',
@@ -149,7 +149,7 @@ class InGridCodelistPlugin extends Plugin
 
         [$status, $msg] = self::getCodelistCount();
 
-        $twig->twig_vars['index_status'] = ['status' => $status, 'msg' => $msg];
+        $twig->twig_vars['codelist_index_status'] = ['status' => $status, 'msg' => $msg];
         $this->grav['assets']->addCss('plugin://ingrid-codelist/assets/admin/codelist.css');
         $this->grav['assets']->addJs('plugin://ingrid-codelist/assets/admin/codelist.js');
     }
@@ -161,22 +161,21 @@ class InGridCodelistPlugin extends Plugin
     {
         $options = [
             'authorize' => 'taskReindexCodelist',
-            'hint' => 'reindexes the Codelist index',
-            'class' => 'codelist_reindex',
-            'icon' => 'fa-rss'
+            'hint' => $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.GRAV_MENU_TEXT']),
+            'class' => 'codelist-reindex',
+            'icon' => 'fa-book'
         ];
 
         $this->grav['twig']->plugins_quick_tray['InGrid Codelist'] = $options;
     }
 
-    private function indexJob(string $codelist_api, string $codelist_api_user, string $codelist_api_pass, string $langCode = null)
+    private function indexJob(string $codelist_api = null, string $codelist_api_user = null, string $codelist_api_pass = null, string $langCode = null)
     {
+
         ob_start();
 
-        $results = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass);
-
+        [$status, $msg] = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass, $this->grav['language']);
         $output = ob_get_clean();
-        [$status, $msg] = self::getCodelistCount();
 
         return [$status, $msg, $output];
     }
@@ -185,13 +184,22 @@ class InGridCodelistPlugin extends Plugin
     {
         $path = 'user-data://codelists/codelists.json';
         $status = false;
-        $msg = 'Index not created';
+        $msg = $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_EMPTY']);
         try {
             if(file_exists($path)) {
                 $response = file_get_contents($path);
                 $json = json_decode($response, true);
-                $msg = '';
-                $msg .=  count($json["data"]) . ' codelists reindexed on '. $json["status"]["time"];
+                if (isset($json['status'])) {
+                    $jsonStatus = $json['status'];
+                    if (isset($jsonStatus['error'])) {
+                        $msg = $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_FAILED', $jsonStatus['error']]);
+                        $msg .= ' '.$this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_SUCCESS', count($json['data']), $jsonStatus['time']]);
+                        $status = false;
+                    } else {
+                        $msg = $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_SUCCESS', count($json['data']), $jsonStatus['time']]);
+                        $status = true;
+                    }
+                }
             }
         } catch (Exception $e) {
         }

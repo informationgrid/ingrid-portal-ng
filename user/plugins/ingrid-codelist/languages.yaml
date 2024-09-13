@@ -1,4 +1,34 @@
 en:
-  PLUGIN_IN_GRID_CODELIST:
-    TEXT_VARIABLE: Text Variable
-    TEXT_VARIABLE_HELP: Text to add to the top of a page
+  PLUGIN_INGRID_CODELIST:
+    API_URL: Codelist-API-URL
+    API_URL_USER: Username
+    API_URL_PASS: Password
+    CODELIST_INDEX_STATUS: Codelists Indexierung
+    ENABLE_INDEX_SCHEDULED_JOB: Enable index scheduled job
+    SCHEDULED_JOB_FREQUENCY: Scheduled job frequency
+    SCHEDULED_JOB_LOG_FILE: Scheduled job log file
+    BUTTON_CODELIST_INDEXING: Indexing codelists
+    BUTTON_CODELIST_REINDEXING: Re-Indexing codelists
+    INDEXING_CODELIST_SUCCESS: '%s codelists reindexed on %s.'
+    INDEXING_CODELIST_UNSUCCESS: 'Error read codelist'
+    INDEXING_CODELIST_FAILED: 'Last indexing has failed on %s.'
+    INDEXING_CODELIST_EMPTY: Index not created.
+    INDEXING_UNPERMISSION: Insufficient permissions to reindex the search engine database.
+    GRAV_MENU_TEXT: Reindexing codelists
+de:
+  PLUGIN_INGRID_CODELIST:
+    API_URL: Codelist-API-URL
+    API_URL_USER: Benutzername
+    API_URL_PASS: Passwort
+    CODELIST_INDEX_STATUS: Codelisten Indexierung
+    ENABLE_INDEX_SCHEDULED_JOB: Aktivierung Indexierung Zeitplan-Job
+    SCHEDULED_JOB_FREQUENCY: Zeitplan Frequenz
+    SCHEDULED_JOB_LOG_FILE: Zeitplan Log-Datei
+    BUTTON_CODELIST_INDEXING: Codelisten indexieren
+    BUTTON_CODELIST_REINDEXING: Codelisten reindexieren
+    INDEXING_CODELIST_SUCCESS: '%s Codelisten wurden am %s indexiert.'
+    INDEXING_CODELIST_UNSUCCESS: Codelisten konnte nicht geladen werden.
+    INDEXING_CODELIST_FAILED: 'Letzte Indexierung am %s fehlerhaft.'
+    INDEXING_CODELIST_EMPTY: Noch nicht indexiert.
+    INDEXING_UNPERMISSION: Unzureichende Berechtigungen zum Neuindizieren.
+    GRAV_MENU_TEXT: Codelisten (re)indexieren

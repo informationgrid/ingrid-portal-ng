@@ -3,12 +3,12 @@
 {% block input %}
     <div class="form-list-wrapper {{ field.size }}">
         <div class="index-status">
-            {% if index_status.status %}
-                <button id="codelist-index" class="button reindex codelist-reindex">Re-Indexing Codelist</button>
-                <span class="codelist-status success"><i class="fa fa-book"></i> {{ index_status.msg }}</span>
+            {% if codelist_index_status.status %}
+                <button id="codelist-index" class="button reindex codelist-reindex">{{ 'PLUGIN_INGRID_CODELIST.BUTTON_CODELIST_REINDEXING'|t }}</button>
+                <span class="codelist-status success"><i class="fa fa-book"></i> {{ codelist_index_status.msg }}</span>
             {% else %}
-                <button id="codelist-index" class="button critical codelist-reindex">Indexing Codelist</button>
-                <span class="codelist-status error"><i class="fa fa-warning"></i> {{ index_status.msg }}</span>
+                <button id="codelist-index" class="button critical codelist-reindex">{{ 'PLUGIN_INGRID_CODELIST.BUTTON_CODELIST_INDEXING'|t }}</button>
+                <span class="codelist-status error"><i class="fa fa-warning"></i> {{ codelist_index_status.msg }}</span>
             {% endif %}
             <div class="warning error-details"></div>
         </div>
