@@ -33,12 +33,12 @@ form:
 
     rss.scheduled_index.status:
       type: rss_index_status
-      label: RSS Index Status
+      label: PLUGIN_INGRID_RSS.RSS_INDEX_STATUS
 
     rss.scheduled_index.enabled:
       type: toggle
-      label: Enable Index Scheduled Job
-      help: Use the Grav Scheduler to kick off a background index job
+      label: PLUGIN_INGRID_RSS.ENABLE_INDEX_SCHEDULED_JOB
+      help: PLUGIN_INGRID_RSS.ENABLE_INDEX_SCHEDULED_JOB_HELP
       highlight: 1
       default: 0
       options:
@@ -49,7 +49,7 @@ form:
 
     rss.scheduled_index.at:
       type: cron
-      label: Scheduled Job Frequency
+      label: PLUGIN_INGRID_RSS.SCHEDULED_JOB_FREQUENCY
       size: medium
       help: Use 'cron' format
       default: '0 * * * *'
@@ -57,19 +57,18 @@ form:
 
     rss.scheduled_index.logs:
       type: text
-      label: Scheduled Job Log File
-      placeholder: 'logs/ingrid-rss-index.out'
+      label: PLUGIN_INGRID_RSS.SCHEDULED_JOB_LOG_FILE
+      default: 'logs/ingrid-rss-index.out'
       size: medium
 
     rss.feeds:
       type: fieldset
-      title: RSS
-      help: Lege die Rss fest
-      text: Lege die Rss fest
+      title: PLUGIN_INGRID_RSS.RSS_FEED
+      text: PLUGIN_INGRID_RSS.RSS_FEED_HELP
       fields:
         .links:
           type: list
-          label: RSS
+          label: PLUGIN_INGRID_RSS.RSS_LABEL
           style: vertical
           controls: bottom
           collapsed: true
@@ -77,16 +76,16 @@ form:
           fields:
             .url:
               type: text
-              label: URL
+              label: PLUGIN_INGRID_RSS.RSS_ENTRY_URL
             .summary:
               type: text
-              label: Beschreibung
+              label: PLUGIN_INGRID_RSS.RSS_ENTRY_DESCRIPTION
             .provider:
               type: text
-              label: Anbieter
+              label: PLUGIN_INGRID_RSS.RSS_ENTRY_PROVIDER
             .lang:
               type: text
-              label: Sprache
+              label: PLUGIN_INGRID_RSS.RSS_ENTRY_LANG
             .category:
               type: text
-              label: Kategorie
+              label: PLUGIN_INGRID_RSS.RSS_ENTRY_CATEGORY

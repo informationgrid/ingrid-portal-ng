@@ -18,8 +18,7 @@ class RssIndex
         }
         $names = array();
         #iterating over the arr
-        foreach ($array as $key => $val)
-        {
+        foreach ($array as $key => $val) {
         #storing the key of the names array as the Name key of the arr
             $names[$key] = $val['date_ms'];
 
@@ -27,7 +26,7 @@ class RssIndex
         array_multisort($names, SORT_DESC, $array);
         $result = array(
             "status" => array(
-                "time" => date("d.m.Y h:i:sa", time()),
+                "time" => date("d.m.Y h:i", time()),
                 "count" => count($array)
             ),
             "data" => $array

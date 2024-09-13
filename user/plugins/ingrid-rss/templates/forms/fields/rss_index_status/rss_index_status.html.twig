@@ -3,12 +3,12 @@
 {% block input %}
     <div class="form-list-wrapper {{ field.size }}">
         <div class="index-status">
-            {% if index_status.status %}
-                <button id="rss-index" class="button reindex rss-reindex">Re-Index RSS-Feeds</button>
-                <span class="rss-status success"><i class="fa fa-book"></i> {{ index_status.msg }}</span>
+            {% if rss_index_status.status %}
+                <button id="rss-index" class="button reindex rss-reindex">{{ "PLUGIN_INGRID_RSS.BUTTON_RSS_REINDEXING"|t }}</button>
+                <span class="rss-status success"><i class="fa fa-info-circle"></i> {{ rss_index_status.msg }}</span>
             {% else %}
-                <button id="rss-index" class="button critical rss-reindex">Index RSS-Feeds</button>
-                <span class="rss-status error"><i class="fa fa-warning"></i> {{ index_status.msg }}</span>
+                <button id="rss-index" class="button critical rss-reindex">{{ "PLUGIN_INGRID_RSS.BUTTON_RSS_INDEXING"|t }}</button>
+                <span class="rss-status error"><i class="fa fa-warning"></i> {{ rss_index_status.msg }}</span>
             {% endif %}
             <div class="warning rss-error-details"></div>
         </div>

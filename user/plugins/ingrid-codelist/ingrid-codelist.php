@@ -115,7 +115,7 @@ class InGridCodelistPlugin extends Plugin
                 $json_response = [
                     'status'  => 'error',
                     'message' => '<i class="fa fa-warning"></i> '. $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_EMPTY']),
-                    'details' => $this->grav['language']->translate(['INDEXING_UNPERMISSION'])
+                    'details' => $this->grav['language']->translate(['PLUGIN_INGRID_CODELIST.INDEXING_UNPERMISSION'])
                 ];
                 echo json_encode($json_response);
                 exit;

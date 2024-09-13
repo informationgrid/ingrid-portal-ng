@@ -143,8 +143,8 @@ class IngridRssPlugin extends Plugin
             if (!$controller->authorizeTask('reindexRss', ['admin.configuration', 'admin.super'])) {
                 $json_response = [
                     'status'  => 'error',
-                    'message' => '<i class="fa fa-warning"></i> Index not created',
-                    'details' => 'Insufficient permissions to reindex the search engine database.'
+                    'message' => '<i class="fa fa-warning"></i> '. $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_CODELIST_EMPTY']),
+                    'details' => $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_UNPERMISSION'])
                 ];
                 echo json_encode($json_response);
                 exit;
@@ -178,7 +178,7 @@ class IngridRssPlugin extends Plugin
 
         [$status, $msg] = self::getRssCount();
 
-        $twig->twig_vars['index_status'] = ['status' => $status, 'msg' => $msg];
+        $twig->twig_vars['rss_index_status'] = ['status' => $status, 'msg' => $msg];
         $this->grav['assets']->addCss('plugin://ingrid-rss/assets/admin/rss.css');
         $this->grav['assets']->addJs('plugin://ingrid-rss/assets/admin/rss.js');
     }
@@ -190,7 +190,7 @@ class IngridRssPlugin extends Plugin
     {
         $options = [
             'authorize' => 'taskReindexRss',
-            'hint' => 'reindexes the RSS index',
+            'hint' => $this->grav['language']->translate(['PLUGIN_INGRID_RSS.GRAV_MENU_TEXT']),
             'class' => 'rss-reindex',
             'icon' => 'fa-rss'
         ];
@@ -214,13 +214,14 @@ class IngridRssPlugin extends Plugin
     {
         $path = 'user-data://feeds/feeds.json';
         $status = false;
-        $msg = 'Index not created';
+        $msg = $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_RSS_EMPTY']);
         try {
             if(file_exists($path)) {
                 $response = file_get_contents($path);
                 $json = json_decode($response, true);
                 $msg = '';
                 $msg .=  count($json["data"]) . ' RSS feeds reindexed on '. $json["status"]["time"];
+                $status = true;
             }
         } catch (Exception $e) {
         }

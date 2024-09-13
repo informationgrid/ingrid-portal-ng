@@ -51,12 +51,12 @@ form:
 
     codelist.scheduled_index.status:
       type: codelist_index_status
-      label: Codelist Index Status
+      label: PLUGIN_INGRID_CODELIST.CODELIST_INDEX_STATUS
 
     codelist.scheduled_index.enabled:
       type: toggle
-      label: Enable Index Scheduled Job
-      help: Use the Grav Scheduler to kick off a background index job
+      label: PLUGIN_INGRID_CODELIST.ENABLE_INDEX_SCHEDULED_JOB
+      help: PLUGIN_INGRID_CODELIST.ENABLE_INDEX_SCHEDULED_JOB_HELP
       highlight: 1
       default: 1
       options:
@@ -67,7 +67,7 @@ form:
 
     codelist.scheduled_index.at:
       type: cron
-      label: Scheduled Job Frequency
+      label: PLUGIN_INGRID_CODELIST.SCHEDULED_JOB_FREQUENCY
       size: medium
       help: Use 'cron' format
       default: '0 * * * *'
@@ -75,6 +75,6 @@ form:
 
     codelist.scheduled_index.logs:
       type: text
-      label: Scheduled Job Log File
+      label: PLUGIN_INGRID_CODELIST.SCHEDULED_JOB_LOG_FILE
       default: 'logs/ingrid-codelist-index.out'
       size: medium

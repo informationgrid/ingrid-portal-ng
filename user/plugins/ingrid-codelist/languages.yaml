@@ -3,8 +3,9 @@ en:
     API_URL: Codelist-API-URL
     API_URL_USER: Username
     API_URL_PASS: Password
-    CODELIST_INDEX_STATUS: Codelists Indexierung
+    CODELIST_INDEX_STATUS: Codelists indexing
     ENABLE_INDEX_SCHEDULED_JOB: Enable index scheduled job
+    ENABLE_INDEX_SCHEDULED_JOB_HELP: Use the Grav Scheduler to kick off a background index job
     SCHEDULED_JOB_FREQUENCY: Scheduled job frequency
     SCHEDULED_JOB_LOG_FILE: Scheduled job log file
     BUTTON_CODELIST_INDEXING: Indexing codelists
@@ -22,6 +23,7 @@ de:
     API_URL_PASS: Passwort
     CODELIST_INDEX_STATUS: Codelisten Indexierung
     ENABLE_INDEX_SCHEDULED_JOB: Aktivierung Indexierung Zeitplan-Job
+    ENABLE_INDEX_SCHEDULED_JOB_HELP: Verwende den Grav Scheduler um dem Job im Hintergrund laufen zu lassen
     SCHEDULED_JOB_FREQUENCY: Zeitplan Frequenz
     SCHEDULED_JOB_LOG_FILE: Zeitplan Log-Datei
     BUTTON_CODELIST_INDEXING: Codelisten indexieren

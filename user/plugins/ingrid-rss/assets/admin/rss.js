@@ -17,7 +17,6 @@
                 errorDetails = indexer.siblings('.rss-error-details');
             current = status.clone(true);
 
-            console.log(isTray);
             if (isTray) {
                 target = target.is('i') ? target.parent() : target;
                 currentTray = target.find('i').attr('class');
