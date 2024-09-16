@@ -36,12 +36,17 @@ RUN groupadd --system foo; \
         libyaml-dev \
         libzip-dev \
         apache2-utils \
+        libxslt1-dev \
+        libxml2 \
     ; \
     docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
         zip \
         gd \
         opcache \
+        xsl \
+        xml \
+        dom \
     ; \
     pecl install apcu-${PHP_APCU_VERSION:1}; \
     pecl install yaml-$PHP_YAML_VERSION; \
