@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ingrid-portal-help.xsl" ?>
+<help>
+    <chapter>
+        <header>Hilfe zu InGrid-Portal</header>
+        <section help-key="index">
+            <header>Hilfethemen</header>
+            <content>
+                <ul>
+                    <li>
+                        <a href="?hkey=search-1">Suche</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-measure-1">Messwerte</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-catalog-1">Kataloge</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=maps-1">Karte</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=about-1">Über InGrid</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-category-1">Kategorien</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=rss-news-1">Aktuelles</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=myingrid-1">Anmeldung</a>
+                    </li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Über InGrid</header>
+        <section help-key="about-1">
+            <header>Porträt</header>
+            <content>
+                <p>Dieser Bereich dient der Darstellung des Portals oder des Portal-Betreibers.</p>
+                <p>Die Inhalte können als Administrator dynamisch im Portal gepflegt werden (<b>Inhalt > ingrid.about</b>).</p>
+            </content>
+        </section>
+        <section help-key="about-2">
+            <header>Informationsanbieter</header>
+            <content>
+                <p>Hier werden alle im System eingepflegten Partner und die Ihnen zugeordneten Informationsanbieter angezeigt.</p>
+                <p>Als Administrator können diese im Bereich <b>Partner</b> und <b>Anbieter</b> gepflegt werden.</p>
+            </content>
+        </section>
+        <section help-key="about-3">
+            <header>Datenquellen</header>
+            <content>
+                <p>Hier werden alle angeschlossenen iPlugs angezeigt.</p>
+                <p>Der angezeigte Name wird im iPlug gepflegt und sollte Rückschlüsse auf Art und Inhalt der Daten geben.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Suche</header>
+        <section help-key="search-1">
+            <header>Sucheingabe</header>
+            <content>
+                <p>Suchen ist ganz einfach. Geben Sie in das Suchfeld einen oder
+                   mehrere Begriffe ein und klicken Sie anschließend auf die
+                   Schaltfläche <b>Suche</b>.</p>
+                <p>InGrid-Portal durchsucht alle
+                   eingebundenen Informationen: Webseiten, Kataloge und
+                   Datenbanken, die für Ihre Suche von Interesse sind. Die
+                   Ergebnisse Ihrer Suchanfrage werden in einer
+                   <a href="?hkey=search-results-1">Suchergebnisseite</a>
+                   wiedergegeben.</p>
+            </content>
+        </section>
+        <section help-key="search-2">
+            <header>Suche via Kategorien</header>
+            <content>
+                <p>Alternativ können Sie mit den Kategorien auf der linken Seite suchen.
+                   Beim Betreten der <b>Suche</b> werden schon automatisch alle Ergebnisse kategorisiert.
+                   Diese können Sie dann per Klick auf die Kategorien sich anzeigen lassen und weiter verfeinern.</p>
+            </content>
+        </section>
+        <section help-key="search-3">
+            <header>Nach Ort suchen</header>
+            <content>
+                <p>Sie können Ihre Suchanfrage ortsbezogen über die Eingabe eines geografischen Namens ausführen.
+                   Dabei werden Ihnen passende Einträge aus dem Geo-Thesaurus-Umwelt angeboten.
+                   Nach Auswahl eines Raumbezugs wird die Suche mit der eindeutigen Kennung dieses Raumbezuges ausgeführt (z.B. administrative Einheit).</p>
+                <p>Anders als bei vielen anderen Suchmaschinen, erfolgt die räumliche
+                   Einschränkung also nicht über eine einfache Volltextsuche, sondern
+                   über die gezielte Suche nach Raumbezügen, die den Suchergebnissen zugeordnet wurden.</p>
+            </content>
+        </section>
+        <section help-key="search-4">
+            <header>Auf Karte festlegen</header>
+            <content>
+                <p>Die räumliche Einschränkung der InGrid-Portal-Suche ist auch über die Auswahl eines Kartenausschnitts
+                   möglich.</p>
+                <p>Wählen Sie ein Gebiet aus, indem Sie mit Shift + gedrückter
+                   linker Maustaste ein Rechteck auf der Karte aufziehen.
+                   Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
+                   werden die Koordinaten der Suche hinzugefügt.</p>
+            </content>
+        </section>
+        <section help-key="search-5">
+            <header>Suche verfeinern</header>
+            <content>
+                <p>Neben der einfachen Suche können Sie Ihre Suche weiter
+                    verfeinern. Lesen Sie hierzu folgende Themen:</p>
+                <ul>
+                    <li>
+                        <a href="?hkey=search-results-3">Ähnliche Begriffe zur
+                        Suche hinzufügen</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-expert-1">Experteneingabe</a>
+                    </li>
+                    </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Experteneingabe</header>
+        <section help-key="search-expert-1">
+            <header>Experteneingabe</header>
+            <content>
+                <p>Alle Einstellungen der Such-Oberfläche und
+                    spezielle Einstellungen darüber hinaus lassen sich auch
+                    direkt über den Suchausdruck in die Suche eingeben. Da die
+                    Syntax durch die große Anzahl der Suchmethoden recht
+                    umfangreich ist, ist sie vor allem für Experten geeignet.</p>
+            </content>
+        </section>
+        <section help-key="search-expert-2">
+            <header>Bool’sche Operatoren</header>
+            <content>
+                <p>Die einzelnen Suchbegriffe können über Bool’sche
+                    Operatoren verknüpft werden. Es stehen folgende Operatoren
+                    zur Verfügung:</p>
+                <p>
+                    <b>AND (UND-Verknüpfung)</b>: Alle Worte müssen in dem
+                    Dokument vorhanden sein. Sie ist Standard, wenn kein Operator
+                    angegeben wird. (Hinweis: Anstatt AND kann auch das Symbol
+                    &amp;&amp; verwendet werden)<br></br>Beispiel:
+                    ‚Wasser Fisch’ entspricht
+                     ‚Wasser AND Fisch’ bzw.
+                    ‚Wasser &amp;&amp; Fisch’</p>
+                <p>
+                    <b>OR (ODER-Verknüpfung)</b>: Eines der Worte muss im
+                    Dokument vorhanden sein. (Hinweis: Anstatt von OR kann auch
+                    das Symbol || verwendet werden)<br></br> Beispiel:
+                    ‚Wasser OR Fisch’ entspricht
+                    ‚Wasser || Fisch’</p>
+                <p>
+                    <b>NOT (NICHT-Verknüpfung)</b>: Das Wort nach dem NOT darf
+                    nicht im Dokument vorhanden sein. (Hinweis: Anstatt von NOT
+                    kann auch das Symbol ! oder das Symbol - verwendet
+                    werden)<br></br> Beispiel: ‚Wasser NOT
+                    Fisch’ (gesucht wird nach Wasser aber nicht nach Fisch)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-3">
+            <header>Gruppierung (Klammerung)</header>
+            <content>
+                <p>Die einzelnen durch Bool’sche Operatoren
+                    verknüpften Suchbegriffe können durch Klammerung (runde
+                    Klammern) beliebig gruppiert werden.</p>
+                <p>Beispiel: ‚Fisch NOT (Forelle OR Barsch)’
+                    (Es werden alle Dokumente gefunden, die den Begriff
+                    ‚Fisch’ enthalten, aber nicht die
+                    Begriffe ‚Forelle’ und ‚Barsch’)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-4">
+            <header>Suche nach Wortgruppen</header>
+            <content>
+                <p>Wird eine Zeichenkette in Anführungszeichen („)
+                    gesetzt, wird nach dem Vorkommen der gesamten Zeichenkette
+                    und nicht nach dem Vorkommen der einzelnen Begriffe gesucht.</p>
+                <p>Beispiel: „der Fisch schwimmt im Wasser“
+                    (Es werden nur Texte gefunden, die exakt diese Zeichenfolge enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-5">
+            <header>Platzhalter</header>
+            <content>
+                <p>Innerhalb eines Suchbegriffs ist es möglich, Platzhalter für
+                    einen (?) oder mehrere (*) beliebige Zeichen einzugeben. Es
+                    werden dann alle Begriffe gefunden, die mit dem Rest des
+                    Suchbegriffs übereinstimmen, wobei für den Platzhalter ein
+                    bzw. mehrere Zeichen auftreten können.</p>
+                <p><b>ACHTUNG</b>: Platzhalter dürfen NICHT am Anfang des Suchwortes stehen.</p>
+                <p>Beispiel: ‚Te?t’ (Es werden sowohl
+                    Dokumente mit dem Begriff ‚Text’ als
+                    auch Dokumente mit dem Begriff  ‚Test’ gefunden)</p>
+                <p>Beispiel: ‚umwelt*katalog’ (Es werden
+                    sowohl Dokumente mit dem Begriff
+                    ‚Umweltdatenkatalog’ als auch Dokumente
+                    mit dem Begriff  ‚Umweltobjektkatalog’ gefunden)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-6">
+            <header>Suche nach Bereichen von Zeichen</header>
+            <content>
+                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden
+                    in eckige [] oder geschweifte {} Klammern gefasst und die untere und obere
+                    Angabe mit dem Operator TO verbunden. Eckige Klammern []
+                    bedeuten, dass der untere und der obere Wert des Bereichs in
+                    die Suche einbezogen werden. Geschweifte Klammern {}
+                    bedeuten, dass der untere und der obere Wert des Bereichs
+                    nicht in die Suche einbezogen werden.</p>
+                <p>Beispiel: ‚[Aller TO Elbe]’ (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
+                    ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich enthalten.</p>
+                <p>Beispiel: ‚{Aller TO Elbe}’ (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
+                    ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich nicht enthalten.)</p>
+                <p>Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.</p>
+                <p>Beispiel: ‚te[i TO x]t’ (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte ‚teilt’, ‚test’ oder ‚text’ enthalten.)</p>
+                <p> Alternativ zu dem Operator TO kann auch ein Bindestrich - verwendet werden </p>
+                <p>Beispiel: ‚te[i - x]t’ (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte ‚teilt’, ‚test’ oder ‚text’ enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-7">
+            <header>Ähnlichkeitssuche</header>
+            <content>
+                <p>Über die Ähnlichkeitssuche (Fuzzy-Search) werden auch
+                    Dokumente gefunden, in denen Begriffe mit ähnlicher
+                    Schreibweise gefunden werden. Die Ähnlichkeitssuche wird
+                    über das Anhängen einer Tilde (~) an den Suchbegriff ausgelöst.</p>
+                <p>Beispiel: ‚Korn~’ (Es werden z.B. auch
+                    Dokumente mit dem Begriff ‚Horn’ gefunden)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-8">
+            <header>Sonderzeichen</header>
+            <content>
+                <p>Die folgenden Zeichen haben im Suchausdruck eine
+                    spezielle Bedeutung (z.B. in Form von Operatoren):</p>
+                <p>+ - &amp;&amp; || ! ( ) { } [ ] ^ &quot; ~ * ? : \</p>
+                <p>Sollen sie dennoch als einfache Zeichen innerhalb eines
+                    Suchausdrucks verwendet werden, müssen sie über das Zeichen
+                    \ (Backslash) markiert werden.</p>
+                <p>Beispiel: ‚\(1\+1\)\:2’ (Es wird nach dem
+                    Ausdruck ‚(1+1):2’ gesucht)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-9a">
+            <header>Suche nach speziellen Dokumenttypen</header>
+            <content>
+                <p> In InGrid-Portal kann nach verschiedenen Dokumenttypen gesucht werden.
+                    Dazu wird die Syntax ‚fileformat:Wert’ verwandt.</p>
+                <p>Beispiel: ‚fileformat:pdf’ (Es wird nur nach
+                    PDF-Dokumenten gesucht.)</p>
+                <p>Folgende Werte stehen für das Feld 'fileformat' zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Wert</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>pdf </td>
+                    <td> Es wird nur nach PDF - Dokumenten gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>rtf  </td>
+                    <td> Es wird nur nach RTF - Dokumenten gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>msword </td>
+                    <td> Es wird nur nach MS Word - Dokumenten gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>msexcel  </td>
+                    <td> Es wird nur nach MS Excel - Dokumenten gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>mspowerpoint </td>
+                    <td> Es wird nur nach MS PowerPoint - Dokumenten gesucht</td>
+                    </tr>
+                </table>
+            </content>
+        </section>
+        <section help-key="search-expert-9">
+        <br></br>
+            <header>Suche nach speziellen Datentypen</header>
+            <content>
+                <p>Der InGrid-Portal-Volltextindex gliedert sich in verschiedene
+                    Felder. Alle in InGrid-Portal verwendeten Felder lassen sich
+                    gezielt einzeln durchsuchen. Dazu wird die Syntax
+                    ‚Feldname:Wert’ verwandt.</p>
+                <p>Die Feldnamen beziehen sich direkt auf die im Suchindex abgelegten Felder und sind somit
+                    abhängig von der Indexierung einzelner Datenquellen (iPlugs).
+                    Allen iPlugs ist die Angabe eines Datentyps eigen, der die Art der Inhalte beschreibt und im Feld 'Datatype' abgelegt ist.</p>
+                <p>Beispiel: ‚datatype:www’ (Es wird nach
+                    Webseiten gesucht, die aus dem Internet dem Suchindex hinzugefügt wurden.)</p>
+                <p>Folgende Werte stehen für das Feld 'datatype' zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Wert</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>www</td>
+                    <td> Es wird nur nach Webseiten gesucht.</td>
+                    </tr>
+
+                    <tr>
+                    <td>default</td>
+                    <td> Es wird nach Dokumenten gesucht, die keinem speziellen Bereich zugeordnet sind.</td>
+                    </tr>
+
+                    <tr>
+                    <td>law</td>
+                    <td> Es wird nach Dokumenten aus dem Bereich 'Rechtsvorschriften' gesucht, z.B. können Webseiten diesem Bereich zugeordnet werden.</td>
+                    </tr>
+
+
+                     <tr>
+                    <td>research</td>
+                    <td> Es wird nach Dokumenten aus dem Bereich 'Forschungsprojekte' gesucht, z.B. können Webseiten diesem Bereich zugeordnet werden.</td>
+                    </tr>
+
+                    <tr>
+                    <td>address</td>
+                    <td> Es wird nach Dokumenten aus dem Bereich 'Adressen' gesucht, z.B. können Metadaten separate Adressen beinhalten (InGrid Katalog).</td>
+                    </tr>
+
+                    <tr>
+                    <td>topics</td>
+                    <td> Es wird nach Dokumenten aus dem Bereich 'Themen' gesucht, z.B. können Webseiten diesem Bereich zugeordnet werden.</td>
+                    </tr>
+                     <tr>
+                    <td>service</td>
+                    <td> Es wird nach Dokumenten aus dem Bereich 'Service' gesucht, z.B. können Webseiten diesem Bereich zugeordnet werden.</td>
+                    </tr>
+                    <tr>
+                    <td>measure</td>
+                    <td> Es wird nach Dokumenten aus dem Bereich 'Messwerte' gesucht, z.B. können Webseiten diesem Bereich zugeordnet werden.</td>
+                    </tr>
+                    <tr>
+                    <td>metadata</td>
+                    <td> Es wird nur nach Metadaten gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>fis</td>
+                    <td> Es wird nach Informationen aus Fachdatenbanken gesucht, z.B. können Webseiten diesem Bereich zugeordnet werden.</td>
+                    </tr>
+                </table>
+                <br></br>
+            </content>
+        </section>
+        <section help-key="search-expert-10">
+            <header>Suche nach einem speziellen Thema</header>
+            <content>
+                <p>Die Suche kann nach den Seiten eingegrenzt werden, die einem oder mehreren Umwelthemen
+                zugeordnet sind. Dazu wird die Syntax ‚topic:Wert’ verwandt.</p>
+                <p>Beispiel: ‚datatype:topics topic:Abfall’ (Es wird nach
+                    Dokumenten gesucht, die unter dem Umweltthema 'Abfall' eingeordnet wurden.)</p>
+                <p> Folgende Werte sind möglich:</p>
+                <p> Abfall, Altlasten, Bauen, Boden, Chemikalien, Energie, Forstwirtschaft, Gentechnik,
+                    Geologie, Gesundheit, LaermErschuetterung, Landwirtschaft, LuftKlima,
+                    NachhaltigeEntwicklung, NaturLandschaft, Strahlung, Tierschutz, Umweltinformation,
+                    Umweltwirtschaft, Verkehr, Wasser </p>
+            </content>
+        </section>
+        <section help-key="search-expert-11">
+            <header>Suche nach speziellen Messwertseiten</header>
+            <content>
+                <p>Die Suche kann nach den Seiten eingegrenzt werden, die Messungen in speziellen
+                Bereichen zugeordnet sind. Dazu wird die Syntax ‚topic:Wert’ verwandt.</p>
+                <p>Beispiel: ‚datatype:measure topic:air’ (Es wird nach
+                    Dokumenten gesucht, die Messungen zum Thema 'Luft' zum Inhalt haben.)</p>
+                <p> Folgende Werte sind möglich:</p>
+                <p> <b>radiation</b> für Strahlung, <b>air</b> für Luft,
+                    <b>water</b> für Wasser
+                    und <b>misc</b> für weitere Messwerte. </p>
+            </content>
+        </section>
+        <section help-key="search-expert-12">
+            <header>Suche nach einem speziellen Service</header>
+            <content>
+                <p>Die Suche kann nach den Seiten eingegrenzt werden, die einem Service
+                zugeordnet sind. Dazu wird die Syntax ‚topic:Wert’ verwandt.</p>
+                <p>Beispiel: ‚datatype:service topic:press’ (Es wird nach
+                    Dokumenten gesucht, die Pressemitteilungen enthalten.)</p>
+                <p> Folgende Werte sind möglich:</p>
+                <p> press, publication, event </p>
+            </content>
+        </section>
+        <section help-key="search-expert-13">
+            <header>Suche nach einer speziellen Metadatenklasse</header>
+            <content>
+                <p>Bei der Suche nach einer spezielen Metadatenklasse wird die
+                Syntax ‚topic:Wert’ verwandt.</p>
+                <p>Beispiel: ‚datatype:metadata metaclass:map’ (Es wird nach
+                    Metadaten der Klasse Geo-Information/Karte gesucht.)</p>
+                <p>Folgende Werte stehen für das Feld 'metaclass' in zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Wert</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>job </td>
+                    <td> Es wird nach Metadaten der Klasse 'Organisationseinheit/Fachaufgabe' gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>map  </td>
+                    <td> Es wird nach Metadaten der Klasse 'Geo-Information/Karte' gesucht</td>
+                    </tr>
+                    <tr>
+                    <td>document </td>
+                    <td> Es wird nach Metadaten der Klasse 'Dokument/Bericht/Literatur' gesucht</td>
+                    </tr>
+
+                    <tr>
+                    <td>geoservice </td>
+                    <td> Es wird nach Metadaten der Klasse 'Geodatendienst' gesucht</td>
+                    </tr>
+
+                     <tr>
+                    <td>project </td>
+                    <td> Es wird nach Metadaten der Klasse 'Vorhaben/Projekt/Programm' gesucht</td>
+                    </tr>
+
+                        <tr>
+                    <td>database  </td>
+                    <td> Es wird nach Metadaten der Klasse 'Datensammlung/Datenbank' gesucht</td>
+                    </tr>
+
+                    <tr>
+                    <td>service </td>
+                    <td> Es wird nach Metadaten der Klasse 'Dienst/Anwendung
+                         /Informationssystem' gesucht</td>
+                    </tr>
+                </table>
+                <br></br>
+            </content>
+        </section>
+        <section help-key="search-expert-14">
+            <header>Angabe des Raumbezugs</header>
+            <content>
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Raumbezug zugeordnet sind, eingeschränkt
+                werden.
+                Der Raumbezug kann über Koordinaten oder über den räumlichen Schlüssel der Verwaltungseinheit
+                angegeben werden.</p>
+                <p>Beispiel: ‚areaid: areaid:11000000’ (Die Suche wird auf Berlin als
+                Verwaltungseinheit eingeschränkt.)</p>
+                <p>Beispiel: ‚x1:7.52 y1:50.18 x2:10.17 y2:52.73’ (Die Suche wird auf ein
+                ausgewähltes Rechteck eingeschränkt.)</p>
+                <p>Folgende Felder stehen für die Einschränkung des Raumbezugs in InGrid-Portal zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Feld</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung des Werts</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>areaid </td>
+                    <td> Schlüssel der Verwaltungseinheit (AGS)</td>
+                    </tr>
+                    <tr>
+                    <td>x1  </td>
+                    <td> links</td>
+                    </tr>
+                    <tr>
+                    <td>x2 </td>
+                    <td> rechts</td>
+                    </tr>
+                    <tr>
+                    <td>y1 </td>
+                    <td> oben</td>
+                    </tr>
+                    <tr>
+                    <td>y2 </td>
+                    <td> unten</td>
+                    </tr>
+               </table> <br></br>
+               <p> Die Koordinaten müssen als Gradzahlen (WGS 84) eingegeben werden. </p>
+            </content>
+        </section>
+        <section help-key="search-expert-15">
+            <header>Angabe des Zeitbezugs</header>
+            <content>
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt
+                werden. </p>
+                <p>Beispiel: ‚t1:2006-01-01 t2:2008-12-31’ (Die Suche wird auf ein
+                ausgewähltes Zeitintervall eingeschränkt.)</p>
+                <p>Folgende Felder stehen für die Einschränkung des Zeitbezugs in InGrid-Portal zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Feld</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung des Werts</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>t0 </td>
+                    <td> Das Dokument wurde dem angegebenen Zeitpunkt zugeordnet</td>
+                    </tr>
+                    <tr>
+                    <td>t1  </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
+                    angegebenen Wert beginnt</td>
+                    </tr>
+                    <tr>
+                    <td>t2 </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
+                    angegebenen Wert endet</td>
+                    </tr>
+               </table><br></br>
+               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag)
+               eingegeben werden. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Suchergebnisseite</header>
+        <section help-key="search-results-1">
+            <header>Ergebnisseite</header>
+            <content>
+                <p>Nach dem Absenden einer Suchanfrage werden die Suchergebnisse
+                   angezeigt. Die Suchergebnisseite ist in zwei Bereiche
+                   gegliedert. Rechts finden Sie die Hauptergebnisliste, links
+                   davon die nach
+                   <a href="?hkey=search-results-2">Kategorien</a> sortierten
+                   Ergebnisse.
+                   In der Hauptergebnisliste und in den Kategorien sind
+                   Webseiten, Metadaten und/oder Fachinformationen enthalten,
+                   die nach Relevanz gewichtet und sortiert sind. Der oberste
+                   Eintrag weist hierbei die höchste Relevanz für die
+                   Suchanfrage auf.</p>
+                <p>Ein Suchergebnis besteht aus einem Titel, der auf die
+                   Webseite bzw. den Katalog- oder Datenbankeintrag verlinkt,
+                   eine Kurzbeschreibung, Angaben zum Anbieter und der
+                   Datenquelle sowie bei Webseiten die entsprechende URL. Wenn
+                   bei einigem Katalogeintrag eine digitale Karte hinterlegt
+                   ist, können Sie sich über die Schaltfläche <b>Karte</b> die
+                   Karte direkt im <a href="?hkey=maps-1">InGrid-Portal-Kartenviewer
+                   </a> ansehen. Die Schaltfläche <b>XML</b> liefert die ISO
+                   Darstellung des Treffers, soweit dieser CSW konform abgegeben werden kann.
+                </p>
+            </content>
+        </section>
+        <section help-key="search-results-2">
+            <header>Kategorien</header>
+            <content>
+                <p>In der linken Spalte der Ergebnisseite werden die
+                   Suchergebnisse nach Kategorien sortiert. In Klammern wird
+                   hierbei angegeben, wie viele Ergebnisse pro Kategorie
+                   gefunden wurden. </p>
+                <p>Durch einen Klick auf eine Kategorie wird das Suchergebnis
+                   in der Hauptergebnisliste entsprechend eingepasst. Erscheinen
+                   Checkboxen bei der Auswahl einer Kategorie, so werden die
+                   Ergebnisse aller angeklickten Unterkategorien in der
+                   Hauptergebnisliste wiedergegeben. Über die Schaltfläche
+                   <b>Mehr</b> können Sie sich weitere Unterkategorien anzeigen
+                   lassen. </p>
+                <p>Wenn Sie Ihre Suchanfrage präzisieren möchten, können Sie
+                   auch mehrere Kategorien auswählen.</p>
+                <p>Um die vorgenommenen Einschränkung wieder aufzugeben,
+                   klicken Sie nochmals auf die gewählte Kategorie bzw. auf die
+                   grauen Schalfläche(n), die oben in der Ergebnisliste die aktuellen Einschränkungen anzeigen.</p>
+
+                <p><b>Ergebnistypen (Auszug)</b> </p>
+
+                <p>Webseiten: Suchergebnisse aus Webauftritten</p>
+                <p>Metadaten: Suchergebnisse aus den angeschlossenen
+                   Datenkatalogen </p>
+                <p>Karten: Suchergebnisse aus der Klasse
+                   <b>Geoinformation/Karte</b> der angeschlossenen
+                   Datenkataloge und den im InGrid-Portal-Kartenviewer
+                   verzeichneten Karten. Alle Karten können Sie sich im
+                   <a href="?hkey=maps-1">InGrid-Portal-Kartenviewer</a> ansehen.</p>
+                <p>Rechtsvorschriften: Suchergebnisse aus Informationsangeboten zu
+                   rechtsrelevanten Themen</p>
+                <p>Forschungsprojekte: Suchergebnisse aus Informationsangeboten zu
+                   Projekten in der Forschung</p>
+                <p>Themen: Suchergebnisse aus dem Bereich
+                   <a href="?hkey=search-topics-1">Themen</a> </p>
+                <p>Messwerte: Suchergebnisse aus dem Bereich
+                   <a href="?hkey=search-measure-2">Messwerte</a></p>
+                <p>Service: Suchergebnisse aus dem Bereich
+                   <a href="?hkey=search-service-1">Service</a></p>
+
+                <p><b>Aktualität</b> </p>
+
+                <p>Wenn Sie den Ergebnistyp <b>Metadaten</b> aufgewählt haben,
+                   wird die Kategorie <b>Aktualität</b> angezeigt, in der die
+                   Suchergebnisse
+                   nach ihrem Zeitbezug sortiert werden. Die Aktualität bezieht
+                   sich hierbei auf das Erstellungs- bzw. lezte Änderungsdatum
+                   des jeweiligen Datensatzes (z.B. im letzten Monat, im letzten
+                   5 Jahre oder älter als 5 Jahre).</p>
+
+                <p><b>Anbieter</b> </p>
+
+                <p>In der Kategorie <b>Anbieter</b> können Sie Ihr Suchergebnis
+                   auf einen oder mehrere Informationsanbieter einschränken. Die
+                   Anbieter sind hierbei nach Partnern sortiert, so
+                   dass eine Abgrenzung möglich ist. </p>
+
+                <p><b>Nach Ort suchen / Auf Karte festlegen</b> </p>
+
+                <p>Sie können Ihr Suchergebnis
+                   räumlich einschränken, indem Sie entweder den Raum durch ein
+                   Suchrechteck in einer Karte oder durch die Angabe eines
+                   Ortsnamen einschränken. </p>
+                <p>Wenn Sie auf die Schaltfläche <b>Auf Karte festlegen</b>
+                   klicken, können Sie ein Suchrechteck auf einer
+                   Karte aufziehen. Klicken Sie auf die Schaltfläche
+                   <b>Auswahl anwenden</b>, um die räumliche Einschränkung für
+                   die Suchergebnisse zu übernehmen.
+                   <a href="?hkey=search-4">Mehr dazu</a></p>
+                 <p>Sie können Ihr Suchergebnis aber auch über Ortsnamen und
+                   anderen geographischen Bezeichnungen einschränken. Klicken Sie
+                   hierfür auf die Schaltfläche <b>Nach Ort suchen</b>, geben
+                   Sie eine geographische Bezeichnung ein und klicken Sie
+                   anschließend auf <b>suchen</b>. Aktivieren Sie nun die
+                   passende Checkbox und klicken Sie auf <b>Auswahl anwenden</b>
+                   um die räumliche Einschränkung für die Suchergebnisse zu übernehmen.
+                   <a href="?hkey=search-3">Mehr dazu</a></p>
+
+            </content>
+        </section>
+        <section help-key="search-results-3">
+            <header>Ähnliche Begriffe</header>
+            <content>
+                <p>InGrid-Portal bietet Ihnen die Möglichkeit, Ihre Suchanfrage um
+                    ähnliche Begriffe zu erweitern. Dazu wird der von Ihnen
+                    eingegebene Suchausdruck analysiert und in Form von Alternativ-Begriffen zur
+                    Verfügung gestellt.</p>
+                <p>Bei Klick auf <b>Ähnliche Begriffe</b> bekommen Sie die Begriffe
+                    Ihrer Suchanfrage dargestellt. Wenn Sie auf das Pluszeichen klicken,
+                    erhalten Sie zu jedem eingegebenen Suchbegriff die ähnlichen
+                    Begriffe angeboten. Durch das Ankreuzen der einzelnen Begriffe
+                    und Klick auf den Button <b>Zur Suchanfrage
+                    hinzufügen</b> werden die ähnlichen Begriffe jeweils
+                    dem zugeordneten Suchbegriff hinzugefügt und zwar so, dass
+                    ein Dokument gefunden wird, wenn entweder der Suchbegriff
+                    oder der ähnliche Begriff enthalten ist (ODER-Verknüpfung).</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Kataloge</header>
+        <section help-key="search-catalog-1">
+            <header>Kataloge</header>
+            <content>
+                <p>Recherchieren Sie in den Daten- und Geodatenkatalogen von
+                   Partnern und Informationsanbietern. Die Kataloge sind hierarchisch aufgebaut
+                   und können mit einem Klick auf "+"/"-" auf-/zugeklappt
+                   werden. Die Informationen werden in den Katalogen als
+                   <b>Objekte</b> bezeichnet. Als zusätzliche Information sind
+                   im Bereich <b>Adressen</b> die jeweiligen
+                   Ansprechpartner aufgeführt. Durch einen Klick auf ein Objekt
+                   oder eine Adresse werden detaillierte Informationen
+                   angezeigt. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Messwerte</header>
+        <section help-key="search-measure-1">
+            <header>Messwerte Kartenviewer</header>
+            <content>
+                <p>Im Bereich <b>Messwerte</b> aus dem Hauptmenü werden Ihnen aktuelle Messwerte direkt
+                   innerhalb eines Kartenviewers zur Verfügung gestellt. Der Themenschwerpunkt liegt
+                   hierbei auf den Bereichen Strahlung, Luft und Wasser.
+                   Die Messstationen werden direkt auf der Karte visualisiert und können per Klick
+                   verfeinert werden. Verschiedene Filter ermöglichen die Einschränkung auf Stationen, Messparameter oder Zeiträume.
+                   Innerhalb von Diagrammen können Messwerte verschiedener Stationen verglichen werden.</p>
+                <p>Eine ausführliche Hilfe findet sich innerhalb der Anwendung unter dem Info Button.</p>
+            </content>
+        </section>
+        <section help-key="search-measure-2">
+            <header>Messwerte Kategorisierung</header>
+            <content>
+                <p>Zusätzlich zur Darstellung im Messwerte Kartenviewer können auch Daten diesem Bereich zugeordnet werden.
+                   In den Suchkategorien finden sich die Unterkategorien Strahlung, Luft und Klima oder Wasser zur Recherche.</p>
+                <p>Verschiedene Web-Seiten können beim Indexieren diesen Kategorien zugeordnet werden.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Karte</header>
+        <section help-key="maps-1">
+            <header>Übersicht</header>
+             <content>
+                <p>Mit dem InGrid-Portal-Kartenviewer können Sie sich eine Vielzahl
+                   Karten ansehen und auf diesen operieren.</p>
+                <p>Seine Funktionalität umfasst u.a.:</p>
+                <ul>
+                    <li>
+                        - layerzentrierte Darstellung von Karten mit direkter Vorschau
+                    </li>
+                    <li>
+                        - strukturiertes Angebot an Karten + Hinzufügen externer Karten
+                    </li>
+                    <li>
+                        - Suche nach Karten direkt auf eingebundenen Karten oder im Suchraum von InGrid (Kataloge)
+                    </li>
+                    <li>
+                        - Zeichnen und Messen auf der Karte
+                    </li>
+                    <li>
+                        - Vergleichsfunktionalität zwischen Layern (Slider blendet ein/aus)
+                    </li>
+                    <li>
+                        - Abspeichern und Teilen von Karten u.a. via QR Code
+                    </li>
+                    <li>
+                        - umfassende Druck Funktionalität
+                    </li>
+                </ul>
+            </content>
+        </section>
+        <section help-key="maps-2">
+            <header>Koordinatenanzeige</header>
+            <content>
+                <p>Die Koordinaten des Cursors im gewählten Koordinatensystem werden direkt unter der Hauptkarte angezeigt.</p>
+                <p>Mittels rechtem Mausklick auf einen Punkt in der Karte werden weitere Information in einem Zusatzfenster angezeigt.</p>
+            </content>
+        </section>
+        <section help-key="maps-3">
+            <header>Navigation und Orientierung</header>
+            <content>
+            </content>
+            <section help-key="maps-3-1">
+                <header>Ändern des Kartenmassstabs</header>
+                <content>
+                    <p>Mit jedem Klick auf das "+" oder "-" wird der angezeigte Massstab vergrössert oder verkleinert.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-2">
+                <header>Zoom auf Ausschnitt</header>
+                <content>
+                    <p>Zoom auf Rechteck / Ausschnitt wird über SHIFT Taste und gleichzeitiges Aufziehen eines Rechteckes mit gedrückter linker Maustaste aktiviert.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-3">
+                <header>Verschiebewerkzeug (Panning)</header>
+                <content>
+                    <p>Das Verschiebewerkzeug (Panning) kann wie folgt benutzt werden: klicken und gedrückt halten, um die Karte zu verschieben.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-4">
+                <header>Zentrieren auf Koordinaten</header>
+                <content>
+                    <p>Um die Karte auf einen Punkt zu zentrieren, müssen lediglich die Koordinaten des Punktes in das Suchfeld im oberen Teil der Karte eingegeben und Return gedrückt werden.</p>
+                    <p>Im Defaultkoordinatensystem z.B. ""6468101.33 963106.56"</p>
+                </content>
+            </section>
+            <section help-key="maps-3-5">
+                <header>Suchen eines Orts, PLZ oder Gewässers</header>
+                <content>
+                    <p>Das Suchfeld im oberen Teil der Karte ermöglicht den sofortigen Zugriff auf Städte- und Ortsnamen, Postleitzahlen,
+                       Geographische Bezeichnungen oder Gewässer oder Straßen.</p>
+                    <p>Einfach den Namen eingeben und aus der Auswahlliste auswählen, um die Karte entsprechend zu zentrieren.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-6">
+                <header>Zurück in die Startansicht</header>
+                <content>
+                    <p>Um wieder die initiale Kartenansicht herzustellen klicken Sie bitte auf die Schaltfläche mit dem Pfeilkreuz rechts oben in der Karte.
+                       Die Ansicht wechselt zu ganz Deutschland.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-7">
+                <header>Geolokalisierung</header>
+                <content>
+                    <p>Die Schaltfläche mit dem Punkt rechts oben in der Karte erlaubt es, Ihre Position mittels GPS zu bestimmen.
+                        Mit einem ersten Klick, wird diese rot angezeigt und Ihre Position erscheint als roter Punkt auf der Karte.</p>
+                    <p>Der Pfeil oberhalb des roten Punktes zeigt die Richtung an, in welche Sie schauen.
+                        Wenn Sie Ihr Gerät bewegen, dreht sich der Pfeil.</p>
+                    <p>Klicken Sie erneut auf die Schaltfläche "Geolokalisierung" wird die Karte entsprechend der Richtung des Gerätes orientiert.
+                        Nordrichtung wird durch das Symbol in der oberen rechten Bildschirmecke angezeigt.
+                        Um den "Geolokalisierung" Modus zu verlassen klicken Sie erneut auf die Schaltfläche.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="maps-4">
+            <header>Auswahl und Anzeigen von Karten</header>
+            <content>
+            </content>
+            <section help-key="maps-4-1">
+                <header>Suche nach Karten (Volltextsuche)</header>
+                <content>
+                    <p>Mit der "Suche" im oberen Teil der Karte können Sie Suchbegriffe eingeben (z.B. "Moor", "Strasse", "Erdbeben" usw.) und nach Beschreibungen aller eingebundenen elektronischen Geodaten suchen.
+                        Wenn Sie ein Resultat auswählen, wird es direkt im Kartenviewer dargestellt.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-2">
+                <header>Suche nach Karten (Verzeichnisstruktur)</header>
+                <content>
+                    <p>Unter "Rubrik wechseln" können Sie zwischen Gliederung nach "Themen" oder "Anbietern" der eingebundenen Geodaten wählen.
+                        Wenn Sie Karten auswählen, werden sie im Kartenviewer angezeigt und wandern in die Sektion "Dargestellte Karten".
+                        Im Auswahlbereich ("Themen" oder "Anbieter") wird die ausgewählte Karte dann rot hervorgehoben, um zu zeigen, dass die Karte bereits dargestellt wird.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-3">
+                <header>Ändern des Kartenhintergrundes</header>
+                <content>
+                    <p>Mit Klick auf "Hintergrund" rechts unten in der Karte können Sie zwischen verschiedenen Optionen wählen, z.B. gibt es die Hintergrundkarte in Farbe, Grau, OSM oder ganz ohne Hintergrund.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-4">
+                <header>Ändern der Transparenz einer Karte</header>
+                <content>
+                    <p>Klicken Sie auf das Zahnrad Symbol der Karte im Bereich "Dargestellte Karten".
+                        Die Transparenz der ausgewählten Karte kann durch das verschieben des horizontalen Reglers individuell angepasst werden.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-5">
+                <header>Ändern der Reihenfolge der Karten</header>
+                <content>
+                    <p>Klicken Sie auf das Zahnrad Symbol der Karte im Bereich "Dargestellte Karten".
+                        Die Position der ausgewählten Karte kann durch Klicken auf die Pfeile verändert werden.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-6">
+                <header>Entfernen einer Karte</header>
+                <content>
+                    <p>Eine Karte im Bereich "Dargestellte Karten" kann durck Klick auf die "Schließen" Schaltfläche ganz links aus der Liste und Kartenansicht entfernt werden.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-7">
+                <header>Anzeigen von Legende und Zusatzinformationen</header>
+                <content>
+                    <p>Klicken Sie auf das Informations-Symbol der Karte im Bereich "Dargestellte Karten".
+                        Es wird die Legende und weitere Informationen zur Karte in einem eigenen Fenster angezeigt.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-8">
+                <header>Detailinformationen von Kartenelement</header>
+                <content>
+                    <p>Sofern vorhanden, können bei Vektordatensätze (Punkt, Linien, Polygon) die Attribute der einzelnen Kartenelemente durch einen einfachen Mausklick abgerufen werden.
+                        Die Informationen werden in  einem eigenen Fenster "Objekt-Information" angezeigt.
+                        Bei mehreren übereinanderligenden Karten werden alle unter der Maus liegenden Kartenelemente im Fenster angezeigt.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-9">
+                <header>Datenbezug</header>
+                <content>
+                    <p>Die Detailinformationen zu Karten können direkt beim Anbieter bezogen werden, vorausgesetzt der Anbieter sieht dies vor.</p>
+                    <p>Klicken Sie auf das Informations-Symbol der Karte im Bereich "Dargestellte Karten". Der Link Quelle führt zur jeweiligen Bezugsstelle.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-10">
+                <header>Drucken</header>
+                <content>
+                    <p>Die Kartenansicht und die für deren Verständnis nötigen Elemente (Massstab etc.) kann als pdf-Datei ausgegeben werden.
+                        Diese Datei kann dann gespeichert oder ausgedruckt werden.</p>
+                    <p>Die Funktion "Drucken" lässt ein Dialogfenster erscheinen, wo die Parameter für die Erzeugung der pdf-Datei gewählt werden können.
+                        Diese Parameter sind der Kartenmasstab und A4/A3 Orientierung.
+                        Der Druckbereich der Karte wird hervorgehoben und kann mit der Maus verschoben werden.
+                        Die Legende kann über Aktivierung der Checkbox mit ausgegeben werden.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="maps-5">
+            <header>Verlinken und Einbinden</header>
+            <content>
+            </content>
+            <section help-key="maps-5-1">
+                <header>Kartendarstellung abspeichern/versenden/iFrame</header>
+                <content>
+                    <p>Über die Funktion "Link teilen" im Bereich "Teilen" kann die aktuelle Darstellung (Karten, Ort, Zoomstufe) als Link (URL) kopiert, abgespeichert und als e-mail oder andere Soziale Medien weiterversendet werden.</p>
+                    <p>Unter "Einbetten" wird der HTML code für die Integration in ihre Website als iFrame automatisch generiert.
+                        Die "Vorschau" zeigt Ihnen die Darstellung, hier kann auch die Grösse des Kartenfensters angepasst werden.
+                        Es genügt, den generierten Code in den Source Code ihrer Website zu kopieren.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="maps-6">
+            <header>Zeichnen und Messen</header>
+            <content>
+            </content>
+            <section help-key="maps-6-1">
+                <header>Hinzufügen eines Symbols</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Symbol" aus.
+                        Ein Mausklick auf die gewünschte Position in der Karte setzt das Symbol an den gewünschten Ort.</p>
+                    <p>Einmal platziert kann das Symbol geändert werden (Größe und Symbol-Typ) und eine Beschreibung im Fenster unten links hinzugefügt werden (HTML oder Text).
+                        Diese Beschreibung wird für die Nutzer der Zeichnung per Klick auf das Symbol sichtbar gemacht.</p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Gelöscht wird über die Option „Mehr“.
+                        Sie können mehrere Symbole löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-2">
+                <header>Hinzufügen von Text</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Text" aus.
+                        Ein Mausklick auf die gewünschte Position in der Karte setzt den Text an den gewünschten Ort.</p>
+                    <p>Einmal platziert, können Text und Farbe via Fenster unten links geändert werden.</p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Gelöscht wird über die Option „Mehr“.
+                        Sie können mehrere Texte löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-3">
+                <header>Hinzufügen einer Linie / Polygon</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Linie" aus.
+                        Um zu beginnen mit der linken Maustaste einmal klicken, um einen Richtungswechsel der Linie vorzunehmen wieder klicken.
+                        Mit einem Doppelklick kann die Linienzeichnung beendet werden.
+                        Liegt der Endpunkt auf dem Anfangspunkt so zeichnen Sie ein Polygon.</p>
+                    <p>Neue Punkte können zur Linie/Fläche hinzugefügt werden:
+                        Klicken Sie auf ein Segment, positionieren Sie den neuen Punkt mit Mausklick und verschieben Sie ihn.</p>
+                    <p>Das untere linke Fenster ermöglicht:
+                        <ul>
+                            <li>- Linie/Fläche: Farbe Linie/Polygon ändern und eine Beschreibung (Text oder HTML) hinzuzufügen.
+                                    Diese Beschreibung wird für die Nutzer der Zeichnung per Klick auf die Linie/Fläche sichtbar gemacht.</li>
+                            <li>- Distanz /Fläche : Angaben zu Distanz, Fläche, Azimut</li>
+                        </ul>
+                    </p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Durch Klick auf einen Punkt löschen Sie diesen.
+                        Löschen der gesamten Linie/Fläche wird über die Option „Mehr“ gehandhabt.
+                        Sie können mehrere Linien/Flächen löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-4">
+                <header>Messen</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Messen" aus.
+                        Ein erster Mausklick in die Karte definiert den Ausgangspunkt der Messung, weiter Klicks fügen Segmente hinzu oder definieren eine Fläche.
+                        Ein Doppelklick beendet die Messung oder klicken Sie auf den Ausgangspunkt, um die Fläche zu schließen.</p>
+                    <p>Die Messergebnisse Distanz /Fläche werden automatisch angezeigt.</p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Gelöscht wird über die Option „Mehr“.
+                        Sie können mehrere Elemente löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-5">
+                <header>Teilen einer Zeichnung /KML</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" können die Zeichnungen (Symbole, Texte, Linien) geteilt werden.</p>
+                    <p>Unter "Link um ihre Zeichnung zu teilen" wird eine URL zur Verfügung gestellt, die Sie mit weiteren Nutzern teilen können.
+                        Unter dieser URL können Sie später die Zeichnung auch weiter editieren.
+                        Sie sollten diesen Link abspeichern für den Fall, dass sie später die Zeichnung ändern/löschen wollen.</p>
+                    <p>Unter "Mehr ..." können Sie Ihre Zeichnung auch als KML Datensatz herunter laden.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="maps-7">
+            <header>Erweiterte Werkzeuge</header>
+            <content>
+            </content>
+            <section help-key="maps-7-1">
+                <header>WMS Import</header>
+                <content>
+                    <p>Es können nur WMS Dienste dargestellt werden, die das Projektionsystem unterstützen und dem WMS OGC Standard entsprechen.</p>
+                    <p>Die WMS Datensätze sind meistens erst ab einem bestimmtem Massstab sichtbar, deswegen muss in den entsprechenden Kartenausschnitt zentriert und ein entsprechender Massstab ausgewählt werden.</p>
+                    <p>Die Geschwindigkeit der Darstellung des WMS Datensatzes, ebenso wie dessen Verfügbarkeit ist von der Infrastruktur des zuständigen Betreibers abhängig.
+                        Bitte beachten sie auch Datennutzungsbedingungen der einzelnen WMS Anbieter.</p>
+                    <p>Die WMS Datensätze können über die Druckfunktionen als PDF gespeichert werden.</p>
+                    <p>Aktivierung des Dialogs duch Klick auf "WMS Import".</p>
+                </content>
+            </section>
+            <section help-key="maps-7-2">
+                <header>KML Import</header>
+                <content>
+                    <p>Es können online oder lokal (Ausnahme: bei der Nutzung von InternetExplorer) gespeicherte KML files dargestellt werden.
+                        Es können nur KML Dateien fehlerfrei dargestellt werden, die dem KML OGC Standard entsprechen.</p>
+                    <p>Die geladene KML Datei wird unter "Dargestellte Karten" angezeigt und kann dort normal bearbeitet werden.</p>
+                    <p>Aktivierung des Dialogs duch Klick auf "KML Import".</p>
+                </content>
+            </section>
+            <section help-key="maps-7-3">
+                <header>Vergleichen</header>
+                <content>
+                    <p>Es ist möglich eine Karte dynamisch ein-/auszublenden und so mit den restlichen Karten zu verglichen.
+                        Wählt man unter Werkzeuge „Vergleichen“ dann erscheint eine rote Linie mit einem Cursor in der Mitte der Karte, der beliebig verschoben werden kann.</p>
+                    <p>Die erste selektierte Karte (von oben) kann nun mit Hilfe der roten Linie ein-/ausgeblendet werden.
+                        Mit Festhalten der linken Maustaste kann die rote Linie beliebig nach rechts oder links verschoben werden und die Karte "weggewischt" werden.</p>
+                </content>
+            </section>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Kategorien</header>
+        <section help-key="search-category-1">
+            <header>Durchstöbern Sie das Portal nach Kategorien</header>
+            <content>
+                <p>Durch die Auswahl einer Kategorie, werden Ihnen alle vorhandenen Treffer der ausgewählten Kategorie im Portal angezeigt.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Aktuelles</header>
+        <section help-key="rss-news-1">
+            <header>Aktuelles</header>
+            <content>
+                <p>Unter <b>Aktuelles</b> werden aktuelle
+                    Meldungen von Informationsanbietern auf der Startseite gelistet. Die aktuellste Meldung steht
+                    dabei immer oben. Es wird jeweils nur der Titel und eine
+                    Kurzbeschreibung der Meldung angezeigt. Durch einen Klick
+                    auf die Meldung werden Sie zu der Originalmeldung weitergeleitet.</p>
+                <p>Ältere Meldungen, die nicht mehr auf der Startseite angezeigt
+                    werden, werden in dem Meldungsarchiv abgelegt. Sie können
+                    diese Meldungen einsehen, indem Sie auf den Link
+                    <b>Weitere Meldungen</b> klicken.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Themen</header>
+        <section help-key="search-topics-1">
+            <header>Themen</header>
+            <content>
+                <p>Wenn Sie einen schnellen Überblick über ein Thema
+                   gewinnen möchten, recherchieren Sie am besten im Bereich
+                   <b>Themen</b>. Hier finden Sie ausgewählte
+                   Informationen, die Ihnen einen schnellen Einstieg in
+                   21 Themen bieten.</p>
+                <p>Verschiedene Web-Seiten können beim Indexieren den einzelnen Themen zugewiesen werden.</p>
+                <p>Tipp: Wenn Sie auf der InGrid-Portal-Startseite auf ein Thema
+                   klicken (z.B. Wasser), wird Ihnen die entsprechende
+                   Ergebnisliste direkt angezeigt.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Service</header>
+        <section help-key="search-service-1">
+            <header>Pressemitteilungen, Publikationen und Veranstaltungen</header>
+            <content>
+                <p>Im Bereich <b>Service</b> können Sie nach Pressemitteilungen,
+                  Publikationen und Veranstaltungen recherchieren.</p>
+                <p>Verschiedene Web-Seiten können beim Indexieren diesem Bereich zugeordnet werden.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Anmeldung</header>
+        <section help-key="myingrid-1">
+            <header>Anmeldung</header>
+            <content>
+                <p>Über die Anmeldung erhalten Sie Zugang zum InGrid Editor innerhalb des Portals, sofern Sie als IGE Benutzer eingerichtet sind</p>
+                <p>Der Systemadministrator kann verschiedenste Aspekte des Portals administrieren, wie z.B. die Quelle der Nachrichten unter Aktuelles oder Portal Inhalte pflegen.</p>
+                <p>Haben Sie bereits einen Benutzernamen und ein Passwort, so
+                    geben Sie beides hier ein und klicken auf <b>Anmelden</b>.</p>
+            </content>
+            <section help-key="myingrid-2">
+                <header>Neuer Benutzer</header>
+                <content>
+                    <p>Haben Sie noch keinen Benutzernamen und Passwort, so
+                        klicken Sie auf <b>Neuer
+                        Benutzer</b>. Damit werden Sie zu dem Formular
+                        <b>Anmeldung</b> durchgeschaltet.</p>
+                    <p>Bitte füllen Sie das Formular aus. Die Angaben mit
+                        Sternchen * sind Pflichtangaben, die ausgefüllt werden
+                        müssen. Alle anderen Angaben sind freiwillig.</p>
+                </content>
+            </section>
+            <section help-key="myingrid-3">
+                <header>Passwort vergessen?</header>
+                <content>
+                    <p>Wenn Sie Ihr Passwort vergessen haben, klicken Sie auf
+                        den Link <b>Passwort vergessen?</b>. Sie
+                        werden dann zu dem entsprechenden Formular geführt, in
+                        dem Sie Ihre E-Mail-Adresse eingeben können. Nach dem
+                        Absenden bekommen Sie umgehend Ihren Benutzernamen und
+                        Ihr Passwort zugesandt.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="myingrid-4">
+            <header>Nutzerprofil bearbeiten</header>
+            <content>
+                <p>Dieser Link führt Sie zu dem Formular mit Ihren bisherigen
+                    Angaben. Haben sich Ihre Daten geändert, so können Sie diese
+                    Änderungen jetzt nachtragen.</p>
+                <p>Die Angaben mit Sternchen * sind Pflichtangaben, die
+                    ausgefüllt werden müssen. Alle anderen Angaben sind freiwillig.</p>
+            </content>
+        </section>
+        <section help-key="myingrid-5">
+            <header>Logout</header>
+            <content>
+                <p>Über das Logout verlassen Sie den personalisierten Bereich
+                    und kommen zurück auf die Startseite von InGrid-Portal mit seinen Standard-Voreinstellungen.</p>
+            </content>
+        </section>
+    </chapter>
+</help>

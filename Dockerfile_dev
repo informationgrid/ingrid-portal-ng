@@ -6,11 +6,11 @@ ENV GRAV_VERSION 1.7.46
 RUN apt-get update
 
 # Install dependencies
-RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip vim
+RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip vim libxslt1-dev libxml2
 
 # Configure and install PHP extensions
 RUN docker-php-ext-configure gd --with-jpeg
-RUN docker-php-ext-install zip gd
+RUN docker-php-ext-install zip gd xsl xml dom
 
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \

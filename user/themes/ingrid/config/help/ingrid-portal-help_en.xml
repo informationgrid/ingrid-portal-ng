@@ -1,0 +1,1501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/xsl" href="ingrid-portal-help.xsl" ?>
+
+<help>
+    <chapter>
+        <header>Help for InGrid-Portal</header>
+        <section help-key="index">
+            <header>Help for InGrid-Portal</header>
+            <content>
+                <ul>
+                    <li>
+                        <a href="?hkey=about-1">About InGrid-Portal</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-1">Search</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-topics-1">Topics</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-service-1">Service</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-measure-1">Data</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=maps-1">Maps</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=rss-news-1">News</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ingrid-inform-1">InGrid-Portal info</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=myingrid-1">myPortal</a>
+                    </li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>About InGrid-Portal</header>
+        <section help-key="about-1">
+            <header>Concept and tasking of InGrid-Portal</header>
+            <content>
+                <p>InGrid-Portal, Germany’s environment portal, provides a central
+				point to access several million intent pages as well as over 500.000
+				catalogue- and data base entries of public institutions and
+				organisations in the Federation, the Federal States and the
+				Local Authorities. With a mix of current news, environmental
+				readings (e.g. current ozone concentration in the air, water quality),
+				background information and historic environment events, InGrid-Portal is aimed
+				at interested lay persons as well as the specialist audience.
+				The information provided is being continually added to with the aim of
+				capturing all official providers of environment information over the long term.</p>
+                <p>The EU environment guideline of 2003 and the planned INSPIRE guideline played an important role in the conception of InGrid-Portal. These guidelines lay down new standards for the public dissemination of official environment information respectively the construction of the information technology infrastructures necessary for this. In future, signficantly more authorities and organisations than heretofore will be obliged to provide data relevant to the environment in a clear understandable and easily accessible form</p>
+                <p> InGrid and the software especially developed for the construction of the InGrid-Portal were especially conceived as tools to support the authorities in implementing the guidelines. </p>
+            </content>
+        </section>
+        <section help-key="about-2">
+            <header>The InGrid-Portal operators</header>
+            <content>
+                <p> InGrid-Portal was developed as a follow-up project of the environment data catalogue (UDK) and of the German Environmental
+				    Information Network (gein) within the framework of the Federal Republic of Germany Federal States administration
+					agreement (Verwaltungsvereinbarung UDK/GEIN). The Federal Ministry for the Environment, Nature Conservation and
+					Nuclear Safety (BMU) and the Environment Ministries of 16 German Federal States were signatories to the administration
+					agreement. InGrid-Portal is managed and maintained from a technical and contents point of view by the Coordination Center InGrid-Portal
+					in the Lower Saxony Ministry for Environment, Energy and Climate Protection in Hanover.</p>
+            </content>
+        </section>
+        <section help-key="about-3">
+            <header>Function overview</header>
+            <content>
+                <p>
+                    <b>Search:</b> Central function of the Portal is the InGrid-Portal-Search (<a href="?hkey=search-1">Search</a>),
+                    with the help of which web pages and data base entries can be searched via a customary full text
+					search (<a href="?hkey=search-1">Simple Search</a>), but can also be searched using a differentiated specialist
+					vocabulary  (<a href="?hkey=ext-search-1">Advanced Search</a>). </p>
+                <p>
+                    <b>Topics:</b> The InGrid-Portal topic pages provide a topic-based access to selected, particularly interesting information and
+					data (topic pages).</p>
+                <p>
+                    <b>Data</b>: InGrid-Portal keeps you informed around the clock about the current state of your environment (environmental monitoring data).</p>
+				<p>
+				    <b>Service:</b> Here you can find news and information about events and current publications in the environment field.</p>
+                <p>
+                    <b>Catalogues</b>: Here you can investigate in the environmental and geo data catalogues (e.g. Umweltdatenkataloge) from
+					Federation and Federal States.</p>
+				<p>
+                    <b>Maps</b>: A maps viewer offers the possibility of entering spatial references for the search via interactive maps or else to display digital maps from the search results list directly in InGrid-Portal.</p>
+            </content>
+        </section>
+        <section help-key="about-4">
+            <header>Information sources in InGrid-Portal</header>
+            <content>
+                <p>InGrid-Portal is a convenient and user-friendly portal to environment information in the internet. In contrast to most portals and search engines, InGrid-Portal gathers not only web pages, text documents and other internet formats but can also access databases and specialist information systems, even when these are not online. </p>
+            </content>
+        </section>
+        <section help-key="about-5">
+            <header>How to become information provider in InGrid-Portal</header>
+            <content>
+                <p>In InGrid-Portal all German public environmental information refering to the EU environment guideline of 2003 and all
+				   environmental catalogue entries refering to INSPIRE are welcome to be integrated. The following German information
+				   providers are welcome:
+                <ul>
+                    <li>Public environmental departements from Federation and Federal States</li>
+					<li>Other departments from Federation and Federal States</li>
+                    <li>Information binding companies refereing to the EU environment guideline of 2003</li>
+                    <li>Municipalities</li>
+					<li>Public research institutions</li>
+                </ul></p>
+				<p>If your organisation would likewise like to make environmentally relevant information available, please contact
+				   <a href="mailto:kst@portalu.de/">the Coordination Center InGrid-Portal</a>.</p>
+            </content>
+        </section>
+        <section help-key="about-6">
+            <header>InGrid – the software behind InGrid-Portal</header>
+            <content>
+                <p>The InGrid software package was developed to realise InGrid-Portal. InGrid is positioned on modular and flexible system architecture based on licence-free open source products. This way it becomes possible to adapt the technical structure of the environment information net to changing organisational specifications. Thus, if needed, regional environment portals, e.g. for individual German Federal States or Local Authorities can be created with minimal technical expense. Thanks to Open Source the follow up use of the software is license free and free of cost for partners of the VwV UDK/GEIN.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Search</header>
+        <section help-key="search-1">
+            <header>Simple search</header>
+            <content>
+                <p>When you use the search function you can enter one or more search terms. Those pages that contain all search terms will be found.</p>
+                <p>Depending on the setting, one of the following search areas will be searched:</p>
+                <ul>
+                    <li>Environmental Information: official information on the environment</li>
+					<li>Laws: information on legally relevant topics</li>
+                    <li>Research Projects: projects on environment research</li>
+                    <li>Addresses: responsibilities</li>
+                </ul>
+            </content>
+        </section>
+        <section help-key="search-2">
+            <header>Further search topics</header>
+            <content>
+                <p>In addition to the basic search you can further refine your search. Read the following topics on this::</p>
+                <ul>
+                    <li>
+                        <a href="?hkey=ext-search-1">Advanced search for environment information </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ext-search-address-1">Advanced search for addresses </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ext-search-research-1">Advanced search for research projects </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ext-search-law-1">Advanced search for laws </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-history-1">History </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-settings-1">Options </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-tipps-1">Tips </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-save-1">Save Query</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-expert-1">Expert Entry </a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-results-1">Search result list </a>
+                    </li>
+
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced Search for Environmental Information</header>
+        <section help-key="ext-search-1">
+            <header>Advanced search for environmental information</header>
+            <content>
+                <p>You can refine your search for environmental information via the <i>Advanced Search</i> option.</p>
+                <p>In principle, a search term is composed from individual search terms, which are connected by the operators (AND, OR, NOT).
+				You can read about how you can enter these operators manually in the chapter <a href="?hkey=search-expert-1">Expert Entry </a>.</p>
+                <p>The <i>Advanced Search</i> offers you the possibility of constructing your search term using a wizard.</p>
+            </content>
+        </section>
+        <section help-key="ext-search-2">
+            <header>Areas for specifying the search</header>
+            <content>
+                <p>An ordinary search includes all web pages, documents etc. which are captured by a search query. The following areas are available to you to expand or restrict the search area:</p>
+                <ul>
+                    <li>
+                        <a href="?hkey=ext-search-subject-1">Topic</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ext-search-spacial-1">Space</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ext-search-time-1">Time</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=ext-search-area-1">Search-Area</a>
+                    </li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced: Topic</header>
+        <section help-key="ext-search-subject-1">
+            <header>Search terms</header>
+            <content>
+                <p>In this area you can add well directed one or several search terms to your search term by linking it with one of the following options:</p>
+                <p>
+                    <b>all search terms (AND):</b> a piece of information will be found if it contains <b>all</b> the terms entered (standard).</p>
+                <p>
+                    <b>one of the search terms (OR):</b>  a piece of information will be found if it contains <b>at least one</b> of the terms entered.</p>
+                <p>
+                    <b>the exact search string:</b>a piece of information will be found if it contains <b>exactly </b>the word group entered (in the same sequence, with spaces etc.).</p>
+                <p>
+                    <b>none of the search terms:</b> a piece of information will only be found if it contains <b>none</b> of the terms entered.</p>
+            </content>
+        </section>
+        <section help-key="ext-search-subject-2">
+            <header>Thesaurus</header>
+            <content>
+                <p>In order to optimise your search query, you can add special environmental terms from the environmental thesaurus UMTHES.
+				   To do this you put any term into the entry field and click afterwords the button <b>Thesaurus look-up</b>.</p>
+                <p>You will then receive a series of <a href="#ext-search-subject-5">similar terms</a>,which you can add to the search term.
+				   You can further specify your search term by clicking on a similar term.</p>
+            </content>
+        </section>
+        <section help-key="ext-search-subject-3">
+            <header>The UMTHES</header>
+                <content>
+                    <p>In InGrid-Portal the environmental thesaurus UMTHES from the German Federal environmental agency Umweltbundesamt is used. A thesaurus
+					   consists, like a dictionary, of specialist terms on a certain subject area. In addition to the correct spelling, a thesaurus
+					   also contains information whether and how a term can be generalised (superordinate terms), specialised (subordinate terms) or
+					   expressed in another way (synonyms). Thesauri are used, for example, for indexing keywords and finding documents. </p>
+                    <p>The UMTHES contains more than 30,000 specialist terms, which are related to the topic <b>environment</b>. The single terms can
+					   have one or serveral superordinate, subordinate, silimilar terms and/or synonyms. A related term is an thesaurus term that
+					   is connected with the thesaurus keyword, but is neither a super- nor a subordinate term. A thesaurus term can possess any
+					   number of related terms. A synonym is an alternative expression, but one with the same meaning for the thesaurus keyword.
+					   Sometimes a synonym consists of two or several thesaurus terms. In this case, the synonym is not to be understood as an
+					   alternative expression for a single thesaurus term but as a synonym for the combined term.</p>
+                    <p>The UMTHES is made available via the <a href="http://www.semantic-network.de/" target="_blank">Semantic Network Service (SNS)</a>
+                        by the Federal Environment Agency (Umweltbundesamt).</p>
+                </content>
+
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced Search: Space</header>
+        <section help-key="ext-search-spacial-1">
+            <header>Space</header>
+            <content>
+                <p>Via the <a href="#ext-search-spacial-3">Gazetteer</a> [environment] of the Federal Environment Agency (Umweltbundesamt) in Dessau-Rosslau, InGrid-Portal analyses for every web page, which is made available by InGrid-Portal, the according spatial reference. This spatial reference is used in InGrid-Portal whithin the framework of the area search. Therefore, the area search is not, as in most other search engines, a full text search for spatial terms.</p>
+					<p>In the connected databases the area search takes place by browsing the area attributes entered there.</p>
+            </content>
+        </section>
+        <section help-key="ext-search-spacial-2">
+            <header>Restriction by Geographic Name</header>
+            <content>
+                <p>You can add geographical terms in a targeted way to your search term via conceptual area restriction. To do this you enter
+				   any term (e.g. Berlin) into the entry field and send a query to the  <a href="#ext-search-spacial-3">gazetteer</a>
+				   (Button <b>Look-up Geographic Names</b>). Thereby a query to the Geo-Thesaurus is started. You then receive a listing of
+				   <b>Geographical Names</b>, which you can add to the search term. </p>
+
+				<p>If you want further to specify your search term, click on a geographic name (e.g. <i> Berlin country</i>) in the result list. You then receive a list of <i>Spatial Relations</i>. These have a spatial relation to the original search result.</p>
+            </content>
+         </section>
+         <section help-key="ext-search-spacial-3">
+            <header>The Environmental Gazetteer Geo-Thesaurus-Umwelt</header>
+              <content>
+                 <p>The environmental gazetteer Geo-Thesaurus-Umwelt is a component of the <a href="http://www.semantic-network.de/" target="_blank">Semantic Network Service (SNS)</a>
+					of the Federal Environment Agency (Umweltbundesamt). SNS offers commen environmental terms in German and English. Currently the Geo-Thesaurus provides
+					about 50,000 geographical objects.</p>
+
+				 <p>Just like the place index of an atlas, the environment gazetteer depicts the names of communities, rivers, mountains, landscapes and other
+					geographical objects in Germany. In so doing, the Geo-Thesaurus-Umwelt gives the exact spelling as well as the geographical position (coordinates)
+					of a place.</p>
+
+              </content>
+          </section>
+
+        <section help-key="ext-search-spacial-6">
+            <header>Restricting by map</header>
+            <content>
+                <p>The search can be restricted spacially not only via terms but also by selecting a map section (bounding box). InGrid-Portal uses the Semantical
+				   Network Service to connect several spatial terms within the coordinates of a defined bounding box (e.g. cities or mountains). These terms can be
+				   considered within the search query. </p>
+            </content>
+            </section>
+            <section help-key="ext-search-spacial-7">
+                <header>Select bounding box</header>
+                <content>
+                    <p>When you click on the button <b>By Map </b> (Advanced Search: Space), you will see a map of Germany within the map window. The button
+					   <b>Select area</b> <img border="0" width="20" height="21" src="../decorations/layout/ingrid/images/help/image201.jpg" alt="*"/> is active by
+					   default. You define a bounding box by drawing a box while the left mouse button is pressed. The coordinates of the bounding box are shown on the
+					   right side beneath the map window. With the button <b>Add to Query</b> you can use these information for your search query.</p>
+                 </content>
+            </section>
+            <section help-key="ext-search-spacial-8">
+                <header>Select administrative unit</header>
+                <content>
+                    <p>
+                <ul>
+                    <li>Click on the button <b>Select an ID of an administrative unit </b>
+                        <img border="0" width="25" height="23" src="../decorations/layout/ingrid/images/help/image202.jpg" alt="*"/>
+                    </li>
+                    <li>Click on a point in the map
+                    </li>
+                    <li>Activate in the dialog box <b>Administrative unit</b> an administrative unit and click afterwards on <b>Add</b>.
+                    </li>
+                </ul></p>
+				<p>The unit ID is shown on the right side beneath the map window. With the button Add to Query you can use this information for your search query.</p>
+                </content>
+            </section>
+
+            <section help-key="ext-search-spacial-9">
+                <header>Spatial constraints</header>
+                <content>
+                    <p>If you have chosen a map section you can select in which form the area restriction is to be used for the search. Here the following options are possible:</p>
+                    <ol>
+                        <li>The spatial footprint of the result is contained in the search area</li>
+                        <li>The spatial footprint of the result intersects the search area</li>
+                        <li>The spatial footprint of the result contains the search area.</li>
+                    </ol>
+                    <p> <img border="0" width="455" height="252" src="../decorations/layout/ingrid/images/help/image208eng.jpg" alt="*"/></p>
+                </content>
+            </section>
+            <section help-key="ext-search-spacial-10">
+                <header>Buttons above map window</header>
+                <content>
+                   <p><img border="0" width="20" height="21" src="../decorations/layout/ingrid/images/help/image201.jpg" alt="*"/>
+                      <b>Select area</b>: Bounding box can be drawn by mouse.
+                    </p>
+                   <p><img border="0" width="25" height="23" src="../decorations/layout/ingrid/images/help/image202.jpg" alt="*"/>
+                      <b>Select ID of an administrative unit</b>:
+                      ID from the Semantic Network Service can be drawn by mouse.
+                    </p>
+                   <p><img border="0" width="21" height="20" src="../decorations/layout/ingrid/images/help/image203.jpg" alt="*"/>
+                      <b>Move map</b>: After activating the button, klick with the left mouse button in the map, hold the button and pull it on the map.
+                    </p>
+                    <p><img border="0" width="25" height="25" src="../decorations/layout/ingrid/images/help/image204.jpg" alt="*"/>
+                      <b>Print</b>: Generates a pdf file form the shown map.
+                    </p>
+                </content>
+            </section>
+            <section help-key="ext-search-spacial-11">
+                <header>Functions within map window</header>
+                <content>
+                    <p>Within the map window you will find the following functions:</p>
+					<p>
+                <ul>
+                    <li>Upper left corner: Bar to <b>navigate</b> within the map (zoome and move).
+                    </li>
+                    <li>Lower left corner: <b>Scale bar</b> and <b>coordinates</b>. The coordinates refers to the current position of the mouse within the shown map.
+                    </li>
+                    <li>Lower right corner: When you click the arrow, you will see an overview map.
+                    </li>
+                </ul></p>
+                </content>
+            </section>
+
+    </chapter>
+    <chapter>
+        <header>Advanced Search: Time</header>
+        <section help-key="ext-search-time-1">
+            <header>Time</header>
+            <content>
+                <p>InGrid-Portal is able to search for the time references of the connected systems. For this, on the one hand, the data are used that the  <a href="http://www.semantic-network.de/" target="_blank">Semantic Network Service (SNS)</a> of the Federal Environment Agency (Umweltbundesamt) has analysed from the web pages as time references. On the other hand, the time references in the databases are accessed. </p>
+            </content>
+        </section>
+        <section help-key="ext-search-time-2">
+            <header>Temporal Search</header>
+            <content>
+                <p>As a time reference you can either give a time frame (From/To) or a point in time (On the). In both cases the format for giving the date is DD.MM.YYYY, that is two figures for the <b>D</b>ay, two for the <b>M</b>onth and four for the <b>Y</b>ear. </p>
+            </content>
+        </section>
+        <section help-key="ext-search-time-3">
+            <header>Expansion of search interval</header>
+            <content>
+                <p>Basically all pieces of information are always found if their time reference is within the search intervals you have entered. By crossing boxes you can also find information to which the following apply: </p>
+                <ul>
+                    <li>The time reference of the results intersects the search interval entered..</li>
+                    <li>The time reference of the results encloses the search interval entered.</li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced Search: Search-Area</header>
+        <section help-key="ext-search-area-1">
+            <header>Content</header>
+            <content>
+                <p>Here you can ascertain whether you want to search through all environment information (also environmental topics and service) or whether you would only like to search in the environmental topics or only in the press pages (press releases, publications and events).</p>
+            </content>
+        </section>
+        <section help-key="ext-search-area-2">
+            <header>Data Sources</header>
+            <content>
+                <p>In addition to web servers, metadatasystems and specialist data systems are also connected to InGrid-Portal. You can choose whether you want to search in all these systems (standard), or whether you would like to restrict your search in a targeted manner to one or several kinds of data sources.</p>
+                <p>If you limit your search to metadata then you also have the possibility of selecting the classes of metadata that you would like to search. The following classes are available to you:</p>
+                <ul>
+
+
+                    <li>Organisational Unit / Task</li>
+                    <li>Geo-Information / Map</li>
+					<li>Document / Report / Literature</li>
+					<li>Geo-Service</li>
+                    <li>Enterprise / Project / Program</li>
+					<li>Data Pooling / Data Base</li>
+                    <li>Service / Application / Information System Datensammlung/Datenbank</li>
+
+                </ul>
+            </content>
+        </section>
+        <section help-key="ext-search-area-3">
+            <header>Federation/Federal States</header>
+            <content>
+                <p>The data provided in InGrid-Portal come from authorities and those organisations closely associated with authorities in the Federal Republic of Germany and the Federal States. You can limit the information provided for your search to the Federal Republic or individual Federal States. It is also possible to choose several items.</p>
+                <p>The Federal Republic and also most of the Federal States have several data providers. These are displayed if you click on the plus sign <img border="0" width="9" height="9" src="../decorations/layout/ingrid/images/help/image018.jpg" alt="*"/> Instead of the Federal Republic or a Federal State, individual providers can also be selected. In this case too, a multiple selection is possible.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Search History</header>
+        <section help-key="search-history-1">
+            <header>Search History</header>
+            <content>
+                <p>InGrid-Portal stores a history of your search queries. As well as this history, which is automatically carried for one session, you can also as a logged
+				   in user (see <a href="?hkey=myingrid-1">myPortal</a>) save search queries permanently.</p>
+                <p>You can call up both forms of stored search queries again via the <i>Search History</i> function.</p>
+            </content>
+        </section>
+        <section help-key="search-history-2">
+            <header>Your last search queries submitted</header>
+            <content>
+                <p>In this area your last search queries submitted are listed. By clicking on a search query this is then loaded in the search window and the search is carried out.</p>
+            </content>
+        </section>
+        <section help-key="search-history-3">
+            <header>Your saved search queries</header>
+            <content>
+                <p>In this area your permanently saved search queries will be listed. By clicking on a search query this is then loaded into the search window and the search is carried out. Saved search queries can be removed by putting a cross and then using the <i>Delete</i> button.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Options</header>
+        <section help-key="search-settings-1">
+            <header>Options</header>
+            <content>
+                <p>You can control the display of search results under the <i>Options</i> heading. </p>
+            </content>
+        </section>
+        <section help-key="search-settings-2">
+            <header>Search Results Sorting and Grouping </header>
+            <content>
+                <p>You can have your search results displayed either according to ranking (relevance of the page found to your search term) or according to newness (the newest pages will be at the top).</p>
+                <p><i>Grouping</i> means that the search results are displayed compiled according to <i>Federal Republic/Federal States</i>, <i>Information Providers</i> or <i>Domains</i>.</p>
+            </content>
+        </section>
+        <section help-key="search-settings-3">
+            <header>Include similar terms in search</header>
+            <content>
+                <p>InGrid-Portal not only carries out the usual indexing found in search engines but also has the page contents analysed by the
+				   <a href="http://www.semantic-network.de/" target="_blank">Semantic Network Service (SNS)</a> of the Federal Environment Agency (Umweltbundesamt). As a
+				   result of this analysis specialist terms from the <a href="?hkey=ext-search-subject-4">Environment Thesaurus</a> are assigned to the web pages.</p>
+                <p>If you chose to include the setting <i>Include similar terms in search</i> by putting a cross, the associated similar terms will be taken into account. (Note: In most cases the number of hits will be increased by selecting this setting.)</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Tips</header>
+        <section help-key="search-tipps-1">
+            <header>You would also like to include similar terms in the search?</header>
+            <content>
+                <p>You have three possibilities for including similar terms in the search:</p>
+                <ul>
+                    <li>Automatically: In the settings for the search options form (<a href="?hkey=search-settings-1">Search/Options</a>)
+                        cross the option <i>Include similar terms in search</i>. You can also use these setting on a lasting basis (see <a href="?hkey=myingrid-1">myPortal</a>).</li>
+                    <li>Before conducting a search expand your search term with similar terms by using the
+                            <i><a href="?hkey=ext-search-subject-2">Topic/Thesaurus</a></i>
+                        functionality of the <i><a href="?hkey=ext-search-1">Advanced Search</a></i>.</li>
+                    <li>After a search you will be offered <i><a href="?hkey=ext-search-subject-5">Similar Terms</a></i> above the search results list, by means of which you can expand your search term. In order to see the similar terms click on <i>Similar Terms: Search for.... </i> or on the plus sign. </li>
+                </ul>
+            </content>
+        </section>
+        <section help-key="search-tipps-2">
+            <header>You would like to limit your search to information about the place you live in?</header>
+            <content>
+                <p>For this use  <i><a href="?hkey=ext-search-spacial-1">Space</a></i>.You can either call up a search rectangle over the search area desired (<i><a href="?hkey=ext-search-spacial-6">By Map</a></i>)
+                    or enter your town or district as a term (<i><a href="?hkey=ext-search-spacial-2">By Geographic Name</a></i>).</p>
+            </content>
+        </section>
+        <section help-key="search-tipps-3">
+            <header>You are only interested in information about your Federal State?</header>
+            <content>
+                <p>You can select your Federal State via the  <i><a href="?hkey=ext-search-area-1">Search-Area</a></i> of the search. Be aware that information at national level could also be of interest to you. You can set national information in the search area as well as a Federal State. </p>
+                <p>You can also have these settings on a lasting basis (see  <a href="?hkey=myingrid-1">myPortal</a>).</p>
+            </content>
+        </section>
+        <section help-key="search-tipps-4">
+            <header>You have a particular search query that you can’t formulate via the advanced search?</header>
+            <content>
+                <p>InGrid-Portal allows complex search queries to be carried out that go beyond the possibilities of the advanced search (e.g. grouping via bracketing or similarity search etc.). In InGrid-Portal’s help read the section <i><a href="?hkey=search-expert-1">Expert Entry</a></i>
+                    and put your search term into the search field.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced Search for Addresses</header>
+        <section help-key="ext-search-address-1">
+            <header>Topic</header>
+            <section help-key="ext-search-address-2">
+                <header>Search Terms</header>
+                <content>
+                    <p>In this area you can add one or more search terms to your search in a targeted manner by linking them with one of the following options:</p>
+                    <p>
+                     <b>all search terms (AND):</b> a piece of information will be found if it contains <b>all</b> the terms entered (standard).</p>
+                <p>
+                    <b>one of the search terms (OR):</b> a piece of information will be found if it contains <b>at least one</b> of the terms entered.</p>
+                <p>
+                    <b>the exact search string:</b>a piece of information will be found if it contains <b>exactly </b>the word group entered (in the same sequence, with spaces etc.).</p>
+                <p>
+                    <b>none of the search terms:</b> a piece of information will only be found if it contains <b>none</b> of the terms entered.</p>
+                </content>
+            </section>
+            <section help-key="ext-search-address-3">
+                <header>Search Mode</header>
+                <content>
+                    <p>In this area you can determine whether your search terms will only be found if they agree with a whole word in the address being searched or whether it is sufficient if only a part of the entire word (substring) in the address agrees with the respective search term.</p>
+                    <p>You can further determine whether the search is to be carried out in <i>All Text-Fields</i> of the address (e.g. therefore in the <i>Street</i> field too) or only in the fields <i>Institutions</i>, <i>Persons</i>, <i>Description</i> and <i>Keywords</i>.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="ext-search-address-4">
+            <header>Space</header>
+            <content>
+                <p>In this area you can restrict the search for an address to a <i>Street</i>, <i>Postal Code</i> or a <i>City</i>. </p>
+            </content>
+        </section>
+		<section help-key="ext-search-address-5">
+            <header>Search Area</header>
+            <content>
+                <p>In this area you can select a region (Federation/Federal States) or a specific information provider. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced Search for Research Projects</header>
+        <section help-key="ext-search-research-1">
+            <header>Search Terms</header>
+            <content>
+                <p>In this area you can add one or more terms to your search in a targeted manner by linking them with one of the following options:</p>
+                <p>
+                    <b>all search terms (AND):</b> a piece of information will be found if it contains <b>all</b> the terms entered (standard).</p>
+                <p>
+                    <b>one of the search terms (OR):</b> a piece of information will be found if it contains <b>at least one</b> of the terms entered.</p>
+                <p>
+                    <b>the exact search string:</b>a piece of information will be found if it contains <b>exactly </b>the word group entered (in the same sequence, with spaces etc.).</p>
+                <p>
+                    <b>none of the search terms:</b> a piece of information will only be found if it contains <b>none</b> of the terms entered.</p>
+            </content>
+        </section>
+        <section help-key="ext-search-research-2">
+            <header>Attributs</header>
+            <content>
+                <p>In this area you can restrict the search for research projects, to the <i>Project Name</i>, the <i>Institutions </i>taking part, the <i>Project Manager</i>, other <i>Participants</i>, the <i>Project Sponsor</i> and the <i>Running Time</i>. </p>
+                <p>Please note that, when using these filter possibilities, the search will be exclusively restricted to databases that support a search in the respective attribute. You are therefore restricting the search doing this, considerably so, as the case may be. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Advanced search for Laws</header>
+        <section help-key="ext-search-law-1">
+            <header>Search terms</header>
+            <content>
+                <p>In this area you can add one or more terms to your search in a targeted manner by linking them with one of the following options:</p>
+                <p>
+                        <b>all search terms (AND):</b> a piece of information will be found if it contains <b>all</b> the terms entered (standard).</p>
+                <p>
+                    <b>one of the search terms (OR):</b> a piece of information will be found if it contains <b>at least one</b> of the terms entered.</p>
+                <p>
+                    <b>the exact search string:</b>a piece of information will be found if it contains <b>exactly </b>the word group entered (in the same sequence, with spaces etc.).</p>
+                <p>
+                    <b>none of the search terms:</b> a piece of information will only be found if it contains <b>none</b> of the terms entered.</p>
+            </content>
+        </section>
+        <section help-key="ext-search-law-2">
+            <header>Thesaurus</header>
+            <content>
+                  <p>You can add specialist terms to your search via the specialist dictionary. For this you enter any term into the entry field and send a query to the <a href="#ext-search-subject-3">thesaurus</a> ab.</p>
+                <p>You then receive a series of  <a href="#ext-search-subject-5">similar terms</a>, which you can add to the search term or by linking them you can further specify your search term.</p>
+            </content>
+        </section>
+      <section help-key="ext-search-law-3">
+            <header>Search-Area – Federation/Federal States</header>
+            <content>
+                  <p>The data on offer in InGrid-Portal stems from the authorities and closely associated organisations in the Federation and the Federal States of the Federal Republic of Germany. You can limit the range to the Federation or individual Federal States. Selecting several options is possible.</p>
+                <p>The Federation as well as most Federal States have several data providers. These are displayed if you click on the plus sign. Instead of the Federal Republic or a Land it is also possible to select individual providers. In this case it is also possible to select several providers.</p>
+            </content>
+        </section>
+
+
+    </chapter>
+    <chapter>
+
+
+        <header>Save Query</header>
+        <section help-key="search-save-1">
+            <header>Save Query</header>
+            <content>
+                <p>After carrying out a search query the users logged in have the possibility of saving the search term used on a long-term basis (see  <a href="?hkey=myingrid-1">myPortal</a>) die Möglichkeit, den verwendeten Suchausdruck
+                    dauerhaft zu speichern. This takes place via the <i>Save Query </i>function.</p>
+                <p>Note: The search queries last used are also accessible without saving for the session in progress via <i><a href="?hkey=search-history-1">Search History</a></i>.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Expert Entry</header>
+        <section help-key="search-expert-1">
+            <header>Expert Entry</header>
+            <content>
+                <p>All settings of the advanced search and some further additional special settings can also be entered directly into the search via the search string. As the syntax is very extensive because of the great number of search methods, it is meant for experts in particular.</p>
+            </content>
+        </section>
+        <section help-key="search-expert-2">
+            <header>Boolean operators</header>
+            <content>
+                <p>The individual search terms can be linked via Boolean operators. The following operators are available:</p>
+                <p><b>AND</b>: All the words have to be in the document. It is the standard if no operator is given. (Note: instead of AND the symbol &amp;&amp; can be used)<br></br> For example: ‚water fish’ equates to ‚water AND fish’ or ‚water &amp;&amp; fish’ </p>
+                <p>
+                    <b>OR</b>: One of the words has to be in the document. (Note: instead of OR the symbol || can be used) <br></br> Example:
+                    ‚water OR fish’ equates to
+                    ‚water || fish’</p>
+                <p>
+                    <b>NOT</b>: The word after NOT must not be in the document. (Hint: instead of NOT the symbol ! or the symbol l - can be used)<br></br> Example: ‚water NOT
+                    fish’ (the search is for water but not fish)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-3">
+            <header>Grouping (bracketing)</header>
+            <content>
+                <p>The individual search terms linked by Boolean operators can be optionally grouped by bracketing (round brackets).</p>
+                <p>Example: ‚fish NOT (trout OR perch)’
+                    (all documents are found that contain the term
+                    ‚fish’ but not the terms  ‚trout’ and ‚perch’)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-4">
+            <header>Search for word groups</header>
+            <content>
+                <p>If a string is placed in quotation marks („)
+                    then the occurrence of the whole string is sought and not the occurrence of the individual terms..</p>
+                <p>Example: „The fish swims in the water“
+                    (Only texts are found that contain exactly this string.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-5">
+            <header>Wild cards</header>
+            <content>
+                <p>Within a search term it is possible to enter wild cards for one (?) or more (*) optional signs. All terms are then found that match the rest of the search term whereby one or more signs can appear for the wild card. </p>
+                <p>Example: ‚te?t’ (Not only documents with the term‚text’ but also documents with the term  ‚test’ will be found)</p>
+                <p>Example: ‚environment*catalogue’ ((not only documents with the term
+                    ‚environment data catalogue’ will be found but also documents with the term   ‚environment object catalogue’ )</p>
+            </content>
+        </section>
+        <section help-key="search-expert-6">
+            <header>Search for areas of symbols</header>
+            <content>
+                <p>It is possible to search for areas of symbols. The areas are collected in square  [] or curved  {} brackets and the bottom and top pieces of information are linked with the operator TO. Square brackets[]
+                    signify that the lower and upper value of the area are included in the search. Curved brackets  {}
+                    signify that the lower and the upper value of the area are not included in the search.</p>
+                <p>Example: ‚[Aller TO Elbe]’ (Documents are sought that contain words that begin with all in the alphabet and end at Elbe. The words
+					‚Aller’ and ‚Elbe’ are included in the search area by this.</p>
+                <p>Example: ‚{Aller TO Elbe}’ (Documents are sought that contain words starting alphabetically with Aller and ending at Elbe. The words
+					‚Aller’ and ‚Elbe’ are not contained in the search area in this.)</p>
+				<p>The search area can also be given inside a search word. </p>
+                <p>Example: ‚te[i TO x]t’ (Documents are searched for that contain, for example, the words ‚teilt’, ‚test’ or ‚text’.)</p>
+				<p> As an alternative to the operator TO a hyphen - can also be used </p>
+                <p>Example: ‚te[i - x]t’ (documents are searched for that, for example, contain the words  ‚tent’, ‚test’ or ‚text’.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-7">
+            <header>Fuzzy search</header>
+            <content>
+                <p>Documents are also found via the fuzzy search in which terms with similar spelling are found. The fuzzy search is instigated by attaching a tilde (~) to the search term.</p>
+                <p>Example: ‚Corn~’ (documents will be found containing the term‚horn’ for example)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-8">
+            <header>Special symbols</header>
+            <content>
+                <p>The following symbols have a special significance in the search string (e.g. in the form of operators):</p>
+                <p>+ - &amp;&amp; || ! ( ) { } [ ] ^ &quot; ~ * ? : \</p>
+                <p>SShould you however use them as simple symbols within a search term then they must be marked as such by the symbol
+                    \ (Backslash).</p>
+                <p>Example: ‚\(1\+1\)\:2’ (The expression ‚(1+1):2’ is sought)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-9a">
+            <header>Search for special document types</header>
+            <content>
+                <p> In InGrid-Portal different document types can be searched for. For this the syntax ‚fileformat:value’ is used.</p>
+                <p>Example: ‚fileformat:pdf’ (only PDF documents are searched for.)</p>
+                <p>The following values are available for the 'fileformat' field in InGrid-Portal:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Value</b>
+                        </td>
+                        <td>
+                            <b>Description </b>
+                        </td>
+					</tr>
+                    <tr>
+					<td>pdf </td>
+					<td> Only PDF documents are searched for</td>
+					</tr>
+                    <tr>
+					<td>rtf  </td>
+					<td> Only RTF documents are searched for</td>
+					</tr>
+                    <tr>
+					<td>msword </td>
+					<td> Only MS Word documents are searched for</td>
+					</tr>
+                    <tr>
+					<td>msexcel  </td>
+					<td>Only MS Excel documents are searched for</td>
+					</tr>
+                    <tr>
+					<td>mspowerpoint </td>
+					<td> Only MS PowerPoint documents are searched for</td>
+					</tr>
+                </table>
+            </content>
+        </section>
+        <section help-key="search-expert-9">
+            <header>Search for special datatypes</header>
+            <content>
+                <p>The InGrid-Portal full text index is organized in different fields. All fields used in InGrid-Portal can be searched individually in targeted fashion. For this the syntax
+                    ‚field name:value’ is used.</p>
+				<p>In searching for a data type the field name is ‚datatype’.</p>
+                <p>Example: ‚datatype:law’ (documents are searched for that are arranged under legislation.)</p>
+                <p>The following values are available for the <i>datatype</i> field in InGrid-Portal:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Value</b>
+                        </td>
+                        <td>
+                            <b>Description</b>
+                        </td>
+					</tr>
+
+					 <tr>
+					<td>www</td>
+					<td> Web pages are being sought</td>
+					</tr>
+
+					<tr>
+					<td>default</td>
+					<td> Documents from the <i>environment information </i> area are searched for</td>
+					</tr>
+
+					<tr>
+					<td>research</td>
+					<td> Documents from the <i>research projects </i>area are searched for</td>
+					</tr>
+
+                    <tr>
+					<td>address</td>
+					<td> Documents from the <i>addresses</i> area are searched for</td>
+					</tr>
+
+                    <tr>
+					<td>topics</td>
+					<td> Documents from the <i>environment topics</i> area are searched for</td>
+					</tr>
+                     <tr>
+					<td>service</td>
+					<td> Documents from the <i>service</i> area are searched for</td>
+					</tr>
+                    <tr>
+					<td>measure</td>
+					<td> Documents from the <i>measurement values</i> (data) are searched for</td>
+                    </tr>
+                    <tr>
+					<td>metadata</td>
+					<td> Metadata are searched for</td>
+                    </tr>
+                    <tr>
+					<td>fis</td>
+					<td>Information from the specialist databases is being sought</td>
+                    </tr>
+                </table>
+            </content>
+        </section>
+        <section help-key="search-expert-10">
+            <header>Search for a particular environmental topic</header>
+            <content>
+                <p>The search can be limited to pages associated with one or more environmental topics. For this the syntax ‚topic:value’ is used.</p>
+                <p>Example: ‚datatype:topics topic:energy’ (documents are searched for that are arranged under the environmental topic <i>Energy</i> eingeordnet wurden.)</p>
+				<p> The following values are possible:</p>
+				<p> Abfall, Altlasten, Bauen, Boden, Chemikalien, Energie, Forstwirtschaft, Gentechnik,
+					Geologie, Gesundheit, LaermErschuetterung, Landwirtschaft, LuftKlima,
+					NachhaltigeEntwicklung, NaturLandschaft, Strahlung, Tierschutz, Umweltinformation,
+					Umweltwirtschaft, Verkehr, Wasser </p>
+			</content>
+        </section>
+        <section help-key="search-expert-11">
+            <header>Search for particular measurement pages (data)</header>
+            <content>
+                <p>The search can be restricted to the pages, which are associated with measurements in particular environmental areas. For this the syntax‚topic:value’ is used.</p>
+                <p>Example: ‚datatype:measure topic:air’ (Documents are searched for that have as contents measurements on the topic <i>Air</i>.)</p>
+				<p> The following values are possible:</p>
+				<p> radiation, air, water, misc </p>
+			</content>
+        </section>
+        <section help-key="search-expert-12">
+            <header>Search for a particular service</header>
+            <content>
+                <p>The search can be restricted to the pages, which are associated with a service. For this the syntax‚topic:value’ is used.</p>
+                <p>Example: ‚datatype:service topic:press’ (Documents containing press releases are searched for.)</p>
+				<p> The following values are possible:</p>
+				<p> press, publication, event </p>
+			</content>
+        </section>
+        <section help-key="search-expert-13">
+            <header>Search for a particular metadata class (data)</header>
+            <content>
+				<p>In searching for a particular metadata class the syntax  ‚topic:Wert’ is searched for.</p>
+                <p>Example: ‚datatype:metadata metaclass:map’ (metadata of the <i>Geo-Information/Map</i> class are being searched for.)</p>
+                <p>The following values are available for the <i>metaclass</i> field in InGrid-Portal:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Value</b>
+                        </td>
+                        <td>
+                            <b>Description</b>
+                        </td>
+					</tr>
+                    <tr>
+					<td>job </td>
+					<td> Metadata of the class <i>Organisational Unit / Task</i> are being looked for</td>
+					</tr>
+                    <tr>
+					<td>map  </td>
+					<td> Metadata of the class <i>Geo-Information / Map</i> are being looked for</td>
+					</tr>
+                    <tr>
+					<td>document </td>
+					<td> Metadata of the class <i>Document / Report / Literature</i> are being looked for</td>
+					</tr>
+                    <tr>
+					<td>geoservice </td>
+					<td> Metadata of the class <i>Geo-Service </i>are being looked for</td>
+					</tr>
+                    <tr>
+					<td>project </td>
+					<td> Metadata of the class <i>Enterprise / Project / Program</i> are being looked for</td>
+					</tr>
+                    <tr>
+					<td>database  </td>
+					<td> Metadata of the class <i>Data Pooling / Data Base</i> are being looked for</td>
+					</tr>
+					<tr>
+					<td>service  </td>
+					<td> Metadata of the class 'Service / Application / Information System' are being looked for</td>
+					</tr>
+                </table>
+            </content>
+        </section>
+        <section help-key="search-expert-14">
+            <header>Stating the spatial reference</header>
+            <content>
+				<p> The search can be restricted to documents that are associated with a certain spatial reference. The spatial reference can be stated via coordinates or via the area key of the administrative unit.</p>
+                <p>Example: ‚areaid: areaid:11000000’ (The search will be restricted to Berlin as administrative unit.)</p>
+                <p>Example: ‚x1:7.52 y1:50.18 x2:10.17 y2:52.73’ (The search is restricted to a selected rectangle.)</p>
+                <p>The following fields are available in InGrid-Portal for the restriction of the spatial reference:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Field</b>
+                        </td>
+                        <td>
+                            <b>Description of the Value </b>
+                        </td>
+					</tr>
+                    <tr>
+					<td>areaid </td>
+					<td> Key of the administrative unit (AGS)</td>
+					</tr>
+                    <tr>
+					<td>x1  </td>
+					<td> left</td>
+					</tr>
+                    <tr>
+					<td>x2 </td>
+					<td> right</td>
+					</tr>
+                    <tr>
+					<td>y1 </td>
+					<td> up</td>
+					</tr>
+                    <tr>
+					<td>y2 </td>
+					<td> down</td>
+					</tr>
+               </table>
+			   <p> The coordinates have to be entered as degrees (WGS 84). </p>
+            </content>
+        </section>
+        <section help-key="search-expert-15">
+            <header>Stating the temporal reference</header>
+            <content>
+				<p> The search can be restricted to documents that are associated with a particular temporal reference.  </p>
+                <p>Example: ‚t1:2006-01-01 t2:2008-12-31’ (The search is restricted to a selected time interval.)</p>
+                <p>The following fields are available for the restriction of the temporal references in InGrid-Portal:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Field</b>
+                        </td>
+                        <td>
+                            <b>Description of the Value </b>
+                        </td>
+					</tr>
+                    <tr>
+					<td>t0 </td>
+					<td>The document was associated with the time point stated</td>
+					</tr>
+                    <tr>
+					<td>t1  </td>
+					<td> The document was associated with a time span that begins with the value stated</td>
+					</tr>
+                    <tr>
+					<td>t2 </td>
+					<td> The document was associated with a time span that ends with the value stated</td>
+					</tr>
+               </table>
+			   <p> The times stated must always be entered in the form YYYY-MM-DD (Y=year, M=month, D=day).  </p>
+            </content>
+        </section>
+<!--
+-->
+    </chapter>
+    <chapter>
+        <header>Search result list</header>
+        <section help-key="search-results-1">
+            <header>Search result list</header>
+            <content>
+                <p>After submitting a search query you will receive the result list. The result list is structured in three areas. The main result list can be found in the page centre. On the left hand site you will find results ordered by categories and on the right hand site results from broader data sources. </p>
+            </content>
+        </section>
+        <section help-key="search-results-2">
+            <header>Categories</header>
+            <content>
+                <p>Within the left column the results are sorted by categories. In brackets you will find the number of results within the current category. With a click on one of the categories the current results will be shown in the main result list. Different categories can be combined by activating corresponding checkboxes. Click on the button <b>More</b> to see further categories. Click on the button <b>Delete all restrictions</b> to switch of all category filters</p>
+
+				<p><b>Datatypes</b> </p>
+                <p>Websites: environmental web pages</p>
+                <p>Metadata: data sets from all connected environmental data catalogues (Umweltdatenkataloge)  </p>
+                <p>Map: metadata from the class geoinformation/map from all connected environmental data catalogues and map services which are provided within the <a href="?hkey=maps-1">InGrid-Portal-map viewer</a>.</p>
+                <p>Law: web pages refering to environmental law</p>
+                <p>Research Projects: information refering to environmental research projects </p>
+                <p>Topics: web pages from the InGrid-Portal rubric <a href="?hkey=search-topics-1">topics</a>.</p>
+                <p>Measure: web pages from the InGrid-Portal rubric <a href="?hkey=search-measure-1">data</a></p>
+                <p>Service: web pages from the InGrid-Portal rubric <a href="?hkey=search-service-1">service</a></p>
+
+				<p><b>Timeliness</b> </p>
+
+                <p>When you chose the dataype <b>metadata</b>, you can see the timeliness (e.g. older than 5 years or last month). The timeliness referes to the latest date of changes within the current data set. </p>
+
+                <p><b>Provider</b> </p>
+
+                <p>In the category <b>provider</b> you can restrict your search results to one or more information provider. The provider are sorted by Federation and Federal states.</p>
+
+                <p><b>Spatial reference</b> </p>
+
+                <p>In the category <b>spatial reference</b> you can restrict your search results to an area of interest by dragging a bounding box on the map or by geographic name.</p>
+                <p><b>Map search</b></p>
+
+				<p>Do the following, to limit your search query to a certain <b>geographic area</b>:</p>
+                 <ul>
+						<li>
+                        Click the button <b>Map search</b>, a new window will open.
+						</li>
+						<li>
+                        Click on the <b>Select area</b> icon <img border="0" width="20" height="21" src="../decorations/layout/ingrid/images/help/image201.jpg" alt="*"/> in the toolbar.
+						</li>
+						<li>
+                        Choose your area of interest by dragging a rectangle (bounding box) on the map.
+						</li>
+						<li>
+                        Finish your selection by clicking the <b>Submit selection</b> button.
+						</li>
+						<li>The result list will be limited to your selection.</li>
+				</ul>
+
+				<p><b>Geothesaurus search</b></p>
+				<p>You can limit your search results also to specific locations:</p>
+                 <ul>
+						<li>
+                        Click the button <b>Geothesaurus search</b>, a new window will open.
+						</li>
+						<li>
+                        Enter a location (e.g. city name) and click the <b>Search</b> button
+						</li>
+						<li>
+                        Choose the location you are interested in and click the <b>Submit selection</b> button
+						</li>
+						<li>The result list will be limited to your selection</li>
+				</ul>
+
+
+            </content>
+
+        </section>
+        <section help-key="search-results-3">
+            <header>Further data sources</header>
+            <content>
+                <p>As well as the meta- and specialist information systems incorporated in the main result list, further environment information systems are also interrogated via InGrid-Portal. The interfaces of these systems do not allow any incorporation of the search results into the weighted main results list. The search results are therefore shown in a separate list sorted according to data sources. In doing so the data sources are listed in the order of successful responses logged. </p>
+                <p>You will be guided further via the links provided either directly to the individual search results or to a search result list in the source system according to the data source. </p>
+            </content>
+        </section>
+        <section help-key="search-results-4">
+            <header>Similar terms</header>
+            <content>
+                <p>InGrid-Portal offers you the possibility of expanding your search query by similar terms. For this, the search string entered by you will be analysed by the <a href="http://www.semantic-network.de/" target="_blank">Semantic Network Service (SNS)</a> of the Federal Environment Agency (Umweltbundesamt) in Dessau-Rosslau and made available to them.</p>
+                <p>If you click on the plus sign  <img border="0" width="9" height="9" src="../decorations/layout/ingrid/images/help/image018.jpg"/> you will be offered the similar terms for each search entered. You can in turn get these displayed by means of the symbol
+                        <img border="0" width="9" height="9" src="../decorations/layout/ingrid/images/help/image018.jpg"/> By putting a cross next to the individual terms and clicking on the <i>Append to Query</i> button, the similar terms will be added to the associated search term each time such that a document will be found if either the search term or the similar term are contained (OR linking).</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Data Catalogues</header>
+        <section help-key="search-catalog-1">
+            <header>Hierarchy-Tree</header>
+            <content>
+                <p>The data catalogues connected and its contents are displayed in a hierarchy-tree, broken down according to Federal Republic/Federal States. In each catalogue navigation can take place by <i>Objects</i> (here "environment information") or <i>Addresses</i>. The details of an entry are represented only when queried, i.e. when clicking on its title, just as in the <a href="?hkey=search-results-2"> main results list</a> in the free search.</p>
+            </content>
+        </section>
+        <section help-key="search-catalog-2">
+            <header>Thesaurus-Navigator</header>
+            <content>
+                <p>The representation of the body of words in the Thesaurus takes place in a tree structure, starting with the top terms in SNS. When a Thesaurus term (descriptor) is selected (clicked), the metadata sets of the catalogues (object- and/or address-iPlugs) available are represented, which have been given keywords with the descriptor selected ,in a ‟result list�? located next to the hierarchy tree. The listing of the metadatasets is grouped according to the catalogues in this list. The detailed representation of a metadataset only takes place after a query, i.e. by clicking on its title, just as in the list of the search results in the free search. Switching between “environment information�? (<i>Objects</i>) and <i>Addresses </i>takes place in the area of the result list.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Environmental Topics</header>
+        <section help-key="search-topics-1">
+            <header>Environmental Topics</header>
+            <content>
+                <p>The information that is provided as <i>Environmental Topics</i> in InGrid-Portal are web pages and EDC-metadata objects (Environmental Data Catalogues) which are particularly relevant for a certain topic. You can select the actual topic (such as, for example, water or refuse) of the topic page wished.</p>
+                <p>If you have arrived at a topic directly from the start page on the environmental topics, the topic chosen is already pre-loaded and only the topic pages on this topic will be shown in the results list. </p>
+            </content>
+        </section>
+        <section help-key="search-topics-2">
+            <header>Topics</header>
+            <content>
+                <p>In this area you can select the topic you wish to find information about.</p>
+                <p>You can carry out multiple selections by holding down the ctrl-key and then clicking on the topics desired. </p>
+                <p>If <i>Select All </i>is selected all the topics available will be displayed.</p>
+            </content>
+        </section>
+        <section help-key="search-topics-4">
+            <header>Federation/Federal States</header>
+            <content>
+                <p>In this area you can select which information providers (of the Federation or individual Federal States) you want the information from.</p>
+                <p>You can carry out multiple selections by holding down the ctrl-key and then clicking on the Federation or the Federal States desired.v</p>
+                <p>If <i>Select All</i> is selcted then the information from all information providers is displayed.</p>
+            </content>
+        </section>
+        <section help-key="search-topics-5">
+            <header>Grouping</header>
+            <content>
+                <p>You can display the results grouped either according to the Federation and Federal States or according to the individual information providers (e.g. Federal Ministry of the Environment). This means that all the information of the Federation or of a German Federal State resp. of a provider will be collected in a group and displayed together.</p>
+                <p>If you do not want such a grouping you can select the <i>No </i>setting.</p>
+                  </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Service</header>
+        <section help-key="search-service-1">
+            <header>Service</header>
+            <content>
+                <p>Under <i>Service </i>all the <i>Press Releases</i>, <i>Publications</i> and <i>Events</i> headings of the Federation and the of the Federal States are collected together.</p>
+                <p>From this menu item you reach the corresponding pages of the Federation- and Federal States- authorities.</p>
+                <p>If you klick at the InGrid-Portal-startside on a link in the servicebox (e.g. <i>Events</i>), the results for the chosen category (e.g. Events) are displayed directly. Here a change in the category Service takes places.</p>
+            </content>
+        </section>
+        <section help-key="search-service-2">
+            <header>Categories</header>
+            <content>
+                <p>In this area you can select certain categories. After clicking on the <i>Show</i> button the pages available on the categories crossed will be displayed for you. </p>
+            </content>
+        </section>
+        <section help-key="search-service-3">
+            <header>Federation/Federal States</header>
+            <content>
+                <p>In this area you can select which information providers (of the Federation or individual Federal States) you want the information from.</p>
+                <p>You can carry out multiple selections by holding down the ctrl-key and then clicking on the Federation or the Federal States desired.v</p>
+                <p>If <i>Select All</i> is selcted then the information from all information providers is displayed.</p>
+            </content>
+        </section>
+        <section help-key="search-service-4">
+            <header>Grouping</header>
+            <content>
+                <p>You can display the results grouped either according to the Federation and Federal States or according to the individual information providers (e.g. Federal Ministry of the Environment). This means that all the information of the Federation or of a German Federal State resp. of a provider will be collected in a group and displayed together.</p>
+                <p>If you do not want such a grouping you can select the <i>No</i> setting.</p>
+                  </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Data (Measured Values)</header>
+        <section help-key="search-measure-1">
+            <header>Environmental Monitoring data</header>
+            <content>
+                <p>Under the menu item <i>Data</i> the web pages and information systems on measurement data belonging to the Federal Republic and the Federal States will be displayed to you.</p>
+                <p>If you have reached the measured data directly from the start page by clicking on the heading <i>Data</i>, the heading has been already pre-selected and the pages available are displayed directly.</p>
+            </content>
+        </section>
+        <section help-key="search-measure-2">
+            <header>Categories</header>
+            <content>
+                <p>In this area you can select which environment medium you want up-to-date readings displayed for. After clicking on the <i>Show</i> button, the pages available with readings for the categories crossed are displayed.</p>
+            </content>
+        </section>
+        <section help-key="search-measure-3">
+            <header>Federation/Federal States</header>
+            <content>
+                <p>In this area you can select which information providers (of the Federation or individual Federal States) you want the information from.</p>
+                <p>You can carry out multiple selections by holding down the ctrl-key and then clicking on the Federation or the Federal States desired.v</p>
+                <p>If <i>Select All</i> is selcted then the information from all information providers is displayed.</p>
+            </content>
+        </section>
+        <section help-key="search-measure-4">
+            <header>Grouping</header>
+            <content>
+                <p>You can display the results grouped either according to the Federation and Federal States or according to the individual information providers (e.g. Federal Ministry of the Environment). This means that all the information of the Federation or of a German Federal State resp. of a provider will be collected in a group and displayed together.</p>
+                <p>If you do not want such a grouping you can select the <i>No</i> setting.</p>
+                  </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Maps</header>
+        <section help-key="maps-1">
+            <header>Maps</header>
+            <content>
+                <p>In the InGrid-Portal rubric <b>maps</b> you can select diverse web map services (WMS) relevant to the environment. The map services can be combined and viewed in the InGrid-Portal map viewer. On the left site you can add services and view the <b>legend</b> of activated map layers. With the button <img border="0" width="15" height="16" src="../decorations/layout/ingrid/images/help/image205.jpg" alt="*"/> you can collapse the left site and enlarge the map window. Clicking the button <img border="0" width="20" height="20" src="../decorations/layout/ingrid/images/help/image206.jpg" alt="*"/>, the list of map services and providers will be displayed again.
+                   </p>
+            </content>
+        </section>
+            <section help-key="maps-2">
+				<header>Add Web Map Services </header>
+                <content>
+                    <p>Several WMS from Federation and German Federal State level are already integrated in the InGrid-Portal map viewer. These services are listet on the left site (flag services) provider-sorted (flag provider) as well as topic-sorted (flag topics). In order to activate one of these services, please click on a service and press afterwords the <b>Add service button</b> <img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/>. The single layers of all active services (flag active services) are shown in the map viewer by activating the check box in front of the layer</p>
+					<p>You can add a WMS:  </p>
+					<ul>
+						<li>
+                        from the provider list
+						</li>
+						<li>
+                        from the topic list
+						</li>
+						<li>
+                        from the research result list
+						</li>
+						<li>
+                        by entering a valid GetCapabilities URL (click the <b>Add service button</b> <img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/>)
+						</li>
+					</ul>
+
+					<p> <b>Tab Provider</b></p>
+
+					<p>Under the <b>flag Provider</b> you will find the map services relevant for environment and environment related information belonging to different data provider from Federation and German Federal States. To add a map service from the provider list,</p>
+					<ul>
+						<li>
+                        click (left mouse button) the tab <b>Provider</b>
+						</li>
+						<li>
+                        click on the cross to the left of the required folder
+						</li>
+						<li>
+                        click one of the map services
+						</li>
+						<li>
+                        click the button <b>Add service</b><img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/>
+                        </li>
+					</ul>
+					<p>All map services and associated layers found under <b>Active services</b> can be activated or de-activated by clicking on the check box. You can displace highlighted services upwards or downwards by simple drag and drop.</p>
+
+					<p> <b>Tab Topics</b></p>
+
+                    <p>Under the <b>flag Topics</b> you will find various map services of the Federation and Federal States sorted according to environment topics, which can be loaded into the InGrid-Portal map viewer. To add a map service from the topic list,</p>
+					<ul>
+						<li>
+                        click (left mouse button) the tab <b>Topics</b>
+						</li>
+						<li>
+                        click on the cross to the left of the required topic folder
+						</li>
+						<li>
+                        click one of the map services
+						</li>
+						<li>
+                        click the button <b>Add service</b>
+                        <b>Dienst hinzufügen</b> <img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/>
+						</li>
+					</ul>
+					<p>All map services found under <b>Active Services</b> can be activated or de-activated by one click on the check box. You can displace highlighted services upwards or downwards by simple drag and drop. </p>
+
+
+					<p><b>Tab Search</b></p>
+
+					<p>Under Search you can search for map services which are listed under the flags <b>provider</b> and <b>topics</b> or in the <b>connected data catalogues</b> (e.g. environmental data catalogues UDKs). Enter a search term and click the button Search. From the result list please click on one of the services and press afterwords the Add service button <img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/> to activate the service. </p>
+
+
+					<p><b>Add External Services</b></p>
+
+					<p>External services are services which are not integrated in InGrid-Portal. In order to add an external service, please switch to the flag <b>Active services</b> and click on the <b>Add service button</b> <img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/>, a new window will open. Enter the GetCapabilities URL of the new service and select (by using the check box) whether you want to activate the layer of the service straight away and whether you want to zoom in to the map section of the service directly. Click afterwards the <b>Add service</b> button.</p>
+
+             </content>
+        </section>
+        <section help-key="maps-4">
+          <header>Features</header>
+          <content>
+               <p><b>Toolbar in the table of content</b></p>
+                   <p><img border="0" width="21" height="23" src="../decorations/layout/ingrid/images/help/image207.jpg" alt="*"/> <b>Add service</b>: Under the tabs <b>Provider</b>, <b>Topics</b> and <b>Search results</b> you can add the highlighted service to the map viewer. You can also use this button to add an external service by entering the GetCapabilities URL. Added services will be listed under the tab <b>Active services</b>.
+                    </p>
+                   <p><img border="0" width="22" height="19" src="../decorations/layout/ingrid/images/help/image209.jpg" alt="*"/> <b>Remote service</b>:
+                      Delete a selected service from the current map viewer.
+                    </p>
+
+                   <p><img border="0" width="26" height="19" src="../decorations/layout/ingrid/images/help/image101.jpg" alt="*"/> <b>Transparency</b>:
+                      Apply layer <b>transparency</b> using the slider control. First select a layer before making transparency changes.
+                    </p>
+
+                   <p><img border="0" width="22" height="21" src="../decorations/layout/ingrid/images/help/image102.jpg" alt="*"/> <b>Metadata</b>:
+                      Display information (metadata) about selected map services or layers.
+                    </p>
+
+                   <p><img border="0" width="24" height="22" src="../decorations/layout/ingrid/images/help/image112.jpg" alt="*"/> <b>Expand/Collaps all</b>:
+                      Open and close all layers in the tree structure by one click.
+                    </p>
+                   <p><img border="0" width="24" height="22" src="../decorations/layout/ingrid/images/help/image113.jpg" alt="*"/> <b>Zoom to layer or service extend</b>:
+                      Zoom to a layer’s or service’s visible area.
+                    </p>
+
+                   <p><img border="0" width="26" height="23" src="../decorations/layout/ingrid/images/help/image104.jpg" alt="*"/> <b>Delete Search results</b>:
+                      Delete search results in the <b>hit list</b>.
+                    </p>
+
+
+
+					<p><b>Features in the map window:</b></p>
+
+					<ul>
+						<li>In the top left corner: Navigation controls (zoom in, zoom out, move the map view).
+						</li>
+						<li>In the lower left corner: <b>Scale bar</b> and <b>coordinates</b>. The values represent the current x-coordinate and y-coordinate of the mouse pointer position in the map.
+						</li>
+						<li>In the top right corner: By one click on the arrow next to the <b>Extended Preferences</b> button you can change the spatial references and scale.
+						</li>
+						<li>In the lower right corner: By one click on the arrow, the overview map will be hidden/shown.
+						</li>
+					</ul>
+
+					<p><b>Toolbar above the map window</b></p>
+
+					<p><img border="0" width="25" height="23" src="../decorations/layout/ingrid/images/help/image202.jpg" alt="*"/> <b>Object information</b>:
+                      Provides layer specific information. A click on the map reveals all available information for that location in a new window. Sometimes providers don’t offer specific information for every layer. In this case, no results are displayed in the feature info window.
+                    </p>
+					<p><img border="0" width="25" height="25" src="../decorations/layout/ingrid/images/help/image105.jpg" alt="*"/> <b>Back</b>:
+                      Allows you to go back to the last map section.
+                    </p>
+					<p><img border="0" width="25" height="23" src="../decorations/layout/ingrid/images/help/image106.jpg" alt="*"/> <b>Foward</b>:
+                      Allows you to go foward to the next map section. This action can be performed as many times as the <b>Back</b> action was executed previously.
+                    </p>
+					<p><img border="0" width="23" height="23" src="../decorations/layout/ingrid/images/help/image107.jpg" alt="*"/>
+                      <b>Zoom to initial map</b>:
+                      By clicking on this button the zoom is restored to the start extend of the map.
+                    </p>
+					<p><img border="0" width="35" height="21" src="../decorations/layout/ingrid/images/help/image108.jpg" alt="*"/> <b>Measure Tool</b>:
+                     Measure distance or area on the map. Activate the required check box to measure distance or area. Click on the map to set the starting point for your measurement. Click again to set further points or double click to finish the measuerment. The final distance / area is displayed in the window.
+                    </p>
+					<p><img border="0" width="25" height="25" src="../decorations/layout/ingrid/images/help/image204.jpg" alt="*"/> <b>Print</b>:
+                      Print the current map to pfd. You can set the resolution, scale and rotation of the map and in addition insert a title and comment.
+					</p>
+					<p><img border="0" width="23" height="23" src="../decorations/layout/ingrid/images/help/image109.jpg" alt="*"/> <b>Load</b>:
+                      Open an existing map (Access to this feature requires a personal account). This menu item is only active when you are logged in with a InGrid-Portal account (www.portalu.de/personalisierungsoptionen) and you’ve already saved a map. See <a href="?hkey=maps-7">Save map</a>.
+					</p>
+					<p><img border="0" width="24" height="24" src="../decorations/layout/ingrid/images/help/image110.jpg" alt="*"/> <b>Save</b>:
+                      The visible map section is saved. This menu item is only active when you are logged in with a InGrid-Portal account (www.portalu.de/personalisierungsoptionen). See <a href="?hkey=maps-7">Save map</a>.
+					</p>
+					<p><img border="0" width="24" height="26" src="../decorations/layout/ingrid/images/help/image111.jpg" alt="*"/> <b>Save map as WMC document</b>:
+                      The visible map section is saved as WMC (Web Map Context), an XML based format.
+					</p>
+          </content>
+        </section>
+		<section help-key="maps-6">
+          <header>Legend</header>
+          <content>
+                   <p>In the tab <b>Legend</b> (switch on the left site from the tab <b>Services</b> to the tab <b>Legend</b>), all available legends of the map layers are depicted, which are activated under <b>Active Services</b> and are depicted as maps in the viewer. The legend gives information about which symbols and/or colours are used to display the different information in the map.
+                   </p>
+          </content>
+        </section>
+
+		 <section help-key="maps-7">
+          <header>Save map</header>
+          <content>
+               <p>For saving your individually arranged maps, please do the following:</p>
+                <ul>
+                    <li>Register with your InGrid-Portal user ID (above right in the main menu of the screen).
+                    </li>
+                    <li>Go to the <b>map</b>.
+                    </li>
+                    <li>Click on the button <b>Save</b>
+                        <img border="0" width="24" height="24" src="../decorations/layout/ingrid/images/help/image110.jpg" alt="*"/> (toolbar above the map window).
+                    </li>
+                    <li>Stored maps can be deleted using the <b>Delete</b> button <img border="0" width="22" height="19" src="../decorations/layout/ingrid/images/help/image209.jpg" alt="*"/> .
+                    </li>
+                </ul>
+                <p>By clicking on the button <b>Load</b>
+                   <img border="0" width="23" height="23" src="../decorations/layout/ingrid/images/help/image109.jpg" alt="*"/> ,
+                   alle stored maps are displayed in a list. To load a map, please select an entry and click on the botton <b>Load</b>. </p>
+          </content>
+        </section>
+		<section help-key="maps-8">
+          <header>Tips for handling maps</header>
+          <content>
+               <p><b>You have added a map and activated the layers, but you can’t see any data?</b></p>
+               <p>Some layers are only displayed at certain scales. The layers are displayed, when the scale of the current map view and the layer scale match. Otherwise the names of the layers are greyed out (flag active services) and the data are not drawn. You can make the data visible by zooming into the map or by using the feature <b>Zoom to service or layer extend</b> <img border="0" width="24" height="22" src="../decorations/layout/ingrid/images/help/image113.jpg" alt="*"/> . </p>
+
+               <p><b>Navigating the map</b></p>
+               <p>You can navigate in the map by moving the red rectangle in the overview map located in the lower right of the map viewer. Or you can pan the map by pressing the <b>CTRL</b> key and dragging with the <b>left mouse</b> key.</p>
+
+			  <p><b>Zoom in the map</b></p>
+			   <p>Instead of using the navigation controls to zoom in the map, hold the <b>Shift</b> key and drag a zoom box on the map with the <b>left mouse</b> key.</p>
+
+               <p><b>Can I choose different scale levels?</b></p>
+               <p>You can determine different scale levels by expanding the dialogue window <b>Extended Preferences</b>.</p>
+
+               <p><b>A top layer overlapps information of underlying layers</b></p>
+               <p>When several layers are activated, some layer information may be overlapped. You can add transparency to the top layer to see the underlying layers. Click the layer you want to appear transparent and use the button layer <b>transparency</b> <img border="0" width="26" height="19" src="../decorations/layout/ingrid/images/help/image101.jpg" alt="*"/> to adjust the transparency by the slider bar.
+               </p>
+
+          </content>
+        </section>
+    </chapter>
+
+
+    <chapter>
+        <header>News</header>
+        <section help-key="rss-news-1">
+            <header>News</header>
+            <content>
+                <p>Under <i>News</i>
+				are listed current releases on the subject of the environment from the federal and regional authorities. Here the latest report is always on top. Each time only the title and a short description of the report are displayed. By clicking on the report you will be taken to the original report.</p>
+                <p>Older reports, which are no longer displayed on the start page, are stored in the report archive. You can look at these reports by clicking on the <i>Other News</i> link.</p>
+                <p>Note: If necessary, you can still find reports, which are so old that they can no longer be found in the report archive, on the original servers of the respective federal or regional authorities. To do this click on <a href="?hkey=search-service-1">Service / News-Bulletins</a>.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>InGrid-Portal informs</header>
+        <section help-key="ingrid-inform-1">
+            <header>InGrid-Portal informs</header>
+            <content>
+                <p>In this area you can find reports, which are provided by the operator of InGrid-Portal, the <a href="http://www.kst.portalu.de/" target="_blank">Coordination Center InGrid-Portal</a>.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>myPortal</header>
+        <section help-key="myingrid-1">
+            <header>myPortal</header>
+            <content>
+                <p>InGrid-Portal offers you the possibility of putting your own settings in place on lasting basis. Using these you can:</p>
+                <ul>
+                    <li>Adapt the start page to your requirements</li>
+                    <li>Personalise the search</li>
+                </ul>
+                <p>To do this you must register and receive a user name and a password. Registration is free. Your details will not be passed on and are only used in anonymised form for statistical purposes. </p>
+            </content>
+        </section>
+        <section help-key="myingrid-2">
+            <header>Login</header>
+            <content>
+                <p>If you already have a user name and a password you can enter them here and click on <i>Sign-on</i>.</p>
+            </content>
+            <section help-key="myingrid-3">
+                <header>New User</header>
+                <content>
+                    <p>If you do not yet have a user name and password then click on the <i>New User</i> link. This will take you to the <i>Login </i>form. </p>
+                    <p>Please fill out the form. The detail fields with a star* are mandatory and must be filled in. All other details are voluntary.</p>
+                    <p>All details are handled in strict confidence and are only used for anonymised statistical evaluation.</p>
+                </content>
+            </section>
+            <section help-key="myingrid-4">
+                <header>Forgotten password?</header>
+                <content>
+                    <p>If you have forgotten your password, click on the <i>Password forgotten?</i> link. You will then be taken to the corresponding form in which you can enter your e-mail address. After submitting you will be sent your user name and password by return.</p>
+                </content>
+            </section>
+            <section help-key="myingrid-5">
+                <header>Automatic Login</header>
+                <content>
+                    <p>If you would always like to use your personal settings you can select the <i>Automatic Login</i> option. Then you will not have to enter your username and password every time to access the site. (Note: this operation functions only if you have given your internet browser permission to use cookies).</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="myingrid-6">
+            <header>Your personal InGrid-Portal start page</header>
+            <content>
+                <p>This link leads you to your personal start page as set up by you in the personalisation function.</p>
+            </content>
+        </section>
+        <section help-key="myingrid-7">
+            <header>Edit User Profile</header>
+            <content>
+                <p>This link takes you to the form with your details thus far. If your details have changed, this is where you can update with these changes.</p>
+                <p>The data fields with a star * are mandatory and have to be filled in. All other details are voluntary.</p>
+                <p>All details are handled in strict confidence and are only used for anonymised statistical evaluation.</p>
+            </content>
+        </section>
+        <section help-key="myingrid-8">
+            <header>Personalisation</header>
+            <content>
+                <p>You can set the following settings according to your wishes.</p>
+            </content>
+            <section help-key="myingrid-9">
+                <header>Personalisation of the InGrid-Portal Main-Page</header>
+                <content>
+                    <p>In this area you can set which contents are to be displayed in which order on your personal start page. For this you set the contents of lines 1 to 3 in the main column (on the left) of the start page via the dropdown list. If you do not set your contents at all (empty entry in the dropdown list) this is also not displayed.</p>
+                    <p>You can follow the same procedure for the margin column (narrower margin on the right side) of the start page.</p>
+
+ 				 <p>The determinations are not saved permanently as presetting. After click on <i>Logout</i> you return to the startpage of InGrid-Portal with its own presettings.</p>
+
+                </content>
+            </section>
+            <section help-key="myingrid-10">
+                <header>Filter for states or information providers</header>
+                <content>
+                    <p>In this area you can set whether the information displayed for you is to be restricted to only the Federal Republic and/or individual Federal States (e.g. Federal Republic and Hessen) or is to be restricted to individual information providers (e.g. Federal Ministry of the Environment).</p>
+                    <p>The settings relate to the search as well as to the topics pages, readings and service areas.</p>
+                    <p>The settings are saved permanently as preset settings. However, you can overwrite them again temporarily via the settings possibilities in the abovementioned areas (thus, for example, for individual searches).</p>
+                </content>
+            </section>
+            <section help-key="myingrid-11">
+                <header>Filter for Types and Data Sources</header>
+                <content>
+                    <p>As well as the usual web servers, metadata and specialist data systems are also connected to InGrid-Portal. You can now select whether you want to search in all data sources (standard) or whether you would like to restrict your search in a targeted manner to one or several types of data sources.</p>
+                    <p>If you limit yourself to metadata then you will continue to have the possibility of selecting the classes of metadata you would like to search. The following classes are available to you:</p>
+                    <ul>
+
+                        <li>Organisational Unit / Task</li>
+						<li>Geo-Information / Map</li>
+						<li>Document / Report / Literature</li>
+						<li>Geo-Service</li>
+                        <li>Enterprise / Project / Program</li>
+						<li>Data Pooling / Data Base</li>
+						<li>Service / Application / Information System </li>
+                    </ul>
+                    <p>The settings made will be effective on a lasting basis as preset settings. You can however overwrite them via temporary settings for individual searches. </p>
+                </content>
+            </section>
+            <section help-key="myingrid-12">
+                <header>Sorting and grouping of search results</header>
+                <content>
+                    <p>You can display your search results either according to ranking (relevance of the page found with regard to your search term) or according to actuality (the latest pages are shown first).</p>
+                    <p>Grouping means that all search results of a page are collected in groups. Depending on the setting, all the search results for the Federation or of a Federal State are collected together or those of all providers or domains.</p>
+                    <p>
+                        <b>Include similar terms in the search </b>
+                    </p>
+                    <p>InGrid-Portal not only performs the usual indexing of the pages found on search engines but gets the page contents analysed by the n <a href="http://www.semantic-network.de/" target="_blank">Semantic Network Service (SNS)</a> of the Federal Environment Agency (Umweltbundesamt). As a result of this analysis, appropriate technical terms from the <a href="?hkey=ext-search-subject-4#ext-search-subject-4">Environment-Thesaurus</a>
+                        are assigned to the web pages.</p>
+                    <p>If you select the setting <i>Include similar terms in search</i> by putting a cross then these keywords will be taken account of in the search. (Note: one should assume that selecting this setting increases the number of hits.)</p>
+                    <p>The settings will be effective on a lasting basis as preset settings for the display of the search result list, but can be overwritten via settings in <i>Search</i> for individual searches. </p>
+                </content>
+            </section>
+        </section>
+        <section help-key="myingrid-13">
+            <header>Logout</header>
+            <content>
+                <p>You leave the personalised area via <i>LOGOUT</i> and return to the start page of InGrid-Portal with its standard preset settings.</p>
+            </content>
+        </section>
+    </chapter>
+</help>

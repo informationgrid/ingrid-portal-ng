@@ -1,0 +1,18 @@
+<script>
+    $('.filter .filter-wrapper').niceScroll({
+        cursorcolor:"#5e788d",
+        cursorwidth:"8px",
+        cursorborderradius: "6px",
+    });
+
+    $(window).scroll(function(){
+        $(".filter .filter-wrapper").getNiceScroll().resize();
+    });
+
+    $('.filter .accordion-title').bind('click',function(){
+        setTimeout(function(){
+        $(".filter .filter-wrapper").getNiceScroll().resize();
+        }, 500);
+    });
+
+</script>

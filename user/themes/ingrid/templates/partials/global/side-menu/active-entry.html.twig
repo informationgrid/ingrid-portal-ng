@@ -1,0 +1,59 @@
+<script>
+    var lastId;
+    var header = $('header');
+    var topMenu = $('.nav-group');
+
+    var menuItems = topMenu.find('a');
+
+    var scrollItems = menuItems.map(function(){
+        var href = $(this).attr('href');
+        if(href) {
+            if(href[0] == ('#')) {
+                var item = $(href);
+                if (item.length) { return item; }
+            }
+        }
+    });
+
+    var preHash = window.location.hash;
+
+    $(window).scroll(function(){
+        if(preHash != window.location.hash) {
+            preHash = window.location.hash;
+            return;
+        }
+        var topMenuHeight = header.outerHeight();
+        var fromTop = $(this).scrollTop() + topMenuHeight;
+        var cur = scrollItems.map(function(){
+            if ($(this).offset().top < fromTop)
+                return this;
+        });
+
+        cur = cur[cur.length-1];
+        var id = cur && cur.length ? cur[0].id : '';
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            if(scrollItems && scrollItems.length > 0) {
+                id = scrollItems[scrollItems.length - 1][0].id;
+            }
+        }
+        if (lastId !== id) {
+            if(id !== '') {
+                topMenu.find('li.accordion-item').removeClass('is-active');
+                topMenu.find('li.accordion-item .accordion-content').css('display', 'none');
+                var item = menuItems.filter('[href="#'+id+'"]');
+                if(item) {
+                    var itemParent = topMenu.find('li.accordion-item').has('a[href$="'+id+'"]');
+                    if(itemParent) {
+                        itemParent.addClass('is-active');
+                        itemParent.find('.accordion-content').css('display', 'block');
+                    }
+                    if(item.hasClass('js-anchor-target-entry')) {
+                        topMenu.find('.js-anchor-target-entry').removeClass('is-active');
+                        item.addClass('is-active');
+                    }
+                }
+                lastId = id;
+            }
+        }
+    });
+</script>

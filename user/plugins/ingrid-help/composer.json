@@ -1,0 +1,24 @@
+{
+  "name": "khanh-toan-tran/ingrid-help",
+  "type": "grav-plugin",
+  "description": "Transformation xsl/xml help content",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-help",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Khanh Toan Tran",
+      "email": "khanh.toan.tran@wemove.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\InGridHelp\\": "classes/"
+    },
+    "classmap":  ["ingrid-help.php"]
+  }
+}
