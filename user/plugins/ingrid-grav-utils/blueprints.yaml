@@ -1,0 +1,32 @@
+name: InGrid Grav Utils
+slug: ingrid-grav-utils
+type: plugin
+version: 0.1.0
+description: InGrid utils function for GravCMS
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-grav-utils
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-grav-utils/issues
+docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-grav-utils/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

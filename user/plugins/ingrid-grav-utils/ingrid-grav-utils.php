@@ -5,10 +5,10 @@ use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
 
 /**
- * Class InGridProvidersPlugin
+ * Class InGridGravUtilsPlugin
  * @package Grav\Plugin
  */
-class InGridProvidersPlugin extends Plugin
+class InGridGravUtilsPlugin extends Plugin
 {
     /**
      * @return array
@@ -66,15 +66,14 @@ class InGridProvidersPlugin extends Plugin
 
     public function onPageInitialized(): void
     {
-        echo "<script>console.log('Providers');</script>";
+        echo '<script>console.log("Utils");</script>';
     }
 
     public function onTwigSiteVariables()
     {
 
         if (!$this->isAdmin()) {
-            $partners = CodelistHelper::getCodelistPartners();
-            $this->grav['twig']->twig_vars['partners'] = $partners;
+
         }
     }
 

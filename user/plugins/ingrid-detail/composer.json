@@ -27,8 +27,7 @@
       "classes/detail/address/parser/DetailAddressParserIdf.php",
       "classes/detail/metadata/DetailMetadataParser.php",
       "classes/detail/metadata/parser/DetailMetadataParserIdf.php",
-      "classes/detail/metadata/parser/DetailGenericParserIdf.php",
-      "classes/utils/IdfHelper.php"
+      "classes/detail/metadata/parser/DetailGenericParserIdf.php"
     ]
   }
 }

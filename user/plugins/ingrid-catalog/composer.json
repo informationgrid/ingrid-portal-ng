@@ -1,9 +1,9 @@
 {
-  "name": "khanh-toan-tran/ingrid-providers",
+  "name": "khanh-toan-tran/ingrid-catalog",
   "type": "grav-plugin",
-  "description": "Listen partners and providers",
+  "description": "Display InGrid catalog from API",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-providers",
+  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog",
   "license": "MIT",
   "authors": [
     {
@@ -17,8 +17,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Grav\\Plugin\\InGridProviders\\": "classes/"
+      "Grav\\Plugin\\InGridCatalog\\": "classes/"
     },
-    "classmap":  ["ingrid-providers.php"]
+    "classmap":  ["ingrid-catalog.php"]
   }
 }

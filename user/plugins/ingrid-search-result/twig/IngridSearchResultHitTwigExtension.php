@@ -2,11 +2,11 @@
 namespace Grav\Plugin;
 use Grav\Common\Twig\Extension\GravExtension;
 
-class IngridSearchResultHitTwigExtension extends GravExtension
+class InGridSearchResultHitTwigExtension extends GravExtension
 {
     public function getName()
     {
-        return 'IngridSearchResultHitTwigExtension';
+        return 'InGridSearchResultHitTwigExtension';
     }
 
     public function getFunctions(): array

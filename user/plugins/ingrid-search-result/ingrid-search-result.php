@@ -7,10 +7,10 @@ use Grav\Common\Plugin;
 use Grav\Common\Twig\Twig;
 
 /**
- * Class IngridSearchResultPlugin
+ * Class InGridSearchResultPlugin
  * @package Grav\Plugin
  */
-class IngridSearchResultPlugin extends Plugin
+class InGridSearchResultPlugin extends Plugin
 {
 
     var SearchService $service;
@@ -102,8 +102,8 @@ class IngridSearchResultPlugin extends Plugin
 
     public function onTwigExtensions()
     {
-        require_once(__DIR__ . '/twig/IngridSearchResultHitTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new IngridSearchResultHitTwigExtension());
+        require_once(__DIR__ . '/twig/InGridSearchResultHitTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new InGridSearchResultHitTwigExtension());
     }
 
     private function handleSearchterm(): void

@@ -1,0 +1,32 @@
+name: InGrid Catalog
+slug: ingrid-catalog
+type: plugin
+version: 0.1.0
+description: Display InGrid catalog from API
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog/issues
+docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

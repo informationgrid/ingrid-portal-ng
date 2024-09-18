@@ -1,12 +1,12 @@
-# Ingrid Providers Plugin
+# InGrid Providers Plugin
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
 
-The **Ingrid Providers** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). Listen partners and providers
+The **InGrid Providers** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). Listen partners and providers
 
 ## Installation
 
-Installing the Ingrid Providers plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
+Installing the InGrid Providers plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
 ### GPM Installation (Preferred)
 
@@ -14,7 +14,7 @@ To install the plugin via the [GPM](https://learn.getgrav.org/cli-console/grav-c
 
     bin/gpm install ingrid-providers
 
-This will install the Ingrid Providers plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ingrid-providers`.
+This will install the InGrid Providers plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ingrid-providers`.
 
 ### Manual Installation
 
@@ -23,7 +23,7 @@ To install the plugin manually, download the zip-version of this repository and 
 You should now have all the plugin files under
 
     /your/site/grav/user/plugins/ingrid-providers
-	
+
 > NOTE: This plugin is a modular component for Grav which may require other plugins to operate, please see its [blueprints.yaml-file on GitHub](https://github.com//grav-plugin-ingrid-providers/blob/main/blueprints.yaml).
 
 ### Admin Plugin

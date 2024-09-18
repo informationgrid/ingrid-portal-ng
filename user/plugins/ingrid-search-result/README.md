@@ -1,12 +1,12 @@
-# Ingrid Search Result Plugin
+# InGrid Search Result Plugin
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
 
-The **Ingrid Search Result** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). Get InGrid search results
+The **InGrid Search Result** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). Get InGrid search results
 
 ## Installation
 
-Installing the Ingrid Search Result plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
+Installing the InGrid Search Result plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
 ### GPM Installation (Preferred)
 
@@ -14,7 +14,7 @@ To install the plugin via the [GPM](https://learn.getgrav.org/cli-console/grav-c
 
     bin/gpm install ingrid-search-result
 
-This will install the Ingrid Search Result plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ingrid-search-result`.
+This will install the InGrid Search Result plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ingrid-search-result`.
 
 ### Manual Installation
 
@@ -23,7 +23,7 @@ To install the plugin manually, download the zip-version of this repository and 
 You should now have all the plugin files under
 
     /your/site/grav/user/plugins/ingrid-search-result
-	
+
 > NOTE: This plugin is a modular component for Grav which may require other plugins to operate, please see its [blueprints.yaml-file on GitHub](https://github.com//grav-plugin-ingrid-search-result/blob/main/blueprints.yaml).
 
 ### Admin Plugin

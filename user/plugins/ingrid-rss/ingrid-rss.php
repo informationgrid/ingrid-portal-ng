@@ -6,10 +6,10 @@ use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
 /**
- * Class IngridRssPlugin
+ * Class InGridRssPlugin
  * @package Grav\Plugin
  */
-class IngridRssPlugin extends Plugin
+class InGridRssPlugin extends Plugin
 {
     /**
      * @var array

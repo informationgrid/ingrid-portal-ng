@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Grav\\Plugin\\IngridSearchResult\\": "services/"
+      "Grav\\Plugin\\InGridSearchResult\\": "services/"
     },
     "classmap":  ["ingrid-search-result.php"],
     "files": [
@@ -31,7 +31,6 @@
       "services/SearchServiceImpl.php",
       "services/SearchServiceMock.php",
       "services/transformer/SearchResponseTransformerClassic.php",
-      "services/utils/CodelistHelper.php",
       "services/ElasticsearchService.php"
     ]
   }
