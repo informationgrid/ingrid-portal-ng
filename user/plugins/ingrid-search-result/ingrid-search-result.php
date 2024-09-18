@@ -102,8 +102,8 @@ class InGridSearchResultPlugin extends Plugin
 
     public function onTwigExtensions()
     {
-        require_once(__DIR__ . '/twig/InGridSearchResultHitTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new InGridSearchResultHitTwigExtension());
+        require_once(__DIR__ . '/twig/SearchResultHitTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
     }
 
     private function handleSearchterm(): void
