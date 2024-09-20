@@ -1,0 +1,48 @@
+name: InGrid Datasources
+slug: ingrid-datasources
+type: plugin
+version: 0.1.0
+description: List available datasources
+icon: plug
+author:
+  name: Khanh Toan Tran
+  email: khanh.toan.tran@wemove.com
+homepage: https://github.com/khanh-t-oan-oan-r-tran/grav-plugin-ingrid-datasources
+demo: http://demo.yoursite.com
+keywords: grav, plugin, etc
+bugs: https://github.com/khanh-t-oan-oan-r-tran/grav-plugin-ingrid-datasources/issues
+docs: https://github.com/khanh-t-oan-oan-r-tran/grav-plugin-ingrid-datasources/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    api_url:
+      type: text
+      label: PLUGIN_INGRID_DATASOURCES.API_URL
+      help: PLUGIN_INGRID_DATASOURCES.API_URL_HELP
+      default: https://api.dev.informationgrid.eu/portal/catalogs
+    excludes:
+      type: selectize_datasource
+      selectize:
+        options:
+          - text: "luen"
+            value: "luen"
+      label: PLUGIN_INGRID_DATASOURCES.EXCLUDES
+      help: PLUGIN_INGRID_DATASOURCES.EXCLUDES_HELP
+      validate:
+          type: commalist
+      default: []

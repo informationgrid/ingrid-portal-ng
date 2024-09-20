@@ -1,0 +1,3 @@
+enabled: true
+route: /datenquellen
+api_url: https://api.dev.informationgrid.eu/portal/catalogs

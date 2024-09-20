@@ -88,6 +88,7 @@ RUN cd /usr/share/grav-admin/user/plugins/ingrid-codelist && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-providers && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-help && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-catalog && composer update
+RUN cd /usr/share/grav-admin/user/plugins/ingrid-datasources && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav-utils && composer update
 
 COPY entrypoint.sh /entrypoint.sh

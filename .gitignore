@@ -15,6 +15,7 @@
 /user/plugins/ingrid-codelist/vendor/
 /user/plugins/ingrid-help/vendor/
 /user/plugins/ingrid-catalog/vendor/
+/user/plugins/ingrid-datasources/vendor/
 /user/plugins/ingrid-grav-utils/vendor/
 /user/themes/ingrid/node_modules
 /logs

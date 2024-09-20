@@ -1081,3 +1081,6 @@ CONTACT:
 
 HELP:
     ERROR_MESSAGE: Es konnte keine Hilfe gefunden werden.
+
+DATASOURCE:
+    CONNECTED_DATABASES: Angeschlossene Datenquellen
