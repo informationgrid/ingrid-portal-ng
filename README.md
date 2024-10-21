@@ -5,7 +5,7 @@
 Just start up the development container and develop your pages, plugins and themes.
 
 ```shell
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 The website will be available on http://localhost:8080 and the admin pages on http://localhost:8080/admin

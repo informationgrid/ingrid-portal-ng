@@ -91,12 +91,14 @@ class InGridSearchResultPlugin extends Plugin
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: "";
             $page = $this->grav['uri']->query('page') ?: 0;
-            $results = $this->service->getSearchResults($query, $page, $this->getSelectedFacets());
-            $this->grav['twig']->twig_vars['search_result'] = $results;
+            $selectedFacets = $this->getSelectedFacets();
+            $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri']);
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
-            $this->grav['twig']->twig_vars['selected_facets'] = $this->getSelectedFacets();
+            $this->grav['twig']->twig_vars['selected_facets'] = $selectedFacets;
             $this->grav['twig']->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
+
+            $this->grav['twig']->twig_vars['search_result'] = $results;
         }
     }
 

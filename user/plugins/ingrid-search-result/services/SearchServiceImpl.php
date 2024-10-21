@@ -31,7 +31,7 @@ class SearchServiceImpl implements SearchService
      * @return SearchResult
      * @throws GuzzleException
      */
-    public function getSearchResults(string $query, int $page, array $selectedFacets): SearchResult
+    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri): SearchResult
     {
         $apiResponse = $this->client->request('POST', 'portal/search', [
             'body' => $this->transformQuery($query, $page, $selectedFacets)
@@ -42,7 +42,7 @@ class SearchServiceImpl implements SearchService
             numOfPages: $result->numOfPages ?? 0,
             numPage: $result->numPage ?? 0,
             hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null),
-            facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config),
+            facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri),
         );
     }
 
