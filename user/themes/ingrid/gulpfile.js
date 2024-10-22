@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var cleancss = require('gulp-clean-css');
 var csscomb = require('gulp-csscomb');
 var rename = require('gulp-rename');
@@ -23,7 +23,7 @@ function build() {
   return gulp.src(paths.source)
       .pipe(sourcemaps.init())
       .pipe(sass({
-            outputStyle: 'compact',
+            outputStyle: 'compressed',
             precision: 10
           }).on('error', sass.logError)
       )
