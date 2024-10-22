@@ -33,7 +33,11 @@ class SearchResponseTransformerClassic
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
                 foreach (((array)$aggregations)[$facetConfig['id']]->buckets as $bucket) {
-                    $items[] = new FacetItem($bucket->key, $bucket->doc_count, $base_url);
+                    $items[] = new FacetItem(
+                        $bucket->key,
+                        $bucket->doc_count,
+                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key)
+                    );
                 }
             }
             $result[] = new FacetResult($facetConfig['id'], $items);
