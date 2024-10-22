@@ -76,13 +76,6 @@ class InGridSearchResultPlugin extends Plugin
     public function onPageInitialized(): void
     {
         echo "<script>console.log('InGrid Search result');</script>";
-        if (isset($_POST['removeFacet'])) {
-            $this->removeFacet();
-        } else if ($this->grav['page']->slug() === 'search' && $_SERVER['REQUEST_METHOD'] === 'POST' && $this->grav['uri']->post("q")) {
-            $this->handleSearchterm();
-        } else if ($this->grav['page']->slug() === 'search' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->handleCheckboxSubmission();
-        }
     }
 
     public function onTwigSiteVariables()
@@ -106,73 +99,6 @@ class InGridSearchResultPlugin extends Plugin
     {
         require_once(__DIR__ . '/twig/SearchResultHitTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
-    }
-
-    private function handleSearchterm(): void
-    {
-        $uri = $this->grav['uri'];
-        $base_url = $uri->path();
-        $search_term = $uri->post("q");
-        $query_params = $uri->query(null, true);
-        $query_params['q'] = $search_term;
-
-        // Rebuild the query string
-        $new_url = $base_url . '?' . http_build_query($query_params);
-        $this->grav->redirect($new_url);
-    }
-
-    private function removeFacet(): void
-    {
-        $uri = $this->grav['uri'];
-        $base_url = $uri->path();
-        $query_params = $uri->query(null, true);
-
-        $post_params = $_POST;
-        unset($post_params['removeFacet']);
-
-        foreach ($post_params as $key => $value) {
-            if (isset($query_params[$key])) {
-                if (is_array($query_params[$key])) {
-                    foreach ($query_params[$key] as $index => $item) {
-                        if ($item == $value) {
-                            unset($query_params[$key][$index]);
-                            // reset array so that index starts at 0
-                            $query_params[$key] = array_values($query_params[$key]);
-                        }
-                    }
-                } else {
-                    unset($query_params[$key]);
-                }
-            }
-        }
-
-        // Rebuild the query string
-        $new_url = $base_url . '?' . http_build_query($query_params);
-        $this->grav->redirect($new_url);
-    }
-
-    private
-    function handleCheckboxSubmission(): void
-    {
-        $inputOptions = $_POST;
-
-        $uri = $this->grav['uri'];
-        // Get the full current URL without query parameters
-        $base_url = $uri->path();
-        $search_term = $uri->post("q") ? "" : '&q=' . $uri->query("q");
-
-        $query_string = array();
-
-        $coords = $this->getCoordinates($inputOptions);
-        $inputOptions = $this->cleanupParameters($inputOptions);
-        // Build the new query string with all parameters
-        // TODO: add each part individually in order to join them with "&"
-        $query_string[] = http_build_query($inputOptions) . $coords . $search_term;
-        // Construct the new URL with the updated query string
-        $new_url = $base_url . '?' . join('&', $query_string);
-
-        // Redirect to the new URL
-        $this->grav->redirect($new_url);
     }
 
     private

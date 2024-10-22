@@ -8,18 +8,28 @@
 <div class="filters-active">
     <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="post" name="removeFacet" id="removeFacet">
         <input type="hidden" name="removeFacet" value="true" />
-        {% for facet, value in selected_facets %}
+        {% for facet, values in selected_facets %}
             {% if facet == 'bbox' %}
                 <button type="submit" id="{{ facet }}" class="button pill" name="{{ facet }}" value="{{ facet }}">
                     Raumbezug: {{ value }}
                     <span class="ic-ic-cross"></span>
                 </button>
             {% endif %}
-            {% for facetItem in value %}
-                <button type="submit" id="{{ facet }}" class="button pill" name="{{ facet }}" value="{{ facetItem }}">
+            {% for facetItem in values | split(',') %}
+                {% set actionLink = "" %}
+                {# find action link for selected facet #}
+                {% for item in search_result.facets %}
+                    {% for bucket in item.items %}
+                        {% if bucket.value == facetItem %}
+                            {% set actionLink = bucket.actionLink %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+                <a href="{{ actionLink }}" id="{{ facet }}" class="button pill">
                     {{ ('facet-label.' ~ facet) | t}}: {{ (facet ~ '.' ~ facetItem) | t }}
                     <span class="ic-ic-cross"></span>
-                </button>
+                </a>
             {% endfor %}
         {% endfor %}
         {% if selected_facets|length > 0 %}

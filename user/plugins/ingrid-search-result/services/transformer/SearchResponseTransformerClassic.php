@@ -51,7 +51,7 @@ class SearchResponseTransformerClassic
 
         // Get the full current URL without query parameters
         $base_url = $uri->path();
-        $search_term = $uri->post("q") ? "" : '&q=' . $uri->query("q");
+//        $search_term = $uri->post("q") ? "" : '&q=' . $uri->query("q");
 
         $query_string = array();
         if (isset($query_params[$facetConfigId])) {
@@ -75,7 +75,7 @@ class SearchResponseTransformerClassic
 //        $inputOptions = $this->cleanupParameters($inputOptions);
         // Build the new query string with all parameters
         // TODO: add each part individually in order to join them with "&"
-        $query_string[] = http_build_query($query_params) . $coords . $search_term;
+        $query_string[] = http_build_query($query_params) . $coords; // . $search_term;
         // Construct the new URL with the updated query string
         $new_url = $base_url . '?' . join('&', $query_string);
 
