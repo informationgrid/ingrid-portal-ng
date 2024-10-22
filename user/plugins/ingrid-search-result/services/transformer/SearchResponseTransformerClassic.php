@@ -55,14 +55,20 @@ class SearchResponseTransformerClassic
 
         $query_string = array();
         if (isset($query_params[$facetConfigId])) {
-            $found = array_search($key, $query_params[$facetConfigId]);
+            $valueAsArray = explode(",", $query_params[$facetConfigId]);
+            $found = array_search($key, $valueAsArray);
             if ($found !== false) {
-                array_splice($query_params[$facetConfigId], $found, 1);
+                array_splice($valueAsArray, $found, 1);
             } else {
-                $query_params[$facetConfigId][] = $key;
+                $valueAsArray[] = $key;
+            }
+            if (count($valueAsArray) > 0) {
+                $query_params[$facetConfigId] = implode(",", $valueAsArray);
+            } else {
+                unset($query_params[$facetConfigId]);
             }
         } else {
-            $query_params[$facetConfigId][] = $key;
+            $query_params[$facetConfigId] = $key;
         }
 
         $coords = "";//$this->getCoordinates($inputOptions);

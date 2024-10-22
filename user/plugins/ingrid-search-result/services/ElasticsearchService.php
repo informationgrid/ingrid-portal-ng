@@ -36,6 +36,8 @@ class ElasticsearchService
         $result = array();
         $filter = array();
         foreach ($selectedFacets as $selectionKey => $selectionValue) {
+            if ($selectionValue == "") continue;
+
             // Use array_filter to find the object with id 'test'
             $filteredObjects = array_filter($facet_config, function ($object) use ($selectionKey) {
                 return $object['id'] === $selectionKey;
@@ -46,13 +48,16 @@ class ElasticsearchService
 
             if ($foundObject) {
                 if (property_exists((object)$foundObject, 'search')) {
-                    $result[] = sprintf($foundObject['search'], $selectionValue[0]);
+                    $result[] = sprintf($foundObject['search'], $selectionValue);
                 } else if (property_exists((object)$foundObject, 'queries')) {
-                    $facet1 = $foundObject['queries'][$selectionValue[0]];
-                    if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
-                        $filter[] = json_encode($facet1['query']['filter']);
-                    } else {
-                        $result[] = $foundObject['queries'][$selectionValue[0]]['query'];
+                    $values = explode(",", $selectionValue);
+                    foreach ($values as $value) {
+                        $facet1 = $foundObject['queries'][$value];
+                        if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
+                            $filter[] = json_encode($facet1['query']['filter']);
+                        } else {
+                            $result[] = $foundObject['queries'][$selectionValue]['query'];
+                        }
                     }
                 } else if (property_exists((object)$foundObject, 'filter')) {
                     $filter[] = sprintf($foundObject['filter'], ...explode(",", $selectionValue));
