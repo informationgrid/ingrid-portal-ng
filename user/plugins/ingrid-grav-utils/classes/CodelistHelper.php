@@ -95,7 +95,7 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistPartners(){
+    public static function getCodelistPartnerProviders(){
         $partners = array();
         try {
             $codelistPartner = self::getCodelist('110');
@@ -133,6 +133,30 @@ class CodelistHelper
                         if ($partners[$partnerKey]) {
                             $partners[$partnerKey]['providers'][$id]= $provider;
                         }
+                    }
+                }
+            }
+        } catch (\Throwable $th) {
+        }
+        return $partners;
+    }
+
+    public static function getCodelistPartners(){
+        $partners = array();
+        try {
+            $codelistPartner = self::getCodelist('110');
+            if ($codelistPartner) {
+                $entries = self::getNodeList($codelistPartner, '//de.ingrid.codelists.model.CodeListEntry');
+                foreach ($entries as $entry) {
+                    $fields = self::getNode($entry, './fields');
+                    $id = self::getNodeValue($entry, './id');
+                    if ($fields) {
+                        $partner = array();
+                        $ident = self::getNodeValue($fields, './ident');
+                        $name = self::getNodeValue($fields, './name');
+                        $partner['name'] = $name;
+                        $partner['ident'] = $ident;
+                        $partners[$id] = $partner;
                     }
                 }
             }

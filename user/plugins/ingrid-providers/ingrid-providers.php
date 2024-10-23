@@ -73,7 +73,7 @@ class InGridProvidersPlugin extends Plugin
     {
 
         if (!$this->isAdmin()) {
-            $partners = CodelistHelper::getCodelistPartners();
+            $partners = CodelistHelper::getCodelistPartnerProviders();
             $this->grav['twig']->twig_vars['partners'] = $partners;
         }
     }

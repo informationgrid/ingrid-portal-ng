@@ -30,3 +30,49 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    api_url:
+      type: text
+      label: PLUGIN_INGRID_CATALOG.API_URL
+      help: PLUGIN_INGRID_CATALOG.API_URL_HELP
+      default: https://api.dev.informationgrid.eu/portal/catalogs
+    open_nodes_level:
+      type: number
+      label: PLUGIN_INGRID_CATALOG.OPEN_NODES_LEVEL
+      help: PLUGIN_INGRID_CATALOG.OPEN_NODES_LEVEL_HELP
+      default: 3
+      validate:
+        min: 0
+        max: 3
+    sort_by_name:
+      type: toggle
+      label: PLUGIN_INGRID_CATALOG.SORT_BY_NAME
+      help: PLUGIN_INGRID_CATALOG.SORT_BY_NAME_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    open_on_new_tab:
+      type: toggle
+      label: PLUGIN_INGRID_CATALOG.OPEN_ON_NEW_TAB
+      help: PLUGIN_INGRID_CATALOG.OPEN_ON_NEW_TAB_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    display_partner:
+      type: toggle
+      label: PLUGIN_INGRID_CATALOG.DISPLAY_PARTNER
+      help: PLUGIN_INGRID_CATALOG.DISPLAY_PARTNER_HELP
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

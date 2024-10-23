@@ -1,0 +1,5 @@
+{% import 'macros/hit_macros.html.twig' as macros %}
+
+{% for item in items %}
+    {{ macros.render_catalog_node(item, detailPage, catalogPage) }}
+{% endfor %}

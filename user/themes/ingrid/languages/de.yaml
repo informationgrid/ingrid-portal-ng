@@ -1084,3 +1084,9 @@ HELP:
 
 DATASOURCE:
     CONNECTED_DATABASES: Angeschlossene Datenquellen
+
+CATALOG_HIERARCHY:
+    TREE_OBJECTS: Objekte
+    TREE_ADDRESSES: Adressen
+    TREE_ADDRESSES_FREE: Freie Adressen
+    LOADING: Laden ...
