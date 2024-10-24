@@ -18,7 +18,6 @@ class SearchResponseTransformerClassic
     public static function parseAggregations(object $aggregations, array $config, $uri): array
     {
         $result = array();
-        $base_url = $uri->url."?q=".$uri->query("q");
 
         foreach ($config as $facetConfig) {
             $items = array();
@@ -27,7 +26,6 @@ class SearchResponseTransformerClassic
                     $items[] = new FacetItem(
                         $key,
                         ((array)$aggregations)[$key]->doc_count,
-//                        $base_url."&".SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key)
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key)
                     );
                 }
@@ -39,6 +37,12 @@ class SearchResponseTransformerClassic
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key)
                     );
                 }
+            } else if ($facetConfig['id'] == 'bbox') {
+                $items[] = new FacetItem(
+                    '',
+                    -1,
+                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null)
+                );
             }
             $result[] = new FacetResult($facetConfig['id'], $items);
         }
@@ -46,7 +50,7 @@ class SearchResponseTransformerClassic
         return $result;
     }
 
-    private static function createActionUrl($uri, $facetConfigId, $key) {
+    private static function createActionUrl($uri, $facetConfigId, $key): string {
         $query_params = $uri->query(null, true);
 
         // Get the full current URL without query parameters
@@ -55,34 +59,31 @@ class SearchResponseTransformerClassic
 
         $query_string = array();
         if (isset($query_params[$facetConfigId])) {
-            $valueAsArray = explode(",", $query_params[$facetConfigId]);
-            $found = array_search($key, $valueAsArray);
-            if ($found !== false) {
-                array_splice($valueAsArray, $found, 1);
-            } else {
-                $valueAsArray[] = $key;
-            }
-            if (count($valueAsArray) > 0) {
-                $query_params[$facetConfigId] = implode(",", $valueAsArray);
-            } else {
+
+            if ($facetConfigId == 'bbox') {
                 unset($query_params[$facetConfigId]);
+            } else {
+                $valueAsArray = explode(",", $query_params[$facetConfigId]);
+                $found = array_search($key, $valueAsArray);
+                if ($found !== false) {
+                    array_splice($valueAsArray, $found, 1);
+                } else {
+                    $valueAsArray[] = $key;
+                }
+                if (count($valueAsArray) > 0) {
+                    $query_params[$facetConfigId] = implode(",", $valueAsArray);
+                } else {
+                    unset($query_params[$facetConfigId]);
+                }
             }
         } else {
             $query_params[$facetConfigId] = $key;
         }
 
-        $coords = "";//$this->getCoordinates($inputOptions);
-//        $inputOptions = $this->cleanupParameters($inputOptions);
-        // Build the new query string with all parameters
-        // TODO: add each part individually in order to join them with "&"
-        $query_string[] = http_build_query($query_params) . $coords; // . $search_term;
+        $query_string[] = http_build_query($query_params);
+
         // Construct the new URL with the updated query string
-        $new_url = $base_url . '?' . join('&', $query_string);
-
-    // Rebuild the query string
-//    $new_url = $base_url . '?' . http_build_query($query_params);
-
-        return $new_url;
+        return $base_url . '?' . join('&', $query_string);
     }
 
     private static function parseHit($esHit)

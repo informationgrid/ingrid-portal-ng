@@ -12,6 +12,7 @@ class SearchResultHitTwigExtension extends GravExtension
     public function getFunctions(): array
     {
         return [
+            new \Twig_SimpleFunction('getActionLinkFromFacets', [$this, 'getActionLinkFromFacets'])
         ];
     }
 
@@ -31,5 +32,18 @@ class SearchResultHitTwigExtension extends GravExtension
             });
         }
         return $output;
+    }
+
+    public function getActionLinkFromFacets($facets, $facetId, $facetValue): string|null {
+        for ($i=0; $i < count($facets); $i++) {
+            if ($facets[$i]->id == $facetId) {
+                for ($j = 0; $j < count($facets[$i]->items); $j++) {
+                    if ($facets[$i]->items[$j]->value == $facetValue) {
+                        return $facets[$i]->items[$j]->actionLink;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

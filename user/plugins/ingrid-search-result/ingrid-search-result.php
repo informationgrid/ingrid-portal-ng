@@ -111,34 +111,4 @@ class InGridSearchResultPlugin extends Plugin
         return $query_params;
     }
 
-    /**
-     * @param array $inputOptions
-     * @return string
-     */
-    public
-    function getCoordinates(array $inputOptions): string
-    {
-        $coords = "";
-        if (property_exists((object)$inputOptions, "x1") && $inputOptions["x1"] != "") {
-            $coords = "&coords=" . "x1:" . $inputOptions["x1"] . ",y1:" . $inputOptions["y1"] . ",x2:" . $inputOptions["x2"] . ",y2:" . $inputOptions["y2"];
-        }
-        return $coords;
-    }
-
-    /**
-     * @param array $inputOptions
-     * @return array
-     */
-    public
-    function cleanupParameters(array $inputOptions): array
-    {
-        unset($inputOptions["x1"]);
-        unset($inputOptions["y1"]);
-        unset($inputOptions["x2"]);
-        unset($inputOptions["y2"]);
-        unset($inputOptions["areaid"]);
-        unset($inputOptions["action"]);
-        return $inputOptions;
-    }
-
 }

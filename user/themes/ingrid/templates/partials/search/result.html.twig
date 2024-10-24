@@ -6,38 +6,28 @@
     </div>
 </div>
 <div class="filters-active">
-    <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="post" name="removeFacet" id="removeFacet">
-        <input type="hidden" name="removeFacet" value="true" />
-        {% for facet, values in selected_facets %}
-            {% if facet == 'bbox' %}
-                <button type="submit" id="{{ facet }}" class="button pill" name="{{ facet }}" value="{{ facet }}">
-                    Raumbezug: {{ value }}
-                    <span class="ic-ic-cross"></span>
-                </button>
-            {% endif %}
+    {% for facet, values in selected_facets %}
+        {% if facet == 'bbox' %}
+            {% set actionLink = getActionLinkFromFacets(search_result.facets, 'bbox', '') %}
+            <a href="{{ actionLink }}" class="button pill">
+                Raumbezug: {{ values }}
+                <span class="ic-ic-cross"></span>
+            </a>
+        {% else %}
             {% for facetItem in values | split(',') %}
-                {% set actionLink = "" %}
-                {# find action link for selected facet #}
-                {% for item in search_result.facets %}
-                    {% for bucket in item.items %}
-                        {% if bucket.value == facetItem %}
-                            {% set actionLink = bucket.actionLink %}
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-
+                {% set actionLink = getActionLinkFromFacets(search_result.facets, facet, facetItem) %}
                 <a href="{{ actionLink }}" id="{{ facet }}" class="button pill">
                     {{ ('facet-label.' ~ facet) | t}}: {{ (facet ~ '.' ~ facetItem) | t }}
                     <span class="ic-ic-cross"></span>
                 </a>
             {% endfor %}
-        {% endfor %}
-        {% if selected_facets|length > 0 %}
-            <a type="reset" href="{{ page.find('/search').url }}?q={{ uri.query('q') }}" class="button pill">
-                Alle Einschränkungen löschen
-            </a>
         {% endif %}
-    </form>
+    {% endfor %}
+    {% if selected_facets|length > 0 %}
+        <a type="reset" href="{{ page.find('/search').url }}?q={{ uri.query('q') }}" class="button pill">
+            Alle Einschränkungen löschen
+        </a>
+    {% endif %}
 </div>
 
 {% if search_result.hits|length > 0 %}
