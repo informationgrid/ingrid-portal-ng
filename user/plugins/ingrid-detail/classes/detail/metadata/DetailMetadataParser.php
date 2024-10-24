@@ -10,7 +10,7 @@ class DetailMetadataParser
 
     }
 
-    public static function parse($content, $uuid, $dataSourceName, $provider) {
+    public static function parse(\SimpleXMLElement $content, string $uuid, string $dataSourceName, string $provider = null) {
         $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
         if (!is_null($rootNode)) {
             return DetailMetadataParserIdf::parse($rootNode, $uuid, $dataSourceName, $provider);

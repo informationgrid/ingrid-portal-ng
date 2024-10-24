@@ -126,7 +126,7 @@ class InGridCatalogPlugin extends Plugin
         echo '<script>console.log("Catalog");</script>';
     }
 
-    public function onTwigSiteVariables()
+    public function onTwigSiteVariables(): void
     {
 
         if (!$this->isAdmin()) {
@@ -142,7 +142,8 @@ class InGridCatalogPlugin extends Plugin
         }
     }
 
-    private function checkIsOpen(string $item, int $level): bool {
+    private function checkIsOpen(string $item, int $level): bool
+    {
         $isOpen = false;
         $openNodesList = $this->paramOpenNodes != '' ? explode(',', $this->paramOpenNodes) : [];
         if (count($openNodesList) == 0) {
@@ -158,7 +159,8 @@ class InGridCatalogPlugin extends Plugin
         return $isOpen;
     }
 
-    private function addToList(string $item): void {
+    private function addToList(string $item): void
+    {
         $openNodesList = $this->paramOpenNodes != '' ? explode(',', $this->paramOpenNodes) : [];
         $exists = in_array($item, $openNodesList, true);
         if (!$exists) {
@@ -292,7 +294,8 @@ class InGridCatalogPlugin extends Plugin
         return $list;
     }
 
-    private function compare_name($a, $b) {
+    private function compare_name($a, $b): int
+    {
         return strcasecmp($a['name'], $b['name']);
     }
 }
