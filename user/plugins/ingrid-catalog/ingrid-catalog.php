@@ -85,9 +85,9 @@ class InGridCatalogPlugin extends Plugin
             $this->paramLevel = $this->grav['uri']->query('level') ?: "";
             $this->paramPartner = $this->grav['uri']->query('partner') ?: "";
             $this->paramOpenNodes = $this->grav['uri']->query('openNodes') ?: "";
+            $this->paramNode = $this->grav['uri']->query('node') ?: "";
 
             $this->openNodes = array();
-            $this->node = $this->grav['uri']->query('node') ?: "";
             if ($this->paramParentId && $this->paramIndex) {
                 // Parent loading
                 $this->enable([
@@ -108,14 +108,14 @@ class InGridCatalogPlugin extends Plugin
         $twig = $this->grav['twig'];
         // Use the @theme notation to reference the template in the theme
         $theme_path = $this->grav['twig']->addPath($this->grav['locator']->findResource('theme://templates'));
-        $children = self::getCatalogChildren($this->paramIndex, $this->paramLevel, $this->paramPartner, $this->node, $this->paramParentId);
+        $children = self::getCatalogChildren($this->paramIndex, $this->paramLevel, $this->paramPartner, $this->paramNode, $this->paramParentId);
         $detailPage = $this->grav['pages']->find('/detail');
         $catalogPage = $this->grav['pages']->find('/catalog');
-
+        $rootUrl = $this->grav['uri']->rootUrl();
         $output = $twig->twig()->render($theme_path . '/partials/catalog/catalog-item.html.twig', [
             'items' => $children,
-            'detailPage' => $detailPage ? $detailPage->route() : '',
-            'catalogPage' => $catalogPage ? $catalogPage->route() : '',
+            'detailPage' => $detailPage ? $rootUrl . $detailPage->route() : '',
+            'catalogPage' => $catalogPage ? $rootUrl . $catalogPage->route() : '',
         ]);
         echo $output;
         exit();
