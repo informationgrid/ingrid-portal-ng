@@ -14,7 +14,11 @@
                         <p class="intro">{{ "SEARCH.PORTLET_TITLE_3"|t }}</p>
                     </div>
                 {% endif %}
-                <form action="{{ page.find('/search').url }}?{{ uri.query }}" class="input-search" method="post" name="SearchForm" id="SearchForm" onsubmit="">
+                <form action="{{ page.find('/search').url }}?{{ uri.query }}" class="input-search" method="get" name="SearchForm" id="SearchForm">
+                    {# keep other query parameters #}
+                    {% for key, item in selected_facets %}
+                        <input type='hidden' name='{{ key }}' value='{{ item }}'/>
+                    {% endfor %}
                     <input type="text" class="input-search-field" placeholder="{{ "SEARCH.QUERY_INITIAL"|t }}" id="qrystr" name="q" value="{{ query }}">
                     <button class="button round hide-for-medium">
                         <span class="ic-ic-lupe"></span>

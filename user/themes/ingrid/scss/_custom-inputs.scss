@@ -13,7 +13,7 @@
     padding-top: 2px;
     padding-left: 34px;
     margin: 8px 0;
-    
+
     &:focus-within {
       text-decoration: underline;
     }
@@ -176,7 +176,7 @@
 }
 
 /* Show check mark */
-.control input:checked ~ .control__indicator:after {
+.control .control__indicator.checked:after {
   display: block;
 }
 
@@ -217,14 +217,14 @@
 
 /* select2 */
 .select2-dropdown { background-color: transparent; }
-.select2-container--default .select2-selection--single, 
+.select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple{
   height:36px;
   border: 1px solid $blue-light;
   border-radius: 50px;
   box-shadow: 0px 2px 5px 0px $blue-light;
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered, 
+.select2-container--default .select2-selection--single .select2-selection__rendered,
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
   font-family: 'Roboto-Regular';
   font-size: 14px;
@@ -252,7 +252,7 @@
 .select2-container--open .select2-dropdown--above {
   border: none;
 }
-.select2-container--default.select2-container--open.select2-container--below .select2-selection--single, 
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
   border-radius: 25px;
   border-bottom: none;
@@ -275,10 +275,10 @@ ul.select2-results__options {
 
   li { margin: 0; }
 }
-ul.select2-results__options li::before, 
+ul.select2-results__options li::before,
 ul.select2-selection__rendered li::before { content: ""; }
-.select2-results__option, 
-.select2-container--default .select2-results__option--highlighted[aria-selected], 
+.select2-results__option,
+.select2-container--default .select2-results__option--highlighted[aria-selected],
 .select2-container--default .select2-results__option[aria-selected=true] {
   background-color: $white;
   font-size: 16px;
@@ -333,7 +333,7 @@ ul#select2-location-results {
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
   padding-left: 24px;
 }
-.select2-container--default .select2-results__group, 
+.select2-container--default .select2-results__group,
 #select2-location-results .select2-results__options--nested .select2-results__option {
   padding: 8px 16px 8px 48px;
 }

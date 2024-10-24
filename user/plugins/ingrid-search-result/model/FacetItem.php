@@ -7,6 +7,7 @@ readonly class FacetItem
     public function __construct(
         public string $value,
         public string $docCount,
+        public string $actionLink,
     )
     {
     }

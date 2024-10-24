@@ -15,7 +15,7 @@ class SearchResponseTransformerClassic
      * @param FacetConfig[] $config
      * @return FacetResult[]
      */
-    public static function parseAggregations(object $aggregations, array $config): array
+    public static function parseAggregations(object $aggregations, array $config, $uri): array
     {
         $result = array();
 
@@ -23,17 +23,67 @@ class SearchResponseTransformerClassic
             $items = array();
             if (property_exists((object)$facetConfig, 'queries')) {
                 foreach ($facetConfig['queries'] as $key => $query) {
-                    $items[] = new FacetItem($key, ((array)$aggregations)[$key]->doc_count);
+                    $items[] = new FacetItem(
+                        $key,
+                        ((array)$aggregations)[$key]->doc_count,
+                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key)
+                    );
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
                 foreach (((array)$aggregations)[$facetConfig['id']]->buckets as $bucket) {
-                    $items[] = new FacetItem($bucket->key, $bucket->doc_count);
+                    $items[] = new FacetItem(
+                        $bucket->key,
+                        $bucket->doc_count,
+                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key)
+                    );
                 }
+            } else if ($facetConfig['id'] == 'bbox') {
+                $items[] = new FacetItem(
+                    '',
+                    -1,
+                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null)
+                );
             }
             $result[] = new FacetResult($facetConfig['id'], $items);
         }
 
         return $result;
+    }
+
+    private static function createActionUrl($uri, $facetConfigId, $key): string {
+        $query_params = $uri->query(null, true);
+
+        // Get the full current URL without query parameters
+        $base_url = $uri->path();
+//        $search_term = $uri->post("q") ? "" : '&q=' . $uri->query("q");
+
+        $query_string = array();
+        if (isset($query_params[$facetConfigId])) {
+
+            if ($facetConfigId == 'bbox') {
+                unset($query_params[$facetConfigId]);
+            } else {
+                $valueAsArray = explode(",", $query_params[$facetConfigId]);
+                $found = array_search($key, $valueAsArray);
+                if ($found !== false) {
+                    array_splice($valueAsArray, $found, 1);
+                } else {
+                    $valueAsArray[] = $key;
+                }
+                if (count($valueAsArray) > 0) {
+                    $query_params[$facetConfigId] = implode(",", $valueAsArray);
+                } else {
+                    unset($query_params[$facetConfigId]);
+                }
+            }
+        } else {
+            $query_params[$facetConfigId] = $key;
+        }
+
+        $query_string[] = http_build_query($query_params);
+
+        // Construct the new URL with the updated query string
+        return $base_url . '?' . join('&', $query_string);
     }
 
     private static function parseHit($esHit)

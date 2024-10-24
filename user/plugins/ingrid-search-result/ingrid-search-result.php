@@ -76,13 +76,6 @@ class InGridSearchResultPlugin extends Plugin
     public function onPageInitialized(): void
     {
         echo "<script>console.log('InGrid Search result');</script>";
-        if (isset($_POST['removeFacet'])) {
-            $this->removeFacet();
-        } else if ($this->grav['page']->slug() === 'search' && $_SERVER['REQUEST_METHOD'] === 'POST' && $this->grav['uri']->post("q")) {
-            $this->handleSearchterm();
-        } else if ($this->grav['page']->slug() === 'search' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->handleCheckboxSubmission();
-        }
     }
 
     public function onTwigSiteVariables()
@@ -91,12 +84,14 @@ class InGridSearchResultPlugin extends Plugin
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: "";
             $page = $this->grav['uri']->query('page') ?: 0;
-            $results = $this->service->getSearchResults($query, $page, $this->getSelectedFacets());
-            $this->grav['twig']->twig_vars['search_result'] = $results;
+            $selectedFacets = $this->getSelectedFacets();
+            $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri']);
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
-            $this->grav['twig']->twig_vars['selected_facets'] = $this->getSelectedFacets();
+            $this->grav['twig']->twig_vars['selected_facets'] = $selectedFacets;
             $this->grav['twig']->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
+
+            $this->grav['twig']->twig_vars['search_result'] = $results;
         }
     }
 
@@ -104,73 +99,6 @@ class InGridSearchResultPlugin extends Plugin
     {
         require_once(__DIR__ . '/twig/SearchResultHitTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
-    }
-
-    private function handleSearchterm(): void
-    {
-        $uri = $this->grav['uri'];
-        $base_url = $uri->path();
-        $search_term = $uri->post("q");
-        $query_params = $uri->query(null, true);
-        $query_params['q'] = $search_term;
-
-        // Rebuild the query string
-        $new_url = $base_url . '?' . http_build_query($query_params);
-        $this->grav->redirect($new_url);
-    }
-
-    private function removeFacet(): void
-    {
-        $uri = $this->grav['uri'];
-        $base_url = $uri->path();
-        $query_params = $uri->query(null, true);
-
-        $post_params = $_POST;
-        unset($post_params['removeFacet']);
-
-        foreach ($post_params as $key => $value) {
-            if (isset($query_params[$key])) {
-                if (is_array($query_params[$key])) {
-                    foreach ($query_params[$key] as $index => $item) {
-                        if ($item == $value) {
-                            unset($query_params[$key][$index]);
-                            // reset array so that index starts at 0
-                            $query_params[$key] = array_values($query_params[$key]);
-                        }
-                    }
-                } else {
-                    unset($query_params[$key]);
-                }
-            }
-        }
-
-        // Rebuild the query string
-        $new_url = $base_url . '?' . http_build_query($query_params);
-        $this->grav->redirect($new_url);
-    }
-
-    private
-    function handleCheckboxSubmission(): void
-    {
-        $inputOptions = $_POST;
-
-        $uri = $this->grav['uri'];
-        // Get the full current URL without query parameters
-        $base_url = $uri->path();
-        $search_term = $uri->post("q") ? "" : '&q=' . $uri->query("q");
-
-        $query_string = array();
-
-        $coords = $this->getCoordinates($inputOptions);
-        $inputOptions = $this->cleanupParameters($inputOptions);
-        // Build the new query string with all parameters
-        // TODO: add each part individually in order to join them with "&"
-        $query_string[] = http_build_query($inputOptions) . $coords . $search_term;
-        // Construct the new URL with the updated query string
-        $new_url = $base_url . '?' . join('&', $query_string);
-
-        // Redirect to the new URL
-        $this->grav->redirect($new_url);
     }
 
     private
@@ -181,36 +109,6 @@ class InGridSearchResultPlugin extends Plugin
             unset($query_params['q']);
         }
         return $query_params;
-    }
-
-    /**
-     * @param array $inputOptions
-     * @return string
-     */
-    public
-    function getCoordinates(array $inputOptions): string
-    {
-        $coords = "";
-        if (property_exists((object)$inputOptions, "x1") && $inputOptions["x1"] != "") {
-            $coords = "&coords=" . "x1:" . $inputOptions["x1"] . ",y1:" . $inputOptions["y1"] . ",x2:" . $inputOptions["x2"] . ",y2:" . $inputOptions["y2"];
-        }
-        return $coords;
-    }
-
-    /**
-     * @param array $inputOptions
-     * @return array
-     */
-    public
-    function cleanupParameters(array $inputOptions): array
-    {
-        unset($inputOptions["x1"]);
-        unset($inputOptions["y1"]);
-        unset($inputOptions["x2"]);
-        unset($inputOptions["y2"]);
-        unset($inputOptions["areaid"]);
-        unset($inputOptions["action"]);
-        return $inputOptions;
     }
 
 }

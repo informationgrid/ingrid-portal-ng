@@ -25,30 +25,24 @@
                                          aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
                                          style="display: block;">
                                         <div class="boxes">
-                                            {% for bucket in item.items %}
-                                                <div class="form-element boxed">
-                                                    <div class="input-check">
-                                                        <div class="control-group">
-                                                            <label class="control control--checkbox "
-                                                                   for="facet-{{ item.id }}-{{ bucket.value }}">
-                                                                <input id="facet-{{ item.id }}-{{ bucket.value }}"
-                                                                       type="checkbox" name="{{ item.id }}[]"
-                                                                       value="{{ bucket.value }}"
-                                                                        {% if bucket.value in selected_facets[item.id] %}
-                                                                            checked
-                                                                        {% endif %}
-                                                                       onchange="submitForm()"
-                                                                       autocomplete="off">
-                                                                <span class="control__indicator"></span>
-                                                                <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                <span class="text">{{ (item.id ~ '.' ~ bucket.value) | t }}</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
                                             {% if (item.id == "bbox") %}
                                                 {% include 'partials/search/filter/facet_area_map.html.twig' %}
+                                            {% else %}
+                                                {% for bucket in item.items %}
+                                                    <a href="{{ bucket.actionLink }}" class="input-checkbox">
+                                                        <div class="form-element boxed">
+                                                            <div class="input-check">
+                                                                <div class="control-group">
+                                                                    <label class="control control--checkbox">
+                                                                        <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                        <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                        <span class="text">{{ (item.id ~ '.' ~ bucket.value) | t }}</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                {% endfor %}
                                             {% endif %}
                                         </div>
                                     </div>
