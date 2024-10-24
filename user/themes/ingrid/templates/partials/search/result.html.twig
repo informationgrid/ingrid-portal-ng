@@ -9,14 +9,14 @@
     {% for facet, values in selected_facets %}
         {% if facet == 'bbox' %}
             {% set actionLink = getActionLinkFromFacets(search_result.facets, 'bbox', '') %}
-            <a href="{{ actionLink }}" class="button pill">
+            <a href="{{ base_url }}{{ actionLink }}" class="button pill">
                 Raumbezug: {{ values }}
                 <span class="ic-ic-cross"></span>
             </a>
         {% else %}
             {% for facetItem in values | split(',') %}
                 {% set actionLink = getActionLinkFromFacets(search_result.facets, facet, facetItem) %}
-                <a href="{{ actionLink }}" id="{{ facet }}" class="button pill">
+                <a href="{{ base_url }}{{ actionLink }}" id="{{ facet }}" class="button pill">
                     {{ ('facet-label.' ~ facet) | t}}: {{ (facet ~ '.' ~ facetItem) | t }}
                     <span class="ic-ic-cross"></span>
                 </a>

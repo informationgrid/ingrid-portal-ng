@@ -29,7 +29,7 @@
                                                 {% include 'partials/search/filter/facet_area_map.html.twig' %}
                                             {% else %}
                                                 {% for bucket in item.items %}
-                                                    <a href="{{ bucket.actionLink }}" class="input-checkbox">
+                                                    <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                         <div class="form-element boxed">
                                                             <div class="input-check">
                                                                 <div class="control-group">
