@@ -6,8 +6,8 @@
 {# var #}
 {% set hit = hit %}
 {% set title = hit.title %}
-{% set class = hit.type %}
-{% set className = "TODO" %}
+{% set type = hit.type %}
+{% set type_name = "COMMON.UDK_ADR_CLASS_NAME_" ~ type %}
 {% set summary = hit.summary %}
 {% set contactRefs = hit.contacts %}
 {% set linkRefs = hit.links %}
@@ -21,12 +21,12 @@
 {% set hash_links_linkObjectRefs = "detail_links_objects" %}
 {% set hash_links_linkSubordinatedRefs = "detail_links_subordinated" %}
 {% set hash_links_linkSuperiorRefs = "detail_links_superior" %}
-{% set label_overview = "Übersicht" %}
-{% set label_description = "Beschreibung" %}
-{% set label_links = "Verweise" %}
-{% set label_links_linkObjectRefs = "Datenbezüge" %}
-{% set label_links_linkSubordinatedRefs = "Übergeordnete Adressen" %}
-{% set label_links_linkSuperiorRefs = "Untergeordnete Adressen" %}
+{% set label_overview = "SEARCH_DETAIL.GENERAL_TAB"|t %}
+{% set label_description = "SEARCH_DETAIL.DETAIL_DESCRIPTION"|t %}
+{% set label_links = "SEARCH_DETAIL.REFERENCES"|t %}
+{% set label_links_linkObjectRefs = "SEARCH_DETAIL.DATARELATIONS"|t %}
+{% set label_links_linkSubordinatedRefs = "SEARCH_DETAIL.SUBORDINATED_REFERENCES"|t %}
+{% set label_links_linkSuperiorRefs = "SEARCH_DETAIL.SUPERIOR_REFERENCES"|t %}
 
 <div class="banner-noimage m-filter">
     <div class="page-wrapper" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
@@ -39,7 +39,7 @@
             </div>
             <div class="xsmall-24 large-18 xlarge-18 columns">
                 <div class="helper icon">
-                    {{ hit_macros.render_address_icon(class, className) }}
+                    {{ hit_macros.render_address_icon(type, type_name|t ) }}
                 </div>
                 <h2>{{ title }}</h2>
             </div>
@@ -152,7 +152,7 @@
         <div class="section">
             <a class="anchor" id="{{ hash_links }}"></a>
             {{ hit_macros.render_title(label_links) }}
-            {# Daten­bezüge  #}
+            {# Datenbezüge #}
                 {% if linkObjectRefs %}
                     <div class="sub-section sub-section-unlined">
                         <a class="anchor" id="{{ hash_links_linkObjectRefs }}"></a>

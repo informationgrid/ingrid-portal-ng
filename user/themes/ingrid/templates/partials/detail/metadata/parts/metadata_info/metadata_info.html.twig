@@ -1,4 +1,4 @@
-{# Zusatzinformationen #}
+{# Informationen zum Metadatensatz #}
 <div class="section">
     <a class="anchor" id="{{ hash_metadata_info }}"></a>
     {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
@@ -27,7 +27,7 @@
         {{ hit_macros.render_link_label("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
-    {{ hit_macros.render_link_label(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, metaInfoRefs.contact_meta.mail, "mail" ) }}
+    {{ hit_macros.render_link_list_label(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, "mail" ) }}
 {# Metadatenquellen #}
     {% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
     <div class="table table--lined">

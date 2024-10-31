@@ -74,7 +74,7 @@ class InGridDetailPlugin extends Plugin
         echo "<script>console.log('InGrid Detail');</script>";
     }
 
-    public function onTwigSiteVariables()
+    public function onTwigSiteVariables(): void
     {
 
         if (!$this->isAdmin()) {
@@ -82,6 +82,7 @@ class InGridDetailPlugin extends Plugin
             $type = $this->grav['uri']->query('type');
             $testIDF = $this->grav['uri']->query('testIDF');
             $cswUrl = $this->grav['uri']->query('cswUrl');
+            $lang = $this->grav['language']->getLanguage();
 
             $api = getenv('INGRID_API') ?? $this->grav['config']->get('plugins.ingrid-detail.api_url');
 
@@ -121,20 +122,22 @@ class InGridDetailPlugin extends Plugin
 
                 if ($type == "address") {
                     $parser = new DetailAddressParser();
-                    $hit = $parser->parse($content, $uuid, $dataSourceName, $providers);
+                    $hit = $parser->parse($content, $uuid, $lang);
                 } else {
                     $parser = new DetailMetadataParser();
-                    $hit = $parser->parse($content, $uuid, $dataSourceName, $providers);
+                    $hit = $parser->parse($content, $uuid, $dataSourceName, $providers, $lang);
                 }
                 $this->grav['twig']->twig_vars['detail_type'] = $type;
                 $this->grav['twig']->twig_vars['hit'] = $hit;
                 $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"] ?? null;
                 $this->grav['twig']->twig_vars['partners'] = $partners;
+                $this->grav['twig']->twig_vars['lang'] = $lang;
+                $this->grav['twig']->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
             }
         }
     }
 
-    public function onTwigExtensions()
+    public function onTwigExtensions(): void
     {
         require_once(__DIR__ . '/twig/DetailTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new DetailTwigExtension());

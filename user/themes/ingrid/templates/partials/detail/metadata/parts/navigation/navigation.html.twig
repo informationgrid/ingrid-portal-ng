@@ -110,7 +110,7 @@
                             {% set tmpCount = 0 %}
                             {% for item in contactRefs %}
                                 {% set tmpHash = hash_contact ~ "_contact-" ~ tmpCount %}
-                                {% set tmpTitle = item.role %}
+                                {% set tmpTitle = item.role_name %}
                                 {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% set tmpCount = tmpCount + 1 %}
                             {% endfor %}

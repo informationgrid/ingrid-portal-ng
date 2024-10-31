@@ -10,10 +10,11 @@ class DetailAddressParser
 
     }
 
-    public static function parse($content, $uuid, $dataSourceName, $provider){
+    public static function parse($content, $uuid, $lang)
+    {
         $rootNode = IdfHelper::getNode($content, '//gmd:CI_ResponsibleParty | //idf:idfResponsibleParty');
         if (!is_null($rootNode)) {
-            return DetailAddressParserIdf::parse($rootNode, $uuid, $dataSourceName, $provider);
+            return DetailAddressParserIdf::parse($rootNode, $uuid, $lang);
         }
     }
 

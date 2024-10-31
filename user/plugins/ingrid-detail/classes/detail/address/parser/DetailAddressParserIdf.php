@@ -2,25 +2,30 @@
 
 namespace Grav\Plugin;
 
+use Grav\Common\Utils;
+
 class DetailAddressParserIdf
 {
 
-    public static function parse($node, $uuid, $dataSourceName, $provider){
+    public static function parse(\SimpleXMLElement $node, string $uuid, string $lang): array
+    {
         echo "<script>console.log('InGrid Detail parse address with " . $uuid . "');</script>";
 
-        $address = array();
-        $address["uuid"] = $uuid;
         $hierarchyParty = IdfHelper::getNode($node, "./idf:hierarchyParty[@uuid='".$uuid."']");
-        $address["type"] = IdfHelper::getNodeValue($hierarchyParty, "./idf:addressType");
-        self::getTitle($hierarchyParty, $address["type"], $address);
-        $address["summary"] = IdfHelper::getNodeValue($node, "./gmd:positionName/*[self::gco:CharacterString or self::gmx:Anchor]");
-        self::getContacts($node, $address);
-        self::getLinks($node, $address);
+        $type = IdfHelper::getNodeValue($hierarchyParty, "./idf:addressType");
+        $address = [
+            "uuid" => $uuid,
+            "type" => $type,
+            "title" => self::getTitle($hierarchyParty, $type),
+            "summary" => IdfHelper::getNodeValue($node, "./gmd:positionName/*[self::gco:CharacterString or self::gmx:Anchor]"),
+            "contacts" => self::getContacts($node, $lang),
+            "links" => self::getLinks($node, $lang),
+        ];
         //var_dump($address);
         return $address;
     }
 
-    public static function getTitle($node, $type, &$address)
+    public static function getTitle(\SimpleXMLElement $node, string $type): null|string
     {
         $title = null;
         $addressIndividualName = IdfHelper::getNodeValue($node, "./idf:addressIndividualName");
@@ -40,30 +45,27 @@ class DetailAddressParserIdf
                 $title = $addressOrganisationName;
             }
         }
-        $address["title"] = $title;
+        return $title;
     }
 
-    public static function getContacts($node, &$address)
+    public static function getContacts(\SimpleXMLElement $node, string $lang): array
     {
-        $array = array();
-        $nodes = null;
-        if ($node) {
-            $nodes = IdfHelper::getNodeList($node, ".");
-        }
+        $array = [];
+        $nodes = IdfHelper::getNodeList($node, ".");
 
         foreach ($nodes as $tmpNode) {
             $uuid = "";
             $type = "";
             $role = "";
-            $roleNode = IdfHelper::getNodeValue($tmpNode, "./gmd:role/gmd:CI_RoleCode");
+            $roleNode = IdfHelper::getNode($tmpNode, "./gmd:role/gmd:CI_RoleCode");
             if ($roleNode) {
-                $role = $roleNode->attributes()->codeListValue;
+                $role = IdfHelper::getNodeValue($roleNode, "./@uuid");
             }
             $addresses = [];
             $tmpAddresses = IdfHelper::getNodeList($tmpNode, "./idf:hierarchyParty");
 
             foreach ($tmpAddresses as $tmpAddress) {
-                $uuid = $tmpAddress->attributes()->uuid;
+                $uuid = IdfHelper::getNodeValue($tmpAddress, "./@uuid");
                 $type = IdfHelper::getNodeValue($tmpAddress, "./idf:addressType");
                 $title = IdfHelper::getNodeValue($tmpAddress, "./idf:addressIndividualName | ./gmd:individualName");
                 if (!$title) {
@@ -74,7 +76,7 @@ class DetailAddressParserIdf
                     "type" => $type,
                     "title" => $title,
                 );
-                array_push($addresses, $item);
+                $addresses[] = $item;
             }
 
             $streets = [];
@@ -84,9 +86,9 @@ class DetailAddressParserIdf
                 foreach ($tmpArray as $tmp) {
                     if (str_starts_with($tmpStreet, 'Postbox ')) {
                         $tmp = str_replace('Postbox ', 'Postfach ', $tmp);
-                        array_push($streets, $tmp);
+                        $streets[] = $tmp;
                     } else {
-                        array_push($streets, $tmp);
+                        $streets[] = $tmp;
                     }
                 }
             }
@@ -108,24 +110,24 @@ class DetailAddressParserIdf
                 "streets" => $streets,
                 "postcode" => $postcode,
                 "city" => $city,
-                "country" => $country,
+                "country" => $country ? CountryHelper::getNameFromCode($country, $lang): null,
                 "mail" => $mail,
                 "phone" => $phone,
                 "facsimile" => $facsimile,
                 "url" => $url,
                 "service_time" => $service_time,
             );
-            array_push($array, $item);
+            $array[] = $item;
         }
-        $address["contacts"] = $array;
+        return $array;
     }
 
-    public static function getLinks($node, &$address)
+    public static function getLinks(\SimpleXMLElement $node, string $lang): array
     {
-        $array = array();
+        $array = [];
         $nodes = IdfHelper::getNodeList($node, 'idf:objectReference');
         foreach ($nodes as $tmpNode) {
-            $uuid = $tmpNode->attributes()->uuid;
+            $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
             $title = IdfHelper::getNodeValue($tmpNode, "./idf:objectName");
             $description = IdfHelper::getNodeValue($tmpNode, "./idf:description");
@@ -137,6 +139,7 @@ class DetailAddressParserIdf
             $item = array(
                 "uuid" => $uuid,
                 "type" => $type,
+                "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, $lang),
                 "title" => $title,
                 "description" => $description,
                 "attachedToField" => $attachedToField,
@@ -146,25 +149,25 @@ class DetailAddressParserIdf
                 "previews" => $graphicOverview,
                 "kind" => "object",
             );
-            array_push($array, $item);
+            $array[] = $item;
         }
         $nodes = IdfHelper::getNodeList($node, 'idf:subordinatedParty');
         foreach ($nodes as $tmpNode) {
-            $uuid = $tmpNode->attributes()->uuid;
+            $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
-            $title = DetailAddressParserIdf::getTitle($tmpNode);
+            $title = self::getTitle($tmpNode, $type);
             $item = array(
                 "uuid" => $uuid,
                 "type" => $type,
                 "title" => $title,
                 "kind" => "subordinated",
             );
-            array_push($array, $item);
+            $array[] = $item;
         }
 
         $nodes = IdfHelper::getNodeList($node, 'idf:superiorParty');
         foreach ($nodes as $tmpNode) {
-            $uuid = $tmpNode->attributes()->uuid;
+            $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
             $title = DetailAddressParserIdf::getTitle($tmpNode);
             $item = array(
@@ -173,8 +176,8 @@ class DetailAddressParserIdf
                 "title" => $title,
                 "kind" => "superior",
             );
-            array_push($array, $item);
+            $array[] = $item;
         }
-        $address["links"] = $array;
+        return Utils::sortArrayByKey($array, "title", SORT_ASC);
     }
 }

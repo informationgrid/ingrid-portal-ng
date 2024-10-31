@@ -2,7 +2,7 @@
 {% if infoRefs_additional and infoRefs_additional|length > 0 %}
     <div class="sub-section">
         <a class="anchor" id="{{ hash_info }}_additional_information"></a>
-        {{ hit_macros.render_title("SEARCH_DETAIL.ADDITIONAL_INFORMATION"|t) }}
+        {{ hit_macros.render_group_title("SEARCH_DETAIL.ADDITIONAL_INFORMATION"|t) }}
     {# Datensatz/Datenserie #}
         {% include 'partials/detail/metadata/parts/information/information_additional_dataset_series.html.twig' %}
     {# Veröffentlichung #}
@@ -51,15 +51,15 @@
 {% if infoRefs_keyword and infoRefs_keyword|length > 0 %}
     <div class="sub-section">
         <a class="anchor" id="{{ hash_info }}_fs_keywords"></a>
-        {{ hit_macros.render_title("SEARCH_DETAIL.FS_KEYWORDS"|t) }}
+        {{ hit_macros.render_group_title("SEARCH_DETAIL.FS_KEYWORDS"|t) }}
     {# Kategorien #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_category.html.twig' %}
     {# Verschlagwortung #}
-        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspire_themes ?? [])|sort) }}
-        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priority_dataset ?? [])|sort) }}
-        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatial_scope ?? [])|sort) }}
-        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemet_concepts ?? [])|sort) }}
-        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.adv_group ?? [])|sort) }}
+        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspire_themes ?? [])|sort, true, "search_terms_inspire", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priority_dataset ?? [])|sort, true, "search_terms_priority", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatial_scope ?? [])|sort, true, "search_terms_spatial", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemet_concepts ?? [])|sort, true, "search_terms_gemet", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.adv_group ?? [])|sort, true, "search_terms_inspire_invekos", 10, paramsMore) }}
     {# INSPIRE-InVeKoS #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_invekos.html.twig' %}
     {# ISO-Themenkategorien #}

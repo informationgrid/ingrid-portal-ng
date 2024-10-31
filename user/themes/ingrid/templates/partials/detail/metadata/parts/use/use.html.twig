@@ -5,11 +5,11 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.USAGE"|t) }}
     <div class="row columns">
 {# Nutzungsbedingungen (useConstraints) #}
-        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, useRefs.useConstraints.constraints|filterConstraintDuplicates, useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
+        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, useRefs.useConstraints.constraints, useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
 {# Zugriffsbeschränkungen (accessConstraints) #}
-        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.OBJECT_ACCESS_RESTRICTION_VALUE"|t, useRefs.accessConstraints.constraints|filterConstraintDuplicates) }}
+        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.OBJECT_ACCESS_RESTRICTION_VALUE"|t, useRefs.accessConstraints.constraints) }}
 {# Anwendungseinschränkungen (useLimitation) #}
-        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.OBJECT_ACCESS_TERMS_OF_USE"|t, useRefs.useLimitations.constraints|filterConstraintDuplicates) }}
+        {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.OBJECT_ACCESS_TERMS_OF_USE"|t, useRefs.useLimitations.constraints) }}
 {# Sicherheitsstufung #}
         {% include 'partials/detail/metadata/parts/use/use_classification_code.html.twig' ignore missing %}
 {# Software #}

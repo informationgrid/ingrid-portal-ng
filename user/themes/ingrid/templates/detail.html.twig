@@ -18,4 +18,6 @@
         {{ default_macros.render_error_msg("Keine Detailinformationen verfügbar.") }}
     {% endif %}
     </div>
+
+    {% do assets.addJs('theme://js/htmx.min.js', {group: 'bottom'}) %}
 {% endblock %}
