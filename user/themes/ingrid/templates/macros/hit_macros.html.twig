@@ -848,7 +848,7 @@
               {% elseif entry.url %}
                 {% set link = entry.url %}
               {% elseif entry.cswUrl %}
-                {% set link = "?cswUrl=" ~ entry.cswUrl %}
+                {% set link = "?cswUrl=" ~ entry.cswUrl|url_encode %}
               {% endif %}
               {% if entry.type is not empty and isFacts is not sameas(true) %}
               <div class="helper icon">

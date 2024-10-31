@@ -7,7 +7,7 @@ use Grav\Common\Utils;
 class DetailMetadataParserIdf
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, string $dataSourceName, string $provider = null, string $lang): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 
@@ -1225,7 +1225,7 @@ class DetailMetadataParserIdf
         return $array;
     }
 
-    private static function getMetaInfoRefs(\SimpleXMLElement $node, string $uuid, string $dataSourceName, null|string $provider = null, array &$metadata, string $lang): void
+    private static function getMetaInfoRefs(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, array &$metadata, string $lang): void
     {
         $mod_time = IdfHelper::getNodeValue($node, "./gmd:dateStamp/gco:Date");
         $langCode = IdfHelper::getNodeValue($node, "./gmd:language/gmd:LanguageCode/@codeListValue");
