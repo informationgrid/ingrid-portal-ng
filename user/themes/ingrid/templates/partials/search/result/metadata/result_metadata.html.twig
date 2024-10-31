@@ -14,9 +14,11 @@
         {% if partner_logo %}
             {{ hit_macros.render_hit_logo(hit.partners[0]) }}
         {% endif %}
+        {% if hit.type %}
         <div class="helper icon">
             {{ hit_macros.render_metadata_icon(hit.type, hit.type_name) }}
         </div>
+        {% endif %}
         {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint) }}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>

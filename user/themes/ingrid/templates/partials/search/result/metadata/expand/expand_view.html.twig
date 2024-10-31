@@ -38,7 +38,7 @@
             {% set countLinks = 0 %}
             {% set addRefsExpanded = false %}
 {# Verweise und Downloads #}
-            {% if downloads|length > 0 or  references|length > 0 %}
+            {% if downloads|length > 0 or references|length > 0 or others|length > 0 %}
                 <div class="sub-section">
                     {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_LINKS"|t, downloads|length + references|length) }}
                     <div class="document-list">
@@ -85,7 +85,7 @@
                                     {% endif %}
                                     {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ link.uuid %}
                                     <a href="{{ detailLink }}" class="icon" title="{{ link.title }}">
-                                        {{ hit_macros.render_metadata_icon(link.class, link.title ?? detailLink, link.class_name)}}
+                                        {{ hit_macros.render_metadata_icon(link.type, link.title ?? detailLink, link.typeName) }}
                                     </a>
                                 </div>
                             </div>
@@ -220,10 +220,9 @@
                 </div>
             {% endif %}
 {# Kartenansicht #}
-
             {% if mapUrl or mapUrlClient %}
                 <p class="caption">
-                    <a target="_blank" class="button small" href="{{ mapUrlClient ?? mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                    <a target="_blank" class="button small" href="{{ mapUrlClient ?? page.find('/map').url ~ '?layers=' ~ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
                         {{ "COMMON.RESULT_SHOWMAP"|t }}
                     </a>
                 </p>
