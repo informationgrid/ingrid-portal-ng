@@ -907,7 +907,9 @@
                 {% endif %}
               {% endif %}
               {% if entry.description %}
-                <small class="description">{{ convertUrlInText(entry.description)|raw }}</small>
+                <div class="description">
+                  <small class="description">{{ convertUrlInText(entry.description)|raw }}</small>
+                </div>
               {% endif %}
               {% if entry.linkInfo %}
                 <small class="text">{{ entry.linkInfo }}</small>
