@@ -27,6 +27,7 @@ class InGridCatalogPlugin extends Plugin
 
     var array $openNodes;
 
+    var string $lang;
     /**
      * @return array
      *
@@ -71,6 +72,7 @@ class InGridCatalogPlugin extends Plugin
         $uri = $this->grav['uri'];
         $config = $this->config();
 
+        $this->lang = $lang = $this->grav['language']->getLanguage();
         $this->config_api_url = $config['api_url'];
         $this->config_open_nodes_level = $config['open_nodes_level'];
         $this->config_display_partner = $config['display_partner'];
@@ -168,7 +170,7 @@ class InGridCatalogPlugin extends Plugin
         }
     }
 
-    private function getPartners($items): array
+    private function getPartners(array $items): array
     {
         $list = array();
         $partners = CodelistHelper::getCodelistPartners();
@@ -199,7 +201,7 @@ class InGridCatalogPlugin extends Plugin
                             $providerList[] = $provider;
                         }
                     } else {
-                        $typeNode = self::getTypeNode($item['isAddress'], $item['id'], $partnerId, $catalogId);
+                        $typeNode = self::getTypeNode((bool) $item['isAddress'], $item['id'], $partnerId, $catalogId);
                         $isOpen =  $providerLevel <= $this->config_open_nodes_level;
                         if ($isOpen) {
                             $this->openNodes[] = $catalogId;
@@ -232,7 +234,7 @@ class InGridCatalogPlugin extends Plugin
         return $list;
     }
 
-    private function getTypeNode($isAddress, $id, $partner, $catalogId): array
+    private function getTypeNode(bool $isAddress, string $id, string $partner, string $catalogId): array
     {
         $typeLevel  = 3;
         $typeId = $partner . '-' . substr(md5($catalogId . '-' . ($isAddress ? 'address' : 'object')), 0, 8);
@@ -253,7 +255,7 @@ class InGridCatalogPlugin extends Plugin
         ];
     }
 
-    private function getCatalogChildren($id, int $level, $partner, $catalogId, $parentId = null): array
+    private function getCatalogChildren(string $id, int $level, string $partner, string $catalogId, null|string $parentId = null): array
     {
         $list = array();
         $catalog_api = $this->config_api_url . '/' . $id . '/hierarchy';
@@ -263,7 +265,7 @@ class InGridCatalogPlugin extends Plugin
         $response = file_get_contents($catalog_api);
         $items = json_decode($response, true);
         $catalogLevel = $level + 1;
-        foreach ($items as $index => $item) {
+        foreach ($items as $item) {
             $catalogId = $partner . '-' . substr(md5($catalogId . '-' . $item['uuid']), 0, 8);
             $hasChildren = $item['hasChildren'];
             $isOpen = false;
@@ -278,7 +280,8 @@ class InGridCatalogPlugin extends Plugin
                 'name' => $item['name'],
                 'level' => $catalogLevel,
                 'uuid' => $item['uuid'],
-                'docType' => $item['docType'],
+                'type' => $item['docType'],
+                'type_name' => $item['isAddress'] ? $item['docType'] : CodelistHelper::getCodelistEntry(["8000"], $item['docType'], $this->lang),
                 'isOpen' => $isOpen,
                 'hasChildren' => $item['hasChildren'],
                 'ident' => $id,
@@ -294,7 +297,7 @@ class InGridCatalogPlugin extends Plugin
         return $list;
     }
 
-    private function compare_name($a, $b): int
+    private function compare_name(array $a, array $b): int
     {
         return strcasecmp($a['name'], $b['name']);
     }

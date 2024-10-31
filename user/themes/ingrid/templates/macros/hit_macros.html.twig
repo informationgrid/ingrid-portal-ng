@@ -952,7 +952,7 @@
                 <div class="accordion-item-sub">
                     <span class="icon">
                         <a id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}" class="ic-ic-plus"></a>
-                        {% if node.docType != "1000" %}
+                        {% if node.type != "1000" %}
                             <a href="{{ nodeUrl }}" title="{{ nodeTitle }}">
                                 {{ nodeTitle }}
                             </a>
@@ -978,13 +978,14 @@
             </li>
         </ul>
     {% else %}
-        {% if nodeUrl != '' and node.docType != "1000" %}
+        {% if nodeUrl != '' and node.type != "1000" %}
             <div class="accordion-item-sub">
                 <a {% if openOnNewTab %}target="_blank"{% endif %} href="{{ nodeUrl }}" class="icon" title="{{ nodeTitle }}">
                     {% if node.isAddress %}
-                        {{ _self.render_address_icon(node.docType, nodeTitle) }}
+                        {% set type_name = "COMMON.UDK_ADR_CLASS_NAME_" ~ node.type_name %}
+                        {{ _self.render_address_icon(node.type, nodeTitle, type_name|t) }}
                     {% else %}
-                        {{ _self.render_metadata_icon(node.docType, nodeTitle) }}
+                        {{ _self.render_metadata_icon(node.type, nodeTitle, node.type_name) }}
                     {% endif %}
                 </a>
             </div>
