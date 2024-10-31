@@ -832,7 +832,7 @@
         <div class="info--right">
 
             {% if (isDownload or isExternal) and entry.url %}
-                {% set getMime = {{ rootUrl }} ~ "/utils/mimetype?url=" ~ {{ entry.url|url_encode }} %}
+                {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ entry.url|url_encode %}
                 <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
             {% endif %}
             {% if entry.applicationProfile %}
