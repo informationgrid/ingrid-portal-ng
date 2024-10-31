@@ -9,7 +9,7 @@
                         {% set partner = partners[partnerKey] %}
                         {% set partnerIdent = partner.ident %}
                         {% set partnerName = partner.name %}
-                        {% set partnerProviders = partner.providers|sort %}
+                        {% set partnerProviders = (partner.providers ?? [])|sort %}
                         {% if partnerProviders %}
                         <li class="accordion-item" data-accordion-item="">
                             <a href="#" class="accordion-title" aria-controls="{{ partnerKey }}-accordion" role="tab" id="{{ partnerKey }}-accordion-label" aria-expanded="false" aria-selected="false">

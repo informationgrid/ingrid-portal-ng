@@ -7,11 +7,11 @@
 {# Digitale Repräsentation #}
     {% include 'partials/detail/metadata/parts/information/information_type_3_representation_type.html.twig' ignore missing %}
 {# Klassifikation des Dienstes #}
-    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_SERV_TYPE"|t, infoRefs.classifications|sort) }}
+    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_SERV_TYPE"|t, (infoRefs.classifications ?? [])|sort) }}
 {# Art des Dienstes #}
     {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_TYPE_ART"|t, infoRefs.serviceType) }}
 {# Version des Services #}
-    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_SERV_VERSION_VERSION"|t, infoRefs.serviceTypeVersions|sort) }}
+    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_SERV_VERSION_VERSION"|t, (infoRefs.serviceTypeVersions ?? [])|sort) }}
 {# Systemumgebung #}
     {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
 {# Historie #}
