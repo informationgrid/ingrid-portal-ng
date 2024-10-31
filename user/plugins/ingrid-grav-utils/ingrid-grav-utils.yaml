@@ -1,1 +1,3 @@
 enabled: true
+routes:
+  - /utils/mimetype

@@ -13,7 +13,7 @@ class CodelistHelper
     }
 
 
-    public static function getCodelistEntry(array $codelistIds, string $entryId, string $lang)
+    public static function getCodelistEntry(array $codelistIds, string $entryId, string $lang): null|string
     {
         foreach ($codelistIds as $codelistId) {
             $codelist = self::getCodelist($codelistId);
@@ -28,11 +28,11 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryByIso(array $codelistIds, string $entryId, string $lang)
+    public static function getCodelistEntryByIso(array $codelistIds, string $entryId, string $lang): null|string
     {
         foreach ($codelistIds as $codelistId) {
             $codelist = self::getCodelist($codelistId);
-            if ($codelist) {
+            if (!is_null($codelist)) {
                 $codelistEntry = self::getNode($codelist, "//de.ingrid.codelists.model.CodeListEntry[./localisations/iso = '". $entryId ."']");
                 if ($codelistEntry) {
                     $codelistEntryLang = self::getNode($codelistEntry, "./localisations/" . $lang);
@@ -43,7 +43,7 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryByData(array $codelistIds, string $entryId, string $lang)
+    public static function getCodelistEntryByData(array $codelistIds, string $entryId, string $lang): null|string
     {
         foreach ($codelistIds as $codelistId) {
             $codelist = self::getCodelist($codelistId);
@@ -58,7 +58,7 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryByCompare(array $codelistIds, string $entryId, string $lang, bool $addEqual = true)
+    public static function getCodelistEntryByCompare(array $codelistIds, string $entryId, string $lang, bool $addEqual = true): null|string
     {
         foreach ($codelistIds as $codelistId) {
             $codelist = self::getCodelist($codelistId);
@@ -81,7 +81,7 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryData(array $codelistIds, string $entryId)
+    public static function getCodelistEntryData(array $codelistIds, string $entryId): null|string
     {
         foreach ($codelistIds as $codelistId) {
             $codelist = self::getCodelist($codelistId);
@@ -95,8 +95,9 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistPartnerProviders(){
-        $partners = array();
+    public static function getCodelistPartnerProviders(): array
+    {
+        $partners = [];
         try {
             $codelistPartner = self::getCodelist('110');
             if ($codelistPartner) {
@@ -141,8 +142,9 @@ class CodelistHelper
         return $partners;
     }
 
-    public static function getCodelistPartners(){
-        $partners = array();
+    public static function getCodelistPartners(): array
+    {
+        $partners = [];
         try {
             $codelistPartner = self::getCodelist('110');
             if ($codelistPartner) {
@@ -165,16 +167,17 @@ class CodelistHelper
         return $partners;
     }
 
-    private static function getCodelist(string $codelistId){
-        $response = null;
+    private static function getCodelist(string $codelistId): null|\SimpleXMLElement
+    {
         try {
             $response = file_get_contents('user-data://codelists/codelist_' . $codelistId . '.xml');
+            return simplexml_load_string($response);
         } catch (\Throwable $th) {
         }
-        return simplexml_load_string($response);
+        return null;
     }
 
-    public static function getNode($node, string $xpath)
+    public static function getNode(\SimpleXMLElement $node, string $xpath): null|\SimpleXMLElement
     {
         $tmpNode = $node->xpath($xpath);
         if ($tmpNode) {
@@ -183,7 +186,7 @@ class CodelistHelper
         return null;
     }
 
-    public static function getNodeValue($node, string $xpath)
+    public static function getNodeValue(\SimpleXMLElement $node, string $xpath): null|string
     {
         $tmpNode = $node->xpath($xpath);
         if ($tmpNode) {
@@ -192,7 +195,7 @@ class CodelistHelper
         return null;
     }
 
-    public static function getNodeList($node, string $xpath)
+    public static function getNodeList(\SimpleXMLElement $node, string $xpath): array
     {
         $tmpNode = $node->xpath($xpath);
         if ($tmpNode) {

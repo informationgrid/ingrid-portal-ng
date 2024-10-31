@@ -22,7 +22,12 @@
     "classmap":  ["ingrid-grav-utils.php"],
     "files": [
       "classes/IdfHelper.php",
-      "classes/CodelistHelper.php"
+      "classes/CodelistHelper.php",
+      "classes/CapabilitiesHelper.php",
+      "classes/StringHelper.php",
+      "classes/LanguageHelper.php",
+      "classes/CountryHelper.php",
+      "classes/MimeTypeHelper.php"
     ]
 
   }

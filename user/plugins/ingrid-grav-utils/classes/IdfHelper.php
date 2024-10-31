@@ -13,7 +13,8 @@ class IdfHelper
     }
 
 
-    public static function registerNamespaces($node) {
+    public static function registerNamespaces(\SimpleXMLElement $node): void
+    {
         $node->registerXPathNamespace('idf', 'http://www.portalu.de/IDF/1.0');
         $node->registerXPathNamespace('gco', 'http://www.isotc211.org/2005/gco');
         $node->registerXPathNamespace('gmd', 'http://www.isotc211.org/2005/gmd');
@@ -25,7 +26,7 @@ class IdfHelper
         $node->registerXPathNamespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance');
     }
 
-    public static function getNode($node, string $xpath)
+    public static function getNode(\SimpleXMLElement $node, string $xpath): null|\SimpleXMLElement
     {
         self::registerNamespaces($node);
         $tmpNode = $node->xpath($xpath);
@@ -35,7 +36,7 @@ class IdfHelper
         return null;
     }
 
-    public static function getNodeValue($node, string $xpath, array $codelist = null, string $lang = null)
+    public static function getNodeValue(\SimpleXMLElement $node, string $xpath, null|array $codelist = null, null|string $lang = null): null|string
     {
         self::registerNamespaces($node);
         $tmpNode = $node->xpath($xpath);
@@ -60,7 +61,7 @@ class IdfHelper
         return null;
     }
 
-    public static function getNodeList($node, string $xpath)
+    public static function getNodeList(\SimpleXMLElement $node, string $xpath): array
     {
         self::registerNamespaces($node);
         $tmpNode = $node->xpath($xpath);
@@ -70,7 +71,7 @@ class IdfHelper
         return [];
     }
 
-    public static function getNodeValueList($node, string $xpath, array $codelist = null, string $lang = null)
+    public static function getNodeValueList(\SimpleXMLElement $node, string $xpath, null|array $codelist = null, null|string $lang = null): array
     {
         self::registerNamespaces($node);
         $array = array();
@@ -89,16 +90,16 @@ class IdfHelper
                     if ($codelistValue == null) {
                         $codelistValue = $value;
                     }
-                    array_push($array, $codelistValue);
+                    $array[] = $codelistValue;
                 } else {
-                    array_push($array, $value);
+                    $array[] = $value;
                 }
             }
         }
         return $array;
     }
 
-    public static function getNodeValueListCodelistCompare($node, string $xpath, array $codelist = null, string $lang = null, bool $addEqual = true)
+    public static function getNodeValueListCodelistCompare($node, string $xpath, null|array $codelist = null, null|string $lang = null, bool $addEqual = true)
     {
         self::registerNamespaces($node);
         $array = array();
@@ -109,10 +110,10 @@ class IdfHelper
                 if ($codelist && $lang) {
                     $codelistValue = CodelistHelper::getCodelistEntryByCompare($codelist, $value, $lang, $addEqual);
                     if ($codelistValue) {
-                        array_push($array, $codelistValue);
+                        $array[] = $codelistValue;
                     }
                 } else {
-                    array_push($array, $value);
+                    $array[] = $value;
                 }
             }
         }

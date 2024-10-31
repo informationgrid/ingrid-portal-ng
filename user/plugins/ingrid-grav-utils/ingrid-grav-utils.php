@@ -10,6 +10,9 @@ use Grav\Common\Plugin;
  */
 class InGridGravUtilsPlugin extends Plugin
 {
+
+    var string $paramUrl;
+
     /**
      * @return array
      *
@@ -54,16 +57,31 @@ class InGridGravUtilsPlugin extends Plugin
         $uri = $this->grav['uri'];
         $config = $this->config();
 
-        $route = $config['route'] ?? null;
-        if ($route && $route == $uri->path()) {
-            // Enable the main events we are interested in
-            $this->enable([
-                'onPageInitialized' => ['onPageInitialized', 0],
-                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
-            ]);
+        $uri_path = $uri->path();
+        $routes = $config['routes'] ?? null;
+        if ($routes && in_array($uri_path, $routes)) {
+            if ($uri_path == "/utils/mimetype") {
+                $this->paramUrl = $this->grav['uri']->query('url') ?: "";
+
+                $this->enable([
+                    'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
+                ]);
+            }
         }
     }
 
+    public function renderCustomTemplateMimetype(): void
+    {
+        $twig = $this->grav['twig'];
+        // Use the @theme notation to reference the template in the theme
+        $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));
+        $mimeType = MimeTypeHelper::getUrlMimetype($this->paramUrl);
+        $output = $twig->twig()->render($theme_path . '/partials/utils/mimetype.html.twig', [
+            'mimeType' => $mimeType
+        ]);
+        echo $output;
+        exit();
+    }
     public function onPageInitialized(): void
     {
         echo '<script>console.log("Utils");</script>';
