@@ -317,7 +317,7 @@ class DetailMetadataParserIdf
         return $array;
     }
 
-    private static function getLinkRefs(\SimpleXMLElement$node, string $type, string $lang): array
+    private static function getLinkRefs(\SimpleXMLElement $node, string $objType, string $lang): array
     {
         $array = [];
 
@@ -330,8 +330,11 @@ class DetailMetadataParserIdf
             $description = IdfHelper::getNodeValue($tmpNode, "./idf:description");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:objectType");
             $previews = IdfHelper::getNodeValueList($tmpNode, "./idf:graphicOverview");
-            $extMapUrl = IdfHelper::getNodeList($tmpNode, "./idf:extMapUrl");
-            $mapUrl = IdfHelper::getNodeList($tmpNode, "./idf:mapUrl");
+            $serviceVersion = IdfHelper::getNodeValue($tmpNode, "./idf:serviceVersion");
+            $serviceType = IdfHelper::getNodeValue($tmpNode, "./idf:serviceType");
+            $serviceUrl = IdfHelper::getNodeValue($tmpNode, "./idf:serviceUrl");
+            $extMapUrl = IdfHelper::getNodeValue($tmpNode, "./idf:mapUrl");
+            $attachedToField = IdfHelper::getNodeValue($tmpNode, "./idf:attachedToField");
             $item = array (
                 "uuid" => $uuid,
                 "title" => $title,
@@ -340,15 +343,28 @@ class DetailMetadataParserIdf
                 "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, $lang),
                 "previews" => $previews,
                 "extMapUrl" => $extMapUrl,
-                "mapUrl" => $mapUrl,
+                "attachedToField" => $type != "1" ? $attachedToField : null,
                 "kind" => "object",
             );
+            if ($serviceUrl) {
+                $mapUrl = CapabilitiesHelper::getMapUrl($serviceUrl, $serviceVersion, $serviceType);
+                if ($mapUrl) {
+                    $item["mapUrl"] = $mapUrl;
+                }
+            }
+            if ($serviceType || $serviceVersion) {
+                $service = CapabilitiesHelper::getHitServiceType($serviceVersion, $serviceType);
+                if ($service) {
+                    $item["serviceType"] = $service;
+                }
+            }
+
             $array[] = $item;
         }
 
         // Querverweise
         $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download') and (./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]='coupled')]";
-        if ($type == "1")
+        if ($objType == "1")
             $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[not(./*/idf:attachedToField[@entry-id='9990']) and not(./*/gmd:function/*/@codeListValue='download') and not(./*/*/gmd:URL[contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'getcap')]) and (./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]='coupled')]";
 
         $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
@@ -356,6 +372,8 @@ class DetailMetadataParserIdf
             $title = IdfHelper::getNodeValue($tmpNode, "./*/gmd:name/*[self::gco:CharacterString or self::gmx:Anchor]");
             $description = IdfHelper::getNodeValue($tmpNode, "./*/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]");
             $cswUrl = IdfHelper::getNodeValue($tmpNode, "./*/gmd:linkage/gmd:URL");
+            $attachedToField = IdfHelper::getNodeValue($tmpNode, "./*/idf:attachedToField");
+            $applicationProfile = IdfHelper::getNodeValue($tmpNode, "./*/gmd:applicationProfile/*[self::gco:CharacterString or self::gmx:Anchor]");
             $type = "1";
             $item = array (
                 "title" => $title ?? $cswUrl,
@@ -363,6 +381,8 @@ class DetailMetadataParserIdf
                 "type" => $type,
                 "type_name" => CodelistHelper::getCodelistEntry(["8000"], $type, $lang),
                 "cswUrl" => $cswUrl,
+                //attachedToField" => $attachedToField,
+                "applicationProfile" => $applicationProfile,
                 "kind" => "object",
             );
             $array[] = $item;
@@ -463,8 +483,8 @@ class DetailMetadataParserIdf
         }
 
         // URL des Zuganges
-        if ($type == 3) {
-            $xpathExpression = "./gmd:identificationInfo/*/srv:containsOperations/srv:SV_OperationMetadata[./srv:operationName/*[self::gco:CharacterString or self::gmx:Anchor][contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), '=getcap')]]/srv:connectPoint";
+        if ($objType == 3) {
+            $xpathExpression = "./gmd:identificationInfo/*/srv:containsOperations/srv:SV_OperationMetadata[./srv:operationName/*[self::gco:CharacterString or self::gmx:Anchor][contains(translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'), 'getcap')]]/srv:connectPoint";
             $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
             if (empty($tmpNodes)) {
                 $xpathExpression = "./gmd:identificationInfo/*/srv:containsOperations/srv:SV_OperationMetadata/srv:connectPoint";
@@ -482,7 +502,7 @@ class DetailMetadataParserIdf
                 );
                 $array[] = $item;
             }
-        } else if ($type == 6) {
+        } else if ($objType == 6) {
             $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine[./*/idf:attachedToField[@entry-id='5066']]";
             $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
             foreach ($tmpNodes as $tmpNode) {
@@ -1227,7 +1247,7 @@ class DetailMetadataParserIdf
 
     private static function getMetaInfoRefs(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, array &$metadata, string $lang): void
     {
-        $mod_time = IdfHelper::getNodeValue($node, "./gmd:dateStamp/gco:Date");
+        $mod_time = IdfHelper::getNodeValue($node, "./gmd:dateStamp/*[self::gco:Date or self::gco:DateTime or .]");
         $langCode = IdfHelper::getNodeValue($node, "./gmd:language/gmd:LanguageCode/@codeListValue");
         $hierarchy_level = IdfHelper::getNodeValue($node, "./gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue", ["525"], $lang);
         $contact_meta = array (

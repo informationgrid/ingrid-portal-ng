@@ -78,4 +78,28 @@ class CapabilitiesHelper
         }
         return null;
     }
+
+    public static function getHitServiceType(null|string $serviceTypeVersion, null|string $serviceType): null|string
+    {
+        if (!empty($serviceTypeVersion)) {
+            $service = self::extractServiceFromServiceTypeVersion($serviceTypeVersion);
+            if(!empty($service)) {
+                return $service;
+            }
+        }
+        if(!empty($serviceType)) {
+            $codelistValue = CodelistHelper::getCodelistEntryByIso("5100", $serviceType,"de");
+            if (empty($codelistValue)) {
+                return $serviceType;
+            }
+        }
+        if(!empty($serviceTypeVersion)) {
+            if(StringHelper::containsLetters($serviceTypeVersion)) {
+                return $serviceTypeVersion;
+            }
+        }
+        return null;
+    }
+
+
 }
