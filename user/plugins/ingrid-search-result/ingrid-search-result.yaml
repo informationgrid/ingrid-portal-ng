@@ -53,8 +53,8 @@ facet_config: [
       "maps": {
         query: {
           "filter": {
-            "term": {
-              "capabilities_url": "http.*"
+            "wildcard": {
+              "capabilities_url": "http*"
             }
           }
         },
