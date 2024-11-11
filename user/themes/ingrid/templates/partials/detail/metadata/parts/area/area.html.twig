@@ -31,6 +31,7 @@
     {# Begrenzungspolygon als WKT #}
         {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt, null, null, true) }}
     {# Koordinatensystem #}
-        {{ hit_macros.render_label_text_to_link_table_list("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referencesystem_id ?? [])|sort, reference_system_link, detail_hit_reference_system_link_replace, "EPSG:", true, "referencesystem_id", 5, paramsMore) }}
+        {{ detail_hit_reference_system_link_replace }}
+        {{ hit_macros.render_label_text_to_link_table_list("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referencesystem_id ?? [])|sort, reference_system_link, reference_system_link_replace, "EPSG:", true, "referencesystem_id", 5, paramsMore) }}
     </div>
 </div>

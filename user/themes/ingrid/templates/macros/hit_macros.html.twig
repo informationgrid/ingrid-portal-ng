@@ -687,9 +687,11 @@
                             {% if url %}
                                 {% if replaceKey in entry %}
                                     <div>
-                                        <a target="_blank" class="icon external-link" href="{{ entry|replace({replaceKey: url, replaceString: ''}) }}" title="{{ entry }}" rel="noopener noreferrer">
+                                        {% set replaceUrl = entry|replace({(replaceKey): url, (replaceValue): ''}) %}
+                                        {% set replaceText = entry|replace({(replaceValue): ''}) %}
+                                        <a target="_blank" class="icon external-link" href="{{ replaceUrl }}" title="{{ replaceText }}" rel="noopener noreferrer">
                                             <span class="ic-ic-external"></span>
-                                            <span class="text">{{ entry|replace({replaceString: ''}) }}</span>
+                                            <span class="text">{{ replaceText }}</span>
                                         </a>
                                     </div>
                                 {% else %}
@@ -698,7 +700,8 @@
                                     </div>
                                 {% endif %}
                             {% else %}
-                              <p class="list-item">{{ entry|replace({replaceString: ''}) }}</p>
+                                {% set replaceText = entry|replace({(replaceValue): ''}) %}
+                                <p class="list-item">{{ replaceText }}</p>
                             {% endif %}
                         {% endfor %}
                         {% if listExpanded %}
@@ -715,14 +718,17 @@
                     {% else %}
                         {% for entry in entries %}
                             {% if url %}
-                              <div>
-                                  <a target="_blank" class="icon external-link" href="{{ entry|replace({'EPSG:': url, replaceString: ''}) }}" title="{{ entry }}" rel="noopener noreferrer">
+                                <div>
+                                    {% set replaceUrl = entry|replace({(replaceKey): url, (replaceValue): ''}) %}
+                                    {% set replaceText = entry|replace({(replaceValue): ''}) %}
+                                    <a target="_blank" class="icon external-link" href="{{ replaceUrl }}" title="{{ replaceText }}" rel="noopener noreferrer">
                                       <span class="ic-ic-external"></span>
-                                      <span class="text">{{ entry|replace({replaceString: ''}) }}</span>
+                                      <span class="text">{{ replaceText }}</span>
                                   </a>
-                              </div>
+                                </div>
                             {% else %}
-                              <p class="list-item">{{ entry|replace({replaceString: ''}) }}</p>
+                                {% set replaceText = entry|replace({(replaceValue): ''}) %}
+                                <p class="list-item">{{ replaceText }}</p>
                             {% endif %}
                         {% endfor %}
                     {% endif %}
