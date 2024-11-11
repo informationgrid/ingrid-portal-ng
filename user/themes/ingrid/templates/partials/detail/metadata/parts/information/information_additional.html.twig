@@ -64,6 +64,8 @@
         {% include 'partials/detail/metadata/parts/information/information_keywords_invekos.html.twig' %}
     {# ISO-Themenkategorien #}
         {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY"|t, infoRefs_keyword.topic_category) }}
+    {# HVD #}
+        {{ hit_macros.render_teaser_label_list("SEARCH_DETAIL.HVD_GROUP"|t, infoRefs_keyword.hvd) }}
     {# Suchbegriffe #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_search_terms.html.twig' %}
     </div>

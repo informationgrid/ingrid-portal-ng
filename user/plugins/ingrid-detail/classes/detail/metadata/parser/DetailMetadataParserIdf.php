@@ -828,20 +828,27 @@ class DetailMetadataParserIdf
         $metadata["info_additional_media"] = $media;
         $metadata["info_additional_order_instructions"] = $order_instructions;
 
-        $inspire_themes = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'INSPIRE themes')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $priority_dataset = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'INSPIRE priority')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $spatial_scope = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Spatial scope')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $gemet_concepts = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Concepts')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $keywordsPath = "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]";
+        $keywordsStringPath = "/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]";
+        $textPath = "translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')";
+
+        $inspire_themes = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'inspire themes')]]" . $keywordsStringPath);
+        $priority_dataset = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'inspire priority')]]" . $keywordsStringPath);
+        $spatial_scope = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'spatial scope')]]" . $keywordsStringPath);
+        $gemet_concepts = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'concepts')]]" . $keywordsStringPath);
         $adv_group = IdfHelper::getNodeValueListCodelistCompare($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]", ["8010"], $lang);
-        $invekos = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'IACS Data')]]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $invekos = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'iacs data')]]" . $keywordsStringPath);
         $topic_category = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:topicCategory/gmd:MD_TopicCategoryCode", ["527"], $lang);
-        $search_terms = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords
-        [./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*
-            [self::gco:CharacterString or self::gmx:Anchor]
-            [not(contains(text(), 'Further legal basis')) and not(contains(text(), 'INSPIRE themes')) and not(contains(text(), 'INSPIRE priority'))]
-            or count(./gmd:MD_Keywords/gmd:thesaurusName) = 0
-        ]/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]", ["6400"], $lang);
-        $test = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $hvd = IdfHelper::getNodeValueList($node, $keywordsPath  . "[contains(". $textPath .", 'high')]]" . $keywordsStringPath);
+        $search_terms = IdfHelper::getNodeValueList($node, $keywordsPath .
+            "[".
+                "not(contains(". $textPath .", 'inspire themes')) and" .
+                "not(contains(". $textPath .", 'inspire priority')) and" .
+                "not(contains(". $textPath .", 'spatial scope')) and" .
+                "not(contains(". $textPath .", 'concepts')) and" .
+                "not(contains(". $textPath .", 'iacs data')) and" .
+                "not(contains(". $textPath .", 'high'))" .
+            "] or count(./gmd:MD_Keywords/gmd:thesaurusName) = 0]" . $keywordsStringPath, ["6400"], $lang);
 
         $metadata["info_keywords_inspire_themes"] = $inspire_themes;
         $metadata["info_keywords_priority_dataset"] = $priority_dataset;
@@ -850,6 +857,7 @@ class DetailMetadataParserIdf
         $metadata["info_keywords_adv_group"] = $adv_group;
         $metadata["info_keywords_invekos"] = $invekos;
         $metadata["info_keywords_topic_category"] = $topic_category;
+        $metadata["info_keywords_hvd"] = $hvd;
         $metadata["info_keywords_search_terms"] = $search_terms;
 
     }
