@@ -24,6 +24,7 @@ de:
     5: Datensammlung
     6: Information
   special-types:
+    metadata: Metadaten
     inspire: INSPIRE
     open-data: Open Data
     websites: Webseiten

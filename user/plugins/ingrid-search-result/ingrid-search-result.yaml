@@ -9,7 +9,16 @@ facet_config: [
     id: "special-types",
     label: "Ergebnistypen",
     queries: {
-      "inspire": {
+      "metadata": {
+        query: {
+          "filter": {
+            "term": {
+              "datatype": "metadata"
+            }
+          }
+        },
+        search: "t04_search.searchterm:inspireidentifiziert"
+      },"inspire": {
         query: {
           "filter": {
             "term": {
