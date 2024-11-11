@@ -93,7 +93,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_hit_searchterm (isInspire, isOpendata, isSecure) %}
+{% macro render_hit_searchterm (isInspire, isOpendata, isSecure, isHVD) %}
   {% if isInspire or isOpendata or isSecure %}
     <div class="icon--info">
     {% if isSecure %}
@@ -110,8 +110,10 @@
     {% endif %}
     {% if isOpendata %}
       <div class="helper icon info">
-          <span class="ic-ic-opendata" title="Open Data"></span>
-          <span class="text">Open Data</span>
+          <span class="ic-ic-opendata" title="Open Data{% if isHVD %} / HVD{% endif %}"></span>
+          <span class="text">
+            Open Data{% if isHVD %} / HVD{% endif %}
+            </span>
       </div>
     {% endif %}
     </div>

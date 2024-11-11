@@ -1,0 +1,18 @@
+{% set isSecure = accessConstraint %}
+{% set isInspire = false %}
+{% set isOpendata = false %}
+{% set isHVD = false %}
+
+{% if 'inspire' in infoRefs_keyword.search_terms %}
+    {% set isInspire = true %}
+{% endif %}
+
+{% if 'opendata' in infoRefs_keyword.search_terms %}
+    {% set isOpendata = true %}
+{% endif %}
+
+{% if infoRefs_keyword.hvd|length > 0 %}
+    {% set isHVD = true %}
+{% endif %}
+
+{{ hit_macros.render_hit_searchterm (isInspire, isOpendata, isSecure, isHVD) }}

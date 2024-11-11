@@ -25,9 +25,7 @@
                     </a>
                 </div>
                 <div class="xsmall-24 large-18 xlarge-18 columns">
-                    <div class="helper icon">
-                        {{ hit_macros.render_metadata_icon(class, className) }}
-                    </div>
+                    {% include 'partials/detail/metadata/parts/banner/banner.html.twig' %}
                     <h2>{{ title }}</h2>
                 </div>
             </div>
