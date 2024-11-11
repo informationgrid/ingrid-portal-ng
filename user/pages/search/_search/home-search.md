@@ -1,5 +1,4 @@
 ---
 title: Suche
-cache:
-  enabled: false
+cache_enable: false
 ---

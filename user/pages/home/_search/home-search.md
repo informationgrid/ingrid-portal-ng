@@ -1,6 +1,5 @@
 ---
 title: Suche
 search_title: true
-cache:
-  enabled: false
+cache_enable: false
 ---
