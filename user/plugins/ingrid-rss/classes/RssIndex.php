@@ -10,8 +10,9 @@ class RssIndex
     {
     }
 
-    public static function indexJob(array $feeds)
+    public static function indexJob(array $feeds, $log)
     {
+        $log->debug('Start job: RSS Indexing');
         $array = array();
         foreach($feeds as $feed) {
             $feedItem = self::getRssFeedItems($feed, $array);
@@ -32,6 +33,7 @@ class RssIndex
             "data" => $array
         );
         self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://feeds", "feeds.json");
+        $log->debug('Finished job: RSS Indexing');
     }
 
     private static function getRssFeedItems(array $feed, array &$array)

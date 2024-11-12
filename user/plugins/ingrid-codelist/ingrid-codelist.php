@@ -174,7 +174,7 @@ class InGridCodelistPlugin extends Plugin
 
         ob_start();
 
-        [$status, $msg] = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass, $this->grav['language']);
+        [$status, $msg] = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass, $this->grav['language'], $this->grav['log']);
         $output = ob_get_clean();
 
         return [$status, $msg, $output];

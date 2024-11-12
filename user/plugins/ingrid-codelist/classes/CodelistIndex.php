@@ -9,8 +9,9 @@ class CodelistIndex
     {
     }
 
-    public static function indexJob(string $api, string $user, string $pass, $gravLang): array
+    public static function indexJob(string $api, string $user, string $pass, $gravLang, $log): array
     {
+        $log->debug('Start job: Codelist Synchronisation');
         $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_UNSUCCESS']);
         $status = false;
 
@@ -40,6 +41,7 @@ class CodelistIndex
             $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_SUCCESS', count($codelists), $time]);
             $status = true;
         } else {
+            $log->warn('Codelists could not be synchronized');
             $path = 'user-data://codelists/codelists.json';
             if(file_exists($path)) {
                 $response = file_get_contents($path);
@@ -49,6 +51,7 @@ class CodelistIndex
             }
         }
 
+        $log->debug('Finished job: Codelist Synchronisation');
         return [$status, $msg];
     }
 

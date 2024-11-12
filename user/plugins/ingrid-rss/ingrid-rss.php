@@ -202,7 +202,7 @@ class InGridRssPlugin extends Plugin
     {
         ob_start();
 
-        $results = RssIndex::indexJob($rss_feeds);
+        $results = RssIndex::indexJob($rss_feeds, $this->grav['log']);
 
         $output = ob_get_clean();
         [$status, $msg] = self::getRssCount();
