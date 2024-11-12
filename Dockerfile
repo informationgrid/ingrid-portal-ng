@@ -76,7 +76,7 @@ RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GR
 COPY user/themes /usr/share/grav-admin/user/themes
 COPY user/plugins /usr/share/grav-admin/user/plugins
 COPY user/pages /usr/share/grav-admin/user/pages
-COPY data /usr/share/grav-admin/user/data
+#COPY data /usr/share/grav-admin/user/data
 COPY user/accounts /usr/share/grav-admin/user/accounts
 
 # Install Composer
