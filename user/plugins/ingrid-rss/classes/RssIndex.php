@@ -27,7 +27,7 @@ class RssIndex
         array_multisort($names, SORT_DESC, $array);
         $result = array(
             "status" => array(
-                "time" => date("d.m.Y h:i", time()),
+                "time" => date("d.m.Y H:i", time()),
                 "count" => count($array)
             ),
             "data" => $array

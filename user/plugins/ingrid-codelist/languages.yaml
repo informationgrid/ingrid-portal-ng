@@ -29,7 +29,7 @@ de:
     BUTTON_CODELIST_INDEXING: Codelisten indexieren
     BUTTON_CODELIST_REINDEXING: Codelisten reindexieren
     INDEXING_CODELIST_SUCCESS: '%s Codelisten wurden am %s indexiert.'
-    INDEXING_CODELIST_UNSUCCESS: Codelisten konnte nicht geladen werden.
+    INDEXING_CODELIST_UNSUCCESS: Codelisten konnten nicht geladen werden.
     INDEXING_CODELIST_FAILED: 'Letzte Indexierung am %s fehlerhaft.'
     INDEXING_CODELIST_EMPTY: Noch nicht indexiert.
     INDEXING_UNPERMISSION: Unzureichende Berechtigungen zum Neuindizieren.

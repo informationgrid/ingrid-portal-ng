@@ -24,7 +24,7 @@ class CodelistIndex
         $context = stream_context_create($opts);
         $response = file_get_contents($api, false, $context);
         $codelists = json_decode($response, true);
-        $time = date("d.m.Y h:i", time());
+        $time = date("d.m.Y H:i", time());
         if ($codelists) {
             foreach($codelists as $codelist) {
                 $id = $codelist["id"];
