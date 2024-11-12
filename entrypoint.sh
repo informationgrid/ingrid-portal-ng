@@ -56,6 +56,8 @@ else
   sed -ri "s/theme: quark/theme: ${THEME}/" "$SYSTEM_YAML"
 fi
 
+sed -ri "s/timezone: null/timezone: 'Europe/Berlin'/" "$SYSTEM_YAML"
+
 mkdir -p assets backup cache images logs tmp
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2

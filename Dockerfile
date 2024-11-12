@@ -11,6 +11,7 @@ ENV PHP_YAML_VERSION 2.2.3
 
 ENV ADMIN_EMAIL portal@test.de
 ENV ADMIN_FULL_NAME "The Admin"
+ENV TZ='Europe/Berlin'
 
 RUN groupadd --system foo; \
     useradd --no-log-init --system --gid foo --create-home foo; \
@@ -38,6 +39,7 @@ RUN groupadd --system foo; \
         apache2-utils \
         libxslt1-dev \
         libxml2 \
+        cron \
     ; \
     docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \

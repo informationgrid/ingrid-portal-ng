@@ -1,5 +1,5 @@
 absolute_urls: false
-timezone: null
+timezone: 'Europe/Berlin'
 default_locale: null
 param_sep: ':'
 wrapped_site: false
