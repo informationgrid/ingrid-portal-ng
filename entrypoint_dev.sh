@@ -17,4 +17,7 @@ cd /var/www/html/user/plugins/ingrid-catalog && composer update
 cd /var/www/html/user/plugins/ingrid-datasources && composer update
 cd /var/www/html/user/plugins/ingrid-grav-utils && composer update
 
+# init gravcms scheduler
+(echo "* * * * * cd /var/www/html;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -u www-data -
+
 exec "$@"
