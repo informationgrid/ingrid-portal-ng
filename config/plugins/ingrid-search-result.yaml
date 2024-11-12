@@ -1,5 +1,0 @@
-enabled: true
-active: true
-route: /freitextsuche
-api_url: 'https://api.dev.informationgrid.eu/'
-hits_num: 10

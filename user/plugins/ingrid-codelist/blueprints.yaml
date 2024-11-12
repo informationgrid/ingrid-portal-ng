@@ -31,23 +31,23 @@ form:
       validate:
         type: bool
 
-    codelist.codelist_api.url:
+    codelist.api.url:
       type: text
       label: PLUGIN_INGRID_CODELIST.API_URL
       help: PLUGIN_INGRID_CODELIST.API_URL_HELP
       default: https://dev.informationgrid.eu/codelist-repo/rest/getCodelists
 
-    codelist.codelist_api.user:
+    codelist.api.user:
       type: text
       label: PLUGIN_INGRID_CODELIST.API_URL_USER
       help: PLUGIN_INGRID_CODELIST.API_URL_USER_HELP
-      default: ''
+      default: ingrid
 
-    codelist.codelist_api.pass:
+    codelist.api.pass:
       type: text
       label: PLUGIN_INGRID_CODELIST.API_URL_PASS
       help: PLUGIN_INGRID_CODELIST.API_URL_PASS_HELP
-      default: ''
+      default: ingrid
 
     codelist.scheduled_index.status:
       type: codelist_index_status

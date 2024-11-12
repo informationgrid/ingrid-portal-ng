@@ -9,7 +9,7 @@ class CodelistIndex
     {
     }
 
-    public static function indexJob(string $codelist_api = null, string $user = null, string $pass = null, $gravLang)
+    public static function indexJob(string $api, string $user, string $pass, $gravLang): array
     {
         $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_UNSUCCESS']);
         $status = false;
@@ -21,7 +21,7 @@ class CodelistIndex
             ]
         ];
         $context = stream_context_create($opts);
-        $response = file_get_contents($codelist_api, false, $context);
+        $response = file_get_contents($api, false, $context);
         $codelists = json_decode($response, true);
         $time = date("d.m.Y h:i", time());
         if ($codelists) {
@@ -52,7 +52,7 @@ class CodelistIndex
         return [$status, $msg];
     }
 
-    private static function writeJsonFile(string $json, string $dir, string $file)
+    private static function writeJsonFile(string $json, string $dir, string $file): void
     {
         mkdir($dir);
         $fp = fopen($dir . "/" . $file, "w");
@@ -60,7 +60,7 @@ class CodelistIndex
         fclose($fp);
     }
 
-    private static function writeXmlFile(array $json, string $dir, string $file)
+    private static function writeXmlFile(array $json, string $dir, string $file): void
     {
         $xml = new SimpleXMLElement('<de.ingrid.codelists.model.CodeList/>');
         self::arrayToXml($json, $xml);
@@ -70,7 +70,7 @@ class CodelistIndex
         fclose($fp);
     }
 
-    private static function arrayToXml($array, &$xml)
+    private static function arrayToXml(array $array, SimpleXMLElement &$xml): void
     {
         foreach ($array as $key => $value) {
             if(is_int($key)){

@@ -55,9 +55,9 @@ class InGridCodelistPlugin extends Plugin
     {
         // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
-            $this->codelist_api = $this->config->get('plugins.ingrid-codelist.codelist.codelist_api.url');
-            $this->codelist_api_user = $this->config->get('plugins.ingrid-codelist.codelist.codelist_api.user');
-            $this->codelist_api_pass = $this->config->get('plugins.ingrid-codelist.codelist.codelist_api.pass');
+            $this->codelist_api = $this->config->get('plugins.ingrid-codelist.codelist.api.url');
+            $this->codelist_api_user = $this->config->get('plugins.ingrid-codelist.codelist.api.user');
+            $this->codelist_api_pass = $this->config->get('plugins.ingrid-codelist.codelist.api.pass');
             $this->enable([
                 'onAdminMenu' => ['onAdminMenu', 0],
                 'onAdminTaskExecute' => ['onAdminTaskExecute', 0],
