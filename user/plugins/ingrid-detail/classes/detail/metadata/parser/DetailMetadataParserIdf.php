@@ -1309,7 +1309,7 @@ class DetailMetadataParserIdf
                         ((str_contains(strtolower($url), 'request=getcapabilities') && (str_contains(strtolower($url), 'service=wms')) || str_contains(strtolower($url), 'service=wmts')) ||
                         str_contains(strtolower($url), 'wmtscapabilities.xml'))
                     ) {
-                        $value = CapabilitiesHelper::getMapUrl($url, null, null);
+                        $value = CapabilitiesHelper::getMapUrl($url);
                     }
                 }
             }

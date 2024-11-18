@@ -19,9 +19,12 @@
                         {% for link in access %}
                         <div class="list-item">
                             <div>
-                                {% if link.type %}
-                                <div class="info--right"><span>{{ link.format }}</span></div>
-                                {% endif %}
+                                <div class="info--right">
+                                    {% if link.url %}
+                                        {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
+                                        <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
+                                    {% endif %}
+                                </div>
                                 <a href="{{ link.url }}" class="icon external-link" title="{{ link.title }}" target="_blank" rel="noopener noreferrer">
                                     <span class="ic-ic-external"></span>
                                     <span class="text">
@@ -55,9 +58,15 @@
 
                             <div class="list-item">
                                 <div>
-                                    {% if link.type %}
-                                    <div class="info--right"><span>{{ link.format }}</span></div>
-                                    {% endif %}
+                                    <div class="info--right">
+                                        {% if link.url %}
+                                            {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
+                                            <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
+                                        {% endif %}
+                                        {% if link.serviceType %}
+                                            <span>{{ link.serviceType }}</span>
+                                        {% endif %}
+                                    </div>
                                     <a href="{{ link.url }}" class="icon external-link" title="{{ link.title }}" target="_blank" rel="noopener noreferrer">
                                         <span class="ic-ic-download"></span>
                                         <span class="text">
@@ -80,10 +89,15 @@
 
                             <div class="list-item">
                                 <div>
-                                    {% if link.type %}
-                                    <div class="info--right"><span>{{ link.format }}</span></div>
-                                    {% endif %}
+                                    <div class="info--right">
+                                        {% if link.serviceType %}
+                                            <span>{{ link.serviceType }}</span>
+                                        {% endif %}
+                                    </div>
                                     {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ link.uuid %}
+                                    {% if link.url %}
+                                        {% set detailLink = page.find('/detail').url ~ "?cswUrl=" ~ link.url|url_encode %}
+                                    {% endif %}
                                     <a href="{{ detailLink }}" class="icon" title="{{ link.title }}">
                                         {{ hit_macros.render_metadata_icon(link.type, link.title ?? detailLink, link.typeName) }}
                                     </a>
@@ -111,9 +125,23 @@
 
                                 <div class="list-item">
                                     <div>
-                                        {% if link.type %}
-                                        <div class="info--right"><span>{{ link.format }}</span></div>
-                                        {% endif %}
+                                        <div class="info--right">
+                                            {% if link.url %}
+                                                {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
+                                                <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
+                                            {% endif %}
+                                            {% if link.applicationProfile %}
+                                                {% set infoText = "COMMON.SERVICE_TYPE_" ~ link.applicationProfile|upper %}
+                                                {% if infoText|t == infoText %}
+                                                    <span>{{ link.applicationProfile }}</span>
+                                                {% else %}
+                                                    <span>{{ infoText|t }}</span>
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if link.serviceType %}
+                                                <span>{{ link.serviceType }}</span>
+                                            {% endif %}
+                                        </div>
                                         <a href="{{ link.url }}" class="icon external-link" title="{{ link.title }}" target="_blank" rel="noopener noreferrer">
                                             <span class="ic-ic-external"></span>
                                             <span class="text">

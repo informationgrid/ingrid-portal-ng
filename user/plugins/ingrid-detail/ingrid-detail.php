@@ -14,6 +14,7 @@ use GuzzleHttp\Client;
  */
 class InGridDetailPlugin extends Plugin
 {
+    var $log;
     /**
      * @return array
      *
@@ -55,6 +56,7 @@ class InGridDetailPlugin extends Plugin
             return;
         }
 
+        $this->log = $this->grav['log'];
         $uri = $this->grav['uri'];
         $config = $this->config();
 
@@ -99,42 +101,47 @@ class InGridDetailPlugin extends Plugin
             $partners = null;
             $providers = null;
 
-            if ($testIDF) {
-                $response = file_get_contents('user-data://test/detail/' . $type . '/idf/' . $testIDF);
-            } else if ($cswUrl) {
-                $response = file_get_contents($cswUrl);
-            } else if ($uuid && $api) {
+            try {
+                if ($testIDF) {
+                    $response = file_get_contents('user-data://test/detail/' . $type . '/idf/' . $testIDF);
+                } else if ($cswUrl) {
+                    $response = file_get_contents($cswUrl);
+                } else if ($uuid && $api) {
 //                $response = Response::get($host);
-                $client = new Client(['base_uri' => $api]);
-                $responseContent = $client->request('POST', 'portal/search', [
-                    'body' => $this->transformQuery($uuid, $type)
-                ])->getBody()->getContents();
-                $hits = json_decode($responseContent)->hits;
-                if(count($hits) > 0) {
-                    $response = $hits[0]->_source->idf;
-                    $dataSourceName = $hits[0]->_source->dataSourceName;
-                    $partners = $hits[0]->_source->partner;
+                    $client = new Client(['base_uri' => $api]);
+                    $responseContent = $client->request('POST', 'portal/search', [
+                        'body' => $this->transformQuery($uuid, $type)
+                    ])->getBody()->getContents();
+                    $hits = json_decode($responseContent)->hits;
+                    if(count($hits) > 0) {
+                        $response = $hits[0]->_source->idf;
+                        $dataSourceName = $hits[0]->_source->dataSourceName;
+                        $partners = $hits[0]->_source->partner;
+                    }
                 }
-            }
 
-            if ($response) {
-                $content = simplexml_load_string($response);
-                IdfHelper::registerNamespaces($content);
+                if ($response) {
+                    $content = simplexml_load_string($response);
+                    IdfHelper::registerNamespaces($content);
 
-                if ($type == "address") {
-                    $parser = new DetailAddressParser();
-                    $hit = $parser->parse($content, $uuid, $lang);
-                } else {
-                    $parser = new DetailMetadataParser();
-                    $hit = $parser->parse($content, $uuid, $dataSourceName, $providers, $lang);
+                    if ($type == "address") {
+                        $parser = new DetailAddressParser();
+                        $hit = $parser->parse($content, $uuid, $lang);
+                    } else {
+                        $parser = new DetailMetadataParser();
+                        $hit = $parser->parse($content, $uuid, $dataSourceName, $providers, $lang);
+                    }
+                    $this->grav['twig']->twig_vars['detail_type'] = $type;
+                    $this->grav['twig']->twig_vars['hit'] = $hit;
+                    $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"] ?? null;
+                    $this->grav['twig']->twig_vars['partners'] = $partners;
+                    $this->grav['twig']->twig_vars['lang'] = $lang;
+                    $this->grav['twig']->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
+                    $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
                 }
-                $this->grav['twig']->twig_vars['detail_type'] = $type;
-                $this->grav['twig']->twig_vars['hit'] = $hit;
-                $this->grav['twig']->twig_vars['page_custom_title'] = $hit["title"] ?? null;
-                $this->grav['twig']->twig_vars['partners'] = $partners;
-                $this->grav['twig']->twig_vars['lang'] = $lang;
-                $this->grav['twig']->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
-                $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
+            } catch (\Exception $e){
+                $this->log->error("Error open detail: " . $e);
+                $this->grav['twig']->twig_vars['hit'] = [];
             }
         }
     }

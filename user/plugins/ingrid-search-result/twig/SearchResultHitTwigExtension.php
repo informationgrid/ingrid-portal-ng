@@ -12,6 +12,7 @@ class SearchResultHitTwigExtension extends GravExtension
     public function getFunctions(): array
     {
         return [
+            new \Twig_SimpleFunction('convertUrlInText', [$this, 'convertUrlInText']),
             new \Twig_SimpleFunction('getActionLinkFromFacets', [$this, 'getActionLinkFromFacets'])
         ];
     }
@@ -21,6 +22,11 @@ class SearchResultHitTwigExtension extends GravExtension
         return [
             new \Twig_SimpleFilter('filterLinks', [$this, 'filterLinksByKind']),
         ];
+    }
+
+    public function convertUrlInText(string $text): string
+    {
+        return StringHelper::convertUrlInText($text);
     }
 
     public function filterLinksByKind($links, string $kind): array

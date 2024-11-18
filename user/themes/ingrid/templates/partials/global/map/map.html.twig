@@ -2,16 +2,13 @@
 {% if coords %}
 
     {% set map_bg_wms = theme_var('map.leaflet.bg.layer.wms') %}
-    {% set map_bbox_wkt = theme_var('map.leaflet.bbox.wkt') %}
-    {% set map_bbox_bwastr = theme_var('map.leaflet.bbox.bwastr') %}
+    {% set map_bbox_wkt = theme_var('map.leaflet.enable.wkt') %}
+    {% set map_bbox_bwastr = theme_var('map.leaflet.enable.bwastr') %}
 
-    {% include 'partials/global/map/leaflet.html.twig' %}
     <div id="{{ mapId }}" class="map-ingrid" style="height:320px; margin-bottom: 24px;"></div>
 
     <script>
-        {% if isMoreId %}
-            $('#{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');
-        {% endif %}
+        $('#{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');
         var coords = {{ coords|json_encode( )|raw }};
         var bounds_{{ mapId }};
         var boundsX1_{{ mapId }};
@@ -64,17 +61,15 @@
         {% else %}
             disableLeafletMapTouchControl({{ mapId }});
         {% endif %}
-        if(bounds_{{ mapId }}) {
-            {{ mapId }}.fitBounds(bounds_{{ mapId }});
-        }
         {% if wkt and map_bbox_wkt %}
-            addLayerWKT({{ mapId }}, '{{ wkt }}', coords);
+            addLayerWKT({{ mapId }}, '{{ wkt|raw }}', coords);
         {% elseif bwastr and map_bbox_bwastr %}
-            addLayerBWaStr({{ mapId }}, $bwastr, '', '{{ wkt }}', coords);
+            addLayerBWaStr({{ mapId }}, '{{ bwastr }}', '', '{{ wkt|raw }}', coords);
         {% else %}
             addLayerBounds({{ mapId }}, coords);
         {% endif %}
-        {% if isMoreId %}
+
+        {% if not isHitOpen %}
             $('#{{ mapId }}').closest('.js-expander-content').addClass('is-hidden');
         {% endif %}
         {% if isDetail %}

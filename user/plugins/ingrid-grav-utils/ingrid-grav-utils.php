@@ -75,11 +75,15 @@ class InGridGravUtilsPlugin extends Plugin
         $twig = $this->grav['twig'];
         // Use the @theme notation to reference the template in the theme
         $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));
-        $mimeType = MimeTypeHelper::getUrlMimetype($this->paramUrl);
-        $output = $twig->twig()->render($theme_path . '/partials/utils/mimetype.html.twig', [
-            'mimeType' => $mimeType
-        ]);
-        echo $output;
+        try {
+            $mimeType = MimeTypeHelper::getUrlMimetype($this->paramUrl);
+            $output = $twig->twig()->render($theme_path . '/partials/utils/mimetype.html.twig', [
+                'mimeType' => $mimeType
+            ]);
+            echo $output;
+        } catch (\Exception $e) {
+            $this->grav['log']->debug($e->getMessage());
+        }
         exit();
     }
     public function onPageInitialized(): void

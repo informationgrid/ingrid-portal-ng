@@ -10,11 +10,11 @@
         {% if hit.uuid %}
             <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
         {% endif %}
-        {{ hit_macros.render_hit_types(hit.types, true) }}
+        {{ hit_macros.render_hit_types(hit.serviceTypes, true) }}
         {% if partner_logo %}
             {{ hit_macros.render_hit_logo(hit.partners[0]) }}
         {% endif %}
-        {% if hit.type %}
+        {% if hit.type is not empty %}
         <div class="helper icon">
             {{ hit_macros.render_metadata_icon(hit.type, hit.type_name) }}
         </div>
@@ -26,10 +26,10 @@
         {{ hit_macros.render_hit_time("COMMON.TIME_TYPE"|t , hit.time) }}
         {% if hit.summary %}
         <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
-            {{ hit.summary|replace({'\n': summary_replace_newline})|raw }}
+            {{  convertUrlInText(hit.summary)|replace({'\n': summary_replace_newline})|raw }}
         </p>
         {% endif %}
-        {{ hit_macros.render_hit_types(hit.types, true, true) }}
+        {{ hit_macros.render_hit_types(hit.serviceTypes, true, true) }}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <span class="ic-ic-arrow arrow"></span>
         </a>

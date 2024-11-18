@@ -5,9 +5,53 @@ namespace Grav\Plugin;
 class CapabilitiesHelper
 {
 
-    public static function getMapUrl(string $url, string $serviceVersion = null, string $serviceType = null, string $additional = null): null|string
+    public static function getCapabilitiesUrl(string $url, null|string $serviceVersion = null, null|string $serviceType = null): null|string
     {
-        $service = null;
+        if ($serviceVersion) {
+            $tmpService = self::extractServiceFromServiceTypeVersion($serviceVersion);
+            if ($tmpService) {
+                $service = $tmpService;
+            }
+        }
+        if (isset($service) && str_contains($service, " ")) {
+            return $url;
+        }
+        if (strpos($url, '?')) {
+            if (!stripos($url, 'request=getcapabilities')) {
+                $url .= '&REQUEST=GetCapabilities';
+            }
+            if (!isset($service)) {
+                if ($serviceType) {
+                    $codelistValue = CodelistHelper::getCodelistEntryByIso(['5100'], $serviceType, 'de');
+                    if (empty($codelistValue)) {
+                        $service = $serviceType;
+                    }
+                }
+            }
+        } else {
+            $service = 'WMTS';
+        }
+        if (isset($service)) {
+            if (strpos($url, '?')) {
+                if (!stripos($url, 'service=')) {
+                    $url .= '&SERVICE=' . $service;
+                }
+            }
+            return $url;
+        } else if (!empty($url) && isset($serviceType) && strcasecmp($serviceType, "view")){
+            $defaultService = "WMS";
+            if (strpos($url, '?')) {
+                if (!stripos($url, 'service=')) {
+                    $url .= '&SERVICE=' . $defaultService;
+                }
+            }
+            return $url;
+        }
+        return $url;
+    }
+
+    public static function getMapUrl(string $url, null|string $serviceVersion = null, null|string $serviceType = null, null|string $additional = null): null|string
+    {
         if ($serviceVersion) {
             $tmpService = self::extractServiceFromServiceTypeVersion($serviceVersion);
             if ($tmpService) {
@@ -20,20 +64,18 @@ class CapabilitiesHelper
             if (!stripos($url, 'request=getcapabilities')) {
                 $url .= '&REQUEST=GetCapabilities';
             }
-            if (is_null($service)) {
+            if (isset($service)) {
                 if ($serviceType) {
                     $codelistValue = CodelistHelper::getCodelistEntryByIso(['5100'], $serviceType, 'de');
-                    if ($codelistValue) {
-                        if (str_contains(strtolower($codelistValue), 'view')) {
-                            $service = 'WMS';
-                        }
+                    if (empty($codelistValue)) {
+                        $service = $serviceType;
                     }
                 }
             }
         } else {
             $service = 'WMTS';
         }
-        if(!is_null($service)) {
+        if (isset($service)) {
             if (!stripos($url, 'service=')) {
                 $url .= '&SERVICE=' . $service;
             }
@@ -88,7 +130,7 @@ class CapabilitiesHelper
             }
         }
         if(!empty($serviceType)) {
-            $codelistValue = CodelistHelper::getCodelistEntryByIso("5100", $serviceType,"de");
+            $codelistValue = CodelistHelper::getCodelistEntryByIso(["5100"], $serviceType,"de");
             if (empty($codelistValue)) {
                 return $serviceType;
             }

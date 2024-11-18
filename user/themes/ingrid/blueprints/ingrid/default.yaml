@@ -330,6 +330,14 @@ form:
               title: Detaildarstellung
               underline: true
 
+            detail_summary_replace_newline:
+              type: text
+              label: Zeilenumbrüche des Beschreibungstextes ersetzen
+              help: Lege die Zeilenumbrüche des Beschreibungstextes fest.
+              default: ' '
+              validate:
+                type: text
+
             detail_hit_reference_system_link:
               type: text
               label: Link zur Reference-System
@@ -540,7 +548,7 @@ form:
               validate:
                 type: bool
 
-            map.leaflet.bbox.wkt:
+            map.leaflet.enable.wkt:
               type: toggle
               label: WKT darstellen
               help: ''
@@ -552,7 +560,7 @@ form:
               validate:
                 type: bool
 
-            map.leaflet.bbox.bwastr:
+            map.leaflet.enable.bwastr:
               type: toggle
               label: BWaStr darstellen
               help: ''

@@ -25,12 +25,13 @@
     {% endfor %}
     {% if selected_facets|length > 0 %}
         <a type="reset" href="{{ page.find('/search').url }}?q={{ uri.query('q') }}" class="button pill">
-            Alle Einschränkungen löschen
+            {{ "SEARCH_RESULT.FACET_DELETE_SELECTION"|t }}
         </a>
     {% endif %}
 </div>
 
 {% if search_result.hits|length > 0 %}
+    {% include 'partials/global/map/leaflet.html.twig' %}
     {% for hit in search_result.hits %}
         {% if in_array('address', hit.datatypes) %}
             {% include 'partials/search/result/address/result_address.html.twig' with {hit:hit, counter: loop.index0} %}

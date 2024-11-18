@@ -1,14 +1,20 @@
 <?php
 
 namespace Grav\Plugin;
+
 use Grav\Common\Plugin;
+use Grav\Common\Utils;
 
 class SearchResponseTransformerClassic
 {
-    public static function parseHits(array $hits): array
+    public static function parseHits(array $hits, string $lang): array
     {
-        return array_map(self::parseHit(...), $hits);
+        return array_map(
+            function($hit) use ($lang) { return self::parseHit($hit, $lang); },
+            $hits
+        );
     }
+
 
     /**
      * @param object $aggregations
@@ -86,50 +92,96 @@ class SearchResponseTransformerClassic
         return $base_url . '?' . join('&', $query_string);
     }
 
-    private static function parseHit($esHit)
+    private static function parseHit($esHit, string $lang): array
     {
-        $value = $esHit->_source;
+        $source = $esHit->_source;
 
-        //$isFolder = (boolean) self::getValue($value, "isfolder") ?? true;
-        $datatypes = self::getValueArray($value, "datatype");
+        $uuid = null;
+        $type = null;
+        $type_name = null;
+        $title = null;
+        $time = null;
+        $serviceTypes = [];
+        $datatypes = self::getValueArray($source, "datatype");
 
-        $hit = array();
         if (in_array("address", $datatypes)) {
-            $hit["uuid"] = self::getValue($value, "t02_address.adr_id");
-            $hit["type"] = self::getValue($value, "t02_address.typ");
-            $hit["type_name"] = CodelistHelper::getCodelistEntry(["505"], $hit["type"], "de");
-            $hit["title"] = self::getAddressTitle($value, $hit["type"]);
+            $uuid = self::getValue($source, "t02_address.adr_id");
+            $type = self::getValue($source, "t02_address.typ");
+            $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["505"], $type, $lang) : null;
+            $title = self::getAddressTitle($source, $type);
         } else if (in_array("metadata", $datatypes)) {
-            $hit["uuid"] = self::getValue($value, "t01_object.obj_id");
-            $hit["type"] = self::getValue($value, "t01_object.obj_class");
-            $hit["type_name"] = $hit["type"] ? CodelistHelper::getCodelistEntry(["8000"], $hit["type"], "de") : null;
-            $hit["title"] = self::getValue($value, "title");
-            $hit["time"] = self::getTime($value);
+            $uuid = self::getValue($source, "t01_object.obj_id");
+            $type = self::getValue($source, "t01_object.obj_class");
+            $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["8000"], $type, $lang) : null;
+            $title = self::getValue($source, "title");
+            $time = self::getTime($source);
         } else if (in_array("www", $datatypes)) {
         }
-        $hit["summary"] = self::getValue($value, "summary") ?? self::getValue($value, "abstract");
-        $hit["datatypes"] = $datatypes;
-        $hit["partners"] = self::getValueArray($value, "partner");
-        $hit["searchterms"] = self::getValueArray($value, "t04_search.searchterm");
-        $hit["map_bboxes"] = self::getBBoxes($value);
-        $hit["obj_serv_type"] = self::getObjServType($value);
-        $hit["t011_obj_serv.type"] = self::getValue($value, "t011_obj_serv.type");
-        $hit["t011_obj_serv.type_key"] = self::getValue($value, "t011_obj_serv.type_key");
-        $hit["license"] = self::getLicense($value);
-        $hit["links"] = self::getLinks($value);
-        $hit["additional_html_1"] = self::getPreviews($value, "additional_html_1");
-        $hit["mapUrl"] = self::getFirstValue($value, "capabilities_url");
-        $hit["mapUrlClient"] = self::getFirstValue($value, "capabilities_url_with_client");
-        $hit["isInspire"] = self::getValue($value, "t01_object.is_inspire_relevant");
-        $hit["isOpendata"] = self::getValue($value, "t01_object.is_open_data");
-        $hit["hasAccessContraint"] = self::getValue($value, "t011_obj_serv.has_access_constraint");
-        return $hit;
+        $searchTerms = self::getValueArray($source, "t04_search.searchterm");
+        $isInspire = self::getValue($source, "t01_object.is_inspire_relevant");
+        if (empty($isInspire)) {
+            $isInspire = "N";
+        }
+        if ($isInspire == "N") {
+            if (in_array("inspire", $searchTerms) || in_array("inspireidentifiziert", $searchTerms)) {
+                $isInspire = "Y";
+            }
+        }
+        $isOpendata = self::getValue($source, "t01_object.is_open_data");
+        if (empty($isOpendata)) {
+            $isOpendata = "N";
+        }
+        if ($isOpendata == "N") {
+            if (in_array("opendata", $searchTerms) || in_array("opendataident", $searchTerms)) {
+                $isOpendata = "Y";
+            }
+        }
+        $hasAccessContraint = self::getValue($source, "t011_obj_serv.has_access_constraint");
+        if (empty($hasAccessContraint)) {
+            $hasAccessContraint = "N";
+        }
+        $servType = self::getFirstValue($source, "t011_obj_serv.type");
+        if (!$servType) {
+            $servType = self::getFirstValue($source, "refering.object_reference.type");
+        }
+        $servTypeVersion = self::getFirstValue($source, "t011_obj_serv_version.version_value");
+        if (!$servTypeVersion) {
+            $servTypeVersion = self::getFirstValue($source, "refering.object_reference.version");
+        }
+        $obj_serv_type = $servType;
+        $capUrl = self::getFirstValue($source, "capabilities_url");
+        return [
+            "uuid" => $uuid,
+            "type" => $type,
+            "type_name" => $type_name,
+            "title" => $title,
+            "time" => $time,
+            "summary" => self::getValue($source, "summary") ?? self::getValue($source, "abstract"),
+            "datatypes" => $datatypes,
+            "partners" => self::getValueArray($source, "partner"),
+            "searchterms" => $searchTerms,
+            "map_bboxes" => self::getBBoxes($source),
+            "t011_obj_serv.type" => self::getValue($source, "t011_obj_serv.type"),
+            "t011_obj_serv.type_key" => self::getValue($source, "t011_obj_serv.type_key"),
+            "license" => self::getLicense($source, $lang),
+            "links" => isset($type) ? self::getLinks($source, $type, $servType, $servTypeVersion, $serviceTypes) : [],
+            "serviceTypes" => $serviceTypes,
+            "additional_html_1" => self::getPreviews($source, "additional_html_1"),
+            "isInspire" => !($isInspire == "N"),
+            "isOpendata" => !($isOpendata == "N"),
+            "hasAccessContraint" => !($hasAccessContraint == "N"),
+            "obj_serv_type" => $obj_serv_type,
+            "mapUrl" => $capUrl ? CapabilitiesHelper::getMapUrl($capUrl, $servTypeVersion, $servType) : null,
+            "mapUrlClient" => self::getFirstValue($source, "capabilities_url_with_client"),
+            "wkt" => self::getValue($source, "wkt_geo_text"),
+        ];
     }
 
-    private static function getPreviews($value, $type) {
-        $array = array ();
+    private static function getPreviews($value, string $type): array
+    {
+        $array = [];
 
-        $previews = self::getValueArray($value, "additional_html_1");
+        $previews = self::getValueArray($value, $type);
         foreach ($previews as $preview) {
             $url = preg_replace("/.* src='/i", "", $preview);
             $url = preg_replace("/'.*/i", "", $url);
@@ -138,16 +190,18 @@ class SearchResponseTransformerClassic
             $title = preg_replace("/'.*/i", "", $title);
 
             $img = $preview;
-            array_push($array, array (
+            $array[] = [
                 "url" => $url,
                 "title" => $title,
                 "img" => $img,
-            ));
+            ];
         }
 
         return $array;
     }
-    private static function getAddressTitle($value, $type) {
+
+    private static function getAddressTitle($value, string $type): string
+    {
         $title = self::getValue($value, "title");
         if ($type == "2") {
             $title = "";
@@ -167,7 +221,7 @@ class SearchResponseTransformerClassic
         return $title;
     }
 
-    private static function getLicense($value)
+    private static function getLicense($value, string $lang): mixed
     {
         $licenseKey = self::getFirstValue($value, "object_use_constraint.license_key");
         $licenseValue = self::getFirstValue($value, "object_use_constraint.license_value");
@@ -178,7 +232,7 @@ class SearchResponseTransformerClassic
                 if ($item) {
                     return $item;
                 }
-                $item = CodelistHelper::getCodelistEntry(["6500"], $licenseKey, "de");
+                $item = CodelistHelper::getCodelistEntry(["6500"], $licenseKey, $lang);
                 if ($item) {
                     return array(
                         "name" => $item
@@ -199,11 +253,14 @@ class SearchResponseTransformerClassic
     }
 
 
-    private static function getLinks($value)
+    private static function getLinks($value, string $type, null|string $serviceTyp, null|string $serviceTypeVersion, array &$serviceTypes): array
     {
         $referenceAllUUID = [];
         $referenceAllName = [];
         $referenceAllClass = [];
+        $referenceAllClassName = [];
+        $referenceAllServiceVersion = [];
+        $referenceAllServiceType = [];
 
         $array = array ();
         $referingObjRefUUID = self::getValueArray($value, "refering.object_reference.obj_uuid");
@@ -212,23 +269,34 @@ class SearchResponseTransformerClassic
         $referingObjRefType = self::getValueArray($value, "refering.object_reference.type");
         $referingObjRefVersion = self::getValueArray($value, "refering.object_reference.version");
 
-        $count = 0;
-        foreach ($referingObjRefUUID as $objUuid) {
-            if(str_starts_with($objUuid, "http")) {
-                $item = array ();
-                $item["url"] = $objUuid;
-                $item["title"] = !empty($referingObjRefName[$count]) ? $referingObjRefName[$count] : $objUuid;
-                $item["format"] = "";
-                $item["kind"] = "other";
-                array_push($array, $item);
+        foreach ($referingObjRefUUID as $count => $objUuid) {
+            if (str_starts_with($objUuid, "http")) {
+                $array[] = [
+                    "url" => $objUuid,
+                    "title" => !empty($referingObjRefName[$count]) ? $referingObjRefName[$count] : $objUuid,
+                    "kind" => "other",
+                ];
             } else {
                 if (!in_array($objUuid, $referenceAllUUID)) {
-                    array_push($referenceAllUUID, $objUuid);
-                    array_push($referenceAllName, $referingObjRefName[$count]);
-                    array_push($referenceAllClass, $referingObjRefClass[$count]);
+                    $referenceAllUUID[] = $objUuid;
+                    $referenceAllName[] = $referingObjRefName[$count];
+                    $referenceAllClass[] = $referingObjRefClass[$count];
+                    $referenceAllClassName[] = CodelistHelper::getCodelistEntry(['8000'], $referingObjRefClass[$count], 'de');
+                    if ($referingObjRefClass[$count] == "3") {
+                        $referenceAllServiceVersion[] = count($referingObjRefVersion) > $count ? $referingObjRefVersion[$count] : "";
+                    } else {
+                        $referenceAllServiceVersion[] = "";
+                    }
+                    if (count($referingObjRefType) > $count) {
+                        $referenceAllServiceType[] = $referingObjRefType[$count];
+                        if (!in_array($referingObjRefType[$count], $serviceTypes)) {
+                            $serviceTypes[] = $referingObjRefType[$count];
+                        }
+                    } else {
+                        $referenceAllServiceType[] = "";
+                    }
                 }
             }
-            $count++;
         }
 
         $objRefUUID = self::getValueArray($value, "object_reference.obj_uuid");
@@ -237,25 +305,36 @@ class SearchResponseTransformerClassic
         $objRefType = self::getValueArray($value, "object_reference.type");
         $objRefVersion = self::getValueArray($value, "object_reference.version");
 
-        $count = 0;
-        foreach ($objRefUUID as $objUuid) {
-            if(str_starts_with($objUuid, "http")) {
-                $item = array ();
-                $item["url"] = $objUuid;
-                $item["title"] = !empty($objRefName[$count]) ? $objRefName[$count] : $objUuid;
-                $item["format"] = "";
-                $item["kind"] = "other";
-                array_push($array, $item);
+        foreach ($objRefUUID as $count => $objUuid) {
+            if (str_starts_with($objUuid, "http")) {
+                $array[] = [
+                    "url" => $objUuid,
+                    "title" => !empty($objRefName[$count]) ? $objRefName[$count] : $objUuid,
+                    "kind" => "other",
+                ];
             } else {
                 if(!empty($objRefName[$count])) {
                     if (!in_array($objUuid, $referenceAllUUID)) {
-                        array_push($referenceAllUUID, $objUuid);
-                        array_push($referenceAllName, $objRefName[$count]);
-                        array_push($referenceAllClass, $objRefClass[$count]);
+                        $referenceAllUUID[] = $objUuid;
+                        $referenceAllName[] = $objRefName[$count];
+                        $referenceAllClass[] = $objRefClass[$count];
+                        $referenceAllClassName[] = CodelistHelper::getCodelistEntry(['8000'], $objRefClass[$count], 'de');
+                        if ($objRefClass[$count] == "3") {
+                            $referenceAllServiceVersion[] = count($objRefVersion) > $count ? $objRefVersion[$count] : "";
+                        } else {
+                            $referenceAllServiceVersion[] = "";
+                        }
+                        if (count($objRefType) > $count) {
+                            $referenceAllServiceType[] = $objRefType[$count];
+                            if (!in_array($objRefType[$count], $serviceTypes)) {
+                                $serviceTypes[] = $objRefType[$count];
+                            }
+                        } else {
+                            $referenceAllServiceType[] = "";
+                        }
                     }
                 }
             }
-            $count++;
         }
 
         $urlReferenceLink = self::getValueArray($value, "t017_url_ref.url_link");
@@ -263,57 +342,79 @@ class SearchResponseTransformerClassic
         $urlReferenceSpecialRef = self::getValueArray($value, "t017_url_ref.special_ref");
         $urlReferenceDatatype = self::getValueArray($value, "t017_url_ref.datatype");
 
-        $count = 0;
-        foreach ($urlReferenceLink as $url) {
-            $item = array ();
-            $item["url"] = $url;
-            $item["title"] = !empty($urlReferenceContent[$count]) ? $urlReferenceContent[$count] : $url;
-            $item["format"] = !empty($urlReferenceSpecialRef[$count]) ? $urlReferenceSpecialRef[$count] : null;
-            if ($item["format"] == "9990") {
-                $item["kind"] = "download";
-            } else if ($item["format"] == "3600") {
-                $item["kind"] = "reference";
-            } else {
-                $item["kind"] = "other";
+        foreach ($urlReferenceLink as $count => $url) {
+            $format = !empty($urlReferenceSpecialRef[$count]) ? $urlReferenceSpecialRef[$count] : null;
+            $kind = "other";
+            if ($format == "9990") {
+                $kind = "download";
+            } else if ($format == "3600") {
+                $kind = "reference";
             }
-            array_push($array, $item);
-            $count++;
+            $array[] = [
+                "url" => $url,
+                "title" => !empty($urlReferenceContent[$count]) ? $urlReferenceContent[$count] : $url,
+                "serviceType" => $format == "9900" && count($urlReferenceDatatype) > $count ? $urlReferenceDatatype[$count] : "",
+                "type" => $format == "3600" ? "1" : null,
+                "typeName" => $format == "3600" ? CodelistHelper::getCodelistEntry(['8000'], "1", 'de') : null,
+                "kind" => $kind,
+            ];
+            if (count($urlReferenceDatatype) > $count) {
+                if (!in_array($urlReferenceDatatype[$count], $serviceTypes)) {
+                    $serviceTypes[] = $urlReferenceDatatype[$count];
+                }
+            }
         }
 
-        $count = 0;
-        foreach($referenceAllUUID as $uuid) {
-            $item = array ();
-            $item["uuid"] = $uuid;
-            $item["title"] = $referenceAllName[$count];
-            $item["type"] = $referenceAllClass[$count];
-            $item["kind"] = "reference";
-            array_push($array, $item);
-            $count++;
+        foreach($referenceAllUUID as $count => $uuid) {
+            $array[] = [
+                "uuid" => $uuid,
+                "title" => $referenceAllName[$count],
+                "type" => $referenceAllClass[$count],
+                "typeName" => $referenceAllClassName[$count],
+                "serviceType" => CapabilitiesHelper::getHitServiceType($referenceAllServiceVersion[$count], $referenceAllServiceType[$count]),
+                "kind" => "reference",
+            ];
         }
 
-        $connectPointLink = self::getValueArray($value, "t011_obj_serv_op_connpoint.connect_point");
-        foreach ($connectPointLink as $url) {
-            $item = array ();
-            $item["url"] = $url;
-            $item["title"] = $url;
-            $item["format"] = "";
-            $item["kind"] = "access";
-            array_push($array, $item);
-         }
-        return $array;
+        // URL des Zugangs
+        if ($type == "3") {
+            $connectPointLink = self::getFirstValue($value, "capabilities_url");
+            if (empty($connectPointLink)) {
+                $connectPointLink = self::getFirstValue($value, "t011_obj_serv_op_connpoint.connect_point");
+            }
+            if ($connectPointLink) {
+                $capURL = CapabilitiesHelper::getCapabilitiesUrl($connectPointLink, $serviceTypeVersion, $serviceTyp);
+                $array[] = [
+                    "url" => $capURL,
+                    "title" => $capURL,
+                    "kind" => "access",
+                ];
+            }
+        } else if ($type == "6") {
+            $connectPointLink = self::getValueArray($value, "t011_obj_serv_url.url");
+            $connectPointLinkName = self::getValueArray($value, "t011_obj_serv_url.name");
+            foreach ($connectPointLink as $count => $url) {
+                $array[] = [
+                    "url" => $url,
+                    "title" => !empty($connectPointLinkName[$count]) ? $connectPointLinkName[$count] : $url,
+                    "kind" => "access",
+                ];
+            }
+        }
+        return Utils::sortArrayByKey($array, "title", SORT_ASC);
     }
 
-    private static function getTime($value)
+    private static function getTime($value): array
     {
-        $map = array ();
-        $map["type"] = self::getValue($value, "t01_object.time_type");
-        $map["t0"] = self::getValueTime($value, "t0");
-        $map["t1"] = self::getValueTime($value, "t1");
-        $map["t2"] = self::getValueTime($value, "t2");
-        return $map;
+        return [
+            "type" => self::getValue($value, "t01_object.time_type"),
+            "t0" => self::getValueTime($value, "t0"),
+            "t1" => self::getValueTime($value, "t1"),
+            "t2" => self::getValueTime($value, "t2"),
+        ];
     }
 
-    private static function getBBoxes($value)
+    private static function getBBoxes($value): array
     {
         $array = array();
         if (property_exists($value, "x1")) {
@@ -325,13 +426,13 @@ class SearchResponseTransformerClassic
 
             $count = 0;
             foreach ($x1s as $x1) {
-                $map = array ();
-                $map["title"] = $locations[$count] ?? "";
-                $map["westBoundLongitude"] = $x1s[$count];
-                $map["southBoundLatitude"] = (float) $y1s[$count];
-                $map["eastBoundLongitude"] = (float) $x2s[$count];
-                $map["northBoundLatitude"] = (float) $y2s[$count];
-                array_push($array, $map);
+                $array[] = [
+                    "title" => $locations[$count] ?? "",
+                    "westBoundLongitude" => $x1s[$count],
+                    "southBoundLatitude" => (float) $y1s[$count],
+                    "eastBoundLongitude" => (float) $x2s[$count],
+                    "northBoundLatitude" => (float) $y2s[$count],
+                ];
                 $count++;
             }
         }
@@ -353,7 +454,7 @@ class SearchResponseTransformerClassic
         return [];
     }
 
-    private static function getValue($value, $key)
+    private static function getValue($value, string $key): mixed
     {
         if (property_exists($value, $key)) {
             return $value -> $key;
@@ -361,7 +462,7 @@ class SearchResponseTransformerClassic
         return null;
     }
 
-    private static function getValueTime($value, $key)
+    private static function getValueTime($value, string $key): null|string
     {
         if (property_exists($value, $key)) {
             $time = $value -> $key;
@@ -370,12 +471,12 @@ class SearchResponseTransformerClassic
         return null;
     }
 
-    private static function getValueArray($value, $key)
+    private static function getValueArray($value, string $key): array
     {
         return self::toArray(self::getValue($value, $key)) ?? [];
     }
 
-    private static function getFirstValue($value, $key)
+    private static function getFirstValue($value, string $key): mixed
     {
         $array = self::getValueArray($value, $key);
         return $array[0] ?? null;

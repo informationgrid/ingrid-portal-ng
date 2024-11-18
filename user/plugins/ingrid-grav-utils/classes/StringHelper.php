@@ -7,22 +7,41 @@ class StringHelper
 
     public static function convertUrlInText(string $text): string
     {
-        $replaceText = $text;
-        $regex = "/((((ftp|https?):\/\/)|(w{3}.))[A-zÀ-ž0-9-_@:%+.~#?,&\\/=]+)[^ ,.]/";
-        preg_match_all($regex, $replaceText, $matches, PREG_SET_ORDER);
+        $replaceText = "";
+        $regex = "/((((ftp|https?):\/\/)|(w{3}.))[A-zÀ-ž0-9-_@:%+.~#?,&\\/=]+)[^ ,.)!\n\r\t\"]/";
+        preg_match_all($regex, $text, $matches, PREG_OFFSET_CAPTURE);
         $replaceUrl = "";
+        $startIndex = 0;
+        $lastIndex = strlen($text);
+        $findUrls = [];
         foreach($matches as $matchItems) {
             foreach ($matchItems as $match) {
-                if (substr_count($match, "(") == substr_count($match, ")")) {
-                    $replaceUrl = $match;
-                    break;
+                $matchUrl = $match[0];
+                $matchIndex = $match[1];
+                if (substr_count($matchUrl, "(") == substr_count($matchUrl, ")")) {
+                    $subText = substr($text, $startIndex, $matchIndex - $startIndex);
+                    if (!str_ends_with($subText, "=\"")) {
+                        $replaceText .= $subText;
+                        $replaceText .= "##" . $matchUrl . "##";
+                        $startIndex = $matchIndex + strlen($matchUrl);
+                    } else {
+                        $replaceText .= $subText;
+                        $replaceText .= $matchUrl;
+                        $startIndex = $matchIndex + strlen($matchUrl);
+                    }
+                    $findUrls[] = $matchUrl;
                 }
             }
-            $urlString = $replaceUrl;
-            if (str_starts_with($replaceUrl, 'www.')) {
-                $urlString = "https://" . $urlString;
+            break;
+        }
+        $replaceText .= substr($text, $startIndex, $lastIndex - $startIndex);
+        foreach ($findUrls as $findUrl) {
+            $urlString = $findUrl;
+            if (str_starts_with($findUrl, 'www.')) {
+                $urlString = "https://" . $findUrl;
             }
-            $replaceText = str_replace($replaceUrl, '<a class="intext" target="_blank" href="' . $urlString . '" title="' . $urlString . '">' . $urlString . '</a>', $replaceText);
+            $replaceText = str_replace("##" . $findUrl . "##", '<a class="intext" target="_blank" href="' . $urlString . '" title="' . $findUrl . '">' . $findUrl . '</a>', $replaceText);
+
         }
         return $replaceText;
     }

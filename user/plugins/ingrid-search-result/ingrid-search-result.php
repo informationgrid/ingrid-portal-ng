@@ -84,8 +84,9 @@ class InGridSearchResultPlugin extends Plugin
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: "";
             $page = $this->grav['uri']->query('page') ?: 0;
+            $lang = $this->grav['language']->getLanguage();
             $selectedFacets = $this->getSelectedFacets();
-            $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri']);
+            $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri'], $lang);
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['facets_config'] = $this->grav['config']->get('plugins.ingrid-search-result.facet_config');
             $this->grav['twig']->twig_vars['selected_facets'] = $selectedFacets;
@@ -107,6 +108,9 @@ class InGridSearchResultPlugin extends Plugin
         $query_params = $this->grav['uri']->query(null, true);
         if (isset($query_params['q'])) {
             unset($query_params['q']);
+        }
+        if (isset($query_params['more'])) {
+            unset($query_params['more']);
         }
         return $query_params;
     }
