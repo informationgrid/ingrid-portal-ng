@@ -181,6 +181,10 @@ class SearchResponseTransformerClassic
             "mapUrl" => $capUrl ? CapabilitiesHelper::getMapUrl($capUrl, $servTypeVersion, $servType) : null,
             "mapUrlClient" => self::getFirstValue($source, "capabilities_url_with_client"),
             "wkt" => self::getValue($source, "wkt_geo_text"),
+            "y1" => self::getValue($source, "y1"),
+            "x1" => self::getValue($source, "x1"),
+            "y2" => self::getValue($source, "y2"),
+            "x2" => self::getValue($source, "x2"),
         ];
     }
 

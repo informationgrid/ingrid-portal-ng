@@ -1169,3 +1169,18 @@
         {% endif %}
     {% endif %}
 {% endmacro %}
+
+{% macro render_entry_as_table (title, value) %}
+    <div class="table table--lined">
+        <table>
+            <tbody>
+                <tr>
+                    <th>{{ title }}</th>
+                    <td>
+                        <p>{{ value }}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endmacro %}

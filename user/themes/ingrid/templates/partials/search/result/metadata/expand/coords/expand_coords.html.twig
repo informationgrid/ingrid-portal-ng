@@ -1,0 +1,9 @@
+{% if "wfs" in datatypes %}
+    {% if y1 and y2 and x1 and x2 %}
+        {{ hit_macros.render_fact_title("COMMON.PLACE"|t) }}
+        {{ hit_macros.render_entry_as_table("COMMON.PLACE_NORTH"|t, y1) }}
+        {{ hit_macros.render_entry_as_table("COMMON.PLACE_WEST"|t, x1) }}
+        {{ hit_macros.render_entry_as_table("COMMON.PLACE_EAST"|t, x2) }}
+        {{ hit_macros.render_entry_as_table("COMMON.PLACE_SOUTH"|t, y2) }}
+    {% endif %}
+{% endif %}

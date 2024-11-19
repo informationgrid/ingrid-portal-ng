@@ -198,62 +198,71 @@
         </div>
 {# Vorschau / Karte #}
         <div class="columns">
-            {% if previews|length > 0 and bboxes|length > 0 %}
-                <div class="swiper-container_{{ hitOpenId }} swiper-container swiper-container-background">
-                    <div class="swiper-wrapper">
+            {% if "wfs" in hit.datatypes %}
+                {% if previews|length > 0 %}
+                    <div class="swiper-container-background">
+                        {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
+                        {{ previews[0].url|raw }}
+                    </div>
+                {% endif %}
             {% else %}
-                <div class="swiper-container-background">
-            {% endif %}
+                {% if previews|length > 0 and bboxes|length > 0 %}
+                    <div class="swiper-container_{{ hitOpenId }} swiper-container swiper-container-background">
+                        <div class="swiper-wrapper">
+                {% else %}
+                    <div class="swiper-container-background">
+                {% endif %}
 {# Vorschau #}
-            {% if previews|length > 0 %}
-                {% for link in previews %}
+                {% if previews|length > 0 %}
+                    {% for link in previews %}
                         <div class="swiper-slide">
                             {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_PREVIEW"|t, null, 'text-center') }}
                             <a target="_blank" class="external-link" href="{{ link.url }}" title="{{ link.title }}" rel="noopener noreferrer">
                                 <img {% if 'http:' in link.url %} src="./" data-src={% else %} src={% endif %}"{{ link.url }}" height="100" class="preview_image" alt="{{ link.title }}" title="{{ link.title }}" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
                             </a>
                         </div>
-                {% endfor %}
-            {% endif %}
-{# Karte #}
-            {% if bboxes|length > 0 %}
-                {% if previews|length > 0 and bboxes|length > 0 %}
-                        <div class="swiper-slide">
+                    {% endfor %}
                 {% endif %}
-                {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
-                {% include 'partials/global/map/map.html.twig' with { coords: bboxes, isDetail: false, mapId: hitMapId }%}
+{# Karte #}
+                {% if bboxes|length > 0 %}
+                    {% if previews|length > 0 and bboxes|length > 0 %}
+                            <div class="swiper-slide">
+                    {% endif %}
+                    {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
+                    {% include 'partials/global/map/map.html.twig' with { coords: bboxes, isDetail: false, mapId: hitMapId }%}
+                    {% if previews|length > 0 and bboxes|length > 0 %}
+                            </div>
+                    {% endif %}
+                {% endif %}
+
                 {% if previews|length > 0 and bboxes|length > 0 %}
                         </div>
-                {% endif %}
-            {% endif %}
-
-            {% if previews|length > 0 and bboxes|length > 0 %}
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <script>
-                    var swiper_{{ hitOpenId }} = new Swiper (".swiper-container_{{ hitOpenId }}", {
-                    spaceBetween: 10,
-                    grabCursor: true,
-                    updateOnWindowResize: true,
-                    observer: true,
-                    observeParents: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
-                    }
-                    });
-                </script>
-            {% else %}
-                </div>
-            {% endif %}
-{# Kartenansicht #}
-            {% if mapUrl or mapUrlClient %}
-                <p class="caption">
-                    <a target="_blank" class="button small" href="{{ mapUrlClient ?? page.find('/map').url ~ '?layers=' ~ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                        {{ "COMMON.RESULT_SHOWMAP"|t }}
-                    </a>
-                </p>
+                    <script>
+                        var swiper_{{ hitOpenId }} = new Swiper (".swiper-container_{{ hitOpenId }}", {
+                        spaceBetween: 10,
+                        grabCursor: true,
+                        updateOnWindowResize: true,
+                        observer: true,
+                        observeParents: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true
+                        }
+                        });
+                    </script>
+                {% else %}
+                    </div>
+                {% endif %}
+    {# Kartenansicht #}
+                {% if mapUrl or mapUrlClient %}
+                    <p class="caption">
+                        <a target="_blank" class="button small" href="{{ mapUrlClient ?? page.find('/map').url ~ '?layers=' ~ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                            {{ "COMMON.RESULT_SHOWMAP"|t }}
+                        </a>
+                    </p>
+                {% endif %}
             {% endif %}
         </div>
     </div>

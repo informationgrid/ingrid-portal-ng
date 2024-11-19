@@ -6,6 +6,7 @@
 {% set counter = counter %}
 {% set hit = hit %}
 {% set uuid = hit.uuid %}
+{% set datatypes = hit.datatypes %}
 {% set partners = hit.partners %}
 {% set links = hit.links %}
 {% set downloads = links|filterLinks("download") %}
@@ -18,6 +19,10 @@
 {% set license = hit.license %}
 {% set mapUrl = hit.mapUrl %}
 {% set mapUrlClient = hit.mapUrlClient %}
+{% set y1 = hit.y1 %}
+{% set y2 = hit.y2 %}
+{% set x1 = hit.x1 %}
+{% set x2 = hit.x2 %}
 
 {% set param_hit_open = uri.query('more') %}
 {% set hitsOpen = param_hit_open|split(',') %}
