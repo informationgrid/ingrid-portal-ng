@@ -78,12 +78,12 @@ class InGridSearchResultPlugin extends Plugin
         echo "<script>console.log('InGrid Search result');</script>";
     }
 
-    public function onTwigSiteVariables()
+    public function onTwigSiteVariables(): void
     {
 
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: "";
-            $page = $this->grav['uri']->query('page') ?: 0;
+            $page = $this->grav['uri']->query('page') ?: 1;
             $rootUrl = $this->grav['uri']->rootUrl();
             $lang = $this->grav['language']->getLanguage();
             $selectedFacets = $this->getSelectedFacets();
@@ -95,17 +95,17 @@ class InGridSearchResultPlugin extends Plugin
 
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
+            $this->grav['twig']->twig_vars['pagingUrl'] = $this->getPagingUrl($this->grav['uri']);
         }
     }
 
-    public function onTwigExtensions()
+    public function onTwigExtensions(): void
     {
         require_once(__DIR__ . '/twig/SearchResultHitTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
     }
 
-    private
-    function getSelectedFacets()
+    private function getSelectedFacets(): array
     {
         $query_params = $this->grav['uri']->query(null, true);
         if (isset($query_params['q'])) {
@@ -114,7 +114,26 @@ class InGridSearchResultPlugin extends Plugin
         if (isset($query_params['more'])) {
             unset($query_params['more']);
         }
+        if (isset($query_params['page'])) {
+            unset($query_params['page']);
+        }
         return $query_params;
     }
 
+    private function getPagingUrl(mixed $uri): string
+    {
+        $url = "";
+        $query_params = $uri->query(null, true);
+
+        if (isset($query_params['more'])) {
+            unset($query_params['more']);
+        }
+        if (isset($query_params['page'])) {
+            unset($query_params['page']);
+        }
+        $query_string[] = http_build_query($query_params);
+
+        $url .= '?' . join('&', $query_string);
+        return $url;
+    }
 }

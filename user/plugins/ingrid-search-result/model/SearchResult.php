@@ -9,6 +9,7 @@ readonly class SearchResult
         public int   $numOfHits,
         public int   $numOfPages,
         public int   $numPage,
+        public array $listOfPages,
         /** @var SearchResultHit[] */
         public array $hits,
         /** @var FacetResult[] */

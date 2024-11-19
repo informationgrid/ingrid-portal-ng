@@ -1,0 +1,42 @@
+{% set numOfHits = search_result.numOfHits %}
+{% set numOfPages = search_result.numOfPages %}
+{% set numPage = search_result.numPage %}
+{% set listOfPages = search_result.listOfPages %}
+{% set pagingUrl = pagingUrl ~ "&page"%}
+
+<div>
+    <div class="paging caption">
+
+        {% if numOfHits > 0 and enableExportCSV %}
+        #parse("/WEB-INF/templates/include_search_result_download.vm")
+        {% endif %}
+        <br>
+        {% set pstart = 1 %}
+        <a class="icon small-button" {% if numPage != 1 %} href="{{ pagingUrl }}=1" {% endif %}>
+            <span class="ic-ic-double-arrow-left"></span>
+        </a>
+
+        {% set pstart = numPage - 1 %}
+        <a class="icon small-button" {% if numPage != 1 %} href="{{ pagingUrl }}={{ pstart }}" {% endif %}>
+            <span class="ic-ic-arrow-left"></span>
+        </a>
+
+        {% for listOfPage in listOfPages %}
+            {% if listOfPage == numPage %}
+                <a class="icon small-button"><span>{{ numPage }}</span></a>
+            {% else %}
+                <a class="icon small-button" href="{{ pagingUrl }}={{ listOfPage }}"><span>{{ listOfPage }}</span></a>
+            {% endif %}
+        {% endfor %}
+
+        {% set pstart = numPage + 1 %}
+        <a class="icon small-button" {% if numPage != numOfPages %} href="{{ pagingUrl }}={{ pstart }}" {% endif %}>
+            <span class="ic-ic-arrow-right"></span>
+        </a>
+
+        {% set pstart = numOfPages %}
+        <a class="icon small-button" {% if numPage != numOfPages %} href="{{ pagingUrl }}={{ pstart }}" {% endif %}>
+            <span class="ic-ic-double-arrow-right"></span>
+        </a>
+    </div>
+</div>

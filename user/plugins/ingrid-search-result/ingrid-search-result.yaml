@@ -18,7 +18,8 @@ facet_config: [
           }
         },
         search: "t04_search.searchterm:inspireidentifiziert"
-      },"inspire": {
+      },
+      "inspire": {
         query: {
           "filter": {
             "term": {

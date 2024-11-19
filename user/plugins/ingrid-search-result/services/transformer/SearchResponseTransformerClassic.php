@@ -86,6 +86,13 @@ class SearchResponseTransformerClassic
             $query_params[$facetConfigId] = $key;
         }
 
+        if (isset($query_params['more'])) {
+            unset($query_params['more']);
+        }
+        if (isset($query_params['page'])) {
+            unset($query_params['page']);
+        }
+
         $query_string[] = http_build_query($query_params);
 
         // Construct the new URL with the updated query string
