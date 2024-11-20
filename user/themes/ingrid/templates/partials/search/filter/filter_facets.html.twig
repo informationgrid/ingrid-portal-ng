@@ -11,7 +11,7 @@
                 <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content=""
                      role="tabpanel"
                      aria-labelledby="facet-content-accordion-label" aria-hidden="true" id="facet-content-accordion"
-                     style="outline: none;" tabindex="1">
+                     tabindex="1">
                     <div class="boxes">
                         {% for item in search_result.facets %}
                             <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
@@ -55,8 +55,6 @@
         </div>
     </div>
 </form>
-
-{% include 'partials/global/side-menu/nicescroll.html.twig' %}
 
 <script>
     function submitForm() {
