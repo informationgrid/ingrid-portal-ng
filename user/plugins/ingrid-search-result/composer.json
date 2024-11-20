@@ -29,7 +29,6 @@
       "model/FacetItem.php",
       "services/SearchService.php",
       "services/SearchServiceImpl.php",
-      "services/SearchServiceMock.php",
       "services/transformer/SearchResponseTransformerClassic.php",
       "services/ElasticsearchService.php"
     ]

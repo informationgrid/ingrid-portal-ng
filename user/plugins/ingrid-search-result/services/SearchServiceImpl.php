@@ -32,22 +32,27 @@ class SearchServiceImpl implements SearchService
      * @return SearchResult
      * @throws GuzzleException
      */
-    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang): SearchResult
+    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang): null|SearchResult
     {
-        $apiResponse = $this->client->request('POST', 'portal/search', [
-            'body' => $this->transformQuery($query, $page - 1, $selectedFacets)
-        ]);
-        $result = json_decode($apiResponse->getBody()->getContents());
-        $totalHits = $result->totalHits ?? 0;
-        $numOfPages = ceil($result->totalHits / $this->hitsNum) ?? 0;
-        return new SearchResult(
-            numOfHits: intval($totalHits),
-            numOfPages: intval($numOfPages),
-            numPage: $page,
-            listOfPages: $this->getPageRanges($page, $numOfPages),
-            hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null, $lang),
-            facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri),
-        );
+        try {
+            $apiResponse = $this->client->request('POST', 'portal/search', [
+                'body' => $this->transformQuery($query, $page - 1, $selectedFacets)
+            ]);
+            $result = json_decode($apiResponse->getBody()->getContents());
+            $totalHits = $result->totalHits ?? 0;
+            $numOfPages = ceil($result->totalHits / $this->hitsNum) ?? 0;
+            return new SearchResult(
+                numOfHits: intval($totalHits),
+                numOfPages: intval($numOfPages),
+                numPage: $page,
+                listOfPages: $this->getPageRanges($page, $numOfPages),
+                hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null, $lang),
+                facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri),
+            );
+        } catch (\Exception $e) {
+            $this->log->error('Error on search with "' . $query . '": ' . $e);
+        }
+        return null;
     }
 
     private function getPageRanges(int $page, float|int $numOfPages): array

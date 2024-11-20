@@ -57,9 +57,7 @@ class InGridSearchResultPlugin extends Plugin
         }
 
         $config = $this->config();
-        $this->service = $config['mocking']
-            ? new SearchServiceMock()
-            : new SearchServiceImpl($this->grav);
+        $this->service = new SearchServiceImpl($this->grav);
         $uri = $this->grav['uri'];
 
         $route = $config['route'] ?? null;
