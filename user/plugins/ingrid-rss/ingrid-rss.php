@@ -4,6 +4,8 @@ namespace Grav\Plugin;
 use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
+use Grav\Common\Grav;
+use Grav\Common\Data\Data;
 
 /**
  * Class InGridRssPlugin
@@ -11,10 +13,6 @@ use RocketTheme\Toolbox\Event\Event;
  */
 class InGridRssPlugin extends Plugin
 {
-    /**
-     * @var array
-     */
-    protected $rss_feeds;
 
     /**
      * @return array
@@ -54,19 +52,14 @@ class InGridRssPlugin extends Plugin
      */
     public function onPluginsInitialized(): void
     {
-        $config = $this->config();
-
         // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
-            $this->rss_feeds = $this->config->get('plugins.ingrid-rss.rss.feeds.links');
-
             $this->enable([
                 'onAdminMenu' => ['onAdminMenu', 0],
                 'onAdminTaskExecute' => ['onAdminTaskExecute', 0],
                 'onTwigSiteVariables' => ['onTwigAdminVariables', 0],
                 'onTwigLoader' => ['addAdminTwigTemplates', 0],
             ]);
-
             return;
         }
 
@@ -155,7 +148,7 @@ class InGridRssPlugin extends Plugin
             // disable execution time
             set_time_limit(0);
 
-            list($status, $msg, $output) = static::indexJob($this->rss_feeds);
+            list($status, $msg, $output) = self::indexJob();
 
             $json_response = [
                 'status'  => $status ? 'success' : 'error',
@@ -198,11 +191,13 @@ class InGridRssPlugin extends Plugin
         $this->grav['twig']->plugins_quick_tray['InGrid RSS'] = $options;
     }
 
-    public function indexJob(array $rss_feeds, string $langCode = null)
+    public static function indexJob(): array
     {
         ob_start();
+        $grav = Grav::instance();
+        $rss_config = new Data($grav['config']->get('plugins.ingrid-rss.rss.feeds'));
 
-        $results = RssIndex::indexJob($rss_feeds, $this->grav['log']);
+        $results = RssIndex::indexJob($rss_config->get('links'), $grav['log']);
 
         $output = ob_get_clean();
         [$status, $msg] = self::getRssCount();
@@ -210,11 +205,12 @@ class InGridRssPlugin extends Plugin
         return [$status, $msg, $output];
     }
 
-    private function getRssCount(): array
+    private static function getRssCount(): array
     {
         $path = 'user-data://feeds/feeds.json';
         $status = false;
-        $msg = $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_RSS_EMPTY']);
+        $grav = Grav::instance();
+        $msg = $grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_RSS_EMPTY']);
         try {
             if(file_exists($path)) {
                 $response = file_get_contents($path);
