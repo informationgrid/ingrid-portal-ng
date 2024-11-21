@@ -33,13 +33,12 @@ class CodelistIndexCommand extends ConsoleCommand
     protected function serve()
     {
         error_reporting(1);
-        $this->initializePages();
 
         $this->output->writeln('');
         $this->output->writeln('<magenta>Re-indexing</magenta>');
         $this->output->writeln('');
         $start = microtime(true);
-        $output = $this->doIndex();
+        $output = InGridCodelistPlugin::indexJob();
         $this->output->write($output);
         $this->output->writeln('');
         $end =  number_format(microtime(true) - $start,1);
@@ -49,10 +48,4 @@ class CodelistIndexCommand extends ConsoleCommand
         return 0;
     }
 
-    private function doIndex(): string
-    {
-        [,,$output] = InGridCodelistPlugin::indexJob();
-
-        return $output;
-    }
 }

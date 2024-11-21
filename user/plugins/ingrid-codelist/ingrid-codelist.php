@@ -5,6 +5,7 @@ use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 use Grav\Common\Grav;
+use Grav\Common\Data\Data;
 
 /**
  * Class InGridCodelistPlugin
@@ -164,16 +165,13 @@ class InGridCodelistPlugin extends Plugin
         $this->grav['twig']->plugins_quick_tray['InGrid Codelist'] = $options;
     }
 
-    public function indexJob(): array
+    public static function indexJob(): array
     {
-        $grav = Grav::instance();
-        $codelist_api = $this->config->get('plugins.ingrid-codelist.codelist.api.url');
-        $codelist_api_user = $this->config->get('plugins.ingrid-codelist.codelist.api.user');
-        $codelist_api_pass = $this->config->get('plugins.ingrid-codelist.codelist.api.pass');
-
         ob_start();
+        $grav = Grav::instance();
+        $codelist_config = new Data($grav['config']->get('plugins.ingrid-codelist.codelist.api'));
 
-        [$status, $msg] = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass, $grav['language'], $grav['log']);
+        [$status, $msg] = CodelistIndex::indexJob($codelist_config->get('url'), $codelist_config->get('user'), $codelist_config->get('pass'), $grav['language'], $grav['log']);
         $output = ob_get_clean();
 
         return [$status, $msg, $output];
