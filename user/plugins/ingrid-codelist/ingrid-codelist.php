@@ -4,6 +4,7 @@ namespace Grav\Plugin;
 use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
+use Grav\Common\Grav;
 
 /**
  * Class InGridCodelistPlugin
@@ -11,9 +12,6 @@ use RocketTheme\Toolbox\Event\Event;
  */
 class InGridCodelistPlugin extends Plugin
 {
-    protected $codelist_api;
-    protected $codelist_api_user;
-    protected $codelist_api_pass;
 
     /**
      * @return array
@@ -55,9 +53,6 @@ class InGridCodelistPlugin extends Plugin
     {
         // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
-            $this->codelist_api = $this->config->get('plugins.ingrid-codelist.codelist.api.url');
-            $this->codelist_api_user = $this->config->get('plugins.ingrid-codelist.codelist.api.user');
-            $this->codelist_api_pass = $this->config->get('plugins.ingrid-codelist.codelist.api.pass');
             $this->enable([
                 'onAdminMenu' => ['onAdminMenu', 0],
                 'onAdminTaskExecute' => ['onAdminTaskExecute', 0],
@@ -126,7 +121,7 @@ class InGridCodelistPlugin extends Plugin
             // disable execution time
             set_time_limit(0);
 
-            list($status, $msg, $output) = self::indexJob($this->codelist_api, $this->codelist_api_user, $this->codelist_api_pass);
+            list($status, $msg, $output) = self::indexJob();
 
             $json_response = [
                 'status'  => $status ? 'success' : 'error',
@@ -169,12 +164,16 @@ class InGridCodelistPlugin extends Plugin
         $this->grav['twig']->plugins_quick_tray['InGrid Codelist'] = $options;
     }
 
-    private function indexJob(string $codelist_api = null, string $codelist_api_user = null, string $codelist_api_pass = null, string $langCode = null)
+    public function indexJob(): array
     {
+        $grav = Grav::instance();
+        $codelist_api = $this->config->get('plugins.ingrid-codelist.codelist.api.url');
+        $codelist_api_user = $this->config->get('plugins.ingrid-codelist.codelist.api.user');
+        $codelist_api_pass = $this->config->get('plugins.ingrid-codelist.codelist.api.pass');
 
         ob_start();
 
-        [$status, $msg] = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass, $this->grav['language'], $this->grav['log']);
+        [$status, $msg] = CodelistIndex::indexJob($codelist_api, $codelist_api_user, $codelist_api_pass, $grav['language'], $grav['log']);
         $output = ob_get_clean();
 
         return [$status, $msg, $output];
