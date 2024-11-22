@@ -18,7 +18,13 @@ cd /var/www/html/user/plugins/ingrid-datasources && composer update
 cd /var/www/html/user/plugins/ingrid-grav-utils && composer update
 
 # init gravcms scheduler
-(echo "* * * * * cd /var/www/html;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -u www-data -
+ln -s /usr/local/bin/php /usr/bin/php
+(echo "* * * * * cd /var/www/$GRAV_FOLDER;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -u www-data -
+
+# sync on startup
+cd /var/www/html
+runuser -u www-data -- /usr/local/bin/php bin/grav scheduler -r ingrid-codelist-index
+runuser -u www-data -- /usr/local/bin/php bin/grav scheduler -r ingrid-rss-index
 
 service cron start
 
