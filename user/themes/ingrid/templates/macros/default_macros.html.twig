@@ -91,7 +91,7 @@
         {% if grav.language.getLanguages|count > 1 %}
             <h6>{{ "COMMON.LANGUAGE_TITLE"|t }}</h6>
             {% for lang in grav.language.getLanguages %}
-                {% set pageUrl = grav.uri.root_path ~ "/" ~ lang ~ grav.uri.path ~ "?" ~ grav.uri.query %}
+                {% set pageUrl = grav.base_url ~ "/" ~ lang ~ grav.uri.path ~ "?" ~ grav.uri.query %}
                 <a href="{{ pageUrl }}"
                    role="button"
                    {% if grav.language.getLanguage == lang %}class="is-active"{% endif %}
