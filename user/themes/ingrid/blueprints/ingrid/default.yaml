@@ -218,6 +218,18 @@ form:
                       type: text
                       label: Pfad
 
+            other_section:
+              type: section
+              title: Sonstiges
+              underline: true
+
+            pages.access.not.allow:
+              type: selectize
+              label: Seiten ausschließen
+              help: Tragen Sie den Pfad der Portal-URL ein.
+              validate:
+                type: commalist
+              default: []
 ## Tab search
         tab_home:
           type: tab

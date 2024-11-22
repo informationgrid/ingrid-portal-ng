@@ -60,12 +60,20 @@ class InGridGravUtilsPlugin extends Plugin
         $uri_path = $uri->path();
         $routes = $config['routes'] ?? null;
         if ($routes && in_array($uri_path, $routes)) {
+            // MIMETYPE request
             if ($uri_path == "/utils/mimetype") {
                 $this->paramUrl = $this->grav['uri']->query('url') ?: "";
 
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
                 ]);
+            }
+        } else {
+            // Check themes config for redirected pages
+            $theme = $this->grav['config']->get('system.pages.theme');
+            $pages_not_allow = $this->grav['config']->get('themes.' . $theme . '.pages.access.not.allow');
+            if (in_array($uri_path, (array)$pages_not_allow)) {
+                $this->grav->redirect('/error');
             }
         }
     }
