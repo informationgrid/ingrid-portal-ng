@@ -64,7 +64,7 @@ class InGridRssPlugin extends Plugin
         }
 
         $uri = $this->grav['uri'];
-
+        $config = $this->config();
         $routes = $config['routes'] ?? [];
         foreach($routes as $route) {
             if ($route && $route == $uri->path()) {
