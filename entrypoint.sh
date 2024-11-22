@@ -66,5 +66,6 @@ chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 # init gravcms scheduler
 (echo "* * * * * cd /var/www/$GRAV_FOLDER;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -u www-data -
 
+service cron start
 
 exec gosu www-data "$@"
