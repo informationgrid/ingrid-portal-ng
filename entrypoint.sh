@@ -67,7 +67,7 @@ chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 ln -s /usr/local/bin/php /usr/bin/php
 (echo "* * * * * cd /var/www/$GRAV_FOLDER;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -u www-data -
 # sync on startup
-/usr/local/bin/php bin/grav scheduler -r ingrid-codelist-index
+/usr/local/bin/php bin/grav scheduler -v
 
 service cron start
 
