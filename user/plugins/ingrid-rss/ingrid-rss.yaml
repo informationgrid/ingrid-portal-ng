@@ -6,7 +6,7 @@ routes:
 rss:
   scheduled_index:
     enabled: true
-    at: '0 * * * *'
+    at: '*/15 * * * *'
     logs: null
   feeds:
     links:

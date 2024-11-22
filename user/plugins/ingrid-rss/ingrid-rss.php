@@ -136,7 +136,7 @@ class InGridRssPlugin extends Plugin
             if (!$controller->authorizeTask('reindexRss', ['admin.configuration', 'admin.super'])) {
                 $json_response = [
                     'status'  => 'error',
-                    'message' => '<i class="fa fa-warning"></i> '. $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_CODELIST_EMPTY']),
+                    'message' => '<i class="fa fa-warning"></i> '. $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_RSS_EMPTY']),
                     'details' => $this->grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_UNPERMISSION'])
                 ];
                 echo json_encode($json_response);

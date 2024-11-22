@@ -48,12 +48,12 @@ form:
         type: bool
 
     rss.scheduled_index.at:
-      type: cron
+      type: text
       label: PLUGIN_INGRID_RSS.SCHEDULED_JOB_FREQUENCY
       size: medium
       help: Use 'cron' format
-      default: '0 * * * *'
-      placeholder: '0 * * * *'
+      default: '*/15 * * * *'
+      placeholder: '*/15 * * * *'
 
     rss.scheduled_index.logs:
       type: text

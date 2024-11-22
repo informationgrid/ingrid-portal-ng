@@ -66,12 +66,12 @@ form:
         type: bool
 
     codelist.scheduled_index.at:
-      type: cron
+      type: text
       label: PLUGIN_INGRID_CODELIST.SCHEDULED_JOB_FREQUENCY
       size: medium
       help: Use 'cron' format
-      default: '0 * * * *'
-      placeholder: '0 * * * *'
+      default: '*/5 * * * *'
+      placeholder: '*/5 * * * *'
 
     codelist.scheduled_index.logs:
       type: text

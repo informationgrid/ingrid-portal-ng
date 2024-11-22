@@ -23,7 +23,7 @@ class RssIndexCommand extends ConsoleCommand
     {
         $this
             ->setName('index')
-            ->setDescription("Indexing codelist")
+            ->setDescription("Indexing rss")
             ->setHelp('The <info>index command</info> re-indexes the rss feeds.');
     }
 

@@ -2,8 +2,8 @@ enabled: true
 codelist:
   scheduled_index:
     enabled: true
-    at: '0 * * * *'
-    logs: logs/codelist-index.out
+    at: '*/5 * * * *'
+    logs: logs/ingrid-codelist-index.out
   api:
     url: 'https://dev.informationgrid.eu/codelist-repo/rest/getCodelists'
     user: ingrid
