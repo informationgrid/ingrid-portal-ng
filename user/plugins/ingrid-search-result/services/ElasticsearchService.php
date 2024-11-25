@@ -9,7 +9,7 @@ class ElasticsearchService
 
     static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets): string
     {
-        $aggs = ElasticsearchService::mapFacets($facet_config);
+        $aggs = ElasticsearchService::mapFacets($facet_config, $selectedFacets);
         $queryFromFacets = ElasticsearchService::getQueryFromFacets($facet_config, $selectedFacets);
 
         if ($query == "" && $queryFromFacets->query == "") {
@@ -39,29 +39,13 @@ class ElasticsearchService
             if ($selectionValue == "") continue;
 
             // Use array_filter to find the object with id 'test'
-            $filteredObjects = array_filter($facet_config, function ($object) use ($selectionKey) {
-                return $object['id'] === $selectionKey;
-            });
+            $filteredObjects = self::findByFacetId($facet_config, $selectionKey);
 
             // Get the first matched object
             $foundObject = reset($filteredObjects);
 
             if ($foundObject) {
-                if (property_exists((object)$foundObject, 'search')) {
-                    $result[] = sprintf($foundObject['search'], $selectionValue);
-                } else if (property_exists((object)$foundObject, 'queries')) {
-                    $values = explode(",", $selectionValue);
-                    foreach ($values as $value) {
-                        $facet1 = $foundObject['queries'][$value];
-                        if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
-                            $filter[] = json_encode($facet1['query']['filter']);
-                        } else {
-                            $result[] = $foundObject['queries'][$selectionValue]['query'];
-                        }
-                    }
-                } else if (property_exists((object)$foundObject, 'filter')) {
-                    $filter[] = sprintf($foundObject['filter'], ...explode(",", $selectionValue));
-                }
+                list($result, $filter) = self::getQueryAndFilter($foundObject, $selectionValue, $result, $filter);
             }
         }
 
@@ -79,20 +63,88 @@ class ElasticsearchService
      * @param FacetConfig[] $facets
      * @return object
      */
-    private static function mapFacets(array $facets): object
+    private static function mapFacets(array $facets, array $selected_facets): object
     {
         $result = array();
         foreach ($facets as $facet) {
             if (property_exists((object)$facet, 'queries')) {
+
                 foreach ($facet['queries'] as $subfacet_id => $subfacet_value) {
-                    $result[$subfacet_id] = $subfacet_value['query'];
+//                    echo 'Queries';
+//                    var_dump($subfacet_id);
+                    $result[$subfacet_id]['global'] = new stdClass();
+                    $result[$subfacet_id]['aggs']['filtered']['filter']['match_all'] = new stdClass();
+                    $result[$subfacet_id]['aggs']['filtered']['aggs']['final'] = $subfacet_value['query'];
                 }
             } else {
                 if (property_exists((object)$facet, 'query')) {
-                    $result[$facet['id']] = $facet['query'];
+                    // the facet should not depend on the actual query
+                    $result[$facet['id']]['global'] = new stdClass();
+
+//                    var_dump($selected_facets);
+                    // add filter for the facet
+                    if (!empty($selected_facets) && !property_exists((object)$selected_facets, $facet['id'])) {
+                        foreach ($selected_facets as $selectionKey => $selectionValue) {
+//                            echo 'IS SELECTED';
+                            $otherFacet = self::findByFacetId($facets, $selectionKey);
+                            $firstOtherFacet = reset($otherFacet);
+                            list($subResult, $subFilter) = self::getQueryAndFilter($firstOtherFacet, $selectionValue, array(), array());
+
+                            $finalFilter = reset($subFilter);
+                            $result[$facet['id']]['aggs']['filtered']['filter'] = json_decode($finalFilter);
+                        }
+                    } else {
+                        $result[$facet['id']]['aggs']['filtered']['filter']['match_all'] = new stdClass();
+                    }
+
+                    // add actual facet
+                    $result[$facet['id']]['aggs']['filtered']['aggs']['final'] = $facet['query'];
                 }
             }
         }
         return (object)$result;
+    }
+
+    /**
+     * @param mixed $foundObject
+     * @param mixed $selectionValue
+     * @param array $result
+     * @param array $filter
+     * @return array
+     */
+    public static function getQueryAndFilter(mixed $foundObject, mixed $selectionValue, array $result, array $filter): array
+    {
+        if (property_exists((object)$foundObject, 'search')) {
+            $result[] = sprintf($foundObject['search'], $selectionValue);
+        } else if (property_exists((object)$foundObject, 'queries')) {
+//            echo 'FOUND QUERIES:'.$selectionValue;
+            $values = explode(",", $selectionValue);
+            foreach ($values as $value) {
+                $facet1 = $foundObject['queries'][$value];
+//                echo 'internal found';
+//                var_dump($facet1);
+                if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
+                    $filter[] = json_encode($facet1['query']['filter']);
+                } else {
+                    $result[] = $foundObject['queries'][$selectionValue]['query'];
+                }
+            }
+        } else if (property_exists((object)$foundObject, 'filter')) {
+            $filter[] = sprintf($foundObject['filter'], ...explode(",", $selectionValue));
+        }
+//        echo "QUERY:".json_encode($filter);
+        return array($result, $filter);
+    }
+
+    /**
+     * @param $facet_config
+     * @param int|string $selectionKey
+     * @return array
+     */
+    public static function findByFacetId($facet_config, int|string $selectionKey): array
+    {
+        return array_filter($facet_config, function ($object) use ($selectionKey) {
+            return $object['id'] === $selectionKey;
+        });
     }
 }
