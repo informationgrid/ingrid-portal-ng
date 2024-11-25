@@ -17,7 +17,7 @@ facet_config: [
             }
           }
         },
-        search: "t04_search.searchterm:inspireidentifiziert"
+        search: "datatype:metadata"
       },
       "inspire": {
         query: {

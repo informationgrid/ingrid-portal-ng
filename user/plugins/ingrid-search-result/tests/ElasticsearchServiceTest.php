@@ -145,10 +145,136 @@ final class ElasticsearchServiceTest extends TestCase
     "search": "partner:%s"
   }
 ]', true);
-        $selected_facets = json_decode('{"parner": "bb"}', true);
+        $selected_facets = json_decode('{"partner": "bb"}', true);
         $result = json_decode(ElasticsearchService::convertToQuery("", $facet_config, 0, 10, $selected_facets));
 
         $aggs = json_encode($result->aggs);
-        $this->assertSame('{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"partner":"bb"},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}},"partner":{"global":{},"aggs":{"filtered":{"filter":{"match_all":{}},"aggs":{"final":{"terms":{"field":"partner"}}}}}}}', $aggs);
+        $this->assertSame('{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"query_string":{"query":"partner:bb"}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}},"partner":{"global":{},"aggs":{"filtered":{"filter":{"match_all":{}},"aggs":{"final":{"terms":{"field":"partner"}}}}}}}', $aggs);
+    }
+
+    /** @test */
+    public function facetWithSelectionOfDynamicTypeMultiple(): void
+    {
+        $facet_config = json_decode('[
+  {
+    "id": "special-types",
+    "label": "Ergebnistypen",
+    "queries": {
+      "metadata": {
+        "query": {
+          "filter": {
+            "term": {
+              "datatype": "metadata"
+            }
+          }
+        },
+        "search": "datatype:metadata"
+      },
+      "inspire": {
+        "query": {
+          "filter": {
+            "term": {
+              "t04_search.searchterm": "inspireidentifiziert"
+            }
+          }
+        },
+        "search": "t04_search.searchterm:inspireidentifiziert"
+      }
+    }
+  },
+  {
+    "id": "partner",
+    "label": "Anbieter",
+    "query": {
+      "terms": {
+        "field": "partner"
+      }
+    },
+    "search": "partner:%s"
+  }
+]', true);
+        $selected_facets = json_decode('{"partner": "bb"}', true);
+        $result = json_decode(ElasticsearchService::convertToQuery("", $facet_config, 0, 10, $selected_facets));
+
+        $aggs = json_encode($result->aggs);
+        $this->assertSame('{"metadata":{"global":{},"aggs":{"filtered":{"filter":{"query_string":{"query":"partner:bb"}},"aggs":{"final":{"filter":{"term":{"datatype":"metadata"}}}}}}},"inspire":{"global":{},"aggs":{"filtered":{"filter":{"query_string":{"query":"partner:bb"}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}},"partner":{"global":{},"aggs":{"filtered":{"filter":{"match_all":{}},"aggs":{"final":{"terms":{"field":"partner"}}}}}}}', $aggs);
+    }
+
+
+
+    /** @test */
+    public function facetWithMultipleSelectionOfSameGroup(): void
+    {
+        $facet_config = json_decode('[
+  {
+    "id": "special-types",
+    "label": "Ergebnistypen",
+    "queries": {
+      "inspire": {
+        "query": {
+          "filter": {
+            "term": {
+              "t04_search.searchterm": "inspireidentifiziert"
+            }
+          }
+        },
+        "search": "t04_search.searchterm:inspireidentifiziert"
+      }
+    }
+  },
+  {
+    "id": "partner",
+    "label": "Anbieter",
+    "query": {
+      "terms": {
+        "field": "partner"
+      }
+    },
+    "search": "partner:%s"
+  }
+]', true);
+        $selected_facets = json_decode('{"partner": "bb,he"}', true);
+        $result = json_decode(ElasticsearchService::convertToQuery("", $facet_config, 0, 10, $selected_facets));
+
+        $aggs = json_encode($result->aggs);
+        $this->assertSame('???{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"query_string":{"query":"partner:bb"}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}},"partner":{"global":{},"aggs":{"filtered":{"filter":{"match_all":{}},"aggs":{"final":{"terms":{"field":"partner"}}}}}}}', $aggs);
+    }
+
+    /** @test */
+    public function facetWithMultipleSelectionOfDifferentGroup(): void
+    {
+        $facet_config = json_decode('[
+  {
+    "id": "special-types",
+    "label": "Ergebnistypen",
+    "queries": {
+      "inspire": {
+        "query": {
+          "filter": {
+            "term": {
+              "t04_search.searchterm": "inspireidentifiziert"
+            }
+          }
+        },
+        "search": "t04_search.searchterm:inspireidentifiziert"
+      }
+    }
+  },
+  {
+    "id": "partner",
+    "label": "Anbieter",
+    "query": {
+      "terms": {
+        "field": "partner"
+      }
+    },
+    "search": "partner:%s"
+  }
+]', true);
+        $selected_facets = json_decode('{"partner": "bb", "special-types": "inspire"}', true);
+        $result = json_decode(ElasticsearchService::convertToQuery("", $facet_config, 0, 10, $selected_facets));
+
+        $aggs = json_encode($result->aggs);
+        $this->assertSame('???{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"query_string":{"query":"partner:bb"}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}},"partner":{"global":{},"aggs":{"filtered":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}},"aggs":{"final":{"terms":{"field":"partner"}}}}}}}', $aggs);
     }
 }

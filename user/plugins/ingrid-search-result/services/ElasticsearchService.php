@@ -67,13 +67,35 @@ class ElasticsearchService
     {
         $result = array();
         foreach ($facets as $facet) {
+            echo "Map facet: ".$facet['id'];
             if (property_exists((object)$facet, 'queries')) {
 
+                var_dump($selected_facets);
+                var_dump($facet['id']);
+                if (!empty($selected_facets) && !property_exists((object)$selected_facets, $facet['id'])) {
+                    echo 'add facet filter (queries)';
+                    foreach ($selected_facets as $selectionKey => $selectionValue) {
+                        $otherFacet = self::findByFacetId($facets, $selectionKey);
+                        $firstOtherFacet = reset($otherFacet);
+                        list($subResult, $subFilter) = self::getQueryAndFilter($firstOtherFacet, $selectionValue, array(), array());
+                        echo json_encode($subResult);
+                        echo json_encode($subFilter);
+                    }
+                }
                 foreach ($facet['queries'] as $subfacet_id => $subfacet_value) {
 //                    echo 'Queries';
 //                    var_dump($subfacet_id);
                     $result[$subfacet_id]['global'] = new stdClass();
-                    $result[$subfacet_id]['aggs']['filtered']['filter']['match_all'] = new stdClass();
+                    if ($subFilter) {
+                        $result[$subfacet_id]['aggs']['filtered']['filter'] = reset($subFilter);
+                    }
+                    else if ($subResult) {
+                        echo "HAS SUBFILTER:";
+                        $finalFilter = $subResult;
+                        $result[$subfacet_id]['aggs']['filtered']['filter']['query_string']['query'] = reset($subResult);
+                    } else {
+                        $result[$subfacet_id]['aggs']['filtered']['filter']['match_all'] = new stdClass();
+                    }
                     $result[$subfacet_id]['aggs']['filtered']['aggs']['final'] = $subfacet_value['query'];
                 }
             } else {
@@ -83,9 +105,13 @@ class ElasticsearchService
 
 //                    var_dump($selected_facets);
                     // add filter for the facet
-                    if (!empty($selected_facets) && !property_exists((object)$selected_facets, $facet['id'])) {
+                    if (!empty($selected_facets)) { // && !property_exists((object)$selected_facets, $facet['id'])) {
+                        echo 'add facet filter (query): '.$facet['id'];
                         foreach ($selected_facets as $selectionKey => $selectionValue) {
-//                            echo 'IS SELECTED';
+                            echo "check: ".$selectionKey;
+                            if ($selectionKey == $facet['id']) {continue;}
+                            echo "handle: ".$selectionKey;
+
                             $otherFacet = self::findByFacetId($facets, $selectionKey);
                             $firstOtherFacet = reset($otherFacet);
                             list($subResult, $subFilter) = self::getQueryAndFilter($firstOtherFacet, $selectionValue, array(), array());
@@ -93,7 +119,9 @@ class ElasticsearchService
                             $finalFilter = reset($subFilter);
                             $result[$facet['id']]['aggs']['filtered']['filter'] = json_decode($finalFilter);
                         }
-                    } else {
+                    }
+
+                    if (!property_exists((object)$result[$facet['id']], 'aggs')) {
                         $result[$facet['id']]['aggs']['filtered']['filter']['match_all'] = new stdClass();
                     }
 
