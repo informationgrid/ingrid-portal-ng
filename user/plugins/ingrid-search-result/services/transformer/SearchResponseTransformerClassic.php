@@ -31,12 +31,12 @@ class SearchResponseTransformerClassic
                 foreach ($facetConfig['queries'] as $key => $query) {
                     $items[] = new FacetItem(
                         $key,
-                        ((array)$aggregations)[$key]->doc_count,
+                        ((array)$aggregations)[$key]->filtered->final->doc_count,
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key)
                     );
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
-                foreach (((array)$aggregations)[$facetConfig['id']]->buckets as $bucket) {
+                foreach (((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets as $bucket) {
                     $items[] = new FacetItem(
                         $bucket->key,
                         $bucket->doc_count,
