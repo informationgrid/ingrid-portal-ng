@@ -15,7 +15,7 @@ class ElasticsearchService
         if ($query == "" && $queryFromFacets->query == "") {
             $result = array("match_all" => new stdClass());
         } else {
-            $result = array("query_string" => array("query" => $query . $queryFromFacets->query));
+            $result = array("query_string" => array("query" => $query . " " . $queryFromFacets->query));
         }
         $filter = json_decode($queryFromFacets->filter);
         return json_encode(array(
@@ -155,12 +155,17 @@ class ElasticsearchService
     {
         $queryString = array();
         $filter = array();
-        if (!empty($selected_facets)) {
+        if (empty($selected_facets)) {
+            if ($query != "") {
+                $queryString = array("query_string" => array("query" => $query));
+            }
+        } else {
             $queryFromFacets = ElasticsearchService::getQueryFromFacets($facets, $selected_facets, $id);
             if ($query == "" && $queryFromFacets->query == "") {
                 $queryString = array("match_all" => new stdClass());
             } else {
-                $queryString = array("query_string" => array("query" => $query . $queryFromFacets->query));
+                $finalQuery = $query ? "*" . $query . "* " : "";
+                $queryString = array("query_string" => array("query" => $finalQuery . $queryFromFacets->query));
             }
             $filter = json_decode($queryFromFacets->filter);
         }
@@ -178,8 +183,8 @@ class ElasticsearchService
     {
         if ($filter || $queryString) {
             $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'] = array();
-            $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'][] = $filter;
-            $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'][] = $queryString;
+            if ($filter) $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'][] = $filter;
+            if ($queryString) $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'][] = $queryString;
         } else {
             $result[$subfacet_id]['aggs']['filtered']['filter']['match_all'] = new stdClass();
         }

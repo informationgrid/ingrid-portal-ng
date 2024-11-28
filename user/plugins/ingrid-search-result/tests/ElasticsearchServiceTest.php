@@ -111,6 +111,39 @@ final class ElasticsearchServiceTest extends TestCase
         $this->assertSame('{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"match_all":{}},{"query_string":{"query":"+(t01_object.obj_class:1)"}}]}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}},"doc-types":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"bool":{"must":[{"bool":{"should":[{"term":{"t04_search.searchterm":"inspireidentifiziert"}}]}}]}},{"match_all":{}}]}},"aggs":{"final":{"terms":{"field":"t01_object.obj_class","exclude":"1000"}}}}}},"partner":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"bool":{"must":[{"bool":{"should":[{"term":{"t04_search.searchterm":"inspireidentifiziert"}}]}}]}},{"query_string":{"query":"+(t01_object.obj_class:1)"}}]}},"aggs":{"final":{"terms":{"field":"partner"}}}}}},"lastMonth":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"bool":{"must":[{"bool":{"should":[{"term":{"t04_search.searchterm":"inspireidentifiziert"}}]}}]}},{"query_string":{"query":"+(t01_object.obj_class:1)"}}]}},"aggs":{"final":{"filter":{"range":{"modified":{"gte":"now-1M"}}}}}}}}}', $aggs);
     }
 
+    /** @test */
+    public function facetWithOnlyQuery(): void
+    {
+        $facet_config = $this->getFacetConfig(Category::INSPIRE);
+        $selected_facets = json_decode('{}', true);
+        $result = json_decode(ElasticsearchService::convertToQuery("test", $facet_config, 0, 10, $selected_facets));
+
+        $aggs = json_encode($result->aggs);
+        $this->assertSame('{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"query_string":{"query":"test"}}]}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}}}', $aggs);
+    }
+
+    /** @test */
+    public function facetWithQueryAndSelection(): void
+    {
+        $facet_config = $this->getFacetConfig(Category::INSPIRE);
+        $selected_facets = json_decode('{"special-types": "inspire"}', true);
+        $result = json_decode(ElasticsearchService::convertToQuery("test", $facet_config, 0, 10, $selected_facets));
+
+        $aggs = json_encode($result);
+        $this->assertSame('{"from":0,"size":10,"query":{"bool":{"must":{"query_string":{"query":"test "}},"filter":{"bool":{"must":[{"bool":{"should":[{"term":{"t04_search.searchterm":"inspireidentifiziert"}}]}}]}}}},"aggs":{"inspire":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"match_all":{}},{"query_string":{"query":"*test* "}}]}},"aggs":{"final":{"filter":{"term":{"t04_search.searchterm":"inspireidentifiziert"}}}}}}}}}', $aggs);
+    }
+
+    /** @test */
+    public function facetWithQueryAndSelection2(): void
+    {
+        $facet_config = $this->getFacetConfig(Category::DOCTYPE);
+        $selected_facets = json_decode('{"doc-types": "3"}', true);
+        $result = json_decode(ElasticsearchService::convertToQuery("test", $facet_config, 0, 10, $selected_facets));
+
+        $aggs = json_encode($result);
+        $this->assertSame('{"from":0,"size":10,"query":{"bool":{"must":{"query_string":{"query":"test +(t01_object.obj_class:3)"}},"filter":{"match_all":{}}}},"aggs":{"doc-types":{"global":{},"aggs":{"filtered":{"filter":{"bool":{"must":[{"match_all":{}},{"query_string":{"query":"*test* "}}]}},"aggs":{"final":{"terms":{"field":"t01_object.obj_class","exclude":"1000"}}}}}}}}', $aggs);
+    }
+
     private function getFacetConfig(Category ...$categories): array
     {
         $result = array();
