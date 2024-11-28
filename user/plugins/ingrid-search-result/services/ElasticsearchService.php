@@ -55,7 +55,7 @@ class ElasticsearchService
 
         return (object)array(
             "query" => $result_query,
-            "filter" => '{"bool": { "must": [ '.join(",", $filter).']}}'
+            "filter" => '{"bool": { "must": [ ' . join(",", $filter) . ']}}'
         );
     }
 
@@ -67,20 +67,24 @@ class ElasticsearchService
     {
         $result = array();
         foreach ($facets as $facet) {
-            echo "Map facet: ".$facet['id'];
+            echo "Map facet: " . $facet['id'];
             if (property_exists((object)$facet, 'queries')) {
 
                 var_dump($selected_facets);
                 var_dump($facet['id']);
-                if (!empty($selected_facets) && !property_exists((object)$selected_facets, $facet['id'])) {
+                if (!empty($selected_facets)) {
+//                    foreach ($selected_facets as $selectionKey => $selectionValue) {
                     echo 'add facet filter (queries)';
                     foreach ($selected_facets as $selectionKey => $selectionValue) {
-                        $otherFacet = self::findByFacetId($facets, $selectionKey);
-                        $firstOtherFacet = reset($otherFacet);
-                        list($subResult, $subFilter) = self::getQueryAndFilter($firstOtherFacet, $selectionValue, array(), array());
-                        echo json_encode($subResult);
-                        echo json_encode($subFilter);
+                        if ($selectionKey != $facet['id']) {
+                            $otherFacet = self::findByFacetId($facets, $selectionKey);
+                            $firstOtherFacet = reset($otherFacet);
+                            list($subResult, $subFilter) = self::getQueryAndFilter($firstOtherFacet, $selectionValue, array(), array());
+                            echo json_encode($subResult);
+                            echo json_encode($subFilter);
+                        }
                     }
+
                 }
                 foreach ($facet['queries'] as $subfacet_id => $subfacet_value) {
 //                    echo 'Queries';
@@ -88,10 +92,9 @@ class ElasticsearchService
                     $result[$subfacet_id]['global'] = new stdClass();
                     if ($subFilter) {
                         $result[$subfacet_id]['aggs']['filtered']['filter'] = reset($subFilter);
-                    }
-                    else if ($subResult) {
+                    } else if ($subResult) {
                         echo "HAS SUBFILTER:";
-                        $finalFilter = $subResult;
+                        $finalFilter = join(",", $subResult);
                         $result[$subfacet_id]['aggs']['filtered']['filter']['query_string']['query'] = reset($subResult);
                     } else {
                         $result[$subfacet_id]['aggs']['filtered']['filter']['match_all'] = new stdClass();
@@ -106,11 +109,13 @@ class ElasticsearchService
 //                    var_dump($selected_facets);
                     // add filter for the facet
                     if (!empty($selected_facets)) { // && !property_exists((object)$selected_facets, $facet['id'])) {
-                        echo 'add facet filter (query): '.$facet['id'];
+                        echo 'add facet filter (query): ' . $facet['id'];
                         foreach ($selected_facets as $selectionKey => $selectionValue) {
-                            echo "check: ".$selectionKey;
-                            if ($selectionKey == $facet['id']) {continue;}
-                            echo "handle: ".$selectionKey;
+                            echo "check: " . $selectionKey;
+                            if ($selectionKey == $facet['id']) {
+                                continue;
+                            }
+                            echo "handle: " . $selectionKey;
 
                             $otherFacet = self::findByFacetId($facets, $selectionKey);
                             $firstOtherFacet = reset($otherFacet);
@@ -143,7 +148,14 @@ class ElasticsearchService
     public static function getQueryAndFilter(mixed $foundObject, mixed $selectionValue, array $result, array $filter): array
     {
         if (property_exists((object)$foundObject, 'search')) {
-            $result[] = sprintf($foundObject['search'], $selectionValue);
+            echo 'determine search';
+            var_dump($selectionValue);
+            $explodedSelection = explode(",", $selectionValue);
+            $subQuery = array();
+            foreach ($explodedSelection as $item) {
+                $subQuery[] = sprintf($foundObject['search'], $item);
+            }
+            $result[] = join(' OR ', $subQuery);
         } else if (property_exists((object)$foundObject, 'queries')) {
 //            echo 'FOUND QUERIES:'.$selectionValue;
             $values = explode(",", $selectionValue);
