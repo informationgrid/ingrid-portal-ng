@@ -6,31 +6,31 @@ hits_num: 10
 mocking: false
 facet_config: [
   {
-    id: "special-types",
-    label: "Ergebnistypen",
-    queries: {
+    "id": "special-types",
+    "label": "Ergebnistypen",
+    "queries": {
       "metadata": {
-        query: {
+        "query": {
           "filter": {
             "term": {
               "datatype": "metadata"
             }
           }
         },
-        search: "t04_search.searchterm:inspireidentifiziert"
+        search: "datatype:metadata"
       },
       "inspire": {
-        query: {
+        "query": {
           "filter": {
             "term": {
               "t04_search.searchterm": "inspireidentifiziert"
             }
           }
         },
-        search: "t04_search.searchterm:inspireidentifiziert"
+        "search": "t04_search.searchterm:inspireidentifiziert"
       },
       "open-data": {
-        query: {
+        "query": {
           "filter": {
             "bool": {
               "should": [
@@ -48,30 +48,30 @@ facet_config: [
             }
           }
         },
-        search: "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
+        "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
       },
       "websites": {
-        query: {
+        "query": {
           "filter": {
             "term": {
               "datatype": "www"
             }
           }
         },
-        search: "datatype:www"
+        "search": "datatype:www"
       },
       "maps": {
-        query: {
+        "query": {
           "filter": {
             "wildcard": {
               "capabilities_url": "http*"
             }
           }
         },
-        search: "capabilities_url:http.*"
+        "search": "capabilities_url:http.*"
       },
       "adv": {
-        query: {
+        "query": {
           "filter": {
             "bool": {
               "should": [
@@ -89,41 +89,41 @@ facet_config: [
             }
           }
         },
-        search: "t04_search.searchterm:AdVMIS t04_search.searchterm:AdV"
+        "search": "t04_search.searchterm:AdVMIS t04_search.searchterm:AdV"
       }
     }
   },
   {
-    id: "doc-types",
-    label: "Dokumententyp",
-    query: {
+    "id": "doc-types",
+    "label": "Dokumententyp",
+    "query": {
       "terms": {
         "field": "t01_object.obj_class",
         "exclude": "1000"
       }
     },
-    search: "t01_object.obj_class:%d"
+    "search": "t01_object.obj_class:%d"
   },
   {
-    id: "partner",
-    label: "Anbieter",
-    query: {
+    "id": "partner",
+    "label": "Anbieter",
+    "query": {
       "terms": {
         "field": "partner"
       }
     },
-    search: "partner:%s"
+    "search": "partner:%s"
   },
   {
-    id: "bbox",
-    label: "Auf Karte festlegen",
-    filter: "{\"range\": {\"x1\": {\"gte\": %f } } }"
+    "id": "bbox",
+    "label": "Auf Karte festlegen",
+    "filter": "{\"range\": {\"x1\": {\"gte\": %f } } }"
   },
   {
-    id: "actuality",
-    queries: {
+    "id": "actuality",
+    "queries": {
       "lastMonth": {
-        query: {
+        "query": {
           "filter": {
             "range": {
               "modified": {
@@ -134,7 +134,7 @@ facet_config: [
         }
       },
       "lastThreeMonth": {
-        query: {
+        "query": {
           "filter": {
             "range": {
               "modified": {
@@ -145,7 +145,7 @@ facet_config: [
         }
       },
       "lastYear": {
-        query: {
+        "query": {
           "filter": {
             "range": {
               "modified": {
