@@ -55,8 +55,9 @@ class InGridDatasourcesPlugin extends Plugin
 
         $config = $this->config();
         if ($this->isAdmin()) {
-            $this->api_url = $config['api_url'];
-            $this->enable([
+            $this->api_url = getenv('INGRID_API') !== false ?
+                getenv('INGRID_API') . 'portal/catalogs' : $config['ingrid_api_url'];
+                $this->enable([
                 'onTwigSiteVariables' => ['onTwigAdminVariables', 0]
             ]);
             return;
@@ -65,7 +66,8 @@ class InGridDatasourcesPlugin extends Plugin
         $uri = $this->grav['uri'];
         $route = $config['route'] ?? null;
         if ($route && $route == $uri->path()) {
-            $this->api_url = $config['api_url'];
+            $this->api_url = getenv('INGRID_API') !== false ?
+                getenv('INGRID_API') . 'portal/catalogs' : $config['ingrid_api_url'];
             if (array_key_exists('excludes', $config) && !is_null($config['excludes']) ) {
                 $this->excludes = $config['excludes'];
             }

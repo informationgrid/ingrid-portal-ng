@@ -1,6 +1,5 @@
 enabled: true
 route: /datenkataloge
-api_url: 'https://api.dev.informationgrid.eu/portal/catalogs'
 open_nodes_level: 3
 display_partner: 1
 sort_by_name: 1

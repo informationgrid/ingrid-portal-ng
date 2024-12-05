@@ -87,14 +87,12 @@ class InGridDetailPlugin extends Plugin
             $rootUrl = $this->grav['uri']->rootUrl();
             $lang = $this->grav['language']->getLanguage();
 
-            $api = getenv('INGRID_API') ?? $this->grav['config']->get('plugins.ingrid-detail.api_url');
+            $api = getenv('INGRID_API') !== false ?
+                getenv('INGRID_API') : $this->grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
 
             if (empty($type)) {
                 $type = "metadata";
             }
-
-            $metadata_config = $this->grav['config']->get('plugins.ingrid-search-result.metadata');
-            $address_config = $this->grav['config']->get('plugins.ingrid-search-result.address');
 
             $response = null;
             $dataSourceName = null;
@@ -126,10 +124,10 @@ class InGridDetailPlugin extends Plugin
 
                     if ($type == "address") {
                         $parser = new DetailAddressParser();
-                        $hit = $parser->parse($content, $uuid, $lang);
+                        $hit = $parser->parse($content, $uuid, $this->grav);
                     } else {
                         $parser = new DetailMetadataParser();
-                        $hit = $parser->parse($content, $uuid, $dataSourceName, $providers, $lang);
+                        $hit = $parser->parse($content, $uuid, $dataSourceName, $providers, $this->grav);
                     }
                     $this->grav['twig']->twig_vars['detail_type'] = $type;
                     $this->grav['twig']->twig_vars['hit'] = $hit;

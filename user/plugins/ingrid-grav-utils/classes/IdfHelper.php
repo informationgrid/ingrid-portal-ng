@@ -120,4 +120,36 @@ class IdfHelper
         return $array;
     }
 
+    public static function transformGML(\SimpleXMLElement $node, array $api, string $exportFormat): bool|string
+    {
+        $resp = false;
+        $data = $node->asXML();
+
+        $api_url = $api['url'];
+        $api_user = $api['user'];
+        $api_pass = $api['pass'];
+
+        if ($data and !empty($api_url)) {
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/xml',
+            ));
+            curl_setopt($curl, CURLOPT_URL, $api_url . $exportFormat);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            if (isset($api_user) and isset($api_pass)) {
+                curl_setopt($curl, CURLOPT_USERPWD, $api_user . ":" . $api_pass);
+            }
+
+            $resp = curl_exec ($curl);
+            $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+            if ($httpcode !== 200) {
+                $resp = false;
+            }
+            curl_close($curl);
+
+        }
+        return $resp;
+    }
 }

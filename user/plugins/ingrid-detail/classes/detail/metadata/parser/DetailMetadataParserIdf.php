@@ -7,7 +7,7 @@ use Grav\Common\Utils;
 class DetailMetadataParserIdf
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang, array $geo_api ): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 
@@ -27,7 +27,7 @@ class DetailMetadataParserIdf
             "contacts" => self::getContactRefs($node, $lang),
         ];
         self::getTimeRefs($node, $metadata, $lang);
-        self::getMapRefs($node, $metadata, $lang);
+        self::getMapRefs($node, $metadata, $lang, $geo_api);
         self::getUseRefs($node, $metadata, $lang);
         self::getInfoRefs($node, $type, $metadata, $lang);
         self::getDataQualityRefs($node, $metadata);
@@ -157,15 +157,17 @@ class DetailMetadataParserIdf
         }
     }
 
-    private static function getMapRefs(\SimpleXMLElement $node, array &$metadata, string $lang): void
+    private static function getMapRefs(\SimpleXMLElement $node, array &$metadata, string $lang, array $geo_api): void
     {
         $regionKey = IdfHelper::getNode($node, "./idf:regionKey");
         $loc_descr = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]");
-        // TODO: Transform wkt
-        $polygon_wkt = IdfHelper::getNode($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_BoundingPolygon/gmd:polygon");
+        $polygon = IdfHelper::getNode($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_BoundingPolygon/gmd:polygon/*");
+        if ($polygon !== null) {
+            $metadata["map_polygon_wkt"] = IdfHelper::transformGML($polygon, $geo_api, 'wkt');
+            $metadata["map_polygon_geojson"] = IdfHelper::transformGML($polygon, $geo_api, 'geojson');
+        }
         $metadata["map_regionKey"] = $regionKey;
         $metadata["map_loc_descr"] = $loc_descr;
-        $metadata["map_polygon_wkt"] = $polygon_wkt;
         $metadata["map_bboxes"] = self::getBBoxes($node);
         $metadata["map_geographicElement"] = self::getGeographicElements($node, $lang);
         $metadata["map_areaHeight"] = self::getAreaHeight($node, $lang);

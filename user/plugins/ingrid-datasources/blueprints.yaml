@@ -30,11 +30,10 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    api_url:
+    ingrid_api_url:
       type: text
       label: PLUGIN_INGRID_DATASOURCES.API_URL
       help: PLUGIN_INGRID_DATASOURCES.API_URL_HELP
-      default: https://api.dev.informationgrid.eu/portal/catalogs
     excludes:
       type: selectize_datasource
       selectize:

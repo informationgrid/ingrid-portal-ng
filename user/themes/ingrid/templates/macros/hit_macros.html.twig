@@ -539,7 +539,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_text_label (title, text, css) %}
+{% macro render_text_label (title, text, css, expandable) %}
   {% if text %}
     <div class="table table--lined">
         <table>
@@ -548,7 +548,22 @@
                     <th>{{ title }}</th>
                 {% endif %}
                 <td>
+                    {% if expandable %}
+                        <div class="js-expand-box js-expand-text js-non-expand-text">
+                            <div class="js-expand-text-content">
+                    {% endif %}
                     <p {% if css %}class="{{ css }}"{% endif %}>{{ text|raw }}</p>
+                    {% if expandable %}
+                            </div>
+                            <div class="desc-fade"></div>
+                        </div>
+                        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+                        </button>
+                        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+                        </button>
+                    {% endif %}
                 </td>
             </tr>
         </table>
@@ -652,11 +667,11 @@
                             </div>
                             <div class="desc-fade"></div>
                         </div>
-                        <button type="button" class="js-open-expand-text button outline is-hidden" title="$MESSAGES.getString('search.detail.info.more')">
-                            $MESSAGES.getString('search.detail.info.more')
+                        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
                         </button>
-                        <button type="button" class="js-close-expand-text button outline is-hidden" title="$MESSAGES.getString('search.detail.info.less')">
-                            $MESSAGES.getString('search.detail.info.less')
+                        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
                         </button>
                     {% endif %}
                 </td>

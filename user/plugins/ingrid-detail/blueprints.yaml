@@ -30,7 +30,19 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    api_url:
+    ingrid_api_url:
       type: text
-      label: PLUGIN_INGRID_SEARCH_RESULT.API_URL
-      help: PLUGIN_INGRID_SEARCH_RESULT.API_URL_HELP
+      label: PLUGIN_INGRID_DETAIL.API_URL
+      help: PLUGIN_INGRID_DETAIL.API_URL_HELP
+    geo_api_url:
+      type: text
+      label: PLUGIN_INGRID_DETAIL.GEO_API_URL
+      help: PLUGIN_INGRID_DETAIL.GEO_API_URL_HELP
+    geo_api_user:
+      type: text
+      label: PLUGIN_INGRID_DETAIL.GEO_API_USER
+      help: PLUGIN_INGRID_DETAIL.GEO_API_USER_HELP
+    geo_api_pass:
+      type: text
+      label: PLUGIN_INGRID_DETAIL.GEO_API_PASS
+      help: PLUGIN_INGRID_DETAIL.GEO_API_PASS_HELP

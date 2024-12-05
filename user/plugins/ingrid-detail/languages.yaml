@@ -1,4 +1,21 @@
 en:
-  PLUGIN_IN_GRID_DETAIL:
-    TEXT_VARIABLE: Text Variable
-    TEXT_VARIABLE_HELP: Text to add to the top of a page
+  PLUGIN_INGRID_DETAIL:
+    API_URL: InGrid-API URL
+    API_URL_HELP: URL zur InGrid-API
+    GEO_API_URL: Geo-API URL
+    GEO_API_URL_HELP: URL zur Geo-API. Per Docker-ENV "GEO_API_URL" setzbar.
+    GEO_API_USER: Geo-API User (htaccess)
+    GEO_API_USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "GEO_API_USER" setzbar.
+    GEO_API_PASS: Geo-API Passwort (htaccess)
+    GEO_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
+
+de:
+  PLUGIN_INGRID_DETAIL:
+    API_URL: InGrid-API URL
+    API_URL_HELP: URL zur InGrid-API
+    GEO_API_URL: Geo-API URL
+    GEO_API_URL_HELP: URL zur Geo-API. Per Docker-ENV "GEO_API_URL" setzbar.
+    GEO_API_USER: Geo-API User (htaccess)
+    GEO_API_USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "GEO_API_USER" setzbar.
+    GEO_API_PASS: Geo-API Passwort (htaccess)
+    GEO_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.

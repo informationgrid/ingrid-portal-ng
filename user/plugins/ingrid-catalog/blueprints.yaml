@@ -30,11 +30,10 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    api_url:
+    ingrid_api_url:
       type: text
       label: PLUGIN_INGRID_CATALOG.API_URL
       help: PLUGIN_INGRID_CATALOG.API_URL_HELP
-      default: https://api.dev.informationgrid.eu/portal/catalogs
     open_nodes_level:
       type: number
       label: PLUGIN_INGRID_CATALOG.OPEN_NODES_LEVEL

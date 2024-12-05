@@ -19,7 +19,8 @@ class SearchServiceImpl implements SearchService
     {
         $this->facet_config = $grav['config']->get('plugins.ingrid-search-result.facet_config');
 
-        $this->api = getenv('INGRID_API') ?? $grav['config']->get('plugins.ingrid-detail.api_url');
+        $this->api = getenv('INGRID_API') !== false ?
+            getenv('INGRID_API') : $grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
         $this->hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];

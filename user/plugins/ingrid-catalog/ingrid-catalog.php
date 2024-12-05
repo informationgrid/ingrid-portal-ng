@@ -73,7 +73,8 @@ class InGridCatalogPlugin extends Plugin
         $config = $this->config();
 
         $this->lang = $lang = $this->grav['language']->getLanguage();
-        $this->config_api_url = $config['api_url'];
+        $this->config_api_url = getenv('INGRID_API') !== false ?
+            getenv('INGRID_API') . 'portal/catalogs' : $config['ingrid_api_url'];
         $this->config_open_nodes_level = $config['open_nodes_level'];
         $this->config_display_partner = $config['display_partner'];
         $this->config_open_on_new_tab = $config['open_on_new_tab'];
