@@ -22,7 +22,7 @@ class DetailMetadataParser
             $lang = $grav['language']->getLanguage();
             $geo_api_url = getenv('GEO_API_URL') !== false ? getenv('GEO_API_URL') : $grav['config']->get('plugins.ingrid-detail.geo_api_url');
             $geo_api_user = getenv('GEO_API_USER') !== false ? getenv('GEO_API_USER') : $grav['config']->get('plugins.ingrid-detail.geo_api_user');
-            $geo_api_pass = getenv('GEO_API_PASS') !== false ? getenv('GEO_API_USER') : $grav['config']->get('plugins.ingrid-detail.geo_api_pass');
+            $geo_api_pass = getenv('GEO_API_PASS') !== false ? getenv('GEO_API_PASS') : $grav['config']->get('plugins.ingrid-detail.geo_api_pass');
             $geo_api = [
                 'url' => $geo_api_url,
                 'user' => $geo_api_user,
