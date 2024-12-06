@@ -3,9 +3,9 @@
 <div>
     <h3>
     {% if query is empty %}
-        {{ "COMMON.RESULT_COUNTER_RANKED"|t(numOfHits) }}
+        {{ "COMMON.RESULT_COUNTER_RANKED"|t(numOfHits)|raw }}
     {% else %}
-        {{ "COMMON.RESULT_COUNTER_RANKED_WITHSEARCHVALUE"|t(numOfHits, query) }}
+        {{ "COMMON.RESULT_COUNTER_RANKED_WITHSEARCHVALUE"|t(numOfHits, query)|raw }}
     {% endif %}
     </h3>
 </div>
