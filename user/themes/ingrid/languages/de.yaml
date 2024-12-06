@@ -34,7 +34,7 @@ PAGES:
     ACCESSIBILITY_MENU_TITLE: Barrierefreiheit
     RSS: Neuigkeiten
     RSS_MENU_TITLE: RSS
-    DETAIL: Detail
+    DETAIL: Metadaten
     DETAIL_MENU_TITLE: Metadaten
 
 COMMON:
@@ -93,11 +93,9 @@ COMMON:
     RESULT_FILTER_HEADER: Nur Ergebnisse für
     RESULT_NORESULTS: Keine Suchergebnisse gefunden.
     RESULT_INTERRUPTED: Die Ausgabe der Suchergebnisse wurde vorzeitig unterbrochen.
-    RESULT_COUNTER_RANKED: '<strong>%d</strong> Ergebnisse'
-    RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<strong>%d</strong> Ergebnisse zu "%s"'
-    RESULT_COUNTER_RANKED_GROUPED: '<strong>%d - %d</strong> von <strong>%d</strong> Ergebnissen'
-    RESULT_NAVIGATION_RANKED: '(Seite %d von %d)'
-    RESULT_NAVIGATION_RANKED_GROUPED: '(Seite %d)'
+    RESULT_COUNTER_RANKED: '<strong class="search-result-hits">%d</strong> Ergebnisse'
+    RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<strong class="search-result-hits">%d</strong> Ergebnisse zu "<strong>%s</strong>"'
+    RESULT_COUNTER_RANKED_GROUPED: '<strong class="search-result-hits">%d - %d</strong> von <strong>%d</strong> Ergebnissen'
     RESULT_SEARCH_FOR: Suche nach
     RESULT_SHOWSERVICE: Zeige Dienst
     RESULT_SHOWCOUPLEDRESOURCE: Zeige Kartenobjekt
@@ -116,32 +114,6 @@ COMMON:
     KML_PLACEMARK_DESCRIPTION: Beschreibung
     KML_PLACEMARK_LONGITUDE: Länge
     KML_PLACEMARK_LATITUDE: Breite
-    SNS_TOPIC_REF_COMMUNITYTYPE: Gemeinde
-    SNS_TOPIC_REF_DISTRICTTYPE: Kreis
-    SNS_TOPIC_REF_NATIONTYPE: Staat
-    SNS_TOPIC_REF_STATETYPE: Bundesland
-    SNS_TOPIC_REF_CATCHMENTAREATYPE: Wassereinzugsgebiet
-    SNS_TOPIC_REF_ISLANDTYPE: Insel
-    SNS_TOPIC_REF_LANDSCAPETYPE: Landschaft
-    SNS_TOPIC_REF_MOUNTAINTYPE: Berg
-    SNS_TOPIC_REF_MOUNTAINSTYPE: Gebirge
-    SNS_TOPIC_REF_NATURALLANDSCAPETYPE: Naturraum
-    SNS_TOPIC_REF_BIOSPHERETYPE: Biosphäre
-    SNS_TOPIC_REF_NATIONALPARKTYPE: Nationalpark
-    SNS_TOPIC_REF_NATURALPARKTYPE: Naturpark
-    SNS_TOPIC_REF_PROTECTEDAREATYPE: Schutzgebiet
-    SNS_TOPIC_REF_CHANNELTYPE: Kanal
-    SNS_TOPIC_REF_LAKETYPE: See
-    SNS_TOPIC_REF_RESERVOIRTYPE: Stausee
-    SNS_TOPIC_REF_RIVERTYPE: Fluss
-    SNS_TOPIC_REF_SEATYPE: Meer
-    SNS_TOPIC_REF_USE6TYPE: Gemeinde
-    SNS_TOPIC_REF_USE5TYPE: Gemeindeverband
-    SNS_TOPIC_REF_USE4TYPE: Region/Landkreis
-    SNS_TOPIC_REF_USE3TYPE: Regierungsbezirk
-    SNS_TOPIC_REF_USE2TYPE: Bundesland
-    SNS_TOPIC_REF_URBANDISTRICTTYPE: Stadtbezirk
-    SNS_TOPIC_REF_QUARTERTYPE: Stadtteil
     RESULT_PARTNER_BUND: Bund
     RESULT_PARTNER_BB: Brandenburg
     RESULT_PARTNER_BE: Berlin
@@ -181,15 +153,15 @@ COMMON:
     RDF_LINK: Daten als RDF herunterladen
     RDF_LINK_LABEL: RDF/XML
     DETAIL_ARROW_PREFIX:
-    LANGUAGE_TITLE: Sprache:
+    LANGUAGE_TITLE: 'Sprache:'
     STEPS_UVP_PHASE1: Öffentliche Auslegung
     STEPS_UVP_PHASE2: Erörterungstermin
     STEPS_UVP_PHASE3: Entscheidung über die Zulassung
     TOGGLE_APPROVAL_DATE: Nur aktuelle
-    TOGGLE_APPROVAL_DATE_ON: "Nur aktuelle: ein"
-    TOGGLE_APPROVAL_DATE_OFF: "Nur aktuelle: aus"
+    TOGGLE_APPROVAL_DATE_ON: 'Nur aktuelle: ein'
+    TOGGLE_APPROVAL_DATE_OFF: 'Nur aktuelle: aus'
     TOGGLE_APPROVAL_DATE_TOOLTIP: Im letzten Jahr bearbeitete sowie laufende Verfahren.
-    MAPCLIENT_GEOCODER_SEARCH_PLACEHOLDER: "Suche: z.B. nach Hannover ..."
+    MAPCLIENT_GEOCODER_SEARCH_PLACEHOLDER: 'Suche: z.B. nach Hannover ...'
     MAPCLIENT_GEOCODER_SEARCH_ERRORMESSAGE: Keine Ergebnisse ...
     PLACE: Ort
     PLACE_NORTH: Nord
@@ -201,7 +173,7 @@ COMMON:
     LINK_COPY_SUCCESS: Link kopiert!
     TIME_TYPE: Aktualität der Daten
     TIME_FROM: ' '
-    TIME_TO: -
+    TIME_TO: '-'
     TIME_UNTIL: bis
     TIME_SINCE: seit
     TIME_UNTILNOW: , gegenwärtig aktuell
@@ -218,12 +190,6 @@ SEARCH:
     PORTLET_TITLE_1: InGrid
     PORTLET_TITLE_2: Indexieren, Recherchieren, Visualisieren und Teilen
     PORTLET_TITLE_3: von Datenquellen, Metadaten und Kartendiensten
-
-SEARCH_SIMILAR:
-    HEADLINE: Ähnliche Begriffe
-    ADD_TO_QUERY: Zur Suchanfrage hinzufügen
-    TERMS_NOT_AVAILABLE: Kein ähnlicher Begriff verfügbar.
-    HEADLINE_TOOLTIP: InGrid-Portal schlägt Ihnen ähnliche oder verwandte Suchbegriffe vor
 
 SEARCH_RESULT:
     RESULTS_REQUESTED: Ihr Suchergebnis wird angefordert.
@@ -489,9 +455,10 @@ SEARCH_DETAIL:
     PRIORITY_DATASET: INSPIRE Priority Dataset
     SPATIAL_SCOPE: INSPIRE - Räumlicher Anwendungsbereich
     ADV_GROUP: AdV-Produktgruppe
+    HVD_GROUP: HVD-Kategorie
     GEMET_CONCEPTS: GEMET-Concepts
     INSPIRE_INVEKOS: INSPIRE-InVeKoS
-    LAST_CHANGED: letzte Änderung am:
+    LAST_CHANGED: 'letzte Änderung am:'
     OBJECT_CLASS: (Objektklasse)
     DATARELATIONS: Datenbezüge
     DATARELATIONS_NEXT: weitere Datenbezüge
@@ -535,7 +502,7 @@ SEARCH_DETAIL:
     T01_OBJECT_POLYGON_WKT: Begrenzungspolygon als WKT
     T01_OBJECT_TIME_FROM: Durch die Ressource abgedeckte Zeitspanne > von
     T01_OBJECT_TIME_TO: Durch die Ressource abgedeckte Zeitspanne > bis
-    T01_OBJECT_TIME_TYPE: "Zeitbezug: am, seit (bis: Zeitpunkt des Abrufs), seit (bis: unbekannter Zeitpunkt), von"
+    T01_OBJECT_TIME_TYPE: 'Zeitbezug: am, seit (bis: Zeitpunkt des Abrufs), seit (bis: unbekannter Zeitpunkt), von'
     T01_OBJECT_TIME_DESCR: Erläuterung zum Zeitbezug
     T01_OBJECT_TIME_PERIOD: Periodizität
     T01_OBJECT_TIME_INTERVAL: Intervall der Erhebung
@@ -578,7 +545,7 @@ SEARCH_DETAIL:
     T011_OBJ_GEO_HIERARCHY_LEVEL: Datensatz / Datenserie  
     T011_OBJ_GEO_VECTOR_TOPOLOGY_LEVEL: Topologieinformation
     T011_OBJ_GEO_POS_ACCURACY_VERTICAL: Höhengenauigkeit
-    T011_OBJ_GEO_KEYC_INCL_W_DATASET: "Schlüsselkatalog: Im Datensatz vorhanden"
+    T011_OBJ_GEO_KEYC_INCL_W_DATASET: 'Schlüsselkatalog: Im Datensatz vorhanden'
     T011_OBJ_GEO_MOD_TYPE: Änderungsflag
     T011_OBJ_GEO_SCALE: Erstellungsmaßstab
     T011_OBJ_GEO_SCALE_OBJ_ID: Objekt-ID
@@ -587,8 +554,8 @@ SEARCH_DETAIL:
     T011_OBJ_GEO_SCALE_RESOLUTION_GROUND: Bodenauflösung
     T011_OBJ_GEO_SCALE_RESOLUTION_SCAN: Scanauflösung
     T012_OBJ_OBJ_OBJECT_FROM_ID: Elternobjekt
-    T012_OBJ_OBJ_OBJECT_TO_ID: "Verweise: Objekt-ID"
-    T012_OBJ_OBJ_TYP: "Verweise: Beziehungstyp"
+    T012_OBJ_OBJ_OBJECT_TO_ID: 'Verweise: Objekt-ID'
+    T012_OBJ_OBJ_TYP: 'Verweise: Beziehungstyp'
     T012_OBJ_OBJ_LINE: Zeilennummer
     T012_OBJ_OBJ_SPECIAL_REF: Fachlicher Bezug (Objekt-Objekt)
     T012_OBJ_OBJ_SPECIAL_NAME: Feldname / Verweisbeziehung
@@ -833,11 +800,11 @@ SEARCH_DETAIL:
     T016_OLE_REF_LINE: Zeilennummer
     T016_OLE_REF_TYP: OLE-Typ
     T016_OLE_REF_OLE_OBJECT: OLE-Objekt (Pfad+Dateiname)
-    T016_OLE_REF_SPECIAL_REF: "OLE-Objekt: Fachlicher Bezug"
-    T016_OLE_REF_SPECIAL_NAME: "OLE-Objekt: Feldname / Verweisbeziehung"
-    T016_OLE_REF_CONTENT: "OLE-Objekt: Bezeichnung des Verweises"
-    T016_OLE_REF_RECORD_ID: "OLE-Objekt: Datensatzidentifikation"
-    T016_OLE_REF_DESCR: "OLE-Objekt: Erläuterung zum Verweis"
+    T016_OLE_REF_SPECIAL_REF: 'OLE-Objekt: Fachlicher Bezug'
+    T016_OLE_REF_SPECIAL_NAME: 'OLE-Objekt: Feldname / Verweisbeziehung'
+    T016_OLE_REF_CONTENT: 'OLE-Objekt: Bezeichnung des Verweises'
+    T016_OLE_REF_RECORD_ID: 'OLE-Objekt: Datensatzidentifikation'
+    T016_OLE_REF_DESCR: 'OLE-Objekt: Erläuterung zum Verweis'
     T016_OLE_REF_MOD_TYPE: Änderungsflag
     T019_COORDINATES_OBJ_ID: Objekt-ID
     T019_COORDINATES_LINE: Zeilennummer
@@ -893,7 +860,7 @@ SEARCH_DETAIL:
     T052_USER_ACCOUNT_CREATE_TIME: Erstellungsdatum
     T053_USER_OPTION_USER_ID: Benutzer-ID
     T053_USER_OPTION_OPTION_ID: Options-ID
-    T053_USER_OPTION_ENTRY: ?
+    T053_USER_OPTION_ENTRY: '?'
     T053_USER_OPTION_MOD_TIME: Geändert am
     T07_COUNTRY_COUNTRY_ID: Staat-ID
     T07_COUNTRY_COUNTRY: Name des Staates
@@ -942,8 +909,8 @@ SEARCH_DETAIL:
     FS_PROJECTLEADER: Projektleiter
     FS_PARTICIPANTS: Beteiligte
     FS_PROJECT_EXECUTING_ORGANISATION: Projektträger
-    FS_RUNTIME_FROM: "Laufzeit: von"
-    FS_RUNTIME_TO: "Laufzeit: bis"
+    FS_RUNTIME_FROM: 'Laufzeit: von'
+    FS_RUNTIME_TO: 'Laufzeit: bis'
     FS_KEYWORDS: Schlagworte
     FS_GEO_REFERENCE: Raumbezug
     FS_ENV_CLASS: Umweltklassen
@@ -989,19 +956,19 @@ SEARCH_DETAIL:
     SHOWGETCAPABILITYURLRESTRICTED: GetCapabilities Dokument (Zugang beschränkt)
     SHOWGETCAPABILITYURL_TITLE: GetCapabilities anzeigen
     METADATA_SOURCE: Metadatenquelle
-    CONSTRAINTS_USE_COSTRAINTS_SOURCE: Quellenvermerk:
+    CONSTRAINTS_USE_COSTRAINTS_SOURCE: 'Quellenvermerk:'
     UVP_TIME: Zuletzt geändert
     UVP_DESC: Allgemeine Vorhabenbeschreibung
     UVP_CATEGORY: UVP-Kategorie
     UVP_MAP: Raumbezug
-    UVP_MAP_COORDS: Koordinaten:
+    UVP_MAP_COORDS: 'Koordinaten:'
     UVP_MAP_ZOOM: Zoom auf initialen Kartenausschnitt
     UVP_ADDRESS: Adressen
     UVP_ADDRESS_TYPE: Ansprechpartner
-    UVP_ADDRESS_TYPE_MAIL: E-Mail:
-    UVP_ADDRESS_TYPE_TEL: Telefon:
-    UVP_ADDRESS_TYPE_FAX: Fax:
-    UVP_ADDRESS_TYPE_URL: URL:
+    UVP_ADDRESS_TYPE_MAIL: 'E-Mail:'
+    UVP_ADDRESS_TYPE_TEL: 'Telefon:'
+    UVP_ADDRESS_TYPE_FAX: 'Fax:'
+    UVP_ADDRESS_TYPE_URL: 'URL:'
     UVP_STEPS: Verfahrensschritte
     UVP_PHASE1_DATE: Zeitraum der Auslegung
     UVP_PHASE1_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Auslegungsinformationen.
@@ -1020,6 +987,8 @@ SEARCH_DETAIL:
     UVP_NEG_DOC_UVPNEGATIVERELEVANTDOCS: Ergebnis der UVP-Vorprüfung
     MEASUREMENT_INFOMETHOD: Verfahren
     MEASUREMENT_SPATIALORIENTATION: Räumlichkeit
+    MEASUREMENT_MINDISCHARGE: Abfluss Q min [m&#0179;/s]
+    MEASUREMENT_MAXDISCHARGE: Abfluss Q max [m&#0179;/s]
     MEASUREMENT_MEASUREMENTFREQUENCY: Frequenz der Messung [s]
     MEASUREMENT_DATAQUALITYDESCRIPTION: Beschreibung der Datenqualität
     MEASUREMENT_MEASUREMENTDEPTH: Messtiefe
@@ -1050,8 +1019,9 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_DESCRIPTION: Beschreibung
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Beschreibung
-    IDENTIFIKATOR: Identifikator
-    HVD_GROUP: HVD-Kategorie
+    IDENTIFIER: Identifikator
+    LFU_GEO_DATALINK: URI des Datenbestandes
+    LFU_INTERNAL_NOTES: Interne Bemerkungen
 
 SITEMAP:
     AREA_MAIN: Hauptbereich
@@ -1079,15 +1049,15 @@ CONTACT:
     REPORT_EMAIL_AREA_OF_PROFESSION_UNIV: Universität
     REPORT_EMAIL_AREA_OF_PROFESSION_MEDI: Medien
     REPORT_EMAIL_AREA_OF_PROFESSION_ANDE: Anderes
+    REPORT_EMAIL_AREA_OF_PROFESSION_NONE: Keine Auswahl
     ERROR_NOMESSAGE: Bitte geben Sie Ihre Nachricht ein
     ERROR_NOFIRSTNAME: Bitte geben Sie Ihren Vornamen ein
     ERROR_NOLASTNAME: Bitte geben Sie Ihren Nachnamen ein
     ERROR_NOEMAIL: Bitte geben Sie eine E-Mail-Adresse an
     ERROR_EMAILNOTVALID: Die eingegebene E-Mail-Adresse ist nicht gültig
-    ERROR_UPLOAD: Der von Ihnen ausgewählten Anhang überschreitet die maximale Größ_
-    ERROR_NOSUBJECT: Bitte trage Sie Ihr Anliegen ein_
+    ERROR_UPLOAD: Der von Ihnen ausgewählten Anhang überschreitet die maximale Größe
+    ERROR_NOSUBJECT: Bitte trage Sie Ihr Anliegen ein.
     REPORT_EMAIL_SUBJECT: Nachricht von InGrid-Portal-NG
-    REPORT_EMAIL_AREA_OF_PROFESSION_NONE: Keine Auswahl
     REPORT_EMAIL_TECHNICAL: Technische Frage
     SUCCESS_TITLE: Vielen Dank für Ihre Nachricht!
     SUCCESS: Ihre Anfrage wurde erfolgreich an die InGrid-Portal-Redaktion versendet.
