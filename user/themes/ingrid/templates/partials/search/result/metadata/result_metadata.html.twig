@@ -1,8 +1,8 @@
 {% import 'macros/hit_macros.html.twig' as hit_macros %}
 
-{% set partner_logo = theme_var('search_partner_logo_enabled') %}
-{% set summary_lines_limit = theme_var('search_summary_lines_limit') %}
-{% set summary_replace_newline = theme_var('search_summary_replace_newline') %}
+{% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
+{% set summary_lines_limit = theme_var('hit_search.summary_lines_limit') %}
+{% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
 
 {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid %}
 <div class="data">

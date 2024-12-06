@@ -1,7 +1,7 @@
 {# Raumbezug #}
 
-{% set reference_system_link = theme_var('detail_hit_reference_system_link') %}
-{% set reference_system_link_replace = theme_var('detail_hit_reference_system_link_replace') %}
+{% set reference_system_link = theme_var('hit_detail.reference_system_link') %}
+{% set reference_system_link_replace = theme_var('hit_detail.reference_system_link_replace') %}
 
 <div class="section">
     <a class="anchor" id="{{ hash_area }}"></a>
@@ -31,7 +31,6 @@
     {# Begrenzungspolygon als WKT #}
         {{ hit_macros.render_text_label("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt, "", true) }}
     {# Koordinatensystem #}
-        {{ detail_hit_reference_system_link_replace }}
         {{ hit_macros.render_label_text_to_link_table_list("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referencesystem_id ?? [])|sort, reference_system_link, reference_system_link_replace, "EPSG:", true, "referencesystem_id", 5, paramsMore) }}
     </div>
 </div>

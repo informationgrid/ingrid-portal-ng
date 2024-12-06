@@ -15,18 +15,18 @@ form:
 
           fields:
 
-            header_section:
+            header.section:
               type: section
               title: Header
               underline: true
 
-            header_title_extend:
+            header.title_extend:
               type: text
               label: Header Titel erweitern
               help: Erweitern Sie den Header Titel.
               default: 'InGrid Portal'
 
-            header_logo_enabled:
+            header.logo_enabled:
               type: toggle
               label: Header Logo enabled
               help: Disable or enable logo
@@ -38,7 +38,7 @@ form:
               validate:
                 type: bool
 
-            header_logo:
+            header.logo:
               type: file
               label: Header Logo
               size: large
@@ -49,19 +49,19 @@ form:
               accept:
                 - image/*
 
-            header_logo_class:
+            header.logo_class:
               type: text
               label: Logo Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
               default: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
 
-            header_menu_class:
+            header.menu_class:
               type: text
               label: Menu Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
               default: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
 
-            header_menu_dropdown:
+            header.menu_dropdown:
                 type: toggle
                 label: Dropdown in Menu
                 highlight: 1
@@ -72,7 +72,7 @@ form:
                 validate:
                   type: bool
 
-            header_shrink:
+            header.shrink:
               type: toggle
               label: Header shrink enabled
               help: Disable or enable logo
@@ -84,12 +84,12 @@ form:
               validate:
                 type: bool
 
-            footer_section:
+            footer.section:
               type: section
               title: Footer
               underline: true
 
-            footer_logo_enabled:
+            footer.logo_enabled:
               type: toggle
               label: Footer Logo enabled
               help: Disable or enable logo
@@ -101,7 +101,7 @@ form:
               validate:
                 type: bool
 
-            footer_logo:
+            footer.logo:
               type: file
               label: Footer Logo
               size: large
@@ -112,30 +112,30 @@ form:
               accept:
                 - image/*
 
-            footer_copyright_text:
+            footer.copyright_text:
               type: text
               label: Copyright
               help: Trage Sie hier Ihren Copyright ein.
               default: 'Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz'
 
-            footer_copyright_class:
+            footer.copyright_class:
               type: text
               label: Copyright Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
               default: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
 
-            footer_menu_class:
+            footer.menu_class:
               type: text
               label: Menu Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
               default: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
 
-            system_section:
+            menu.section:
               type: section
               title: Menüs
               underline: true
 
-            menu_main_fieldset:
+            menu.main_fieldset:
               type: fieldset
               title: Hauptmenü
               help: Definiere dein Hauptmenü
@@ -143,7 +143,7 @@ form:
               collapsed: true
               collapsible: true
               fields:
-                menu_main:
+                menu.main:
                   type: list
                   label: Hauptmenü
                   style: vertical
@@ -161,7 +161,7 @@ form:
                       type: text
                       label: Icon
 
-            menu_site_fieldset:
+            menu.site_fieldset:
               type: fieldset
               title: Seitenmenü
               help: Definiere dein Seitenmenü.
@@ -169,7 +169,7 @@ form:
               collapsed: true
               collapsible: true
               fields:
-                menu_site:
+                menu.site:
                   type: list
                   label: Seitenmenü
                   style: vertical
@@ -195,7 +195,7 @@ form:
                       validate:
                         type: bool
 
-            menu_footer_fieldset:
+            menu.footer_fieldset:
               type: fieldset
               title: Fußmenü
               help: Definiere dein Fußmenü.
@@ -203,7 +203,7 @@ form:
               collapsed: true
               collapsible: true
               fields:
-                menu_footer:
+                menu.footer:
                   type: list
                   label: Fußmenü
                   style: vertical
@@ -218,26 +218,26 @@ form:
                       type: text
                       label: Pfad
 
-            other_section:
+            other.section:
               type: section
               title: Sonstiges
               underline: true
 
-            pages.access.not.allow:
+            other.pages.access.not.allow:
               type: selectize
               label: Seiten ausschließen
               help: Tragen Sie den Pfad der Portal-URL ein.
               validate:
                 type: commalist
               default: []
-## Tab search
+## Tab home
         tab_home:
           type: tab
           title: Startseite
 
           fields:
 
-            home.rss.feeds.limit:
+            home.rss_feeds_limit:
               type: text
               label: Maximale Anzahl der RSS Feeds
               help: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
@@ -253,29 +253,29 @@ form:
 
           fields:
 
-            hit_section:
+            hit.section:
               type: section
               title: Allgemein
               underline: true
 
-            hit_csw_url:
+            hit.csw_url:
               type: text
               label: Link zum InGrid Interface-CSW
               help: Trage Sie hier die URL zum InGrid Interface-CSW ein.
               default: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
 
-            hit_rdf_url:
+            hit.rdf_url:
               type: text
               label: Link zum InGrid Interface-RDF
               help: Trage Sie hier die URL zum InGrid Interface-RDF ein.
               default: ''
 
-            search_hit_section:
+            hit_search.section:
               type: section
               title: Suchergebnis
               underline: true
 
-            search_summary_replace_newline:
+            hit_search.summary_replace_newline:
               type: text
               label: Zeilenumbrüche des Beschreibungstextes ersetzen
               help: Lege die Zeilenumbrüche des Beschreibungstextes fest.
@@ -283,7 +283,7 @@ form:
               validate:
                 type: text
 
-            search_summary_lines_limit:
+            hit_search.summary_lines_limit:
               type: text
               label: Maximale Zeilenanzahl an Beschreibungstext
               help: Lege die maximale Zeilenanzahl an Beschreibungstext fest.
@@ -292,7 +292,7 @@ form:
               validate:
                 type: number
 
-            search_hit_links_max:
+            hit_search.links_max:
               type: text
               label: Maximale Anzahl der Verweise und Downloads
               help: Lege die maximale Anzahl der dargestellten Verweise und Downloads fest.
@@ -301,7 +301,7 @@ form:
               validate:
                 type: number
 
-            search_hit_csw_enabled:
+            hit_search.csw_enabled:
               type: toggle
               label: ISO-Darstellung anzeigen
               help: Darstellung des Links zur ISO-Darstellung.
@@ -313,7 +313,7 @@ form:
               validate:
                 type: bool
 
-            search_hit_rdf_enabled:
+            hit_search.rdf_enabled:
               type: toggle
               label: RDF-Darstellung anzeigen
               help: Darstellung des Links zur RDF-Darstellung.
@@ -325,7 +325,7 @@ form:
               validate:
                 type: bool
 
-            search_partner_logo_enabled:
+            hit_search.partner_logo_enabled:
               type: toggle
               label: Partner Wappen anzeigen
               help: Aktivieren Sie die Darstellung der Partner Wappen.
@@ -337,12 +337,12 @@ form:
               validate:
                 type: bool
 
-            detail_hit_section:
+            hit_detail.section:
               type: section
               title: Detaildarstellung
               underline: true
 
-            detail_summary_replace_newline:
+            hit_detail.summary_replace_newline:
               type: text
               label: Zeilenumbrüche des Beschreibungstextes ersetzen
               help: Lege die Zeilenumbrüche des Beschreibungstextes fest.
@@ -350,19 +350,19 @@ form:
               validate:
                 type: text
 
-            detail_hit_reference_system_link:
+            hit_detail.reference_system_link:
               type: text
               label: Link zur Reference-System
               help: Trage Sie hier die URL zum Reference-System.
               default: 'https://epsg.io/'
 
-            detail_hit_reference_system_link_replace:
+            hit_detail.reference_system_link_replace:
               type: text
               label: Reference-Systemen ersetzen
               help: Ersetzen des Teilstring bei den Reference-Systemen.
               default: 'urn:ogc:def:crs:'
 
-            detail_hit_csw_enabled:
+            hit_detail.csw_enabled:
               type: toggle
               label: ISO-Darstellung anzeigen
               help: Darstellung des Links zur ISO-Darstellung.
@@ -374,7 +374,7 @@ form:
               validate:
                 type: bool
 
-            detail_hit_rdf_enabled:
+            hit_detail.rdf_enabled:
               type: toggle
               label: RDF-Darstellung anzeigen
               help: Darstellung des Links zur RDF-Darstellung.
@@ -386,7 +386,7 @@ form:
               validate:
                 type: bool
 
-            detail_hit_time_in_description:
+            hit_detail.time_in_description:
               type: toggle
               label: Zeitbezug in der Beschreibung anzeigen
               help: Stellt den Zeitbezug in der Detaildarstellung dar.
@@ -398,7 +398,7 @@ form:
               validate:
                 type: bool
 
-            detail_hit_address_order:
+            hit_detail.address_order:
                 type: selectize
                 selectize:
                     options:
@@ -416,7 +416,7 @@ form:
                     type: commalist
                 default: ["3","0","1","2"]
 
-            detail_hit_contact_order:
+            hit_detail.contact_order:
                 type: selectize
                 selectize:
                     options:
@@ -445,7 +445,7 @@ form:
 
           fields:
 
-            map_section:
+            map.section:
               type: section
               title: Karte
               underline: true
@@ -592,7 +592,7 @@ form:
 
           fields:
 
-            measure_section:
+            measure.section:
               type: section
               title: Messwerte
               underline: true

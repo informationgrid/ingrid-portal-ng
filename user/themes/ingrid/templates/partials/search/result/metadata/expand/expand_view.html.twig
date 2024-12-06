@@ -48,7 +48,7 @@
 {# Downloads #}
                         {% for link in downloads %}
 
-                            {% if countLinks >= search_hit_links_max and addRefsExpanded == false %}
+                            {% if countLinks >= hit_search_links_max and addRefsExpanded == false %}
                                 {% set addRefsExpanded = true %}
                                 <button type="button" id="{{ moreIdLinks }}" class="js-expander button outline" title="{{ "SEARCH_RESULT.INFO_LINKS_MORE"|t }}">
                                     {{ "SEARCH_RESULT.INFO_LINKS_MORE"|t }}
@@ -79,7 +79,7 @@
                         {% endfor %}
 {# Verweise #}
                         {% for link in references %}
-                            {% if countLinks >= search_hit_links_max and addRefsExpanded == false %}
+                            {% if countLinks >= hit_search_links_max and addRefsExpanded == false %}
                                 {% set addRefsExpanded = true %}
                                 <button type="button" id="{{ moreIdLinks }}" class="js-expander button outline" title="{{ "SEARCH_RESULT.INFO_LINKS_MORE"|t }}">
                                     {{ "SEARCH_RESULT.INFO_LINKS_MORE"|t }}
@@ -115,7 +115,7 @@
 {# Weitere Verweise #}
                         {% if downloads|length == 0 and references|length == 0 %}
                             {% for link in others %}
-                                {% if countLinks >= search_hit_links_max and addRefsExpanded == false %}
+                                {% if countLinks >= hit_search_links_max and addRefsExpanded == false %}
                                     {% set addRefsExpanded = true %}
                                     <button type="button" id="{{ moreIdLinks }}" class="js-expander button outline" title="{{ "SEARCH_RESULT.INFO_LINKS_MORE"|t }}">
                                         {{ "SEARCH_RESULT.INFO_LINKS_MORE"|t }}

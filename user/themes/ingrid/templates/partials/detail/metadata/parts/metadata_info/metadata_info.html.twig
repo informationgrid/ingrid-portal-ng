@@ -1,4 +1,9 @@
 {# Informationen zum Metadatensatz #}
+{% set displayISOXML = theme_var('hit_detail.csw_enabled') %}
+{% set cswURL = theme_var('hit.csw_url') %}
+{% set rdfURL = theme_var('hit_detail.rdf_enabled') %}
+{% set displayRDFXML = theme_var('hit.rdf_url') %}
+
 <div class="section">
     <a class="anchor" id="{{ hash_metadata_info }}"></a>
     {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
@@ -19,14 +24,10 @@
         {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
     {% endif %}
 {# XML Darstellung  #}
-    {% set displayISOXML = theme_var('detail_hit_csw_enabled') %}
-    {% set cswURL = theme_var('hit_csw_url') %}
     {% if displayISOXML and cswURL %}
         {{ hit_macros.render_link_label("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, cswURL ~ uuid, "download") }}
     {% endif %}
 {# RDF Darstellung  #}
-    {% set rdfURL = theme_var('detail_hit_rdf_enabled') %}
-    {% set displayRDFXML = theme_var('hit_rdf_url') %}
     {% if displayRDFXML and rdfURL %}
         {{ hit_macros.render_link_label("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
     {% endif %}
