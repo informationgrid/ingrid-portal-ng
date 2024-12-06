@@ -1030,7 +1030,7 @@ SITEMAP:
 CONTACT:
     FORM: Contact form
     FORM_MESSAGE: Your messages, questions, or suggestions
-    FORM_REQUIRED: * mandatory entries
+    FORM_REQUIRED: '* mandatory entries'
     FORM_FIRSTNAME: Name
     FORM_LASTNAME: Surname
     FORM_COMPANY: Organisation, company (optional)
