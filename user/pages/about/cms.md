@@ -1,5 +1,6 @@
 ---
 title: PAGES.ABOUT
+menu_title: PAGES.ABOUT_MENU_TITLE
 visible: true
 routes:
     default: /portrait

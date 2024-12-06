@@ -1,5 +1,6 @@
 ---
 title: PAGES.PRIVACY
+menu_title: PAGES.PRIVACY_MENU_TITLE
 visible: true
 routes:
     default: /datenschutz

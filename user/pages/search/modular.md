@@ -1,5 +1,6 @@
 ---
 title: PAGES.SEARCH
+menu_title: PAGES.SEARCH_MENU_TITLE
 visible: true
 routes:
   default: '/freitextsuche'

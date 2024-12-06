@@ -1,5 +1,6 @@
 ---
 title: PAGES.MAP
+menu_title: PAGES.MAP_MENU_TITLE
 visible: true
 routes:
   default: '/kartendienste'

@@ -1,5 +1,6 @@
 ---
 title: PAGES.IMPRINT
+menu_title: PAGES.IMPRINT_MENU_TITLE
 visible: true
 routes:
     default: /impressum

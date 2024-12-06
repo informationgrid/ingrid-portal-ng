@@ -1,5 +1,6 @@
 ---
 title: PAGES.ACCESSIBILITY
+menu_title: PAGES.ACCESSIBILITY_MENU_TITLE
 visible: true
 routes:
     default: /barrierefreiheit

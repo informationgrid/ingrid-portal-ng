@@ -1,23 +1,41 @@
 PAGES:
+    MENU: Menü
     HOME: Startseite
+    HOME_MENU_TITLE: Startseite von InGrid-Portal
     SEARCH: Suche
+    SEARCH_MENU_TITLE: Freitextsuche nach Informationen
     MAP: Karten
+    MAP_MENU_TITLE: Interaktive thematische Karten
     MEASURE: Messwerte
+    MEASURE_MENU_TITLE: Suche nach Messdaten
     CATALOG: Kataloge
+    CATALOG_MENU_TITLE: Eingebundene Datenkataloge und Metadaten
     API: API
+    API_MENU_TITLE: API Übersicht
     API_CONTENT: API Übersicht
     ABOUT: Über InGrid
+    ABOUT_MENU_TITLE: Hintergrundinformationen zu InGrid-Portal
     PROVIDER: Informationsanbieter
+    PROVIDER_MENU_TITLE: Kooperationspartner und Informationsanbieter
     DATASOURCE: Datenquellen
+    DATASOURCE_MENU_TITLE: Angeschlossene Datenbanken
     HELP: Hilfe
+    HELP_MENU_TITLE: Erläuterungen zur Nutzung von InGrid-Portal
     CONTACT: Kontakt
+    CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an InGrid-Portal
     SITEMAP: Sitemap
+    SITEMAP_MENU_TITLE: Hintergrundinformationen zu InGrid-Portal
     SITEMAP_CONTENT: Inhaltsübersicht
     IMPRINT: Impressum
+    IMPRINT_MENU_TITLE: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
     PRIVACY: Datenschutz
+    PRIVACY_MENU_TITLE: Unsere Verpflichtung zum Umgang mit persönlichen Informationen
     ACCESSIBILITY: Barrierefreiheit
+    ACCESSIBILITY_MENU_TITLE: Barrierefreiheit
     RSS: Neuigkeiten
+    RSS_MENU_TITLE: RSS
     DETAIL: Detail
+    DETAIL_MENU_TITLE: Metadaten
 
 COMMON:
     GENERAL_YES: Ja
@@ -75,12 +93,9 @@ COMMON:
     RESULT_FILTER_HEADER: Nur Ergebnisse für
     RESULT_NORESULTS: Keine Suchergebnisse gefunden.
     RESULT_INTERRUPTED: Die Ausgabe der Suchergebnisse wurde vorzeitig unterbrochen.
-    RESULT_COUNTER_CATALOG: '%d - %d von %d Ergebnissen in %s'
-    RESULT_COUNTER_CATALOG_WITHSEARCHVALUE: '%d Ergebnisse zu "%s"'
-    RESULT_COUNTER_CATALOG_GROUPED: '%d Ergebnisse in %s'
-    RESULT_COUNTER_RANKED: '%d - %d von %d Ergebnissen'
-    RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '%d Ergebnisse zu "%s"'
-    RESULT_COUNTER_RANKED_GROUPED: '%d Ergebnisse'
+    RESULT_COUNTER_RANKED: '<strong>%d</strong> Ergebnisse'
+    RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<strong>%d</strong> Ergebnisse zu "%s"'
+    RESULT_COUNTER_RANKED_GROUPED: '<strong>%d - %d</strong> von <strong>%d</strong> Ergebnissen'
     RESULT_NAVIGATION_RANKED: '(Seite %d von %d)'
     RESULT_NAVIGATION_RANKED_GROUPED: '(Seite %d)'
     RESULT_SEARCH_FOR: Suche nach

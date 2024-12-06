@@ -1,5 +1,6 @@
 ---
 title: PAGES.MEASURE
+menu_title: PAGES.MEASURE_MENU_TITLE
 visible: true
 routes:
   default: '/messwertsuche'
