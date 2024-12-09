@@ -90,7 +90,17 @@ facet_config: [
           }
         },
         "search": "t04_search.searchterm:AdVMIS t04_search.searchterm:AdV"
-      }
+      },
+      "address": {
+        "query": {
+          "filter": {
+            "term": {
+              "datatype": "address"
+            }
+          }
+        },
+        "search": "datatype:address"
+      },
     }
   },
   {
