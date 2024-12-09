@@ -3,6 +3,7 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Utils;
+use function PHPUnit\Framework\isEmpty;
 
 class DetailMetadataParserIdf
 {
@@ -830,27 +831,10 @@ class DetailMetadataParserIdf
         $metadata["info_additional_media"] = $media;
         $metadata["info_additional_order_instructions"] = $order_instructions;
 
-        $keywordsPath = "./gmd:identificationInfo/*/gmd:descriptiveKeywords[./gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $keywordsStringPath = "/gmd:MD_Keywords/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $textPath = "translate(text(),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')";
+        [$inspire_themes, $priority_dataset, $spatial_scope, $gemet_concepts, $invekos, $hvd, $search_terms] = self::getKeywords($node, $lang);
 
-        $inspire_themes = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'inspire themes')]]" . $keywordsStringPath);
-        $priority_dataset = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'inspire priority')]]" . $keywordsStringPath);
-        $spatial_scope = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'spatial scope')]]" . $keywordsStringPath);
-        $gemet_concepts = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'concepts')]]" . $keywordsStringPath);
         $adv_group = IdfHelper::getNodeValueListCodelistCompare($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]", ["8010"], $lang);
-        $invekos = IdfHelper::getNodeValueList($node, $keywordsPath . "[contains(". $textPath .", 'iacs data')]]" . $keywordsStringPath);
         $topic_category = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:topicCategory/gmd:MD_TopicCategoryCode", ["527"], $lang);
-        $hvd = IdfHelper::getNodeValueList($node, $keywordsPath  . "[contains(". $textPath .", 'high')]]" . $keywordsStringPath);
-        $search_terms = IdfHelper::getNodeValueList($node, $keywordsPath .
-            "[".
-                "not(contains(". $textPath .", 'inspire themes')) and" .
-                "not(contains(". $textPath .", 'inspire priority')) and" .
-                "not(contains(". $textPath .", 'spatial scope')) and" .
-                "not(contains(". $textPath .", 'concepts')) and" .
-                "not(contains(". $textPath .", 'iacs data')) and" .
-                "not(contains(". $textPath .", 'high'))" .
-            "] or count(./gmd:MD_Keywords/gmd:thesaurusName) = 0]" . $keywordsStringPath, ["6400"], $lang);
 
         $metadata["info_keywords_inspire_themes"] = $inspire_themes;
         $metadata["info_keywords_priority_dataset"] = $priority_dataset;
@@ -861,7 +845,94 @@ class DetailMetadataParserIdf
         $metadata["info_keywords_topic_category"] = $topic_category;
         $metadata["info_keywords_hvd"] = $hvd;
         $metadata["info_keywords_search_terms"] = $search_terms;
+    }
 
+    private static function getKeywords(\SimpleXMLElement $node, string $lang): array
+    {
+        $inspire_themes = [];
+        $priority_dataset = [];
+        $spatial_scope = [];
+        $gemet_concepts = [];
+        $invekos = [];
+        $hvd = [];
+        $search_terms = [];
+
+        $keywordsPath = './gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords';
+        $keywordsNodes = IdfHelper::getNodeList($node, $keywordsPath);
+        foreach ($keywordsNodes as $keywordsNode) {
+            $thesaurs_name = IdfHelper::getNodeValue($keywordsNode, './gmd:thesaurusName/gmd:CI_Citation/gmd:title');
+            $keywords = IdfHelper::getNodeValueList($keywordsNode, './gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]');
+            foreach ($keywords as $keyword) {
+                $keyword = iconv('UTF-8', 'UTF-8', $keyword);
+                if (isEmpty($thesaurs_name)) {
+                    $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
+                    if (isEmpty($tmpValue)){
+                        $tmpValue = $keyword;
+                    }
+                    if (!in_array($tmpValue, $search_terms)) {
+                        $search_terms[] = $tmpValue;
+                    }
+                } else {
+                    if (!str_contains(strtolower($thesaurs_name), 'service')) {
+                        if (str_contains(strtolower($thesaurs_name), 'concepts')) {
+                            $tmpValue = CodelistHelper::getCodelistEntry(['5200'], $keyword, $lang);
+                            if (isEmpty($tmpValue)){
+                                $tmpValue = $keyword;
+                            }
+                            if (!in_array($tmpValue, $gemet_concepts)) {
+                                $gemet_concepts[] = $tmpValue;
+                            }
+                        } else if (str_contains(strtolower($thesaurs_name), 'priority')) {
+                            $tmpValue = CodelistHelper::getCodelistEntry(['6300'], $keyword, $lang);
+                            if (isEmpty($tmpValue)){
+                                $tmpValue = $keyword;
+                            }
+                            if (!in_array($tmpValue, $priority_dataset)) {
+                                $priority_dataset[] = $tmpValue;
+                            }
+                        } else if (str_contains(strtolower($thesaurs_name), 'inspire')) {
+                            $tmpValue = CodelistHelper::getCodelistEntry(['6100'], $keyword, $lang);
+                            if (isEmpty($tmpValue)){
+                                $tmpValue = $keyword;
+                            }
+                            if (!in_array($tmpValue, $inspire_themes)) {
+                                $inspire_themes[] = $tmpValue;
+                            }
+                        } else if (str_contains(strtolower($thesaurs_name), 'spatial scope')) {
+                            $tmpValue = CodelistHelper::getCodelistEntry(['6360'], $keyword, $lang);
+                            if (isEmpty($tmpValue)){
+                                $tmpValue = $keyword;
+                            }
+                            if (!in_array($tmpValue, $spatial_scope)) {
+                                $spatial_scope[] = $tmpValue;
+                            }
+                        } else if (str_contains(strtolower($thesaurs_name), 'iacs data')) {
+                            if (!in_array($keyword, $invekos)) {
+                                $invekos[] = $keyword;
+                            }
+                        } else if (str_contains(strtolower($thesaurs_name), 'high-value')) {
+                            if (!in_array($keyword, $hvd)) {
+                                $hvd[] = $keyword;
+                            }
+                        } else if (str_contains(strtolower($thesaurs_name), 'umthes')) {
+                            if (!in_array($keyword, $search_terms)) {
+                                $search_terms[] = $keyword;
+                            }
+                        } else {
+                            $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
+                            if (isEmpty($tmpValue)){
+                                $tmpValue = $keyword;
+                            }
+                            if (!in_array($tmpValue, $search_terms)) {
+                                $search_terms[] = $tmpValue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return [$inspire_themes, $priority_dataset, $spatial_scope, $gemet_concepts, $invekos, $hvd, $search_terms];
     }
 
     private static function getVectors(\SimpleXMLElement $node, string $lang): array
