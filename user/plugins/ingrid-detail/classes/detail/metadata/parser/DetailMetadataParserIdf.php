@@ -3,7 +3,6 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Utils;
-use function PHPUnit\Framework\isEmpty;
 
 class DetailMetadataParserIdf
 {
