@@ -863,19 +863,19 @@ class DetailMetadataParserIdf
             $keywords = IdfHelper::getNodeValueList($keywordsNode, './gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]');
             foreach ($keywords as $keyword) {
                 $keyword = iconv('UTF-8', 'UTF-8', $keyword);
-                if (!str_contains(strtolower($thesaurs_name), 'service')) {
-                    if (is_null($thesaurs_name)) {
-                        $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
-                        if (isEmpty($tmpValue)){
-                            $tmpValue = $keyword;
-                        }
-                        if (!in_array($tmpValue, $search_terms)) {
-                            $search_terms[] = $tmpValue;
-                        }
-                    } else {
+                if (empty($thesaurs_name)) {
+                    $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
+                    if (empty($tmpValue)){
+                        $tmpValue = $keyword;
+                    }
+                    if (!in_array($tmpValue, $search_terms)) {
+                        $search_terms[] = $tmpValue;
+                    }
+                } else {
+                    if (!str_contains(strtolower($thesaurs_name), 'service')) {
                         if (str_contains(strtolower($thesaurs_name), 'concepts')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['5200'], $keyword, $lang);
-                            if (isEmpty($tmpValue)){
+                            if (empty($tmpValue)){
                                 $tmpValue = $keyword;
                             }
                             if (!in_array($tmpValue, $gemet_concepts)) {
@@ -883,7 +883,7 @@ class DetailMetadataParserIdf
                             }
                         } else if (str_contains(strtolower($thesaurs_name), 'priority')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['6300'], $keyword, $lang);
-                            if (isEmpty($tmpValue)){
+                            if (empty($tmpValue)){
                                 $tmpValue = $keyword;
                             }
                             if (!in_array($tmpValue, $priority_dataset)) {
@@ -891,7 +891,7 @@ class DetailMetadataParserIdf
                             }
                         } else if (str_contains(strtolower($thesaurs_name), 'inspire')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['6100'], $keyword, $lang);
-                            if (isEmpty($tmpValue)){
+                            if (empty($tmpValue)){
                                 $tmpValue = $keyword;
                             }
                             if (!in_array($tmpValue, $inspire_themes)) {
@@ -899,7 +899,7 @@ class DetailMetadataParserIdf
                             }
                         } else if (str_contains(strtolower($thesaurs_name), 'spatial scope')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['6360'], $keyword, $lang);
-                            if (isEmpty($tmpValue)){
+                            if (empty($tmpValue)){
                                 $tmpValue = $keyword;
                             }
                             if (!in_array($tmpValue, $spatial_scope)) {
@@ -919,7 +919,7 @@ class DetailMetadataParserIdf
                             }
                         } else {
                             $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
-                            if (isEmpty($tmpValue)){
+                            if (empty($tmpValue)){
                                 $tmpValue = $keyword;
                             }
                             if (!in_array($tmpValue, $search_terms)) {
