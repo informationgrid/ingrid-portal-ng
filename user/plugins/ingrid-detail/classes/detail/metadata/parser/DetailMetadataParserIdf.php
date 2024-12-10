@@ -860,20 +860,20 @@ class DetailMetadataParserIdf
         $keywordsPath = './gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords';
         $keywordsNodes = IdfHelper::getNodeList($node, $keywordsPath);
         foreach ($keywordsNodes as $keywordsNode) {
-            $thesaurs_name = IdfHelper::getNodeValue($keywordsNode, './gmd:thesaurusName/gmd:CI_Citation/gmd:title');
+            $thesaurs_name = IdfHelper::getNodeValue($keywordsNode, './gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]');
             $keywords = IdfHelper::getNodeValueList($keywordsNode, './gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]');
             foreach ($keywords as $keyword) {
                 $keyword = iconv('UTF-8', 'UTF-8', $keyword);
-                if (isEmpty($thesaurs_name)) {
-                    $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
-                    if (isEmpty($tmpValue)){
-                        $tmpValue = $keyword;
-                    }
-                    if (!in_array($tmpValue, $search_terms)) {
-                        $search_terms[] = $tmpValue;
-                    }
-                } else {
-                    if (!str_contains(strtolower($thesaurs_name), 'service')) {
+                if (!str_contains(strtolower($thesaurs_name), 'service')) {
+                    if (is_null($thesaurs_name)) {
+                        $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
+                        if (isEmpty($tmpValue)){
+                            $tmpValue = $keyword;
+                        }
+                        if (!in_array($tmpValue, $search_terms)) {
+                            $search_terms[] = $tmpValue;
+                        }
+                    } else {
                         if (str_contains(strtolower($thesaurs_name), 'concepts')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['5200'], $keyword, $lang);
                             if (isEmpty($tmpValue)){
