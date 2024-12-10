@@ -123,6 +123,7 @@ class SearchResponseTransformerClassic
             $title = self::getValue($source, "title");
             $time = self::getTime($source);
         } else if (in_array("www", $datatypes)) {
+            $title = self::getValue($source, "title");
         }
         $searchTerms = self::getValueArray($source, "t04_search.searchterm");
         $isInspire = self::getValue($source, "t01_object.is_inspire_relevant");
@@ -162,6 +163,7 @@ class SearchResponseTransformerClassic
             "type" => $type,
             "type_name" => $type_name,
             "title" => $title,
+            "url" => in_array("www", $datatypes) ? self::getValue($source, "url") : null,
             "time" => $time,
             "summary" => self::getValue($source, "summary") ?? self::getValue($source, "abstract"),
             "datatypes" => $datatypes,
