@@ -27,7 +27,8 @@
       "classes/StringHelper.php",
       "classes/LanguageHelper.php",
       "classes/CountryHelper.php",
-      "classes/MimeTypeHelper.php"
+      "classes/MimeTypeHelper.php",
+      "classes/SearchQueryHelper.php"
     ]
 
   }
