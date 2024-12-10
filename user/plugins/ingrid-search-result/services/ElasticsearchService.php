@@ -15,6 +15,7 @@ class ElasticsearchService
         if ($query == "" && $queryFromFacets->query == "") {
             $result = array("match_all" => new stdClass());
         } else {
+            SearchQueryHelper::replaceInGridQuery($query);
             $result = array("query_string" => array("query" => $query . " " . $queryFromFacets->query));
         }
         $filter = json_decode($queryFromFacets->filter);

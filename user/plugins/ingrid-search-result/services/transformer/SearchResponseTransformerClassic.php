@@ -177,6 +177,7 @@ class SearchResponseTransformerClassic
             "isInspire" => !($isInspire == "N"),
             "isOpendata" => !($isOpendata == "N"),
             "hasAccessContraint" => !($hasAccessContraint == "N"),
+            "isHVD" => self::getValue($source, "is_hvd"),
             "obj_serv_type" => $obj_serv_type,
             "mapUrl" => $capUrl ? CapabilitiesHelper::getMapUrl($capUrl, $servTypeVersion, $servType) : null,
             "mapUrlClient" => self::getFirstValue($source, "capabilities_url_with_client"),

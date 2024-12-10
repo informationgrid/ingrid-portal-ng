@@ -19,7 +19,7 @@
             {{ hit_macros.render_metadata_icon(hit.type, hit.type_name) }}
         </div>
         {% endif %}
-        {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint) }}
+        {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint, hit.isHVD) }}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>
         </a>

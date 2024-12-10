@@ -50,6 +50,16 @@ facet_config: [
         },
         "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
       },
+      "hvd": {
+        "query": {
+          "filter": {
+            "term": {
+              "is_hvd": "true"
+            }
+          }
+        },
+        "search": "is_hvd:true"
+      },
       "websites": {
         "query": {
           "filter": {
