@@ -17,15 +17,15 @@
             {% endif %}
             {% if timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime %}
                 {% if timeRefs.atTime %}
-                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_AT"|t ~ " " ~ timeRefs.atTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_list(tmpTitle, ["COMMON.TIME_AT"|t ~ " " ~ timeRefs.atTime|date("d.m.Y", false)]) }}
                 {% elseif timeRefs.beginTime == timeRefs.endTime %}
-                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_AT"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_list(tmpTitle, ["COMMON.TIME_AT"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false)]) }}
                 {% elseif timeRefs.beginTime and timeRefs.endTime is null %}
-                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_SINCE"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ toIndeterminate]) }}
+                    {{ hit_macros.render_text_list(tmpTitle, ["COMMON.TIME_SINCE"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ toIndeterminate]) }}
                 {% elseif timeRefs.beginTime is null and timeRefs.endTime %}
-                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_UNTIL"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_list(tmpTitle, ["COMMON.TIME_UNTIL"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
                 {% elseif timeRefs.beginTime != timeRefs.endTime %}
-                    {{ hit_macros.render_text_label_list(tmpTitle, ["COMMON.TIME_FROM"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
+                    {{ hit_macros.render_text_list(tmpTitle, ["COMMON.TIME_FROM"|t ~ " " ~ timeRefs.beginTime|date("d.m.Y", false) ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeRefs.endTime|date("d.m.Y", false)]) }}
                 {% endif %}
             {% endif %}
         {# URL des Zugangs #}

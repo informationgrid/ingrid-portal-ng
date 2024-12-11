@@ -9,6 +9,6 @@
             </a>
         </p>
     {% elseif license.name %}
-        <p>{{ license.name| raw }}</p>
+        <p>{{ convertUrlInText(license.name)| raw }}</p>
     {% endif %}
 {% endif %}

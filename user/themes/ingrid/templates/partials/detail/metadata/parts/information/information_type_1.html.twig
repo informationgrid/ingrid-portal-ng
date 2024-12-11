@@ -30,13 +30,13 @@
     {% endif %}
     {{ hit_macros.render_table_list("SEARCH_DETAIL.T011_OBJ_SERV_SCALE"|t, header, entries) }}
 {# Systemumgebung #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
 {# Fachliche Grundlage #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
 {# Datengrundlage #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
 {# Herstellungsprozess #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_METHOD"|t, infoRefs.processStepDescription) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_METHOD"|t, infoRefs.processStepDescription) }}
 {# Symbolkatalog #}
     {% set header = [
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_SYMBOL_CAT"|t,
@@ -45,7 +45,7 @@
     ] %}
     {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_SYMC"|t, header, infoRefs.symbolCatalogues, [0]) }}
 {# Schlüsselkatalog: im Datensatz vorhanden #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
 {# Schlüsselkatalog #}
     {% set header = [
         "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_SUBJECT_CAT"|t,
@@ -54,7 +54,7 @@
     ] %}
     {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
 {# Sachdaten/Attributinformation #}
-    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_GEO_SUPPLINFO_FEATURE_TYPE"|t, infoRefs.featureTypes) }}
+    {{ hit_macros.render_text_table_list("SEARCH_DETAIL.T011_OBJ_GEO_SUPPLINFO_FEATURE_TYPE"|t, infoRefs.featureTypes) }}
 {# Geometrie-Kontext #}
     {% include 'partials/detail/metadata/parts/information/information_type_1_geometrie_context.html.twig' ignore missing %}
 {# Anzeige der Bemerkungen #}

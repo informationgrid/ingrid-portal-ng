@@ -13,18 +13,7 @@
         {% endif %}
     {# Beschreibung #}
         {% if summary %}
-        <div class="js-expand-box js-expand-text js-non-expand-text">
-            <div class="js-expand-text-content">
-                {{ hit_macros.render_text(summary|replace({'\n': summary_replace_newline})|raw)}}
-            </div>
-            <div class="desc-fade"></div>
-        </div>
-        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
-            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
-        </button>
-        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
-            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
-        </button>
+            {{ hit_macros.render_text_only(summary|replace({'\n': summary_replace_newline})|raw)}}
         {% endif %}
     {# Zeitbezug #}
         {% if isTimeInDescription %}

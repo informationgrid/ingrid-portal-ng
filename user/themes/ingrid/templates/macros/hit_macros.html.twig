@@ -533,13 +533,28 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro render_text (text) %}
-  {% if text %}
-    <p>{{ convertUrlInText(text)|raw }}</p>
-  {% endif %}
+{% macro render_text_only (text, expandable) %}
+    {% if text %}
+        {% if expandable %}
+            <div class="js-expand-box js-expand-text js-non-expand-text">
+                <div class="js-expand-text-content">
+        {% endif %}
+        <p>{{ convertUrlInText(text)|raw }}</p>
+        {% if expandable %}
+                </div>
+                <div class="desc-fade"></div>
+            </div>
+            <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+            </button>
+            <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+            </button>
+        {% endif %}
+    {% endif %}
 {% endmacro %}
 
-{% macro render_text_label (title, text, css, expandable) %}
+{% macro render_text (title, text, css, expandable) %}
   {% if text %}
     <div class="table table--lined">
         <table>
@@ -552,7 +567,7 @@
                         <div class="js-expand-box js-expand-text js-non-expand-text">
                             <div class="js-expand-text-content">
                     {% endif %}
-                    <p {% if css %}class="{{ css }}"{% endif %}>{{ text|raw }}</p>
+                    <p {% if css %}class="{{ css }}"{% endif %}>{{ convertUrlInText(text)|raw }}</p>
                     {% if expandable %}
                             </div>
                             <div class="desc-fade"></div>
@@ -571,7 +586,36 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_link_label (title, linkTitle, link, type, css) %}
+{% macro render_text_list (title, entries, listPreset, css, json) %}
+  {% if entries and entries|length > 0 %}
+    {% if title %}
+        <h4>{{ title }}</h4>
+    {% endif %}
+    <div class="text-list">
+    {% if listPreset %}
+      <span>{{ listPreset }}</span>
+    {% endif %}
+    {% for entry in entries %}
+        {% set entryToJson = entry|json_decode() %}
+        {% if entryToJson.url is not empty %}
+            <p class="list-item">
+                <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                    <span class="ic-ic-external"></span>
+                    <span class="text">{{ entryToJson.name }}</span>
+                </a>
+                {%  if entryToJson.quelle %}
+                    {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ entryToJson.quelle }}
+                {% endif %}
+            </p>
+        {% else %}
+            <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
+        {% endif %}
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_link (title, linkTitle, link, type, css) %}
   {% if link %}
     <div class="table table--lined">
         <table>
@@ -599,7 +643,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_link_list_label (title, entries, type, css) %}
+{% macro render_link_list (title, entries, type, css) %}
   {% if entries %}
     <div class="table table--lined">
         <table>
@@ -629,7 +673,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_text_label_table_list (title, entries, listPreset, css, expandable) %}
+{% macro render_text_table_list (title, entries, listPreset, css, expandable) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined">
         <table>
@@ -681,7 +725,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_label_text_to_link_table_list (title, entries, url, replaceValue, replaceKey, isExpandable, expandableId, expandableLimit, paramsMore) %}
+{% macro render_link_table_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined">
         <table>
@@ -709,24 +753,17 @@
                                 </button>
                                 <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
                             {% endif %}
-                            {% if url %}
-                                {% if replaceKey in entry %}
-                                    <div>
-                                        {% set replaceUrl = entry|replace({(replaceKey): url, (replaceValue): ''}) %}
-                                        {% set replaceText = entry|replace({(replaceValue): ''}) %}
-                                        <a target="_blank" class="icon external-link" href="{{ replaceUrl }}" title="{{ replaceText }}" rel="noopener noreferrer">
-                                            <span class="ic-ic-external"></span>
-                                            <span class="text">{{ replaceText }}</span>
-                                        </a>
-                                    </div>
-                                {% else %}
-                                    <div>
-                                        <span>{{ entry }}</span>
-                                    </div>
-                                {% endif %}
+                            {% if entry.url %}
+                                <div>
+                                    <a target="_blank" class="icon external-link" href="{{ entry.url }}" title="{{ entry.title }}" rel="noopener noreferrer">
+                                        <span class="ic-ic-external"></span>
+                                        <span class="text">{{ entry.title }}</span>
+                                    </a>
+                                </div>
                             {% else %}
-                                {% set replaceText = entry|replace({(replaceValue): ''}) %}
-                                <p class="list-item">{{ replaceText }}</p>
+                                    <div>
+                                        <span>{{ entry.title }}</span>
+                                    </div>
                             {% endif %}
                         {% endfor %}
                         {% if listExpanded %}
@@ -765,36 +802,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_text_label_list (title, entries, listPreset, css, json) %}
-  {% if entries and entries|length > 0 %}
-    {% if title %}
-        <h4>{{ title }}</h4>
-    {% endif %}
-    <div class="text-list">
-    {% if listPreset %}
-      <span>{{ listPreset }}</span>
-    {% endif %}
-    {% for entry in entries %}
-        {% set entryToJson = entry|json_decode() %}
-        {% if entryToJson.url is not empty %}
-            <p class="list-item">
-                <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
-                    <span class="ic-ic-external"></span>
-                    <span class="text">{{ entryToJson.name }}</span>
-                </a>
-                {%  if entryToJson.quelle %}
-                    {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ entryToJson.quelle }}
-                {% endif %}
-            </p>
-        {% else %}
-            <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
-        {% endif %}
-    {% endfor %}
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_teaser_label_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
+{% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
   {% if entries and entries|length > 0 %}
     <div class="table list">
         <table>

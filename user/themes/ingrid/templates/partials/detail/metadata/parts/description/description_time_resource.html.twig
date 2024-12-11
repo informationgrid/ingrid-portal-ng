@@ -4,10 +4,10 @@
         <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference_record"{% else %}id="{{ hash_time }}_time_reference_record"{% endif %}></a>
         {{ hit_macros.render_group_title("SEARCH_DETAIL.TIME_REFERENCE_RECORD"|t) }}
 {# Erstellung #}
-        {{ hit_macros.render_text_label(getValueFromCodelist("502", "creation", lang), timeRefs.creation|date("d.m.Y", false) ) }}
+        {{ hit_macros.render_text(getValueFromCodelist("502", "creation", lang), timeRefs.creation|date("d.m.Y", false) ) }}
 {# Publikation #}
-        {{ hit_macros.render_text_label(getValueFromCodelist("502", "publication", lang), timeRefs.publication|date("d.m.Y", false) ) }}
+        {{ hit_macros.render_text(getValueFromCodelist("502", "publication", lang), timeRefs.publication|date("d.m.Y", false) ) }}
 {# letzte Änderung #}
-        {{ hit_macros.render_text_label(getValueFromCodelist("502", "revision", lang), timeRefs.revision|date("d.m.Y", false) ) }}
+        {{ hit_macros.render_text(getValueFromCodelist("502", "revision", lang), timeRefs.revision|date("d.m.Y", false) ) }}
     </div>
 {% endif %}

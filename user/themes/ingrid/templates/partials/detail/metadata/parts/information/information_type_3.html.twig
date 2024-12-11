@@ -7,23 +7,23 @@
 {# Digitale Repräsentation #}
     {% include 'partials/detail/metadata/parts/information/information_type_3_representation_type.html.twig' ignore missing %}
 {# Klassifikation des Dienstes #}
-    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_SERV_TYPE"|t, (infoRefs.classifications ?? [])|sort) }}
+    {{ hit_macros.render_text_table_list("SEARCH_DETAIL.T011_OBJ_SERV_TYPE"|t, (infoRefs.classifications ?? [])|sort) }}
 {# Art des Dienstes #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_TYPE_ART"|t, infoRefs.serviceType) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_TYPE_ART"|t, infoRefs.serviceType) }}
 {# Version des Services #}
-    {{ hit_macros.render_text_label_table_list("SEARCH_DETAIL.T011_OBJ_SERV_VERSION_VERSION"|t, (infoRefs.serviceTypeVersions ?? [])|sort) }}
+    {{ hit_macros.render_text_table_list("SEARCH_DETAIL.T011_OBJ_SERV_VERSION_VERSION"|t, (infoRefs.serviceTypeVersions ?? [])|sort) }}
 {# Systemumgebung #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
 {# Historie #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_HISTORY"|t, infoRefs.processStepDescription) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_HISTORY"|t, infoRefs.processStepDescription) }}
 {# Fachliche Grundlage #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
 {# Basisdaten #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
 {# Erläuterung zum Fachbezug #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformation) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformation) }}
 {# Erläuterung zum Fachbezug (*) #}
-    {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformationAbstract) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformationAbstract) }}
 {# Operationen #}
     {% include 'partials/detail/metadata/parts/information/information_type_3_operations.html.twig' %}
 {# Operation -> Zugriffsadresse #}
@@ -31,5 +31,5 @@
     {% if accessConstraint is same as("true") %}
         {% set tmpTitle = "SEARCH_DETAIL.SHOWGETCAPABILITYURLRESTRICTED"|t %}
     {% endif %}
-    {{ hit_macros.render_link_label(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
+    {{ hit_macros.render_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
 </div>

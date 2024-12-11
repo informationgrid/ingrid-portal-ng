@@ -11,11 +11,11 @@
     ] %}
     <div class="row columns">
     {# Datendefizit #}
-        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_COVERAGE"|t, dataQualityRefs.completenessOmission) }}
+        {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_COVERAGE"|t, dataQualityRefs.completenessOmission) }}
     {# Höhengenauigkeit (m) #}
-        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_POS_ACCURACY_VERTICAL"|t, dataQualityRefs.accuracyVertical) }}
+        {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_POS_ACCURACY_VERTICAL"|t, dataQualityRefs.accuracyVertical) }}
    {# Lagegenauigkeit (m) #}
-        {{ hit_macros.render_text_label("SEARCH_DETAIL.T011_OBJ_GEO_REC_EXACT"|t, dataQualityRefs.accuracyGeographic) }}
+        {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_REC_EXACT"|t, dataQualityRefs.accuracyGeographic) }}
     {# Datenüberschuss #}
         {# set($headCodeList = ["7109"]) #}
         {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITY_TABLE109_TITLE"|t, header, dataQualityRefs.completenessCommission, [0]) }}

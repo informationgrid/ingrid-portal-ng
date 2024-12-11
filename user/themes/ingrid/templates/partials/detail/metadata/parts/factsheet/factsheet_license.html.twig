@@ -1,5 +1,5 @@
 {# Nutzungsbedingungen (useConstraints) #}
 {% if useRefs.useConstraints.constraints %}
     {% set filterEntries = useRefs.useConstraints.constraints %}
-    {{ hit_macros.render_text_label_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, [filterEntries[0]], useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
+    {{ hit_macros.render_text_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, [filterEntries[0]], useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
 {% endif %}

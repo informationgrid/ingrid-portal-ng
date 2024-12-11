@@ -3,11 +3,12 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Utils;
+use Grav\Common\Grav;
 
 class DetailMetadataParserIdf
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang, array $geo_api ): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang, Grav $grav ): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 
@@ -27,7 +28,7 @@ class DetailMetadataParserIdf
             "contacts" => self::getContactRefs($node, $lang),
         ];
         self::getTimeRefs($node, $metadata, $lang);
-        self::getMapRefs($node, $metadata, $lang, $geo_api);
+        self::getMapRefs($node, $metadata, $lang, $grav);
         self::getUseRefs($node, $metadata, $lang);
         self::getInfoRefs($node, $type, $metadata, $lang);
         self::getDataQualityRefs($node, $metadata);
@@ -157,8 +158,18 @@ class DetailMetadataParserIdf
         }
     }
 
-    private static function getMapRefs(\SimpleXMLElement $node, array &$metadata, string $lang, array $geo_api): void
+    private static function getMapRefs(\SimpleXMLElement $node, array &$metadata, string $lang, Grav $grav): void
     {
+
+        $geo_api_url = getenv('GEO_API_URL') !== false ? getenv('GEO_API_URL') : $grav['config']->get('plugins.ingrid-detail.geo_api_url');
+        $geo_api_user = getenv('GEO_API_USER') !== false ? getenv('GEO_API_USER') : $grav['config']->get('plugins.ingrid-detail.geo_api_user');
+        $geo_api_pass = getenv('GEO_API_PASS') !== false ? getenv('GEO_API_PASS') : $grav['config']->get('plugins.ingrid-detail.geo_api_pass');
+        $geo_api = [
+            'url' => $geo_api_url,
+            'user' => $geo_api_user,
+            'pass' => $geo_api_pass,
+        ];
+
         $regionKey = IdfHelper::getNode($node, "./idf:regionKey");
         $loc_descr = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]");
         $polygon = IdfHelper::getNode($node, "./gmd:identificationInfo/*/*/gmd:EX_Extent/gmd:geographicElement/gmd:EX_BoundingPolygon/gmd:polygon/*");
@@ -171,26 +182,52 @@ class DetailMetadataParserIdf
         $metadata["map_bboxes"] = self::getBBoxes($node);
         $metadata["map_geographicElement"] = self::getGeographicElements($node, $lang);
         $metadata["map_areaHeight"] = self::getAreaHeight($node, $lang);
-        $metadata["map_referencesystem_id"] = self::getReferences($node);
+        $metadata["map_referencesystem_id"] = self::getReferences($node, $grav);
     }
 
-    private static function getReferences(\SimpleXMLElement $node): array
+    private static function getReferences(\SimpleXMLElement $node, Grav $grav): array
     {
+        $theme = $grav['config']->get('system.pages.theme');
+        $reference_system_link = $grav['config']->get('themes.' . $theme . '.hit_detail.reference_system_link');
+        $reference_system_link_replace = $grav['config']->get('themes.' . $theme . '.hit_detail.reference_system_link_replace');
+
         $array = [];
         $tmpNodes = IdfHelper::getNodeList($node, "./gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier");
         foreach ($tmpNodes as $tmpNode) {
-            $code = (string) IdfHelper::getNodeValue($tmpNode, "./gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]");
-            $codeSpace = (string) IdfHelper::getNodeValue($tmpNode, "./gmd:codeSpace/*[self::gco:CharacterString or self::gmx:Anchor]");
+            $code = IdfHelper::getNodeValue($tmpNode, "./gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]");
+            $codeSpace = IdfHelper::getNodeValue($tmpNode, "./gmd:codeSpace/*[self::gco:CharacterString or self::gmx:Anchor]");
+            $url = null;
+            $title = null;
             if ($code && $codeSpace) {
                 if (str_contains($code, "EPSG")) {
-                    $array[] = $code;
+                    $title = $code;
                 } else {
-                    $array[] = $codeSpace . ":" . $code;
+                    $title = $codeSpace . ":" . $code;
                 }
+
             } else if ($codeSpace) {
-                $array[] = $codeSpace;
+                $title = $codeSpace;
             } else if ($code) {
-                $array[] = $code;
+                $title = $code;
+            }
+            if ($title) {
+                if (str_starts_with($title, $reference_system_link_replace)) {
+                    $title = str_replace($reference_system_link_replace, '', $title);
+                }
+                preg_match('#EPSG( |:)[0-9]*#', $title, $matches);
+                foreach ($matches as $match) {
+                    if (str_contains($match, "EPSG")) {
+                        $epsg = filter_var($title, FILTER_SANITIZE_NUMBER_INT);
+                        if (!empty($epsg)) {
+                            $url = $reference_system_link . $epsg;
+                            break;
+                        }
+                    }
+                }
+                $array[] = [
+                    "title" => $title,
+                    "url" => $url,
+                ];
             }
         }
         return $array;
