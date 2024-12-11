@@ -28,7 +28,8 @@
       "classes/LanguageHelper.php",
       "classes/CountryHelper.php",
       "classes/MimeTypeHelper.php",
-      "classes/SearchQueryHelper.php"
+      "classes/SearchQueryHelper.php",
+      "classes/TMPeriodDurationHelper.php"
     ]
 
   }

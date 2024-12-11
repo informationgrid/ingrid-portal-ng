@@ -121,7 +121,7 @@ class DetailMetadataParserIdf
         ## Intervall der Erhebung
         $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:userDefinedMaintenanceFrequency/gts:TM_PeriodDuration");
         if ($tmpValue) {
-            $metadata["time_interval"] = $tmpValue;
+            $metadata["time_interval"] = TMPeriodDurationHelper::transformPeriodDuration($tmpValue, $lang);
         }
 
         ## Erläuterung zum Zeitbezug
