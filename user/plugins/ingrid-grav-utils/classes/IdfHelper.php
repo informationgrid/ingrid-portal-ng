@@ -103,7 +103,7 @@ class IdfHelper
     {
         self::registerNamespaces($node);
         $array = array();
-        $tmpNodes = $node->xpath($xpath);
+        $tmpNodes = self::getNodeValueList($node, $xpath);
         foreach ($tmpNodes as $tmpNode) {
             if ($tmpNode) {
                 $value = (string) $tmpNode;

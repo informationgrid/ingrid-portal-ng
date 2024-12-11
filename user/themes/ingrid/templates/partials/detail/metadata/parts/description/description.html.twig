@@ -6,11 +6,9 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.DETAIL_DESCRIPTION"|t)}}
     <div class="row columns">
     {# Kurzbezeichnung #}
-        {% if alternateTitle %}
-            {% for altTitle in hit.altTitle %}
-                <p class="slab-bold">{{ altTitle }}</p>
-            {% endfor %}
-        {% endif %}
+        {% for altTitle in hit.altTitle %}
+            <p class="slab-bold">{{ altTitle }}</p>
+        {% endfor %}
     {# Beschreibung #}
         {% if summary %}
             {{ hit_macros.render_text_only(summary|replace({'\n': summary_replace_newline})|raw)}}
