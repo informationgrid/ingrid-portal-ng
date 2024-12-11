@@ -1,15 +1,29 @@
+{% set mapLeafletClustering = theme_var('map.leaflet.enable.clustering') %}
+{% set mapLeafletSpinLoader = theme_var('map.leaflet.enable.spinloader') %}
+{% set mapLeafletGeocoder = theme_var('map.leaflet.enable.geocoder') %}
+{% set mapLeafletWkt = theme_var('map.leaflet.enable.wkt') %}
+{% set mapLeafletBBoxInverted = theme_var('map.leaflet.bbox.inverted') %}
+
 {% do assets.addJs('theme://js/leaflet/leaflet.js') %}
 {% do assets.addJs('theme://js/leaflet/plugins/leaflet.gesture-handling/leaflet-gesture-handling.min.js') %}
 {% do assets.addJs('theme://js/leaflet/plugins/leaflet.draw/leaflet.draw.js') %}
-{# TODO: Configurable
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.markercluster/leaflet.markercluster.js') %}
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.awesome-markers/leaflet.awesome-markers.min.js') %}
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.spin/spin.min.js') %}
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.spin/leaflet.spin.min.js') %}
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.wicket/wicket.js') %}
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.wicket/wicket-leaflet.js') %}
-{% do assets.addJs('theme://js/leaflet/plugins//leaflet.control-geocoder/Control.Geocoder.min.js') %}
-#}
-{# TODO: Configurable #}
-{% do assets.addJs('theme://js/leaflet/plugins/leaflet.snogylop/snogylop.js') %}
-{# TODO-END: INGRID #}
+
+{% if mapLeafletClustering %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.markercluster/leaflet.markercluster.js') %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.awesome-markers/leaflet.awesome-markers.min.js') %}
+{% endif %}
+{% if mapLeafletSpinLoader %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.spin/spin.min.js') %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.spin/leaflet.spin.min.js') %}
+{% endif %}
+{% if mapLeafletWkt %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.wicket/wicket.js') %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.wicket/wicket-leaflet.js') %}
+{% endif %}
+{% if mapLeafletGeocoder %}
+    {% do assets.addJs('theme://js/leaflet/plugins//leaflet.control-geocoder/Control.Geocoder.min.js') %}
+{% endif %}
+{% if mapLeafletBBoxInverted %}
+    {% do assets.addJs('theme://js/leaflet/plugins/leaflet.snogylop/snogylop.js') %}
+{% endif %}
+

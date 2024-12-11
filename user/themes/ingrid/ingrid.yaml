@@ -142,6 +142,9 @@ map:
     enable:
       wkt: true
       bwastr: true
+      geocoder: false
+      spinloader: false
+      clustering: false
 measure:
   enabled: true
   networks:

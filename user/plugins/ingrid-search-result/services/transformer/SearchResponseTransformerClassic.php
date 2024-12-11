@@ -169,7 +169,7 @@ class SearchResponseTransformerClassic
             "datatypes" => $datatypes,
             "partners" => self::getValueArray($source, "partner"),
             "searchterms" => $searchTerms,
-            "map_bboxes" => self::getBBoxes($source),
+            "map_bboxes" => self::getBBoxes($source, $title),
             "t011_obj_serv.type" => self::getValue($source, "t011_obj_serv.type"),
             "t011_obj_serv.type_key" => self::getValue($source, "t011_obj_serv.type_key"),
             "license" => self::getLicense($source, $lang),
@@ -428,7 +428,7 @@ class SearchResponseTransformerClassic
         ];
     }
 
-    private static function getBBoxes($value): array
+    private static function getBBoxes($value, string $title): array
     {
         $array = array();
         if (property_exists($value, "x1")) {
@@ -441,8 +441,8 @@ class SearchResponseTransformerClassic
             $count = 0;
             foreach ($x1s as $x1) {
                 $array[] = [
-                    "title" => $locations[$count] ?? "",
-                    "westBoundLongitude" => $x1s[$count],
+                    "title" => $locations[$count] ?? $title,
+                    "westBoundLongitude" => (float) $x1s[$count],
                     "southBoundLatitude" => (float) $y1s[$count],
                     "eastBoundLongitude" => (float) $x2s[$count],
                     "northBoundLatitude" => (float) $y2s[$count],
