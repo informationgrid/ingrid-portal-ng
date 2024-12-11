@@ -137,9 +137,9 @@ class DetailMetadataParserIdf
             if ($tmpValue) {
                 $metadata["time_creation"] = $tmpValue;
             }
-            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'privateation']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
+            $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'publication']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {
-                $metadata["time_privateation"] = $tmpValue;
+                $metadata["time_publication"] = $tmpValue;
             }
             $tmpValue = IdfHelper::getNodeValue($node, "./*/*/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'revision']/gmd:date/*[self::gco:Date or self::gco:DateTime]");
             if ($tmpValue) {

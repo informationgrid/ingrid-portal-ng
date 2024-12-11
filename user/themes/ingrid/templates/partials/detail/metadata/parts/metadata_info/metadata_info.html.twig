@@ -11,10 +11,10 @@
     {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
 {# Datum #}
     {% set dateFormat = "d.m.Y" %}
-    {% if "T" in metaInfoRefs.mod_time  %}
+    {% if "T" in metaInfoRefs.mod_time %}
         {% set dateFormat = "d.m.Y H:i:s" %}
     {% endif %}
-    {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time|date(dateFormat, false)) }}
+    {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time ? metaInfoRefs.mod_time|date(dateFormat, false)|e) }}
 {# Sprache Metadatensatz #}
     {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Weitere #}
