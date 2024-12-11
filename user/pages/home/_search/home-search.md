@@ -1,5 +1,5 @@
 ---
 title: Suche
-search_title: true
+has_content_title: true
 cache_enable: false
 ---

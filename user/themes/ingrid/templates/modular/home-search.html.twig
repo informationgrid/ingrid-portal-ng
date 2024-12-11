@@ -1,9 +1,15 @@
-<div class="banner home">
+{% set bannerClass = "banner search m-filter" %}
+{% set wrapperClass = "search-wrapper" %}
+{% if page.header.has_content_title == true %}
+    {% set bannerClass = "banner home" %}
+    {% set wrapperClass = "home-wrapper" %}
+{% endif %}
+<div class="{{ bannerClass }}">
     <a id="search"></a>
-    <div class="home-wrapper" style="background-image: url('{{ url('theme://images/template/drops-big.svg') }}');">
+    <div class="{{ wrapperClass }}" style="background-image: url('{{ url('theme://images/template/drops-big.svg') }}');">
         <div class="row align-center">
             <div class="large-20 columns dark">
-                {% if page.header.search_title %}
+                {% if page.header.has_content_title %}
                     {% set title = "SEARCH.PORTLET_TITLE_1"|t %}
                     {% if title %}
                         <h1>{{ title }}</h1>
