@@ -32,7 +32,7 @@
         {% if page_url is not empty %}
             <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ page_menu_title|t|e }}">
                 <div class="link-menu-tab">
-                    {% if menuentry.icon %}<span class="ic {{menuentry.icon}}"></span>{% endif %}
+                    {% if menuentry.icon %}<span class="{{menuentry.icon}}"></span>{% endif %}
                     <span class="text">{{ page_title|t|e }}</span>
                 </div>
             </a>
