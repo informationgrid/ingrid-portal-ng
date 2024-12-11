@@ -278,7 +278,15 @@
   content: "\e90b";
 }
 .ic-ic-opendata:before {
-  content: "\e96b";
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  -webkit-mask: url('../images/template/opendata.svg') no-repeat 50% 50%;
+  mask: url('../images/template/opendata.svg') no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  background-color: currentColor;
 }
 .ic-ic-people:before {
   content: "\e90c";
