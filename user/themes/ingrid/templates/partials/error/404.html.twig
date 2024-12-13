@@ -12,30 +12,30 @@
                     Falls Sie die Adresse (URL) selbst eingetippt haben, überprüfen Sie bitte die Schreibweise.
                 </li>
                 <li>
-                    Versuchen Sie über die <a href="/startseite">Startseite</a>
-                    oder die <a href="/inhaltsverzeichnis">Inhaltsübersicht</a>
+                    Versuchen Sie über die <a href="{{ page.find('/home').url }}">Startseite</a>
+                    oder die <a href="{{ page.find('/sitemap').url }}">Inhaltsübersicht</a>
                     die gewünschte Seite zu finden
                 </li>
                 <li>
                     Oder stöbern Sie in den verschiedenen Such-Kategorien von InGrid-Portal:
                     <div class="link-list">
-                        <a class="icon" href="/freitextsuche">
+                        <a class="icon" href="{{ page.find('/search').url }}">
                             <span class="ic-ic-arrow"></span>
                             <span class="text">Suche</span>
                         </a>
-                        <a class="icon" href="/kartendienste">
+                        <a class="icon" href="{{ page.find('/map').url }}">
                             <span class="ic-ic-arrow"></span>
                             <span class="text">Karte</span>
                         </a>
-                        <a class="icon" href="/messwertsuche">
+                        <a class="icon" href="{{ page.find('/measure').url }}">
                             <span class="ic-ic-arrow"></span>
                             <span class="text">Messwerte</span>
                         </a>
-                        <a class="icon" href="/datenkataloge">
+                        <a class="icon" href="{{ page.find('/catalog').url }}">
                             <span class="ic-ic-arrow"></span>
                             <span class="text">Kataloge</span>
                         </a>
-                        <a class="icon" href="/api">
+                        <a class="icon" href="{{ page.find('/api').url }}">
                             <span class="ic-ic-arrow"></span>
                             <span class="text">API</span>
                         </a>

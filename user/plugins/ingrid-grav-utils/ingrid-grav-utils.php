@@ -71,7 +71,7 @@ class InGridGravUtilsPlugin extends Plugin
         } else {
             // Check themes config for redirected pages
             $theme = $this->grav['config']->get('system.pages.theme');
-            $pages_not_allow = $this->grav['config']->get('themes.' . $theme . '.pages.access.not.allow');
+            $pages_not_allow = $this->grav['config']->get('themes.' . $theme . '.system.pages_to_404');
             if (in_array($uri_path, (array)$pages_not_allow)) {
                 $this->grav->redirect('/error');
             }
