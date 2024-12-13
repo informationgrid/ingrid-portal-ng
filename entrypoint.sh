@@ -79,8 +79,19 @@ if [ "$INGRID_API" ]; then
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-search-result/ingrid-search-result.yaml
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-catalog/ingrid-catalog.yaml
-  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-datasource/ingrid-datasource.yaml
+  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-datasources/ingrid-datasources.yaml
 fi
+
+if [ "$GEO_API_URL" ]; then
+  sed -i -e "s@geo_api_url:.*@geo: \'${$GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+  if [ "$GEO_API_USER" ]; then
+    sed -i -e "s@geo_api_user:.*@geo_api_user: ${$GEO_API_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+  fi
+  if [ "$GEO_API_PASS" ]; then
+    sed -i -e "s@geo_api_pass:.*@geo_api_pass: ${$GEO_API_PASSR}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+  fi
+fi
+
 
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php
