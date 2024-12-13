@@ -128,14 +128,18 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_hit_logo (partner) %}
-  {% if partner %}
-    <div class="teaser-logo-partner">
-      {% if partner != "all" and partner != "bund" %}
-        <img src="{{ url('theme://images/partner/svg/' ~ partner ~ '.svg') }}" alt="{{partner}}" title="{{partner}}"/>
-      {% endif %}
-    </div>
-  {% endif %}
+{% macro render_hit_logo (partners) %}
+    {% if partners %}
+        {% set break = false %}
+        {% for partner in partners if not break %}
+            <div class="teaser-logo-partner">
+            {% if partner != "all" and partner != "bund" %}
+                <img src="{{ url('theme://images/partner/svg/' ~ partner ~ '.svg') }}" alt="{{partner}}" title="{{partner}}"/>
+            {% endif %}
+            </div>
+            {% set break = true %}
+        {% endfor %}
+    {% endif %}
 {% endmacro %}
 
 

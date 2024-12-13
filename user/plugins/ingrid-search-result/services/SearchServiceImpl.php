@@ -17,11 +17,20 @@ class SearchServiceImpl implements SearchService
 
     function __construct($grav)
     {
-        $this->facet_config = $grav['config']->get('plugins.ingrid-search-result.facet_config');
+        // Plugin config
+        $hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
+        $facetConfig = $grav['config']->get('plugins.ingrid-search-result.facet_config');
+
+        // Theme config
+        $theme = $grav['config']->get('system.pages.theme');
+        $facetConfig = $grav['config']->get('themes.' . $theme . '.hit_search.facet_config') ?? $facetConfig;
+        $hitsNum = $grav['config']->get('themes.' . $theme . '.hit_search.hits_num') ?? $hitsNum;
+
+        $this->facet_config = $facetConfig;
 
         $this->api = getenv('INGRID_API') !== false ?
             getenv('INGRID_API') : $grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
-        $this->hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
+        $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];
     }

@@ -12,7 +12,7 @@
         {% endif %}
         {{ hit_macros.render_hit_types(hit.serviceTypes, true) }}
         {% if partner_logo %}
-            {{ hit_macros.render_hit_logo(hit.partners[0]) }}
+           {{ hit_macros.render_hit_logo(hit.partners) }}
         {% endif %}
         {% if hit.type is not empty %}
         <div class="helper icon">
@@ -30,7 +30,7 @@
         </p>
         {% endif %}
         {{ hit_macros.render_hit_types(hit.serviceTypes, true, true) }}
-        <a href="{{ detailLink }}" title="{{ hit.title }}">
+        <a href="{{ detailLink }}" title="{{ "COMMON.DETAIL_ARROW_PREFIX"|t ~ " " ~ hit.title }}">
             <span class="ic-ic-arrow arrow"></span>
         </a>
         {% include 'partials/search/result/metadata/expand/expand.html.twig' with {hit:hit, counter: counter} %}

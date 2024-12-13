@@ -10,8 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'partials/metadata.html.twig' %}
-
-    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    {% include 'partials/header/favicon/favicon.html.twig' %}
     <link rel="canonical" href="{{ page.canonical(true)|e }}" />
 {% endblock head %}
 

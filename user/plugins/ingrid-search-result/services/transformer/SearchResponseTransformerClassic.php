@@ -29,22 +29,33 @@ class SearchResponseTransformerClassic
             $items = array();
             if (property_exists((object)$facetConfig, 'queries')) {
                 foreach ($facetConfig['queries'] as $key => $query) {
+                    $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $key);
+                    if (isset($facetConfig['codelist'])) {
+                        $label = CodelistHelper::getCodelistEntry([$facetConfig['codelist']], $bucket->key, "de") ?? $label;
+                    }
                     $items[] = new FacetItem(
                         $key,
+                        $label,
                         ((array)$aggregations)[$key]->filtered->final->doc_count,
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key)
                     );
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
                 foreach (((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets as $bucket) {
+                    $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $bucket->key);
+                    if (isset($facetConfig['codelist'])) {
+                        $label = CodelistHelper::getCodelistEntryByIdent([$facetConfig['codelist']], $bucket->key, "de") ?? $label;
+                    }
                     $items[] = new FacetItem(
                         $bucket->key,
+                        $label,
                         $bucket->doc_count,
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key)
                     );
                 }
             } else if ($facetConfig['id'] == 'bbox') {
                 $items[] = new FacetItem(
+                    '',
                     '',
                     -1,
                     SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null)

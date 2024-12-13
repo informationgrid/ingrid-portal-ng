@@ -13,15 +13,17 @@
                                 {% if entry.highlighted is sameas(true) %}
                                     {% set page_url = '' %}
                                     {% set page_title = '' %}
+                                    {% set page_title_tooltip = '' %}
                                     {% for p in pages.children.visible %}
                                         {% if entry.path == p.folder %}
                                             {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
                                             {% set page_url = p.url %}
                                             {% set page_title = p.title %}
+                                            {% set page_title_tooltip = 'SITEMAP.' ~ p.title ~ '_TOOLTIP' %}
                                         {% endif %}
                                     {% endfor %}
                                     {% if page_url %}
-                                        <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
+                                        <a class="icon" href="{{ page_url|e }}" title="{{ page_title_tooltip|t|e }}">
                                             <span class="ic-ic-arrow-right"></span>
                                             <span class="text">{{ page_title|t|e }}</span>
                                         </a>
@@ -35,15 +37,17 @@
                                 {% if entry.highlighted is sameas(false) %}
                                     {% set page_url = '' %}
                                     {% set page_title = '' %}
+                                    {% set page_title_tooltip = '' %}
                                     {% for p in pages.children.visible %}
-                                    {% if entry.path == p.folder %}
-                                        {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
-                                        {% set page_url = p.url %}
-                                        {% set page_title = p.title %}
-                                    {% endif %}
+                                        {% if entry.path == p.folder %}
+                                            {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+                                            {% set page_url = p.url %}
+                                            {% set page_title = p.title %}
+                                            {% set page_title_tooltip = 'SITEMAP.' ~ p.title ~ '_TOOLTIP' %}
+                                        {% endif %}
                                     {% endfor %}
                                     {% if page_url %}
-                                        <a class="icon" href="{{ page_url|e }}" title="{{ page_title|t|e }}">
+                                        <a class="icon" href="{{ page_url|e }}" title="{{ page_title_tooltip|t|e }}">
                                             <span class="ic-ic-arrow-right"></span>
                                             <span class="text">{{ page_title|t|e }}</span>
                                         </a>

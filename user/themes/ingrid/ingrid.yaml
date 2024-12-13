@@ -97,7 +97,7 @@ hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
-  summary_replace_newline: '<br>'
+  summary_replace_newline: ' '
   summary_lines_limit: 5
   links_max: 5
   csw_enabled: true

@@ -5,51 +5,6 @@ en:
     HITS_NUMBER: Number of hits
     HITS_NUMBER_HELP: Define number of hits
 de:
-  facet-label:
-    special-types: Ergebnistypen
-    doc-types: Metadaten
-    partner: Anbieter
-    bbox: Auf Karte festlegen
-    actuality: Aktualität
-  actuality:
-    lastMonth: "letzter Monat"
-    lastThreeMonth: "letzte 3 Monat"
-    lastYear: "letztes Jahr"
-  doc-types:
-    0: Fachaufgabe
-    1: Geodatensatz
-    2: Literatur
-    3: Geodatendienst
-    4: Projekt
-    5: Datensammlung
-    6: Information
-  special-types:
-    metadata: Metadaten
-    inspire: INSPIRE
-    open-data: Open Data
-    websites: Webseiten
-    maps: Karten
-    adv: AdV
-    address: Adressen
-    hvd: HVD
-  partner:
-    bw: Baden-Württemberg
-    by: Bayern
-    be: Berlin
-    bb: Brandenburg
-    hb: Bremen
-    hh: Hamburg
-    he: Hessen
-    mv: Mecklenburg-Vorpommern
-    ni: Niedersachsen
-    nw: Nordrhein-Westfalen
-    rp: Rheinland-Pfalz
-    sl: Saarland
-    sn: Sachsen
-    st: Sachsen-Anhalt
-    sh: Schleswig-Holstein
-    th: Thüringen
-    bund: Bund
   PLUGIN_INGRID_SEARCH_RESULT:
     API_URL: InGrid-API-URL
     API_URL_HELP: InGrid-API-URL eintragen

@@ -7,8 +7,17 @@ mocking: false
 facet_config: [
   {
     "id": "special-types",
-    "label": "Ergebnistypen",
     "queries": {
+      "websites": {
+        "query": {
+          "filter": {
+            "term": {
+              "datatype": "www"
+            }
+          }
+        },
+        "search": "datatype:www"
+      },
       "metadata": {
         "query": {
           "filter": {
@@ -60,16 +69,6 @@ facet_config: [
         },
         "search": "is_hvd:true"
       },
-      "websites": {
-        "query": {
-          "filter": {
-            "term": {
-              "datatype": "www"
-            }
-          }
-        },
-        "search": "datatype:www"
-      },
       "maps": {
         "query": {
           "filter": {
@@ -79,27 +78,6 @@ facet_config: [
           }
         },
         "search": "capabilities_url:http.*"
-      },
-      "adv": {
-        "query": {
-          "filter": {
-            "bool": {
-              "should": [
-                {
-                  "term": {
-                    "t04_search.searchterm": "advmis"
-                  }
-                },
-                {
-                  "term": {
-                    "t04_search.searchterm": "adv"
-                  }
-                }
-              ]
-            }
-          }
-        },
-        "search": "t04_search.searchterm:AdVMIS t04_search.searchterm:AdV"
       },
       "address": {
         "query": {
@@ -115,7 +93,6 @@ facet_config: [
   },
   {
     "id": "doc-types",
-    "label": "Dokumententyp",
     "query": {
       "terms": {
         "field": "t01_object.obj_class",
@@ -126,7 +103,6 @@ facet_config: [
   },
   {
     "id": "partner",
-    "label": "Anbieter",
     "query": {
       "terms": {
         "field": "partner"
@@ -136,7 +112,6 @@ facet_config: [
   },
   {
     "id": "bbox",
-    "label": "Auf Karte festlegen",
     "filter": "{\"range\": {\"x1\": {\"gte\": %f } } }"
   },
   {

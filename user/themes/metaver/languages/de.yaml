@@ -1,4 +1,26 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite von MetaVer
+  MAP: Karte
+  ABOUT: Über MetaVer
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu MetaVer
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von MetaVer
+  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an MetaVer-Team
+  SITEMAP_MENU_TITLE: Alle Inhalte von MetaVer auf einen Blick
+  SITEMAP_CONTENT: Inhalt
+
+SITEMAP:
+  PAGES:
+    ABOUT_TOOLTIP: Hintergrundinformationen zu MetaVer
+    PROVIDER_TOOLTIP: Liste der Kooperationspartner von MetaVer
+    HELP_TOOLTIP: Erläuterungen zur Nutzung von MetaVer
+    CONTACT_TOOLTIP: Ihre Nachricht, Fragen oder Anregungen direkt an die MetaVer
+    SITEMAP_TOOLTIP: Alle Inhalte von MetaVer auf einen Blick
+    IMPRINT_TOOLTIP: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
+
 SEARCH:
-  PORTLET_TITLE_1:
-  PORTLET_TITLE_2: Ihr zentraler Zugangspunkt zu den Metadaten
-  PORTLET_TITLE_3: Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern, Saarland, Sachsen & Sachsen-Anhalt
+  PORTLET_TITLE_1: Ihr zentraler Zugangspunkt
+  PORTLET_TITLE_2: zu den Metadaten&nbsp;
+  PORTLET_TITLE_3: 'Brandenburg, Bremen, Hamburg, Hessen, Mecklenburg-Vorpommern,<br>Saarland, Sachsen & Sachsen-Anhalt'
+
+CATEGORIES:
+  TITLE: Stöbern Sie in diesen ...

@@ -24,7 +24,7 @@ PAGES:
     CONTACT: Kontakt
     CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an InGrid-Portal
     SITEMAP: Sitemap
-    SITEMAP_MENU_TITLE: Hintergrundinformationen zu InGrid-Portal
+    SITEMAP_MENU_TITLE: Alle Inhalte von MetaVer auf einen Blick
     SITEMAP_CONTENT: Inhaltsübersicht
     IMPRINT: Impressum
     IMPRINT_MENU_TITLE: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
@@ -152,7 +152,7 @@ COMMON:
     XML_LINK_LABEL: XML Darstellung
     RDF_LINK: Daten als RDF herunterladen
     RDF_LINK_LABEL: RDF/XML
-    DETAIL_ARROW_PREFIX:
+    DETAIL_ARROW_PREFIX: 'Detailansicht:'
     LANGUAGE_TITLE: 'Sprache:'
     STEPS_UVP_PHASE1: Öffentliche Auslegung
     STEPS_UVP_PHASE2: Erörterungstermin
@@ -1026,6 +1026,21 @@ SEARCH_DETAIL:
 SITEMAP:
     AREA_MAIN: Hauptbereich
     AREA_FOOTER: Fußbereich
+    PAGES:
+        SEARCH_TOOLTIP: Zur Freitextsuche nach Informationen
+        MAP_TOOLTIP: Interaktive thematische Karten von Partnern und Informationsanbietern
+        MEASURE_TOOLTIP: Zur Suche nach Messdaten
+        CATALOG_TOOLTIP: Eingebundene Datenkataloge und Informationen
+        API_TOOLTIP: API Übersicht
+        ABOUT_TOOLTIP: Hintergrundinformationen zu InGrid-Portal
+        PROVIDER_TOOLTIP: Liste der Kooperationspartner von InGrid-Portal
+        DATASOURCE_TOOLTIP: Liste der angeschlossenen Daten- und Informationsquellen
+        HELP_TOOLTIP: Erläuterungen zur Nutzung von InGrid-Portal
+        CONTACT_TOOLTIP: Ihre Nachricht, Fragen oder Anregungen direkt an die InGrid-Portal
+        SITEMAP_TOOLTIP: Alle Inhalte von InGrid-Portal auf einen Blick
+        IMPRINT_TOOLTIP: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
+        PRIVACY_TOOLTIP: Unsere Verpflichtung zum Umgang mit persönlichen Informationen
+        ACCESSIBILITY_TOOLTIP: Erläuterung zur Barrierefreiheit
 
 CONTACT:
     FORM: Kontaktformular
@@ -1076,3 +1091,24 @@ CATALOG_HIERARCHY:
     TREE_ADDRESSES: Adressen
     TREE_ADDRESSES_FREE: Freie Adressen
     LOADING: Laden ...
+
+FACETS:
+    FACET-LABEL:
+        SPECIAL-TYPES: Ergebnistypen
+        DOC-TYPES: Metadaten
+        PARTNER: Anbieter
+        BBOX: Auf Karte festlegen
+        ACTUALITY: Aktualität
+    ACTUALITY:
+        LASTMONTH: "letzter Monat"
+        LASTTHREEMONTH: "letzte 3 Monat"
+        LASTYEAR: "letztes Jahr"
+    SPECIAL-TYPES:
+        METADATA: Metadaten
+        INSPIRE: INSPIRE
+        OPEN-DATA: Open Data
+        WEBSITES: Webseiten
+        MAPS: Karten
+        ADV: AdV
+        ADDRESS: Adressen
+        HVD: HVD

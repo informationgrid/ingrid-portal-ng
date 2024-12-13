@@ -43,6 +43,20 @@ class CodelistHelper
         return null;
     }
 
+    public static function getCodelistEntryData(array $codelistIds, string $entryId): null|string
+    {
+        foreach ($codelistIds as $codelistId) {
+            $codelist = self::getCodelist($codelistId);
+            if ($codelist) {
+                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
+                if ($codelistEntry) {
+                    return self::getNodeValue($codelistEntry, './data');
+                }
+            }
+        }
+        return null;
+    }
+
     public static function getCodelistEntryByData(array $codelistIds, string $entryId, string $lang): null|string
     {
         foreach ($codelistIds as $codelistId) {
@@ -58,6 +72,20 @@ class CodelistHelper
         return null;
     }
 
+    public static function getCodelistEntryByIdent(array $codelistIds, string $entryId, string $lang): null|string
+    {
+        foreach ($codelistIds as $codelistId) {
+            $codelist = self::getCodelist($codelistId);
+            if ($codelist) {
+                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/ident = "'. $entryId .'"]');
+                if ($codelistEntry) {
+                    $codelistEntryLang = self::getNode($codelistEntry, './localisations[./ident = "'. $entryId .'"]/name');
+                    return $codelistEntryLang;
+                }
+            }
+        }
+        return self::getCodelistEntry($codelistIds, $entryId, $lang);
+    }
     public static function getCodelistEntryByCompare(array $codelistIds, string $entryId, string $lang, bool $addEqual = true): null|string
     {
         foreach ($codelistIds as $codelistId) {
@@ -75,20 +103,6 @@ class CodelistHelper
                     if ($codelistEntry == null) {
                         return $entryId;
                     }
-                }
-            }
-        }
-        return null;
-    }
-
-    public static function getCodelistEntryData(array $codelistIds, string $entryId): null|string
-    {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
-            if ($codelist) {
-                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
-                if ($codelistEntry) {
-                    return self::getNodeValue($codelistEntry, './data');
                 }
             }
         }
