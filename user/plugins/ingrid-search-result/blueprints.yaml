@@ -30,7 +30,7 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    api_url:
+    ingrid_api_url:
       type: text
       label: PLUGIN_INGRID_SEARCH_RESULT.API_URL
       help: PLUGIN_INGRID_SEARCH_RESULT.API_URL_HELP
