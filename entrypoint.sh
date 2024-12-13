@@ -65,12 +65,12 @@ chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 
 # Update codelist plugin
 if [ "$CODELIST_API" ]; then
-  sed -i -e "s@    url:.*@    url: \'${CODELIST_API}\'@" ${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
+  sed -i -e "s@    url:.*@    url: \'${CODELIST_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
   if [ "$CODELIST_USER" ]; then
-    sed -i -e "s@    user:.*@    user: ${CODELIST_USER}@" ${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
+    sed -i -e "s@    user:.*@    user: ${CODELIST_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
   fi
   if [ "$CODELIST_PASS" ]; then
-    sed -i -e "s@    pass:.*@    pass: ${CODELIST_PASS}@" ${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
+    sed -i -e "s@    pass:.*@    pass: ${CODELIST_PASS}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
   fi
 fi
 
