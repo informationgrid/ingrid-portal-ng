@@ -1,2 +1,3 @@
 enabled: true
 route: /datenquellen
+ingrid_api_url: 'https://api.dev.informationgrid.eu/portal/catalogs'

@@ -87,8 +87,7 @@ class InGridDetailPlugin extends Plugin
             $rootUrl = $this->grav['uri']->rootUrl();
             $lang = $this->grav['language']->getLanguage();
 
-            $api = getenv('INGRID_API') !== false ?
-                getenv('INGRID_API') : $this->grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
+            $api = $this->grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
 
             if (empty($type)) {
                 $type = "metadata";

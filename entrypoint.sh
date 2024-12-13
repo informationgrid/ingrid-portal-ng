@@ -74,6 +74,14 @@ if [ "$CODELIST_API" ]; then
   fi
 fi
 
+# Update ingrid api
+if [ "$INGRID_API" ]; then
+  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-search-result/ingrid-search-result.yaml
+  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-catalog/ingrid-catalog.yaml
+  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-datasource/ingrid-datasource.yaml
+fi
+
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php
 (echo "* * * * * cd /var/www/$GRAV_FOLDER;/usr/local/bin/php bin/grav scheduler 1>> /dev/null 2>&1") | crontab -u www-data -
