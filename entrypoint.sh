@@ -83,7 +83,7 @@ if [ "$INGRID_API" ]; then
 fi
 
 if [ "$GEO_API_URL" ]; then
-  sed -i -e "s@geo_api_url:.*@geo: \'${GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+  sed -i -e "s@geo_api_url:.*@geo_api_url: ${GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
   if [ "$GEO_API_USER" ]; then
     sed -i -e "s@geo_api_user:.*@geo_api_user: ${GEO_API_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
   fi
