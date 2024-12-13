@@ -153,3 +153,5 @@ measure:
       - luen
   url: 'http://localhost:8080/ingrid-portal-apps/measures/index.html'
   elastic: 'https://dev.informationgrid.eu/elastic-measure/'
+system:
+  pages_to_404:

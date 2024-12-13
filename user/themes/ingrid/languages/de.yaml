@@ -1103,6 +1103,8 @@ FACETS:
         LASTMONTH: "letzter Monat"
         LASTTHREEMONTH: "letzte 3 Monat"
         LASTYEAR: "letztes Jahr"
+        LASTFIVEYEARS: "letzte 5 Jahre"
+        OLDERFIVEYEARS: "älter als 5 Jahre"
     SPECIAL-TYPES:
         METADATA: Metadaten
         INSPIRE: INSPIRE
@@ -1112,3 +1114,7 @@ FACETS:
         ADV: AdV
         ADDRESS: Adressen
         HVD: HVD
+
+ERROR:
+    404:
+        TITLE: 'FEHLER 404: SEITE ODER DATEI NICHT GEFUNDEN'

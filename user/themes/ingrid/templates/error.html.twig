@@ -1,8 +1,17 @@
 {% extends 'partials/base.html.twig' %}
-
-{% block content %}
-    <div class="lead text-center">
-        <h1>Error!</h1>
-        {{ page.content|raw }}
+{% block content_header %}
+    <div class="banner subpage ">
+        <div class="subpage-wrapper" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
+            <div class="row align-center">
+                <div class="large-20 columns dark">
+                    <h1>
+                        {{ "ERROR.404.TITLE"|t }}
+                    </h1>
+                </div>
+            </div>
+        </div>
     </div>
+{% endblock %}
+{% block content %}
+    {% include 'partials/error/404.html.twig' %}
 {% endblock %}

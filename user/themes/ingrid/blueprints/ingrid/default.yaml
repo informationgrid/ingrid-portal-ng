@@ -218,17 +218,21 @@ form:
                       type: text
                       label: Pfad
 
-            other.section:
+            system.section:
               type: section
               title: Sonstiges
               underline: true
 
-            other.pages.access.not.allow:
-              type: selectize
+            system.pages_to_404:
+              type: pages
               label: Seiten ausschließen
               help: Tragen Sie den Pfad der Portal-URL ein.
               validate:
                 type: commalist
+              show_modular: false
+              show_root: false
+              show_all: false
+              multiple: true
               default: []
 ## Tab home
         tab_home:

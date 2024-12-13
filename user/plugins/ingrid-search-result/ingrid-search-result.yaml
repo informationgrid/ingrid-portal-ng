@@ -149,6 +149,28 @@ facet_config: [
             }
           }
         }
+      },
+      "lastfiveYears": {
+        "query": {
+          "filter": {
+            "range": {
+              "modified": {
+                "gte": "now-5y"
+              }
+            }
+          }
+        }
+      },
+      "olderfiveYears": {
+        "query": {
+          "filter": {
+            "range": {
+              "modified": {
+                "lte": "now-5y"
+              }
+            }
+          }
+        }
       }
     }
   }

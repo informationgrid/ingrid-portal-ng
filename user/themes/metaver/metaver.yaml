@@ -244,6 +244,28 @@ hit_search:
               }
             }
           }
+        },
+        "lastfiveYears": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-5y"
+                }
+              }
+            }
+          }
+        },
+        "olderfiveYears": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "lte": "now-5y"
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -290,6 +312,10 @@ map:
       geocoder: false
       spinloader: false
       clustering: false
+system:
+  pages_to_404:
+    - /api
+    - /measure
 streams:
  schemes:
    theme:
