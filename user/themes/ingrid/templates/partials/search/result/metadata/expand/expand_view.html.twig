@@ -224,18 +224,18 @@
                     {% endfor %}
                 {% endif %}
 {# Karte #}
-                {% if bboxes|length > 0 %}
-                    {% if previews|length > 0 and bboxes|length > 0 %}
+                {% if bboxes|length > 0 or wkt %}
+                    {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
                             <div class="swiper-slide">
                     {% endif %}
                     {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
                     {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojson: wkt, isDetail: false, mapId: hitMapId }%}
-                    {% if previews|length > 0 and bboxes|length > 0 %}
+                    {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
                             </div>
                     {% endif %}
                 {% endif %}
 
-                {% if previews|length > 0 and bboxes|length > 0 %}
+                {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>

@@ -9,7 +9,7 @@
 
     <script>
         $('#{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');
-        var coords = {{ coords|json_encode( )|raw }};
+        var coords = {{ (coords ? coords : [])|json_encode()|raw }};
         var bounds_{{ mapId }};
         var boundsX1_{{ mapId }};
         var boundsY1_{{ mapId }};
