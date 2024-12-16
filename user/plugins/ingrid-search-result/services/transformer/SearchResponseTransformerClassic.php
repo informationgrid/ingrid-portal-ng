@@ -29,9 +29,9 @@ class SearchResponseTransformerClassic
             $items = array();
             if (property_exists((object)$facetConfig, 'queries')) {
                 foreach ($facetConfig['queries'] as $key => $query) {
-                    $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $key);
+                    $label = $query['label'] ?? strtoupper('FACETS.' . $facetConfig['id'] . '.' . $key);
                     if (isset($facetConfig['codelist']) or isset($query['codelist'])) {
-                        $label = CodelistHelper::getCodelistEntryByIdent([$query['codelist'] ?? $facetConfig['codelist']], $key, $lang) ?? $label;
+                        $label = CodelistHelper::getCodelistEntryByIdent([$query['codelist'] ?? $facetConfig['codelist']], $key, $lang) ;
                     }
                     $items[] = new FacetItem(
                         $key,
@@ -43,9 +43,9 @@ class SearchResponseTransformerClassic
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
                 foreach (((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets as $bucket) {
-                    $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $bucket->key);
-                    if (isset($facetConfig['codelist']) or isset($bucket['codelist'])) {
-                        $label = CodelistHelper::getCodelistEntryByIdent([$bucket['codelist'] ?? $facetConfig['codelist']], $bucket->key, $lang) ?? $label;
+                    $label = $query['label'] ?? strtoupper('FACETS.' . $facetConfig['id'] . '.' . $bucket->key);
+                    if (isset($facetConfig['codelist'])) {
+                        $label = CodelistHelper::getCodelistEntryByIdent([$facetConfig['codelist']], $bucket->key, $lang);
                     }
                     $items[] = new FacetItem(
                         $bucket->key,
