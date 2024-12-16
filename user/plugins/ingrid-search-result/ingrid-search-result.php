@@ -56,18 +56,42 @@ class InGridSearchResultPlugin extends Plugin
             return;
         }
 
-        $config = $this->config();
-        $this->service = new SearchServiceImpl($this->grav);
         $uri = $this->grav['uri'];
+        $uri_path = $uri->path();
+        $config = $this->config();
+        $routes = $config['routes'] ?? [];
+        if ($routes && in_array($uri_path, $routes)) {
+            if ($uri_path == '/freitextsuche') {
+                // Plugin config
+                $hitsNum = $config['hits_num'];
+                $facetConfig = $config['facet_config'];
 
-        $route = $config['route'] ?? null;
-        if ($route && $route == $uri->path()) {
-            // Enable the main events we are interested in
-            $this->enable([
-                'onPageInitialized' => ['onPageInitialized', 0],
-                'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-                'onTwigExtensions' => ['onTwigExtensions', 0],
-            ]);
+                // Theme config
+                $theme = $this->grav['config']->get('system.pages.theme');
+                $facetConfig = $this->grav['config']->get('themes.' . $theme . '.hit_search.facet_config') ?? $facetConfig;
+                $hitsNum = $this->grav['config']->get('themes.' . $theme . '.hit_search.hits_num') ?? $hitsNum;
+
+                $this->service = new SearchServiceImpl($this->grav, $hitsNum, $facetConfig);
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
+                ]);
+            } else if ($uri_path == '/') {
+                // Plugin config
+                $facetConfig = $config['facet_config_categories'];
+
+                // Theme config
+                $theme = $this->grav['config']->get('system.pages.theme');
+                $facetConfig = $this->grav['config']->get('themes.' . $theme . '.home.facet_config_categories') ?? $facetConfig;
+
+                $this->service = new SearchServiceImpl($this->grav, 0, $facetConfig);
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesCategories', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
+                ]);
+            }
         }
     }
 
@@ -76,7 +100,7 @@ class InGridSearchResultPlugin extends Plugin
         echo "<script>console.log('InGrid Search result');</script>";
     }
 
-    public function onTwigSiteVariables(): void
+    public function onTwigSiteVariablesSearch(): void
     {
 
         if (!$this->isAdmin()) {
@@ -93,6 +117,16 @@ class InGridSearchResultPlugin extends Plugin
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
             $this->grav['twig']->twig_vars['pagingUrl'] = $this->getPagingUrl($this->grav['uri']);
+        }
+    }
+
+    public function onTwigSiteVariablesCategories(): void
+    {
+
+        if (!$this->isAdmin()) {
+            $lang = $this->grav['language']->getLanguage();
+            $results = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang);
+            $this->grav['twig']->twig_vars['search_result'] = $results;
         }
     }
 

@@ -1,3 +1,4 @@
+
 <div class="category">
     <a id="search.teaser"></a>
     <div class="row">
@@ -5,69 +6,60 @@
             <h2>{{ "CATEGORIES.TITLE"|t }}</h2>
         </div>
     </div>
-    <div class="tabs-content" data-tabs-content="uvp-tabs">
-        <div class="tabs-panel midnight is-active" id="panel-category" role="tabpanel" aria-labelledby="panel-category-label">
-            <div class="row align-center text-center">
-                <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
-                    <div class="teaser">
-                        <div class="blue-border"></div>
-                        <a class="teaser-link" href="{{ page.find('/rss').url }}">
-                            <span class="ic-rss"></span>
-                            <span class="text">Aktuelles</span>
+    {% if search_result %}
+        {% if search_result.facets %}
+            {% set facets = search_result.facets %}
+            {% set facetsCount = facets|length %}
+            {% set hasMultiFacets = false %}
+            {% if facetsCount > 1 %}
+                {% set hasMultiFacets = true %}
+            {% endif %}
+            {% set isActive = true %}
+            {% if hasMultiFacets %}
+                <ul class="tabs" data-tabs id="uvp-tabs" role="tablist">
+                {% for facet in facets %}
+                    <li class="tabs-title {% if isActive %}is-active{% endif %}" role="presentation">
+                        <a href="#panel-{{ facet.id }}" aria-selected="{{ isActive }}" role="tab" id="panel-{{ facet.id }}-label" tabindex="0">
+                            <span class="text">{{ facet.label ?? ('FACETS.FACET-LABEL.' ~ facet.id)|upper|t }}</span>
                         </a>
+                        <span class="pointer"></span>
+                    </li>
+                    {% set isActive = false %}
+                {% endfor %}
+            {% endif %}
+            {% set isActive = true %}
+            <div class="tabs-content" data-tabs-content="uvp-tabs">
+            {% for facet in facets %}
+                <div class="tabs-panel midnight {% if isActive %}is-active{% endif %}" id="panel-{{ facet.id }}" role="tabpanel" aria-labelledby="panel-{{ facet.id }}-label">
+                    <div class="row align-center text-center">
+                        {% for facetItem in facet.items %}
+                            <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
+                                <div class="teaser">
+                                    <div class="blue-border"></div>
+                                    <a class="teaser-link" href="{{ page.find('/search').url ~ facetItem.actionLink }}">
+                                    {% if "/" in facetItem.icon %}
+                                        <img style="margin: auto;" class="bx-top-s icon-{{ facetItem.id }}" src="{{ url('theme://' ~ facetItem.icon) }}" alt="icon"/>
+                                    {% else %}
+                                        <span class="{{ facetItem.icon }}"></span>
+                                    {% endif %}
+                                        <span class="text">{{ facetItem.label|t }}</span>
+                                        <span class="teaser-number">
+                                            {{ facetItem.docCount }}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
-                    <div class="teaser">
-                        <div class="blue-border"></div>
-                        <a class="teaser-link" href="{{ page.find('/search').url }}?q=&special-types=metadata">
-                            <span class="ic-metadata"></span>
-                            <span class="text">Metadaten</span>
-                            <span class="teaser-number">
-                                1631
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
-                    <div class="teaser">
-                        <div class="blue-border"></div>
-                        <a class="teaser-link" href="{{ page.find('/search').url }}?q=&special-types=inspire">
-                            <span class="ic-inspire"></span>
-                            <span class="text">INSPIRE</span>
-                            <span class="teaser-number">
-                                92
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
-                    <div class="teaser">
-                        <div class="blue-border"></div>
-                        <a class="teaser-link" href="{{ page.find('/search').url }}?q=&special-types=open-data">
-                            <span class="ic-opendata"></span>
-                            <span class="text">Open Data</span>
-                            <span class="teaser-number">
-                                401
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
-                    <div class="teaser">
-                        <div class="blue-border"></div>
-                        <a class="teaser-link" href="{{ page.find('/search').url }}?q=&special-types=maps">
-                            <span class="ic-map"></span>
-                            <span class="text">Karten</span>
-                            <span class="teaser-number">
-                                229
-                            </span>
-                        </a>
-                    </div>
-                </div>
+                {% set isActive = false %}
+            {% endfor %}
             </div>
-        </div>
-    </div>
+            {% if hasMultiFacets %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    {% endif %}
 </div>
 
 <script>

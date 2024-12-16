@@ -15,17 +15,8 @@ class SearchServiceImpl implements SearchService
     private array $facet_config;
 
 
-    function __construct($grav)
+    function __construct($grav, int $hitsNum, array $facetConfig = [])
     {
-        // Plugin config
-        $hitsNum = $grav['config']->get('plugins.ingrid-search-result.hits_num');
-        $facetConfig = $grav['config']->get('plugins.ingrid-search-result.facet_config');
-
-        // Theme config
-        $theme = $grav['config']->get('system.pages.theme');
-        $facetConfig = $grav['config']->get('themes.' . $theme . '.hit_search.facet_config') ?? $facetConfig;
-        $hitsNum = $grav['config']->get('themes.' . $theme . '.hit_search.hits_num') ?? $hitsNum;
-
         $this->facet_config = $facetConfig;
 
         $this->api = $grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
@@ -49,14 +40,15 @@ class SearchServiceImpl implements SearchService
             ]);
             $result = json_decode($apiResponse->getBody()->getContents());
             $totalHits = $result->totalHits ?? 0;
-            $numOfPages = ceil($result->totalHits / $this->hitsNum) ?? 0;
+            $numOfPages = $this->hitsNum == 0 ?
+                0 : ceil($result->totalHits / $this->hitsNum) ?? 0;
             return new SearchResult(
                 numOfHits: intval($totalHits),
                 numOfPages: intval($numOfPages),
                 numPage: $page,
                 listOfPages: $this->getPageRanges($page, $numOfPages),
                 hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null, $lang),
-                facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri),
+                facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri, $lang),
             );
         } catch (\Exception $e) {
             $this->log->error('Error on search with "' . $query . '": ' . $e);

@@ -1,6 +1,7 @@
 enabled: true
-route: /freitextsuche
-route-detail: /trefferanzeige
+routes:
+  - /
+  - /freitextsuche
 ingrid_api_url: 'https://api.dev.informationgrid.eu/'
 hits_num: 10
 mocking: false
@@ -174,6 +175,79 @@ facet_config: [
           }
         }
       }
+    }
+  }
+]
+facet_config_categories: [
+  {
+    "id": "special-types",
+    "queries": {
+      "websites": {
+        "icon": "ic-www",
+        "query": {
+          "filter": {
+            "term": {
+              "datatype": "www"
+            }
+          }
+        },
+        "search": "datatype:www"
+      },
+      "metadata": {
+        "icon": "ic-metadata",
+        "query": {
+          "filter": {
+            "term": {
+              "datatype": "metadata"
+            }
+          }
+        },
+        search: "datatype:metadata"
+      },
+      "inspire": {
+        "icon": "ic-inspire",
+        "query": {
+          "filter": {
+            "term": {
+              "t04_search.searchterm": "inspireidentifiziert"
+            }
+          }
+        },
+        "search": "t04_search.searchterm:inspireidentifiziert"
+      },
+      "open-data": {
+        "icon": "ic-opendata",
+        "query": {
+          "filter": {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "t04_search.searchterm": "opendata"
+                  }
+                },
+                {
+                  "term": {
+                    "t04_search.searchterm": "opendataident"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
+      },
+      "maps": {
+        "icon": "ic-map",
+        "query": {
+          "filter": {
+            "wildcard": {
+              "capabilities_url": "http*"
+            }
+          }
+        },
+        "search": "capabilities_url:http.*"
+      },
     }
   }
 ]

@@ -21,7 +21,7 @@ class SearchResponseTransformerClassic
      * @param FacetConfig[] $config
      * @return FacetResult[]
      */
-    public static function parseAggregations(object $aggregations, array $config, $uri): array
+    public static function parseAggregations(object $aggregations, array $config, $uri, string $lang): array
     {
         $result = array();
 
@@ -30,27 +30,29 @@ class SearchResponseTransformerClassic
             if (property_exists((object)$facetConfig, 'queries')) {
                 foreach ($facetConfig['queries'] as $key => $query) {
                     $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $key);
-                    if (isset($facetConfig['codelist'])) {
-                        $label = CodelistHelper::getCodelistEntry([$facetConfig['codelist']], $bucket->key, "de") ?? $label;
+                    if (isset($facetConfig['codelist']) or isset($query['codelist'])) {
+                        $label = CodelistHelper::getCodelistEntryByIdent([$query['codelist'] ?? $facetConfig['codelist']], $key, $lang) ?? $label;
                     }
                     $items[] = new FacetItem(
                         $key,
                         $label,
                         ((array)$aggregations)[$key]->filtered->final->doc_count,
-                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key)
+                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key),
+                        $query['icon'] ?? null,
                     );
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
                 foreach (((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets as $bucket) {
                     $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $bucket->key);
-                    if (isset($facetConfig['codelist'])) {
-                        $label = CodelistHelper::getCodelistEntryByIdent([$facetConfig['codelist']], $bucket->key, "de") ?? $label;
+                    if (isset($facetConfig['codelist']) or isset($bucket['codelist'])) {
+                        $label = CodelistHelper::getCodelistEntryByIdent([$bucket['codelist'] ?? $facetConfig['codelist']], $bucket->key, $lang) ?? $label;
                     }
                     $items[] = new FacetItem(
                         $bucket->key,
                         $label,
                         $bucket->doc_count,
-                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key)
+                        SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key),
+                        null,
                     );
                 }
             } else if ($facetConfig['id'] == 'bbox') {
@@ -58,10 +60,11 @@ class SearchResponseTransformerClassic
                     '',
                     '',
                     -1,
-                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null)
+                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null),
+                    null,
                 );
             }
-            $result[] = new FacetResult($facetConfig['id'], $items);
+            $result[] = new FacetResult($facetConfig['id'], $facetConfig['label'] ?? null, $items);
         }
 
         return $result;
