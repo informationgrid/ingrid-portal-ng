@@ -9,7 +9,7 @@ class ElasticsearchService
 
     static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch): string
     {
-        if(!empty($query) && count($excludeFromSearch) > 0) {
+        if(count($excludeFromSearch) > 0) {
             foreach ($excludeFromSearch as $exclude) {
                 $query .= ' -' . $exclude;
             }
