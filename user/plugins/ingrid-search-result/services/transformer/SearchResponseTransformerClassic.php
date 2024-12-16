@@ -39,6 +39,7 @@ class SearchResponseTransformerClassic
                         ((array)$aggregations)[$key]->filtered->final->doc_count,
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key),
                         $query['icon'] ?? null,
+                        $query['isDisplay'] ?? false,
                     );
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
@@ -53,6 +54,7 @@ class SearchResponseTransformerClassic
                         $bucket->doc_count,
                         SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key),
                         null,
+                        false,
                     );
                 }
             } else if ($facetConfig['id'] == 'bbox') {
@@ -62,6 +64,7 @@ class SearchResponseTransformerClassic
                     -1,
                     SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null),
                     null,
+                    false,
                 );
             }
             $result[] = new FacetResult($facetConfig['id'], $facetConfig['label'] ?? null, $items);
