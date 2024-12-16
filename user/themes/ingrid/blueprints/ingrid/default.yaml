@@ -250,6 +250,18 @@ form:
 
           fields:
 
+            home.categories.exclude_from_search:
+              type: selectize
+              selectize:
+                options:
+                  - text: "datatype:address"
+                    value: "datatype:address"
+                  - text: "isfolder:true"
+                    value: "isfolder:true"
+              label: Aus den Kategorien ausschließen
+              validate:
+                type: commalist
+
             home.rss_feeds_limit:
               type: text
               label: Maximale Anzahl der RSS Feeds
@@ -287,6 +299,18 @@ form:
               type: section
               title: Suchergebnis
               underline: true
+
+            hit_search.exclude_from_search:
+              type: selectize
+              selectize:
+                options:
+                  - text: "datatype:address"
+                    value: "datatype:address"
+                  - text: "isfolder:true"
+                    value: "isfolder:true"
+              label: Aus der Suche ausschließen
+              validate:
+                type: commalist
 
             hit_search.summary_replace_newline:
               type: text

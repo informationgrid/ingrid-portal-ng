@@ -13,12 +13,13 @@ class SearchServiceImpl implements SearchService
     private Client $client;
     private $log;
     private array $facet_config;
+    private array $exclude;
 
 
-    function __construct($grav, int $hitsNum, array $facetConfig = [])
+    function __construct($grav, int $hitsNum, array $facetConfig = [], array $excludeFromSearch = [])
     {
         $this->facet_config = $facetConfig;
-
+        $this->exclude = $excludeFromSearch;
         $this->api = $grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
         $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
@@ -36,7 +37,7 @@ class SearchServiceImpl implements SearchService
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [
-                'body' => $this->transformQuery($query, $page - 1, $selectedFacets)
+                'body' => $this->transformQuery($query, $page - 1, $selectedFacets, $this->exclude)
             ]);
             $result = json_decode($apiResponse->getBody()->getContents());
             $totalHits = $result->totalHits ?? 0;
@@ -93,9 +94,9 @@ class SearchServiceImpl implements SearchService
         return $array;
     }
 
-    private function transformQuery($query, $page, array $selectedFacets): string
+    private function transformQuery($query, $page, array $selectedFacets, array $excludeFromSearch): string
     {
-        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets);
+        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $excludeFromSearch);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;
     }

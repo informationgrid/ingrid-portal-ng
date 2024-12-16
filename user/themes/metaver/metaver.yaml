@@ -76,268 +76,275 @@ menu:
       path: /accessibility
 home:
   rss_feeds_limit: 6
-  facet_config_categories: [
-    {
-      "id": "special-types",
-      "queries": {
-        "websites": {
-          "icon": "ic-www",
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "www"
+  categories:
+    exclude_from_search:
+      - 'datatype:address'
+      - 'isfolder:true'
+    facet_config_: [
+      {
+        "id": "special-types",
+        "queries": {
+          "websites": {
+            "icon": "ic-www",
+            "query": {
+              "filter": {
+                "term": {
+                  "datatype": "www"
+                }
               }
-            }
+            },
+            "search": "datatype:www"
           },
-          "search": "datatype:www"
-        },
-        "metadata": {
-          "icon": "ic-metadata",
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "metadata"
+          "metadata": {
+            "icon": "ic-metadata",
+            "query": {
+              "filter": {
+                "term": {
+                  "datatype": "metadata"
+                }
               }
-            }
+            },
+            search: "datatype:metadata"
           },
-          search: "datatype:metadata"
-        },
-        "inspire": {
-          "icon": "ic-inspire",
-          "query": {
-            "filter": {
-              "term": {
-                "t04_search.searchterm": "inspireidentifiziert"
+          "inspire": {
+            "icon": "ic-inspire",
+            "query": {
+              "filter": {
+                "term": {
+                  "t04_search.searchterm": "inspireidentifiziert"
+                }
               }
-            }
+            },
+            "search": "t04_search.searchterm:inspireidentifiziert"
           },
-          "search": "t04_search.searchterm:inspireidentifiziert"
-        },
-        "open-data": {
-          "icon": "ic-opendata",
-          "query": {
-            "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "opendata"
+          "open-data": {
+            "icon": "ic-opendata",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendata"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendataident"
+                      }
                     }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "opendataident"
-                    }
-                  }
-                ]
+                  ]
+                }
               }
-            }
+            },
+            "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
           },
-          "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
-        },
-        "maps": {
-          "icon": "ic-map",
-          "query": {
-            "filter": {
-              "wildcard": {
-                "capabilities_url": "http*"
+          "maps": {
+            "icon": "ic-map",
+            "query": {
+              "filter": {
+                "wildcard": {
+                  "capabilities_url": "http*"
+                }
               }
-            }
+            },
+            "search": "capabilities_url:http.*"
           },
-          "search": "capabilities_url:http.*"
-        },
-      }
-    },{
-      "id": "partner",
-      "label": "Bundesländern",
-      "queries": {
-        "bw": {
-          "icon": "images/partner/svg/bw.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "bw"
+        }
+      },{
+        "id": "partner",
+        "label": "Bundesländern",
+        "queries": {
+          "bw": {
+            "icon": "images/partner/svg/bw.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "bw"
+                }
               }
-            }
+            },
+            "search": "partner:bw"
           },
-          "search": "partner:bw"
-        },
-        "by": {
-          "icon": "images/partner/svg/by.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "by"
+          "by": {
+            "icon": "images/partner/svg/by.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "by"
+                }
               }
-            }
+            },
+            "search": "partner:by"
           },
-          "search": "partner:by"
-        },
-        "be": {
-          "icon": "images/partner/svg/be.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "be"
+          "be": {
+            "icon": "images/partner/svg/be.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "be"
+                }
               }
-            }
+            },
+            "search": "partner:be"
           },
-          "search": "partner:be"
-        },
-        "hb": {
-          "icon": "images/partner/svg/hb.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "hb"
+          "hb": {
+            "icon": "images/partner/svg/hb.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "hb"
+                }
               }
-            }
+            },
+            "search": "partner:hb"
           },
-          "search": "partner:hb"
-        },
-        "hh": {
-          "icon": "images/partner/svg/hh.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "hh"
+          "hh": {
+            "icon": "images/partner/svg/hh.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "hh"
+                }
               }
-            }
+            },
+            "search": "partner:hh"
           },
-          "search": "partner:hh"
-        },
-        "he": {
-          "icon": "images/partner/svg/he.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "he"
+          "he": {
+            "icon": "images/partner/svg/he.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "he"
+                }
               }
-            }
+            },
+            "search": "partner:he"
           },
-          "search": "partner:he"
-        },
-        "mv": {
-          "icon": "images/partner/svg/mv.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "mv"
+          "mv": {
+            "icon": "images/partner/svg/mv.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "mv"
+                }
               }
-            }
+            },
+            "search": "partner:mv"
           },
-          "search": "partner:mv"
-        },
-        "ni": {
-          "icon": "images/partner/svg/ni.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "ni"
+          "ni": {
+            "icon": "images/partner/svg/ni.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "ni"
+                }
               }
-            }
+            },
+            "search": "partner:ni"
           },
-          "search": "partner:ni"
-        },
-        "nw": {
-          "icon": "images/partner/svg/nw.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "nw"
+          "nw": {
+            "icon": "images/partner/svg/nw.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "nw"
+                }
               }
-            }
+            },
+            "search": "partner:nw"
           },
-          "search": "partner:nw"
-        },
-        "rp": {
-          "icon": "images/partner/svg/rp.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "rp"
+          "rp": {
+            "icon": "images/partner/svg/rp.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "rp"
+                }
               }
-            }
+            },
+            "search": "partner:rp"
           },
-          "search": "partner:rp"
-        },
-        "sl": {
-          "icon": "images/partner/svg/sl.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "sl"
+          "sl": {
+            "icon": "images/partner/svg/sl.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "sl"
+                }
               }
-            }
+            },
+            "search": "partner:sl"
           },
-          "search": "partner:sl"
-        },
-        "sn": {
-          "icon": "images/partner/svg/sn.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "sn"
+          "sn": {
+            "icon": "images/partner/svg/sn.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "sn"
+                }
               }
-            }
+            },
+            "search": "partner:sn"
           },
-          "search": "partner:sn"
-        },
-        "st": {
-          "icon": "images/partner/svg/st.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "st"
+          "st": {
+            "icon": "images/partner/svg/st.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "st"
+                }
               }
-            }
+            },
+            "search": "partner:st"
           },
-          "search": "partner:st"
-        },
-        "sh": {
-          "icon": "images/partner/svg/sh.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "sh"
+          "sh": {
+            "icon": "images/partner/svg/sh.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "sh"
+                }
               }
-            }
+            },
+            "search": "partner:sh"
           },
-          "search": "partner:sh"
-        },
-        "th": {
-          "icon": "images/partner/svg/th.svg",
-          "codelist": "110",
-          "query": {
-            "filter": {
-              "term": {
-                "partner": "th"
+          "th": {
+            "icon": "images/partner/svg/th.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "th"
+                }
               }
-            }
+            },
+            "search": "partner:th"
           },
-          "search": "partner:th"
-        },
-      }
-    },
-  ]
+        }
+      },
+    ]
 hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
+  exclude_from_search:
+    - 'datatype:address'
+    - 'isfolder:true'
   summary_replace_newline: ' '
   summary_lines_limit: 5
   links_max: 5

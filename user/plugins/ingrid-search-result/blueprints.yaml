@@ -34,11 +34,35 @@ form:
       type: text
       label: PLUGIN_INGRID_SEARCH_RESULT.API_URL
       help: PLUGIN_INGRID_SEARCH_RESULT.API_URL_HELP
-    hits_num:
-      type: number
-      label: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER
-      help: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER_HELP
-      default: 10
-      validate:
-        min: 1
-        max: 100
+    hit_search:
+      hits_num:
+        type: number
+        label: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER
+        help: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER_HELP
+        default: 10
+        validate:
+          min: 1
+          max: 100
+      exclude_from_search:
+        type: selectize
+        selectize:
+          options:
+            - text: "datatype:address"
+              value: "datatype:address"
+            - text: "isfolder:true"
+              value: "isfolder:true"
+        label: Aus der Suche ausschließen
+        validate:
+          type: commalist
+    categories:
+      exclude_from_search:
+        type: selectize
+        selectize:
+          options:
+            - text: "datatype:address"
+              value: "datatype:address"
+            - text: "isfolder:true"
+              value: "isfolder:true"
+        label: Aus den Kategorien ausschließen
+        validate:
+          type: commalist

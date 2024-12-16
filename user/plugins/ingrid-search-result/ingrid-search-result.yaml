@@ -1,253 +1,257 @@
 enabled: true
+mocking: false
 routes:
   - /
   - /freitextsuche
 ingrid_api_url: 'https://api.dev.informationgrid.eu/'
-hits_num: 10
-mocking: false
-facet_config: [
-  {
-    "id": "special-types",
-    "queries": {
-      "websites": {
-        "query": {
-          "filter": {
-            "term": {
-              "datatype": "www"
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "special-types",
+      "queries": {
+        "websites": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "www"
+              }
             }
-          }
+          },
+          "search": "datatype:www"
         },
-        "search": "datatype:www"
-      },
-      "metadata": {
-        "query": {
-          "filter": {
-            "term": {
-              "datatype": "metadata"
+        "metadata": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
             }
-          }
+          },
+          search: "datatype:metadata"
         },
-        search: "datatype:metadata"
-      },
-      "inspire": {
-        "query": {
-          "filter": {
-            "term": {
-              "t04_search.searchterm": "inspireidentifiziert"
+        "inspire": {
+          "query": {
+            "filter": {
+              "term": {
+                "t04_search.searchterm": "inspireidentifiziert"
+              }
             }
-          }
+          },
+          "search": "t04_search.searchterm:inspireidentifiziert"
         },
-        "search": "t04_search.searchterm:inspireidentifiziert"
-      },
-      "open-data": {
-        "query": {
-          "filter": {
-            "bool": {
-              "should": [
-                {
-                  "term": {
-                    "t04_search.searchterm": "opendata"
+        "open-data": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
                   }
-                },
-                {
-                  "term": {
-                    "t04_search.searchterm": "opendataident"
-                  }
-                }
-              ]
+                ]
+              }
             }
-          }
+          },
+          "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
         },
-        "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
-      },
-      "hvd": {
-        "query": {
-          "filter": {
-            "term": {
-              "is_hvd": "true"
+        "hvd": {
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": "true"
+              }
             }
-          }
+          },
+          "search": "is_hvd:true"
         },
-        "search": "is_hvd:true"
-      },
-      "maps": {
-        "query": {
-          "filter": {
-            "wildcard": {
-              "capabilities_url": "http*"
+        "maps": {
+          "query": {
+            "filter": {
+              "wildcard": {
+                "capabilities_url": "http*"
+              }
             }
-          }
+          },
+          "search": "capabilities_url:http.*"
         },
-        "search": "capabilities_url:http.*"
-      },
-      "address": {
-        "query": {
-          "filter": {
-            "term": {
-              "datatype": "address"
+        "address": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "address"
+              }
             }
-          }
+          },
+          "search": "datatype:address"
         },
-        "search": "datatype:address"
-      },
-    }
-  },
-  {
-    "id": "doc-types",
-    "codelist": "8000",
-    "query": {
-      "terms": {
-        "field": "t01_object.obj_class",
-        "exclude": "1000"
       }
     },
-    "search": "t01_object.obj_class:%d"
-  },
-  {
-    "id": "partner",
-    "codelist": "110",
-    "query": {
-      "terms": {
-        "field": "partner"
-      }
+    {
+      "id": "doc-types",
+      "codelist": "8000",
+      "query": {
+        "terms": {
+          "field": "t01_object.obj_class",
+          "exclude": "1000"
+        }
+      },
+      "search": "t01_object.obj_class:%d"
     },
-    "search": "partner:%s"
-  },
-  {
-    "id": "bbox",
-    "filter": "{\"range\": {\"x1\": {\"gte\": %f } } }"
-  },
-  {
-    "id": "actuality",
-    "queries": {
-      "lastMonth": {
-        "query": {
-          "filter": {
-            "range": {
-              "modified": {
-                "gte": "now-1M"
+    {
+      "id": "partner",
+      "codelist": "110",
+      "query": {
+        "terms": {
+          "field": "partner"
+        }
+      },
+      "search": "partner:%s"
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f } } }"
+    },
+    {
+      "id": "actuality",
+      "queries": {
+        "lastMonth": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1M"
+                }
               }
             }
           }
-        }
-      },
-      "lastThreeMonth": {
-        "query": {
-          "filter": {
-            "range": {
-              "modified": {
-                "gte": "now-3M"
+        },
+        "lastThreeMonth": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-3M"
+                }
               }
             }
           }
-        }
-      },
-      "lastYear": {
-        "query": {
-          "filter": {
-            "range": {
-              "modified": {
-                "gte": "now-1y"
+        },
+        "lastYear": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1y"
+                }
               }
             }
           }
-        }
-      },
-      "lastfiveYears": {
-        "query": {
-          "filter": {
-            "range": {
-              "modified": {
-                "gte": "now-5y"
+        },
+        "lastfiveYears": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-5y"
+                }
               }
             }
           }
-        }
-      },
-      "olderfiveYears": {
-        "query": {
-          "filter": {
-            "range": {
-              "modified": {
-                "lte": "now-5y"
+        },
+        "olderfiveYears": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "lte": "now-5y"
+                }
               }
             }
           }
         }
       }
     }
-  }
-]
-facet_config_categories: [
-  {
-    "id": "special-types",
-    "queries": {
-      "websites": {
-        "icon": "ic-www",
-        "query": {
-          "filter": {
-            "term": {
-              "datatype": "www"
+  ]
+  exclude_from_search:
+categories:
+  facet_config: [
+    {
+      "id": "special-types",
+      "queries": {
+        "websites": {
+          "icon": "ic-www",
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "www"
+              }
             }
-          }
+          },
+          "search": "datatype:www"
         },
-        "search": "datatype:www"
-      },
-      "metadata": {
-        "icon": "ic-metadata",
-        "query": {
-          "filter": {
-            "term": {
-              "datatype": "metadata"
+        "metadata": {
+          "icon": "ic-metadata",
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
             }
-          }
+          },
+          search: "datatype:metadata"
         },
-        search: "datatype:metadata"
-      },
-      "inspire": {
-        "icon": "ic-inspire",
-        "query": {
-          "filter": {
-            "term": {
-              "t04_search.searchterm": "inspireidentifiziert"
+        "inspire": {
+          "icon": "ic-inspire",
+          "query": {
+            "filter": {
+              "term": {
+                "t04_search.searchterm": "inspireidentifiziert"
+              }
             }
-          }
+          },
+          "search": "t04_search.searchterm:inspireidentifiziert"
         },
-        "search": "t04_search.searchterm:inspireidentifiziert"
-      },
-      "open-data": {
-        "icon": "ic-opendata",
-        "query": {
-          "filter": {
-            "bool": {
-              "should": [
-                {
-                  "term": {
-                    "t04_search.searchterm": "opendata"
+        "open-data": {
+          "icon": "ic-opendata",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
                   }
-                },
-                {
-                  "term": {
-                    "t04_search.searchterm": "opendataident"
-                  }
-                }
-              ]
+                ]
+              }
             }
-          }
+          },
+          "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
         },
-        "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
-      },
-      "maps": {
-        "icon": "ic-map",
-        "query": {
-          "filter": {
-            "wildcard": {
-              "capabilities_url": "http*"
+        "maps": {
+          "icon": "ic-map",
+          "query": {
+            "filter": {
+              "wildcard": {
+                "capabilities_url": "http*"
+              }
             }
-          }
+          },
+          "search": "capabilities_url:http.*"
         },
-        "search": "capabilities_url:http.*"
-      },
+      }
     }
-  }
-]
+  ]
+  exclude_from_search:

@@ -93,6 +93,9 @@ menu:
       path: /accessibility
 home:
   rss_feeds_limit: 6
+  categories:
+    exclude_from_search:
+      - 'isfolder:true'
 hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
@@ -103,6 +106,8 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: false
+  exclude_from_search:
+    - 'isfolder:true'
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'

@@ -7,8 +7,13 @@ use stdClass;
 class ElasticsearchService
 {
 
-    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets): string
+    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch): string
     {
+        if(!empty($query) && count($excludeFromSearch) > 0) {
+            foreach ($excludeFromSearch as $exclude) {
+                $query .= ' -' . $exclude;
+            }
+        }
         $aggs = ElasticsearchService::mapFacets($query, $facet_config, $selectedFacets);
         $queryFromFacets = ElasticsearchService::getQueryFromFacets($facet_config, $selectedFacets);
 
