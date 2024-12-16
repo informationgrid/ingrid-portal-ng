@@ -16,81 +16,81 @@ footer:
 menu:
   main:
     -
-      path: search
+      path: /search
       icon: ic-ic-lupe
       menu_title:
     -
-      path: map
+      path: /map
       icon: ic-ic-karten
       menu_title:
     -
-      path: measure
+      path: /measure
       icon: ic-ic-chemie
       menu_title:
     -
-      path: catalog
+      path: /catalog
       icon: ic-ic-datenkataloge
       menu_title:
     -
-      path: api
+      path: /api
       icon: ic-ic-center
       menu_title:
   site:
     -
-      path: search
+      path: /search
       highlighted: true
     -
-      path: map
+      path: /map
       highlighted: true
     -
-      path: measure
+      path: /measure
       highlighted: true
     -
-      path: catalog
+      path: /catalog
       highlighted: true
     -
-      path: api
+      path: /api
       highlighted: true
     -
-      path: about
+      path: /about
       highlighted: true
     -
-      path: datasource
+      path: /datasource
       highlighted: true
     -
-      path: provider
+      path: /provider
       highlighted: true
     -
-      path: help
+      path: /help
       highlighted: false
     -
-      path: contact
+      path: /contact
       highlighted: false
     -
-      path: sitemap
+      path: /sitemap
       highlighted: false
     -
-      path: imprint
+      path: /imprint
       highlighted: false
     -
-      path: privacy
+      path: /privacy
       highlighted: false
     -
-      path: accessibility
+      path: /accessibility
       highlighted: false
   footer:
     -
-      path: help
+      path: /help
     -
-      path: contact
+      path: /contact
     -
-      path: sitemap
+      path: /sitemap
     -
-      path: imprint
+      path: /imprint
     -
-      path: privacy
+      path: /privacy
     -
-      path: accessibility
+      path: /accessibility
 home:
   rss_feeds_limit: 6
 hit:
@@ -155,3 +155,4 @@ measure:
   elastic: 'https://dev.informationgrid.eu/elastic-measure/'
 system:
   pages_to_404:
+  pages_to_redirect:

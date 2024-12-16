@@ -3,6 +3,7 @@ namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
+use Grav\Common\Grav;
 
 /**
  * Class InGridGravUtilsPlugin
@@ -54,9 +55,8 @@ class InGridGravUtilsPlugin extends Plugin
             return;
         }
 
-        $uri = $this->grav['uri'];
         $config = $this->config();
-
+        $uri = $this->grav['uri'];
         $uri_path = $uri->path();
         $routes = $config['routes'] ?? null;
         if ($routes && in_array($uri_path, $routes)) {
@@ -70,11 +70,9 @@ class InGridGravUtilsPlugin extends Plugin
             }
         } else {
             // Check themes config for redirected pages
-            $theme = $this->grav['config']->get('system.pages.theme');
-            $pages_not_allow = $this->grav['config']->get('themes.' . $theme . '.system.pages_to_404');
-            if (in_array($uri_path, (array)$pages_not_allow)) {
-                $this->grav->redirect('/error');
-            }
+            $this->enable([
+                'onPageInitialized' => ['onPageInitialized', 0],
+            ]);
         }
     }
 
@@ -96,7 +94,21 @@ class InGridGravUtilsPlugin extends Plugin
     }
     public function onPageInitialized(): void
     {
-        echo '<script>console.log("Utils");</script>';
+        $uri = $this->grav['uri'];
+        $uri_path = $uri->path();
+        $page = $this->grav['pages']->find($uri_path);
+        if ($page) {
+            $theme = $this->grav['config']->get('system.pages.theme');
+            $pages_to_404 = $this->grav['config']->get('themes.' . $theme . '.system.pages_to_404');
+            $pages_to_redirect = $this->grav['config']->get('themes.' . $theme . '.system.pages_to_redirect');
+            if (!empty($pages_to_404)) {
+                if (in_array($page->rawRoute(), $pages_to_404)) {
+                    $this->grav->redirect('/error');
+                }
+            } else if (!empty($pages_to_redirect)){
+
+            }
+        }
     }
 
     public function onTwigSiteVariables()

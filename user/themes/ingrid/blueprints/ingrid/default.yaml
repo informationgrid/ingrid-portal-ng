@@ -148,15 +148,18 @@ form:
                   label: Hauptmenü
                   style: vertical
                   controls: bottom
-                  collapsed: true
+                  collapsed: false
 
                   fields:
                     .ident:
                       id: key
                       label: ID
                     .path:
-                      type: text
+                      type: pages
                       label: Pfad
+                      show_modular: false
+                      show_root: false
+                      show_all: false
                     .icon:
                       type: text
                       label: Icon
@@ -174,15 +177,18 @@ form:
                   label: Seitenmenü
                   style: vertical
                   controls: bottom
-                  collapsed: true
+                  collapsed: false
 
                   fields:
                     .ident:
                       id: key
                       label: ID
                     .path:
-                      type: text
+                      type: pages
                       label: Pfad
+                      show_modular: false
+                      show_root: false
+                      show_all: false
                     .highlighted:
                       type: toggle
                       label: Hauptmenü
@@ -208,15 +214,18 @@ form:
                   label: Fußmenü
                   style: vertical
                   controls: bottom
-                  collapsed: true
+                  collapsed: false
 
                   fields:
                     .ident:
                       id: key
                       label: ID
                     .path:
-                      type: text
+                      type: pages
                       label: Pfad
+                      show_modular: false
+                      show_root: false
+                      show_all: false
 
             system.section:
               type: section

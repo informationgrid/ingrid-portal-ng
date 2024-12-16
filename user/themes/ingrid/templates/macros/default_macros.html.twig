@@ -22,7 +22,7 @@
         {% set page_title = '' %}
         {% set page_menu_title = '' %}
         {% for p in pages.children.visible %}
-            {% if menuentry.path == p.folder %}
+            {% if menuentry.path == '/' ~ p.folder %}
                 {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
                 {% set page_url = p.url %}
                 {% set page_title = p.title %}
@@ -55,7 +55,7 @@
                     {% set page_title = '' %}
                     {% set page_menu_title = '' %}
                     {% for p in pages.children.visible %}
-                        {% if menuentry.path == p.folder %}
+                        {% if menuentry.path == '/' ~ p.folder %}
                             {% set page_active = (p.active or p.activeChild) ? 'is-active' : '' %}
                             {% set page_url = p.url %}
                             {% set page_title = p.title %}
@@ -77,7 +77,7 @@
                     {% set page_title = '' %}
                     {% set page_menu_title = '' %}
                     {% for p in pages.children.visible %}
-                        {% if menuentry.path == p.folder %}
+                        {% if menuentry.path == '/' ~ p.folder %}
                             {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
                             {% set page_url = p.url %}
                             {% set page_title = p.title %}
@@ -120,7 +120,7 @@
         {% set page_title = '' %}
         {% set page_menu_title = '' %}
         {% for p in pages.children.visible %}
-            {% if menuentry.path == p.folder %}
+            {% if menuentry.path == '/' ~ p.folder %}
                 {% set page_active = (p.active or p.activeChild) ? 'active' : '' %}
                 {% set page_url = p.url %}
                 {% set page_title = p.title %}
