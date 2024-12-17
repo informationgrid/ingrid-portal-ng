@@ -56,21 +56,22 @@ else
   sed -ri "s/theme: quark/theme: ${THEME}/" "$SYSTEM_YAML"
 fi
 
+# Update system
+if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; then
+  if ! grep -q "^  markdown:" "$SYSTEM_YAML"; then
+    echo "  markdown:" >> "$SYSTEM_YAML"
+    echo "    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}" >> "$SYSTEM_YAML"
+  else
+    sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
+  fi
+fi
+
 sed -ri "s/timezone: null/timezone: 'Europe/Berlin'/" "$SYSTEM_YAML"
 
 mkdir -p assets backup cache images logs tmp
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2
 chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
-
-# Update system
-if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; then
-  if ! grep -q "^    auto_line_breaks:" "$SYSTEM_YAML"; then
-    sed -i -e "s@^  markdown:@  markdown:\n    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
-  else
-    sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
-  fi
-fi
 
 # Update codelist plugin
 if [ "$CODELIST_API" ]; then
