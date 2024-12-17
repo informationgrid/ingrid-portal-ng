@@ -25,8 +25,8 @@
             {% if menuentry.path == '/' ~ p.folder %}
                 {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
                 {% set page_url = p.url %}
-                {% set page_title = p.title %}
-                {% set page_menu_title = p.header.menu_title %}
+                {% set page_title = p.header.custom_title.html %}
+                {% set page_menu_title = p.header.custom_title.menu %}
             {% endif %}
         {% endfor %}
         {% if page_url is not empty %}
@@ -58,8 +58,8 @@
                         {% if menuentry.path == '/' ~ p.folder %}
                             {% set page_active = (p.active or p.activeChild) ? 'is-active' : '' %}
                             {% set page_url = p.url %}
-                            {% set page_title = p.title %}
-                            {% set page_menu_title = p.header.menu_title %}
+                            {% set page_title = p.header.custom_title.html ?? p.title %}
+                            {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
                         {% endif %}
                     {% endfor %}
                     {% if page_url is not empty %}
@@ -80,8 +80,8 @@
                         {% if menuentry.path == '/' ~ p.folder %}
                             {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
                             {% set page_url = p.url %}
-                            {% set page_title = p.title %}
-                            {% set page_menu_title = p.header.menu_title %}
+                            {% set page_title = p.header.custom_title.html ?? p.title  %}
+                            {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
                         {% endif %}
                     {% endfor %}
                     {% if page_url is not empty %}
@@ -123,8 +123,8 @@
             {% if menuentry.path == '/' ~ p.folder %}
                 {% set page_active = (p.active or p.activeChild) ? 'active' : '' %}
                 {% set page_url = p.url %}
-                {% set page_title = p.title %}
-                {% set page_menu_title = p.header.menu_title %}
+                {% set page_title = p.header.custom_title.html ?? p.title %}
+                {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
             {% endif %}
         {% endfor %}
         {% if page_url is not empty %}

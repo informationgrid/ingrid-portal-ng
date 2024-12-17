@@ -1,9 +1,11 @@
 ---
-title: PAGES.ABOUT
-menu_title: PAGES.ABOUT_MENU_TITLE
+title: Über uns
+custom_title:
+  html: PAGES.ABOUT
+  menu: PAGES.ABOUT_MENU_TITLE
 visible: true
 routes:
-    default: /portrait
+  default: /portrait
 ---
 
 Willkommen im NUMIS-Portal, dem Umweltportal des Landes Niedersachsen! Wir bieten Ihnen einen zentralen Zugriff auf umweltrelevante Internetseiten und Datenkataloge von öffentlichen Institutionen und Organisationen aus Niedersachsen. Sie können darüber hinaus aktuelle Nachrichten, Umweltmesswerte und Umweltkarten über das NUMIS-Portal recherchieren.
@@ -20,13 +22,13 @@ Die NUMIS-Softwarekomponenten werden im Rahmen des Projekts “InGrid - Pflege u
 
 Die Richtlinie 2003/4/EG des Europäischen Parlaments und des Rates über den Zugang der Öffentlichkeit zu Umweltinformationen, kurz "Umweltinformationsrichtlinie", dokumentiert, dass die europäische Politik die Behörden in der Pflicht sieht, ihre Arbeit transparent zu machen und aktiv die in den Behörden vorliegenden Umweltinformationen zu verbreiten. Neben erhöhter Transparenz im Zusammenhang von behördlichen Umweltinformationen und Umweltdaten, werden Teilhabe und Schaffung von Umweltbewusstsein bei den Bürgern und Bürgerinnen Europas als Ziele adressiert.
 
-Artikel 7 (2) der Richtlinie legt die Informationen fest, die zugänglich zu machen bzw. aktiv zu verbreiten sind: 
-* (a) den Wortlaut völkerrechtlicher Verträge, Übereinkünfte und Vereinbarungen sowie gemeinschaftlicher, nationaler, regionaler oder lokaler Rechtsvorschriften über die Umwelt ...; 
+Artikel 7 (2) der Richtlinie legt die Informationen fest, die zugänglich zu machen bzw. aktiv zu verbreiten sind:
+* (a) den Wortlaut völkerrechtlicher Verträge, Übereinkünfte und Vereinbarungen sowie gemeinschaftlicher, nationaler, regionaler oder lokaler Rechtsvorschriften über die Umwelt ...;
 * (b) Politiken, Pläne und Programme mit Bezug zur Umwelt;
-* (c) Berichte über die Fortschritte bei der Umsetzung der unter Buchstaben a) und b) genannten Punkte, ...; 
-* (d) Umweltzustandsberichte ...; 
-* (e) Daten oder Zusammenfassungen von Daten aus der Überwachung von Tätigkeiten, die sich auf die Umwelt auswirken oder wahrscheinlich auswirken; 
-* (f) Genehmigungen, die erhebliche Auswirkungen auf die Umwelt haben, und Umwelt-vereinbarungen ...; 
+* (c) Berichte über die Fortschritte bei der Umsetzung der unter Buchstaben a) und b) genannten Punkte, ...;
+* (d) Umweltzustandsberichte ...;
+* (e) Daten oder Zusammenfassungen von Daten aus der Überwachung von Tätigkeiten, die sich auf die Umwelt auswirken oder wahrscheinlich auswirken;
+* (f) Genehmigungen, die erhebliche Auswirkungen auf die Umwelt haben, und Umwelt-vereinbarungen ...;
 * (g) Umweltverträglichkeitsprüfungen und Risikobewertungen ..."
 
 Hinsichtlich der aktiven Verbreitung von Umweltinformationen durch die zuständigen Behörden wird in Artikel 7 (1) ausdrücklich auf die Bedeutung elektronischer Kommunikationswege hingewiesen:

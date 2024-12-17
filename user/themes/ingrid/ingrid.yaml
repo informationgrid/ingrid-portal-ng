@@ -92,6 +92,17 @@ menu:
     -
       path: /accessibility
 home:
+  sort_modules:
+    -
+      path: /home/_search
+    -
+      path: /home/_warning
+    -
+      path: /home/_categories
+    -
+      path: /home/_news
+    -
+      path: /home/_inform
   rss_feeds_limit: 6
   categories:
     exclude_from_search:

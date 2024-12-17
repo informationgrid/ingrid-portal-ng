@@ -1,10 +1,12 @@
 ---
-title: PAGES.API
-content_title: PAGES.API_CONTENT
-menu_title: PAGES.API_MENU_TITLE
+title: API
+custom_title:
+  html: PAGES.API
+  content: PAGES.API_CONTENT
+  menu: PAGES.API_MENU_TITLE
 visible: true
 routes:
-    default: /api
+  default: /api
 ---
 
 ## OGC API Features

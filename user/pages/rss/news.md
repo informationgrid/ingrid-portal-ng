@@ -1,6 +1,8 @@
 ---
-title: PAGES.RSS
-menu_title: PAGES.RSS_MENU_TITLE
+title: Aktuelles
+custom_title:
+  html: PAGES.RSS
+  menu: PAGES.RSS_MENU_TITLE
 visible: true
 routes:
   default: '/neuigkeiten'

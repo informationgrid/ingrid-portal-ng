@@ -1,9 +1,11 @@
 ---
-title: PAGES.ACCESSIBILITY
-menu_title: PAGES.ACCESSIBILITY_MENU_TITLE
+title: Barrierefreiheit
+custom_title:
+  html: PAGES.ACCESSIBILITY
+  menu: PAGES.ACCESSIBILITY_MENU_TITLE
 visible: true
 routes:
-    default: /barrierefreiheit
+  default: /barrierefreiheit
 ---
 
 Das Niedersächsische Ministerium für Umwelt, Energie und Klimaschutz ist bemüht, die Internetseite [numis.niedersachsen.de](https://numis.niedersachsen.de/) barrierefrei zugänglich zu machen. Rechtsgrundlage sind das Niedersächsische Behindertengleichstellungsgesetz (NBGG) und die Barrierefreie Informationstechnik-Verordnung (BITV 2.0) in ihrer jeweils gültigen Fassung.

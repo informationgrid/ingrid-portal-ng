@@ -1,6 +1,8 @@
 ---
-title: PAGES.CONTACT
-menu_title: PAGES.CONTACT_MENU_TITLE
+title: Kontakt
+custom_title:
+  html: PAGES.CONTACT
+  menu: PAGES.CONTACT_MENU_TITLE
 visible: true
 routes:
   default: '/kontakt'

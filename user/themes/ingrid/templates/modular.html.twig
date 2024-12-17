@@ -21,9 +21,18 @@
 
 {% block body %}
     <div class="body" role="main">
-    {% for module in page.collection() if module.template != 'modular/hero' %}
-        <div id="{{ module.menu|hyphenize }}"></div>
-        {{ module.content|raw }}
-    {% endfor %}
+    {% set sortModules  = theme_var(page.folder ~ '.sort_modules') %}
+    {% if sortModules %}
+        {% for sortModule in sortModules %}
+            {% set module = page.find(sortModule.path) %}
+            <div id="{{ module.menu|hyphenize }}"></div>
+            {{ module.content|raw }}
+        {% endfor %}
+    {% else %}
+        {% for module in page.collection() if module.template != 'modular/hero' %}
+            <div id="{{ module.menu|hyphenize }}"></div>
+            {{ module.content|raw }}
+        {% endfor %}
+    {% endif %}
     </div>
 {% endblock %}

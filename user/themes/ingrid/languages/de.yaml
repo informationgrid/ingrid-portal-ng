@@ -1026,21 +1026,6 @@ SEARCH_DETAIL:
 SITEMAP:
     AREA_MAIN: Hauptbereich
     AREA_FOOTER: Fußbereich
-    PAGES:
-        SEARCH_TOOLTIP: Zur Freitextsuche nach Informationen
-        MAP_TOOLTIP: Interaktive thematische Karten von Partnern und Informationsanbietern
-        MEASURE_TOOLTIP: Zur Suche nach Messdaten
-        CATALOG_TOOLTIP: Eingebundene Datenkataloge und Informationen
-        API_TOOLTIP: API Übersicht
-        ABOUT_TOOLTIP: Hintergrundinformationen zu InGrid-Portal
-        PROVIDER_TOOLTIP: Liste der Kooperationspartner von InGrid-Portal
-        DATASOURCE_TOOLTIP: Liste der angeschlossenen Daten- und Informationsquellen
-        HELP_TOOLTIP: Erläuterungen zur Nutzung von InGrid-Portal
-        CONTACT_TOOLTIP: Ihre Nachricht, Fragen oder Anregungen direkt an die InGrid-Portal
-        SITEMAP_TOOLTIP: Alle Inhalte von InGrid-Portal auf einen Blick
-        IMPRINT_TOOLTIP: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
-        PRIVACY_TOOLTIP: Unsere Verpflichtung zum Umgang mit persönlichen Informationen
-        ACCESSIBILITY_TOOLTIP: Erläuterung zur Barrierefreiheit
 
 CONTACT:
     FORM: Kontaktformular

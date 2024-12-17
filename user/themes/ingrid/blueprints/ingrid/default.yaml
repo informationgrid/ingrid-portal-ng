@@ -160,6 +160,7 @@ form:
                       show_modular: false
                       show_root: false
                       show_all: false
+                      limit_levels: 2
                     .icon:
                       type: text
                       label: Icon
@@ -189,6 +190,7 @@ form:
                       show_modular: false
                       show_root: false
                       show_all: false
+                      limit_levels: 2
                     .highlighted:
                       type: toggle
                       label: Hauptmenü
@@ -226,6 +228,7 @@ form:
                       show_modular: false
                       show_root: false
                       show_all: false
+                      limit_levels: 2
 
             system.section:
               type: section
@@ -237,18 +240,45 @@ form:
               label: Seiten ausschließen
               help: Tragen Sie den Pfad der Portal-URL ein.
               validate:
-                type: commalist
+                type: array
               show_modular: false
               show_root: false
               show_all: false
               multiple: true
-              default: []
 ## Tab home
         tab_home:
           type: tab
           title: Startseite
 
           fields:
+            home.sort_modules_fieldset:
+              type: fieldset
+              title: Startseite definieren
+              help: Konfiguriere und sortiere die Startseite
+              text: Konfiguriere und sortiere die Startseite.
+              collapsed: true
+              fields:
+                home.sort_modules:
+                  type: list
+                  label: Fußmenü
+                  style: vertical
+                  controls: bottom
+                  collapsed: false
+                  collapsible: false
+
+                  fields:
+                    .ident:
+                      id: key
+                      label: ID
+                    .path:
+                      type: pages
+                      label: Seiten Modul
+                      help: Wählen Sie das Modul aus.
+                      show_modular: true
+                      show_root: false
+                      show_all: false
+                      start_route: /home
+
 
             home.categories.exclude_from_search:
               type: selectize
@@ -259,6 +289,7 @@ form:
                   - text: "isfolder:true"
                     value: "isfolder:true"
               label: Aus den Kategorien ausschließen
+              help: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
               validate:
                 type: commalist
 
@@ -271,7 +302,8 @@ form:
               validate:
                 type: number
 
-## Tab search
+
+        ## Tab search
         tab_search:
           type: tab
           title: Treffer

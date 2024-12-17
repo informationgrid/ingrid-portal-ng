@@ -1,9 +1,11 @@
 ---
-title: PAGES.IMPRINT
-menu_title: PAGES.IMPRINT_MENU_TITLE
+title: Impressum
+custom_title:
+  html: PAGES.IMPRINT
+  menu: PAGES.IMPRINT_MENU_TITLE
 visible: true
 routes:
-    default: /impressum
+  default: /impressum
 ---
 
 ### Herausgeber

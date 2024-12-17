@@ -5,7 +5,16 @@
 <head>
 {% block head %}
     <meta charset="utf-8" />
-    <title>{% if page_custom_title %}{{ page_custom_title }} | {% elseif header.title %}{{ header.title|t|e }} | {% endif %}{{ header_title_extend|e }}</title>
+    <title>
+        {% if page_custom_title %}
+            {{ page_custom_title }} |
+        {% elseif header.custom_title.html %}
+            {{ header.custom_title.html|t|e }} |
+         {% elseif header.title %}
+            {{ header.title }} |
+        {% endif %}
+        {{ header_title_extend|e }}
+    </title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,10 +80,10 @@
                         <div class="row align-center">
                             <div class="large-20 columns dark">
                                 <h1>
-                                    {% if page.header.content_title %}
-                                        {{ page.header.content_title|t }}
+                                    {% if page.header.custom_title.content %}
+                                        {{ page.header.custom_title.content|t }}
                                     {% else %}
-                                        {{ page.header.title|t }}
+                                        {{ page.header.custom_title.html|t }}
                                     {% endif %}
                                 </h1>
                             </div>

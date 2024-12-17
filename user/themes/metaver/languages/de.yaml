@@ -9,13 +9,6 @@ PAGES:
   SITEMAP_CONTENT: Inhalt
 
 SITEMAP:
-  PAGES:
-    ABOUT_TOOLTIP: Hintergrundinformationen zu MetaVer
-    PROVIDER_TOOLTIP: Liste der Kooperationspartner von MetaVer
-    HELP_TOOLTIP: Erläuterungen zur Nutzung von MetaVer
-    CONTACT_TOOLTIP: Ihre Nachricht, Fragen oder Anregungen direkt an die MetaVer
-    SITEMAP_TOOLTIP: Alle Inhalte von MetaVer auf einen Blick
-    IMPRINT_TOOLTIP: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
 
 SEARCH:
   PORTLET_TITLE_1: Ihr zentraler Zugangspunkt

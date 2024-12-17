@@ -1,6 +1,8 @@
 ---
-title: PAGES.MEASURE
-menu_title: PAGES.MEASURE_MENU_TITLE
+title: Messwerte
+custom_title:
+  html: PAGES.MEASURE
+  menu: PAGES.MEASURE_MENU_TITLE
 visible: true
 routes:
   default: '/messwertsuche'

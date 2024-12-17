@@ -1026,21 +1026,6 @@ SEARCH_DETAIL:
 SITEMAP:
     AREA_MAIN: Main menu
     AREA_FOOTER: Footer
-    PAGES:
-        SEARCH_TOOLTIP: Full text search for environmental information
-        MAP_TOOLTIP: Go to interactive thematic maps from federation, federal states and local authorities
-        MEASURE_TOOLTIP: Search for environmental monitoring data
-        CATALOG_TOOLTIP: Go to the list of  connected environmental data catalogues and environmental information
-        API_TOOLTIP: API
-        ABOUT_TOOLTIP: Features and Portrait of InGrid-Portal
-        PROVIDER_TOOLTIP: List of all cooperation partners of InGrid-Portal
-        DATASOURCE_TOOLTIP: List of connected data sources
-        HELP_TOOLTIP: Information and help on how to use InGrid-Portal
-        CONTACT_TOOLTIP: For comments, questions or suggestions please click here and contact the Coordination Center of InGrid-Portal
-        SITEMAP_TOOLTIP: Structured overview of the contents of InGrid-Portal website
-        IMPRINT_TOOLTIP: Responsibility, implementation & operation of InGrid-Portal, terms of use, disclaimer
-        PRIVACY_TOOLTIP: Our commitment to privacy
-        ACCESSIBILITY_TOOLTIP: Accessibility
 
 CONTACT:
     FORM: Contact form

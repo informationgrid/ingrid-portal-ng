@@ -1,5 +1,7 @@
 ---
-title: PAGES.HOME
+title: Startseite
+custom_title:
+  html: PAGES.HOME
 visible: true
 routes:
   default: '/startseite'

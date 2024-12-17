@@ -1,6 +1,7 @@
 ---
-title: PAGES.DETAIL
-content_title: PAGES.DETAIL_CONTENT
+title: Detaildarstellung
+  page: PAGES.DETAIL
+  content: PAGES.DETAIL_CONTENT
 visible: true
 routes:
   default: '/trefferanzeige'
