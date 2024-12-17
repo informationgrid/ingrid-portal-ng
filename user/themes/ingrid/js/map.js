@@ -105,7 +105,7 @@ function nominatimSearch(e, nominatimUrl, isBoundary) {
     }
 }
 
-function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox){
+function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl, triggerNominatimOnInput, bbox){
     $('#filter-content-group').show();
     $('#spatial-filter-group').show();
     $('#spatial-content-tab').show();
@@ -120,14 +120,31 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
         document.querySelector("#search-map-overlay").close()
     }
 
-    searchMapSmall = L.map('search-map').setView([52, 10], 4);
-    searchMapBig = L.map('search-map-big');
+    searchMapSmall = L.map('search-map',{
+        epsg: epsg
+    }).setView([52, 10], 4);
+    searchMapBig = L.map('search-map-big', {
+        epsg: epsg
+    });
 
-    L.tileLayer(tileLayerUrl, {
-        maxZoom: 14,
-        attribution: 'Kartendaten &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> Mitwirkende',
-        useCache: true
-    }).addTo(searchMapSmall);
+    var bgLayerSmall = null;
+    if (wmsUrl && wmsName) {
+        bgLayerSmall = L.tileLayer(wmsUrl, {
+            layer: wmsName,
+            maxZoom: 14,
+            attribution: attribution,
+            opacity: opacity,
+            useCache: true
+        });
+    } else {
+        bgLayerSmall = L.tileLayer(tileLayerUrl, {
+            maxZoom: 14,
+            attribution: attribution,
+            opacity: opacity,
+            useCache: true
+        });
+    }
+    bgLayerSmall.addTo(searchMapSmall);
     L.control.zoom(false);
     searchMapSmall.attributionControl.setPrefix('');
 
@@ -188,11 +205,24 @@ function initSearchMap(tileLayerUrl, nominatimUrl, triggerNominatimOnInput, bbox
 
     $('#filter-content-group').hide();
 
-    L.tileLayer(tileLayerUrl, {
-        maxZoom: 14,
-        attribution: 'Kartendaten &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> Mitwirkende',
-        useCache: true
-    }).addTo(searchMapBig);
+    var bgLayerBig = null;
+    if (wmsUrl && wmsName) {
+        bgLayerBig = L.tileLayer(wmsUrl, {
+            layer: wmsName,
+            maxZoom: 14,
+            attribution: attribution,
+            opacity: opacity,
+            useCache: true
+        });
+    } else {
+        bgLayerBig = L.tileLayer(tileLayerUrl, {
+            maxZoom: 14,
+            attribution: attribution,
+            opacity: opacity,
+            useCache: true
+        });
+    }
+    bgLayerBig.addTo(searchMapBig);
     L.control.zoom(false);
     searchMapBig.attributionControl.setPrefix('');
 
