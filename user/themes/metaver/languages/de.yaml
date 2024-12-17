@@ -10,6 +10,12 @@ PAGES:
 
 SITEMAP:
 
+CONTACT:
+  FORM: Kontakt online
+  FORM_COMPANY: Welches Bundesland betrifft Ihre Anfrage? (optional)
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team MetaVer gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+
 SEARCH:
   PORTLET_TITLE_1: Ihr zentraler Zugangspunkt
   PORTLET_TITLE_2: zu den Metadaten&nbsp;

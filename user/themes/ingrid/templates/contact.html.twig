@@ -1,0 +1,36 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set theme = config.get('system.pages.theme') %}
+    <div class="body" role="main">
+        <div class="search-filtered row content-small">
+            <div class="columns">
+                {% set cmsPage = page.find('/contact/_themes/_' ~ theme) %}
+                {% if cmsPage %}
+                    {{ cmsPage.content|raw }}
+                {% endif %}
+                {% set theme = config.get('system.pages.theme') %}
+                {% set form = forms('contact-' ~ theme) %}
+                {% if form %}
+                    {% if cmsPage %}
+                        <div class="search-filtered">
+                    {% endif %}
+                        <h2>{{ "CONTACT.FORM"|t }}</h2>
+                        {% include 'forms/contact.html.twig' with { form: form } %}
+                    {% if cmsPage %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {% if cmsPage %}
+                        <div class="search-filtered">
+                    {% endif %}
+                        <h2>{{ "CONTACT.FORM"|t }}</h2>
+                        {% include 'forms/contact.html.twig' with { form: forms('contact-ingrid') } %}
+                    {% if cmsPage %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

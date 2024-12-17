@@ -14,6 +14,7 @@ class InGridSearchResultPlugin extends Plugin
 {
 
     var SearchService $service;
+    var int $hitsNum;
 
     /**
      * @return array
@@ -65,17 +66,17 @@ class InGridSearchResultPlugin extends Plugin
                 // Suche
 
                 // Plugin config
-                $hitsNum = $config['hit_search']['hits_num'];
+                $this->hitsNum = $config['hit_search']['hits_num'];
                 $facetConfig = $config['hit_search']['facet_config'];
                 $excludeFromSearch = $config['hit_search']['exclude_from_search'] ?? [];
 
                 // Theme config
                 $theme = $this->grav['config']->get('system.pages.theme');
                 $facetConfig = $this->grav['config']->get('themes.' . $theme . '.hit_search.facet_config') ?? $facetConfig;
-                $hitsNum = $this->grav['config']->get('themes.' . $theme . '.hit_search.hits_num') ?? $hitsNum;
+                $this->hitsNum = $this->grav['config']->get('themes.' . $theme . '.hit_search.hits_num') ?? $this->hitsNum;
                 $excludeFromSearch = $this->grav['config']->get('themes.' . $theme . '.hit_search.exclude_from_search') ?? $excludeFromSearch;
 
-                $this->service = new SearchServiceImpl($this->grav, $hitsNum, $facetConfig, $excludeFromSearch);
+                $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $excludeFromSearch);
                 $this->enable([
                     'onPageInitialized' => ['onPageInitialized', 0],
                     'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
@@ -125,6 +126,7 @@ class InGridSearchResultPlugin extends Plugin
             $this->grav['twig']->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
             $this->grav['twig']->twig_vars['search_result'] = $results;
             $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
+            $this->grav['twig']->twig_vars['hitsNum'] = $this->hitsNum;
             $this->grav['twig']->twig_vars['pagingUrl'] = $this->getPagingUrl($this->grav['uri']);
         }
     }

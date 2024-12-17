@@ -18,23 +18,18 @@ menu:
     -
       path: /search
       icon: ic-ic-lupe
-      menu_title:
     -
       path: /map
       icon: ic-ic-karten
-      menu_title:
     -
       path: /measure
       icon: ic-ic-chemie
-      menu_title:
     -
       path: /catalog
       icon: ic-ic-datenkataloge
-      menu_title:
     -
       path: /api
       icon: ic-ic-center
-      menu_title:
   site:
     -
       path: /search
@@ -111,14 +106,14 @@ hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
+  exclude_from_search:
+    - 'isfolder:true'
   summary_replace_newline: ' '
   summary_lines_limit: 5
   links_max: 5
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: false
-  exclude_from_search:
-    - 'isfolder:true'
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'

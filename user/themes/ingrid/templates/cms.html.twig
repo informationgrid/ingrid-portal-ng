@@ -1,10 +1,14 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
+    {% set theme = config.get('system.pages.theme') %}
     <div class="body" role="main">
         <div class="search-filtered row content-small">
             <div class="columns">
-                {{ page.content|raw }}
+                {% set cmsPage = page.find('/' ~ page.folder ~ '/_themes/_' ~ theme) %}
+                {% if cmsPage %}
+                    {{ cmsPage.content|raw }}
+                {% endif %}
             </div>
         </div>
     </div>
