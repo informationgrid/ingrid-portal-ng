@@ -64,7 +64,7 @@ chown www-data /proc/self/fd/1 /proc/self/fd/2
 chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 
 # Update system
-if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; the
+if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; then
   sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
 fi
 
