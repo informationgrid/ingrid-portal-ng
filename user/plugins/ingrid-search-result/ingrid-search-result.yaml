@@ -116,7 +116,7 @@ hit_search:
     },
     {
       "id": "bbox",
-      "filter": "{\"range\": {\"x1\": {\"gte\": %f } } }"
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}"
     },
     {
       "id": "actuality",
