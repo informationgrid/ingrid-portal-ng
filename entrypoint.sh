@@ -41,10 +41,18 @@ if ! grep -q "^languages:" "$SYSTEM_YAML"; then
   echo "languages:" >> "$SYSTEM_YAML"
   echo "  supported:" >> "$SYSTEM_YAML"
   echo "    - de" >> "$SYSTEM_YAML"
+  if [ "$LANG_EN_ENABLE" ]; then
+    echo "    - en" >> "$SYSTEM_YAML"
+  fi
   echo "  default_lang: de" >> "$SYSTEM_YAML"
   echo "  include_default_lang: false" >> "$SYSTEM_YAML"
 else
   sed -ri "s/supported: null/supported:\n    - de/" "$SYSTEM_YAML"
+  if [ "$LANG_EN_ENABLE" ]; then
+    if ! grep -q "^    - en" "$SYSTEM_YAML"; then
+      sed -i -e "s@^    - de@    - de\n    - en@" "$SYSTEM_YAML"
+    fi
+  fi
   sed -ri "s/default_lang: null/default_lang: de/" "$SYSTEM_YAML"
   sed -ri "s/include_default_lang: true/include_default_lang: false/" "$SYSTEM_YAML"
 fi
