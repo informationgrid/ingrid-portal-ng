@@ -63,6 +63,11 @@ mkdir -p assets backup cache images logs tmp
 chown www-data /proc/self/fd/1 /proc/self/fd/2
 chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 
+# Update system
+if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; the
+  sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
+fi
+
 # Update codelist plugin
 if [ "$CODELIST_API" ]; then
   sed -i -e "s@    url:.*@    url: \'${CODELIST_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
@@ -82,6 +87,7 @@ if [ "$INGRID_API" ]; then
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-datasources/ingrid-datasources.yaml
 fi
 
+# Update geo api
 if [ "$GEO_API_URL" ]; then
   sed -i -e "s@geo_api_url:.*@geo_api_url: \'${GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
   if [ "$GEO_API_USER" ]; then
