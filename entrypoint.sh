@@ -65,7 +65,11 @@ chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 
 # Update system
 if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; then
-  sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
+  if ! grep -q "^    auto_line_breaks:" "$SYSTEM_YAML"; then
+    sed -i -e "s@^  markdown:@  markdown:\n    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
+  else
+    sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
+  fi
 fi
 
 # Update codelist plugin
