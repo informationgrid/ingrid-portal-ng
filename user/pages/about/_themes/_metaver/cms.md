@@ -17,7 +17,7 @@ Die InGrid®-Software leistet in ihrer Struktur genau das, was Fachleute von ein
 
 Die Erfassung und Aktualisierung der Metadaten erfolgt hierbei mit dem InGrid®Editor. Der Editor ist eine Webanwendung mit einer einfach bedienbaren Oberfläche, die eine dezentrale Metadatenpflege über Standard-Browsertechnologie via Internet ermöglicht.
 
-Kontaktpersonen für die Länderkataloge:
+**Kontaktpersonen für die Länderkataloge:**
 Brandenburg: Frau Beate Lukas, E-Mail: [beate.lukas@mluk.brandenburg.de](mailto:beate.lukas@mluk.brandenburg.de)
 Freie Hansestadt Bremen: Herr Jörn Beulke, E-Mail: [Joern.Beulke@geo.bremen.de](mailto:Joern.Beulke@geo.bremen.de)
 Freie und Hansestadt Hamburg: Herr Dr. Kai-Uwe Krause, Email: [Kai-uwe.Krause@gv.hamburg.de](mailto:Kai-uwe.Krause@gv.hamburg.de)
