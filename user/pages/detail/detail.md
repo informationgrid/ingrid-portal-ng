@@ -2,7 +2,7 @@
 title: Detaildarstellung
 custom_title:
   html: PAGES.DETAIL
-  content: PAGES.DETAIL_CONTENT
+  menu: PAGES.DETAIL_MENU_TITLE
 visible: true
 routes:
   default: '/trefferanzeige'

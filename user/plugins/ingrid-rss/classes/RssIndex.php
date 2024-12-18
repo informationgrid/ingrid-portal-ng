@@ -53,7 +53,7 @@ class RssIndex
                     $title = (string)$itemNode->title;
                     $link = (string)$itemNode->link;
                     $date = (string)$itemNode->pubDate;
-                    $description = (string)$itemNode->description;
+                    $description = strip_tags((string)$itemNode->description);
                     $item = array(
                         "title" => $title,
                         "url" => $link,
