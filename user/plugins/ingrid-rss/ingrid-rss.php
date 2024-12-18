@@ -197,7 +197,7 @@ class InGridRssPlugin extends Plugin
         $grav = Grav::instance();
         $rss_config = new Data($grav['config']->get('plugins.ingrid-rss.rss.feeds'));
 
-        $results = RssIndex::indexJob($rss_config->get('links'), $grav['log']);
+        RssIndex::indexJob($rss_config->get('links'), $grav['log']);
 
         $output = ob_get_clean();
         [$status, $msg] = self::getRssCount();
