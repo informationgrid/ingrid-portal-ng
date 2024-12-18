@@ -6,18 +6,34 @@
     </div>
 </div>
 <div class="filters-active">
-    {% for facet, values in selected_facets %}
+    {% for selected_facet, values in selected_facets %}
         {% if facet == 'bbox' %}
             {% set actionLink = getActionLinkFromFacets(search_result.facets, 'bbox', '') %}
             <a href="{{ base_url }}{{ actionLink }}" class="button pill">
-                Raumbezug: {{ values }}
+                {{ 'FACETS.FACET-LABEL.MAP'|t }}: {{ values }}
                 <span class="ic-ic-cross"></span>
             </a>
         {% else %}
-            {% for facetItem in values | split(',') %}
+            {% for value in values | split(',') %}
                 {% set actionLink = getActionLinkFromFacets(search_result.facets, facet, facetItem) %}
-                <a href="{{ base_url }}{{ actionLink }}" id="{{ facet }}" class="button pill">
-                    {{ ('facet-label.' ~ facet) | t}}: {{ (facet ~ '.' ~ facetItem) | t }}
+                {% set label = ('FACETS.FACET-LABEL.' ~ selected_facet ~ '.' ~ facetItem)|upper %}
+                {% if search_result.facets %}
+                    {% set break = false %}
+                    {% for facetItem in search_result.facets if not break %}
+                        {% if selected_facet == facetItem.id %}
+                            {% set breakChild = false %}
+                            {% for facet in facetItem.items if not breakChild %}
+                                {% if value == facet.value %}
+                                    {% set label = facet.label %}
+                                    {% set breakChild = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% set break = true %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <a href="{{ base_url }}{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
+                    {{ ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t }}: {{ label|t }}
                     <span class="ic-ic-cross"></span>
                 </a>
             {% endfor %}

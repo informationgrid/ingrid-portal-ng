@@ -117,8 +117,8 @@ class InGridSearchResultPlugin extends Plugin
             $page = $this->grav['uri']->query('page') ?: 1;
             $rootUrl = $this->grav['uri']->rootUrl();
             $lang = $this->grav['language']->getLanguage();
-            $selectedFacets = $this->getSelectedFacets();
 
+            $selectedFacets = $this->getSelectedFacets();
             $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri'], $lang);
 
             $this->grav['twig']->twig_vars['query'] = $query;

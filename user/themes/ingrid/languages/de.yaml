@@ -1084,6 +1084,7 @@ FACETS:
         PARTNER: Anbieter
         BBOX: Auf Karte festlegen
         ACTUALITY: Aktualität
+        MAP: Raumbezug
     ACTUALITY:
         LASTMONTH: "letzter Monat"
         LASTTHREEMONTH: "letzte 3 Monat"

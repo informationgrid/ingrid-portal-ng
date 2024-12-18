@@ -43,7 +43,8 @@ class SearchResponseTransformerClassic
                     );
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
-                foreach (((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets as $bucket) {
+                $buckets = ((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets;
+                foreach ($buckets as $bucket) {
                     $label = $query['label'] ?? strtoupper('FACETS.' . $facetConfig['id'] . '.' . $bucket->key);
                     if (isset($facetConfig['codelist'])) {
                         $label = CodelistHelper::getCodelistEntryByIdent([$facetConfig['codelist']], $bucket->key, $lang);

@@ -471,7 +471,8 @@ hit_search:
       "query": {
         "terms": {
           "field": "t01_object.obj_class",
-          "exclude": "1000"
+          "exclude": "1000",
+          "min_doc_count": 0
         }
       },
       "search": "t01_object.obj_class:%d"
@@ -481,7 +482,8 @@ hit_search:
       "codelist": "110",
       "query": {
         "terms": {
-          "field": "partner"
+          "field": "partner",
+          "min_doc_count": 0
         }
       },
       "search": "partner:%s"

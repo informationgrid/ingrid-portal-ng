@@ -1084,6 +1084,7 @@ FACETS:
         PARTNER: Provider
         BBOX: Map search
         ACTUALITY: Time
+        MAP: Raumbezug
     ACTUALITY:
         LASTMONTH: "Last month"
         LASTTHREEMONTH: "Last 3 months"
