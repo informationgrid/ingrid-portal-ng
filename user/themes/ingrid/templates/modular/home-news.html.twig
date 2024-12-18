@@ -44,7 +44,7 @@
                                 </a>
                                 {% if summary %}
                                 <p class="data-text" style="-webkit-line-clamp: 5 ;">
-                                    {{ summary }}
+                                    {{ summary|raw }}
                                 </p>
                                 {% endif %}
                                 {% if provider %}
