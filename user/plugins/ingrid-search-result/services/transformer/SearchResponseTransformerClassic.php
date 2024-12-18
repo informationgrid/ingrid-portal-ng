@@ -446,7 +446,7 @@ class SearchResponseTransformerClassic
         ];
     }
 
-    private static function getBBoxes($value, string $title): array
+    private static function getBBoxes($value, null|string $title): array
     {
         $array = array();
         if (property_exists($value, "x1")) {
