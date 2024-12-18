@@ -1,6 +1,7 @@
 ---
 title: Detaildarstellung
-  page: PAGES.DETAIL
+custom_title:
+  html: PAGES.DETAIL
   content: PAGES.DETAIL_CONTENT
 visible: true
 routes:
