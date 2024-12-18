@@ -1,5 +1,5 @@
 ---
-title: InGrid Kontakt (CMS)
+title: InGrid - Kontakt (CMS)
 ---
 
 Unsere Postadresse:

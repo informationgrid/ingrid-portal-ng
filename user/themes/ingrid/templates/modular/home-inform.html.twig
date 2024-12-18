@@ -2,8 +2,14 @@
     <a id="teaser.ingridInform.title"></a>
     <div class="about-wrapper dark" style="background-image: url('{{ url('theme://images/template/drops-small.svg') }}');">
         <div class="row">
+            {% set theme = config.get('system.pages.theme') %}
             <div class="xsmall-24 medium-12 large-14 columns">
-                {{ page.content|raw }}
+                {% set cmsPage = page.find(page.link ~ '/_themes/_' ~ theme) %}
+                {% if cmsPage and cmsPage.content %}
+                    {{ cmsPage.content|raw }}
+                {% else %}
+                    {{ page.content|raw }}
+                {% endif %}
             </div>
             <div class="medium-12 large-10 columns show-for-medium">
                 <div class="img-wrapper">

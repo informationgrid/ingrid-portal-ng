@@ -1,5 +1,5 @@
 ---
-title: MetaVer Kontakt (CMS)
+title: MetaVer - Kontakt (CMS)
 ---
 
 ## Unsere Postadresse

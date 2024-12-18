@@ -5,9 +5,11 @@
     <div class="body" role="main">
         <div class="search-filtered row content-small">
             <div class="columns">
-                {% set cmsPage = page.find('/' ~ page.folder ~ '/_themes/_' ~ theme) %}
-                {% if cmsPage %}
+                {% set cmsPage = page.find(page.link ~ '/_themes/_' ~ theme) %}
+                {% if cmsPage and cmsPage.content %}
                     {{ cmsPage.content|raw }}
+                {% else %}
+                    {{ page.content|raw }}
                 {% endif %}
             </div>
         </div>

@@ -1,3 +1,6 @@
+---
+title: InGrid - Über uns (CMS)
+---
 Willkommen im NUMIS-Portal, dem Umweltportal des Landes Niedersachsen! Wir bieten Ihnen einen zentralen Zugriff auf umweltrelevante Internetseiten und Datenkataloge von öffentlichen Institutionen und Organisationen aus Niedersachsen. Sie können darüber hinaus aktuelle Nachrichten, Umweltmesswerte und Umweltkarten über das NUMIS-Portal recherchieren.
 
 Mit dem NUMIS-Portal stellt sich das Land Niedersachsen den Herausforderungen des Niedersächsischen Umweltinformationsgesetzes (NUIG). Das NUIG ist die niedersächsische Umsetzung der Richtlinie 2003/4/EG des Europäischen Parlaments und des Rates über den Zugang der Öffentlichkeit zu Umweltinformationen ("Umweltinformationsrichtlinie"). Mehr zu den rechtlichen Rahmenbedingungen finden Sie weiter unten.
