@@ -4,7 +4,7 @@
         <div class="row">
             {% set theme = config.get('system.pages.theme') %}
             <div class="xsmall-24 medium-12 large-14 columns">
-                {% set cmsPage = page.find(page.link ~ '/_themes/_' ~ theme) %}
+                {% set cmsPage = page.find('/home/' ~ page.folder ~ '/_themes/_' ~ theme) %}
                 {% if cmsPage and cmsPage.content %}
                     {{ cmsPage.content|raw }}
                 {% else %}
