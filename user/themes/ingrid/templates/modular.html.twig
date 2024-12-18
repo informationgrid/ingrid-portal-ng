@@ -25,8 +25,10 @@
     {% if sortModules %}
         {% for sortModule in sortModules %}
             {% set module = page.find(sortModule.path) %}
-            <div id="{{ module.menu|hyphenize }}"></div>
-            {{ module.content|raw }}
+            {% if not sortModule.hidden %}
+                <div id="{{ module.menu|hyphenize }}"></div>
+                {{ module.content|raw }}
+            {% endif %}
         {% endfor %}
     {% else %}
         {% for module in page.collection() if module.template != 'modular/hero' %}

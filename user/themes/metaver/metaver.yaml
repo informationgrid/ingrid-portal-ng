@@ -78,14 +78,19 @@ home:
   sort_modules:
     -
       path: /home/_search
+      hidden: false
     -
       path: /home/_warning
+      hidden: true
     -
       path: /home/_categories
+      hidden: false
     -
       path: /home/_inform
+      hidden: false
     -
       path: /home/_news
+      hidden: false
   rss_feeds_limit: 6
   categories:
     exclude_from_search:

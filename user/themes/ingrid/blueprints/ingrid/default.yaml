@@ -260,7 +260,7 @@ form:
               fields:
                 home.sort_modules:
                   type: list
-                  label: Fußmenü
+                  label: Startseite
                   style: vertical
                   controls: bottom
                   collapsed: false
@@ -272,13 +272,18 @@ form:
                       label: ID
                     .path:
                       type: pages
-                      label: Seiten Modul
+                      label: Auswahl
                       help: Wählen Sie das Modul aus.
                       show_modular: true
                       show_root: false
                       show_all: false
                       start_route: /home
-
+                    .hidden:
+                      type: checkbox
+                      label: Ausblenden
+                      help: Blenden Sie ein Modul aus.
+                      validate:
+                        type: bool
 
             home.categories.exclude_from_search:
               type: selectize
