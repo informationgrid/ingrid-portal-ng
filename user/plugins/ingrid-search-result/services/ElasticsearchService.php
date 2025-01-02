@@ -27,6 +27,7 @@ class ElasticsearchService
         return json_encode(array(
             "from" => $page * $hitsNum,
             "size" => $hitsNum,
+            "track_total_hits" => true,
             "query" => array(
                 "bool" => array(
                     "must" => $result,
