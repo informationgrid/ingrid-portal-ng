@@ -1644,9 +1644,6 @@ a.data:hover {
     .input-search-field { margin: 0; }
   }
 
-  + div + .search-filtered {
-    margin-top: 0;
-  }
 }
 
 /* about */
@@ -2634,6 +2631,10 @@ h2 .anchor:target {
   }
 }
 
+.swiper-wrapper, .swiper-slide {
+  height: unset !important;
+}
+
 .swiper-pagination-bullet {
   background: $green-jelly !important;
 }
@@ -3391,7 +3392,6 @@ a:empty:focus-visible {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-  pointer-events: none;
 }
 
 .zip-download {

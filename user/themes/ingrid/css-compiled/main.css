@@ -8505,9 +8505,6 @@ a.data:hover {
 .banner.search .search-wrapper .input-search-field {
   margin: 0;
 }
-.banner.search + div + .search-filtered {
-  margin-top: 0;
-}
 
 /* about */
 .about {
@@ -9368,6 +9365,10 @@ h2 .anchor:target {
   padding-bottom: 30px;
 }
 
+.swiper-wrapper, .swiper-slide {
+  height: unset !important;
+}
+
 .swiper-pagination-bullet {
   background: #349980 !important;
 }
@@ -10080,7 +10081,6 @@ a:empty:focus-visible {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-  pointer-events: none;
 }
 
 .zip-download {
