@@ -521,6 +521,10 @@
   content: "\e949";
 }
 
+.ic-ic-print:before {
+  content: "\e974";
+}
+
 /**
  * Foundation for Sites by ZURB
  * Version 6.4.3

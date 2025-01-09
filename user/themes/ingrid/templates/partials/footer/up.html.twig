@@ -1,0 +1,8 @@
+{% set up = theme_var('footer.up') %}
+{% if up.enabled %}
+<div class="button-up">
+    <button type="button" class="button round social js-top" title="{{ "TOP.TITLE"|t }}">
+    <span class="ic-ic-angle-up"></span>
+    </button>
+</div>
+{% endif %}

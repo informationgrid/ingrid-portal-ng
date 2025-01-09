@@ -5,6 +5,11 @@
 {% set menu_footer = theme_var('menu.footer') %}
 
 <footer>
+    <div class="footer-buttons-bar show-for-medium hide-for-print">
+        {% include 'partials/footer/socials.html.twig' %}
+        {% include 'partials/footer/print.html.twig' %}
+        {% include 'partials/footer/up.html.twig' %}
+    </div>
     <div class="footer">
         <hr>
         <div class="row">

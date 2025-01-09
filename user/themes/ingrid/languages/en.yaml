@@ -1101,6 +1101,21 @@ FACETS:
         ADDRESS: Addresses
         HVD: HVD
 
+SHARE:
+    TITLE: Share
+    X: X
+    FACEBOOK: Facebook
+    LINKEDIN: LinkedIn
+    WHATSAPP: WhatsApp
+    XING: XING
+    MAIL: E-Mail
+
+PRINT:
+    TITLE: Print page
+
+TOP:
+    TITLE: Up
+
 ERROR:
     404:
         TITLE: 'ERROR 404: PAGE NOT FOUND'

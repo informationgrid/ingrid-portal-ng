@@ -130,6 +130,114 @@ form:
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
               default: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
 
+            footer.share.enabled:
+              type: toggle
+              label: Teilen
+              help: Teilen aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.share.enabled_x:
+              type: toggle
+              label: Teilen auf "Plattform X"
+              help: Teilen auf "Plattform X" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.share.enabled_facebook:
+              type: toggle
+              label: Teilen auf "Facebook"
+              help: Teilen auf "Facebook" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.share.enabled_linkedin:
+              type: toggle
+              label: Teilen auf "LinkedIn"
+              help: Teilen auf "LinkedIn" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.share.enabled_whatsapp:
+              type: toggle
+              label: Teilen auf "WhatsApp"
+              help: Teilen auf "WhatsApp" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.share.enabled_xing:
+              type: toggle
+              label: Teilen auf "XING"
+              help: Teilen auf "XING" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.share.enabled_mail:
+              type: toggle
+              label: Teilen per "E-Mail"
+              help: Teilen per "E-Mail" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.print.enabled:
+              type: toggle
+              label: Seite drucken
+              help: Seite drucken aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            footer.up.enabled:
+              type: toggle
+              label: Seite "nach oben"
+              help: Seite "nach oben" aktivieren.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
             menu.section:
               type: section
               title: Menüs

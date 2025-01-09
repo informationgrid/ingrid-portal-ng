@@ -13,6 +13,18 @@ footer:
   copyright_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   logo: {  }
+  share:
+    enabled: true
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: false
+  up:
+    enabled: true
 menu:
   main:
     -
