@@ -38,3 +38,19 @@
     {% endif %}
     </div>
 {% endblock %}
+
+{% block stylesheets_leaflet %}
+    {% include 'blocks/' ~ page.folder ~ '/leaflet/leaflet-stylesheets.html.twig' ignore missing %}
+{% endblock %}
+
+{% block javascripts_leaflet %}
+    {% include 'blocks/' ~ page.folder ~ '/leaflet/leaflet-javascript.html.twig' ignore missing %}
+{% endblock %}
+
+{% block stylesheets_image_swiper %}
+    {% include 'blocks/' ~ page.folder ~ '/swiper/swiper-stylesheets.html.twig' ignore missing %}
+{% endblock %}
+
+{% block javascripts_image_swiper %}
+    {% include 'blocks/' ~ page.folder ~ '/swiper/swiper-javascript.html.twig' ignore missing %}
+{% endblock %}

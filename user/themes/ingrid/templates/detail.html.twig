@@ -1,5 +1,22 @@
 {% extends 'partials/base.html.twig' %}
 
+{% block stylesheets_leaflet %}
+    {% do assets.addCss('theme://js/leaflet/plugins/leaflet.draw/leaflet.draw.css', 98) %}
+    {% include 'partials/header/leaflet/css.html.twig' %}
+{% endblock %}
+
+{% block stylesheets_image_swiper %}
+    {% include 'partials/header/swiper/css.html.twig' %}
+{% endblock %}
+
+{% block javascripts_leaflet %}
+    {% include 'partials/header/leaflet/javascript.html.twig' %}
+{% endblock %}
+
+{% block javascripts_image_swiper %}
+    {% include 'partials/header/swiper/javascript.html.twig' %}
+{% endblock %}
+
 {% block content %}
     {% import 'macros/default_macros.html.twig' as default_macros %}
 

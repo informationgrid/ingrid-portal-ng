@@ -1,5 +1,11 @@
+{% set mapLeafletClustering = theme_var('map.leaflet.enable.clustering') %}
+{% set mapLeafletGeocoder = theme_var('map.leaflet.geocoder.enable') %}
+
 {% do assets.addCss('theme://js/leaflet/plugins/leaflet.gesture-handling/leaflet-gesture-handling.min.css', 98) %}
-{# TODO: Configurable 
-{% do assets.addCss('theme://js/leaflet/plugins/leaflet.awesome-markers/leaflet.awesome-markers.css', 98) %}
-{% do assets.addCss('theme://js/leaflet/plugins//leaflet.control-geocoder/Control.Geocoder.css', 98) %}
-#}
+
+{% if mapLeafletClustering %}
+    {% do assets.addCss('theme://js/leaflet/plugins/leaflet.awesome-markers/leaflet.awesome-markers.css', 98) %}
+{% endif %}
+{% if mapLeafletGeocoder %}
+    {% do assets.addCss('theme://js/leaflet/plugins//leaflet.control-geocoder/Control.Geocoder.css', 98) %}
+{% endif %}

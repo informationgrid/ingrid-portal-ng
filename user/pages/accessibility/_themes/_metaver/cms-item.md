@@ -15,7 +15,7 @@ Diese Erklärung wurde am 30.09.2020 erstellt und zuletzt am 22.05.2023 aktualis
 
 Diese Webseiten sind mit den Vorgaben der harmonisierten europäischen Norm EN 301 549 V2.1.2 (08-2018) größtenteils vereinbar.
 
-Die Webanwendung im Bereich 'Karte' ist grafisch basiert. Eine barrierefreie Umsetzung ist derzeit nicht möglich. 
+Die Webanwendung im Bereich 'Karte' ist grafisch basiert. Eine barrierefreie Umsetzung ist derzeit nicht möglich.
 
 ## Feedback und Kontakt
 

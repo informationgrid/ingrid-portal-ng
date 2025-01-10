@@ -3,6 +3,7 @@
 {% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
 {% set summary_lines_limit = theme_var('hit_search.summary_lines_limit') %}
 {% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
+{% set isExpandable = theme_var('hit_search.expandable.enabled') %}
 
 {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid %}
 <div class="data">
@@ -15,24 +16,25 @@
            {{ hit_macros.render_hit_logo(hit.partners) }}
         {% endif %}
         {% if hit.type is not empty %}
-        <div class="helper icon">
-            {{ hit_macros.render_metadata_icon(hit.type, hit.type_name) }}
-        </div>
+            {% include 'partials/search/result/metadata/parts/metadata_type.html.twig' with {hit:hit} %}
         {% endif %}
         {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint, hit.isHVD) }}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>
         </a>
-        {{ hit_macros.render_hit_time("COMMON.TIME_TYPE"|t , hit.time) }}
+        {% include 'partials/search/result/metadata/parts/metadata_time.html.twig' with {hit:hit} %}
         {% if hit.summary %}
-        <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
-            {{  convertUrlInText(hit.summary)|replace({'\n': summary_replace_newline})|raw }}
-        </p>
+            <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
+                {{  convertUrlInText(hit.summary)|replace({'\n': summary_replace_newline})|raw }}
+            </p>
         {% endif %}
+        {% include 'partials/search/result/metadata/parts/metadata_providers.html.twig' ignore missing with {hit:hit} %}
         {{ hit_macros.render_hit_types(hit.serviceTypes, true, true) }}
         <a href="{{ detailLink }}" title="{{ "COMMON.DETAIL_ARROW_PREFIX"|t ~ " " ~ hit.title }}">
             <span class="ic-ic-arrow arrow"></span>
         </a>
-        {% include 'partials/search/result/metadata/expand/expand.html.twig' with {hit:hit, counter: counter} %}
+        {% if isExpandable %}
+            {% include 'partials/search/result/metadata/expand/expand.html.twig' with {hit:hit, counter: counter} %}
+        {% endif %}
     </div>
 </div>

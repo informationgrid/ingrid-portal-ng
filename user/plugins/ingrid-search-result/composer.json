@@ -33,6 +33,8 @@
       "services/SearchService.php",
       "services/SearchServiceImpl.php",
       "services/transformer/SearchResponseTransformerClassic.php",
+      "services/parser/ClassicParserISO.php",
+      "services/parser/ClassicParserUVP.php",
       "services/ElasticsearchService.php"
     ]
   }

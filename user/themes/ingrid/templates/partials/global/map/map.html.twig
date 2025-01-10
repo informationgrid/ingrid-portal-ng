@@ -5,7 +5,7 @@
     {% set map_bbox_wkt = theme_var('map.leaflet.enable.wkt') %}
     {% set map_bbox_bwastr = theme_var('map.leaflet.enable.bwastr') %}
 
-    <div id="{{ mapId }}" class="map-ingrid" style="height:320px; margin-bottom: 24px;"></div>
+    <div id="{{ mapId }}" class="map-ingrid" style="{% if mapHeight %}height:{{ mapHeight }};{% else %}height:320px;{% endif %} margin-bottom: 24px;"></div>
 
     <script>
         $('#{{ mapId }}').closest('.js-expander-content').removeClass('is-hidden');

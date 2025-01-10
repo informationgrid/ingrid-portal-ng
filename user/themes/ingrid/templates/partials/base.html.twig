@@ -27,14 +27,9 @@
     {% do assets.addCss('theme://css-compiled/main.css', 98) %}
     {% do assets.addCss('theme://css/custom.css', 98) %}
     {% do assets.addCss('theme://css/leaflet-custom.css', 98) %}
-    {% if page.header.hasLeaflet %}
-        {% do assets.addCss('theme://js/leaflet/plugins/leaflet.draw/leaflet.draw.css', 98) %}
-        {% include 'partials/header/leaflet/css.html.twig' %}
-    {% endif %}
-    {% if page.header.hasImageSwiper %}
-        {% include 'partials/header/swiper/css.html.twig' %}
-    {% endif %}
 
+    {% block stylesheets_leaflet %}{% endblock %}
+    {% block stylesheets_image_swiper %}{% endblock %}
 {% endblock %}
 
 {% block javascripts %}
@@ -46,12 +41,8 @@
     {% do assets.addJs('theme://js/main.js') %}
     {% do assets.addJs('theme://js/ingrid.js') %}
 
-    {% if page.header.hasLeaflet %}
-        {% include 'partials/header/leaflet/javascript.html.twig' %}
-    {% endif %}
-    {% if page.header.hasImageSwiper %}
-        {% include 'partials/header/swiper/javascript.html.twig' %}
-    {% endif %}
+    {% block javascripts_leaflet %}{% endblock %}
+    {% block javascripts_image_swiper %}{% endblock %}
 {% endblock %}
 
 {% block assets deferred %}

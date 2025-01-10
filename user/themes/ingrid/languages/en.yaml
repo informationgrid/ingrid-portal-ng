@@ -17,6 +17,7 @@ PAGES:
     ABOUT_MENU_TITLE: Features and Portrait of InGrid-Portal
     PROVIDER: Information Providers
     PROVIDER_MENU_TITLE: Cooperation partners and associated public agencies
+    PROVIDER_CONTENT: Information providers
     DATASOURCE: Databases
     DATASOURCE_MENU_TITLE: Linked Databases
     HELP: Help
@@ -154,9 +155,6 @@ COMMON:
     RDF_LINK_LABEL: RDF/XML
     DETAIL_ARROW_PREFIX: 'Detail:'
     LANGUAGE_TITLE: 'Language:'
-    STEPS_UVP_PHASE1: Öffentliche Auslegung
-    STEPS_UVP_PHASE2: Erörterungstermin
-    STEPS_UVP_PHASE3: Entscheidung über die Zulassung
     TOGGLE_APPROVAL_DATE: Only latest
     TOGGLE_APPROVAL_DATE_ON: 'Only latest: on'
     TOGGLE_APPROVAL_DATE_OFF: 'Only latest: off'
@@ -957,34 +955,6 @@ SEARCH_DETAIL:
     SHOWGETCAPABILITYURL_TITLE: Show GetCapabilites
     METADATA_SOURCE: Metadata source
     CONSTRAINTS_USE_COSTRAINTS_SOURCE: 'Source:'
-    UVP_TIME: Zuletzt geändert
-    UVP_DESC: Allgemeine Vorhabenbeschreibung
-    UVP_CATEGORY: UVP-Kategorie
-    UVP_MAP: Raumbezug
-    UVP_MAP_COORDS: 'Koordinaten:'
-    UVP_MAP_ZOOM: Zoom auf initialen Kartenausschnitt
-    UVP_ADDRESS: Adressen
-    UVP_ADDRESS_TYPE: Ansprechpartner
-    UVP_ADDRESS_TYPE_MAIL: 'E-Mail:'
-    UVP_ADDRESS_TYPE_TEL: 'Telefon:'
-    UVP_ADDRESS_TYPE_FAX: 'Fax:'
-    UVP_ADDRESS_TYPE_URL: 'URL:'
-    UVP_STEPS: Verfahrensschritte
-    UVP_PHASE1_DATE: Zeitraum der Auslegung
-    UVP_PHASE1_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Auslegungsinformationen.
-    UVP_PHASE1_DOC_TECHNICALDOCS: Auslegungsinformationen
-    UVP_PHASE1_DOC_APPLICATIONDOCS: UVP-Bericht, ggf. Antragsunterlagen
-    UVP_PHASE1_DOC_REPORTSRECOMMENDATIONSDOCS: Berichte und Empfehlungen
-    UVP_PHASE1_DOC_MOREDOCS: Weitere Unterlagen
-    UVP_PHASE1_DOC_PUBLICATIONDOCS: Bekanntmachung
-    UVP_PHASE2_DATE: Zeitraum der Erörterung
-    UVP_PHASE2_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Informationen zum Erörterungstermin.
-    UVP_PHASE2_DOC_CONSIDERATIONDOCS: Informationen zum Erörterungstermin
-    UVP_PHASE3_DATE: Datum der Entscheidung
-    UVP_PHASE3_DOC_APPROVALDOCS: Auslegungsinformationen
-    UVP_PHASE3_DOC_DESIGNDOCS: Entscheidung
-    UVP_NEG_DATE: Datum der Entscheidung
-    UVP_NEG_DOC_UVPNEGATIVERELEVANTDOCS: Ergebnis der UVP-Vorprüfung
     MEASUREMENT_INFOMETHOD: Verfahren
     MEASUREMENT_SPATIALORIENTATION: Räumlichkeit
     MEASUREMENT_MINDISCHARGE: Abfluss Q min [m&#0179;/s]

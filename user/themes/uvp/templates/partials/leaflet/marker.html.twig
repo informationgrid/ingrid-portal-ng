@@ -1,3 +1,5 @@
+{% set getMarkerApi = rootUrl ~ "/map/mapMarker" %}
+
 <script>
     function showMarker(m) {
         if(m.target.uuid){
@@ -39,8 +41,8 @@
     }
 
     // "Zulassungsverfahren" markers
-    var mapMarkers10 = L.markerClusterGroup({
-        id: 'mapMarkers10',
+    var mapMarkerZV = L.markerClusterGroup({
+        id: 'mapMarkerZV',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -57,8 +59,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-10' + c, iconSize: new L.Point(40, 40) });
         }
     });
-    var mapMarkers10_time = L.markerClusterGroup({
-        id: 'mapMarkers10_time',
+    var mapMarkerZV_time = L.markerClusterGroup({
+        id: 'mapMarkerZV_time',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -76,8 +78,8 @@
         }
     });
     // "Ausländische Verfahren" markers
-    var mapMarkers11 = L.markerClusterGroup({
-        id: 'mapMarkers11',
+    var mapMarkerAV = L.markerClusterGroup({
+        id: 'mapMarkerAV',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -94,8 +96,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-11' + c, iconSize: new L.Point(40, 40) });
         }
     });
-    var mapMarkers11_time = L.markerClusterGroup({
-        id: 'mapMarkers11_time',
+    var mapMarkerAV_time = L.markerClusterGroup({
+        id: 'mapMarkerAV_time',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -113,8 +115,8 @@
         }
     });
     // "Raumordnungsverfahren" markers
-    var mapMarkers13 = L.markerClusterGroup({
-        id: 'mapMarkers13',
+    var mapMarkerRO = L.markerClusterGroup({
+        id: 'mapMarkerRO',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -131,8 +133,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-13' + c, iconSize: new L.Point(40, 40) });
         }
     });
-    var mapMarkers13_time = L.markerClusterGroup({
-        id: 'mapMarkers13_time',
+    var mapMarkerRO_time = L.markerClusterGroup({
+        id: 'mapMarkerRO_time',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -150,8 +152,8 @@
         }
     });
     // "Linienbestimmungen" markers
-    var mapMarkers14 = L.markerClusterGroup({
-        id: 'mapMarkers14',
+    var mapMarkerLI = L.markerClusterGroup({
+        id: 'mapMarkerLI',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -168,8 +170,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-14' + c, iconSize: new L.Point(40, 40) });
         }
     });
-    var mapMarkers14_time = L.markerClusterGroup({
-        id: 'mapMarkers14_time',
+    var mapMarkerLI_time = L.markerClusterGroup({
+        id: 'mapMarkerLI_time',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -187,8 +189,8 @@
         }
     });
     // "Negative Vorprüfungen" markers
-    var mapMarkers12 = L.markerClusterGroup({
-        id: 'mapMarkers12',
+    var mapMarkerNV = L.markerClusterGroup({
+        id: 'mapMarkerNV',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -205,8 +207,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-12' + c, iconSize: new L.Point(40, 40) });
         }
     });
-    var mapMarkers12_time = L.markerClusterGroup({
-        id: 'mapMarkers12_time',
+    var mapMarkerNV_time = L.markerClusterGroup({
+        id: 'mapMarkerNV_time',
         iconCreateFunction: function (cluster) {
             var childCount = cluster.getChildCount();
             var c = ' marker-cluster-';
@@ -243,180 +245,228 @@
         }
     });
 
-    jQuery.get("$restUrlLegendCounter")
-    .done(function(data, textStatus, jqxhr) {
-        var mapFilter = $('.map-filter ul li div');
-        var overlayers = {};
-#parse ('/WEB-INF/templates/global/include_leaflet_marker_legend.vm')
+    var mapFilter = $('.map-filter ul li div');
+    var overlayers = {};
+    var legendCounter = {{ legend|raw }};
+    if(mapFilter && mapFilter.length > 0) {
+        if(map){
+            mapFilter.on('mouseover', function () {
+                map.dragging.disable();
+                map.touchZoom.disable();
+                map.doubleClickZoom.disable();
+                map.scrollWheelZoom.disable();
+                map.boxZoom.disable();
+                map.keyboard.disable();
+            });
+            mapFilter.on('mouseout', function () {
+                map.dragging.enable();
+                map.touchZoom.enable();
+                map.doubleClickZoom.enable();
+                map.scrollWheelZoom.enable();
+                map.boxZoom.enable();
+                map.keyboard.enable();
+            });
+        }
+        if(legendCounter){
+            legendCounter[0].items.forEach(function (item) {
+                if (item.value === "obj_class_zv"){
+                    createLegendEntry(map, mapFilter, [mapMarkerZV_time, mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', '', '#if($restUrlMarker_time)$restUrlMarker_time#end');
+                } else if(item.value === "obj_class_nv"){
+                    createLegendEntry(map, mapFilter, [mapMarkerNV_time, mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', '', '#if($restUrlMarker4_time)$restUrlMarker4_time#end');
+                } else if(item.value === "obj_class_ro"){
+                    createLegendEntry(map, mapFilter, [mapMarkerRO_time, mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', '', '#if($restUrlMarker2_time)$restUrlMarker2_time#end');
+                } else if(item.value === "obj_class_li"){
+                    createLegendEntry(map, mapFilter, [mapMarkerLI_time, mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', '', '#if($restUrlMarker5_time)$restUrlMarker5_time#end');
+                } else if(item.value === "obj_class_av"){
+                    createLegendEntry(map, mapFilter, [mapMarkerAV_time, mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', '', '#if($restUrlMarker3_time)$restUrlMarker3_time#end');
+                } else if(item.value === "obj_class_blp"){
+                    createLegendEntry(map, mapFilter, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp');
+                }
 
-        var mapFilterXs = $('.map-filter-xs');
-        if(mapFilterXs && mapFilterXs.length > 0) {
-            if(legendCounter){
-                if(legendCounter.countMarker1){
-                    createLegendEntry(map, mapFilterXs, [mapMarkers10], 'blue', 'mapMarkers10', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
-                }
-                if(legendCounter.countMarker4){
-                    createLegendEntry(map, mapFilterXs, [mapMarkers12], 'orange', 'mapMarkers12', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
-                }
-                if(legendCounter.countMarker2){
-                    createLegendEntry(map, mapFilterXs, [mapMarkers13], 'red', 'mapMarkers13', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
-                }
-                if(legendCounter.countMarker5){
-                    createLegendEntry(map, mapFilterXs, [mapMarkers14], 'purple', 'mapMarkers14', 'Linienbestimmungen', 'li', 'style="padding:0px"');
-                }
-                if(legendCounter.countMarker3){
-                    createLegendEntry(map, mapFilterXs, [mapMarkers11], 'black', 'mapMarkers11', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
-                }
-                if(legendCounter.countMarkerDevPlan){
+            });
+        }
+    }
+
+    if(mapFilterXs && mapFilterXs.length > 0) {
+        if(legendCounter){
+            legendCounter.items.forEach(function (item) {
+                if (item.value === "obj_class_zv"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
+                } else if(item.value === "obj_class_nv"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
+                } else if(item.value === "obj_class_ro"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
+                } else if(item.value === "obj_class_li"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', 'style="padding:0px"');
+                } else if(item.value === "obj_class_av"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
+                } else if(item.value === "obj_class_blp"){
                     createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
                 }
-            }
+            });
         }
-        if(map){
-            map.on('layeradd', onOverlayAdd);
-            var mapParamLayer = '$mapParamLayer';
-            var mapParamLayers = [];
-            if(mapParamLayer.length === 0) {
-                if($checkedCategoryDevPlan) {
+    }
+
+    var mapFilterXs = $('.map-filter-xs');
+    if(mapFilterXs && mapFilterXs.length > 0) {
+        if(legendCounter){
+            legendCounter.items.forEach(function (item) {
+                if(item.value === "obj_class_zv"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
+                } else if(item.value === "obj_class_nv"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
+                } else if(item.value === "obj_class_ro"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
+                } else if(item.value === "obj_class_li"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', 'style="padding:0px"');
+                } else if(item.value === "obj_class_av"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
+                } else if(item.value === "obj_class_blp"){
+                    createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
+                }
+            });
+        }
+    }
+    if(map) {
+        map.on('layeradd', onOverlayAdd);
+        var mapParamLayer = '{{ mapParamLayer }}';
+        var mapParamLayers = [];
+        if (mapParamLayer.length === 0) {
+            if ({{ checkedCategoryBLP }}) {
+                mapParamLayers.push('blp');
+            }
+            if ({{ checkedCategoryZV }}) {
+                mapParamLayers.push('zv');
+            }
+            if ({{ checkedCategoryAV }}) {
+                mapParamLayers.push('av');
+            }
+            if ({{ checkedCategoryNV }}) {
+                mapParamLayers.push('nv');
+            }
+            if ({{ checkedCategoryRO }}) {
+                mapParamLayers.push('ro');
+            }
+            if ({{ checkedCategoryLI }}) {
+                mapParamLayers.push('li');
+            }
+        } else {
+            mapParamLayers = mapParamLayer.split(',');
+        }
+        if (mapParamLayers.indexOf('blp') > -1) {
+            if (mapMarkersDevPlan) {
+                map.addLayer(mapMarkersDevPlan);
+                $('#mapMarkersDevPlan').prop('checked', true);
+                if (mapParamLayers.indexOf('blp') === -1) {
                     mapParamLayers.push('blp');
                 }
-                if($checkedCategory10) {
-                    mapParamLayers.push('zv');
-                }
-                if($checkedCategory11) {
-                    mapParamLayers.push('av');
-                }
-                if($checkedCategory12) {
-                    mapParamLayers.push('nv');
-                }
-                if($checkedCategory13) {
-                    mapParamLayers.push('ro');
-                }
-                if($checkedCategory14) {
-                    mapParamLayers.push('li');
-                }
-            } else {
-                mapParamLayers = mapParamLayer.split(',');
-            }
-            if(mapParamLayers.indexOf('blp') > -1){
-                if(mapMarkersDevPlan) {
-                    map.addLayer(mapMarkersDevPlan);
-                    $('#mapMarkersDevPlan').prop('checked', true);
-                    if(mapParamLayers.indexOf('blp') === -1) {
-                        mapParamLayers.push('blp');
-                    }
-                }
-            }
-            if(mapParamLayers.indexOf('zv') > -1){
-                if(mapMarkers10 || mapMarkers10_time) {
-                    $('#mapMarkers10').prop('checked', true);
-                    var checkboxTime = $('#mapMarkers10_time');
-                    if(checkboxTime.is(':checked')) {
-                        map.addLayer(mapMarkers10_time);
-                        checkboxTime.closest('.control-group').removeClass('is-hidden');
-                    } else {
-                        map.addLayer(mapMarkers10);
-                    }
-                    if(mapParamLayers.indexOf('zv') === -1) {
-                        mapParamLayers.push('zv');
-                    }
-                }
-            }
-            if(mapParamLayers.indexOf('av') > -1){
-                if(mapMarkers11 || mapMarkers11_time) {
-                    $('#mapMarkers11').prop('checked', true);
-                    var checkboxTime = $('#mapMarkers11_time');
-                    if(checkboxTime.is(':checked')) {
-                        map.addLayer(mapMarkers11_time);
-                        checkboxTime.closest('.control-group').removeClass('is-hidden');
-                    } else {
-                        map.addLayer(mapMarkers11);
-                    }
-                    if(mapParamLayers.indexOf('av') === -1) {
-                        mapParamLayers.push('av');
-                    }
-                }
-            }
-            if(mapParamLayers.indexOf('ro') > -1){
-                if(mapMarkers13 || mapMarkers13_time) {
-                    $('#mapMarkers13').prop('checked', true);
-                    var checkboxTime = $('#mapMarkers13_time');
-                    if(checkboxTime.is(':checked')) {
-                        map.addLayer(mapMarkers13_time);
-                        checkboxTime.closest('.control-group').removeClass('is-hidden');
-                    } else {
-                        map.addLayer(mapMarkers13);
-                    }
-                    if(mapParamLayers.indexOf('ro') === -1) {
-                        mapParamLayers.push('ro');
-                    }
-                }
-            }
-            if(mapParamLayers.indexOf('li') > -1){
-                if(mapMarkers14 || mapMarkers14_time) {
-                    $('#mapMarkers14').prop('checked', true);
-                    var checkboxTime = $('#mapMarkers14_time');
-                    if(checkboxTime.is(':checked')) {
-                        map.addLayer(mapMarkers14_time);
-                        checkboxTime.closest('.control-group').removeClass('is-hidden');
-                    } else {
-                        map.addLayer(mapMarkers14);
-                    }
-                    if(mapParamLayers.indexOf('li') === -1) {
-                        mapParamLayers.push('li');
-                    }
-                }
-            }
-            if(mapParamLayers.indexOf('nv') > -1){
-                if(mapMarkers12 || mapMarkers12_time) {
-                    $('#mapMarkers12').prop('checked', true);
-                    var checkboxTime = $('#mapMarkers12_time');
-                    if(checkboxTime.is(':checked')) {
-                        map.addLayer(mapMarkers12_time);
-                        checkboxTime.closest('.control-group').removeClass('is-hidden');
-                    } else {
-                        map.addLayer(mapMarkers12);
-                    }
-                    if(mapParamLayers.indexOf('nv') === -1) {
-                        mapParamLayers.push('nv');
-                    }
-                }
-            }
-            if(mapParamLayers.length > 0) {
-                updateQueryStringParameter('layer', mapParamLayers.toString());
             }
         }
-    })
-    .fail(function () {
-    });
+        if (mapParamLayers.indexOf('zv') > -1) {
+            if (mapMarkerZV || mapMarkerZV_time) {
+                $('#mapMarkerZV').prop('checked', true);
+                var checkboxTime = $('#mapMarkerZV_time');
+                if (checkboxTime.is(':checked')) {
+                    map.addLayer(mapMarkerZV_time);
+                    checkboxTime.closest('.control-group').removeClass('is-hidden');
+                } else {
+                    map.addLayer(mapMarkerZV);
+                }
+                if (mapParamLayers.indexOf('zv') === -1) {
+                    mapParamLayers.push('zv');
+                }
+            }
+        }
+        if (mapParamLayers.indexOf('av') > -1) {
+            if (mapMarkerAV || mapMarkerAV_time) {
+                $('#mapMarkerAV').prop('checked', true);
+                var checkboxTime = $('#mapMarkerAV_time');
+                if (checkboxTime.is(':checked')) {
+                    map.addLayer(mapMarkerAV_time);
+                    checkboxTime.closest('.control-group').removeClass('is-hidden');
+                } else {
+                    map.addLayer(mapMarkerAV);
+                }
+                if (mapParamLayers.indexOf('av') === -1) {
+                    mapParamLayers.push('av');
+                }
+            }
+        }
+        if (mapParamLayers.indexOf('ro') > -1) {
+            if (mapMarkerRO || mapMarkerRO_time) {
+                $('#mapMarkerRO').prop('checked', true);
+                var checkboxTime = $('#mapMarkerRO_time');
+                if (checkboxTime.is(':checked')) {
+                    map.addLayer(mapMarkerRO_time);
+                    checkboxTime.closest('.control-group').removeClass('is-hidden');
+                } else {
+                    map.addLayer(mapMarkerRO);
+                }
+                if (mapParamLayers.indexOf('ro') === -1) {
+                    mapParamLayers.push('ro');
+                }
+            }
+        }
+        if (mapParamLayers.indexOf('li') > -1) {
+            if (mapMarkerLI || mapMarkerLI_time) {
+                $('#mapMarkerLI').prop('checked', true);
+                var checkboxTime = $('#mapMarkerLI_time');
+                if (checkboxTime.is(':checked')) {
+                    map.addLayer(mapMarkerLI_time);
+                    checkboxTime.closest('.control-group').removeClass('is-hidden');
+                } else {
+                    map.addLayer(mapMarkerLI);
+                }
+                if (mapParamLayers.indexOf('li') === -1) {
+                    mapParamLayers.push('li');
+                }
+            }
+        }
+        if (mapParamLayers.indexOf('nv') > -1) {
+            if (mapMarkerNV || mapMarkerNV_time) {
+                $('#mapMarkerNV').prop('checked', true);
+                var checkboxTime = $('#mapMarkerNV_time');
+                if (checkboxTime.is(':checked')) {
+                    map.addLayer(mapMarkerNV_time);
+                    checkboxTime.closest('.control-group').removeClass('is-hidden');
+                } else {
+                    map.addLayer(mapMarkerNV);
+                }
+                if (mapParamLayers.indexOf('nv') === -1) {
+                    mapParamLayers.push('nv');
+                }
+            }
+        }
+        if (mapParamLayers.length > 0) {
+            updateQueryStringParameter('layer', mapParamLayers.toString());
+        }
+    }
 
-    var mapPosition = '$mapPosition';
-    var mapExtent = '$mapExtent';
+    var mapPosition = [{{ mapPosition }}];
+    var mapExtent = [{{ mapExtent }}];
     var mapLat;
     var mapLng;
     var mapZoom;
     var mapBounds;
-    var mapParamExtent = '$mapParamExtent';
+    var mapParamExtent = '{{ mapParamExtent }}';
     if(mapParamExtent) {
         mapParamExtent = mapParamExtent.split(',');
     }
-    if(mapPosition){
-        mapLat = parseFloat('$mapPosition.get(0)');
-        mapLng = parseFloat('$mapPosition.get(1)');
-        mapZoom = parseFloat('$mapPosition.get(2)');
+    if(mapPosition.length > 0){
+        mapLat = parseFloat(mapPosition[0]);
+        mapLng = parseFloat(mapPosition[1]);
+        mapZoom = parseFloat(mapPosition[2]);
     }
 
-    if('$mapParamN' && '$mapParamE' && '$mapParamZoom') {
-        mapLat = parseFloat('$mapParamN') || mapLat;
-        mapLng = parseFloat('$mapParamE') || mapLng;
-        mapZoom = parseFloat('$mapParamZoom') || mapZoom;
+    if('{{ mapParamN }}' && '{{ mapParamE }}' && '{{ mapParamZoom }}') {
+        mapLat = parseFloat('{{ mapParamN }}') || mapLat;
+        mapLng = parseFloat('{{ mapParamE }}') || mapLng;
+        mapZoom = parseFloat('{{ mapParamZoom }}') || mapZoom;
         map.setView(new L.LatLng(mapLat, mapLng), mapZoom);
     } else if(mapParamExtent && mapParamExtent.length === 4){
         mapBounds = L.latLngBounds(
-          L.latLng(parseFloat(mapParamExtent[0]),
-            parseFloat(mapParamExtent[1])),
-          L.latLng(parseFloat(mapParamExtent[2]),
-          parseFloat(mapParamExtent[3]))
+          L.latLng(mapParamExtent[0], mapParamExtent[1]),
+          L.latLng(mapParamExtent[2], mapParamExtent[3])
         );
     } else if('$selectedMap.webmapclientCoords'.indexOf("y1") > -1){
         mapBounds = L.latLngBounds(
@@ -425,23 +475,14 @@
           L.latLng(parseFloat('$selectedMap.webmapclientCoords.y2'),
           parseFloat('$selectedMap.webmapclientCoords.x2'))
         );
-    } else if('$mapExtent'){
+    } else if(mapExtent.length > 0){
         mapBounds = L.latLngBounds(
-          L.latLng(parseFloat('$mapExtent.get(0)'),
-            parseFloat('$mapExtent.get(1)')),
-          L.latLng(parseFloat('$mapExtent.get(2)'),
-          parseFloat('$mapExtent.get(3)'))
+          L.latLng(mapExtent[0], mapExtent[1]),
+          L.latLng(mapExtent[2], mapExtent[3])
         );
     }
     if(mapBounds){
         map.fitBounds(mapBounds);
-    } else if('$mapExtent'){
-        mapBounds = L.latLngBounds(
-          L.latLng(parseFloat('$mapExtent.get(0)'),
-            parseFloat('$mapExtent.get(1)')),
-          L.latLng(parseFloat('$mapExtent.get(2)'),
-          parseFloat('$mapExtent.get(3)'))
-        );
     }
     map.on('moveend', function(e){
         var mapLatLng = this.getCenter();
@@ -461,102 +502,102 @@
     function onOverlayAdd(e){
         var paramLayers = [];
         if(e.layer.options.id === 'mapMarkersDevPlan') {
-            if("$restUrlUVPDevPlan") {
+            if("{{ getMarkerApi }}") {
                 if(mapMarkersDevPlan.getLayers().length === 0){
                     map.spin(true);
-                    var marker = 'mapMarkersDevPlan';
+                    var marker = mapMarkersDevPlan;
                     var markerColor = 'green';
-                    loadMarkers("$restUrlUVPDevPlan", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=blp' }}", 1, mapMarkersDevPlan, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers10') {
-            if(mapMarkers10.getLayers().length === 0) {
-                if("$restUrlMarker") {
+        } else if(e.layer.options.id === 'mapMarkerZV') {
+            if(mapMarkerZV.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers10';
+                    var marker = mapMarkerZV;
                     var markerColor = 'blue';
-                    loadMarkers("$restUrlMarker", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=zv' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers10_time') {
-            if(mapMarkers10_time.getLayers().length === 0) {
+        } else if(e.layer.options.id === 'mapMarkerZV_time') {
+            if(mapMarkerZV_time.getLayers().length === 0) {
                 if("$restUrlMarker_time") {
                     map.spin(true);
-                    var marker = 'mapMarkers10_time';
+                    var marker = mapMarkerZV_time;
                     var markerColor = 'blue';
-                    loadMarkers("$restUrlMarker_time", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=zv_time' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers13') {
-            if(mapMarkers13.getLayers().length === 0) {
-                if("$restUrlMarker2") {
+        } else if(e.layer.options.id === 'mapMarkerRO') {
+            if(mapMarkerRO.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers13';
+                    var marker = mapMarkerRO;
                     var markerColor = 'red';
-                    loadMarkers("$restUrlMarker2", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=ro' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers13_time') {
-            if(mapMarkers13_time.getLayers().length === 0) {
+        } else if(e.layer.options.id === 'mapMarkerRO_time') {
+            if(mapMarkerRO_time.getLayers().length === 0) {
                 if("$restUrlMarker2_time") {
                     map.spin(true);
-                    var marker = 'mapMarkers13_time';
+                    var marker = mapMarkerRO_time;
                     var markerColor = 'red';
-                    loadMarkers("$restUrlMarker2_time", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=ro_time' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers14') {
-            if(mapMarkers14.getLayers().length === 0) {
-                if("$restUrlMarker5") {
+        } else if(e.layer.options.id === 'mapMarkerLI') {
+            if(mapMarkerLI.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers14';
+                    var marker = mapMarkerLI;
                     var markerColor = 'purple';
-                    loadMarkers("$restUrlMarker5", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=li' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers14_time') {
-            if(mapMarkers14_time.getLayers().length === 0) {
-                if("$restUrlMarker5_time") {
+        } else if(e.layer.options.id === 'mapMarkerLI_time') {
+            if(mapMarkerLI_time.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers14_time';
+                    var marker = mapMarkerLI_time;
                     var markerColor = 'purple';
-                    loadMarkers("$restUrlMarker5_time", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=li_time' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers11') {
-            if(mapMarkers11.getLayers().length === 0) {
-                if("$restUrlMarker3") {
+        } else if(e.layer.options.id === 'mapMarkerAV') {
+            if(mapMarkerAV.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers11';
+                    var marker = mapMarkerAV;
                     var markerColor = 'black';
-                    loadMarkers("$restUrlMarker3", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=av' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers11_time') {
-            if(mapMarkers11_time.getLayers().length === 0) {
-                if("$restUrlMarker3_time") {
+        } else if(e.layer.options.id === 'mapMarkerAV_time') {
+            if(mapMarkerAV_time.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers11_time';
+                    var marker = mapMarkerAV_time;
                     var markerColor = 'black';
-                    loadMarkers("$restUrlMarker3_time", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=av_time' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers12') {
-            if(mapMarkers12.getLayers().length === 0) {
-                if("$restUrlMarker4") {
+        } else if(e.layer.options.id === 'mapMarkerNV') {
+            if(mapMarkerNV.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers12';
+                    var marker = mapMarkerNV;
                     var markerColor = 'orange';
-                    loadMarkers("$restUrlMarker4", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=nv' }}", 1, marker, markerColor, map);
                 }
             }
-        } else if(e.layer.options.id === 'mapMarkers12_time') {
-            if(mapMarkers12_time.getLayers().length === 0) {
-                if("$restUrlMarker4_time") {
+        } else if(e.layer.options.id === 'mapMarkerNV_time') {
+            if(mapMarkerNV_time.getLayers().length === 0) {
+                if("{{ getMarkerApi }}") {
                     map.spin(true);
-                    var marker = 'mapMarkers12_time';
+                    var marker = mapMarkerNV_time;
                     var markerColor = 'orange';
-                    loadMarkers("$restUrlMarker4_time", 0, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?type=nv_time' }}", 1, marker, markerColor, map);
                 }
             }
         }
@@ -580,13 +621,50 @@
         return icon;
     }
 
-    function createPopUp(title, procedure, categories, steps, id, iplug) {
+    function createMarker(mapMarkers, a, iconColor) {
+        var title = a['title'];
+        var lat = a['lat'];
+        var lng = a['lon'];
+        if (lng && lat) {
+            var popUpHtml = 'Bitte warten ...';
+            var icon = getIcon(smallIcons, iconColor, enablePopUp);
+            var marker = L.marker(new L.LatLng(lat, lng), {
+                title: title,
+                icon: icon,
+                interactive: !smallIcons
+            });
+            marker.hit = a;
+            if (enablePopUp) {
+                marker.bindPopup(popUpHtml, popupMarkerOptions);
+                marker.on('click', onMapClick);
+                marker.on('popupopen', showMarker);
+                marker.on('popupclose', hideMarker);
+            }
+            mapMarkers.addLayer(marker);
+        }
+    }
+
+    function onMapClick(e) {
+        var popup = e.target.getPopup();
+        var hit = e.target.hit;
+        if (hit.isBLP) {
+            popup.setContent(createPopUpBLP(hit));
+        } else {
+            popup.setContent(createPopUp(hit));
+        }
+        popup.update();
+    }
+
+    function createPopUp(data) {
         var popUpHtml = '';
+        var procedure = data.procedure;
+        var categories = data.categories;
+
         if(procedure && procedure.length > 0){
             popUpHtml += '<div class="helper text"><small>' + procedure + '</small></div>';
         }
 
-        popUpHtml += '<a href="$renderResponse.encodeURL('/portal/search-detail.psml')?docuuid=' + id + '#if($detailUseParamPlugid)&plugid=' + iplug + '#end" target="_blank" title="' + title + '"><h5>' + title + '</h5></a>';
+        popUpHtml += '<a href="{{ page.find('/detail').url }}?docuuid=' + data.uuid + '" target="_blank" title="' + data.title + '"><h5>' + data.title + '</h5></a>';
 
         if(categories && categories.length > 0){
             var categoryList = [];
@@ -602,128 +680,54 @@
                 }
             }
         }
-        if(steps && steps.length > 0){
+        if(data.steps && data.steps.length > 0){
             popUpHtml += '<h6 class="no-margin">Letzter Verfahrensschritt:</h6>';
-            popUpHtml += '<p>' + steps[steps.length - 1] + '</p>';
+            popUpHtml += '<p>' + data.steps[data.steps.length - 1] + '</p>';
         }
         return popUpHtml;
     }
 
-    function createMarker(mapMarkers, a, iconColor) {
-        var title = a[2];
-        var uuid = a[3];
-        var iplug = a[4];
-        var popUpHtml = 'Bitte warten ...';
-        var icon = getIcon(smallIcons, iconColor, enablePopUp);
-        var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title, icon: icon, interactive: !smallIcons });
-        marker.uuid = uuid;
-        marker.bbox = null;
-        marker.iplug = iplug;
+    function createPopUpBLP(data) {
+        var descr = data.descr;
+        var bpInfos = data.bpInfos;
+        var popUpHtml = '';
         if(enablePopUp){
-            marker.bindPopup(popUpHtml, popupMarkerOptions);
-            marker.on('click', onMapClick);
-            marker.on('popupopen', showMarker);
-            marker.on('popupclose', hideMarker);
+            popUpHtml += '<h5>' + data.title + '</h5>';
+            if(descr && descr .length > 0){
+                popUpHtml += '<h6 class="no-margin">Mitgliedsgemeinden:</h6>';
+                popUpHtml += '<p class="leaflet-hyphens">' + descr + '</p>';
+            }
 
-        }
-        mapMarkers.addLayer(marker);
-    }
-
-    function createMarkerBLP(mapMarkers, a, iconColor) {
-        var id = a.id;
-        var name = a.name;
-        var lat = a.lat;
-        var lon = a.lon;
-        var iplug = a.iplug;
-        var popUpHtml = 'Bitte warten ...';
-        var icon = getIcon(smallIcons, iconColor, enablePopUp);
-        var marker = L.marker(new L.LatLng(lat,lon), { title: name, icon: icon, interactive: !smallIcons });
-        marker.bbox = null;
-        marker.lat = lat;
-        marker.lon = lon;
-        marker.iplug = iplug;
-        if(enablePopUp){
-            marker.on('click', onMapClickBLP);
-            marker.bindPopup(popUpHtml, popupMarkerOptions);
-            marker.on('popupopen', showMarker);
-            marker.on('popupclose', hideMarker);
-        }
-        mapMarkers.addLayer(marker);
-    }
-
-    function onMapClick(e) {
-        var popup = e.target.getPopup();
-        map.spin(true);
-        jQuery.get("$restUrlMarkerDetail?uuid=" + e.target.uuid  + '&iplug=' + e.target.iplug)
-        .done(function(data, textStatus, jqxhr) {
-            map.spin(false);
-            var title = e.target.options.title;
-            var uuid = e.target.uuid;
-            var procedure = data[0];
-            var categories = data[1];
-            var steps = data[2];
-            var iplug = e.target.iplug;
-            popup.setContent( createPopUp(title, procedure, categories, steps, uuid, iplug) );
-            popup.update();
-        })
-        .fail(function () {
-          map.spin(false);
-        });
-    };
-
-    function onMapClickBLP(e) {
-        var popup = e.target.getPopup();
-        var title = e.target.options.title;
-        var x1 = e.target.lon;
-        var y1 = e.target.lat;
-        var iplug = e.target.iplug;
-        map.spin(true);
-        jQuery.get('$restUrlUVPDevPlanDetail?title=' + title + '&x1=' + x1 + '&y1=' + y1 + '&iplug=' + iplug)
-        .done(function(data, textStatus, jqxhr) {
-            map.spin(false);
-            title = e.target.options.title;
-            var descr = data.descr;
-            var polygon = data.polygon;
-            var bpinfos = data.bpinfos;
-            var popUpHtml = '';
-            if(enablePopUp){
-                popUpHtml += '<h5>' + title + '</h5>';
-                if(descr && descr .length > 0){
-                    popUpHtml += '<h6 class="no-margin">Mitgliedsgemeinden:</h6>';
-                    popUpHtml += '<p class="leaflet-hyphens">' + descr + '</p>';
-                }
-
-                if(bpinfos && bpinfos.length > 0){
-                    popUpHtml += '<h6 class="no-margin">Nutzen Sie die folgenden Links um zu den Bauleitplanungs-Seiten zu gelangen:</h6>';
-                    for (var j = 0; j < bpinfos.length; j++) {
-                        var bpinfo = bpinfos[j];
-                        if(bpinfo.url){
-                            var url = bpinfo.url;
-                            if(url.indexOf("http") === -1){
-                                url = "http://" + url;
-                            }
-                            if(bpinfo.tags){
-                                var tags = [].concat(bpinfo.tags);
-                                for (var k = 0; k < tags.length; k++) {
-                                    var tag = tags[k];
-                                    if(tag){
-                                        var title;
-                                        if(tag === "v"){
-                                            title = 'Wirksame/rechtskr&auml;ftige Bauleitpl&auml;ne';
-                                        }else if(tag === "p"){
-                                            title = 'Bauleitpl&auml;ne im Beteiligungsverfahren';
-                                        }else if(tag === "v_fnp"){
-                                            title = 'Wirksame/rechtskr&auml;ftige Fl&auml;chennutzungspl&auml;ne';
-                                        }else if(tag === "p_fnp"){
-                                            title = 'Fl&auml;chennutzungspl&auml;ne im Beteiligungsverfahren';
-                                        }else if(tag === "v_bp"){
-                                            title = 'Wirksame/rechtskr&auml;ftige Bebauungspl&auml;ne';
-                                        }else if(tag === "p_bp"){
-                                            title = 'Bebauungspl&auml;ne im Beteiligungsverfahren';
-                                        }
-                                        if(title){
-                                            popUpHtml += '<a class="icon" href="' + url + '" target="_blank"><span class="ic-ic-arrow"></span><span class="text">' + title + '</span></a>';
-                                        }
+            if(bpInfos && bpInfos.length > 0){
+                popUpHtml += '<h6 class="no-margin">Nutzen Sie die folgenden Links um zu den Bauleitplanungs-Seiten zu gelangen:</h6>';
+                for (var j = 0; j < bpInfos.length; j++) {
+                    var bpInfo = bpInfos[j];
+                    if(bpInfo.url){
+                        var url = bpInfo.url;
+                        if(url.indexOf("http") === -1){
+                            url = "http://" + url;
+                        }
+                        if(bpInfo.tags){
+                            var tags = [].concat(bpInfo.tags);
+                            for (var k = 0; k < tags.length; k++) {
+                                var tag = tags[k];
+                                if(tag){
+                                    var title;
+                                    if(tag === "v"){
+                                        title = 'Wirksame/rechtskr&auml;ftige Bauleitpl&auml;ne';
+                                    }else if(tag === "p"){
+                                        title = 'Bauleitpl&auml;ne im Beteiligungsverfahren';
+                                    }else if(tag === "v_fnp"){
+                                        title = 'Wirksame/rechtskr&auml;ftige Fl&auml;chennutzungspl&auml;ne';
+                                    }else if(tag === "p_fnp"){
+                                        title = 'Fl&auml;chennutzungspl&auml;ne im Beteiligungsverfahren';
+                                    }else if(tag === "v_bp"){
+                                        title = 'Wirksame/rechtskr&auml;ftige Bebauungspl&auml;ne';
+                                    }else if(tag === "p_bp"){
+                                        title = 'Bebauungspl&auml;ne im Beteiligungsverfahren';
+                                    }
+                                    if(title){
+                                        popUpHtml += '<a class="icon" href="' + url + '" target="_blank"><span class="ic-ic-arrow"></span><span class="text">' + title + '</span></a>';
                                     }
                                 }
                             }
@@ -731,13 +735,9 @@
                     }
                 }
             }
-            popup.setContent( popUpHtml );
-            popup.update();
-        })
-        .fail(function () {
-          map.spin(false);
-        });
-    };
+        }
+        return popUpHtml;
+    }
 
     function createLegendEntry(map, mapFilter, markers, color, id, title, paramEntry, style, restUrlTime){
         var html = '<div class="form-element boxed map ' + color + '" ' + style + '>';
@@ -822,12 +822,16 @@
         }
     };
 
-    function loadMarkers(url, startPage, marker, markerColor, map) {
-        jQuery.get(url + "?startPage=" + startPage + "&marker=" + marker + "&markerColor=" + markerColor)
+    function loadMarkers(url, page, marker, markerColor, map) {
+        jQuery.get(url + "&page=" + page)
         .done(function(data, textStatus, jqxhr) {
-            startPage += 1;
-            if(data != "") {
-                loadMarkers(url, startPage, marker, markerColor, map);
+            json = JSON.parse(data);
+            json.forEach(function(item){
+                createMarker(marker, item, markerColor);
+            });
+            if(json.length !== 0) {
+                page += 1;
+                loadMarkers(url, page, marker, markerColor, map);
             } else {
                 map.spin(false);
             }

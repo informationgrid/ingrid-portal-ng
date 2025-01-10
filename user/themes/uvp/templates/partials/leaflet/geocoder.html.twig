@@ -1,3 +1,5 @@
+{% set mapLeafletGeocoder = theme_var('map.leaflet.geocoder.service') %}
+
 <script>
 
     var resultMarker;
@@ -7,7 +9,7 @@
                 // OSM Geocoder
         const osmGeocoder = new L.Control.Geocoder({
                     geocoder: L.Control.Geocoder.nominatim({
-                        serviceUrl: "$leafletGeocoderServiceUrl",
+                        serviceUrl: "{{ mapLeafletGeocoder }}",
                         geocodingQueryParams: { countrycodes: 'de' }
                     }),
                     collapsed: false,

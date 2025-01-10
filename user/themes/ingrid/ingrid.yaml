@@ -12,6 +12,7 @@ footer:
   copyright_text: 'Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz'
   copyright_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  hr_line: true
   logo: {  }
   share:
     enabled: true
@@ -115,16 +116,26 @@ home:
     -
       path: /home/_inform
       hidden: false
-  rss_feeds_limit: 6
+  rss:
+    feeds_limit: 6
   categories:
     exclude_from_search:
       - 'isfolder:true'
+  hits:
+    num: 0
+    sort:
+      sortByDate: true
 hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
   exclude_from_search:
     - 'isfolder:true'
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
   summary_replace_newline: ' '
   summary_lines_limit: 5
   links_max: 5

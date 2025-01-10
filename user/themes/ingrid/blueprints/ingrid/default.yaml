@@ -112,6 +112,18 @@ form:
               accept:
                 - image/*
 
+            footer.hr_line:
+              type: toggle
+              label: HR-Linie darstellen
+              help: HR-Linie über dem Footer darstellen.
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
             footer.copyright_text:
               type: text
               label: Copyright
@@ -393,6 +405,11 @@ form:
                       validate:
                         type: bool
 
+            home.categories:
+              type: section
+              title: Kategorien (Stöbern in ...)
+              underline: true
+
             home.categories.exclude_from_search:
               type: selectize
               selectize:
@@ -406,15 +423,59 @@ form:
               validate:
                 type: commalist
 
-            home.rss_feeds_limit:
-              type: text
-              label: Maximale Anzahl der RSS Feeds
+            home.hits:
+              type: section
+              title: Trefferübersicht
+              underline: true
+
+            home.hits.exclude_from_search:
+              type: selectize
+              selectize:
+                options:
+                  - text: "datatype:address"
+                    value: "datatype:address"
+                  - text: "datatype:www"
+                    value: "datatype:www"
+                  - text: "isfolder:true"
+                    value: "isfolder:true"
+              label: Aus den Treffern ausschließen
+              help: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
+              validate:
+                type: commalist
+
+            home.hits.num:
+              type: range
+              label: Anzahl der Treffer
               help: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
-              min: 1
-              default: 6
               validate:
                 type: number
+                min: 0
+                max: 10
 
+            home.hits.sort.sortByDate:
+              type: toggle
+              label: Trefferübersicht nach Datum sortiert (modtime)
+              help: Treffer sortiert nach Datum
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            home.rss:
+              type: section
+              title: RSS
+              underline: true
+
+            home.rss.feeds_limit:
+              type: range
+              label: Maximale Anzahl der RSS Feeds
+              help: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+              validate:
+                min: 1
+                max: 10
 
         ## Tab search
         tab_search:
@@ -457,6 +518,42 @@ form:
               validate:
                 type: commalist
 
+            hit_search.sort.enabled:
+              type: toggle
+              label: Suchergebnis-Sortierung
+              help: Suchergebnis-Sortierung darstellen
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            hit_search.sort.sortByDate:
+              type: toggle
+              label: Suchergebnisse nach Datum sortiert (modtime)
+              help: Treffer sortiert nach Datum
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            hit_search.expandable.enabled:
+              type: toggle
+              label: Suchergebnisse aufklappbar
+              help: Suchergebnisse aufklappbar
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
             hit_search.summary_replace_newline:
               type: text
               label: Zeilenumbrüche des Beschreibungstextes ersetzen
@@ -466,22 +563,20 @@ form:
                 type: text
 
             hit_search.summary_lines_limit:
-              type: text
+              type: range
               label: Maximale Zeilenanzahl an Beschreibungstext
               help: Lege die maximale Zeilenanzahl an Beschreibungstext fest.
-              min: 1
-              default: 5
               validate:
-                type: number
+                min: 0
+                max: 10
 
             hit_search.links_max:
-              type: text
+              type: range
               label: Maximale Anzahl der Verweise und Downloads
               help: Lege die maximale Anzahl der dargestellten Verweise und Downloads fest.
-              min: 1
-              default: 5
               validate:
-                type: number
+                min: 0
+                max: 10
 
             hit_search.csw_enabled:
               type: toggle

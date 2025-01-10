@@ -87,7 +87,6 @@ RUN cd /usr/share/grav-admin/user/plugins/ingrid-search-result && composer updat
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-detail && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-rss && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-codelist && composer update
-RUN cd /usr/share/grav-admin/user/plugins/ingrid-providers && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-help && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-catalog && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-datasources && composer update

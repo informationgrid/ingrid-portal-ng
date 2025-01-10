@@ -3,7 +3,10 @@ mocking: false
 routes:
   - /
   - /freitextsuche
-ingrid_api_url: 'https://api.dev.informationgrid.eu/'
+  - /informationsanbieter
+  - /kartendienste
+  - /map/mapMarker
+ingrid_api_url: 'http://host.docker.internal:9910/'
 hit_search:
   hits_num: 10
   facet_config: [
@@ -114,7 +117,7 @@ hit_search:
           "min_doc_count": 0
         }
       },
-      "search": "partner:%s"
+      "search": "partner:%d"
     },
     {
       "id": "bbox",

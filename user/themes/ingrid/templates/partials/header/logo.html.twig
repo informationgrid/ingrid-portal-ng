@@ -3,7 +3,7 @@
 
 {% if header_logo_enabled %}
 <div class="logo" role="banner">
-    <a href="{{ home_url }}" title="Startseite von InGrid-Portal">
+    <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
     {% if logo %}
         {% set header_logo_file = (logo|first).name %}
     {% else %}

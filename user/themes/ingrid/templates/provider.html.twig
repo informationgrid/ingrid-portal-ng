@@ -24,11 +24,11 @@
                                     {% set providerUrl = provider.url %}
                                     {% if providerUrl %}
                                         <a href="{{ providerUrl }}" class="icon external-link" target="_blank">
-                                            <span class="ic-ic-arrow"></span><span class="text">{{ providerName }}</span>
+                                            <span class="ic-ic-arrow"></span><span class="text">{{ providerName|raw }}</span>
                                         </a>
                                     {% else %}
                                         <a class="icon">
-                                            <span class="text">{{ providerName }}</span>
+                                            <span class="text">{{ providerName|raw }}</span>
                                         </a>
                                     {% endif %}
                                 {% endfor %}

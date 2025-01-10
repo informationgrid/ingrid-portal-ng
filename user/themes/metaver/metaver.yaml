@@ -12,6 +12,7 @@ footer:
   copyright_text: '2024 Landesbetrieb Geoinformation und Vermessung. Alle Rechte vorbehalten.'
   copyright_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  hr_line: true
   logo: {  }
   share:
     enabled: true
@@ -103,7 +104,8 @@ home:
     -
       path: /home/_news
       hidden: false
-  rss_feeds_limit: 6
+  rss:
+    feeds_limit: 6
   categories:
     exclude_from_search:
       - 'datatype:address'
@@ -366,6 +368,8 @@ home:
         }
       },
     ]
+  hits:
+    num: 0
 hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null

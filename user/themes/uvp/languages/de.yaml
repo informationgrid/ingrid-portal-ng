@@ -1,0 +1,91 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite von UVP aufrufen
+  MAP: Karte
+  ABOUT: Über uns
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu UVP
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von UVP
+  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an UVP-Team
+  PROVIDER: Behörden
+  PROVIDER_CONTENT: Verfahrensführende Behörden
+
+COMMON:
+  MAP_INFO: Die Hintergrundkarte dient der Orientierung. Kein Bezug zu den Verfahrensdaten.
+
+SEARCH:
+  PORTLET_TITLE_1: Informationen über
+  PORTLET_TITLE_2: UVP-pflichtige<br>Vorhaben finden&nbsp;
+  PORTLET_TITLE_3: 'z.B. Verfahrensstände, Termine, Unterlagen, Berichte & Empfehlungen, Entscheidungen'
+
+SEARCH_RESULT:
+  CATEGORIES_UVP_UVPG-1: Wärmeerzeugung, Bergbau und Energie
+  CATEGORIES_UVP_UVPG-2: Steine und Erden, Glas, Keramik, Baustoffe
+  CATEGORIES_UVP_UVPG-3: Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung
+  CATEGORIES_UVP_UVPG-4: Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung
+  CATEGORIES_UVP_UVPG-5: Oberflächenbehandlung von Kunststoffen
+  CATEGORIES_UVP_UVPG-6: Holz, Zellstoff
+  CATEGORIES_UVP_UVPG-7: Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse
+  CATEGORIES_UVP_UVPG-8: Verwertung und Beseitigung von Abfällen und sonstigen Stoffen
+  CATEGORIES_UVP_UVPG-9: Lagerung von Stoffen und Gemischen
+  CATEGORIES_UVP_UVPG-10: Sonstige Industrieanlagen
+  CATEGORIES_UVP_UVPG-11: Kernenergie
+  CATEGORIES_UVP_UVPG-12: Abfalldeponien
+  CATEGORIES_UVP_UVPG-13: Wasserwirtschaftliche Vorhaben
+  CATEGORIES_UVP_UVPG-14: Verkehrsvorhaben
+  CATEGORIES_UVP_UVPG-15: Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid
+  CATEGORIES_UVP_UVPG-16: Flurbereinigung
+  CATEGORIES_UVP_UVPG-17: Forstliche und landwirtschaftliche Vorhaben
+  CATEGORIES_UVP_UVPG-18: Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan
+  CATEGORIES_UVP_UVPG-19: Leitungsanlagen und vergleichbare Anlagen
+  PROCEDURE_UVP_DEV_PLAN: Bauleitplanung
+  PROVIDERS: Verfahrensführende Stelle
+
+FACETS:
+  FACET-LABEL:
+    PARTNER: Bundesländer
+    PROCEDURE: Verfahrenstypen
+    CATEGORY: Kategorien
+
+SEARCH_DETAIL:
+  UVP_TIME: Zuletzt geändert
+  UVP_DESC: Allgemeine Vorhabenbeschreibung
+  UVP_CATEGORY: UVP-Kategorie
+  UVP_MAP: Raumbezug
+  UVP_MAP_COORDS: 'Koordinaten:'
+  UVP_MAP_ZOOM: Zoom auf initialen Kartenausschnitt
+  UVP_ADDRESS: Adressen
+  UVP_ADDRESS_TYPE: Ansprechpartner
+  UVP_ADDRESS_TYPE_MAIL: 'E-Mail:'
+  UVP_ADDRESS_TYPE_TEL: 'Telefon:'
+  UVP_ADDRESS_TYPE_FAX: 'Fax:'
+  UVP_ADDRESS_TYPE_URL: 'URL:'
+  UVP_STEPS: Verfahrensschritte
+  UVP_PHASE1_DATE: Zeitraum der Auslegung
+  UVP_PHASE1_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Auslegungsinformationen.
+  UVP_PHASE1_DOC_TECHNICALDOCS: Auslegungsinformationen
+  UVP_PHASE1_DOC_APPLICATIONDOCS: UVP-Bericht, ggf. Antragsunterlagen
+  UVP_PHASE1_DOC_REPORTSRECOMMENDATIONSDOCS: Berichte und Empfehlungen
+  UVP_PHASE1_DOC_MOREDOCS: Weitere Unterlagen
+  UVP_PHASE1_DOC_PUBLICATIONDOCS: Bekanntmachung
+  UVP_PHASE2_DATE: Zeitraum der Erörterung
+  UVP_PHASE2_DATE_INFO: Nähere Informationen entnehmen Sie bitte den Informationen zum Erörterungstermin.
+  UVP_PHASE2_DOC_CONSIDERATIONDOCS: Informationen zum Erörterungstermin
+  UVP_PHASE3_DATE: Datum der Entscheidung
+  UVP_PHASE3_DOC_APPROVALDOCS: Auslegungsinformationen
+  UVP_PHASE3_DOC_DESIGNDOCS: Entscheidung
+  UVP_NEG_DATE: Datum der Entscheidung
+  UVP_NEG_DOC_UVPNEGATIVERELEVANTDOCS: Ergebnis der UVP-Vorprüfung
+  STEPS_UVP_PHASE1: Öffentliche Auslegung
+  STEPS_UVP_PHASE2: Erörterungstermin
+  STEPS_UVP_PHASE3: Entscheidung über die Zulassung
+
+CATEGORIES:
+  TITLE: Im letzten Jahr bearbeitete sowie laufende Verfahren
+
+SITEMAP:
+
+CONTACT:
+  FORM: Kontakt online
+  FORM_COMPANY: Welches Bundesland betrifft Ihre Anfrage? (optional)
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team MetaVer gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+

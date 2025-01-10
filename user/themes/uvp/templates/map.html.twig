@@ -1,0 +1,75 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block stylesheets_leaflet %}
+    {% do assets.addCss('theme://js/leaflet/plugins/leaflet.draw/leaflet.draw.css', 98) %}
+    {% include 'partials/header/leaflet/css.html.twig' %}
+{% endblock %}
+
+{% block javascripts_leaflet %}
+    {% include 'partials/header/leaflet/javascript.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    {% set map = theme_var('map') %}
+    {% set checkedCategoryBLP = map.leaflet.legend.enable.blp ? "true" : "false" %}
+    {% set checkedCategoryZV = map.leaflet.legend.enable.zv ? "true" : "false" %}
+    {% set checkedCategoryAV = map.leaflet.legend.enable.av ? "true" : "false" %}
+    {% set checkedCategoryNV = map.leaflet.legend.enable.nv ? "true" : "false" %}
+    {% set checkedCategoryRO = map.leaflet.legend.enable.ro ? "true" : "false" %}
+    {% set checkedCategoryLI = map.leaflet.legend.enable.li ? "true" : "false" %}
+    {% if map.leaflet.position|length > 3 %}
+        {% set mapPositon = "" %}
+        {% set mapExtent = map.leaflet.position %}
+    {% else %}
+        {% set mapPositon = map.leaflet.position %}
+        {% set mapExtent = "" %}
+    {% endif %}
+
+    <div id="map" class="map-ingrid map-full" style="width:100%;position:fixed;z-index:0;">
+        <div class="map-filter">
+            <h5 class="show-for-large">Verfahrenstypen</h5>
+            <ul class="accordion filter-group" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+                <li class="accordion-item" data-accordion-item>
+                    <a class="accordion-title hide-for-large" aria-controls="legend-accordion" role="tab" id="legend-accordion-label" aria-expanded="false" aria-selected="false">
+                        <span class="text">Verfahrenstypen</span>
+                    </a>
+                    <div class="accordion-content" data-tab-content role="tabpanel" aria-labelledby="legend-accordion-label" id="legend-accordion" aria-hidden="false" >
+                    </div>
+                    <a style="display:none" class="accordion-title hide-for-large" aria-controls="legend-accordion" role="tab" id="legend-accordion-label-landscape" aria-expanded="false" aria-selected="false">
+                        <span class="text">Verfahrenstypen</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% include 'partials/global/map/leaflet.html.twig' %}
+
+    <script>
+        var osm = getOSMLayer('<br>{{ "COMMON.MAP_INFO"|t }}');
+        var map = addLeafletMap([osm]);
+        var enablePopUp = true;
+        var smallIcons = false;
+    </script>
+
+    {% include 'partials/leaflet/geocoder.html.twig' %}
+    {% include 'partials/leaflet/marker.html.twig' %}
+
+    <script>
+        addLeafletHomeControl(map, '{{ "SEARCH_DETAIL.UVP_MAP_ZOOM"|t }}', 'bottomright', 'ic-ic-center', mapBounds, '', '23px');
+        map.zoomControl.setPosition('bottomright');
+        window.onresize = resizeIframe;
+        resizeIframe();
+
+        function pageY(elem) {
+            return elem.offsetParent ? (elem.offsetTop + pageY(elem.offsetParent)) : elem.offsetTop;
+        }
+        function resizeIframe(){
+            var buffer = 0;
+            var height = document.documentElement.clientHeight;
+            height -= pageY(document.getElementById('map'))+ buffer ;
+            height = (height < 0) ? 0 : height;
+            document.getElementById('map').style.height = height + 'px';
+        }
+    </script>
+{% endblock %}

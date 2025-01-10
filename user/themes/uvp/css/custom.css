@@ -1,54 +1,32 @@
-/*-
- * **************************************************-
- * InGrid Portal Apps
- * ==================================================
- * Copyright (C) 2014 - 2024 wemove digital solutions GmbH
- * ==================================================
- * Licensed under the EUPL, Version 1.2 or – as soon they will be
- * approved by the European Commission - subsequent versions of the
- * EUPL (the "Licence");
- * 
- * You may not use this work except in compliance with the Licence.
- * You may obtain a copy of the Licence at:
- * 
- * https://joinup.ec.europa.eu/software/page/eupl
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the Licence is distributed on an "AS IS" basis,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the Licence for the specific language governing permissions and
- * limitations under the Licence.
- * **************************************************#
-*/
 .header__logo {
-  width: auto;
+    width: auto;
 }
 
 .header__widget__icon.is-active {
-  fill: #E0003C;
+    fill: #E0003C;
 }
 
 @media screen and (min-width: 640px) {
-  .pagination__number:hover, .pagination__number.is-active {
-    color: #2C5C91;
-    box-shadow: inset 0 -4px 0 0 #2C5C91;
-  }
+    .pagination__number:hover, .pagination__number.is-active {
+        color: #2C5C91;
+        box-shadow: inset 0 -4px 0 0 #2C5C91;
+    }
 }
 
 @media screen and (min-width: 768px) {
-  .tab__toggles a:hover, .tab__toggles .is-active a {
-    box-shadow: inset 0 -2px 0 0 #2C5C91, 0 4px 0 0 #2C5C91;
-  }
+    .tab__toggles a:hover, .tab__toggles .is-active a {
+        box-shadow: inset 0 -2px 0 0 #2C5C91, 0 4px 0 0 #2C5C91;
+    }
 }
 
 @media screen and (min-width: 940px) {
-  .no-touchevents .header__widget > a:hover {
-    color: #2C5C91;
-  }
+    .no-touchevents .header__widget > a:hover {
+        color: #2C5C91;
+    }
 
-  .header__widget__icon.is-active {
-    fill: #E0003C;
-  }
+    .header__widget__icon.is-active {
+        fill: #E0003C;
+    }
 }
 
 .desktop-logo {
@@ -99,215 +77,215 @@
     Leaflet
 */
 .marker-cluster-10 {
-  background-color: rgba(56, 170, 220, 0.6) !important;
-  z-index: 0 !important;
+    background-color: rgba(56, 170, 220, 0.6) !important;
+    z-index: 0 !important;
 }
 
 .marker-cluster-10 div{
-  background-color: rgba(56, 170, 220, 1.0) !important;
+    background-color: rgba(56, 170, 220, 1.0) !important;
 }
 
 .marker-cluster-10.light {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .marker-cluster-10.light div{
-  background-color: rgba(56, 170, 220, 0.6) !important;
+    background-color: rgba(56, 170, 220, 0.6) !important;
 }
 
 .marker-cluster-11 {
-  background-color: rgba(48, 48, 48, 0.6) !important;
-  z-index: -10 !important;
+    background-color: rgba(48, 48, 48, 0.6) !important;
+    z-index: -10 !important;
 }
 
 .marker-cluster-11 div{
-  background-color: rgba(48, 48, 48, 1.0) !important;
+    background-color: rgba(48, 48, 48, 1.0) !important;
 }
 
 .marker-cluster-11.light {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .marker-cluster-11.light div{
-  background-color: rgba(48, 48, 48, 0.6) !important;
+    background-color: rgba(48, 48, 48, 0.6) !important;
 }
 
 .marker-cluster-12 {
-  background-color: rgba(227, 144, 0, 0.6) !important;
-  z-index: -10 !important;
+    background-color: rgba(227, 144, 0, 0.6) !important;
+    z-index: -10 !important;
 }
 
 .marker-cluster-12 div{
-  background-color: rgba(227, 144, 0, 1.0) !important;
+    background-color: rgba(227, 144, 0, 1.0) !important;
 }
 
 .marker-cluster-12.light {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .marker-cluster-12.light div{
-  background-color: rgba(227, 144, 0, 0.6) !important;
+    background-color: rgba(227, 144, 0, 0.6) !important;
 }
 
 .marker-cluster-13 {
-  background-color: rgba(200, 60, 40, 0.6) !important;
-  z-index: -20 !important;
+    background-color: rgba(200, 60, 40, 0.6) !important;
+    z-index: -20 !important;
 }
 
 .marker-cluster-13 div {
-  background-color: rgba(200, 60, 40, 1.0) !important;
+    background-color: rgba(200, 60, 40, 1.0) !important;
 }
 
 .marker-cluster-13.light {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .marker-cluster-13.light div {
-  background-color: rgba(200, 60, 40, 0.6) !important;
+    background-color: rgba(200, 60, 40, 0.6) !important;
 }
 
 .marker-cluster-14 {
-  background-color: rgba(128,0,128, 0.6) !important;
-  z-index: -20 !important;
+    background-color: rgba(128,0,128, 0.6) !important;
+    z-index: -20 !important;
 }
 
 .marker-cluster-14 div {
-  background-color: rgba(128,0,128, 1.0) !important;
+    background-color: rgba(128,0,128, 1.0) !important;
 }
 
 .marker-cluster-14.light {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .marker-cluster-14.light div {
-  background-color: rgba(128,0,128, 0.6) !important;
+    background-color: rgba(128,0,128, 0.6) !important;
 }
 
 .marker-cluster-dev-plan {
-  background-color: rgba(110, 170, 40, 0.6) !important;
-  z-index: -30 !important;
+    background-color: rgba(110, 170, 40, 0.6) !important;
+    z-index: -30 !important;
 }
 
 .marker-cluster-dev-plan div {
-  background-color: rgba(110, 170, 40, 1.0) !important;
+    background-color: rgba(110, 170, 40, 1.0) !important;
 }
 
 .marker-cluster-dev-plan.light {
-  background-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .marker-cluster-dev-plan.light div {
-  background-color: rgba(110, 170, 40, 0.6) !important;
+    background-color: rgba(110, 170, 40, 0.6) !important;
 }
 
 .marker-cluster span {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 @media screen and (max-width: 768px) {
-  .header__widgets__section {
-    padding: 0.525rem 0;
-  }
-  
-  .sub-header{
-    padding: 1.125rem 0;
-  }
+    .header__widgets__section {
+        padding: 0.525rem 0;
+    }
+
+    .sub-header{
+        padding: 1.125rem 0;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 939px) {
-  .header__widgets__section {
-      padding: 1.025rem 0;
-  }
+    .header__widgets__section {
+        padding: 1.025rem 0;
+    }
 }
 
 .nav-overlay__item--level2:hover {
-  color:#FFF;
-  background: #2C5C91;
+    color:#FFF;
+    background: #2C5C91;
 }
 
 .circle {
-  border: 3px solid #2C5C91;
+    border: 3px solid #2C5C91;
 }
 
 #map-legend .leaflet-control-layers {
-  float: none;
-  background: transparent !important;
-  box-shadow: unset;
-  font-size: 12px;
+    float: none;
+    background: transparent !important;
+    box-shadow: unset;
+    font-size: 12px;
 }
 
 .leaflet-legend-icon {
-  background-size: 13px 16px;
-  padding: 3px 10px 0 4px !important;
+    background-size: 13px 16px;
+    padding: 3px 10px 0 4px !important;
 }
 
 @media screen and (min-width: 480px) {
-  .popup {
-    left: 50%;
-    margin-left: -15rem;
-  }
+    .popup {
+        left: 50%;
+        margin-left: -15rem;
+    }
 }
 
 @media screen and (max-height: 34.9375em) and (max-width: 63.9375em) and (orientation: landscape) {
-  #legend-accordion-label-landscape {
-      display: block !important;
-  }
-  .is-active #legend-accordion-label-landscape {
-      border-top: 1px solid #c6cfe2 !important;
-      border-bottom: 0 !important;
-      padding: 10px 0 !important;
-  }
-  .is-active #legend-accordion-label-landscape::after {
-      top: 10px !important;
-      right: 50% !important;
-  }
-  .is-active #legend-accordion-label-landscape span {
-      display: none;
-  }
-  #legend-accordion-label {
-      display: none !important;
-  }
-  #legend-accordion {
-      margin: 0;
-  }
-  .leaflet-popup-content {
-      min-width: 400px;
-  }
-  .leaflet-popup-content a h5, .leaflet-popup-content .helper.icon{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-  }
-  .leaflet-popup-content {
-    margin: 24px;
-  }
-  .leaflet-popup-content .helper.icon:last-of-type, .leaflet-popup-content .helper.text:first-of-type { 
-    margin-bottom: 8px;
-  }
+    #legend-accordion-label-landscape {
+        display: block !important;
+    }
+    .is-active #legend-accordion-label-landscape {
+        border-top: 1px solid #c6cfe2 !important;
+        border-bottom: 0 !important;
+        padding: 10px 0 !important;
+    }
+    .is-active #legend-accordion-label-landscape::after {
+        top: 10px !important;
+        right: 50% !important;
+    }
+    .is-active #legend-accordion-label-landscape span {
+        display: none;
+    }
+    #legend-accordion-label {
+        display: none !important;
+    }
+    #legend-accordion {
+        margin: 0;
+    }
+    .leaflet-popup-content {
+        min-width: 400px;
+    }
+    .leaflet-popup-content a h5, .leaflet-popup-content .helper.icon{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    .leaflet-popup-content {
+        margin: 24px;
+    }
+    .leaflet-popup-content .helper.icon:last-of-type, .leaflet-popup-content .helper.text:first-of-type {
+        margin-bottom: 8px;
+    }
 }
 
 @media screen and (max-width: 34.9375em) {
-  .leaflet-popup-content {
-    min-width: 300px;
-  }
-  .teaser-data .helper.icon {
-    width: 85%;
-  }
+    .leaflet-popup-content {
+        min-width: 300px;
+    }
+    .teaser-data .helper.icon {
+        width: 85%;
+    }
 }
 
 @media screen and (max-width: 47.9375em) {
-   .header-menu-open .xsmall-button {
-    display: block;
-  }
-  .header-menu-open .small-button {
-    display: none;
-  }
+    .header-menu-open .xsmall-button {
+        display: block;
+    }
+    .header-menu-open .small-button {
+        display: none;
+    }
 }
 
 
 @media print, screen and (min-width: 64em) {
-  .search-filtered .accordion.accordion-filter-group .accordion-content.filter-wrapper {
-     max-height: unset;
-  }
+    .search-filtered .accordion.accordion-filter-group .accordion-content.filter-wrapper {
+        max-height: unset;
+    }
 }

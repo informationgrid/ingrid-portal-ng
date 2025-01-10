@@ -7,7 +7,7 @@ use stdClass;
 class ElasticsearchService
 {
 
-    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch): string
+    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch, bool $sortByDate): string
     {
         if(count($excludeFromSearch) > 0) {
             foreach ($excludeFromSearch as $exclude) {
@@ -23,6 +23,16 @@ class ElasticsearchService
             SearchQueryHelper::replaceInGridQuery($query);
             $result = array("query_string" => array("query" => $query . " " . $queryFromFacets->query));
         }
+        $sortQuery = array(
+            "_score"
+        );
+        if ($sortByDate) {
+            $sortQuery[] = array(
+                "t01_object.mod_time" => array(
+                    "order" => "desc"
+                )
+            );
+        }
         $filter = json_decode($queryFromFacets->filter);
         return json_encode(array(
             "from" => $page * $hitsNum,
@@ -34,7 +44,8 @@ class ElasticsearchService
                     "filter" => $filter
                 )
             ),
-            "aggs" => $aggs
+            "aggs" => $aggs,
+            "sort" => $sortQuery ?? [],
         ));
     }
 

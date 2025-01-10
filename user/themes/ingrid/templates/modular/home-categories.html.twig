@@ -6,9 +6,9 @@
             <h2>{{ "CATEGORIES.TITLE"|t }}</h2>
         </div>
     </div>
-    {% if search_result %}
-        {% if search_result.facets %}
-            {% set facets = search_result.facets %}
+    {% if categories_result %}
+        {% if categories_result.facets %}
+            {% set facets = categories_result.facets %}
             {% set facetsCount = facets|length %}
             {% set hasMultiFacets = false %}
             {% if facetsCount > 1 %}

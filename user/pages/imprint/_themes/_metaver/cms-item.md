@@ -20,7 +20,7 @@ Zuständig für den technischen Betrieb von [https://metaver.de](https://metaver
 Landesbetrieb Geoinformation und Vermessung
 Neuenfelder Str. 19
 21109 Hamburg
-E-Mail-Adresse: support@metaver.de (oder [Kontaktformular](/contact "MetaVer - Kontakt"))
+E-Mail-Adresse: [support@metaver.de](mailto:support@metaver.de) (oder [Kontaktformular](/contact "MetaVer - Kontakt"))
 Handelsregister-Nr. HRA 98376 beim Amtsgericht Hamburg
 Geschäftsführer: Thomas Eichhorn
 Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz DE118509725

@@ -6,8 +6,6 @@ custom_title:
 visible: true
 routes:
   default: '/freitextsuche'
-hasImageSwiper: true
-hasLeaflet: true
 content:
     items: '@self.modular'
     order:

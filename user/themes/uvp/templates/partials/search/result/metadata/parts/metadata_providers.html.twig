@@ -1,0 +1,18 @@
+<p>
+{% if hit.addresses %}
+    <h6 class="no-margin">{{ "SEARCH_RESULT.PROVIDERS"|t }}</h6>
+    <p>
+        {% for address in hit.addresses %}
+        <small>{{ address }}</small><br>
+        {% endfor %}
+    </p>
+{% endif %}
+{% if hit.categories %}
+    {% for category in hit.categories %}
+        <div class="helper icon">
+            <span class="ic-ic-{{ category }}"></span>
+            <span class="text">{{ ("SEARCH_RESULT.CATEGORIES_UVP_" ~ category)|t }}</span>
+        </div>
+    {% endfor %}
+{% endif %}
+</p>

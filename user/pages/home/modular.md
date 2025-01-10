@@ -12,6 +12,7 @@ content:
         custom:
             - _search
             - _warning
+            - _hits
             - _categories
             - _news
             - _inform

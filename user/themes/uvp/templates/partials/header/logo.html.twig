@@ -1,0 +1,19 @@
+{% set logo = theme_var('header.logo') %}
+{% set header_logo_enabled = theme_var('header.logo_enabled') %}
+
+{% if header_logo_enabled %}
+    {% if logo %}
+        {% set header_logo_file = (logo|first).name %}
+    {% endif %}
+    <div class="logo" role="banner">
+        <a href="{{ home_url }}" class="hide-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+            <img src="{{ header_logo_file ?? url('theme://images/logo/logo.svg') }}" alt="{{ site.title }}"/>
+        </a>
+        <a href="{{ home_url }}" class="show-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+            <img src="{{ header_logo_file ?? url('theme://images/logo/logo-mit-tag.svg') }}" alt="{{ site.title }}"/>
+        </a>
+        <a href="{{ home_url }}" class="show-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+            <img src="{{ header_logo_file ?? url('theme://images/logo/logo-xsmall.svg') }}" alt="{{ site.title }}"/>
+        </a>
+    </div>
+{% endif %}

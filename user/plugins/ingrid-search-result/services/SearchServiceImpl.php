@@ -14,16 +14,18 @@ class SearchServiceImpl implements SearchService
     private $log;
     private array $facet_config;
     private array $exclude;
+    private bool $sortByDate;
 
 
-    function __construct($grav, int $hitsNum, array $facetConfig = [], array $excludeFromSearch = [])
+    function __construct($grav, int $hitsNum, array $facetConfig = [], array $excludeFromSearch = [], bool $sortByDate = false)
     {
         $this->facet_config = $facetConfig;
         $this->exclude = $excludeFromSearch;
-        $this->api = $grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
+        $this->api = $grav['config']->get('plugins.ingrid-search-result.ingrid_api_url');
         $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];
+        $this->sortByDate = $sortByDate;
     }
 
 
@@ -33,11 +35,11 @@ class SearchServiceImpl implements SearchService
      * @return SearchResult
      * @throws GuzzleException
      */
-    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang): null|SearchResult
+    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang, string $theme = ''): null|SearchResult
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [
-                'body' => $this->transformQuery($query, $page - 1, $selectedFacets, $this->exclude)
+                'body' => $this->transformQuery($query, $page - 1, $selectedFacets, $this->exclude, $this->sortByDate)
             ]);
             $result = json_decode($apiResponse->getBody()->getContents());
             $totalHits = $result->totalHits ?? 0;
@@ -48,9 +50,23 @@ class SearchServiceImpl implements SearchService
                 numOfPages: intval($numOfPages),
                 numPage: $page,
                 listOfPages: $this->getPageRanges($page, $numOfPages),
-                hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null, $lang),
-                facets: SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri, $lang),
+                hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null, $lang, $theme),
+                facets: isset($result->aggregations) ? SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri, $lang) : null,
             );
+        } catch (\Exception $e) {
+            $this->log->error('Error on search with "' . $query . '": ' . $e);
+        }
+        return null;
+    }
+
+    public function getSearchResultOriginalHits(string $query, int $page, array $selectedFacets): null|array
+    {
+        try {
+            $apiResponse = $this->client->request('POST', 'portal/search', [
+                'body' => $this->transformQuery($query, $page - 1, $selectedFacets, $this->exclude)
+            ]);
+            $result = json_decode($apiResponse->getBody()->getContents());
+            return $result->hits;
         } catch (\Exception $e) {
             $this->log->error('Error on search with "' . $query . '": ' . $e);
         }
@@ -94,9 +110,9 @@ class SearchServiceImpl implements SearchService
         return $array;
     }
 
-    private function transformQuery($query, $page, array $selectedFacets, array $excludeFromSearch): string
+    private function transformQuery($query, $page, array $selectedFacets, array $excludeFromSearch, bool $sortByDate = false): string
     {
-        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $excludeFromSearch);
+        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $excludeFromSearch, $sortByDate);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;
     }
