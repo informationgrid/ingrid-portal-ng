@@ -370,6 +370,8 @@ home:
     ]
   hits:
     num: 0
+    sort:
+      sortByDate: true
 hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
@@ -377,6 +379,11 @@ hit_search:
   exclude_from_search:
     - 'datatype:address'
     - 'isfolder:true'
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
   summary_replace_newline: ' '
   summary_lines_limit: 5
   links_max: 5

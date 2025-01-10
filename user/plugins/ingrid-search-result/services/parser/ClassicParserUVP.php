@@ -27,8 +27,9 @@ class ClassicParserUVP
             $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["8001"], $type, $lang) : null;
             $title = self::getValue($source, "title");
             $time = self::getValueTime($source, "t01_object.mod_time");
-        } else if (in_array("www", $datatypes)) {
+        } else if (in_array("blp", $datatypes)) {
             $title = self::getValue($source, "title");
+            $additional_html_1 = self::getValue($source, "additional_html_1");
         }
         return [
             "uuid" => $uuid,
@@ -43,6 +44,7 @@ class ClassicParserUVP
             "addresses" => self::getValueArray($source, "uvp_address"),
             "categories" => self::getValueArray($source, "uvp_category"),
             "map_bboxes" => self::getBBoxes($source, $title),
+            "additional_html_1" => $additional_html_1 ?? null,
         ];
     }
 

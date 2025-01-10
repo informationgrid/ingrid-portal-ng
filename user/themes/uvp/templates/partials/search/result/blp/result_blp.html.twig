@@ -1,0 +1,18 @@
+{% import 'macros/hit_macros.html.twig' as hit_macros %}
+
+{% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
+
+<div class="data">
+    <div class="teaser-data search">
+        {% if partner_logo %}
+            {{ hit_macros.render_hit_logo(hit.partners) }}
+        {% endif %}
+        <h2 class="header">{{ hit.title }}</h2>
+        {% if hit.summary %}
+            <p class="data-text">
+                {{ hit.summary }}
+            </p>
+        {% endif %}
+        {{ hit.additional_html_1|raw }}
+    </div>
+</div>
