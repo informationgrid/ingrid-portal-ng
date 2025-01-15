@@ -212,7 +212,7 @@ class InGridDetailPlugin extends Plugin
                     $this->grav['twig']->twig_vars['lang'] = $lang;
                     $this->grav['twig']->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
                     $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
-                    $this->grav['twig']->twig_vars['timezone'] = $timezone;
+                    $this->grav['twig']->twig_vars['timezone'] = $timezone ?? 'Europe/Berlin';
                 }
             } catch (\Exception $e){
                 $this->log->error("Error open detail: " . $e);
