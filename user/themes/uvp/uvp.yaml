@@ -688,6 +688,8 @@ hit_search:
     },
     {
       "id": "category",
+      "listLimit": 6,
+      "sort": "name",
       "queries": {
         "energie": {
           "label": "Wärmeerzeugung, Bergbau und Energie",
@@ -1072,6 +1074,7 @@ hit_search:
     },
     {
       "id": "actuality",
+      "info": "FACETS.INFO.ACTUALITY",
       "queries": {
         "lastMonth": {
           "query": {
@@ -1169,7 +1172,7 @@ map:
         attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
         opacity: 1
     bbox:
-      color: '#3278B9'
+      color: '#26942f'
       opacity: 0.2
       weight: 1
       inverted: false

@@ -38,12 +38,15 @@ SEARCH_RESULT:
   CATEGORIES_UVP_UVPG-19: Leitungsanlagen und vergleichbare Anlagen
   PROCEDURE_UVP_DEV_PLAN: Bauleitplanung
   PROVIDERS: Verfahrensführende Stelle
+  SORT_DATE_INFO: Bauleitpläne können bei der Sortierung nach "Aktualität" leider nicht berücksichtigt werden.
 
 FACETS:
   FACET-LABEL:
     PARTNER: Bundesländer
     PROCEDURE: Verfahrenstypen
     CATEGORY: Kategorien
+  INFO:
+    ACTUALITY: Bauleitpläne können im Filter "Aktualität" leider nicht berücksichtigt werden.
 
 SEARCH_DETAIL:
   UVP_TIME: Zuletzt geändert
@@ -77,6 +80,7 @@ SEARCH_DETAIL:
   STEPS_UVP_PHASE1: Öffentliche Auslegung
   STEPS_UVP_PHASE2: Erörterungstermin
   STEPS_UVP_PHASE3: Entscheidung über die Zulassung
+  STEPS_UVP_DATE_INFO: Hinweis
 
 CATEGORIES:
   TITLE: Im letzten Jahr bearbeitete sowie laufende Verfahren

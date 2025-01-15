@@ -1,0 +1,12 @@
+{% if fileUrl and fileSize %}
+    <a href="{{ base_url_relative ~ '/' ~ fileUrl }}" title="{{ "SEARCH_DETAIL.DOWNLOAD_ZIP_TITLE"|t }}">
+        <span class="ic-ic-download"></span>
+    </a>
+    {% if fileSize %}
+    <span class="text">
+        <span class="downloadText">
+            ({{ fileSize }})
+        </span>
+    </span>
+    {% endif %}
+{% endif %}

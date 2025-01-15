@@ -58,16 +58,31 @@ class InGridDetailPlugin extends Plugin
 
         $this->log = $this->grav['log'];
         $uri = $this->grav['uri'];
+        $uri_path = $uri->path();
         $config = $this->config();
+        $routes = $config['routes'] ?? null;
+        if ($routes && in_array($uri_path, $routes)) {
+            // Detail request
+            if ($uri_path == "/trefferanzeige") {
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
+                ]);
+            }
 
-        $route = $config['route'] ?? null;
-        if ($route && $route == $uri->path()) {
-            // Enable the main events we are interested in
-            $this->enable([
-                'onPageInitialized' => ['onPageInitialized', 0],
-                'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-                'onTwigExtensions' => ['onTwigExtensions', 0],
-            ]);
+            // Create zip request
+            if ($uri_path == "/detail/createZip") {
+                $this->enable([
+                    'onPageInitialized' => ['renderCustomTemplateDetailCreateZip', 0],
+                ]);
+            }
+            // Get zip request
+            if ($uri_path == "/detail/getZip") {
+                $this->enable([
+                    'onPageInitialized' => ['renderCustomTemplateDetailGetZip', 0],
+                ]);
+            }
         }
     }
 
@@ -76,6 +91,70 @@ class InGridDetailPlugin extends Plugin
         echo "<script>console.log('InGrid Detail');</script>";
     }
 
+    public function renderCustomTemplateDetailCreateZip(): void
+    {
+        $twig = $this->grav['twig'];
+        // Use the @theme notation to reference the template in the theme
+        $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));
+        try {
+            $api = $this->grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
+            $paramUuid = $this->grav['uri']->query('uuid') ?: '';
+            $paramType = $this->grav['uri']->query('type') ?: 'metadata';
+            $responseContent = self::getResponseContent($api, $paramUuid, $paramType);
+            $hits = json_decode($responseContent)->hits;
+            $response = null;
+            $plugId = null;
+            $title = null;
+            if (count($hits) > 0) {
+                $response = $hits[0]->_source->idf;
+                $plugId = $hits[0]->_source->iPlugId;
+                $title = $hits[0]->_source->title;
+            }
+            $output = '';
+            if (!empty($response)) {
+                $parser = new DetailCreateZipUVPServiceImpl('downloads/zip', $title, $paramUuid, $plugId, $this->grav);
+                $content = simplexml_load_string($response);
+                IdfHelper::registerNamespaces($content);
+                [$fileUrl, $fileSize] = $parser->parse($content);
+                $output = $twig->twig()->render($theme_path . '/_rest/detail/createZip.html.twig', [
+                    'fileUrl' => $fileUrl,
+                    'fileSize' => $fileSize,
+                ]);
+            }
+            echo $output;
+        } catch (\Exception $e) {
+            $this->grav['log']->debug($e->getMessage());
+        }
+        exit();
+    }
+
+    public function renderCustomTemplateDetailGetZip(): void
+    {
+        try {
+            $paramUuid = $this->grav['uri']->query('uuid');
+            $paramPlugId = $this->grav['uri']->query('plugid');
+            $locator = $this->grav['locator'];
+            $folderPath = $locator->findResource('user-data://', true);
+            $dir = $folderPath . '/downloads/zip/' . $paramPlugId . '/' . $paramUuid;
+            $dirFiles = scandir($dir);
+            $filename = '';
+            foreach ($dirFiles as $dirFile) {
+                if (str_ends_with($dirFile, '.zip')) {
+                    $filename = $dirFile;
+                }
+            }
+            $file = file($dir . '/' . $filename);
+            if ($file) {
+                header('Content-Type: application/zip');
+                header('Content-Length: ' . filesize($dir . '/' . $filename));
+                header('Content-Disposition: attachment; filename="' . $filename . '"');
+                readfile($dir . '/' . $filename);
+            }
+        } catch (\Exception $e) {
+            $this->grav['log']->debug($e->getMessage());
+        }
+        exit();
+    }
     public function onTwigSiteVariables(): void
     {
 
@@ -86,6 +165,8 @@ class InGridDetailPlugin extends Plugin
             $cswUrl = $this->grav['uri']->query('cswUrl');
             $rootUrl = $this->grav['uri']->rootUrl();
             $lang = $this->grav['language']->getLanguage();
+            $theme = $this->grav['config']->get('system.pages.theme');
+            $timezone = $this->grav['config']->get('system.timezone');
 
             $api = $this->grav['config']->get('plugins.ingrid-detail.ingrid_api_url');
 
@@ -104,11 +185,7 @@ class InGridDetailPlugin extends Plugin
                 } else if ($cswUrl) {
                     $response = file_get_contents($cswUrl);
                 } else if ($uuid && $api) {
-//                $response = Response::get($host);
-                    $client = new Client(['base_uri' => $api]);
-                    $responseContent = $client->request('POST', 'portal/search', [
-                        'body' => $this->transformQuery($uuid, $type)
-                    ])->getBody()->getContents();
+                    $responseContent = self::getResponseContent($api, $uuid, $type);
                     $hits = json_decode($responseContent)->hits;
                     if(count($hits) > 0) {
                         $response = $hits[0]->_source->idf;
@@ -122,10 +199,10 @@ class InGridDetailPlugin extends Plugin
                     IdfHelper::registerNamespaces($content);
 
                     if ($type == "address") {
-                        $parser = new DetailAddressParser();
+                        $parser = new DetailAddress($theme);
                         $hit = $parser->parse($content, $uuid, $this->grav);
                     } else {
-                        $parser = new DetailMetadataParser();
+                        $parser = new DetailMetadata($theme);
                         $hit = $parser->parse($content, $uuid, $dataSourceName, $providers, $this->grav);
                     }
                     $this->grav['twig']->twig_vars['detail_type'] = $type;
@@ -135,6 +212,7 @@ class InGridDetailPlugin extends Plugin
                     $this->grav['twig']->twig_vars['lang'] = $lang;
                     $this->grav['twig']->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
                     $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
+                    $this->grav['twig']->twig_vars['timezone'] = $timezone;
                 }
             } catch (\Exception $e){
                 $this->log->error("Error open detail: " . $e);
@@ -147,6 +225,14 @@ class InGridDetailPlugin extends Plugin
     {
         require_once(__DIR__ . '/twig/DetailTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new DetailTwigExtension());
+    }
+
+    private function getResponseContent(string $api, string $uuid, string $type): string
+    {
+        $client = new Client(['base_uri' => $api]);
+        return $client->request('POST', 'portal/search', [
+            'body' => $this->transformQuery($uuid, $type)
+        ])->getBody()->getContents();
     }
 
     private function transformQuery(string $uuid, string $type): string

@@ -4,7 +4,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Utils;
 
-class DetailAddressParserIdf
+class DetailAddressParserIdfISO
 {
 
     public static function parse(\SimpleXMLElement $node, string $uuid, string $lang): array
@@ -169,7 +169,7 @@ class DetailAddressParserIdf
         foreach ($nodes as $tmpNode) {
             $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
-            $title = DetailAddressParserIdf::getTitle($tmpNode);
+            $title = DetailAddressParserIdfISO::getTitle($tmpNode);
             $item = array(
                 "uuid" => $uuid,
                 "type" => $type,

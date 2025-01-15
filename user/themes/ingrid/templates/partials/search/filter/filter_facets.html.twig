@@ -19,16 +19,29 @@
                                 <li class="accordion-item is-active" data-accordion-item="">
                                     <a href="#" class="accordion-title" aria-controls="type-accordion" role="tab"
                                        id="type-accordion-label" aria-expanded="true" aria-selected="true">
-                                        <span class="text">{{ ('FACETS.FACET-LABEL.' ~ item.id)|upper|t }}</span>
+                                        <span class="text">{{ item.label|t }}</span>
                                     </a>
                                     <div class="accordion-content" data-tab-content="" role="tabpanel"
                                          aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
                                          style="display: block;">
                                         <div class="boxes">
+                                            {% if item.info  %}
+                                            <div class="form-element boxed">
+                                                <div class="input-check caption" style="text-align:left;">
+                                                    <div class="icon check">
+                                                        <span class="ic-ic-info"></span>
+                                                        <span>{{ item.info|t }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
                                             {% if (item.id == "bbox") %}
                                                 {% include 'partials/search/filter/facet_area_map.html.twig' %}
                                             {% else %}
-                                                {% for bucket in item.items %}
+                                                {% set activeListLimit = false %}
+                                                {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}
+                                                {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
+                                                {% for bucket in itemsSelected %}
                                                     <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                         <div class="form-element boxed">
                                                             <div class="input-check">
@@ -43,6 +56,47 @@
                                                         </div>
                                                     </a>
                                                 {% endfor %}
+                                                {% if itemsSelected|length > 0 %}
+                                                    <hr class="no-margin border-dotted">
+                                                {% endif %}
+                                                {% for bucket in itemsUnselected %}
+                                                    {% if item.listLimit and activeListLimit == false %}
+                                                        {% if loop.index > item.listLimit %}
+                                                            {% set activeListLimit = true %}
+                                                            <div class="accordion " data-accordion="" data-allow-all-closed="true" role="tablist">
+                                                                <div class="accordion-item text-right" data-accordion-item="">
+                                                                    <div class="text-left" data-tab-content="" role="tabpanel" aria-labelledby="type-accordion-label" id="{{ item.id }}_more" aria-hidden="false" style="display: none;">
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                        <div class="form-element boxed">
+                                                            <div class="input-check">
+                                                                <div class="control-group">
+                                                                    <label class="control control--checkbox">
+                                                                        <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                        <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                        <span class="text">{{ bucket.label|t }}</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                {% endfor %}
+                                                {% if activeListLimit == true %}
+                                                            </div>
+                                                            <a href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" id="{{ item.id }}_more-label" aria-expanded="false" aria-selected="false">
+                                                                <div class="helper plus">
+                                                                    <span class="ic-ic-plus"></span>
+                                                                    <span class="text">{{ "SEARCH_RESULT.FACETE_CATEGORY_PLUS"|t }}</span>
+                                                                </div>
+                                                                <div class="helper minus">
+                                                                    <span class="ic-ic-minus"></span>
+                                                                    <span class="text">{{ "SEARCH_RESULT.FACETE_CATEGORY_MINUS"|t }}</span>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
                                             {% endif %}
                                         </div>
                                     </div>

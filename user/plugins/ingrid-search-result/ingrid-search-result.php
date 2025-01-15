@@ -171,7 +171,7 @@ class InGridSearchResultPlugin extends Plugin
             $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $excludeFromSearch, $sortByDate);
 
             $selectedFacets = $this->getSelectedFacets();
-            $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri'], $lang, $this->grav['config']->get('system.pages.theme'));
+            $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri'], $lang, $theme);
 
             $this->grav['twig']->twig_vars['query'] = $query;
             $this->grav['twig']->twig_vars['selected_facets'] = $selectedFacets;
@@ -204,7 +204,7 @@ class InGridSearchResultPlugin extends Plugin
             $excludeFromHitsSearch = $this->grav['config']->get('themes.' . $theme . '.home.hits.exclude_from_search') ?? $excludeFromHitsSearch;
 
             $this->service = new SearchServiceImpl($this->grav, 0, $facetConfig, $excludeFromCategoriesSearch);
-            $categories_result = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang, $this->grav['config']->get('system.pages.theme'));
+            $categories_result = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang, $theme);
             $this->grav['twig']->twig_vars['categories_result'] = $categories_result;
 
             $this->hitsNum = $this->grav['config']->get('themes.' . $theme . '.home.hits.num') ?? 0;
@@ -212,7 +212,7 @@ class InGridSearchResultPlugin extends Plugin
 
             if ($this->hitsNum > 0) {
                 $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, [], $excludeFromHitsSearch, $sortByDate);
-                $hits_result = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang, $this->grav['config']->get('system.pages.theme'));
+                $hits_result = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang, $theme);
                 $this->grav['twig']->twig_vars['hits_result'] = $hits_result;
             }
         }

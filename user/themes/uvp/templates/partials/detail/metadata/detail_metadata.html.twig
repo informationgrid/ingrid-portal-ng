@@ -1,0 +1,359 @@
+{% include 'partials/global/map/leaflet.html.twig' %}
+
+{% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
+<div class="detail">
+    <div class="banner-noimage">
+        <div class="page-wrapper">
+            <div class="row content-small">
+                <div class="columns">
+                    <a class="helper icon" href="$searchLink" title="{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}">
+                        <span class="ic-ic-arrow-left"></span>
+                        <span class="text">{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}</span>
+                    </a>
+                    <br>
+                    <br>
+                    <div class="helper text">
+                        <span>{{ hit.type_name }}</span>
+                    </div>
+                    <h1>
+                        {{ hit.title }}
+                    </h1>
+                    <div class="helper text date">
+                        <span>{{ "SEARCH_DETAIL.UVP_TIME"|t }} {{ hit.date|date("d.m.Y", timezone) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{# Beschreibung #}
+    {% if hit.summary %}
+    <div class="row content-small">
+        <div class="columns">
+            <h3>{{ "SEARCH_DETAIL.UVP_DESC"|t }}</h3>
+            <p>{{ hit.summary }}</p>
+        </div>
+    </div>
+    {% endif %}
+
+{# UVP Kategorien #}
+    {% if hit.categories is not empty %}
+    <div class="row content-small">
+        <div class="columns">
+            <h3>{{ "SEARCH_DETAIL.UVP_CATEGORY"|t }}</h3>
+            {% for category in hit.categories %}
+                <div class="helper icon">
+                    <span class="ic-ic-{{ category }}"></span>
+                    <span class="text">{{ ("SEARCH_RESULT.CATEGORIES_UVP_" ~ category|upper)|t }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+{# Raumbezug #}
+    {% if hit.bbox %}
+    <div class="unbreak">
+        <div class="row content-small">
+            <div class="columns">
+                <h3 class="title-font">{{ "SEARCH_DETAIL.UVP_MAP"|t }}</h3>
+            </div>
+        </div>
+        <div class="row no-padding">
+            <div class="columns form">
+                {% include 'partials/global/map/map.html.twig' with { coords: hit.bbox, isDetail: true, mapId: 'map', mapHeight: '400px'} %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{# Addressen #}
+    {% if hit.addresses is not empty %}
+        <div class="row content-small">
+            <div class="columns form">
+                {# Addressen #}
+                <h3>{{ "SEARCH_DETAIL.UVP_ADDRESS"|t }}</h3>
+                {% set partnerText = '' %}
+                {% for address in hit.addresses %}
+                    {% if partners and partner_logo %}
+                        <div class="teaser-logo-partner">
+                            {% for partner in partners %}
+                                {% set partnerText = ('COMMON.RESULT_PARTNER_' ~ (partner)|upper)|t %}
+                                <img src="{{ url('theme://images/partner/svg/' ~ partner ~ '.svg') }}" alt="{{ partnerText}}" title="{{ partnerText }}"/>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <h4 class="no-margin">{{ "SEARCH_DETAIL.UVP_ADDRESS_TYPE"|t }}</h4>
+                    <p>
+                        {% for parent in address.parents %}
+                            {{ parent }}
+                            <br>
+                        {% endfor %}
+                        {{ address.name }}
+                    </p>
+                    <p>
+                        {% if address.street %}
+                            {{ address.street }}
+                            <br>
+                        {% endif %}
+                        {% if address.postalcode %}
+                            {{ address.postalcode }}
+                        {% endif %}
+                        {% if address.city %}
+                            {{ address.city }}
+                        {% endif %}
+                        {% if address.postalcode or address.city%}
+                            <br>
+                        {% endif %}
+                        {% if address.postbox %}
+                            {% set postboxes = address.postbox|split(',') %}
+                            {% for postbox in postboxes %}
+                                {% if postbox starts with 'Postbox' %}
+                                    {% set postbox = postbox|replace({'Postbox ': ''}) %}
+                                    {{ "SEARCH_DETAIL.POSTBOX_LABEL"|t }}
+                                {% endif %}
+                                {{ postbox }}
+                                <br>
+                            {% endfor %}
+                        {% endif %}
+                        {% if partnerText %}
+                            {{ partnerText }}
+                        <br>
+                        {% endif %}
+                        {% if address.country %}
+                            {{ address.country }}
+                        {% endif %}
+                    </p>
+                    <table>
+                        {% if address.mail %}
+                            <tr>
+                                <td>{{ "SEARCH_DETAIL.UVP_ADDRESS_TYPE_MAIL"|t }}</td>
+                                <td>
+                                    <a href="mailto:$mail">{{ address.mail }}</a>
+                                </td>
+                            <tr>
+                        {% endif %}
+                        {% if address.phone %}
+                            <tr>
+                                <td>{{ "SEARCH_DETAIL.UVP_ADDRESS_TYPE_TEL"|t }}</td>
+                                <td>
+                                    {{ address.phone }}
+                                </td>
+                            <tr>
+                        {% endif %}
+                        {% if address.fax %}
+                            <tr>
+                                <td>{{ "SEARCH_DETAIL.UVP_ADDRESS_TYPE_FAX"|t }}</td>
+                                <td>
+                                    {{ address.fax }}
+                                </td>
+                            <tr>
+                        {% endif %}
+                        {% if address.url %}
+                            <tr>
+                                <td>{{ "SEARCH_DETAIL.UVP_ADDRESS_TYPE_URL"|t }}</td>
+                                <td>
+                                    <a target="_blank" href="{{ address.url }}">{{ address.url }}</a>
+                                </td>
+                            <tr>
+                        {% endif %}
+                    </table>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {% if hit.steps %}
+        <div id="timeline" class="row content-small">
+            <div class="columns">
+                <h1>{{ "SEARCH_DETAIL.UVP_STEPS"|t }}
+                    {% if hit.hasDocs %}
+                        <div class="zip-download">
+                            {% set createZip = base_url_relative ~ "/detail/createZip?uuid=" ~ hit.uuid|url_encode %}
+                            <div hx-get="{{ createZip }}" hx-trigger="load once" hx-target="this">
+                                <span>{{ "SEARCH_DETAIL.DOWNLOAD_ZIP_PREPARE"|t }}</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </h1>
+                <div class="timeline">
+                    <div class="row">
+                        <div class="columns">
+                            <div class="timeline-graph"></div>
+                            <div class="timeline-text">
+                                {% for step in hit.steps|reverse %}
+                                    {% set type = step.type %}
+                                    {% if type is not empty %}
+                                        {% if loop.index0 == 0 %}
+                                            <h2 class="icon-dot">
+                                                {{ ("SEARCH_DETAIL.STEPS_UVP_" ~ type|upper)|t }}
+                                                <span class="ic-ic-timeline-bullet icon"></span>
+                                            </h2>
+                                            {% else %}
+                                            <h2 class="icon-check">
+                                                {{ ("SEARCH_DETAIL.STEPS_UVP_" ~ type|upper)|t }}
+                                                <span class="ic-ic-check icon"></span>
+                                            </h2>
+                                        {% endif %}
+                                        {# Zeitraum der Auslegung #}
+                                        {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t) }}
+                                        {# Auslegungsinformationen #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_TECHNICALDOCS")|t, step.technicalDocs, "technicalDocs") }}
+                                        {# UVP-Bericht, ggf. Antragsunterlagen #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPLICATIONDOCS")|t, step.applicationDocs, "applicationDocs") }}
+                                        {# Berichte und Empfehlungen #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_REPORTSRECOMMENDATIONSDOCS")|t, step.reportsRecommendationsDocs, "reportsRecommendationsDocs") }}
+                                        {# Weitere Unterlagen #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_MOREDOCS")|t, step.moreDocs, "moreDocs") }}
+                                        {# Bekanntmachung #}
+                                        {{ _self.renderTableToList(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "DOC_PUBLICATIONDOCS"), step.publicationDocs, "publicationDocs") }}
+                                        {# Informationen zum Erörterungstermin #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_CONSIDERATIONDOCS")|t, step.considerationDocs, "considerationDocs") }}
+                                        {# Auslegungsinformationen #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPROVALDOCS")|t, step.approvalDocs, "approvalDocs") }}
+                                        {# Entscheidung #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_DESIGNDOCS")|t, step.designDocs, "designDocs") }}
+                                    {% endif %}
+                                {% endfor %}
+                                <h2 class="icon-dot icon-dot-small">
+                                    <span class="ic-ic-bullet icon"></span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if hit.negative %}
+        <div class="row content-small">
+            <div class="columns">
+                {% if hit.hasDocs %}
+                    <div class="zip-download">
+                        {% set createZip = base_url_relative ~ "/detail/createZip?uuid=" ~ hit.uuid|url_encode %}
+                        <div hx-get="{{ createZip }}" hx-trigger="load once" hx-target="this">
+                            <span>{{ "SEARCH_DETAIL.DOWNLOAD_ZIP_PREPARE"|t }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+            {% set type = 'neg' %}
+            {# Zeitraum der Auslegung #}
+            {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, hit.negative.dateFrom) }}
+            {# Negative Vorprüfung #}
+            {{ _self.renderTableToTree("SEARCH_DETAIL.UVP_NEG_DOC_UVPNEGATIVERELEVANTDOCS"|t, hit.negative.uvpNegativeRelevantDocs, "uvpNegativeRelevantDocs") }}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% macro render_date (title, from, to, info) %}
+    {%  if from or to %}
+        <h4 class="no-margin">
+            {{ title }}
+            {%  if info %}
+                <span class="ic-ic-info js-popup" data-title="{{ "SEARCH_DETAIL.STEPS_UVP_DATE_INFO"|t }}" data-content="{{ info }}"></span>
+            {% endif %}
+        </h4>
+        <p>
+            {%  if from %}
+                {{ from|date("d.m.Y", timezone) }}
+            {% endif %}
+            {%  if to %}
+                - {{ to|date("d.m.Y", timezone) }}
+            {% endif %}
+        </p>
+    {% endif %}
+{% endmacro %}
+
+{% macro renderTableToTree (title, entries, tableId) %}
+    {%  if entries is not empty %}
+        {%  if title %}
+        <h4 class="title-font">{{ title }}</h4>
+        {% endif %}
+        <div class="document-list">
+            {% for entry in entries %}
+            <div class="list-item">
+                {{ _self.renderTreeFolder(entry) }}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro renderTreeFolder (entry) %}
+    {% set entryLabel = entry.label %}
+    {% set entryLink = entry.link %}
+    {% set entryChildren = entry.children %}
+    {% if entryLink %}
+    <a target="_blank" class="link download" href="{{ entryLink }}" title="{{ entryLabel }}">{{ entryLabel }}</a>
+        <span class="text">
+            (
+            {% set linkSplit = entryLink|split('/') %}
+            {% set linkText = linkSplit[linkSplit|length - 1] %}
+            {% if linkText is empty %}
+                {% set linkText = linkSplit[linkSplit|length - 2] %}
+            {% endif %}
+            {{ linkText }}
+            <span class="downloadText">
+                {% set getUrlFileSize = base_url_relative ~ "/utils/getUrlFileSize?url=" ~ entryLink|url_encode %}
+                <span hx-get="{{ getUrlFileSize }}" hx-trigger="load once" hx-target="this">
+                </span>
+            </span>
+            )
+        </span>
+    {% else %}
+        <span>{{ entryLabel }}</span>
+    {% endif %}
+    {% if entryChildren is not empty %}
+    <div class="folder__content">
+        {% for entryChild in entryChildren %}
+        <div class="list-item">
+            {{ _self.renderTreeFolder(entryChild) }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro renderTableToList(title, entries, tableId) %}
+    {% if entries is not empty %}
+        {% if title is not empty %}
+            <h4>$entry</h4>
+        {% endif %}
+        {% for entry in entries %}
+            {% set entryType = entry.type %}
+            {% set entryLink = entry.link %}
+            {% set entrySize = entry.size %}
+            {% set entryLabel = entry.label %}
+            {% if entryLink or entryLabel%}
+            <p>
+                {% if entryLink %}
+                <a class="link download" href="{{ entryLink }}">
+                    <svg class="icon">
+                        <use xlink:href="#internal-link"/>
+                    </svg>
+                    {% if entryLink %}
+                        {{ entryLabel }}
+                    {% else %}
+                        {{ entryLink }}
+                    {% endif %}
+                </a>
+                {% else %}
+                    {{ entryLabel }}
+                {% endif %}
+                {% if entryLink %}
+                    <span class="tx-light">
+                        (
+                        {% set linkSplit = entryLink|split('/') %}
+                        {% set linkText = linkSplit[linkSplit|length - 1] %}
+                        {% if linkText is empty %}
+                            {% set linkText = linkSplit[linkSplit|length - 2] %}
+                        {% endif %}
+                        {{ linkText }}
+                        <span class="downloadText"></span>
+                        )
+                    </span>
+                {% endif %}
+            </p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}

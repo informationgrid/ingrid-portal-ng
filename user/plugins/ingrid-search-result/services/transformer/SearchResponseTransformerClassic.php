@@ -72,7 +72,20 @@ class SearchResponseTransformerClassic
                     false,
                 );
             }
-            $result[] = new FacetResult($facetConfig['id'], $facetConfig['label'] ?? null, $items);
+            $label = $facetConfig['label'] ?? 'FACETS.FACET-LABEL.' . strtoupper($facetConfig['id']);
+            $listLimit = $facetConfig['listLimit'] ?? null;
+            $info = $facetConfig['info'] ?? null;
+            $sort = $facetConfig['sort'] ?? null;
+            if ($sort == 'name') {
+                usort($items, function ($a, $b) {
+                    return strcasecmp($a->label, $b->label);
+                });
+            } else if ($sort == 'count') {
+                sort($items, function ($a, $b) {
+                    return strcasecmp($a->docCount, $b->docCount);
+                });
+            }
+            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info);
         }
 
         return $result;

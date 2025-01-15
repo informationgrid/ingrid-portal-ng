@@ -99,7 +99,7 @@ class IdfHelper
         return $array;
     }
 
-    public static function getNodeValueListCodelistCompare($node, string $xpath, null|array $codelist = null, null|string $lang = null, bool $addEqual = true)
+    public static function getNodeValueListCodelistCompare($node, string $xpath, null|array $codelist = null, null|string $lang = null, bool $addEqual = true): array
     {
         self::registerNamespaces($node);
         $array = array();

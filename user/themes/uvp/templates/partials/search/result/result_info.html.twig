@@ -1,0 +1,12 @@
+{% set hasSort = theme_var('hit_search.sort.enabled') %}
+
+{% if hasSort %}
+    {% if search_ranking == 'date' %}
+    <div class="caption">
+        <div class="icon check">
+            <span class="ic-ic-info"></span>
+            <span>{{ "SEARCH_RESULT.SORT_DATE_INFO"|t }}</span>
+        </div>
+    </div>
+    {% endif %}
+{% endif %}

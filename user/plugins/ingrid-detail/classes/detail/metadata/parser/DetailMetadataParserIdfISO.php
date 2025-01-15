@@ -5,7 +5,7 @@ namespace Grav\Plugin;
 use Grav\Common\Utils;
 use Grav\Common\Grav;
 
-class DetailMetadataParserIdf
+class DetailMetadataParserIdfISO
 {
 
     public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang, Grav $grav ): array

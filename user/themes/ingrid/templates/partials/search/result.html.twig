@@ -44,6 +44,7 @@
             {{ "SEARCH_RESULT.FACET_DELETE_SELECTION"|t }}
         </a>
     {% endif %}
+    {% include 'partials/search/result/result_info.html.twig' ignore missing %}
 </div>
 
 {% if search_result.hits|length > 0 %}
