@@ -32,21 +32,21 @@
             {% if linkAccessRefs and linkAccessRefs|length > 0 %}
             <div class="sub-section sub-section-unlined">
                 {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
-                {{ hit_macros.render_link_image_list(tmpTitle, linkAccessRefs, "external", rootUrl, page, false, 2) }}
+                {{ hit_macros.render_link_image_list(tmpTitle, linkAccessRefs, "external", page, false, 2) }}
             </div>
             {% endif %}
         {# Downloads #}
             {% if linkDownloadRefs and linkDownloadRefs|length > 0 %}
             <div class="sub-section sub-section-unlined">
                 {% set tmpTitle = "SEARCH_DETAIL.DOWNLOADS"|t %}
-                {{ hit_macros.render_link_image_list(tmpTitle, linkDownloadRefs, "download", rootUrl, page, false, 2) }}
+                {{ hit_macros.render_link_image_list(tmpTitle, linkDownloadRefs, "download", page, false, 2) }}
             </div>
             {% endif %}
         {# Links #}
             {% if linkObjectRefs and linkObjectRefs|length > 0 %}
             <div class="sub-section sub-section-unlined">
                 {% set tmpTitle = "SEARCH_DETAIL.INFO_LINKS"|t %}
-                {{ hit_macros.render_link_image_list(tmpTitle, linkObjectRefs, null, rootUrl, page, true, 2, partners) }}
+                {{ hit_macros.render_link_image_list(tmpTitle, linkObjectRefs, null, page, true, 2, partners) }}
             </div>
             {% endif %}
         {# Zitat für diesen Datensatz #}

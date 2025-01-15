@@ -63,17 +63,38 @@ class InGridGravUtilsPlugin extends Plugin
             // MIMETYPE request
             if ($uri_path == "/utils/mimetype") {
                 $this->paramUrl = $this->grav['uri']->query('url') ?: "";
-
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
                 ]);
             }
+            // URL file size request
+            if ($uri_path == "/utils/getUrlFileSize") {
+                $this->paramUrl = $this->grav['uri']->query('url') ?: "";
+                $this->enable([
+                    'onPageInitialized' => ['renderCustomTemplateUrlFileSize', 0],
+                ]);
+            }
+
         } else {
             // Check themes config for redirected pages
             $this->enable([
                 'onPageInitialized' => ['onPageInitialized', 0],
             ]);
         }
+    }
+
+    public function renderCustomTemplateUrlFileSize(): void
+    {
+        try {
+            $headers = get_headers($this->paramUrl, true);
+            if (substr($headers[0], 9, 3) == 200) {
+                $contentLength = $headers['Content-Length'];
+                echo StringHelper::formatBytes($contentLength);
+            }
+        } catch (\Exception $e) {
+            $this->grav['log']->debug($e->getMessage());
+        }
+        exit();
     }
 
     public function renderCustomTemplateMimetype(): void
@@ -83,7 +104,7 @@ class InGridGravUtilsPlugin extends Plugin
         $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));
         try {
             $mimeType = MimeTypeHelper::getUrlMimetype($this->paramUrl);
-            $output = $twig->twig()->render($theme_path . '/partials/utils/mimetype.html.twig', [
+            $output = $twig->twig()->render($theme_path . '/_rest/utils/mimetype.html.twig', [
                 'mimeType' => $mimeType
             ]);
             echo $output;

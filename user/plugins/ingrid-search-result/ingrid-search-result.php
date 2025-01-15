@@ -138,7 +138,6 @@ class InGridSearchResultPlugin extends Plugin
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: '';
             $page = $this->grav['uri']->query('page') ?: 1;
-            $rootUrl = $this->grav['uri']->rootUrl();
             $ranking = $this->grav['uri']->query('ranking') ?: '';
             $lang = $this->grav['language']->getLanguage();
 
@@ -177,7 +176,6 @@ class InGridSearchResultPlugin extends Plugin
             $this->grav['twig']->twig_vars['selected_facets'] = $selectedFacets;
             $this->grav['twig']->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
             $this->grav['twig']->twig_vars['search_result'] = $results;
-            $this->grav['twig']->twig_vars['rootUrl'] = $rootUrl;
             $this->grav['twig']->twig_vars['hitsNum'] = $this->hitsNum;
             $this->grav['twig']->twig_vars['pagingUrl'] = $this->getPagingUrl($this->grav['uri']);
             $this->grav['twig']->twig_vars['search_ranking'] = $ranking;

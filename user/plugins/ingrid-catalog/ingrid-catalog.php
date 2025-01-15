@@ -113,11 +113,10 @@ class InGridCatalogPlugin extends Plugin
         $children = self::getCatalogChildren($this->paramIndex, $this->paramLevel, $this->paramPartner, $this->paramNode, $this->paramParentId);
         $detailPage = $this->grav['pages']->find('/detail');
         $catalogPage = $this->grav['pages']->find('/catalog');
-        $rootUrl = $this->grav['uri']->rootUrl();
         $output = $twig->twig()->render($theme_path . '/partials/catalog/catalog-item.html.twig', [
             'items' => $children,
-            'detailPage' => $detailPage ? $rootUrl . $detailPage->route() : '',
-            'catalogPage' => $catalogPage ? $rootUrl . $catalogPage->route() : '',
+            'detailPage' => $detailPage ? $detailPage->route() : '',
+            'catalogPage' => $catalogPage ? $catalogPage->route() : '',
         ]);
         echo $output;
         exit();

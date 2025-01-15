@@ -21,7 +21,7 @@
                             <div>
                                 <div class="info--right">
                                     {% if link.url %}
-                                        {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
+                                        {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
                                         <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
                                     {% endif %}
                                 </div>
@@ -60,7 +60,7 @@
                                 <div>
                                     <div class="info--right">
                                         {% if link.url %}
-                                            {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
+                                            {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
                                             <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
                                         {% endif %}
                                         {% if link.serviceType %}
@@ -127,7 +127,7 @@
                                     <div>
                                         <div class="info--right">
                                             {% if link.url %}
-                                                {% set getMime = rootUrl ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
+                                                {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
                                                 <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
                                             {% endif %}
                                             {% if link.applicationProfile %}

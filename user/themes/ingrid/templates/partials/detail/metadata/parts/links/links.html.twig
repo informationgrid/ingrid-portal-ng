@@ -9,7 +9,7 @@
         <div class="sub-section sub-section-unlined">
             {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
             <a class="anchor" id="{{ hash_links }}_access_url"></a>
-            {{ hit_macros.render_link_image_list(tmpTitle, linkAccessRefs, "external", rootUrl, page) }}
+            {{ hit_macros.render_link_image_list(tmpTitle, linkAccessRefs, "external", page) }}
         </div>
         {% endif %}
     {# Downloads #}
@@ -17,7 +17,7 @@
         <div class="sub-section sub-section-unlined">
             {% set tmpTitle = "SEARCH_DETAIL.DOWNLOADS"|t %}
             <a class="anchor" id="{{ hash_links }}_downloads"></a>
-            {{ hit_macros.render_link_image_list(tmpTitle, linkDownloadRefs, "download", rootUrl, page) }}
+            {{ hit_macros.render_link_image_list(tmpTitle, linkDownloadRefs, "download", page) }}
         </div>
         {% endif %}
     {# Links #}
@@ -25,7 +25,7 @@
         <div class="sub-section sub-section-unlined">
             {% set tmpTitle = "SEARCH_DETAIL.INFO_LINKS"|t %}
             <a class="anchor" id="{{ hash_links }}_info_links"></a>
-            {{ hit_macros.render_link_image_list(tmpTitle, linkObjectRefs, null, rootUrl, page, false, null, partners) }}
+            {{ hit_macros.render_link_image_list(tmpTitle, linkObjectRefs, null, page, false, null, partners) }}
         </div>
         {% endif %}
     {# Weitere Verweise #}
@@ -33,7 +33,7 @@
         <div class="sub-section sub-section-unlined">
             {% set tmpTitle = "SEARCH_DETAIL.WWW_REFERENCES"|t %}
             <a class="anchor" id="{{ hash_links }}_www_references"></a>
-            {{ hit_macros.render_link_image_list(tmpTitle, linkOtherRefs, "external", rootUrl, page) }}
+            {{ hit_macros.render_link_image_list(tmpTitle, linkOtherRefs, "external", page) }}
         </div>
         {% endif %}
     {# Untergeordnete Objekte #}
@@ -41,7 +41,7 @@
         <div class="sub-section sub-section-unlined">
             {% set tmpTitle = "SEARCH_DETAIL.SUBORDINATED_REFERENCES"|t %}
             <a class="anchor" id="{{ hash_links }}_subordinated_references"></a>
-            {{ hit_macros.render_link_image_list(tmpTitle, linkSubordinatedRefs, null, rootUrl, page, false, null, partners) }}
+            {{ hit_macros.render_link_image_list(tmpTitle, linkSubordinatedRefs, null, page, false, null, partners) }}
         </div>
         {% endif %}
     {# Übergeordnetet Objekte #}
@@ -49,7 +49,7 @@
         <div class="sub-section sub-section-unlined">
             {% set tmpTitle = "SEARCH_DETAIL.SUPERIOR_REFERENCES"|t %}
             <a class="anchor" id="{{ hash_links }}_superior_references"></a>
-            {{ hit_macros.render_link_image_list(tmpTitle, linkSuperiorRefs, null, rootUrl, page, false, null, partners) }}
+            {{ hit_macros.render_link_image_list(tmpTitle, linkSuperiorRefs, null, page, false, null, partners) }}
         </div>
         {% endif %}
     {# Identifikator des übergeordneten Metadatensatzes #}

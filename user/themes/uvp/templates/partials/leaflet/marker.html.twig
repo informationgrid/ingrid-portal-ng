@@ -1,4 +1,4 @@
-{% set getMarkerApi = rootUrl ~ "/map/mapMarker" %}
+{% set getMarkerApi = base_url_relative ~ "/map/mapMarker" %}
 
 <script>
     function showMarker(m) {
@@ -755,7 +755,7 @@
                 '<span class="toggle-slider round"></span>' +
                 '</label>' +
                 '<span class="toggle-label checked">{{ "COMMON.TOGGLE_APPROVAL_DATE_ON"|t }}</span>'+
-                '<span class="toggle-label unchecked is-hidden">{{ "COMMON_TOGGLE_APPROVAL_DATE_OFF"|t }}</span>'+
+                '<span class="toggle-label unchecked is-hidden">{{ "COMMON.TOGGLE_APPROVAL_DATE_OFF"|t }}</span>'+
                 '</div>';
         }
         html += '</div></div>';
