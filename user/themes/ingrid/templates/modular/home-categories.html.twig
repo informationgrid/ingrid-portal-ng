@@ -20,7 +20,7 @@
                 {% for facet in facets %}
                     <li class="tabs-title {% if isActive %}is-active{% endif %}" role="presentation">
                         <a href="#panel-{{ facet.id }}" aria-selected="{{ isActive }}" role="tab" id="panel-{{ facet.id }}-label" tabindex="0">
-                            <span class="text">{{ facet.label ?? ('FACETS.FACET-LABEL.' ~ facet.id)|upper|t }}</span>
+                            <span class="text">{{ (facet.label ?? ('FACETS.FACET-LABEL.' ~ facet.id)|upper)|t }}</span>
                         </a>
                         <span class="pointer"></span>
                     </li>
