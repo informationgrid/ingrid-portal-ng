@@ -21,11 +21,17 @@
                     </div>
                 {% endif %}
                 <form action="{{ page.find('/search').url }}?{{ uri.query }}" class="input-search" method="get" name="SearchForm" id="SearchForm">
-                    {# keep other query parameters #}
-                    {% for key, item in selected_facets %}
-                        <input type='hidden' name='{{ key }}' value='{{ item }}'/>
-                    {% endfor %}
                     <input type="text" class="input-search-field" placeholder="{{ "SEARCH.QUERY_INITIAL"|t }}" id="qrystr" name="q" value="{{ query }}">
+                    {% for params in uri.query()|split('&') %}
+                        {% set param = params|split('=') %}
+                        {% set key = param[0] %}
+                        {% if key is not empty %}
+                            {% set value = uri.query(key) %}
+                            {% if key != 'q' and not key != 'page'%}
+                                <input type="hidden" name="{{ key }}" value="{{ value }}"/>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                     <button class="button round hide-for-medium">
                         <span class="ic-ic-lupe"></span>
                     </button>

@@ -36,7 +36,17 @@
         </span>
         <div class="sort">
             <div class="form-element" style="display:inline;">
-                <form action="{{ uri }}" method="get" name="sortForm" id="sortForm" style="display:inline;">
+                <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="get" name="sortForm" id="sortForm" style="display:inline;">
+                    {% for params in uri.query()|split('&') %}
+                        {% set param = params|split('=') %}
+                        {% set key = param[0] %}
+                        {% if key is not empty %}
+                            {% set value = uri.query(key) %}
+                            {% if key != 'ranking' %}
+                                <input type="hidden" name="{{ key }}" value="{{ value }}"/>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                     <select class="select2" id="ranking" name="ranking" aria-hidden="true" onchange="this.form.submit();">
                         <option value="score" {% if search_ranking == 'score' %}selected{% endif %}>{{ "SEARCH_RESULT.SORT_SCORE"|t }}</option>
                         <option value="date" {% if search_ranking == 'date' %}selected{% endif %}>{{ "SEARCH_RESULT.SORT_TIME"|t }}</option>
