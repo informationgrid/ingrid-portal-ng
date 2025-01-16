@@ -119,6 +119,7 @@ class InGridDetailPlugin extends Plugin
                 $output = $twig->twig()->render($theme_path . '/_rest/detail/createZip.html.twig', [
                     'fileUrl' => $fileUrl,
                     'fileSize' => $fileSize,
+                    'base_url_relative' => $this->grav['uri']->rootUrl(),
                 ]);
             }
             echo $output;
