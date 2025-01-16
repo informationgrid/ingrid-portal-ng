@@ -195,21 +195,21 @@
                                         {# Zeitraum der Auslegung #}
                                         {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t) }}
                                         {# Auslegungsinformationen #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_TECHNICALDOCS")|t, step.technicalDocs, "technicalDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_TECHNICALDOCS")|t, step.technicalDocs, "technicalDocs", base_url_relative) }}
                                         {# UVP-Bericht, ggf. Antragsunterlagen #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPLICATIONDOCS")|t, step.applicationDocs, "applicationDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPLICATIONDOCS")|t, step.applicationDocs, "applicationDocs", base_url_relative) }}
                                         {# Berichte und Empfehlungen #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_REPORTSRECOMMENDATIONSDOCS")|t, step.reportsRecommendationsDocs, "reportsRecommendationsDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_REPORTSRECOMMENDATIONSDOCS")|t, step.reportsRecommendationsDocs, "reportsRecommendationsDocs", base_url_relative) }}
                                         {# Weitere Unterlagen #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_MOREDOCS")|t, step.moreDocs, "moreDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_MOREDOCS")|t, step.moreDocs, "moreDocs", base_url_relative) }}
                                         {# Bekanntmachung #}
-                                        {{ _self.renderTableToList(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "DOC_PUBLICATIONDOCS"), step.publicationDocs, "publicationDocs") }}
+                                        {{ _self.renderTableToList(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "DOC_PUBLICATIONDOCS"), step.publicationDocs, "publicationDocs", base_url_relative) }}
                                         {# Informationen zum Erörterungstermin #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_CONSIDERATIONDOCS")|t, step.considerationDocs, "considerationDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_CONSIDERATIONDOCS")|t, step.considerationDocs, "considerationDocs", base_url_relative) }}
                                         {# Auslegungsinformationen #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPROVALDOCS")|t, step.approvalDocs, "approvalDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPROVALDOCS")|t, step.approvalDocs, "approvalDocs", base_url_relative) }}
                                         {# Entscheidung #}
-                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_DESIGNDOCS")|t, step.designDocs, "designDocs") }}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_DESIGNDOCS")|t, step.designDocs, "designDocs", base_url_relative) }}
                                     {% endif %}
                                 {% endfor %}
                                 <h2 class="icon-dot icon-dot-small">
@@ -263,7 +263,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro renderTableToTree (title, entries, tableId) %}
+{% macro renderTableToTree (title, entries, tableId, base_url_relative) %}
     {%  if entries is not empty %}
         {%  if title %}
         <h4 class="title-font">{{ title }}</h4>
@@ -271,14 +271,14 @@
         <div class="document-list">
             {% for entry in entries %}
             <div class="list-item">
-                {{ _self.renderTreeFolder(entry) }}
+                {{ _self.renderTreeFolder(entry, base_url_relative) }}
             </div>
             {% endfor %}
         </div>
     {% endif %}
 {% endmacro %}
 
-{% macro renderTreeFolder (entry) %}
+{% macro renderTreeFolder (entry, base_url_relative) %}
     {% set entryLabel = entry.label %}
     {% set entryLink = entry.link %}
     {% set entryChildren = entry.children %}
@@ -306,14 +306,14 @@
     <div class="folder__content">
         {% for entryChild in entryChildren %}
         <div class="list-item">
-            {{ _self.renderTreeFolder(entryChild) }}
+            {{ _self.renderTreeFolder(entryChild, base_url_relative) }}
         </div>
         {% endfor %}
     </div>
     {% endif %}
 {% endmacro %}
 
-{% macro renderTableToList(title, entries, tableId) %}
+{% macro renderTableToList(title, entries, tableId, base_url_relative) %}
     {% if entries is not empty %}
         {% if title is not empty %}
             <h4>$entry</h4>
@@ -348,7 +348,11 @@
                             {% set linkText = linkSplit[linkSplit|length - 2] %}
                         {% endif %}
                         {{ linkText }}
-                        <span class="downloadText"></span>
+                        <span class="downloadText">
+                            {% set getUrlFileSize = base_url_relative ~ "/utils/getUrlFileSize?url=" ~ entryLink|url_encode %}
+                            <span hx-get="{{ getUrlFileSize }}" hx-trigger="load once" hx-target="this">
+                            </span>
+                        </span>
                         )
                     </span>
                 {% endif %}
