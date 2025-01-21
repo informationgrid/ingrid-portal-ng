@@ -21,7 +21,6 @@ hit_search:
               }
             }
           },
-          "search": "datatype:www"
         },
         "metadata": {
           "query": {
@@ -41,7 +40,6 @@ hit_search:
               }
             }
           },
-          "search": "t04_search.searchterm:inspireidentifiziert"
         },
         "open-data": {
           "query": {
@@ -62,7 +60,6 @@ hit_search:
               }
             }
           },
-          "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
         },
         "hvd": {
           "query": {
@@ -72,7 +69,6 @@ hit_search:
               }
             }
           },
-          "search": "is_hvd:true"
         },
         "maps": {
           "query": {
@@ -82,7 +78,6 @@ hit_search:
               }
             }
           },
-          "search": "capabilities_url:http.*"
         },
         "address": {
           "query": {
@@ -92,7 +87,6 @@ hit_search:
               }
             }
           },
-          "search": "datatype:address"
         },
       }
     },
@@ -106,7 +100,6 @@ hit_search:
           "min_doc_count": 0
         }
       },
-      "search": "t01_object.obj_class:%d"
     },
     {
       "id": "partner",
@@ -117,7 +110,6 @@ hit_search:
           "min_doc_count": 0
         }
       },
-      "search": "partner:%d"
     },
     {
       "id": "bbox",
@@ -199,7 +191,6 @@ categories:
               }
             }
           },
-          "search": "datatype:www"
         },
         "metadata": {
           "icon": "ic-metadata",
@@ -221,7 +212,6 @@ categories:
               }
             }
           },
-          "search": "t04_search.searchterm:inspireidentifiziert"
         },
         "open-data": {
           "icon": "ic-opendata",
@@ -243,7 +233,6 @@ categories:
               }
             }
           },
-          "search": "t04_search.searchterm:opendata t04_search.searchterm:opendataident"
         },
         "maps": {
           "icon": "ic-map",
@@ -254,7 +243,6 @@ categories:
               }
             }
           },
-          "search": "capabilities_url:http.*"
         },
       }
     }
