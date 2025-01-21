@@ -2,15 +2,11 @@
 
 <script>
     function showMarker(m) {
-        if(m.target.uuid){
-            jQuery.get('$restUrlBBOX'+'?uuid='+m.target.uuid).done(function(data) {
-                var d = JSON.parse(data);
-                // create an orange rectangle
-                m.target.bbox=L.rectangle(d, {color: "blue", weight: 3, fill: false});
-                if(map){
-                    map.addLayer(m.target.bbox);
-                }
-            });
+        if(m.target.options.bbox){
+           m.target.bbox=L.rectangle(m.target.options.bbox, {color: "blue", weight: 3, fill: false});
+            if(map){
+                map.addLayer(m.target.bbox);
+            }
         }
     }
 
@@ -329,7 +325,7 @@
     }
     if(map) {
         map.on('layeradd', onOverlayAdd);
-        var mapParamLayer = '{{ mapParamLayer }}';
+        var mapParamLayer = '{{ requestLayer }}';
         var mapParamLayers = [];
         if (mapParamLayer.length === 0) {
             if ({{ checkedCategoryBLP }}) {
@@ -356,6 +352,7 @@
         if (mapParamLayers.indexOf('blp') > -1) {
             if (mapMarkersDevPlan) {
                 map.addLayer(mapMarkersDevPlan);
+                $('#mapMarkersDevPlan').prop('checked', true);
                 $('#mapMarkersDevPlan').next().addClass('checked');
                 if (mapParamLayers.indexOf('blp') === -1) {
                     mapParamLayers.push('blp');
@@ -364,6 +361,7 @@
         }
         if (mapParamLayers.indexOf('zv') > -1) {
             if (mapMarkerZV || mapMarkerZV_time) {
+                $('#mapMarkerZV').prop('checked', true);
                 $('#mapMarkerZV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerZV_time');
                 if (checkboxTime.is(':checked')) {
@@ -379,6 +377,7 @@
         }
         if (mapParamLayers.indexOf('av') > -1) {
             if (mapMarkerAV || mapMarkerAV_time) {
+                $('#mapMarkerAV').prop('checked', true);
                 $('#mapMarkerAV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerAV_time');
                 if (checkboxTime.is(':checked')) {
@@ -394,6 +393,7 @@
         }
         if (mapParamLayers.indexOf('ro') > -1) {
             if (mapMarkerRO || mapMarkerRO_time) {
+                $('#mapMarkerRO').prop('checked', true);
                 $('#mapMarkerRO').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerRO_time');
                 if (checkboxTime.is(':checked')) {
@@ -409,6 +409,7 @@
         }
         if (mapParamLayers.indexOf('li') > -1) {
             if (mapMarkerLI || mapMarkerLI_time) {
+                $('#mapMarkerLI').prop('checked', true);
                 $('#mapMarkerLI').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerLI_time');
                 if (checkboxTime.is(':checked')) {
@@ -424,6 +425,7 @@
         }
         if (mapParamLayers.indexOf('nv') > -1) {
             if (mapMarkerNV || mapMarkerNV_time) {
+                $('#mapMarkerNV').prop('checked', true);
                 $('#mapMarkerNV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerNV_time');
                 if (checkboxTime.is(':checked')) {
@@ -468,13 +470,6 @@
           L.latLng(mapParamExtent[0], mapParamExtent[1]),
           L.latLng(mapParamExtent[2], mapParamExtent[3])
         );
-    } else if('$selectedMap.webmapclientCoords'.indexOf("y1") > -1){
-        mapBounds = L.latLngBounds(
-          L.latLng(parseFloat('$selectedMap.webmapclientCoords.y1'),
-            parseFloat('$selectedMap.webmapclientCoords.x1')),
-          L.latLng(parseFloat('$selectedMap.webmapclientCoords.y2'),
-          parseFloat('$selectedMap.webmapclientCoords.x2'))
-        );
     } else if(mapExtent.length > 0){
         mapBounds = L.latLngBounds(
           L.latLng(mapExtent[0], mapExtent[1]),
@@ -500,100 +495,79 @@
 
 
     function onOverlayAdd(e){
-        var paramLayers = [];
-        if(e.layer.options.id === 'mapMarkersDevPlan') {
-            if("{{ getMarkerApi }}") {
-                if(mapMarkersDevPlan.getLayers().length === 0){
+        if ("{{ getMarkerApi }}") {
+            if (e.layer.options.id === 'mapMarkersDevPlan') {
+                if (mapMarkersDevPlan.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkersDevPlan;
                     var markerColor = 'green';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_blp' }}", 1, mapMarkersDevPlan, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_blp' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerZV') {
-            if(mapMarkerZV.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerZV') {
+                if (mapMarkerZV.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerZV;
                     var markerColor = 'blue';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_zv' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerZV_time') {
-            if(mapMarkerZV_time.getLayers().length === 0) {
-                if("$restUrlMarker_time") {
+            } else if (e.layer.options.id === 'mapMarkerZV_time') {
+                if (mapMarkerZV_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerZV_time;
                     var markerColor = 'blue';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_zv_time' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerRO') {
-            if(mapMarkerRO.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerRO') {
+                if (mapMarkerRO.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerRO;
                     var markerColor = 'red';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_ro' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerRO_time') {
-            if(mapMarkerRO_time.getLayers().length === 0) {
-                if("$restUrlMarker2_time") {
+            } else if (e.layer.options.id === 'mapMarkerRO_time') {
+                if (mapMarkerRO_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerRO_time;
                     var markerColor = 'red';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_ro_time' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerLI') {
-            if(mapMarkerLI.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerLI') {
+                if (mapMarkerLI.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerLI;
                     var markerColor = 'purple';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_li' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerLI_time') {
-            if(mapMarkerLI_time.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerLI_time') {
+                if (mapMarkerLI_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerLI_time;
                     var markerColor = 'purple';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_li_time' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerAV') {
-            if(mapMarkerAV.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerAV') {
+                if (mapMarkerAV.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerAV;
                     var markerColor = 'black';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_av' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerAV_time') {
-            if(mapMarkerAV_time.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerAV_time') {
+                if (mapMarkerAV_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerAV_time;
                     var markerColor = 'black';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_av_time' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerNV') {
-            if(mapMarkerNV.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerNV') {
+                if (mapMarkerNV.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerNV;
                     var markerColor = 'orange';
                     loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_nv' }}", 1, marker, markerColor, map);
                 }
-            }
-        } else if(e.layer.options.id === 'mapMarkerNV_time') {
-            if(mapMarkerNV_time.getLayers().length === 0) {
-                if("{{ getMarkerApi }}") {
+            } else if (e.layer.options.id === 'mapMarkerNV_time') {
+                if (mapMarkerNV_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerNV_time;
                     var markerColor = 'orange';
@@ -631,6 +605,7 @@
             var marker = L.marker(new L.LatLng(lat, lng), {
                 title: title,
                 icon: icon,
+                bbox: a['bbox'],
                 interactive: !smallIcons
             });
             marker.hit = a;
@@ -772,6 +747,7 @@
             }
             const index = paramLayers.indexOf(paramEntry);
             if (legendEntry.is(':checked')) {
+                $(legendEntry).prop('checked', true);
                 $(legendEntry).next().addClass('checked');
                 if(checkboxTime.length > 0) {
                     if(checkboxTime.is(':checked')) {

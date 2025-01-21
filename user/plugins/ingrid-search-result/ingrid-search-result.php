@@ -421,12 +421,20 @@ class InGridSearchResultPlugin extends Plugin
             $hit = $source->_source;
             $item = [];
             $item['title'] = self::getValue($hit, 'blp_name') ?? self::getValue($hit, 'title');
-            $item['lat'] = self::getValue($hit, 'lat_center') ?? self::getValue($hit, 'y1');
-            $item['lon'] = self::getValue($hit, 'lon_center') ?? self::getValue($hit, 'x1');;
+            $item['lat'] = self::getValue($hit, 'lat_center');
+            $item['lon'] = self::getValue($hit, 'lon_center');
             $item['iplug'] = self::getValue($hit, 'iPlugId');
             $item['uuid'] = self::getValue($hit, 't01_object.obj_id');
+            $y1 = self::getValue($hit, 'y1');
+            $x1 = self::getValue($hit, 'x1');
+            $y2 = self::getValue($hit, 'y2');
+            $x2 = self::getValue($hit, 'x2');
             if (in_array('blp', self::getValue($hit, 'datatype'))) {
                 $item['isBLP'] = true;
+                $bbox = [];
+                $bbox[] = [$y1, $x1];
+                $bbox[] = [$y2, $x2];
+                $item['bbox'] = $bbox;
                 $item['bpInfos'] = [];
                 $blpUrlFinished = self::getValue($hit, 'blp_url_finished');
                 $blpUrlProgress = self::getValue($hit, 'blp_url_in_progress');
@@ -473,6 +481,10 @@ class InGridSearchResultPlugin extends Plugin
                 }
                 $item['descr'] = self::getValue($hit, 'blp_description');
             } else {
+                $bbox = [];
+                $bbox[] = [reset($y1), reset($x1)];
+                $bbox[] = [reset($y2), reset($x2)];
+                $item['bbox'] = $bbox;
                 $item['procedure'] = CodelistHelper::getCodelistEntry(['8001'], self::getValue($hit, 't01_object.obj_class'), 'de');
                 $categories = self::getValue($hit, 'uvp_category');
                 foreach ($categories as $category) {
