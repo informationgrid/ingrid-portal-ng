@@ -1488,7 +1488,7 @@ hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
   reference_system_link_replace: 'urn:ogc:def:crs:'
-  csw_enabled: true
+  csw_enabled: false
   rdf_enabled: false
   time_in_description: true
   address_order:
