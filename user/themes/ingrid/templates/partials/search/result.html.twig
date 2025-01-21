@@ -7,9 +7,13 @@
 </div>
 <div class="filters-active">
     {% for selected_facet, values in selected_facets %}
-        {% if facet == 'bbox' %}
-            {% set actionLink = getActionLinkFromFacets(search_result.facets, 'bbox', '') %}
-            <a href="{{ base_url }}{{ actionLink }}" class="button pill">
+        {% if selected_facet == 'bbox' %}
+            {% set actionLink = page.find('/search').url ~ '?' %}
+            {% set queries = uri.query(null, true)|keys|filter(v => v != selected_facet) %}
+            {% for key, param in queries %}
+                {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' ~ uri.query(param)|url_encode %}
+            {% endfor %}
+            <a href="{{ actionLink }}" class="button pill">
                 {{ 'FACETS.FACET-LABEL.MAP'|t }}: {{ values }}
                 <span class="ic-ic-cross"></span>
             </a>
