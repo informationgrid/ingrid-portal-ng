@@ -39,7 +39,7 @@ class SearchResponseTransformerClassic
                             ((array)$aggregations)[$key]->filtered->final->doc_count,
                             SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key),
                             $query['icon'] ?? null,
-                            $query['isDisplay'] ?? false,
+                            $query['display'] ?? false,
                         );
                     }
                 }
@@ -75,6 +75,7 @@ class SearchResponseTransformerClassic
             $label = $facetConfig['label'] ?? 'FACETS.FACET-LABEL.' . strtoupper($facetConfig['id']);
             $listLimit = $facetConfig['listLimit'] ?? null;
             $info = $facetConfig['info'] ?? null;
+            $toggle = $facetConfig['toggle'] ?? null;
             $sort = $facetConfig['sort'] ?? null;
             if ($sort == 'name') {
                 usort($items, function ($a, $b) {
@@ -85,7 +86,7 @@ class SearchResponseTransformerClassic
                     return strcasecmp($a->docCount, $b->docCount);
                 });
             }
-            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info);
+            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info, $toggle);
         }
 
         return $result;
@@ -126,9 +127,6 @@ class SearchResponseTransformerClassic
         }
         if (isset($query_params['page'])) {
             unset($query_params['page']);
-        }
-        if (isset($query_params['ranking'])) {
-            unset($query_params['ranking']);
         }
 
         $query_string[] = http_build_query($query_params);

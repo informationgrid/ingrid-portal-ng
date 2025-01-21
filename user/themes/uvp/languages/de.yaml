@@ -10,6 +10,13 @@ PAGES:
 
 COMMON:
   MAP_INFO: Die Hintergrundkarte dient der Orientierung. Kein Bezug zu den Verfahrensdaten.
+  TOGGLE_APPROVAL_DATE: Nur aktuelle
+  TOGGLE_APPROVAL_DATE_ON: 'Nur aktuelle Verfahren anzeigen: ein'
+  TOGGLE_APPROVAL_DATE_OFF: 'Nur aktuelle Verfahren anzeigen: aus'
+  TOGGLE_APPROVAL_DATE_TOOLTIP: Im letzten Jahr bearbeitete sowie laufende Verfahren.
+  TOGGLE_APPROVAL_DATE_PILL: Nur aktuelle Verfahren anzeigen
+  TOGGLE_APPROVAL_DATE_MAP_ON: 'Nur aktuelle: ein'
+  TOGGLE_APPROVAL_DATE_MAP_OFF: 'Nur aktuelle: aus'
 
 SEARCH:
   PORTLET_TITLE_1: Informationen über

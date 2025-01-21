@@ -155,10 +155,6 @@ COMMON:
     RDF_LINK_LABEL: RDF/XML
     DETAIL_ARROW_PREFIX: 'Detailansicht:'
     LANGUAGE_TITLE: 'Sprache:'
-    TOGGLE_APPROVAL_DATE: Nur aktuelle
-    TOGGLE_APPROVAL_DATE_ON: 'Nur aktuelle: ein'
-    TOGGLE_APPROVAL_DATE_OFF: 'Nur aktuelle: aus'
-    TOGGLE_APPROVAL_DATE_TOOLTIP: Im letzten Jahr bearbeitete sowie laufende Verfahren.
     MAPCLIENT_GEOCODER_SEARCH_PLACEHOLDER: 'Suche: z.B. nach Hannover ...'
     MAPCLIENT_GEOCODER_SEARCH_ERRORMESSAGE: Keine Ergebnisse ...
     PLACE: Ort

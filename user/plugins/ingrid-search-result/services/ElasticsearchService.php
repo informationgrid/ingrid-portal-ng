@@ -9,7 +9,7 @@ class ElasticsearchService
 
     static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch, bool $sortByDate): string
     {
-        if(count($excludeFromSearch) > 0) {
+        if (count($excludeFromSearch) > 0) {
             foreach ($excludeFromSearch as $exclude) {
                 $query .= ' -' . $exclude;
             }
@@ -56,6 +56,8 @@ class ElasticsearchService
         foreach ($selectedFacets as $selectionKey => $selectionValue) {
             if ($selectionValue == "" || $selectionKey == $ignoreFacetId) continue;
 
+            if (isset($selectedFacets[$selectionValue])) continue;
+
             $filteredObjects = self::findByFacetId($facet_config, $selectionKey);
 
             // Get the first matched object
@@ -93,12 +95,21 @@ class ElasticsearchService
             if (property_exists((object)$facet, 'queries')) {
 
                 list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query);
-                foreach ($facet['queries'] as $subfacet_id => $subfacet_value) {
+                $queries = $facet['queries'];
+
+                foreach ($queries as $subfacet_id => $subfacet_value) {
                     $result[$subfacet_id]['global'] = new stdClass();
 
                     $result = self::addFilterToFacet($filter, $queryString, $result, $subfacet_id);
-
-                    $result[$subfacet_id]['aggs']['filtered']['aggs']['final'] = $subfacet_value['query'];
+                    $tmpQuery = $subfacet_value['query'];
+                    $isToggle = (isset($facet['toggle']['active']) && $facet['toggle']['active']) ||
+                        (isset($subfacet_value['toggle']['active']) && $subfacet_value['toggle']['active']);
+                    if ($isToggle) {
+                        if (isset($subfacet_value['query_toggle'])) {
+                            $tmpQuery = $subfacet_value['query_toggle'];
+                        }
+                    }
+                    $result[$subfacet_id]['aggs']['filtered']['aggs']['final'] = $tmpQuery;
                 }
             } else if (property_exists((object)$facet, 'query')) {
                 // the facet should not depend on the actual query
@@ -133,13 +144,38 @@ class ElasticsearchService
             $result[] = join(' OR ', $subQuery);
         } else if (property_exists((object)$foundObject, 'queries')) {
             $values = explode(",", $selectionValue);
+            $queries = $foundObject['queries'];
             $temp_filter = array();
-            foreach ($values as $value) {
-                $facet1 = $foundObject['queries'][$value];
-                if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
-                    $temp_filter[] = json_encode($facet1['query']['filter']);
-                } else {
-                    $result[] = $foundObject['queries'][$selectionValue]['query'];
+            $isToggle = isset($foundObject['toggle']['active']) && $foundObject['toggle']['active'];
+            if ($isToggle) {
+                foreach ($values as $value) {
+                    if (isset($queries[$value])) {
+                        $query = $queries[$value];
+                        if (isset($query['query_toggle']['filter'])) {
+                            $temp_filter[] = json_encode($query['query_toggle']['filter']);
+                        } else {
+                            $temp_filter[] = json_encode($query['query']['filter']);
+                        }
+                    } else {
+                        foreach ($queries as $query) {
+                            if (isset($query['query_toggle']['filter'])) {
+                                $temp_filter[] = json_encode($query['query_toggle']['filter']);
+                            } else if (isset($query['query']['filter'])) {
+                                $temp_filter[] = json_encode($query['query']['filter']);
+                            }
+                        }
+                    }
+                }
+            } else {
+                foreach ($values as $value) {
+                    if (isset($queries[$value])) {
+                        $facet1 = $queries[$value];
+                        if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
+                            $temp_filter[] = json_encode($facet1['query']['filter']);
+                        } else {
+                            $result[] = $queries[$selectionValue]['query'];
+                        }
+                    }
                 }
             }
             // we need to combine facets within a group by OR
@@ -157,8 +193,13 @@ class ElasticsearchService
      */
     public static function findByFacetId($facet_config, int|string $selectionKey): array
     {
-        return array_filter($facet_config, function ($object) use ($selectionKey) {
-            return $object['id'] === $selectionKey;
+        return array_filter($facet_config, function ($facet) use ($selectionKey) {
+            $found = $facet['id'] === $selectionKey;
+            if (!$found and isset($facet['toggle'])) {
+                $toggle = $facet['toggle'];
+                $found = $toggle['id'] === $selectionKey;
+            }
+            return $found;
         });
     }
 
@@ -173,12 +214,14 @@ class ElasticsearchService
     {
         $queryString = array();
         $filter = array();
-        if (empty($selected_facets)) {
+        $hasSelection = !empty($selected_facets);
+        if (!$hasSelection) {
             if ($query != "") {
                 $queryString = array("query_string" => array("query" => $query));
             }
         } else {
-            $queryFromFacets = ElasticsearchService::getQueryFromFacets($facets, $selected_facets, $id);
+            $finalSelectedFacets = $selected_facets;
+            $queryFromFacets = ElasticsearchService::getQueryFromFacets($facets, $finalSelectedFacets, $id);
             if ($query == "" && $queryFromFacets->query == "") {
                 $queryString = array("match_all" => new stdClass());
             } else {
@@ -208,4 +251,5 @@ class ElasticsearchService
         }
         return $result;
     }
+
 }

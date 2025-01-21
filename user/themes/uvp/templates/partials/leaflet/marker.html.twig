@@ -356,7 +356,7 @@
         if (mapParamLayers.indexOf('blp') > -1) {
             if (mapMarkersDevPlan) {
                 map.addLayer(mapMarkersDevPlan);
-                $('#mapMarkersDevPlan').prop('checked', true);
+                $('#mapMarkersDevPlan').next().addClass('checked');
                 if (mapParamLayers.indexOf('blp') === -1) {
                     mapParamLayers.push('blp');
                 }
@@ -364,7 +364,7 @@
         }
         if (mapParamLayers.indexOf('zv') > -1) {
             if (mapMarkerZV || mapMarkerZV_time) {
-                $('#mapMarkerZV').prop('checked', true);
+                $('#mapMarkerZV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerZV_time');
                 if (checkboxTime.is(':checked')) {
                     map.addLayer(mapMarkerZV_time);
@@ -379,7 +379,7 @@
         }
         if (mapParamLayers.indexOf('av') > -1) {
             if (mapMarkerAV || mapMarkerAV_time) {
-                $('#mapMarkerAV').prop('checked', true);
+                $('#mapMarkerAV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerAV_time');
                 if (checkboxTime.is(':checked')) {
                     map.addLayer(mapMarkerAV_time);
@@ -394,7 +394,7 @@
         }
         if (mapParamLayers.indexOf('ro') > -1) {
             if (mapMarkerRO || mapMarkerRO_time) {
-                $('#mapMarkerRO').prop('checked', true);
+                $('#mapMarkerRO').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerRO_time');
                 if (checkboxTime.is(':checked')) {
                     map.addLayer(mapMarkerRO_time);
@@ -409,7 +409,7 @@
         }
         if (mapParamLayers.indexOf('li') > -1) {
             if (mapMarkerLI || mapMarkerLI_time) {
-                $('#mapMarkerLI').prop('checked', true);
+                $('#mapMarkerLI').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerLI_time');
                 if (checkboxTime.is(':checked')) {
                     map.addLayer(mapMarkerLI_time);
@@ -424,7 +424,7 @@
         }
         if (mapParamLayers.indexOf('nv') > -1) {
             if (mapMarkerNV || mapMarkerNV_time) {
-                $('#mapMarkerNV').prop('checked', true);
+                $('#mapMarkerNV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerNV_time');
                 if (checkboxTime.is(':checked')) {
                     map.addLayer(mapMarkerNV_time);
@@ -507,7 +507,7 @@
                     map.spin(true);
                     var marker = mapMarkersDevPlan;
                     var markerColor = 'green';
-                    loadMarkers("{{ getMarkerApi ~ '?type=blp' }}", 1, mapMarkersDevPlan, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_blp' }}", 1, mapMarkersDevPlan, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerZV') {
@@ -516,7 +516,7 @@
                     map.spin(true);
                     var marker = mapMarkerZV;
                     var markerColor = 'blue';
-                    loadMarkers("{{ getMarkerApi ~ '?type=zv' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_zv' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerZV_time') {
@@ -525,7 +525,7 @@
                     map.spin(true);
                     var marker = mapMarkerZV_time;
                     var markerColor = 'blue';
-                    loadMarkers("{{ getMarkerApi ~ '?type=zv_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_zv_time' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerRO') {
@@ -534,7 +534,7 @@
                     map.spin(true);
                     var marker = mapMarkerRO;
                     var markerColor = 'red';
-                    loadMarkers("{{ getMarkerApi ~ '?type=ro' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_ro' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerRO_time') {
@@ -543,7 +543,7 @@
                     map.spin(true);
                     var marker = mapMarkerRO_time;
                     var markerColor = 'red';
-                    loadMarkers("{{ getMarkerApi ~ '?type=ro_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_ro_time' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerLI') {
@@ -552,7 +552,7 @@
                     map.spin(true);
                     var marker = mapMarkerLI;
                     var markerColor = 'purple';
-                    loadMarkers("{{ getMarkerApi ~ '?type=li' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_li' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerLI_time') {
@@ -561,7 +561,7 @@
                     map.spin(true);
                     var marker = mapMarkerLI_time;
                     var markerColor = 'purple';
-                    loadMarkers("{{ getMarkerApi ~ '?type=li_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_li_time' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerAV') {
@@ -570,7 +570,7 @@
                     map.spin(true);
                     var marker = mapMarkerAV;
                     var markerColor = 'black';
-                    loadMarkers("{{ getMarkerApi ~ '?type=av' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_av' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerAV_time') {
@@ -579,7 +579,7 @@
                     map.spin(true);
                     var marker = mapMarkerAV_time;
                     var markerColor = 'black';
-                    loadMarkers("{{ getMarkerApi ~ '?type=av_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_av_time' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerNV') {
@@ -588,7 +588,7 @@
                     map.spin(true);
                     var marker = mapMarkerNV;
                     var markerColor = 'orange';
-                    loadMarkers("{{ getMarkerApi ~ '?type=nv' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_nv' }}", 1, marker, markerColor, map);
                 }
             }
         } else if(e.layer.options.id === 'mapMarkerNV_time') {
@@ -597,7 +597,7 @@
                     map.spin(true);
                     var marker = mapMarkerNV_time;
                     var markerColor = 'orange';
-                    loadMarkers("{{ getMarkerApi ~ '?type=nv_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_nv_time' }}", 1, marker, markerColor, map);
                 }
             }
         }
@@ -754,8 +754,8 @@
                 '<input id="' + id + '_time" name="' + id + '_time" type="checkbox" checked>' +
                 '<span class="toggle-slider round"></span>' +
                 '</label>' +
-                '<span class="toggle-label checked">{{ "COMMON.TOGGLE_APPROVAL_DATE_ON"|t }}</span>'+
-                '<span class="toggle-label unchecked is-hidden">{{ "COMMON.TOGGLE_APPROVAL_DATE_OFF"|t }}</span>'+
+                '<span class="toggle-label checked">{{ "COMMON.TOGGLE_APPROVAL_DATE_MAP_ON"|t }}</span>'+
+                '<span class="toggle-label unchecked is-hidden">{{ "COMMON.TOGGLE_APPROVAL_DATE_MAP_ON"|t }}</span>'+
                 '</div>';
         }
         html += '</div></div>';
@@ -772,6 +772,7 @@
             }
             const index = paramLayers.indexOf(paramEntry);
             if (legendEntry.is(':checked')) {
+                $(legendEntry).next().addClass('checked');
                 if(checkboxTime.length > 0) {
                     if(checkboxTime.is(':checked')) {
                         map.addLayer(markers[0]);
@@ -786,6 +787,7 @@
                     paramLayers.push(paramEntry);
                 }
             } else {
+                $(legendEntry).next().removeClass('checked');
                 if(checkboxTime.length > 0) {
                     map.removeLayer(markers[0]);
                     map.removeLayer(markers[1]);
@@ -820,7 +822,7 @@
                 }
             });
         }
-    };
+    }
 
     function loadMarkers(url, page, marker, markerColor, map) {
         jQuery.get(url + "&page=" + page)

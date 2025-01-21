@@ -33,7 +33,7 @@
                 <div class="tabs-panel midnight {% if isActive %}is-active{% endif %}" id="panel-{{ facet.id }}" role="tabpanel" aria-labelledby="panel-{{ facet.id }}-label">
                     <div class="row align-center text-center">
                         {% for facetItem in facet.items %}
-                            {% if facetItem.docCount > 0 or facetItem.isDisplay %}
+                            {% if facetItem.docCount > 0 or facetItem.display %}
                             <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
                                 <div class="teaser">
                                     <div class="blue-border"></div>

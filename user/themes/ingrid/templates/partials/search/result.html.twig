@@ -14,33 +14,74 @@
                 <span class="ic-ic-cross"></span>
             </a>
         {% else %}
-            {% for value in values | split(',') %}
-                {% set actionLink = getActionLinkFromFacets(search_result.facets, facet, facetItem) %}
-                {% set label = ('FACETS.FACET-LABEL.' ~ selected_facet ~ '.' ~ facetItem)|upper %}
-                {% if search_result.facets %}
-                    {% set break = false %}
-                    {% for facetItem in search_result.facets if not break %}
-                        {% if selected_facet == facetItem.id %}
-                            {% set breakChild = false %}
-                            {% for facet in facetItem.items if not breakChild %}
-                                {% if value == facet.value %}
-                                    {% set label = facet.label %}
-                                    {% set breakChild = true %}
-                                {% endif %}
-                            {% endfor %}
-                            {% set break = true %}
-                        {% endif %}
+            {% for value in values|split(',') %}
+                {% if value is not empty %}
+                    {% set actionLink = page.find('/search').url ~ '?' %}
+                    {% set queries = uri.query(null, true) %}
+                    {% set queries = queries|merge({
+                        (selected_facet) : values|split(',')|filter(v => v != value)|join(',')
+                    }) %}
+                    {% set label = ('FACETS.FACET-LABEL.' ~ selected_facet ~ '.' ~ facetItem)|upper %}
+                    {% if search_result.facets %}
+                        {% set break = false %}
+                        {% for facetItem in search_result.facets if not break %}
+                            {% if selected_facet == facetItem.id %}
+                                {% set breakChild = false %}
+                                {% for facet in facetItem.items if not breakChild %}
+                                    {% if value == facet.value %}
+                                        {% set label = facet.label %}
+                                        {% set breakChild = true %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% set break = true %}
+                            {% elseif selected_facet == facetItem.toggle.id %}
+                                {% set label = facetItem.toggle.label.pill %}
+                                {% set queries = queries|merge({
+                                    (facetItem.toggle.id) : facetItem.toggle.active ? '' : facetItem.id
+                                }) %}
+                                {% set break = true %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% for key, param in queries %}
+                        {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
                     {% endfor %}
+                    <a href="{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
+                        {% set categoryLabel = ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t %}
+                        {% if categoryLabel == ('FACETS.FACET-LABEL.' ~ selected_facet)|upper %}
+                            {{ label|t }}
+                        {% else %}
+                            {{ ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t }}: {{ label|t }}
+                        {% endif %}
+                        <span class="ic-ic-cross"></span>
+                    </a>
                 {% endif %}
-                <a href="{{ base_url }}{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
-                    {{ ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t }}: {{ label|t }}
-                    <span class="ic-ic-cross"></span>
-                </a>
             {% endfor %}
         {% endif %}
     {% endfor %}
     {% if selected_facets|length > 0 %}
-        <a type="reset" href="{{ page.find('/search').url }}?q={{ uri.query('q') }}" class="button pill">
+        {% set actionLink = page.find('/search').url ~ '?' %}
+        {% set queries = uri.query(null, true)|keys %}
+        {% for selected_facet, values in selected_facets %}
+            {% if search_result.facets %}
+                {% set break = false %}
+                {% for facetItem in search_result.facets if not break %}
+                    {% if selected_facet == facetItem.id %}
+                        {% set queries = queries|filter(v => v != facetItem.id) %}
+                        {% set break = true %}
+                    {% elseif selected_facet == facetItem.toggle.id %}
+                        {% set queries = queries|merge({
+                            (queries|length) : facetItem.toggle.id
+                        }) %}
+                        {% set break = true %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        {% for key, param in queries %}
+            {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' ~ uri.query(param)|url_encode %}
+        {% endfor %}
+        <a type="reset" href="{{ actionLink }}" class="button pill">
             {{ "SEARCH_RESULT.FACET_DELETE_SELECTION"|t }}
         </a>
     {% endif %}

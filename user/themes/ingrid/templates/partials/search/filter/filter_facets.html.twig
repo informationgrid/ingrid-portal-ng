@@ -10,7 +10,7 @@
                    aria-controls="facet-content-accordion"><span>Filter</span></a>
                 <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content=""
                      role="tabpanel"
-                     aria-labelledby="facet-content-accordion-label" aria-hidden="true" id="facet-content-accordion"
+                     aria-labelledby="facet-content-accordion-label" id="facet-content-accordion"
                      tabindex="1">
                     <div class="boxes">
                         {% for item in search_result.facets %}
@@ -25,6 +25,28 @@
                                          aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
                                          style="display: block;">
                                         <div class="boxes">
+                                            {% if item.toggle %}
+                                                {% set actionLink = page.find('/search').url ~ '?' %}
+                                                {% set queries = uri.query(null, true) %}
+                                                {% set queries = queries|merge({
+                                                    (item.toggle.id) : item.toggle.active ? '' : item.id
+                                                }) %}
+                                                {% for key, param in queries %}
+                                                    {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                                                {% endfor %}
+                                                <div class="form-element boxed toggle-group">
+                                                    <label class="control toggle" title="{{ item.toggle.label.title|t }}">
+                                                        <input type="checkbox" onclick="location.href='{{ actionLink }}'" name="{{ item.toggle.id }}"
+                                                           {% if item.toggle.active %}
+                                                                checked
+                                                           {% endif %}
+                                                        >
+                                                        <span class="toggle-slider round"></span>
+                                                    </label>
+                                                    <span class="toggle-label checked {% if item.toggle.active is not sameas(true) %}is-hidden{% endif %}">{{ item.toggle.label.on|t }}</span>
+                                                    <span class="toggle-label unchecked {% if item.toggle.active %}is-hidden{% endif %}">{{ item.toggle.label.off|t }}</span>
+                                                </div>
+                                            {% endif %}
                                             {% if item.info  %}
                                             <div class="form-element boxed">
                                                 <div class="input-check caption" style="text-align:left;">
@@ -42,8 +64,8 @@
                                                 {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}
                                                 {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
                                                 {% for bucket in itemsSelected %}
-                                                    <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
-                                                        <div class="form-element boxed">
+                                                    <div class="form-element boxed">
+                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ bucket.value }}">
                                                             <div class="input-check">
                                                                 <div class="control-group">
                                                                     <label class="control control--checkbox">
@@ -53,8 +75,8 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
+                                                        </a>
+                                                    </div>
                                                 {% endfor %}
                                                 {% if itemsSelected|length > 0 %}
                                                     <hr class="no-margin border-dotted">
@@ -68,8 +90,8 @@
                                                                     <div class="text-left" data-tab-content="" role="tabpanel" aria-labelledby="type-accordion-label" id="{{ item.id }}_more" aria-hidden="false" style="display: none;">
                                                         {% endif %}
                                                     {% endif %}
-                                                    <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
-                                                        <div class="form-element boxed">
+                                                    <div class="form-element boxed">
+                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ bucket.value }}">
                                                             <div class="input-check">
                                                                 <div class="control-group">
                                                                     <label class="control control--checkbox">
@@ -79,8 +101,8 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
+                                                        </a>
+                                                    </div>
                                                 {% endfor %}
                                                 {% if activeListLimit == true %}
                                                             </div>

@@ -98,6 +98,7 @@ home:
           "energie": {
             "label": "Wärmeerzeugung, Bergbau und Energie",
             "icon": "ic-UVPG-1",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -105,11 +106,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-1"
+
           },
           "baustoffe": {
             "label": "Steine und Erden, Glas, Keramik, Baustoffe",
             "icon": "ic-UVPG-2",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -117,11 +119,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-2"
+
           },
           "verarbeitung": {
             "label": "Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung",
             "icon": "ic-UVPG-3",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -129,11 +132,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-3"
+
           },
           "chemie": {
             "label": "Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung",
             "icon": "ic-UVPG-4",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -141,11 +145,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-4"
+
           },
           "kunststoff": {
             "label": "Oberflächenbehandlung von Kunststoffen",
             "icon": "ic-UVPG-5",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -153,11 +158,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-5"
+
           },
           "holzzellstoff": {
             "label": "Holz, Zellstoff",
             "icon": "ic-UVPG-6",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -165,11 +171,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-6"
+
           },
           "erzeugnisse": {
             "label": "Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse",
             "icon": "ic-UVPG-7",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -177,11 +184,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-7"
+
           },
           "verwertungbeseitigungabfaellen": {
             "label": "Verwertung und Beseitigung von Abfällen und sonstigen Stoffen",
             "icon": "ic-UVPG-8",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -189,11 +197,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-8"
+
           },
           "lagerungstoffengemischen": {
             "label": "Lagerung von Stoffen und Gemischen",
             "icon": "ic-UVPG-9",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -201,11 +210,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-9"
+
           },
           "industrieanlagen": {
             "label": "Sonstige Industrieanlagen",
             "icon": "ic-UVPG-10",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -213,11 +223,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-10"
+
           },
           "kernenergie": {
             "label": "Kernenergie",
             "icon": "ic-UVPG-11",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -225,11 +236,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-11"
+
           },
           "abfalldeponien": {
             "label": "Abfalldeponien",
             "icon": "ic-UVPG-12",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -237,11 +249,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-12"
+
           },
           "wasservorhaben": {
             "label": "Wasserwirtschaftliche Vorhaben",
             "icon": "ic-UVPG-13",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -249,11 +262,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-13"
+
           },
           "verkehrsvorhaben": {
             "label": "Verkehrsvorhaben",
             "icon": "ic-UVPG-14",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -261,11 +275,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-14"
+
           },
           "bergbaukohlendioxid": {
             "label": "Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid",
             "icon": "ic-UVPG-15",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -273,11 +288,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-15"
+
           },
           "flurbereinigung": {
             "label": "Flurbereinigung",
             "icon": "ic-UVPG-16",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -285,11 +301,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-16"
+
           },
           "forstlandvorhaben": {
             "label": "Forstliche und landwirtschaftliche Vorhaben",
             "icon": "ic-UVPG-17",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -297,11 +314,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-17"
+
           },
           "bauvorhaben": {
             "label": "Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan",
             "icon": "ic-UVPG-18",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -309,11 +327,12 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-18"
+
           },
           "anlagen": {
             "label": "Leitungsanlagen und vergleichbare Anlagen",
             "icon": "ic-UVPG-19",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -321,16 +340,27 @@ home:
                 }
               }
             },
-            "search": "uvp_category:UVPG-19"
+
           }
         }
       },
       {
         "id": "procedure",
+        "toggle": {
+          "id": "toggle_procedure",
+          "active": true,
+          "label": {
+            "title": "COMMON.TOGGLE_APPROVAL_DATE_TOOLTIP",
+            "pill": "COMMON.TOGGLE_APPROVAL_DATE_PILL",
+            "on": "COMMON.TOGGLE_APPROVAL_DATE_ON",
+            "off": "COMMON.TOGGLE_APPROVAL_DATE_OFF",
+          }
+        },
         "queries": {
           "obj_class_zv": {
             "label": "Zulassungsverfahren",
             "icon": "ic-Z",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -338,11 +368,44 @@ home:
                 }
               }
             },
-            "search": "t01_object.obj_class:10"
+            "query_toggle": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "t01_object.obj_class": "10"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "range": {
+                              "t01_object.mod_time": {
+                                "gte": "202401160"
+                              }
+                            }
+                          },
+                          {
+                            "range": {
+                              "approval_date": {
+                                "gte": "202401160"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "obj_class_ro": {
             "label": "Raumordnungsverfahren",
             "icon": "ic-R",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -350,11 +413,44 @@ home:
                 }
               }
             },
-            "search": "t01_object.obj_class:13"
+            "query_toggle": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "t01_object.obj_class": "13"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "range": {
+                              "t01_object.mod_time": {
+                                "gte": "202401160"
+                              }
+                            }
+                          },
+                          {
+                            "range": {
+                              "approval_date": {
+                                "gte": "202401160"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "obj_class_li": {
             "label": "Linienbestimmung nach Bundesfernstraßengesetz oder Landesstraßenrecht",
             "icon": "ic-L",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -362,11 +458,44 @@ home:
                 }
               }
             },
-            "search": "t01_object.obj_class:14"
+            "query_toggle": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "t01_object.obj_class": "14"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "range": {
+                              "t01_object.mod_time": {
+                                "gte": "202401160"
+                              }
+                            }
+                          },
+                          {
+                            "range": {
+                              "approval_date": {
+                                "gte": "202401160"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "obj_class_av": {
             "label": "Ausländische Vorhaben",
             "icon": "ic-A",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -374,23 +503,56 @@ home:
                 }
               }
             },
-            "search": "t01_object.obj_class:11"
+            "query_toggle": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "t01_object.obj_class": "11"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "range": {
+                              "t01_object.mod_time": {
+                                "gte": "202401160"
+                              }
+                            }
+                          },
+                          {
+                            "range": {
+                              "approval_date": {
+                                "gte": "202401160"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "obj_class_blp": {
             "label": "Bauleitplanung",
             "icon": "ic-B",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
                   "datatype": "www"
                 }
               }
-            },
-            "search": "datatype:www"
+            }
           },
           "obj_class_nv": {
             "label": "Negative Vorprüfungen",
             "icon": "ic-N",
+            "display": true,
             "query": {
               "filter": {
                 "term": {
@@ -398,8 +560,40 @@ home:
                 }
               }
             },
-            "search": "t01_object.obj_class:12"
-          },
+            "query_toggle": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "t01_object.obj_class": "12"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "range": {
+                              "t01_object.mod_time": {
+                                "gte": "202401160"
+                              }
+                            }
+                          },
+                          {
+                            "range": {
+                              "approval_date": {
+                                "gte": "202401160"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
         }
       },
       {
@@ -407,6 +601,7 @@ home:
         "queries": {
           "bw": {
             "icon": "images/partner/svg/bw.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -415,10 +610,11 @@ home:
                 }
               }
             },
-            "search": "partner:bw"
+
           },
           "by": {
             "icon": "images/partner/svg/by.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -427,10 +623,11 @@ home:
                 }
               }
             },
-            "search": "partner:by"
+
           },
           "be": {
             "icon": "images/partner/svg/be.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -439,10 +636,11 @@ home:
                 }
               }
             },
-            "search": "partner:be"
+
           },
           "hb": {
             "icon": "images/partner/svg/hb.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -451,10 +649,11 @@ home:
                 }
               }
             },
-            "search": "partner:hb"
+
           },
           "hh": {
             "icon": "images/partner/svg/hh.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -463,10 +662,11 @@ home:
                 }
               }
             },
-            "search": "partner:hh"
+
           },
           "he": {
             "icon": "images/partner/svg/he.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -475,10 +675,11 @@ home:
                 }
               }
             },
-            "search": "partner:he"
+
           },
           "mv": {
             "icon": "images/partner/svg/mv.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -487,10 +688,11 @@ home:
                 }
               }
             },
-            "search": "partner:mv"
+
           },
           "ni": {
             "icon": "images/partner/svg/ni.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -499,10 +701,11 @@ home:
                 }
               }
             },
-            "search": "partner:ni"
+
           },
           "nw": {
             "icon": "images/partner/svg/nw.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -511,10 +714,11 @@ home:
                 }
               }
             },
-            "search": "partner:nw"
+
           },
           "rp": {
             "icon": "images/partner/svg/rp.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -523,10 +727,11 @@ home:
                 }
               }
             },
-            "search": "partner:rp"
+
           },
           "sl": {
             "icon": "images/partner/svg/sl.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -535,10 +740,11 @@ home:
                 }
               }
             },
-            "search": "partner:sl"
+
           },
           "sn": {
             "icon": "images/partner/svg/sn.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -547,10 +753,11 @@ home:
                 }
               }
             },
-            "search": "partner:sn"
+
           },
           "st": {
             "icon": "images/partner/svg/st.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -559,10 +766,11 @@ home:
                 }
               }
             },
-            "search": "partner:st"
+
           },
           "sh": {
             "icon": "images/partner/svg/sh.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -571,10 +779,11 @@ home:
                 }
               }
             },
-            "search": "partner:sh"
+
           },
           "th": {
             "icon": "images/partner/svg/th.svg",
+            "display": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -583,7 +792,7 @@ home:
                 }
               }
             },
-            "search": "partner:th"
+
           },
         }
       },
@@ -617,6 +826,16 @@ hit_search:
   facet_config: [
     {
       "id": "procedure",
+      "toggle": {
+        "id": "toggle_procedure",
+        "active": true,
+        "label": {
+          "title": "COMMON.TOGGLE_APPROVAL_DATE_TOOLTIP",
+          "pill": "COMMON.TOGGLE_APPROVAL_DATE_PILL",
+          "on": "COMMON.TOGGLE_APPROVAL_DATE_ON",
+          "off": "COMMON.TOGGLE_APPROVAL_DATE_OFF",
+        }
+      },
       "queries": {
         "obj_class_zv": {
           "label": "Zulassungsverfahren",
@@ -627,7 +846,39 @@ hit_search:
               }
             }
           },
-          "search": "t01_object.obj_class:10"
+          "query_toggle": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "10"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "range": {
+                            "t01_object.mod_time": {
+                              "gte": "202401160"
+                            }
+                          }
+                        },
+                        {
+                          "range": {
+                            "approval_date": {
+                              "gte": "202401160"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
         },
         "obj_class_nv": {
           "label": "Negative Vorprüfungen",
@@ -638,7 +889,39 @@ hit_search:
               }
             }
           },
-          "search": "t01_object.obj_class:12"
+          "query_toggle": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "12"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "range": {
+                            "t01_object.mod_time": {
+                              "gte": "202401160"
+                            }
+                          }
+                        },
+                        {
+                          "range": {
+                            "approval_date": {
+                              "gte": "202401160"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
         },
         "obj_class_ro": {
           "label": "Raumordnungsverfahren",
@@ -649,7 +932,39 @@ hit_search:
               }
             }
           },
-          "search": "t01_object.obj_class:13"
+          "query_toggle": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "13"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "range": {
+                            "t01_object.mod_time": {
+                              "gte": "202401160"
+                            }
+                          }
+                        },
+                        {
+                          "range": {
+                            "approval_date": {
+                              "gte": "202401160"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
         },
         "obj_class_li": {
           "label": "Linienbestimmung",
@@ -660,7 +975,39 @@ hit_search:
               }
             }
           },
-          "search": "t01_object.obj_class:14"
+          "query_toggle": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "14"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "range": {
+                            "t01_object.mod_time": {
+                              "gte": "202401160"
+                            }
+                          }
+                        },
+                        {
+                          "range": {
+                            "approval_date": {
+                              "gte": "202401160"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
         },
         "obj_class_av": {
           "label": "Ausländische Vorhaben",
@@ -671,7 +1018,39 @@ hit_search:
               }
             }
           },
-          "search": "t01_object.obj_class:11"
+          "query_toggle": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "11"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "range": {
+                            "t01_object.mod_time": {
+                              "gte": "202401160"
+                            }
+                          }
+                        },
+                        {
+                          "range": {
+                            "approval_date": {
+                              "gte": "202401160"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
         },
         "obj_class_blp": {
           "label": "Bauleitplanung",
@@ -681,9 +1060,8 @@ hit_search:
                 "datatype": "www"
               }
             }
-          },
-          "search": "datatype:www"
-        },
+          }
+        }
       }
     },
     {
@@ -700,7 +1078,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-1"
         },
         "baustoffe": {
           "label": "Steine und Erden, Glas, Keramik, Baustoffe",
@@ -711,7 +1088,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-2"
         },
         "verarbeitung": {
           "label": "Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung",
@@ -722,7 +1098,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-3"
         },
         "chemie": {
           "label": "Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung",
@@ -733,7 +1108,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-4"
         },
         "kunststoff": {
           "label": "Oberflächenbehandlung von Kunststoffen",
@@ -744,7 +1118,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-5"
         },
         "holzzellstoff": {
           "label": "Holz, Zellstoff",
@@ -755,7 +1128,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-6"
         },
         "erzeugnisse": {
           "label": "Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse",
@@ -766,7 +1138,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-7"
         },
         "verwertungbeseitigungabfaellen": {
           "label": "Verwertung und Beseitigung von Abfällen und sonstigen Stoffen",
@@ -777,7 +1148,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-8"
         },
         "lagerungstoffengemischen": {
           "label": "Lagerung von Stoffen und Gemischen",
@@ -788,7 +1158,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-9"
         },
         "industrieanlagen": {
           "label": "Sonstige Industrieanlagen",
@@ -799,7 +1168,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-10"
         },
         "kernenergie": {
           "label": "Kernenergie",
@@ -810,7 +1178,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-11"
         },
         "abfalldeponien": {
           "label": "Abfalldeponien",
@@ -821,7 +1188,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-12"
         },
         "wasservorhaben": {
           "label": "Wasserwirtschaftliche Vorhaben",
@@ -832,7 +1198,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-13"
         },
         "verkehrsvorhaben": {
           "label": "Verkehrsvorhaben",
@@ -843,7 +1208,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-14"
         },
         "bergbaukohlendioxid": {
           "label": "Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid",
@@ -854,7 +1218,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-15"
         },
         "flurbereinigung": {
           "label": "Flurbereinigung",
@@ -865,7 +1228,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-16"
         },
         "forstlandvorhaben": {
           "label": "Forstliche und landwirtschaftliche Vorhaben",
@@ -876,7 +1238,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-17"
         },
         "bauvorhaben": {
           "label": "Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan",
@@ -887,7 +1248,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-18"
         },
         "anlagen": {
           "label": "Leitungsanlagen und vergleichbare Anlagen",
@@ -898,7 +1258,6 @@ hit_search:
               }
             }
           },
-          "search": "uvp_category:UVPG-19"
         }
       }
     },
@@ -914,7 +1273,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:bw"
         },
         "by": {
           "codelist": "110",
@@ -925,7 +1283,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:by"
         },
         "be": {
           "codelist": "110",
@@ -936,7 +1293,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:be"
         },
         "hb": {
           "codelist": "110",
@@ -947,7 +1303,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:hb"
         },
         "hh": {
           "codelist": "110",
@@ -958,7 +1313,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:hh"
         },
         "he": {
           "codelist": "110",
@@ -969,7 +1323,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:he"
         },
         "mv": {
           "codelist": "110",
@@ -980,7 +1333,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:mv"
         },
         "ni": {
           "codelist": "110",
@@ -991,7 +1343,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:ni"
         },
         "nw": {
           "codelist": "110",
@@ -1002,7 +1353,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:nw"
         },
         "rp": {
           "codelist": "110",
@@ -1013,7 +1363,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:rp"
         },
         "sl": {
           "codelist": "110",
@@ -1024,7 +1373,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:sl"
         },
         "sn": {
           "codelist": "110",
@@ -1035,7 +1383,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:sn"
         },
         "st": {
           "codelist": "110",
@@ -1046,7 +1393,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:st"
         },
         "sh": {
           "codelist": "110",
@@ -1057,7 +1403,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:sh"
         },
         "th": {
           "codelist": "110",
@@ -1068,7 +1413,6 @@ hit_search:
               }
             }
           },
-          "search": "partner:th"
         },
       }
     },
@@ -1135,7 +1479,7 @@ hit_search:
     },
     {
       "id": "bbox",
-      "filter": "{\"range\": {\"x1\": {\"gte\": %f } } }"
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}"
     }
   ]
 hit_providers:
@@ -1205,17 +1549,41 @@ map:
                   }
                 }
               },
-              "search": "t01_object.obj_class:10"
             },
             "obj_class_zv_time": {
               "query": {
                 "filter": {
-                  "term": {
-                    "t01_object.obj_class": "10"
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "t01_object.obj_class": "10"
+                        }
+                      },
+                      {
+                        "bool": {
+                          "should": [
+                            {
+                              "range": {
+                                "t01_object.mod_time": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            },
+                            {
+                              "range": {
+                                "approval_date": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
                   }
                 }
-              },
-              "search": "t01_object.obj_class:10"
+              }
             },
             "obj_class_av": {
               "query": {
@@ -1225,17 +1593,41 @@ map:
                   }
                 }
               },
-              "search": "t01_object.obj_class:11"
             },
             "obj_class_av_time": {
               "query": {
                 "filter": {
-                  "term": {
-                    "t01_object.obj_class": "11"
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "t01_object.obj_class": "11"
+                        }
+                      },
+                      {
+                        "bool": {
+                          "should": [
+                            {
+                              "range": {
+                                "t01_object.mod_time": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            },
+                            {
+                              "range": {
+                                "approval_date": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
                   }
                 }
-              },
-              "search": "t01_object.obj_class:11"
+              }
             },
             "obj_class_nv": {
               "query": {
@@ -1245,17 +1637,41 @@ map:
                   }
                 }
               },
-              "search": "t01_object.obj_class:12"
             },
             "obj_class_nv_time": {
               "query": {
                 "filter": {
-                  "term": {
-                    "t01_object.obj_class": "12"
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "t01_object.obj_class": "12"
+                        }
+                      },
+                      {
+                        "bool": {
+                          "should": [
+                            {
+                              "range": {
+                                "t01_object.mod_time": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            },
+                            {
+                              "range": {
+                                "approval_date": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
                   }
                 }
-              },
-              "search": "t01_object.obj_class:12"
+              }
             },
             "obj_class_ro": {
               "query": {
@@ -1265,17 +1681,41 @@ map:
                   }
                 }
               },
-              "search": "t01_object.obj_class:13"
             },
             "obj_class_ro_time": {
               "query": {
                 "filter": {
-                  "term": {
-                    "t01_object.obj_class": "13"
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "t01_object.obj_class": "13"
+                        }
+                      },
+                      {
+                        "bool": {
+                          "should": [
+                            {
+                              "range": {
+                                "t01_object.mod_time": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            },
+                            {
+                              "range": {
+                                "approval_date": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
                   }
                 }
-              },
-              "search": "t01_object.obj_class:13"
+              }
             },
             "obj_class_li": {
               "query": {
@@ -1285,17 +1725,42 @@ map:
                   }
                 }
               },
-              "search": "t01_object.obj_class:14"
             },
+            ,
             "obj_class_li_time": {
               "query": {
                 "filter": {
-                  "term": {
-                    "t01_object.obj_class": "14"
+                  "bool": {
+                    "must": [
+                      {
+                        "term": {
+                          "t01_object.obj_class": "14"
+                        }
+                      },
+                      {
+                        "bool": {
+                          "should": [
+                            {
+                              "range": {
+                                "t01_object.mod_time": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            },
+                            {
+                              "range": {
+                                "approval_date": {
+                                  "gte": "202401160"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
                   }
                 }
-              },
-              "search": "t01_object.obj_class:14"
+              }
             },
             "obj_class_blp": {
               "query": {
@@ -1304,8 +1769,7 @@ map:
                     "datatype": "www"
                   }
                 }
-              },
-              "search": "datatype:www"
+              }
             }
           }
         }]

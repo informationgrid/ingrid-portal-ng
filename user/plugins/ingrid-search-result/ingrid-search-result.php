@@ -111,13 +111,8 @@ class InGridSearchResultPlugin extends Plugin
                     break;
 
                 case '/map/mapMarker':
-                    // UVP markers
-
-                    // Theme config
                     $theme = $this->grav['config']->get('system.pages.theme');
-                    $this->hitsNum = $this->grav['config']->get('themes.' . $theme . '.map.leaflet.legend.marker_num');
                     if ($theme === 'uvp') {
-                        $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, [], []);
                         $this->enable([
                             'onPageInitialized' => ['onPageInitialized', 0],
                             'onTwigSiteVariables' => ['onTwigSiteVariablesMapMarkers', 0],
@@ -134,7 +129,6 @@ class InGridSearchResultPlugin extends Plugin
 
     public function onTwigSiteVariablesSearch(): void
     {
-
         if (!$this->isAdmin()) {
             $query = $this->grav['uri']->query('q') ?: '';
             $page = $this->grav['uri']->query('page') ?: 1;
@@ -167,9 +161,8 @@ class InGridSearchResultPlugin extends Plugin
                     $ranking = 'score';
                 }
             }
+            $selectedFacets = $this->getSelectedFacets($facetConfig);
             $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $excludeFromSearch, $sortByDate);
-
-            $selectedFacets = $this->getSelectedFacets();
             $results = $this->service->getSearchResults($query, $page, $selectedFacets, $this->grav['uri'], $lang, $theme);
 
             $this->grav['twig']->twig_vars['query'] = $query;
@@ -185,7 +178,6 @@ class InGridSearchResultPlugin extends Plugin
 
     public function onTwigSiteVariablesHome(): void
     {
-
         if (!$this->isAdmin()) {
             $lang = $this->grav['language']->getLanguage();
 
@@ -201,8 +193,9 @@ class InGridSearchResultPlugin extends Plugin
             $excludeFromCategoriesSearch = $this->grav['config']->get('themes.' . $theme . '.home.categories.exclude_from_search') ?? $excludeFromCategoriesSearch;
             $excludeFromHitsSearch = $this->grav['config']->get('themes.' . $theme . '.home.hits.exclude_from_search') ?? $excludeFromHitsSearch;
 
+            $selectedFacets = $this->getSelectedFacets($facetConfig);
             $this->service = new SearchServiceImpl($this->grav, 0, $facetConfig, $excludeFromCategoriesSearch);
-            $categories_result = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang, $theme);
+            $categories_result = $this->service->getSearchResults("", 1, $selectedFacets, $this->grav['uri'], $lang, $theme);
             $this->grav['twig']->twig_vars['categories_result'] = $categories_result;
 
             $this->hitsNum = $this->grav['config']->get('themes.' . $theme . '.home.hits.num') ?? 0;
@@ -259,30 +252,20 @@ class InGridSearchResultPlugin extends Plugin
 
             // Theme config
             $theme = $this->grav['config']->get('system.pages.theme');
-            $type = $this->grav['uri']->query('type') ?: "";
+            $this->hitsNum = $this->grav['config']->get('themes.' . $theme . '.map.leaflet.legend.marker_num');
             $page = $this->grav['uri']->query('page') ?: "";
             $output = [];
-            if (!empty($type)) {
-                $facetConfig = $this->grav['config']->get('themes.' . $theme . '.map.leaflet.legend.facet_config') ?? [];
-                if (count($facetConfig) > 0) {
-                    $facet = $facetConfig[0];
-                    $queries = $facet['queries'];
-                    if (isset($queries['obj_class_' . $type])) {
-                        $query = $queries['obj_class_' . $type];
-                        if ($query) {
-                            if(isset($query['search']))
-                            $hits = $this->service->getSearchResultOriginalHits($query['search'], (int) $page, []);
-                            if ($hits) {
-                                $output = self::getMapMarkers($hits, $type);
-                            }
-                        }
-                    }
+            $facetConfig = $this->grav['config']->get('themes.' . $theme . '.map.leaflet.legend.facet_config') ?? [];
 
-                }
+            $selectedFacets = $this->getSelectedFacets($facetConfig);
+            $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, []);
+            $hits = $this->service->getSearchResultOriginalHits("", (int)$page, $selectedFacets);
+            if ($hits) {
+                $output = self::getMapMarkers($hits);
             }
-            echo json_encode($output);
-            exit;
         }
+        echo json_encode($output);
+        exit;
     }
 
     public function onTwigExtensions(): void
@@ -291,24 +274,67 @@ class InGridSearchResultPlugin extends Plugin
         $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
     }
 
-    private function getSelectedFacets(): array
+    private function getSelectedFacets(array &$facetConfig): array
     {
         $query_params = $this->grav['uri']->query(null, true);
-        if (isset($query_params['q'])) {
-            unset($query_params['q']);
+        foreach ($query_params as $key => $param) {
+            $list = array_filter($facetConfig, function ($facet) use ($key) {
+                $found = $facet['id'] === $key;
+                if (!$found and isset($facet['toggle'])) {
+                    $toggle = $facet['toggle'];
+                    $found = $toggle['id'] === $key;
+                }
+                return $found;
+            });
+            if (empty($list)) {
+                unset($query_params[$key]);
+            }
         }
-        if (isset($query_params['more'])) {
-            unset($query_params['more']);
-        }
-        if (isset($query_params['page'])) {
-            unset($query_params['page']);
-        }
-        if (isset($query_params['ranking'])) {
-            unset($query_params['ranking']);
-        }
+        self::getSelectedFacetsFromConfig($facetConfig, $query_params, null);
         return $query_params;
     }
 
+    private function getSelectedFacetsFromConfig(array &$facets, array &$params, null|string $parentId): void
+    {
+        $values = [];
+        foreach ($facets as $key => $facet) {
+            $id = $key;
+            if (isset($facet['id'])) {
+                $id = $facet['id'];
+            }
+            if (isset($facet['toggle'])) {
+                $toggle = $facet['toggle'];
+                $toggleId = $toggle['id'];
+                $isToggleActive = false;
+                if (isset($params[$toggleId])) {
+                    $isToggleActive = !empty($params[$toggleId]);
+                } else {
+                    $isToggleActive = $toggle['active'] ?? false;
+                }
+                $facets[$key]['toggle']['active'] = $isToggleActive;
+                if (isset($toggle['active']) and $isToggleActive) {
+                    if (!isset($params[$toggle['id']])) {
+                         $params[$toggle['id']] = $parentId ?? $id;
+                    }
+                }
+            }
+            if ($parentId) {
+                if (isset($facet['active']) and $facet['active']) {
+                    if (!isset($params[$id])) {
+                        $values[] = $id;
+                    }
+                }
+            }
+            if (isset($facet['queries'])) {
+                self::getSelectedFacetsFromConfig($facet['queries'], $params, $id);
+            }
+        }
+        if ($parentId and !empty($values)) {
+            if (!isset($params[$parentId])) {
+                $params[$parentId] = implode(',', $values);
+            }
+        }
+    }
     private function getPagingUrl(mixed $uri): string
     {
         $url = "";
@@ -388,7 +414,7 @@ class InGridSearchResultPlugin extends Plugin
         return $list;
     }
 
-    private function getMapMarkers(array $hits, $type): array
+    private function getMapMarkers(array $hits): array
     {
         $items = [];
         foreach ($hits as $source) {
@@ -399,7 +425,7 @@ class InGridSearchResultPlugin extends Plugin
             $item['lon'] = self::getValue($hit, 'lon_center') ?? self::getValue($hit, 'x1');;
             $item['iplug'] = self::getValue($hit, 'iPlugId');
             $item['uuid'] = self::getValue($hit, 't01_object.obj_id');
-            if (str_contains('blp', $type)) {
+            if (in_array('blp', self::getValue($hit, 'datatype'))) {
                 $item['isBLP'] = true;
                 $item['bpInfos'] = [];
                 $blpUrlFinished = self::getValue($hit, 'blp_url_finished');
@@ -457,7 +483,7 @@ class InGridSearchResultPlugin extends Plugin
                 }
                 $steps = self::getValue($hit, 'uvp_steps');
                 foreach ($steps as $step) {
-                    $item['steps'][] = $this->grav['language']->translate('SEARCH_RESULT.STEPS_UVP_' . strtoupper($step));
+                    $item['steps'][] = $this->grav['language']->translate('SEARCH_DETAIL.STEPS_UVP_' . strtoupper($step));
                 }
             }
             $items[] = $item;

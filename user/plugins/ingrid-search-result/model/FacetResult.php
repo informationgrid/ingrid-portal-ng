@@ -16,6 +16,7 @@ readonly class FacetResult
         public array  $items,
         public null|int $listLimit,
         public null|string $info,
+        public null|array $toggle,
     )
     {
     }
