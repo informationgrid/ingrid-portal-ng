@@ -55,7 +55,7 @@ class IdfHelper
                 }
                 return $codelistValue;
             } else {
-                return $value;
+                return explode('#locale-', $value)[0];
             }
         }
         return null;
@@ -92,7 +92,7 @@ class IdfHelper
                     }
                     $array[] = $codelistValue;
                 } else {
-                    $array[] = $value;
+                    $array[] = explode('#locale-', $value)[0];
                 }
             }
         }

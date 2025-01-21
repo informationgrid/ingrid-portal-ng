@@ -9,7 +9,7 @@ class DetailMetadataParserIdfUVP
 {
     static string $xPathStringLength = '[string-length(text()) > 0]';
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang, Grav $grav ): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang, Grav $grav ): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 

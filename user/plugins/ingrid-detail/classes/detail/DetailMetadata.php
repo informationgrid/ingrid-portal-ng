@@ -13,7 +13,7 @@ class DetailMetadata
         $this->theme = $theme;
     }
 
-    public function parse(\SimpleXMLElement $content, null|string $uuid, null|string $dataSourceName, null|string $provider, Grav $grav): null|array
+    public function parse(\SimpleXMLElement $content, null|string $uuid, null|string $dataSourceName, array $providers, Grav $grav): null|array
     {
         $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
         switch ($this->theme) {
@@ -22,7 +22,7 @@ class DetailMetadata
                 if (!is_null($rootNode)) {
                     $lang = $grav['language']->getLanguage();
 
-                    return DetailMetadataParserIdfUVP::parse($rootNode, $uuid, $dataSourceName, $provider, $lang, $grav);
+                    return DetailMetadataParserIdfUVP::parse($rootNode, $uuid, $dataSourceName, $providers, $lang, $grav);
                 }
             default:
                 $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
@@ -32,7 +32,7 @@ class DetailMetadata
                 if (!is_null($rootNode)) {
                     $lang = $grav['language']->getLanguage();
 
-                    return DetailMetadataParserIdfISO::parse($rootNode, $uuid, $dataSourceName, $provider, $lang, $grav);
+                    return DetailMetadataParserIdfISO::parse($rootNode, $uuid, $dataSourceName, $providers, $lang, $grav);
                 }
         }
 

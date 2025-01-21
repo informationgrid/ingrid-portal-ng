@@ -176,8 +176,8 @@ class InGridDetailPlugin extends Plugin
 
             $response = null;
             $dataSourceName = null;
-            $partners = null;
-            $providers = null;
+            $partners = [];
+            $providers = [];
 
             try {
                 if ($testIDF) {
@@ -191,6 +191,10 @@ class InGridDetailPlugin extends Plugin
                         $response = $hits[0]->_source->idf;
                         $dataSourceName = $hits[0]->_source->dataSourceName;
                         $partners = $hits[0]->_source->partner;
+                        $tmpProviders = $hits[0]->_source->provider;
+                        foreach ($tmpProviders as $provider) {
+                            $providers[] = CodelistHelper::getCodelistEntryByIdent(['111'], $provider, $lang);
+                        }
                     }
                 }
 

@@ -5,8 +5,12 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_REFERENCE_TAB"|t) }}
     <div class="row columns">
     {# Informationen zum Datensatz #}
-        {% include 'partials/detail/metadata/parts/information/information_type.html.twig' %}
+        {% if infoRefs|length > 0 %}
+            {% include 'partials/detail/metadata/parts/information/information_type.html.twig' %}
+        {% endif %}
     {# Zusatzinformationen #}
-        {% include 'partials/detail/metadata/parts/information/information_additional.html.twig' %}
+        {% if infoRefs_additional|length > 0 %}
+            {% include 'partials/detail/metadata/parts/information/information_additional.html.twig' %}
+        {% endif %}
     </div>
 </div>

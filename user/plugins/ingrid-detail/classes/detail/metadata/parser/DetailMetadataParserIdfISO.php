@@ -8,7 +8,7 @@ use Grav\Common\Grav;
 class DetailMetadataParserIdfISO
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, string $lang, Grav $grav ): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang, Grav $grav ): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 
@@ -32,7 +32,7 @@ class DetailMetadataParserIdfISO
         self::getUseRefs($node, $metadata, $lang);
         self::getInfoRefs($node, $type, $metadata, $lang);
         self::getDataQualityRefs($node, $metadata);
-        self::getMetaInfoRefs($node, $uuid, $dataSourceName, $provider, $metadata, $lang);
+        self::getMetaInfoRefs($node, $uuid, $dataSourceName, $providers, $metadata, $lang);
         //var_dump($metadata);
         return $metadata;
     }
@@ -763,83 +763,83 @@ class DetailMetadataParserIdfISO
 
         $array = [];
         $xpathExpression = "./gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor][contains(text(), 'Service')]]/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["classifications"] = IdfHelper::getNodeValueList($node, $xpathExpression, ["5200"], $lang);
+        self::addToArray($array, "classifications", IdfHelper::getNodeValueList($node, $xpathExpression, ["5200"], $lang));
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:statement/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["lineageStatement"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "lineageStatement", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/srv:serviceType/gco:LocalName";
-        $array["serviceType"] = IdfHelper::getNodeValue($node, $xpathExpression, ["5100"], $lang);
+        self::addToArray($array, "serviceType", IdfHelper::getNodeValue($node, $xpathExpression, ["5100"], $lang));
         $xpathExpression = "./gmd:identificationInfo/*/srv:serviceTypeVersion/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["serviceTypeVersions"] = IdfHelper::getNodeValueList($node, $xpathExpression);
-        $array["resolutions"] = self::getResolutions($node);
+        self::addToArray($array, "serviceTypeVersions", IdfHelper::getNodeValueList($node, $xpathExpression));
+        self::addToArray($array, "resolutions", self::getResolutions($node));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:environmentDescription/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["environmentDescription"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "environmentDescription", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:processStep/gmd:LI_ProcessStep/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["processStepDescription"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "processStepDescription", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["sourceDescription"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "sourceDescription", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:supplementalInformation/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["supplementalInformation"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "supplementalInformation", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:supplementalInformation/gmd:abstract";
-        $array["supplementalInformationAbstract"] = IdfHelper::getNodeValue($node, $xpathExpression);
-        $array["operations"] = self::getOperations($node);
+        self::addToArray($array, "supplementalInformationAbstract", IdfHelper::getNodeValue($node, $xpathExpression));
+        self::addToArray($array, "operations", self::getOperations($node));
         $xpathExpression = "./gmd:identificationInfo/*/srv:containsOperations/srv:SV_OperationMetadata/srv:connectPoint/gmd:CI_OnlineResource/gmd:linkage/gmd:URL";
-        $array["operationConnectPoint"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "operationConnectPoint", IdfHelper::getNodeValue($node, $xpathExpression));
 
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:identifier/*/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["identifierCode"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "identifierCode", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:spatialRepresentationType/gmd:MD_SpatialRepresentationTypeCode/@codeListValue";
-        $array["spatialRepresentations"] = IdfHelper::getNodeValueList($node, $xpathExpression, ["526"], $lang);
+        self::addToArray($array, "spatialRepresentations", IdfHelper::getNodeValueList($node, $xpathExpression, ["526"], $lang));
         $xpathExpression = "./gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:includedWithDataset/gco:Boolean";
-        $array["includedWithDataset"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "includedWithDataset", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:featureTypes/gco:LocalName";
-        $array["featureTypes"] = IdfHelper::getNodeValueList($node, $xpathExpression);
-        $array["featureCatalogues"] = self::getFeatureCatalogues($node);
-        $array["symbolCatalogues"] = self::getSymbolCatalogues($node);
-        $array["vectors"] = self::getVectors($node, $lang);
+        self::addToArray($array, "featureTypes", IdfHelper::getNodeValueList($node, $xpathExpression));
+        self::addToArray($array, "featureCatalogues", self::getFeatureCatalogues($node));
+        self::addToArray($array, "symbolCatalogues", self::getSymbolCatalogues($node));
+        self::addToArray($array, "vectors", self::getVectors($node, $lang));
 
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'originator']/gmd:CI_ResponsibleParty/gmd:individualName/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_autor"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_autor", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'resourceProvider']/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:contactInstructions/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_loc"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_loc", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'publisher']/gmd:CI_ResponsibleParty/gmd:individualName/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_publisher"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_publisher", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'publisher']/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:city/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_publish_loc"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_publish_loc", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'distribute']/gmd:CI_ResponsibleParty/gmd:organisationName/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_publishing"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_publishing", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:series/gmd:CI_Series/gmd:name/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_publish_in"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_publish_in", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:editionDate/gco:Date";
-        $array["literatur_publish_year"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_publish_year", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:series/gmd:CI_Series/gmd:issueIdentification/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_volume"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_volume", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:series/gmd:CI_Series/gmd:page/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_sides"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_sides", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:ISBN/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_isbn"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_isbn", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:resourceFormat/gmd:MD_Format/gmd:name/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_typ"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_typ", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_base"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_base", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:otherCitationDetails/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_doc_info"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_doc_info", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:supplementalInformation/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["literatur_description"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "literatur_description", IdfHelper::getNodeValue($node, $xpathExpression));
 
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'projectManager']/gmd:CI_ResponsibleParty/gmd:individualName/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["project_leader"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "project_leader", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:citedResponsibleParty[./gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue = 'projectParticipant']/gmd:CI_ResponsibleParty/gmd:individualName/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["project_member"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "project_member", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:supplementalInformation/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["project_description"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "project_description", IdfHelper::getNodeValue($node, $xpathExpression));
 
 
         $xpathExpression = "./gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:featureTypes/gco:LocalName";
-        $array["data_para"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "data_para", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["data_base"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "data_base", IdfHelper::getNodeValue($node, $xpathExpression));
         $xpathExpression = "./gmd:identificationInfo/*/gmd:supplementalInformation/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $array["data_description"] = IdfHelper::getNodeValue($node, $xpathExpression);
+        self::addToArray($array, "data_description", IdfHelper::getNodeValue($node, $xpathExpression));
 
         $metadata["info"] = $array;
 
@@ -855,32 +855,32 @@ class DetailMetadataParserIdfISO
         $media = self::getMedias($node);
         $order_instructions = IdfHelper::getNode($node, "./gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributionOrderProcess/gmd:MD_StandardOrderProcess/gmd:orderingInstructions/*[self::gco:CharacterString or self::gmx:Anchor]");
 
-        $metadata["info_additional_publish_id"] = $publish_id;
-        $metadata["info_additional_usage"] = $usage;
-        $metadata["info_additional_purpose"] = $purpose;
-        $metadata["info_additional_legal_basis"] = $legal_basis;
-        $metadata["info_additional_export_criteria"] = $export_criteria;
-        $metadata["info_additional_language_code"] = $language_code ? LanguageHelper::getNamesFromIso639_2($language_code, $lang) : null;
-        $metadata["info_additional_conformity"] = $conformity;
-        $metadata["info_additional_dataformat"] = $dataformat;
-        $metadata["info_additional_geodatalink"] = $geodatalink;
-        $metadata["info_additional_media"] = $media;
-        $metadata["info_additional_order_instructions"] = $order_instructions;
+        self::addToArray($metadata, "info_additional_publish_id", $publish_id);
+        self::addToArray($metadata, "info_additional_usage", $usage);
+        self::addToArray($metadata, "info_additional_purpose", $purpose);
+        self::addToArray($metadata, "info_additional_legal_basis", $legal_basis);
+        self::addToArray($metadata, "info_additional_export_criteria", $export_criteria);
+        self::addToArray($metadata, "info_additional_language_code", $language_code ? LanguageHelper::getNamesFromIso639_2($language_code, $lang) : null);
+        self::addToArray($metadata, "info_additional_conformity", $conformity);
+        self::addToArray($metadata, "info_additional_dataformat", $dataformat);
+        self::addToArray($metadata, "info_additional_geodatalink", $geodatalink);
+        self::addToArray($metadata, "info_additional_media", $media);
+        self::addToArray($metadata, "info_additional_order_instructions", $order_instructions);
 
         [$inspire_themes, $priority_dataset, $spatial_scope, $gemet_concepts, $invekos, $hvd, $search_terms] = self::getKeywords($node, $lang);
 
         $adv_group = IdfHelper::getNodeValueListCodelistCompare($node, "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:alternateTitle/*[self::gco:CharacterString or self::gmx:Anchor]", ["8010"], $lang);
         $topic_category = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:topicCategory/gmd:MD_TopicCategoryCode", ["527"], $lang);
 
-        $metadata["info_keywords_inspire_themes"] = $inspire_themes;
-        $metadata["info_keywords_priority_dataset"] = $priority_dataset;
-        $metadata["info_keywords_spatial_scope"] = $spatial_scope;
-        $metadata["info_keywords_gemet_concepts"] = $gemet_concepts;
-        $metadata["info_keywords_adv_group"] = $adv_group;
-        $metadata["info_keywords_invekos"] = $invekos;
-        $metadata["info_keywords_topic_category"] = $topic_category;
-        $metadata["info_keywords_hvd"] = $hvd;
-        $metadata["info_keywords_search_terms"] = $search_terms;
+        self::addToArray($metadata, "info_keywords_inspire_themes", $inspire_themes);
+        self::addToArray($metadata, "info_keywords_priority_dataset", $priority_dataset);
+        self::addToArray($metadata, "info_keywords_spatial_scope", $spatial_scope);
+        self::addToArray($metadata, "info_keywords_gemet_concepts", $gemet_concepts);
+        self::addToArray($metadata, "info_keywords_adv_group", $adv_group);
+        self::addToArray($metadata, "info_keywords_invekos", $invekos);
+        self::addToArray($metadata, "info_keywords_topic_category", $topic_category);
+        self::addToArray($metadata, "info_keywords_hvd", $hvd);
+        self::addToArray($metadata, "info_keywords_search_terms", $search_terms);
     }
 
     private static function getKeywords(\SimpleXMLElement $node, string $lang): array
@@ -1077,6 +1077,7 @@ class DetailMetadataParserIdfISO
 
     private static function getResolutions(\SimpleXMLElement $node): array
     {
+        $array = [];
         $denominators = IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator/gco:Integer");
         $dpis = [];
         $meters = [];
@@ -1096,11 +1097,10 @@ class DetailMetadataParserIdfISO
             }
             $meters[] = $value . " " . $unit;
         }
-        return [
-            "denominators" => $denominators,
-            "dpis" => $dpis,
-            "meters" => $meters,
-        ];
+        self::addToArray($array, "denominators", $denominators);
+        self::addToArray($array, "dpis", $dpis);
+        self::addToArray($array, "meters", $meters);
+        return $array;
     }
 
     private static function getOperations(\SimpleXMLElement $node): array
@@ -1298,19 +1298,19 @@ class DetailMetadataParserIdfISO
         $quantitativeAttributeAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_QuantitativeAttributeAccuracy[./gmd:nameOfMeasure]");
         $relativeInternalPositionalAccuracy = self::getReportList($node, "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_RelativeInternalPositionalAccuracy[./gmd:nameOfMeasure]");
 
-        $metadata["data_quality_completenessOmission"] = $completenessOmission;
-        $metadata["data_quality_accuracyVertical"] = $accuracyVertical;
-        $metadata["data_quality_accuracyGeographic"] = $accuracyGeographic;
-        $metadata["data_quality_completenessCommission"] = $completenessCommission;
-        $metadata["data_quality_conceptualConsistency"] = $conceptualConsistency;
-        $metadata["data_quality_domainConsistency"] = $domainConsistency;
-        $metadata["data_quality_formatConsistency"] = $formatConsistency;
-        $metadata["data_quality_topologicalConsistency"] = $topologicalConsistency;
-        $metadata["data_quality_temporalConsistency"] = $temporalConsistency;
-        $metadata["data_quality_thematicClassificationCorrectness"] = $thematicClassificationCorrectness;
-        $metadata["data_quality_nonQuantitativeAttributeAccuracy"] = $nonQuantitativeAttributeAccuracy;
-        $metadata["data_quality_quantitativeAttributeAccuracy"] = $quantitativeAttributeAccuracy;
-        $metadata["data_quality_relativeInternalPositionalAccuracy"] = $relativeInternalPositionalAccuracy;
+        self::addToArray($metadata, "data_quality_completenessOmission", $completenessOmission);
+        self::addToArray($metadata, "data_quality_accuracyVertical", $accuracyVertical);
+        self::addToArray($metadata, "data_quality_accuracyGeographic", $accuracyGeographic);
+        self::addToArray($metadata, "data_quality_completenessCommission", $completenessCommission);
+        self::addToArray($metadata, "data_quality_conceptualConsistency", $conceptualConsistency);
+        self::addToArray($metadata, "data_quality_domainConsistency", $domainConsistency);
+        self::addToArray($metadata, "data_quality_formatConsistency", $formatConsistency);
+        self::addToArray($metadata, "data_quality_topologicalConsistency", $topologicalConsistency);
+        self::addToArray($metadata, "data_quality_temporalConsistency", $temporalConsistency);
+        self::addToArray($metadata, "data_quality_thematicClassificationCorrectness", $thematicClassificationCorrectness);
+        self::addToArray($metadata, "data_quality_nonQuantitativeAttributeAccuracy", $nonQuantitativeAttributeAccuracy);
+        self::addToArray($metadata, "data_quality_quantitativeAttributeAccuracy", $quantitativeAttributeAccuracy);
+        self::addToArray($metadata, "data_quality_relativeInternalPositionalAccuracy", $relativeInternalPositionalAccuracy);
     }
 
     private static function getReport(\SimpleXMLElement $node, string $xpath, string $dependedDescription, string $dependedName): null|string
@@ -1362,25 +1362,22 @@ class DetailMetadataParserIdfISO
         return $array;
     }
 
-    private static function getMetaInfoRefs(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, null|string $provider, array &$metadata, string $lang): void
+    private static function getMetaInfoRefs(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, array &$metadata, string $lang): void
     {
         $mod_time = IdfHelper::getNodeValue($node, "./gmd:dateStamp/*[self::gco:Date or self::gco:DateTime or .]");
         $langCode = IdfHelper::getNodeValue($node, "./gmd:language/gmd:LanguageCode/@codeListValue");
         $hierarchy_level = IdfHelper::getNodeValue($node, "./gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue", ["525"], $lang);
-        $contact_meta = array (
-            "mail" => IdfHelper::getNodeValueList($node, "./gmd:contact/*/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/*[self::gco:CharacterString or self::gmx:Anchor]"),
-            "role" => IdfHelper::getNodeValue($node, "./gmd:contact/*/gmd:role/gmd:CI_RoleCode/@codeListValue", ["505"], $lang)
-        );
-        $plug_data_source_name = "TODO";
-        $plug_providers = ["TODO"];
+        $contact_meta = [];
+        self::addToArray($contact_meta,"mail", IdfHelper::getNodeValueList($node, "./gmd:contact/*/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/*[self::gco:CharacterString or self::gmx:Anchor]"));
+        self::addToArray($contact_meta,"role", IdfHelper::getNodeValue($node, "./gmd:contact/*/gmd:role/gmd:CI_RoleCode/@codeListValue", ["505"], $lang));
 
-        $metadata["meta_info_uuid"] = $uuid;
-        $metadata["meta_info_mod_time"] = $mod_time;
-        $metadata["meta_info_lang"] = LanguageHelper::getNameFromIso639_2($langCode, $lang);
-        $metadata["meta_info_hierarchy_level"] = $hierarchy_level;
-        $metadata["meta_info_contact_meta"] = $contact_meta;
-        $metadata["meta_info_plug_data_source_name"] = $dataSourceName;
-        $metadata["meta_info_plug_providers"] = $provider;
+        self::addToArray($metadata, "meta_info_uuid", $uuid);
+        self::addToArray($metadata, "meta_info_mod_time", $mod_time);
+        self::addToArray($metadata, "meta_info_lang", LanguageHelper::getNameFromIso639_2($langCode, $lang));
+        self::addToArray($metadata, "meta_info_hierarchy_level", $hierarchy_level);
+        self::addToArray($metadata, "meta_info_contact_meta", $contact_meta);
+        self::addToArray($metadata, "meta_info_plug_data_source_name", $dataSourceName);
+        self::addToArray($metadata, "meta_info_plug_providers", $providers);
     }
 
     private static function getMapUrl(\SimpleXMLElement $node, string $type): null|string
@@ -1426,4 +1423,10 @@ class DetailMetadataParserIdfISO
         return $value;
     }
 
+    private static function addToArray(array &$array, string $id, mixed $value): void
+    {
+        if (!empty($value)) {
+            $array[$id] = $value;
+        }
+    }
 }
