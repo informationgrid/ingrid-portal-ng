@@ -4,6 +4,8 @@ namespace Grav\Plugin;
 use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
 use Grav\Common\Grav;
+use Grav\Common\Page\Page;
+use Grav\Common\Page\Pages;
 
 /**
  * Class InGridGravUtilsPlugin
@@ -31,7 +33,10 @@ class InGridGravUtilsPlugin extends Plugin
                 // Uncomment following line when plugin requires Grav < 1.7
                 // ['autoload', 100000],
                 ['onPluginsInitialized', 0]
-            ]
+            ],
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onAdminTwigTemplatePaths' => ['onAdminTwigTemplatePaths', 0],
+            'onPagesInitialized'       => ['onPagesInitialized', 0],
         ];
     }
 
@@ -58,29 +63,36 @@ class InGridGravUtilsPlugin extends Plugin
         $config = $this->config();
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
-        $routes = $config['routes'] ?? null;
-        if ($routes && in_array($uri_path, $routes)) {
-            // MIMETYPE request
-            if ($uri_path == "/utils/mimetype") {
+        switch ($uri_path) {
+            case '/utils/mimetype':
                 $this->paramUrl = $this->grav['uri']->query('url') ?: "";
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
                 ]);
-            }
-            // URL file size request
-            if ($uri_path == "/utils/getUrlFileSize") {
+                break;
+            case '/utils/getUrlFileSize':
                 $this->paramUrl = $this->grav['uri']->query('url') ?: "";
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateUrlFileSize', 0],
                 ]);
-            }
-
-        } else {
-            // Check themes config for redirected pages
-            $this->enable([
-                'onPageInitialized' => ['onPageInitialized', 0],
-            ]);
+                break;
+            default:
+                // Check themes config for redirected pages
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                ]);
+                break;
         }
+    }
+
+    public function onTwigTemplatePaths(): void
+    {
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+    }
+
+    public function onAdminTwigTemplatePaths($event) {
+        $event['paths'] = array_merge($event['paths'], [__DIR__ . '/templates']);
+        return $event;
     }
 
     public function renderCustomTemplateUrlFileSize(): void
@@ -113,6 +125,7 @@ class InGridGravUtilsPlugin extends Plugin
         }
         exit();
     }
+
     public function onPageInitialized(): void
     {
         $uri = $this->grav['uri'];
@@ -126,18 +139,104 @@ class InGridGravUtilsPlugin extends Plugin
                 if (in_array($page->rawRoute(), $pages_to_404)) {
                     $this->grav->redirect('/error');
                 }
-            } else if (!empty($pages_to_redirect)){
-
             }
         }
     }
 
-    public function onTwigSiteVariables()
+    /**
+     * Programmatically add a custom page.
+     *
+     * @param $url
+     * @param $filename
+     * @param null $object
+     * @throws \Exception
+     */
+    public function addPage($url, $filename, $parent = null, $route = null): Page
     {
+        /** @var Pages $pages */
+        $pages = $this->grav['pages'];
+        $page = $pages->dispatch($url);
 
-        if (!$this->isAdmin()) {
+        if (!$page) {
+            $page = new Page;
+            $pluginPage = new \SplFileInfo(__DIR__ . '/pages/' . $filename);
+            if (!empty($pluginPage)) {
+                $page->init(new \SplFileInfo(__DIR__ . '/pages/' . $filename));
 
+                $route = $page->route();
+                $page->rawRoute($url);
+                $page->routeAliases([$url]);
+                if ($parent) {
+                    $page->parent($parent);
+                } else {
+                    $page->parent($pages->root());
+                }
+                $pages->addPage($page, $url);
+                $pages->addPage($page, $route);
+            }
         }
+        return $page;
+    }
+
+    public function addPageFromTheme($url, $filename, $parent = null, $route = null): Page
+    {
+        /** @var Pages $pages */
+        $pages = $this->grav['pages'];
+        $page = $pages->dispatch($url);
+
+        if (!$page) {
+            $page = new Page;
+            $themeFile = new \SplFileInfo($this->grav['locator']->findResource('theme://pages') . '/' . $filename);
+            if (!empty($themeFile)) {
+                $page->init($themeFile);
+
+                $route = $page->route();
+                $page->rawRoute($url);
+                $page->routeAliases([$url]);
+                if ($parent) {
+                    $page->parent($parent);
+                } else {
+                    $page->parent($pages->root());
+                }
+                $pages->addPage($page, $url);
+                $pages->addPage($page, $route);
+            }
+        }
+        return $page;
+    }
+
+    /**
+     * [onPagesInitialized]
+     *
+     * @return void
+     * @throws \Exception
+     */
+    public function onPagesInitialized(): void
+    {
+        if ($this->isAdmin()) {
+            $this->grav['admin']->enablePages();
+        }
+
+        /** @var Pages $pages */
+        $pages = $this->grav['pages'];
+        $this->addPage('/catalog', 'catalog/catalog.md');
+        $this->addPage('/map', 'map/map.md');
+        $this->addPage('/datasource', 'datasource/datasource.md');
+        $this->addPage('/detail', 'detail/detail.md');
+        $this->addPage('/help', 'help/help.md');
+        $this->addPage('/measure', 'measure/measure.md');
+        $this->addPage('/provider', 'provider/provider.md');
+        $this->addPage('/rss', 'rss/news.md');
+        $page = $this->addPage('/search', 'search/modular.md');
+        $this->addPage('/search/_result', 'search/_result/result.md', $page);
+        $this->addPage('/search/_search', 'search/_search/home-search.md', $page);
+        $this->addPage('/sitemap', 'sitemap/sitemap.md');
+        $this->addPage('/home/_categories', 'home/_categories/home-categories.md', $pages->find('/home'), '/home/_categories');
+        $this->addPage('/home/_news', 'home/_news/home-news.md', $pages->find('/'), '/home/_news');
+        $this->addPage('/home/_search', 'home/_search/home-search.md', $pages->find('/'), '/home/_search');
+        $this->addPage('/home/_hits', 'home/_hits/home-hits.md', $pages->find('/'), '/home/_hits');
+        $this->addPage('/contact/success', 'contact/success/contact-success.md', $pages->find('/contact'));
+        $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
     }
 
 }

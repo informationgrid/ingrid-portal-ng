@@ -92,10 +92,14 @@ class InGridDatasourcesPlugin extends Plugin
     public function onTwigAdminVariables()
     {
         if ($this->isAdmin()) {
-            $response = file_get_contents($this->api_url);
-            $items = json_decode($response, true);
-            $fieldSelectize = self::getAdminSelectizes($items);
-            $this->grav['twig']->twig_vars['datasources'] = $fieldSelectize;
+            try {
+                $response = file_get_contents($this->api_url);
+                $items = json_decode($response, true);
+                $fieldSelectize = self::getAdminSelectizes($items);
+                $this->grav['twig']->twig_vars['datasources'] = $fieldSelectize;
+            } catch (\Exception $e) {
+                $this->grav['log']->error($e->getMessage());
+            }
         }
     }
 

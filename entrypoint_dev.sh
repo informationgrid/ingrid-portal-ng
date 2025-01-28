@@ -5,6 +5,9 @@ GRAV_FOLDER=${GRAV_FOLDER:-html}
 
 sed -ri "s/theme: quark/theme: ${THEME}/" /var/www/html/user/config/system.yaml
 
+# Copy grav sources
+cp -R /var/www/grav-admin/system/* /var/www/html/system
+
 # recover base plugins
 cp -R /var/www/grav-admin/user/plugins/* /var/www/html/user/plugins
 cd /var/www/html/user/plugins/ingrid-search-result && composer update

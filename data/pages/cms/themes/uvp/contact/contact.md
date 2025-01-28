@@ -1,0 +1,118 @@
+---
+title: Kontakt
+custom_title:
+  html: PAGES.CONTACT
+  menu: PAGES.CONTACT_MENU_TITLE
+visible: true
+routes:
+  default: '/kontakt'
+content:
+  items: '@self.children'
+forms:
+
+    contact-form:
+      fields:
+
+        - name: message
+          label: message
+          autofocus: off
+          autocomplete: off
+          type: hidden
+
+        - name: name
+          label: name
+          autofocus: off
+          autocomplete: off
+          type: hidden
+
+        - name: email
+          label: email
+          autofocus: off
+          autocomplete: off
+          type: hidden
+
+        - name: user_subject
+          label: CONTACT.FORM_SUBJECT
+          placeholder: CONTACT.FORM_SUBJECT
+          type: text
+          outerclasses: form-element
+          validate:
+            required: true
+
+        - name: user_message
+          label: CONTACT.FORM_MESSAGE
+          size: long
+          placeholder: CONTACT.FORM_MESSAGE
+          autofocus: on
+          type: textarea
+          outerclasses: form-element
+          validate:
+            required: true
+
+        - name: user_technical
+          label: CONTACT.FORM_TECHNICAL
+          placeholder: CONTACT.FORM_TECHNICAL
+          type: checkbox
+          outerclasses: form-element
+
+        - name: user_company
+          label: CONTACT.FORM_COMPANY
+          type: select
+          outerclasses: form-element
+          options:
+            false: ---
+            bb: Brandenburg
+            hb: Bremen
+            hh: Hamburg
+            mv: Mecklenburg-Vorpommern
+            sl: Saarland
+            sn: Sachsen
+            sa: Sachsen-Anhalt
+
+        - name: user_email
+          label: CONTACT.FORM_EMAIL
+          placeholder: CONTACT.FORM_EMAIL
+          type: email
+          outerclasses: form-element
+          validate:
+            rule: email
+            required: true
+
+        - name: user_name
+          label: CONTACT.FORM_NAME
+          placeholder: CONTACT.FORM_NAME
+          type: text
+          outerclasses: form-element
+
+      buttons:
+        - type: submit
+          value: COMMON.FORM_BUTTON_SUBMIT
+          outerclasses: subtext-submit
+          classes: button
+
+      process:
+        - email:
+            from: "{{ config.plugins.email.from }}"
+            to:
+              - "{{ config.plugins.email.from }}"
+            reply_to:
+              - "{{ form.value.user_email }}"
+            subject: "{{ form.value.user_subject }}"
+            body: "{% include 'forms/contact/contact.email.html.twig' %}"
+        - save:
+            fileprefix: contact-
+            dateformat: Ymd-His-u
+            extension: txt
+            body: "{% include 'forms/data.txt.twig' %}"
+        - message: CONTACT.SUCCESS
+        - display: success
+
+---
+<## Unsere Postadresse
+
+Landesbetrieb Geoinformation und Vermessung
+Neuenfelder Straße 19
+D-21109 Hamburg
+
+
+Nehmen Sie online Kontakt mit uns auf! Wir werden Ihnen schnellstmöglich per E-Mail antworten. Die eingegebenen Informationen und Daten werden nur zur Bearbeitung Ihrer Anfrage gespeichert und genutzt.>

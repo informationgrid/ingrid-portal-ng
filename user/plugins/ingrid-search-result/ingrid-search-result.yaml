@@ -1,11 +1,5 @@
 enabled: true
 mocking: false
-routes:
-  - /
-  - /freitextsuche
-  - /informationsanbieter
-  - /kartendienste
-  - /map/mapMarker
 ingrid_api_url: 'http://host.docker.internal:9910/'
 hit_search:
   hits_num: 10

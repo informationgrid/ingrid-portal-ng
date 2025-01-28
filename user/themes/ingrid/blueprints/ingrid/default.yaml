@@ -364,6 +364,7 @@ form:
               show_modular: false
               show_root: false
               show_all: false
+              limit_levels: 2
               multiple: true
 ## Tab home
         tab_home:

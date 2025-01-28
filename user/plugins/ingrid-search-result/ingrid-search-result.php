@@ -60,66 +60,55 @@ class InGridSearchResultPlugin extends Plugin
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
         $config = $this->config();
-        $routes = $config['routes'] ?? [];
-        if ($routes && in_array($uri_path, $routes)) {
-            switch ($uri_path) {
-                case '/':
-                    // Startseite
-
+        switch ($uri_path) {
+            case '':
+                // Startseite
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
+                ]);
+                break;
+            case '/freitextsuche':
+                // Suche
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
+                ]);
+                break;
+            case '/informationsanbieter':
+                // Informationsanbieter
+                $this->hitsNum = 1000;
+                $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, [], []);
+                $this->enable([
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesProviders', 0],
+                ]);
+                break;
+            case '/kartendienste':
+                // UVP legend
+                $this->hitsNum = 0;
+                // Theme config
+                $theme = $this->grav['config']->get('system.pages.theme');
+                $facetConfig = $this->grav['config']->get('themes.' . $theme . '.map.leaflet.legend.facet_config') ?? [];
+                if ($theme === 'uvp') {
+                    $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, []);
                     $this->enable([
                         'onPageInitialized' => ['onPageInitialized', 0],
-                        'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
-                        'onTwigExtensions' => ['onTwigExtensions', 0],
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
                     ]);
-                    break;
-
-                case '/freitextsuche':
-                    // Suche
-
+                }
+                break;
+            case '/map/mapMarker':
+                $theme = $this->grav['config']->get('system.pages.theme');
+                if ($theme === 'uvp') {
                     $this->enable([
                         'onPageInitialized' => ['onPageInitialized', 0],
-                        'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
-                        'onTwigExtensions' => ['onTwigExtensions', 0],
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesMapMarkers', 0],
                     ]);
-                    break;
-
-                case '/informationsanbieter':
-                    // Informationsanbieter
-
-                    $this->hitsNum = 1000;
-                    $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, [], []);
-                    $this->enable([
-                        'onPageInitialized' => ['onPageInitialized', 0],
-                        'onTwigSiteVariables' => ['onTwigSiteVariablesProviders', 0],
-                    ]);
-                    break;
-
-                case '/kartendienste':
-                    // UVP legend
-
-                    $this->hitsNum = 0;
-                    // Theme config
-                    $theme = $this->grav['config']->get('system.pages.theme');
-                    $facetConfig = $this->grav['config']->get('themes.' . $theme . '.map.leaflet.legend.facet_config') ?? [];
-                    if ($theme === 'uvp') {
-                        $this->service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, []);
-                        $this->enable([
-                            'onPageInitialized' => ['onPageInitialized', 0],
-                            'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
-                        ]);
-                    }
-                    break;
-
-                case '/map/mapMarker':
-                    $theme = $this->grav['config']->get('system.pages.theme');
-                    if ($theme === 'uvp') {
-                        $this->enable([
-                            'onPageInitialized' => ['onPageInitialized', 0],
-                            'onTwigSiteVariables' => ['onTwigSiteVariablesMapMarkers', 0],
-                        ]);
-                    }
-                    break;
-            }
+                }
+                break;
         }
     }
 

@@ -1,4 +1,1 @@
 enabled: true
-routes:
-  - /utils/mimetype
-  - /utils/getUrlFileSize
