@@ -1,6 +1,7 @@
 ---
-title: MetaVer - Startseite - Informiert (CMS)
+title: Startseite - Informiert (CMS)
 ---
+
 ## MetaVer informiert
 Sehr geehrte Damen und Herren,
 

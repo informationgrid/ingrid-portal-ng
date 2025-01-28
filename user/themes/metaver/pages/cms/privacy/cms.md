@@ -1,11 +1,11 @@
 ---
 title: Datenschutz
 custom_title:
-html: PAGES.PRIVACY
-menu: PAGES.PRIVACY_MENU_TITLE
+  html: PAGES.PRIVACY
+  menu: PAGES.PRIVACY_MENU_TITLE
 visible: true
 routes:
-default: /datenschutz
+  default: /datenschutz
 ---
 
 Der MetaVer enthält sowohl Inhalte, die als Teledienst nach § 2 Teledienstgesetz (TDG) als auch Inhalte, die als Mediendienst nach § 2 Mediendienste-Staatsvertrag (MDStV) zu bewerten sind. Hierbei werden folgende Verfahrensgrundsätze gewährleistet:
