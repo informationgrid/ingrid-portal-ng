@@ -80,7 +80,7 @@ sed -ri "s/timezone: null/timezone: 'Europe/Berlin'/" "$SYSTEM_YAML"
 if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms" ]; then
   if ! grep -q "theme_add_cms:" "$SYSTEM_YAML"; then
     echo "theme_add_cms: true" >> "$SYSTEM_YAML"
-    cp -rf "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms/*" "/var/www/$GRAV_FOLDER/user/pages"
+    cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/cms/* /var/www/"$GRAV_FOLDER"/user/pages/
   fi
 fi
 
