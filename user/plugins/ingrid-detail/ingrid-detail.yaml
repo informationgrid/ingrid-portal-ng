@@ -1,8 +1,4 @@
 enabled: true
-routes:
-  - /trefferanzeige
-  - /detail/createZip
-  - /detail/getZip
 ingrid_api_url: 'https://api.dev.informationgrid.eu/'
 geo_api_url: 'https://geo-api.informationgrid.eu/v1/convert?exportFormat='
 geo_api_user: admin

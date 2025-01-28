@@ -80,6 +80,7 @@ COPY user/plugins /usr/share/grav-admin/user/plugins
 COPY user/pages /usr/share/grav-admin/user/pages
 #COPY data /usr/share/grav-admin/user/data
 COPY user/accounts /usr/share/grav-admin/user/accounts
+COPY user/blueprints /usr/share/grav-admin/user/blueprints
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

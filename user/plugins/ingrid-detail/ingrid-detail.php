@@ -59,30 +59,30 @@ class InGridDetailPlugin extends Plugin
         $this->log = $this->grav['log'];
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
-        $config = $this->config();
-        $routes = $config['routes'] ?? null;
-        if ($routes && in_array($uri_path, $routes)) {
-            // Detail request
-            if ($uri_path == "/trefferanzeige") {
+
+        switch ($uri_path) {
+            case '/trefferanzeige':
+                // Detaildarstellung
                 $this->enable([
                     'onPageInitialized' => ['onPageInitialized', 0],
                     'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
                     'onTwigExtensions' => ['onTwigExtensions', 0],
                 ]);
-            }
-
-            // Create zip request
-            if ($uri_path == "/detail/createZip") {
+                break;
+            case '/detail/createZip':
+                // Create zip request
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateDetailCreateZip', 0],
                 ]);
-            }
-            // Get zip request
-            if ($uri_path == "/detail/getZip") {
+                break;
+            case '/detail/getZip':
+                // Get zip request
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateDetailGetZip', 0],
                 ]);
-            }
+                break;
+            default:
+                break;
         }
     }
 
