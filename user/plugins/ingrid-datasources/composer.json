@@ -3,7 +3,7 @@
   "type": "grav-plugin",
   "description": "List available datasources",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/khanh-t-oan-oan-r-tran/grav-plugin-ingrid-datasources",
+  "homepage": "https://github.com/ingrid-portal-ng/grav-plugin-ingrid-datasources",
   "license": "MIT",
   "authors": [
     {

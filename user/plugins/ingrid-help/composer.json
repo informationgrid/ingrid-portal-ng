@@ -3,7 +3,7 @@
   "type": "grav-plugin",
   "description": "Transformation xsl/xml help content",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-help",
+  "homepage": "https://github.com/ingrid-portal-ng/grav-plugin-ingrid-help",
   "license": "MIT",
   "authors": [
     {

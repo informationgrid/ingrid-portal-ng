@@ -3,7 +3,7 @@
   "type": "grav-plugin",
   "description": "InGrid utils function for GravCMS",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-grav-utils",
+  "homepage": "https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav-utils",
   "license": "MIT",
   "authors": [
     {

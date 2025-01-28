@@ -7,11 +7,11 @@ icon: plug
 author:
   name: Khanh Toan Tran
   email: khanh.toan.tran@wemove.com
-homepage: https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog
+homepage: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-catalog
 demo: http://demo.yoursite.com
 keywords: grav, plugin, etc
-bugs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog/issues
-docs: https://github.com/khanh-toan-tran/grav-plugin-ingrid-catalog/blob/develop/README.md
+bugs: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-catalog/issues
+docs: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-catalog/blob/develop/README.md
 license: MIT
 
 dependencies:

@@ -3,7 +3,7 @@
   "type": "grav-plugin",
   "description": "Display InGrid hits on detail",
   "keywords": ["plugin"],
-  "homepage": "https://github.com/khanh-toan-tran/grav-plugin-ingrid-detail",
+  "homepage": "https://github.com/ingrid-portal-ng/grav-plugin-ingrid-detail",
   "license": "MIT",
   "version": "1.0.0",
   "authors": [
