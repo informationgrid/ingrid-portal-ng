@@ -62,6 +62,7 @@ class InGridSearchResultPlugin extends Plugin
         $config = $this->config();
         switch ($uri_path) {
             case '':
+            case '/':
                 // Startseite
                 $this->enable([
                     'onPageInitialized' => ['onPageInitialized', 0],
