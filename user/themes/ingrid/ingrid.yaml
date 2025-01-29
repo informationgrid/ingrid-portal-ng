@@ -190,7 +190,7 @@ measure:
     exclude: null
     initial:
       - luen
-  url: 'http://localhost:8080/ingrid-portal-apps/measures/index.html'
+  url: 'https://dev.informationgrid.eu/ingrid-portal-apps/measures/index.html'
   elastic: 'https://dev.informationgrid.eu/elastic-measure/'
 system:
   pages_to_404:
