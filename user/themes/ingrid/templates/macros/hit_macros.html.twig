@@ -628,7 +628,7 @@
                     <th>{{ title }}</th>
                 {% endif %}
                 <td>
-                    <div>
+                    <div {% if type == "download" %}class="download"{% endif %}>
                         <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
                             {% if type == "external" %}
                               <span class="ic-ic-external"></span>
@@ -898,7 +898,7 @@
         {% if entry.uuid or entry.cswUrl %}
           <div class="image">
         {% else %}
-          <div>
+          <div {%if isDownload %}class="download"{% endif %}>
         {% endif %}
               {% set link = "" %}
               {% if entry.uuid %}

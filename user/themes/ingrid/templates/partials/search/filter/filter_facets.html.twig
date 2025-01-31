@@ -17,12 +17,12 @@
                             <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
                                 data-allow-all-closed="true" role="tablist">
                                 <li class="accordion-item is-active" data-accordion-item="">
-                                    <a href="#" class="accordion-title" aria-controls="type-accordion" role="tab"
-                                       id="type-accordion-label" aria-expanded="true" aria-selected="true">
+                                    <a href="#" class="accordion-title" aria-controls="{{ item.id }}-accordion" role="tab"
+                                       id="{{ item.id }}-accordion-label" aria-expanded="true" aria-selected="true">
                                         <span class="text">{{ item.label|t }}</span>
                                     </a>
                                     <div class="accordion-content" data-tab-content="" role="tabpanel"
-                                         aria-labelledby="type-accordion-label" id="type-accordion" aria-hidden="false"
+                                         aria-labelledby="{{ item.id }}-accordion-label" id="{{ item.id }}-accordion" aria-hidden="false"
                                          style="display: block;">
                                         <div class="boxes">
                                             {% if item.toggle %}
@@ -65,7 +65,8 @@
                                                 {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
                                                 {% for bucket in itemsSelected %}
                                                     <div class="form-element boxed">
-                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ bucket.value }}">
+                                                        {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ facetId }}">
                                                             <div class="input-check">
                                                                 <div class="control-group">
                                                                     <label class="control control--checkbox">
@@ -91,7 +92,8 @@
                                                         {% endif %}
                                                     {% endif %}
                                                     <div class="form-element boxed">
-                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ bucket.value }}">
+                                                        {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ facetId }}">
                                                             <div class="input-check">
                                                                 <div class="control-group">
                                                                     <label class="control control--checkbox">

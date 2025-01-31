@@ -182,7 +182,7 @@
 {% set dataQualityRefs = addKeyValue(dataQualityRefs, "relativeInternalPositionalAccuracy", hit.data_quality_relativeInternalPositionalAccuracy) %}
 
 {# booleans #}
-{% set hasOverview = (links|length > 0 or useConstraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
+{% set hasOverview = (links|length > 0 or useRefs.useConstraints.constraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
 {% set hasDescription = (alternateTitle or summary) %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% set hasTimeData = (timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime or timeRefs.status or  timeRefs.period or timeRefs.interval or (timeRefs.measureValue and timeRefs.measureUnit)) %}

@@ -15,6 +15,11 @@
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
+                <form action="{{ page.find('/catalog').url }}" method="post" name="extsearch" id="extsearch">
+                    <button type="submit" class="button btn btn--secondary btn--small" style="width:100%" name="submitReload">
+                        {{ "COMMON.FORM_BUTTON_RELOAD"|t }}
+                    </button>
+                </form>
             </div>
         </div>
     </div>
