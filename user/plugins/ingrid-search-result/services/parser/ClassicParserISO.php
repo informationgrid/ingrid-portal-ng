@@ -367,7 +367,7 @@ class ClassicParserISO
 
     private static function toArray($value): array
     {
-        if ($value) {
+        if (isset($value)) {
             if (gettype($value) == "array") return $value;
             return array($value);
         }
