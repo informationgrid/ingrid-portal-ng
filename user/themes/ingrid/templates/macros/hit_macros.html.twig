@@ -1158,7 +1158,7 @@
                         <a id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}" class="ic-ic-plus"></a>
                         {% if node.type != "1000" %}
                             <a href="{{ nodeUrl }}" title="{{ nodeTitle }}">
-                                {{ nodeTitle }}
+                                <span>{{ nodeTitle }}</span>
                             </a>
                         {% else %}
                             <span>{{ nodeTitle }}</span>
@@ -1167,7 +1167,7 @@
                 </div>
             {% else %}
                 <a class="accordion-title" id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if nodeRequestDisable %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}"{% endif %} aria-controls="{{ node.id }}-accordion" role="tab" title="{{ nodeTitle }}">
-                    {{ nodeTitle|t }}
+                    <span>{{ nodeTitle|t }}</span>
                 </a>
             {% endif %}
                 <div class="accordion-content" data-tab-content role="tabpanel" aria-labelledby="{{ linkId }}" id="{{ node.id }}-accordion">
