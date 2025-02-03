@@ -43,7 +43,7 @@ function applyLocation() {
     if (west.indexOf('.') > -1)
         west = west.substring(0, west.indexOf('.') + 4);
 
-    const bbox = west + ',' + north + ',' + east + ',' + south;
+    const bbox = west + ',' + south + ',' + east + ',' + north;
     const url = new URL(location.href);
     url.searchParams.set("bbox", bbox);
 
