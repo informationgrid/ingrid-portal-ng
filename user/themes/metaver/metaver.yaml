@@ -112,7 +112,7 @@ home:
       - 'isfolder:true'
     facet_config: [
       {
-        "id": "special-types",
+        "id": "type",
         "queries": {
           "websites": {
             "icon": "ic-www",
@@ -372,7 +372,7 @@ hit_search:
   partner_logo_enabled: true
   facet_config: [
     {
-      "id": "special-types",
+      "id": "type",
       "queries": {
         "inspire": {
           "query": {
@@ -463,7 +463,7 @@ hit_search:
       }
     },
     {
-      "id": "doc-types",
+      "id": "metadata_group",
       "codelist": "8000",
       "query": {
         "terms": {
@@ -488,7 +488,7 @@ hit_search:
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     },
     {
-      "id": "actuality",
+      "id": "modtime",
       "queries": {
         "lastMonth": {
           "query": {

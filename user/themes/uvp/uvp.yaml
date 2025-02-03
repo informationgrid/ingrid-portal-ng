@@ -1417,7 +1417,7 @@ hit_search:
       }
     },
     {
-      "id": "actuality",
+      "id": "modtime",
       "info": "FACETS.INFO.ACTUALITY",
       "queries": {
         "lastMonth": {

@@ -1045,19 +1045,19 @@ CATALOG_HIERARCHY:
 
 FACETS:
     FACET-LABEL:
-        SPECIAL-TYPES: Datatypes
-        DOC-TYPES: Meta data
+        TYPE: Datatypes
+        METADATA_GROUP: Meta data
         PARTNER: Provider
         BBOX: Map search
-        ACTUALITY: Time
+        MODTIME: Time
         MAP: Raumbezug
-    ACTUALITY:
+    MODTIME:
         LASTMONTH: "Last month"
         LASTTHREEMONTH: "Last 3 months"
         LASTYEAR: "Last year"
         LASTFIVEYEARS: "last 5 years"
         OLDERFIVEYEARS: "older than 5 years"
-    SPECIAL-TYPES:
+    TYPE:
         METADATA: Meta data
         INSPIRE: INSPIRE
         OPEN-DATA: Open Data
