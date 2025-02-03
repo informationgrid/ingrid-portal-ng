@@ -150,9 +150,9 @@
       <b>{{ title }}</b>:
     {% endif %}
     {% if "seitX" in time.type and time.t1 %}
-      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}, gegenwärtig aktuell</span>
+      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}</span>
     {% elseif "seit" in time.type and time.t1 %}
-      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}, gegenwärtige Aktualität unklar</span>
+      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}</span>
     {% elseif "von" in time.type and time.t1 and time.t2 %}
       {% if time.t1 is same as(time.t2) %}
         <span>{{ time.t1 }}</span>
