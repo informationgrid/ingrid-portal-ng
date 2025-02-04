@@ -77,6 +77,7 @@ class SearchResponseTransformerClassic
             $info = $facetConfig['info'] ?? null;
             $toggle = $facetConfig['toggle'] ?? null;
             $open = $facetConfig['open'] ?? false;
+            $openBy = $facetConfig['openBy'] ?? null;
             $sort = $facetConfig['sort'] ?? null;
             if ($sort == 'name') {
                 usort($items, function ($a, $b) {
@@ -87,7 +88,8 @@ class SearchResponseTransformerClassic
                     return strcasecmp($a->docCount, $b->docCount);
                 });
             }
-            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info, $toggle, $open);
+            $dependency = $facetConfig['dependency'] ?? null;
+            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info, $toggle, $open, $openBy, $dependency);
         }
 
         return $result;

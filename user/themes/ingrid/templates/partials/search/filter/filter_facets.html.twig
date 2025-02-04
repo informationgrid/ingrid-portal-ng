@@ -16,13 +16,35 @@
                      tabindex="1">
                     <div class="boxes">
                         {% for item in search_result.facets %}
+                            {% set dependencyItems = item.dependency %}
+                            {% set isDependencySelect = false %}
+                            {% for key, param in dependencyItems if not isDependencySelect %}
+                                {% if selected_facets[key] is not null %}
+                                    {% if param %}
+                                        {% set isDependencySelect = param in selected_facets[key]|split(',') %}
+                                    {% else %}
+                                        {% set isDependencySelect = selected_facets[key] ? true : false %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if isDependencySelect or (dependencyItems is null) %}
                             <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
                                 data-allow-all-closed="true" role="tablist">
-                                {% set isItemOpen = item.open or selected_facets[item.id]%}
+                                {% set isItemOpen = item.open or (selected_facets[item.id] is not null)%}
                                 {% set itemOpenClass = 'class="accordion-item"' %}
                                 {% set itemOpenAria = 'aria-expanded="false" aria-selected="false"' %}
                                 {% set itemOpenContentStyle = 'style="display:none;"' %}
                                 {% set itemOpenContentAria = 'aria-hidden="true"' %}
+                                {% set itemOpenBy = item.openBy %}
+                                {% for key, param in itemOpenBy if not isItemOpen %}
+                                    {% if selected_facets[key] is not null %}
+                                        {% if param %}
+                                            {% set isItemOpen = param in selected_facets[key]|split(',') %}
+                                        {% else %}
+                                            {% set isItemOpen = selected_facets[key] ? true : false %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                                 {% if isItemOpen %}
                                     {% set itemOpenClass = 'class="accordion-item is-active"' %}
                                     {% set itemOpenAria = 'aria-expanded="true" aria-selected="true"' %}
@@ -139,6 +161,7 @@
                                     </div>
                                 </li>
                             </ul>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>

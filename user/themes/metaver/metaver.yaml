@@ -466,6 +466,9 @@ hit_search:
     },
     {
       "id": "metadata_group",
+      "openBy": {
+        "type": "metadata",
+      },
       "codelist": "8000",
       "query": {
         "terms": {
@@ -474,20 +477,6 @@ hit_search:
           "min_doc_count": 0
         }
       },
-    },
-    {
-      "id": "partner",
-      "codelist": "110",
-      "query": {
-        "terms": {
-          "field": "partner",
-          "min_doc_count": 0
-        }
-      },
-    },
-    {
-      "id": "bbox",
-      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     },
     {
       "id": "modtime",
@@ -548,6 +537,20 @@ hit_search:
           }
         }
       }
+    },
+    {
+      "id": "partner",
+      "codelist": "110",
+      "query": {
+        "terms": {
+          "field": "partner",
+          "min_doc_count": 0
+        }
+      },
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
   ]
 hit_detail:
