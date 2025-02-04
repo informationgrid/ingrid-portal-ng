@@ -826,6 +826,7 @@ hit_search:
   facet_config: [
     {
       "id": "procedure",
+      "open": true,
       "toggle": {
         "id": "toggle_procedure",
         "active": true,
@@ -1066,6 +1067,7 @@ hit_search:
     },
     {
       "id": "category",
+      "open": true,
       "listLimit": 6,
       "sort": "name",
       "queries": {

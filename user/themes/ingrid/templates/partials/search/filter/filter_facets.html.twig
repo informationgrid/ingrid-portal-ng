@@ -7,7 +7,9 @@
             <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
                 <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab"
                    id="facet-content-accordion-label" aria-expanded="false" aria-selected="false"
-                   aria-controls="facet-content-accordion"><span>Filter</span></a>
+                   aria-controls="facet-content-accordion">
+                    <span>Filter</span>
+                </a>
                 <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content=""
                      role="tabpanel"
                      aria-labelledby="facet-content-accordion-label" id="facet-content-accordion"
@@ -16,14 +18,25 @@
                         {% for item in search_result.facets %}
                             <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
                                 data-allow-all-closed="true" role="tablist">
-                                <li class="accordion-item is-active" data-accordion-item="">
+                                {% set isItemOpen = item.open or selected_facets[item.id]%}
+                                {% set itemOpenClass = 'class="accordion-item"' %}
+                                {% set itemOpenAria = 'aria-expanded="false" aria-selected="false"' %}
+                                {% set itemOpenContentStyle = 'style="display:none;"' %}
+                                {% set itemOpenContentAria = 'aria-hidden="true"' %}
+                                {% if isItemOpen %}
+                                    {% set itemOpenClass = 'class="accordion-item is-active"' %}
+                                    {% set itemOpenAria = 'aria-expanded="true" aria-selected="true"' %}
+                                    {% set itemOpenContentStyle = 'style="display:block;"' %}
+                                    {% set itemOpenContentAria = 'aria-hidden="false"' %}
+                                {% endif %}
+                                <li {{ itemOpenClass|raw }} data-accordion-item="">
                                     <a href="#" class="accordion-title" aria-controls="{{ item.id }}-accordion" role="tab"
-                                       id="{{ item.id }}-accordion-label" aria-expanded="true" aria-selected="true">
+                                       id="{{ item.id }}-accordion-label" {{ itemOpenAria|raw }}>
                                         <span class="text">{{ item.label|t }}</span>
                                     </a>
                                     <div class="accordion-content" data-tab-content="" role="tabpanel"
-                                         aria-labelledby="{{ item.id }}-accordion-label" id="{{ item.id }}-accordion" aria-hidden="false"
-                                         style="display: block;">
+                                         aria-labelledby="{{ item.id }}-accordion-label" id="{{ item.id }}-accordion" {{ itemOpenContentAria|raw }}
+                                        {{ itemOpenContentStyle|raw }}>
                                         <div class="boxes">
                                             {% if item.toggle %}
                                                 {% set actionLink = page.find('/search').url ~ '?' %}

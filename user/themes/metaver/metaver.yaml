@@ -374,6 +374,7 @@ hit_search:
   facet_config: [
     {
       "id": "type",
+      "open": true,
       "queries": {
         "inspire": {
           "query": {
