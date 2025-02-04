@@ -411,6 +411,11 @@ form:
               title: Kategorien (Stöbern in ...)
               underline: true
 
+            home.categories.rss:
+              type: text
+              label: RSS Link anzeigen
+              help: Tragen Sie die Facetten-ID ein zu welcher Kategorie der RSS-Link hinzugefügt werden soll.
+
             home.categories.exclude_from_search:
               type: selectize
               selectize:

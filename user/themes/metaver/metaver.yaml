@@ -107,6 +107,7 @@ home:
   rss:
     feeds_limit: 6
   categories:
+    rss: 'type'
     exclude_from_search:
       - 'datatype:address'
       - 'isfolder:true'
