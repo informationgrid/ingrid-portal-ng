@@ -14,7 +14,7 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.GEOTHESAURUS_SPACIAL_REFERENCE"|t, header, mapRefs.geographicElement, [0]) }}
     {# Regionalschlüssel #}
-        {{ hit_macros.render_link("SEARCH_DETAIL.REGIONKEY"|t, mapRefs.regionKey.key, mapRefs.regionKey.url, "external") }}
+        {{ hit_macros.render_label_link("SEARCH_DETAIL.REGIONKEY"|t, mapRefs.regionKey.key, mapRefs.regionKey.url, "external") }}
     {# Höhe #}
         {% set header = [
             "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_MINIMUM"|t,
@@ -24,10 +24,10 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight) }}
     {# Erläuterung zum Raumbezug #}
-        {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.loc_descr) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.loc_descr) }}
     {# Begrenzungspolygon als WKT #}
-        {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt, "", true) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt, "", true) }}
     {# Koordinatensystem #}
-        {{ hit_macros.render_link_table_list("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referencesystem_id ?? [])|sort, true, "referencesystem_id", 5, paramsMore) }}
+        {{ hit_macros.render_label_link_list_row("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referencesystem_id ?? [])|sort, true, "referencesystem_id", 5, paramsMore) }}
     </div>
 </div>

@@ -1,5 +1,5 @@
 {# Veröffentlichung #}
 {% if infoRefs_additional.publish_id %}
     {% set publish_id = "SEARCH_DETAIL.T01_OBJECT_PUBLISH_ID_" ~ infoRefs_additional.publish_id|upper %}
-    {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_PUBLISH_ID"|t, publish_id|t ) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_PUBLISH_ID"|t, publish_id|t ) }}
 {% endif %}

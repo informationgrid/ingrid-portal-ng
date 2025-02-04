@@ -8,15 +8,15 @@
     {# Veröffentlichung #}
         {% include 'partials/detail/metadata/parts/information/information_additional_publish_id.html.twig' %}
     {# Eignung/Nutzung #}
-        {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_DATASET_USAGE"|t, infoRefs_additional.usage) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_DATASET_USAGE"|t, infoRefs_additional.usage) }}
     {# Herstellungszweck #}
-        {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_INFO_NOTE"|t, infoRefs_additional.purpose) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_INFO_NOTE"|t, infoRefs_additional.purpose) }}
     {# Rechtliche Grundlagen #}
-        {{ hit_macros.render_text_table_list("SEARCH_DETAIL.T015_LEGIST_NAME"|t, infoRefs_additional.legal_basis) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T015_LEGIST_NAME"|t, infoRefs_additional.legal_basis) }}
     {# XML-Export-Kriterium #}
-        {{ hit_macros.render_text_table_list("SEARCH_DETAIL.T014_INFO_IMPART_NAME"|t, infoRefs_additional.export_criteria) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T014_INFO_IMPART_NAME"|t, infoRefs_additional.export_criteria) }}
     {# Sprache des Datensatzes #}
-        {{ hit_macros.render_text_table_list("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.language_code) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.language_code) }}
     {# Konformität #}
         {% set header = [
             "SEARCH_DETAIL.OBJECT_CONFORMITY_SPECIFICATION"|t,
@@ -43,7 +43,7 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.T0112_MEDIA_OPTION_MEDIUM"|t, header, infoRefs_additional.media) }}
     {# Bestellinformationen #}
-        {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_ORDERING_INSTRUCTIONS"|t, infoRefs_additional.order_instructions) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_ORDERING_INSTRUCTIONS"|t, infoRefs_additional.order_instructions) }}
     </div>
 {% endif %}
 

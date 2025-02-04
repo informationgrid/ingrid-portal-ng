@@ -558,7 +558,16 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_text (title, text, css, expandable) %}
+{% macro render_label_text (title, text) %}
+  {% if text %}
+    {% if title %}
+        <h4>{{ title }}</h4>
+    {% endif %}
+    <p>{{ text }}</p>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_label_text_row (title, text, css, expandable) %}
   {% if text %}
     <div class="table table--lined">
         <table>
@@ -590,19 +599,19 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_text_list (title, entries, listPreset, css, json) %}
+{% macro render_label_list (title, entries, listPreset, css, json) %}
   {% if entries and entries|length > 0 %}
     {% if title %}
         <h4>{{ title }}</h4>
     {% endif %}
     <div class="text-list">
-    {% if listPreset %}
-      <span>{{ listPreset }}</span>
-    {% endif %}
     {% for entry in entries %}
         {% set entryToJson = entry|json_decode() %}
         {% if entryToJson.url is not empty %}
             <p class="list-item">
+                {% if listPreset %}
+                  <span>{{ listPreset }}</span>
+                {% endif %}
                 <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
                     <span class="ic-ic-external"></span>
                     <span class="text">{{ entryToJson.name }}</span>
@@ -619,7 +628,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_link (title, linkTitle, link, type, css) %}
+{% macro render_label_link (title, linkTitle, link, type, css) %}
   {% if link %}
     <div class="table table--lined">
         <table>
@@ -647,7 +656,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_link_list (title, entries, type, css) %}
+{% macro render_label_link_list (title, entries, type, css) %}
   {% if entries %}
     <div class="table table--lined">
         <table>
@@ -677,7 +686,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_text_table_list (title, entries, listPreset, css, expandable) %}
+{% macro render_label_text_list_row (title, entries, listPreset, css, expandable) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined">
         <table>
@@ -729,7 +738,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_link_table_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
+{% macro render_label_link_list_row (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined">
         <table>
@@ -856,7 +865,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_link_image_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
+{% macro render_label_link_image_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
   {% if entries and entries|length > 0 %}
     {% set isDownload = false %}
     {% set isExternal = false %}
@@ -878,6 +887,11 @@
     {% for entry in entries if not break %}
       {% set num = loop.index - 1 %}
       <div class="list-item">
+        {% if entry.uuid or entry.cswUrl %}
+          <div class="image">
+        {% else %}
+          <div {%if isDownload %}class="download"{% endif %}>
+        {% endif %}
         <div class="info--right">
             {% if (isDownload or isExternal) and entry.url %}
                 {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ entry.url|url_encode %}
@@ -895,11 +909,6 @@
                 <span>{{ entry.serviceType }}</span>
             {% endif %}
         </div>
-        {% if entry.uuid or entry.cswUrl %}
-          <div class="image">
-        {% else %}
-          <div {%if isDownload %}class="download"{% endif %}>
-        {% endif %}
               {% set link = "" %}
               {% if entry.uuid %}
                 {% set link = "?docuuid=" ~ entry.uuid %}

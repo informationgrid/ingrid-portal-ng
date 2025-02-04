@@ -8,31 +8,31 @@
     <a class="anchor" id="{{ hash_metadata_info }}"></a>
     {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
 {# Objekt-ID #}
-    {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
 {# Datum #}
     {% set dateFormat = "d.m.Y" %}
     {% if "T" in metaInfoRefs.mod_time %}
         {% set dateFormat = "d.m.Y H:i:s" %}
     {% endif %}
-    {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time ? metaInfoRefs.mod_time|date(dateFormat, false)|e) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time ? metaInfoRefs.mod_time|date(dateFormat, false)|e) }}
 {# Sprache Metadatensatz #}
-    {{ hit_macros.render_text("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Weitere #}
     {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_others.html.twig' %}
 {# Datensatz/Datenserie #}
     {% if class == 1 %}
-        {{ hit_macros.render_text("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
     {% endif %}
 {# XML Darstellung  #}
     {% if displayISOXML and cswURL %}
-        {{ hit_macros.render_link("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, cswURL ~ uuid, "download") }}
+        {{ hit_macros.render_label_link("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, cswURL ~ uuid, "download") }}
     {% endif %}
 {# RDF Darstellung  #}
     {% if displayRDFXML and rdfURL %}
-        {{ hit_macros.render_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
+        {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
-    {{ hit_macros.render_link_list(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, "mail" ) }}
+    {{ hit_macros.render_label_link_list(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, "mail" ) }}
 {# Metadatenquellen #}
     {% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
     <div class="table table--lined">
