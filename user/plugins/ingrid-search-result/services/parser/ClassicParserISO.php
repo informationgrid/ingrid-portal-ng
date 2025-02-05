@@ -123,20 +123,20 @@ class ClassicParserISO
     private static function getAddressTitle($value, string $type): string
     {
         $title = self::getValue($value, "title");
-        if ($type == "2") {
+        if ($type == "2" or $type == "3") {
             $title = "";
-            $title = $title . (property_exists($value, "title2") ? self::getValue($value, "title2") . ", " : "");
-            $title = $title . (property_exists($value, "t02_address.address_value") ? self::getValue($value, "t02_address.address_value") . " " : "");
-            $title = $title . (property_exists($value, "t02_address.title") ? self::getValue($value, "t02_address.title") . " " : "");
             $title = $title . (property_exists($value, "t02_address.firstname") ? self::getValue($value, "t02_address.firstname") . " " : "");
             $title = $title . (property_exists($value, "t02_address.lastname") ? self::getValue($value, "t02_address.lastname") . " " : "");
-        } else if ($type == "3") {
-            $title = "";
-            $title = $title . (property_exists($value, "title2") ? self::getValue($value, "title2") . ", " : "");
-            $title = $title . (property_exists($value, "t02_address.address_value") ? self::getValue($value, "t02_address.address_value") . " " : "");
-            $title = $title . (property_exists($value, "t02_address.title") ? self::getValue($value, "t02_address.title") . " " : "");
-            $title = $title . (property_exists($value, "t02_address.firstname") ? self::getValue($value, "t02_address.firstname") . " " : "");
-            $title = $title . (property_exists($value, "t02_address.lastname") ? self::getValue($value, "t02_address.lastname") . " " : "");
+        }
+        if (property_exists($value, "t02_address.parents.title")) {
+            $parents = self::getValue($value, "t02_address.parents.title");
+            if (is_string($parents)) {
+                $title = self::getValue($value, "t02_address.parents.title") . ', ' . $title;
+            } else {
+                foreach ($parents as $parent) {
+                    $title = $parent . ', ' . $title;
+                }
+            }
         }
         return $title;
     }
