@@ -1060,8 +1060,8 @@ FACETS:
     TYPE:
         METADATA: Meta data
         INSPIRE: INSPIRE
-        OPEN-DATA: Open Data
-        WEBSITES: Websites
+        OPENDATA: Open Data
+        WWW: Websites
         MAPS: Maps
         ADV: AdV
         ADDRESS: Addresses

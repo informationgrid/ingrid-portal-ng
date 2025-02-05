@@ -7,7 +7,7 @@ hit_search:
     {
       "id": "type",
       "queries": {
-        "websites": {
+        "www": {
           "query": {
             "filter": {
               "term": {
@@ -35,7 +35,7 @@ hit_search:
             }
           },
         },
-        "open-data": {
+        "opendata": {
           "query": {
             "filter": {
               "bool": {
@@ -138,7 +138,7 @@ hit_search:
             }
           }
         },
-        "lastfiveYears": {
+        "lastFiveYears": {
           "query": {
             "filter": {
               "range": {
@@ -149,7 +149,7 @@ hit_search:
             }
           }
         },
-        "olderfiveYears": {
+        "olderFiveYears": {
           "query": {
             "filter": {
               "range": {
@@ -183,7 +183,7 @@ categories:
     {
       "id": "type",
       "queries": {
-        "websites": {
+        "www": {
           "icon": "ic-www",
           "query": {
             "filter": {
@@ -214,7 +214,7 @@ categories:
             }
           },
         },
-        "open-data": {
+        "opendata": {
           "icon": "ic-opendata",
           "query": {
             "filter": {

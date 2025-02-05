@@ -1455,7 +1455,7 @@ hit_search:
             }
           }
         },
-        "lastfiveYears": {
+        "lastFiveYears": {
           "query": {
             "filter": {
               "range": {
@@ -1466,7 +1466,7 @@ hit_search:
             }
           }
         },
-        "olderfiveYears": {
+        "olderFiveYears": {
           "query": {
             "filter": {
               "range": {

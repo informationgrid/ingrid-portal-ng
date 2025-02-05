@@ -115,7 +115,7 @@ home:
       {
         "id": "type",
         "queries": {
-          "websites": {
+          "www": {
             "icon": "ic-www",
             "query": {
               "filter": {
@@ -145,7 +145,7 @@ home:
               }
             },
           },
-          "open-data": {
+          "opendata": {
             "icon": "ic-opendata",
             "query": {
               "filter": {
@@ -385,7 +385,7 @@ hit_search:
             }
           },
         },
-        "open-data": {
+        "opendata": {
           "query": {
             "filter": {
               "bool": {
@@ -453,7 +453,7 @@ hit_search:
           },
           search: "datatype:metadata"
         },
-        "websites": {
+        "www": {
           "query": {
             "filter": {
               "term": {
@@ -514,7 +514,7 @@ hit_search:
             }
           }
         },
-        "lastfiveYears": {
+        "lastFiveYears": {
           "query": {
             "filter": {
               "range": {
@@ -525,7 +525,7 @@ hit_search:
             }
           }
         },
-        "olderfiveYears": {
+        "olderFiveYears": {
           "query": {
             "filter": {
               "range": {
