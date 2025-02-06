@@ -30,39 +30,91 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+
     ingrid_api_url:
       type: text
       label: PLUGIN_INGRID_SEARCH_RESULT.API_URL
       help: PLUGIN_INGRID_SEARCH_RESULT.API_URL_HELP
-    hit_search:
-      hits_num:
-        type: number
-        label: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER
-        help: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER_HELP
-        default: 10
-        validate:
-          min: 1
-          max: 100
-      exclude_from_search:
-        type: selectize
-        selectize:
-          options:
-            - text: "datatype:address"
-              value: "datatype:address"
-            - text: "isfolder:true"
-              value: "isfolder:true"
-        label: Aus der Suche ausschließen
-        validate:
-          type: commalist
-    categories:
-      exclude_from_search:
-        type: selectize
-        selectize:
-          options:
-            - text: "datatype:address"
-              value: "datatype:address"
-            - text: "isfolder:true"
-              value: "isfolder:true"
-        label: Aus den Kategorien ausschließen
-        validate:
-          type: commalist
+
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        ## Tab home
+        tab_home:
+          type: tab
+          title: Startseite
+
+          fields:
+            categories.section:
+              type: section
+              title: Kategorien (Stöbern in ...)
+              underline: true
+
+            categories.exclude_from_search:
+              type: selectize
+              selectize:
+                options:
+                  - text: "datatype:address"
+                    value: "datatype:address"
+                  - text: "isfolder:true"
+                    value: "isfolder:true"
+              label: Aus den Kategorien ausschließen
+              validate:
+                type: commalist
+
+        ## Tab search
+        tab_search:
+          type: tab
+          title: Suche
+
+          fields:
+
+            hit_search.section:
+              type: section
+              title: Suchergebnis
+              underline: true
+
+            hit_search.hits_num:
+              type: number
+              label: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER
+              help: PLUGIN_INGRID_SEARCH_RESULT.HITS_NUMBER_HELP
+              default: 10
+              validate:
+                min: 1
+                max: 100
+            hit_search.query_fields:
+              type: selectize
+              selectize:
+                options:
+                  - text: "title^10.0"
+                    value: "title^10.0"
+                  - text: "title.edge_ngram^4.0"
+                    value: "title.edge_ngram^4.0"
+                  - text: "title.ngram^2.0"
+                    value: "title.ngram^2.0"
+                  - text: "summary"
+                    value: "summary"
+                  - text: "summary.edge_ngram^0.4"
+                    value: "summary.edge_ngram^0.4"
+                  - text: "summary.ngram^0.2"
+                    value: "summary.ngram^0.2"
+                  - text: "content^0.2"
+                    value: "content^0.2"
+                  - text: "content.ngram^0.1"
+                    value: "content.ngram^0.1"
+              label: Indexfelder für die Suche
+              validate:
+                type: commalist
+            hit_search.exclude_from_search:
+              type: selectize
+              selectize:
+                options:
+                  - text: "datatype:address"
+                    value: "datatype:address"
+                  - text: "isfolder:true"
+                    value: "isfolder:true"
+              label: Aus der Suche ausschließen
+              validate:
+                type: commalist

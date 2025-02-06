@@ -524,6 +524,30 @@ form:
               validate:
                 type: commalist
 
+            hit_search.query_fields:
+              type: selectize
+              selectize:
+                options:
+                  - text: "title^10.0"
+                    value: "title^10.0"
+                  - text: "title.edge_ngram^4.0"
+                    value: "title.edge_ngram^4.0"
+                  - text: "title.ngram^2.0"
+                    value: "title.ngram^2.0"
+                  - text: "summary"
+                    value: "summary"
+                  - text: "summary.edge_ngram^0.4"
+                    value: "summary.edge_ngram^0.4"
+                  - text: "summary.ngram^0.2"
+                    value: "summary.ngram^0.2"
+                  - text: "content^0.2"
+                    value: "content^0.2"
+                  - text: "content.ngram^0.1"
+                    value: "content.ngram^0.1"
+              label: Indexfelder für die Suche
+              validate:
+                type: commalist
+
             hit_search.sort.enabled:
               type: toggle
               label: Suchergebnis-Sortierung
