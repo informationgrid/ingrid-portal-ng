@@ -5,7 +5,7 @@ custom_title:
   menu: PAGES.ABOUT_MENU_TITLE
 visible: true
 routes:
-  default: /portrait
+  default: /hintergrundinformationen
 ---
 Willkommen im NUMIS-Portal, dem Umweltportal des Landes Niedersachsen! Wir bieten Ihnen einen zentralen Zugriff auf umweltrelevante Internetseiten und Datenkataloge von öffentlichen Institutionen und Organisationen aus Niedersachsen. Sie können darüber hinaus aktuelle Nachrichten, Umweltmesswerte und Umweltkarten über das NUMIS-Portal recherchieren.
 
