@@ -264,9 +264,12 @@ class InGridCatalogPlugin extends Plugin
         $response = file_get_contents($catalog_api);
         $items = json_decode($response, true);
         $catalogLevel = $level + 1;
+        $freeAddresses = [];
         foreach ($items as $item) {
             $catalogId = $partner . '-' . substr(md5($catalogId . '-' . $item['uuid']), 0, 8);
             $hasChildren = $item['hasChildren'];
+            $isAddress = $item['isAddress'];
+            $type = $item['docType'];
             $isOpen = false;
             if ($hasChildren) {
                 $isOpen = self::checkIsOpen($catalogId, $catalogLevel);
@@ -274,24 +277,46 @@ class InGridCatalogPlugin extends Plugin
                     self::addToList($catalogId);
                 }
             }
-
             $node = [
                 'name' => $item['name'],
                 'level' => $catalogLevel,
                 'uuid' => $item['uuid'],
-                'type' => $item['docType'],
-                'type_name' => $item['isAddress'] ? $item['docType'] : CodelistHelper::getCodelistEntry(["8000"], $item['docType'], $this->lang),
+                'type' => $type,
+                'type_name' => $item['isAddress'] ? $type : CodelistHelper::getCodelistEntry(["8000"], $type, $this->lang),
                 'isOpen' => $isOpen,
                 'hasChildren' => $item['hasChildren'],
                 'ident' => $id,
-                'isAddress' => $item['isAddress'],
+                'isAddress' => $isAddress,
                 'partner' => $partner,
                 'id' => $catalogId
             ];
-            $list[] = $node;
+            if ($parentId == null && $isAddress && $type == '3') {
+                $freeAddresses[] = $node;
+            } else {
+                $list[] = $node;
+            }
         }
         if ($this->config_sort_by_name) {
             usort($list, array($this, 'compare_name'));
+        }
+        if (!empty($freeAddresses)) {
+            $freeAddressId = $partner . '-' . substr(md5('CATALOG_HIERARCHY.TREE_ADDRESSES_FREE'), 0, 8);
+            $isOpen = self::checkIsOpen($freeAddressId, $level + 1);
+            if ($isOpen) {
+                self::addToList($freeAddressId);
+            }
+            usort($freeAddresses, array($this, 'compare_name'));
+            array_unshift($list , [
+                'name' => 'CATALOG_HIERARCHY.TREE_ADDRESSES_FREE',
+                'level' => $level + 1,
+                'type' => '1000',
+                'isOpen' => $isOpen,
+                'children' => $freeAddresses,
+                'ident' => $freeAddressId,
+                'hasChildren' => count($freeAddresses) > 0,
+                'partner' => $partner,
+                'id' => $freeAddressId
+            ]);
         }
         return $list;
     }

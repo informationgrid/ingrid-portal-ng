@@ -1178,6 +1178,11 @@
     {% set linkId = nodeId %}
     {% set linkIdent = node.ident %}
     {% set nodeTitle = node.name %}
+    {% set isFreeAdresse = false %}
+
+    {% if nodeTitle == 'CATALOG_HIERARCHY.TREE_ADDRESSES_FREE' %}
+        {% set isFreeAdresse = true %}
+    {% endif %}
 
 
     {% set nodeUrl = '' %}
@@ -1193,27 +1198,29 @@
     {% if node.children or node.hasChildren %}
         <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist" >
             <li class="accordion-item" >
-            {% if nodeUrl != '' %}
+            {% if nodeUrl != '' or node.type == "1000"%}
                 <div class="accordion-item-sub">
                     <span class="icon">
-                        <a id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}" class="ic-ic-plus"></a>
+                        <a id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if isFreeAdresse == false %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}" {% endif %}class="ic-ic-plus"></a>
                         {% if node.type != "1000" %}
                             <a href="{{ nodeUrl }}" title="{{ nodeTitle }}">
                                 <span>{{ nodeTitle }}</span>
                             </a>
                         {% else %}
-                            <span>{{ nodeTitle }}</span>
+                            <span>{{ nodeTitle|t }}</span>
                         {% endif %}
                     </span>
                 </div>
             {% else %}
-                <a class="accordion-title" id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if nodeRequestDisable %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}"{% endif %} aria-controls="{{ node.id }}-accordion" role="tab" title="{{ nodeTitle }}">
+                <a class="accordion-title" id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if nodeRequestDisable %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}"{% endif %} aria-controls="{{ node.id }}-accordion" role="tab" title="{{ nodeTitle|t }}">
                     <span>{{ nodeTitle|t }}</span>
                 </a>
             {% endif %}
                 <div class="accordion-content" data-tab-content role="tabpanel" aria-labelledby="{{ linkId }}" id="{{ node.id }}-accordion">
+                    {% if isFreeAdresse == false %}
                     <div id="replace-{{ linkId }}">
                     </div>
+                    {% endif %}
             {% if node.children %}
                 {% for childNode in node.children %}
                     {{ _self.render_catalog_node(childNode, detailPath, catalogPath, openOnNewTab) }}
@@ -1223,7 +1230,7 @@
             </li>
         </ul>
     {% else %}
-        {% if nodeUrl != '' and node.type != "1000" %}
+        {% if nodeUrl is not empty and node.type != "1000" %}
             <div class="accordion-item-sub">
                 <a {% if openOnNewTab %}target="_blank"{% endif %} href="{{ nodeUrl }}" class="icon" title="{{ nodeTitle }}">
                     {% if node.isAddress %}
