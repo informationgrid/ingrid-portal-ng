@@ -14,13 +14,13 @@ class ElasticsearchService
                 $query .= ' -' . $exclude;
             }
         }
+        SearchQueryHelper::replaceInGridQuery($query);
         $aggs = ElasticsearchService::mapFacets($query, $facet_config, $selectedFacets);
         $queryFromFacets = ElasticsearchService::getQueryFromFacets($facet_config, $selectedFacets);
 
         if ($query == "" && $queryFromFacets->query == "") {
             $result = array("match_all" => new stdClass());
         } else {
-            SearchQueryHelper::replaceInGridQuery($query);
             $result = array("query_string" => array("query" => $query . " " . $queryFromFacets->query));
         }
         $sortQuery = array(
