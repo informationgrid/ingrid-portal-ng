@@ -45,7 +45,7 @@ class DetailAddressParserIdfISO
                 $title = $addressOrganisationName;
             }
         }
-        return $title;
+        return implode(' ', array_reverse(explode(', ', $title)));
     }
 
     public static function getContacts(\SimpleXMLElement $node, string $lang): array
@@ -74,7 +74,7 @@ class DetailAddressParserIdfISO
                 $item = array (
                     "uuid" => $uuid,
                     "type" => $type,
-                    "title" => $title,
+                    "title" => implode(' ', array_reverse(explode(', ', $title))),
                 );
                 $addresses[] = $item;
             }
