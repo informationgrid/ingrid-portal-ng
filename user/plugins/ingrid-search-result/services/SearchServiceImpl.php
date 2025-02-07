@@ -16,6 +16,7 @@ class SearchServiceImpl implements SearchService
     private array $exclude;
     private bool $sortByDate;
     private array $queryFields;
+    private string $queryStringOperator;
 
 
     function __construct($grav, int $hitsNum, array $facetConfig = [], array $excludeFromSearch = [], bool $sortByDate = false)
@@ -30,8 +31,9 @@ class SearchServiceImpl implements SearchService
 
         $theme = $grav['config']->get('system.pages.theme');
         $queryFields = $grav['config']->get('themes.' . $theme . '.hit_search.query_fields') ?: $grav['config']->get('plugins.ingrid-search-result.hit_search.query_fields');
-
         $this->queryFields = $queryFields ?: [];
+        $queryStringOperator = $grav['config']->get('themes.' . $theme . '.hit_search.query_string_operator') ?: $grav['config']->get('plugins.ingrid-search-result.hit_search.query_string_operator');
+        $this->queryStringOperator = $queryStringOperator ?: 'AND';
     }
 
 
@@ -45,7 +47,7 @@ class SearchServiceImpl implements SearchService
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [
-                'body' => $this->transformQuery($query, $page - 1, $selectedFacets, $this->exclude, $this->sortByDate, $this->queryFields)
+                'body' => $this->transformQuery($query, $page - 1, $selectedFacets)
             ]);
             $result = json_decode($apiResponse->getBody()->getContents());
             $totalHits = $result->totalHits ?? 0;
@@ -116,9 +118,9 @@ class SearchServiceImpl implements SearchService
         return $array;
     }
 
-    private function transformQuery($query, $page, array $selectedFacets, array $excludeFromSearch, bool $sortByDate = false, array $queryFields = []): string
+    private function transformQuery($query, $page, array $selectedFacets): string
     {
-        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $excludeFromSearch, $sortByDate, $queryFields);
+        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $this->exclude, $this->sortByDate, $this->queryFields, $this->queryStringOperator);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;
     }

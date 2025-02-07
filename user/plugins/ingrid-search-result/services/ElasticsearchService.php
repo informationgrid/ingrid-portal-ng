@@ -7,7 +7,7 @@ use stdClass;
 class ElasticsearchService
 {
 
-    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch, bool $sortByDate, array $queryFields): string
+    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch, bool $sortByDate, array $queryFields, string $queryStringOperator): string
     {
         if (count($excludeFromSearch) > 0) {
             foreach ($excludeFromSearch as $exclude) {
@@ -15,7 +15,7 @@ class ElasticsearchService
             }
         }
         SearchQueryHelper::replaceInGridQuery($query);
-        $aggs = ElasticsearchService::mapFacets($query, $facet_config, $selectedFacets, $queryFields);
+        $aggs = ElasticsearchService::mapFacets($query, $facet_config, $selectedFacets, $queryFields, $queryStringOperator);
         $queryFromFacets = ElasticsearchService::getQueryFromFacets($facet_config, $selectedFacets);
 
         if ($query == "" && $queryFromFacets->query == "") {
@@ -23,7 +23,8 @@ class ElasticsearchService
         } else {
             $result = array("query_string" => array(
                 "query" => $query . " " . $queryFromFacets->query,
-                "fields" => $queryFields
+                "fields" => $queryFields,
+                "default_operator" => $queryStringOperator,
             ));
         }
 
@@ -92,13 +93,13 @@ class ElasticsearchService
      * @param FacetConfig[] $facets
      * @return object
      */
-    private static function mapFacets(string $query, array $facets, array $selected_facets, array $queryFields): object
+    private static function mapFacets(string $query, array $facets, array $selected_facets, array $queryFields, string $queryStringOperator): object
     {
         $result = array();
         foreach ($facets as $facet) {
             if (property_exists((object)$facet, 'queries')) {
 
-                list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query, $queryFields);
+                list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query, $queryFields, $queryStringOperator);
                 $queries = $facet['queries'];
 
                 foreach ($queries as $subfacet_id => $subfacet_value) {
@@ -120,7 +121,7 @@ class ElasticsearchService
                 $result[$facet['id']]['global'] = new stdClass();
 
                 // add filter for the facet
-                list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query, $queryFields);
+                list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query, $queryFields, $queryStringOperator);
                 $result = self::addFilterToFacet($filter, $queryString, $result, $facet['id']);
 
                 // add actual facet
@@ -214,7 +215,7 @@ class ElasticsearchService
      * @param string $query
      * @return array
      */
-    public static function getFilterForFacet(array $selected_facets, array $facets, $id, string $query, array $queryFields): array
+    public static function getFilterForFacet(array $selected_facets, array $facets, $id, string $query, array $queryFields, string $queryStringOperator): array
     {
         $queryString = array();
         $filter = array();
@@ -223,7 +224,8 @@ class ElasticsearchService
             if ($query != "") {
                 $queryString = array("query_string" => array(
                     "query" => $query,
-                    "fields" => $queryFields
+                    "fields" => $queryFields,
+                    "default_operator" => $queryStringOperator,
                 ));
             }
         } else {
@@ -235,7 +237,8 @@ class ElasticsearchService
                 $finalQuery = $query ? "*" . $query . "* " : "";
                 $queryString = array("query_string" => array(
                     "query" => $finalQuery . $queryFromFacets->query,
-                    "fields" => $queryFields
+                    "fields" => $queryFields,
+                    "default_operator" => $queryStringOperator,
                 ));
             }
             $filter = json_decode($queryFromFacets->filter);

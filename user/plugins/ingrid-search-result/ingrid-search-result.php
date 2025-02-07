@@ -183,9 +183,8 @@ class InGridSearchResultPlugin extends Plugin
             $excludeFromCategoriesSearch = $this->grav['config']->get('themes.' . $theme . '.home.categories.exclude_from_search') ?? $excludeFromCategoriesSearch;
             $excludeFromHitsSearch = $this->grav['config']->get('themes.' . $theme . '.home.hits.exclude_from_search') ?? $excludeFromHitsSearch;
 
-            $selectedFacets = $this->getSelectedFacets($facetConfig);
             $this->service = new SearchServiceImpl($this->grav, 0, $facetConfig, $excludeFromCategoriesSearch);
-            $categories_result = $this->service->getSearchResults("", 1, $selectedFacets, $this->grav['uri'], $lang, $theme);
+            $categories_result = $this->service->getSearchResults("", 1, [], $this->grav['uri'], $lang, $theme);
             $this->grav['twig']->twig_vars['categories_result'] = $categories_result;
 
             $this->hitsNum = $this->grav['config']->get('themes.' . $theme . '.home.hits.num') ?? 0;

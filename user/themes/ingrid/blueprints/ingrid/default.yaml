@@ -524,6 +524,16 @@ form:
               validate:
                 type: commalist
 
+            hit_search.query_string_operator:
+              type: toggle
+              label: Query String Operator
+              highlight: AND
+              options:
+                "AND": AND
+                "OR": OR
+              validate:
+                type: text
+
             hit_search.query_fields:
               type: selectize
               selectize:

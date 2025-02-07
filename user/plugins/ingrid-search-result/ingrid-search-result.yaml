@@ -180,14 +180,15 @@ hit_search:
   exclude_from_search:
     - "isfolder:true"
   query_fields:
-    - "title^10.0"
-    - "title.edge_ngram^4.0"
-    - "title.ngram^2.0"
-    - "summary"
-    - "summary.edge_ngram^0.4"
-    - "summary.ngram^0.2"
-    - "content^0.2"
-    - "content.ngram^0.1"
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  query_string_operator: AND
 categories:
   facet_config: [
     {
