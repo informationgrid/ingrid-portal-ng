@@ -478,8 +478,8 @@ class InGridGravPlugin extends Plugin
         $catalogPage = $this->grav['pages']->find('/catalog');
         $output = $twig->twig()->render($theme_path . '/partials/catalog/catalog-item.html.twig', [
             'items' => $children,
-            'detailPage' => $detailPage ? $detailPage->route() : '',
-            'catalogPage' => $catalogPage ? $catalogPage->route() : '',
+            'detailPage' => $detailPage ? $uri->rootUrl() . $detailPage->route() : '',
+            'catalogPage' => $catalogPage ? $uri->rootUrl() . $catalogPage->route() : '',
         ]);
         echo $output;
         exit();
