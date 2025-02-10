@@ -104,7 +104,6 @@ fi
 if [ "$INGRID_API" ]; then
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-search-result/ingrid-search-result.yaml
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
-  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}portal/catalogs\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-catalog/ingrid-catalog.yaml
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
 fi
 

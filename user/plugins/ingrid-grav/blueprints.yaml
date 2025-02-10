@@ -24,7 +24,6 @@ form:
       type: toggle
       label: PLUGIN_ADMIN.PLUGIN_STATUS
       highlight: 1
-      default: 0
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
@@ -55,12 +54,49 @@ form:
               help: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES_HELP
               validate:
                 type: commalist
-              default: []
 
         tab_catalog:
           type: tab
           title: Kataloge
           fields:
+
+            catalog.open_nodes_level:
+              type: number
+              label: PLUGIN_INGRID_GRAV.CATALOG.OPEN_NODES_LEVEL
+              help: PLUGIN_INGRID_GRAV.CATALOG.OPEN_NODES_LEVEL_HELP
+              validate:
+                min: 0
+                max: 3
+            catalog.sort_by_name:
+              type: toggle
+              label: PLUGIN_INGRID_GRAV.CATALOG.SORT_BY_NAME
+              help: PLUGIN_INGRID_GRAV.CATALOG.SORT_BY_NAME_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            catalog.open_on_new_tab:
+              type: toggle
+              label: PLUGIN_INGRID_GRAV.CATALOG.OPEN_ON_NEW_TAB
+              help: PLUGIN_INGRID_GRAV.CATALOG.OPEN_ON_NEW_TAB_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            catalog.display_partner:
+              type: toggle
+              label: PLUGIN_INGRID_GRAV.CATALOG.DISPLAY_PARTNER
+              help: PLUGIN_INGRID_GRAV.CATALOG.DISPLAY_PARTNER_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
 
         tab_help:
           type: tab

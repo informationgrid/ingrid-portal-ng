@@ -7,6 +7,15 @@ en:
       EXCLUDES_HELP: Select or enter data sources to exclude
     HELP:
       DEFAULT_KEY: Default help key
+    CATALOG:
+      OPEN_NODES_LEVEL: Open hierarchy level by default.
+      OPEN_NODES_LEVEL_HELP: Set the level to open nodes
+      SORT_BY_NAME: Sort by name
+      SORT_BY_NAME_HELP: Sort datasets by name.
+      OPEN_ON_NEW_TAB: Open in new tab
+      OPEN_ON_NEW_TAB_HELP: Open a dataset in a new tab.
+      DISPLAY_PARTNER: Display partner
+      DISPLAY_PARTNER_HELP: Display partner nodes.
 de:
   PLUGIN_INGRID_GRAV:
     API_URL: InGrid-API-URL
@@ -16,3 +25,12 @@ de:
       EXCLUDES_HELP: Datenquellen auswählen oder eintragen um diese im Portal auszublenden
     HELP:
       DEFAULT_KEY: Default Hilfeschlüssel
+    CATALOG:
+      OPEN_NODES_LEVEL: Offene Hierarchie-Level
+      OPEN_NODES_LEVEL_HELP: Legen Sie das Level fest, bis zu welcher Hierarchie die Knoten per Default geöffnet sein sollen.
+      SORT_BY_NAME: Sortierung nach Name
+      SORT_BY_NAME_HELP: Sollen die Einträge nach Namen sortiert werden.
+      OPEN_ON_NEW_TAB: Links im neuem Tab anzeigen
+      OPEN_ON_NEW_TAB_HELP: Ist dieses Einstellung aktiv so wird das Datensatz im neuem Tab angezeigen.
+      DISPLAY_PARTNER: Partner anzeigen
+      DISPLAY_PARTNER_HELP: Schalten Sie hier die Darstellung des Partners aus.

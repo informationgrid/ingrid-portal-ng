@@ -1,7 +1,0 @@
-enabled: true
-route: /datenkataloge
-ingrid_api_url: 'https://api.dev.informationgrid.eu/portal/catalogs'
-open_nodes_level: 3
-display_partner: 1
-sort_by_name: 1
-open_on_new_tab: 1

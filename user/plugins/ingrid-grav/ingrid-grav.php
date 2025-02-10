@@ -14,6 +14,19 @@ use Grav\Common\Page\Pages;
 class InGridGravPlugin extends Plugin
 {
 
+    var string $configApiUrl;
+    var string $configApiUrlCatalog;
+
+    // Catalog
+    var int $configCatalogOpenNodesLevel;
+    var bool $configCatalogDisplayPartner;
+    var bool $configCatalogOpenOnNewTab;
+    var bool $configCatalogSortByName;
+    var string $paramCatalogOpenNodes;
+    var array $openCatalogNodes;
+
+    var string $lang;
+
     /**
      * @return array
      *
@@ -54,6 +67,12 @@ class InGridGravPlugin extends Plugin
      */
     public function onPluginsInitialized(): void
     {
+
+        $config = $this->config();
+        $this->configApiUrl = $config['ingrid_api_url'];
+        $this->configApiUrlCatalog = $this->configApiUrl . '/portal/catalogs';
+        $this->lang = $this->grav['language']->getLanguage();
+
         if ($this->isAdmin()) {
             $this->enable([
                 'onTwigSiteVariables' => ['onTwigAdminVariablesSelectizeDatasource', 0]
@@ -61,7 +80,6 @@ class InGridGravPlugin extends Plugin
             return;
         }
 
-        $config = $this->config();
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
         switch ($uri_path) {
@@ -86,6 +104,32 @@ class InGridGravPlugin extends Plugin
                 $this->enable([
                     'onTwigSiteVariables' => ['onTwigSiteVariablesHelp', 0]
                 ]);
+                break;
+
+            case '/datenkataloge':
+                $paramParentId = $uri->query('parentId') || "";
+                $paramIndex = $uri->query('index') || "";
+
+                $config = $this->config();
+                $this->configCatalogOpenNodesLevel = $config['catalog']['open_nodes_level'];
+                $this->configCatalogDisplayPartner = $config['catalog']['display_partner'];
+                $this->configCatalogOpenOnNewTab = $config['catalog']['open_on_new_tab'];
+                $this->configCatalogSortByName = $config['catalog']['sort_by_name'];
+
+                $this->paramCatalogOpenNodes = $this->grav['uri']->query('openNodes') ?: "";
+                $this->openCatalogNodes = [];
+
+                if ($paramParentId && $paramIndex) {
+                    // Parent loading
+                    $this->enable([
+                        'onPageInitialized' => ['renderCustomTemplateCatalog', 0]
+                    ]);
+                } else {
+                    // Initial loading
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
+                    ]);
+                }
                 break;
 
             default:
@@ -231,7 +275,6 @@ class InGridGravPlugin extends Plugin
         $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
     }
 
-
     /*
      * Help
      */
@@ -295,9 +338,7 @@ class InGridGravPlugin extends Plugin
     {
         if ($this->isAdmin()) {
             try {
-                $config = $this->config();
-                $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
-                $response = file_get_contents($api_url);
+                $response = file_get_contents($this->configApiUrlCatalog);
                 $items = json_decode($response, true);
                 $fieldSelectize = self::getAdminSelectizeDatasource($items);
                 $this->grav['twig']->twig_vars['datasources'] = $fieldSelectize;
@@ -311,9 +352,8 @@ class InGridGravPlugin extends Plugin
     {
         if (!$this->isAdmin()) {
             $config = $this->config();
-            $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
             $excludes = $config['datasource']['excludes'] ?: [];
-            $response = file_get_contents($api_url);
+            $response = file_get_contents($this->configApiUrlCatalog);
             $items = json_decode($response, true);
             $plugs = self::getDataSources($items, $excludes);
             $this->grav['twig']->twig_vars['plugs'] = $plugs;
@@ -345,7 +385,7 @@ class InGridGravPlugin extends Plugin
             if (array_key_exists('name', $item)) {
                 $name = $item['name'];
                 if ($name) {
-                    $exists = array_search($name, $list);
+                    $exists = in_array($name, $list);
                     if ($exists === false) {
                         $entry = [];
                         $entry['text'] = $name;
@@ -397,5 +437,236 @@ class InGridGravPlugin extends Plugin
             $this->grav['log']->debug($e->getMessage());
         }
         exit();
+    }
+
+    /*
+     * Catalog
+     */
+
+    public function onTwigSiteVariablesCatalog(): void
+    {
+
+        if (!$this->isAdmin()) {
+            $response = file_get_contents($this->configApiUrlCatalog);
+
+            $items = json_decode($response, true);
+            $partners = self::getPartners($items);
+            $this->grav['twig']->twig_vars['partners'] = $partners;
+            $this->grav['twig']->twig_vars['api_url'] = $this->configApiUrlCatalog;
+            $this->grav['twig']->twig_vars['openNodesLevel'] = $this->configCatalogOpenNodesLevel;
+            $this->grav['twig']->twig_vars['displayPartner'] = $this->configCatalogDisplayPartner;
+            $this->grav['twig']->twig_vars['openOnNewTab'] = $this->configCatalogOpenOnNewTab;
+            $this->grav['twig']->twig_vars['openNodes'] = $this->openCatalogNodes;
+        }
+    }
+
+    public function renderCustomTemplateCatalog(): void
+    {
+        $twig = $this->grav['twig'];
+        $uri = $this->grav['uri'];
+
+        $paramParentId = $uri->query('parentId') ?: "";
+        $paramIndex = $uri->query('index') ?: "";
+        $paramLevel = $uri->query('level') ?: "";
+        $paramPartner = $uri->query('partner') ?: "";
+        $paramNode = $uri->query('node') ?: "";
+
+        // Use the @theme notation to reference the template in the theme
+        $theme_path = $this->grav['twig']->addPath($this->grav['locator']->findResource('theme://templates'));
+        $children = self::getCatalogChildren($paramIndex, $paramLevel, $paramPartner, $paramNode, $paramParentId);
+        $detailPage = $this->grav['pages']->find('/detail');
+        $catalogPage = $this->grav['pages']->find('/catalog');
+        $output = $twig->twig()->render($theme_path . '/partials/catalog/catalog-item.html.twig', [
+            'items' => $children,
+            'detailPage' => $detailPage ? $detailPage->route() : '',
+            'catalogPage' => $catalogPage ? $catalogPage->route() : '',
+        ]);
+        echo $output;
+        exit();
+    }
+
+    private function checkIsCatalogNodeOpen(string $item, int $level): bool
+    {
+        $isOpen = false;
+        $openNodesList = $this->paramCatalogOpenNodes != '' ? explode(',', $this->paramCatalogOpenNodes) : [];
+        if (count($openNodesList) == 0) {
+            if ($level <= $this->configCatalogOpenNodesLevel) {
+                $isOpen = true;
+            }
+        } else {
+            $exists = in_array($item, $openNodesList, true);
+            if ($exists) {
+                $isOpen = true;
+            }
+        }
+        return $isOpen;
+    }
+
+    private function addToList(string $item): void
+    {
+        $openNodesList = $this->paramCatalogOpenNodes != '' ? explode(',', $this->paramCatalogOpenNodes) : [];
+        $exists = in_array($item, $openNodesList, true);
+        if (!$exists) {
+            $this->openCatalogNodes[] = $item;
+        }
+    }
+
+    private function getPartners(array $items): array
+    {
+        $list = array();
+        $partners = CodelistHelper::getCodelistPartners();
+        foreach ($partners as $partner) {
+            $partnerLevel = 1;
+            $partnerId = $partner['ident'];
+            $isPartnerOpen = self::checkIsCatalogNodeOpen($partnerId, $partnerLevel);
+            $newPartner = [
+                'name' => $partner['name'],
+                'ident' => $partner['ident'],
+                'level' => $partnerLevel,
+                'isOpen' => $isPartnerOpen,
+                'id' => $partnerId
+            ];
+            $providerList = array();
+            foreach ($items as $item) {
+                $catalogId = $partnerId . '-' . substr(md5($item['name']), 0, 8);
+                $providerLevel = 2;
+                $exists = in_array($newPartner['ident'], $item['partner']);
+                if ($exists !== false && $item['isMetadata']) {
+                    $providerExists = array_search($item['name'], array_column($providerList, 'name'));
+                    if ($providerExists !== false) {
+                        $provider = $providerList[$providerExists];
+                        $typeNode = self::getTypeNode($item['isAddress'], $item['id'], $partnerId, $catalogId);
+                        if ($typeNode) {
+                            $provider['children'][] = $typeNode;
+                            array_splice($providerList, $providerExists, 1);
+                            $providerList[] = $provider;
+                        }
+                    } else {
+                        $typeNode = self::getTypeNode((bool) $item['isAddress'], $item['id'], $partnerId, $catalogId);
+                        $isOpen =  $providerLevel <= $this->configCatalogOpenNodesLevel;
+                        if ($isOpen) {
+                            $this->openCatalogNodes[] = $catalogId;
+                        }
+                        $provider = [
+                            'name' => $item['name'],
+                            'level' => $providerLevel,
+                            'isOpen' => $isOpen,
+                            'children' => $typeNode ? [$typeNode] : [],
+                            'hasChildren' => (bool)$typeNode,
+                            'partner' => $partnerId,
+                            'id' => $catalogId
+                        ];
+                        $providerList[] = $provider;
+                    }
+                }
+            }
+            if ($this->configCatalogSortByName) {
+                usort($providerList, array($this, 'compare_name'));
+            }
+            $newPartner['children'] = $providerList;
+            if (!empty($providerList) && $isPartnerOpen) {
+                self::addToList($partnerId);
+            }
+            $list[] = $newPartner;
+        }
+        if ($this->configCatalogSortByName) {
+            usort($list, array($this, 'compare_name'));
+        }
+        return $list;
+    }
+
+    private function getTypeNode(bool $isAddress, string $id, string $partner, string $catalogId): array
+    {
+        $typeLevel  = 3;
+        $typeId = $partner . '-' . substr(md5($catalogId . '-' . ($isAddress ? 'address' : 'object')), 0, 8);
+        $isOpen = self::checkIsCatalogNodeOpen($typeId, $typeLevel);
+        if ($isOpen) {
+            self::addToList($typeId);
+        }
+        $children = self::getCatalogChildren($id, $this->configCatalogOpenNodesLevel, $partner, $catalogId . '-' . $typeId);
+        $name = $isAddress ? 'CATALOG_HIERARCHY.TREE_ADDRESSES' : 'CATALOG_HIERARCHY.TREE_OBJECTS';
+        return [
+            'name' => $name,
+            'level' => $typeLevel,
+            'isOpen' => $isOpen,
+            'children' => $children,
+            'hasChildren' => count($children) > 0,
+            'partner' => $partner,
+            'id' => $typeId
+        ];
+    }
+
+    private function getCatalogChildren(string $id, int $level, string $partner, string $catalogId, null|string $parentId = null): array
+    {
+        $list = [];
+        $catalog_api = $this->configApiUrlCatalog . '/' . $id . '/hierarchy';
+        if ($parentId) {
+            $catalog_api = $catalog_api . '?parent=' . $parentId;
+        }
+        $response = file_get_contents($catalog_api);
+        $items = json_decode($response, true);
+        $catalogLevel = $level + 1;
+        $freeAddresses = [];
+        foreach ($items as $item) {
+            $catalogId = $partner . '-' . substr(md5($catalogId . '-' . $item['uuid']), 0, 8);
+            $isAddress = $item['isAddress'];
+            $type = $item['docType'];
+            $isOpen = false;
+            $hasChildren = $item['hasChildren'];
+            if ($hasChildren) {
+                $isOpen = self::checkIsCatalogNodeOpen($catalogId, $catalogLevel);
+                if ($isOpen) {
+                    self::addToList($catalogId);
+                }
+            }
+            $name = trim($isAddress ? implode(' ', array_reverse(explode(', ', $item['name']))) : $item['name']);
+            $name = explode('#locale-', $name)[0];
+            $node = [
+                'name' => $name,
+                'level' => $catalogLevel,
+                'uuid' => $item['uuid'],
+                'type' => $type,
+                'type_name' => $isAddress ? $type : CodelistHelper::getCodelistEntry(["8000"], $type, $this->lang),
+                'isOpen' => $isOpen,
+                'hasChildren' => $item['hasChildren'],
+                'ident' => $id,
+                'isAddress' => $isAddress,
+                'partner' => $partner,
+                'id' => $catalogId
+            ];
+            if ($parentId == null && $isAddress && $type == '3') {
+                $freeAddresses[] = $node;
+            } else {
+                $list[] = $node;
+            }
+        }
+        if ($this->configCatalogSortByName) {
+            usort($list, array($this, 'compare_name'));
+        }
+        if (!empty($freeAddresses)) {
+            $freeAddressId = $partner . '-' . substr(md5('CATALOG_HIERARCHY.TREE_ADDRESSES_FREE'), 0, 8);
+            $isOpen = self::checkIsCatalogNodeOpen($freeAddressId, $level + 1);
+            if ($isOpen) {
+                self::addToList($freeAddressId);
+            }
+            usort($freeAddresses, array($this, 'compare_name'));
+            array_unshift($list , [
+                'name' => 'CATALOG_HIERARCHY.TREE_ADDRESSES_FREE',
+                'level' => $level + 1,
+                'type' => '1000',
+                'isOpen' => $isOpen,
+                'children' => $freeAddresses,
+                'ident' => $freeAddressId,
+                'hasChildren' => count($freeAddresses) > 0,
+                'partner' => $partner,
+                'id' => $freeAddressId
+            ]);
+        }
+        return $list;
+    }
+
+    private function compare_name(array $a, array $b): int
+    {
+        return strcasecmp($a['name'], $b['name']);
     }
 }
