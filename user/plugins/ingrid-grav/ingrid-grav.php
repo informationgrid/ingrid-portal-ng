@@ -14,8 +14,6 @@ use Grav\Common\Page\Pages;
 class InGridGravPlugin extends Plugin
 {
 
-    var string $paramUrl;
-
     /**
      * @return array
      *
@@ -34,9 +32,10 @@ class InGridGravPlugin extends Plugin
                 // ['autoload', 100000],
                 ['onPluginsInitialized', 0]
             ],
-            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onTwigTemplatePaths'      => ['onTwigTemplatePaths', 0],
             'onAdminTwigTemplatePaths' => ['onAdminTwigTemplatePaths', 0],
             'onPagesInitialized'       => ['onPagesInitialized', 0],
+            'onTwigLoader'             => ['onTwigLoader', 0],
         ];
     }
 
@@ -55,8 +54,10 @@ class InGridGravPlugin extends Plugin
      */
     public function onPluginsInitialized(): void
     {
-        // Don't proceed if we are in the admin plugin
         if ($this->isAdmin()) {
+            $this->enable([
+                'onTwigSiteVariables' => ['onTwigAdminVariablesSelectizeDatasource', 0]
+            ]);
             return;
         }
 
@@ -65,15 +66,19 @@ class InGridGravPlugin extends Plugin
         $uri_path = $uri->path();
         switch ($uri_path) {
             case '/utils/mimetype':
-                $this->paramUrl = $this->grav['uri']->query('url') ?: "";
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
                 ]);
                 break;
             case '/utils/getUrlFileSize':
-                $this->paramUrl = $this->grav['uri']->query('url') ?: "";
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateUrlFileSize', 0],
+                ]);
+                break;
+
+            case '/datenquellen':
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesDatasource', 0]
                 ]);
                 break;
 
@@ -91,40 +96,33 @@ class InGridGravPlugin extends Plugin
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
 
+    /**
+     * Add the Twig template paths to the Twig loader
+     */
+    public function onTwigLoader(): void
+    {
+        $this->grav['twig']->addPath(__DIR__ . '/templates');
+    }
+
     public function onAdminTwigTemplatePaths($event) {
         $event['paths'] = array_merge($event['paths'], [__DIR__ . '/templates']);
         return $event;
     }
 
-    public function renderCustomTemplateUrlFileSize(): void
+    public function onTwigAdminVariablesSelectizeDatasource(): void
     {
-        try {
-            $headers = get_headers($this->paramUrl, true);
-            if (substr($headers[0], 9, 3) == 200) {
-                $contentLength = $headers['Content-Length'];
-                echo StringHelper::formatBytes($contentLength);
+        if ($this->isAdmin()) {
+            try {
+                $config = $this->config();
+                $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
+                $response = file_get_contents($api_url);
+                $items = json_decode($response, true);
+                $fieldSelectize = self::getAdminSelectizeDatasource($items);
+                $this->grav['twig']->twig_vars['datasources'] = $fieldSelectize;
+            } catch (\Exception $e) {
+                $this->grav['log']->error($e->getMessage());
             }
-        } catch (\Exception $e) {
-            $this->grav['log']->debug($e->getMessage());
         }
-        exit();
-    }
-
-    public function renderCustomTemplateMimetype(): void
-    {
-        $twig = $this->grav['twig'];
-        // Use the @theme notation to reference the template in the theme
-        $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));
-        try {
-            $mimeType = MimeTypeHelper::getUrlMimetype($this->paramUrl);
-            $output = $twig->twig()->render($theme_path . '/_rest/utils/mimetype.html.twig', [
-                'mimeType' => $mimeType
-            ]);
-            echo $output;
-        } catch (\Exception $e) {
-            $this->grav['log']->debug($e->getMessage());
-        }
-        exit();
     }
 
     public function onPageInitialized(): void
@@ -242,4 +240,100 @@ class InGridGravPlugin extends Plugin
         $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
     }
 
+
+    /*
+     * Datasource
+     */
+
+    public function onTwigSiteVariablesDatasource(): void
+    {
+        $config = $this->config();
+        $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
+        $excludes = $config['datasource']['excludes'] ?: [];
+        if (!$this->isAdmin()) {
+            $response = file_get_contents($api_url);
+            $items = json_decode($response, true);
+            $plugs = self::getDataSources($items, $excludes);
+            $this->grav['twig']->twig_vars['plugs'] = $plugs;
+        }
+    }
+
+    private function getDataSources($items, $excludes = []): array
+    {
+        $list = array();
+        foreach ($items as $item) {
+            if (array_key_exists('name', $item)) {
+                $name = $item['name'];
+                if ($name) {
+                    $exists = in_array($name, $list);
+                    $toExclude = in_array($name, $excludes);
+                    if ($exists === false && $toExclude === false) {
+                        $list[] = $name;
+                    }
+                }
+            }
+        }
+        return $list;
+    }
+
+    private function getAdminSelectizeDatasource($items): array
+    {
+        $list = array();
+        foreach ($items as $item) {
+            if (array_key_exists('name', $item)) {
+                $name = $item['name'];
+                if ($name) {
+                    $exists = array_search($name, $list);
+                    if ($exists === false) {
+                        $entry = [];
+                        $entry['text'] = $name;
+                        $entry['value'] = $name;
+                        $list[] = $entry;
+                    }
+                }
+            }
+        }
+        return $list;
+    }
+
+    /*
+     * URL file size
+     */
+
+    public function renderCustomTemplateUrlFileSize(): void
+    {
+        try {
+            $paramUrl = $this->grav['uri']->query('url') ?: "";
+            $headers = get_headers($paramUrl, true);
+            if (substr($headers[0], 9, 3) == 200) {
+                $contentLength = $headers['Content-Length'];
+                echo StringHelper::formatBytes($contentLength);
+            }
+        } catch (\Exception $e) {
+            $this->grav['log']->debug($e->getMessage());
+        }
+        exit();
+    }
+
+    /*
+     * Mime type
+     */
+
+    public function renderCustomTemplateMimetype(): void
+    {
+        $twig = $this->grav['twig'];
+        // Use the @theme notation to reference the template in the theme
+        $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));
+        try {
+            $paramUrl = $this->grav['uri']->query('url') ?: "";
+            $mimeType = MimeTypeHelper::getUrlMimetype($paramUrl);
+            $output = $twig->twig()->render($theme_path . '/_rest/utils/mimetype.html.twig', [
+                'mimeType' => $mimeType
+            ]);
+            echo $output;
+        } catch (\Exception $e) {
+            $this->grav['log']->debug($e->getMessage());
+        }
+        exit();
+    }
 }

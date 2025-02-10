@@ -1,4 +1,14 @@
 en:
-  PLUGIN_INGRID_GRAV_UTILS:
-    TEXT_VARIABLE: Text Variable
-    TEXT_VARIABLE_HELP: Text to add to the top of a page
+  PLUGIN_INGRID_GRAV:
+    API_URL: InGrid-API-URL
+    API_URL_HELP: Define InGrid-API-URL
+    DATASOURCE:
+      EXCLUDES: Exclude data sources
+      EXCLUDES_HELP: Select or enter data sources to exclude
+de:
+  PLUGIN_INGRID_GRAV:
+    API_URL: InGrid-API-URL
+    API_URL_HELP: InGrid-API-URL eintragen
+    DATASOURCE:
+      EXCLUDES: Datenquellen ausschließen
+      EXCLUDES_HELP: Datenquellen auswählen oder eintragen um diese im Portal auszublenden

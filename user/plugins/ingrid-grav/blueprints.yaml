@@ -30,3 +30,34 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+
+    ingrid_api_url:
+      type: text
+      label: PLUGIN_INGRID_GRAV.API_URL
+      help: PLUGIN_INGRID_GRAV.API_URL_HELP
+
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+
+        tab_datasource:
+          type: tab
+          title: Datenquellen
+          fields:
+
+            datasource.excludes:
+              type: selectize_datasource
+              selectize:
+                options:
+              label: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES
+              help: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES_HELP
+              validate:
+                type: commalist
+              default: []
+
+        tab_catalog:
+          type: tab
+          title: Kataloge
+          fields:
