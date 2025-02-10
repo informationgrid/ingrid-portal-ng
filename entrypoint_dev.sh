@@ -17,7 +17,7 @@ cd /var/www/html/user/plugins/ingrid-codelist && composer update
 cd /var/www/html/user/plugins/ingrid-help && composer update
 cd /var/www/html/user/plugins/ingrid-catalog && composer update
 cd /var/www/html/user/plugins/ingrid-datasources && composer update
-cd /var/www/html/user/plugins/ingrid-grav-utils && composer update
+cd /var/www/html/user/plugins/ingrid-grav && composer update
 
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php

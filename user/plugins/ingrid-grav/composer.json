@@ -1,0 +1,36 @@
+{
+  "name": "khanh-toan-tran/ingrid-grav",
+  "type": "grav-plugin",
+  "description": "InGrid functions for GravCMS",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Khanh Toan Tran",
+      "email": "khanh.toan.tran@wemove.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\InGridGrav\\": "classes/"
+    },
+    "classmap":  ["ingrid-grav.php"],
+    "files": [
+      "classes/utils/IdfHelper.php",
+      "classes/utils/CodelistHelper.php",
+      "classes/utils/CapabilitiesHelper.php",
+      "classes/utils/StringHelper.php",
+      "classes/utils/LanguageHelper.php",
+      "classes/utils/CountryHelper.php",
+      "classes/utils/MimeTypeHelper.php",
+      "classes/utils/SearchQueryHelper.php",
+      "classes/utils/TMPeriodDurationHelper.php"
+    ]
+
+  }
+}

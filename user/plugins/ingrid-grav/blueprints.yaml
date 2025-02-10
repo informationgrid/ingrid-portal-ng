@@ -1,17 +1,17 @@
 name: InGrid Grav Utils
-slug: ingrid-grav-utils
+slug: ingrid-grav
 type: plugin
 version: 0.1.0
-description: InGrid utils function for GravCMS
+description: InGrid functions for GravCMS
 icon: plug
 author:
   name: Khanh Toan Tran
   email: khanh.toan.tran@wemove.com
-homepage: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav-utils
+homepage: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav
 demo: http://demo.yoursite.com
 keywords: grav, plugin, etc
-bugs: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav-utils/issues
-docs: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav-utils/blob/develop/README.md
+bugs: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav/issues
+docs: https://github.com/ingrid-portal-ng/grav-plugin-ingrid-grav/blob/develop/README.md
 license: MIT
 
 dependencies:

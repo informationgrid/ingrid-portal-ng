@@ -8,10 +8,10 @@ use Grav\Common\Page\Page;
 use Grav\Common\Page\Pages;
 
 /**
- * Class InGridGravUtilsPlugin
+ * Class InGridGravPlugin
  * @package Grav\Plugin
  */
-class InGridGravUtilsPlugin extends Plugin
+class InGridGravPlugin extends Plugin
 {
 
     var string $paramUrl;
@@ -76,6 +76,7 @@ class InGridGravUtilsPlugin extends Plugin
                     'onPageInitialized' => ['renderCustomTemplateUrlFileSize', 0],
                 ]);
                 break;
+
             default:
                 // Check themes config for redirected pages
                 $this->enable([
@@ -148,7 +149,9 @@ class InGridGravUtilsPlugin extends Plugin
      *
      * @param $url
      * @param $filename
-     * @param null $object
+     * @param null $parent
+     * @param null $route
+     * @return Page
      * @throws \Exception
      */
     public function addPage($url, $filename, $parent = null, $route = null): Page

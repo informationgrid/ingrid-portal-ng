@@ -91,7 +91,7 @@ RUN cd /usr/share/grav-admin/user/plugins/ingrid-codelist && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-help && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-catalog && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-datasources && composer update
-RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav-utils && composer update
+RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav && composer update
 
 COPY entrypoint.sh /entrypoint.sh
 #COPY grav.ini $PHP_INI_DIR/conf.d/

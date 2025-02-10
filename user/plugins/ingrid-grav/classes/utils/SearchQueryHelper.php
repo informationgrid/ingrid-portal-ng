@@ -7,6 +7,7 @@ class SearchQueryHelper
 
     private static array $replaces = [
         'iplugs:"' => 'iPlugId:"',
+        ' cache:off ' => '',
     ];
 
     public static function replaceInGridQuery(string &$query): void
