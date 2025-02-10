@@ -61,3 +61,12 @@ form:
           type: tab
           title: Kataloge
           fields:
+
+        tab_help:
+          type: tab
+          title: Hilfe
+          fields:
+
+            help.default_hkey:
+              type: text
+              label: PLUGIN_INGRID_GRAV.HELP.DEFAULT_KEY

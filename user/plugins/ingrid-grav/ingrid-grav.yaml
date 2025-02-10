@@ -2,3 +2,5 @@ enabled: true
 ingrid_api_url: https://api.dev.informationgrid.eu
 datasource:
   excludes:
+help:
+  default_hkey: about-1

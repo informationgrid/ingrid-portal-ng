@@ -5,6 +5,8 @@ en:
     DATASOURCE:
       EXCLUDES: Exclude data sources
       EXCLUDES_HELP: Select or enter data sources to exclude
+    HELP:
+      DEFAULT_KEY: Default help key
 de:
   PLUGIN_INGRID_GRAV:
     API_URL: InGrid-API-URL
@@ -12,3 +14,5 @@ de:
     DATASOURCE:
       EXCLUDES: Datenquellen ausschließen
       EXCLUDES_HELP: Datenquellen auswählen oder eintragen um diese im Portal auszublenden
+    HELP:
+      DEFAULT_KEY: Default Hilfeschlüssel

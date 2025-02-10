@@ -82,6 +82,12 @@ class InGridGravPlugin extends Plugin
                 ]);
                 break;
 
+            case '/hilfe':
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesHelp', 0]
+                ]);
+                break;
+
             default:
                 // Check themes config for redirected pages
                 $this->enable([
@@ -107,22 +113,6 @@ class InGridGravPlugin extends Plugin
     public function onAdminTwigTemplatePaths($event) {
         $event['paths'] = array_merge($event['paths'], [__DIR__ . '/templates']);
         return $event;
-    }
-
-    public function onTwigAdminVariablesSelectizeDatasource(): void
-    {
-        if ($this->isAdmin()) {
-            try {
-                $config = $this->config();
-                $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
-                $response = file_get_contents($api_url);
-                $items = json_decode($response, true);
-                $fieldSelectize = self::getAdminSelectizeDatasource($items);
-                $this->grav['twig']->twig_vars['datasources'] = $fieldSelectize;
-            } catch (\Exception $e) {
-                $this->grav['log']->error($e->getMessage());
-            }
-        }
     }
 
     public function onPageInitialized(): void
@@ -242,15 +232,86 @@ class InGridGravPlugin extends Plugin
 
 
     /*
+     * Help
+     */
+
+    public function onTwigSiteVariablesHelp(): void
+    {
+        if (!$this->isAdmin()) {
+
+            $uri = $this->grav['uri'];
+            $config = $this->config();
+            $hkey = $this->grav['uri']->query('hkey');
+            if (!$hkey) {
+                $hkey = $config['help']['default_hkey'];
+            }
+            $lang = $this->grav['language']->getActive() ?? $this->grav['language']->getDefault();
+
+            if ($hkey) {
+                libxml_use_internal_errors(true);
+
+                // Content
+                $theme = $this->grav['theme']->name;
+                $xmlContent = new \DOMDocument();
+                $xmlContent->load('theme://config/help/ingrid-portal-help_' . $lang . '.xml');
+                libxml_clear_errors();
+
+                // Help side menu xsl
+                $procMenu = new \XSLTProcessor;
+                $xslMenu = new \DOMDocument();
+                $xslMenu->load('theme://config/help/ingrid-portal-help-menu.xsl');
+                $procMenu->importStylesheet($xslMenu);
+                $helpMenu = $procMenu->transformToXML($xmlContent);
+
+                // Help xsl
+                $procContent = new \XSLTProcessor;
+                $xslContent = new \DOMDocument();
+                $xslContent->load('theme://config/help/ingrid-portal-help.xsl');
+                $procContent->importStylesheet($xslContent);
+
+                $xpath = simplexml_load_string($xmlContent->saveXML());
+                if ($xpath) {
+                    $xmlQueryContent = $xpath->xpath('//section[@help-key="' . $hkey . '"]/ancestor::chapter');
+                    if ($xmlQueryContent) {
+                        $dom = new \DOMDocument;
+                        $dom->loadXML($xmlQueryContent[0]->asXML());
+                        $xmlContent = $dom;
+                    }
+                }
+            }
+
+            $helpContent = $procContent->transformToXML($xmlContent);
+            $this->grav['twig']->twig_vars['help_content'] = str_replace('<?xml version="1.0"?>', '', $helpContent);
+            $this->grav['twig']->twig_vars['help_menu'] = str_replace('<?xml version="1.0"?>', '', $helpMenu);
+        }
+    }
+
+    /*
      * Datasource
      */
 
+    public function onTwigAdminVariablesSelectizeDatasource(): void
+    {
+        if ($this->isAdmin()) {
+            try {
+                $config = $this->config();
+                $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
+                $response = file_get_contents($api_url);
+                $items = json_decode($response, true);
+                $fieldSelectize = self::getAdminSelectizeDatasource($items);
+                $this->grav['twig']->twig_vars['datasources'] = $fieldSelectize;
+            } catch (\Exception $e) {
+                $this->grav['log']->error($e->getMessage());
+            }
+        }
+    }
+
     public function onTwigSiteVariablesDatasource(): void
     {
-        $config = $this->config();
-        $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
-        $excludes = $config['datasource']['excludes'] ?: [];
         if (!$this->isAdmin()) {
+            $config = $this->config();
+            $api_url = $config['ingrid_api_url'] . '/portal/catalogs';
+            $excludes = $config['datasource']['excludes'] ?: [];
             $response = file_get_contents($api_url);
             $items = json_decode($response, true);
             $plugs = self::getDataSources($items, $excludes);
