@@ -89,7 +89,6 @@ class InGridGravPlugin extends Plugin
                 break;
 
             default:
-                // Check themes config for redirected pages
                 $this->enable([
                     'onPageInitialized' => ['onPageInitialized', 0],
                 ]);
@@ -117,6 +116,8 @@ class InGridGravPlugin extends Plugin
 
     public function onPageInitialized(): void
     {
+        // Check themes config for redirected pages
+
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
         $page = $this->grav['pages']->find($uri_path);
