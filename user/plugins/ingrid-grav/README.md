@@ -1,12 +1,12 @@
-# InGrid Grav Utils Plugin
+# InGrid Grav Plugin
 
 **This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
 
-The **InGrid Grav Utils** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). InGrid functions for GravCMS
+The **InGrid Grav** Plugin is an extension for [Grav CMS](https://github.com/getgrav/grav). InGrid functions for GravCMS
 
 ## Installation
 
-Installing the InGrid Grav Utils plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
+Installing the InGrid Grav plugin can be done in one of three ways: The GPM (Grav Package Manager) installation method lets you quickly install the plugin with a simple terminal command, the manual method lets you do so via a zip file, and the admin method lets you do so via the Admin Plugin.
 
 ### GPM Installation (Preferred)
 
@@ -14,7 +14,7 @@ To install the plugin via the [GPM](https://learn.getgrav.org/cli-console/grav-c
 
     bin/gpm install ingrid-grav
 
-This will install the InGrid Grav Utils plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ingrid-grav`.
+This will install the InGrid Grav plugin into your `/user/plugins`-directory within Grav. Its files can be found under `/your/site/grav/user/plugins/ingrid-grav`.
 
 ### Manual Installation
 
