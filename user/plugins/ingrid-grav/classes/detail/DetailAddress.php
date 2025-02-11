@@ -13,12 +13,12 @@ class DetailAddress
         $this->theme = $theme;
     }
 
-    public static function parse(\SimpleXMLElement $content, null|string $uuid, Grav $grav): null|array
+    public static function parse(\SimpleXMLElement $content, null|string $uuid): null|array
     {
         $rootNode = IdfHelper::getNode($content, '//gmd:CI_ResponsibleParty | //idf:idfResponsibleParty');
         if (!is_null($rootNode)) {
-            $lang = $grav['language']->getLanguage();
-            return DetailAddressParserIdfISO::parse($rootNode, $uuid, $lang);
+            $lang = Grav::instance()['language']->getLanguage();
+            return DetailParserAddressIdfISO::parse($rootNode, $uuid, $lang);
         }
         return null;
     }

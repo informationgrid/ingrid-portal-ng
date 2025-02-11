@@ -5,10 +5,10 @@ namespace Grav\Plugin;
 use Grav\Common\Utils;
 use Grav\Common\Grav;
 
-class DetailMetadataParserIdfISO
+class DetailParserMetadataIdfISO
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang, Grav $grav ): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 
@@ -28,7 +28,7 @@ class DetailMetadataParserIdfISO
             "contacts" => self::getContactRefs($node, $lang),
         ];
         self::getTimeRefs($node, $metadata, $lang);
-        self::getMapRefs($node, $metadata, $lang, $grav);
+        self::getMapRefs($node, $metadata, $lang);
         self::getUseRefs($node, $metadata, $lang);
         self::getInfoRefs($node, $type, $metadata, $lang);
         self::getDataQualityRefs($node, $metadata);
@@ -158,12 +158,13 @@ class DetailMetadataParserIdfISO
         }
     }
 
-    private static function getMapRefs(\SimpleXMLElement $node, array &$metadata, string $lang, Grav $grav): void
+    private static function getMapRefs(\SimpleXMLElement $node, array &$metadata, string $lang): void
     {
 
-        $geo_api_url = getenv('GEO_API_URL') !== false ? getenv('GEO_API_URL') : $grav['config']->get('plugins.ingrid-detail.geo_api_url');
-        $geo_api_user = getenv('GEO_API_USER') !== false ? getenv('GEO_API_USER') : $grav['config']->get('plugins.ingrid-detail.geo_api_user');
-        $geo_api_pass = getenv('GEO_API_PASS') !== false ? getenv('GEO_API_PASS') : $grav['config']->get('plugins.ingrid-detail.geo_api_pass');
+        $config = Grav::instance()['config'];
+        $geo_api_url = getenv('GEO_API_URL') !== false ? getenv('GEO_API_URL') : $config->get('plugins.ingrid-grav.geo_api_url');
+        $geo_api_user = getenv('GEO_API_USER') !== false ? getenv('GEO_API_USER') : $config->get('plugins.ingrid-grav.geo_api_user');
+        $geo_api_pass = getenv('GEO_API_PASS') !== false ? getenv('GEO_API_PASS') : $config->get('plugins.ingrid-grav.geo_api_pass');
         $geo_api = [
             'url' => $geo_api_url,
             'user' => $geo_api_user,
@@ -182,14 +183,15 @@ class DetailMetadataParserIdfISO
         $metadata["map_bboxes"] = self::getBBoxes($node);
         $metadata["map_geographicElement"] = self::getGeographicElements($node, $lang);
         $metadata["map_areaHeight"] = self::getAreaHeight($node, $lang);
-        $metadata["map_referencesystem_id"] = self::getReferences($node, $grav);
+        $metadata["map_referencesystem_id"] = self::getReferences($node);
     }
 
-    private static function getReferences(\SimpleXMLElement $node, Grav $grav): array
+    private static function getReferences(\SimpleXMLElement $node): array
     {
-        $theme = $grav['config']->get('system.pages.theme');
-        $reference_system_link = $grav['config']->get('themes.' . $theme . '.hit_detail.reference_system_link');
-        $reference_system_link_replace = $grav['config']->get('themes.' . $theme . '.hit_detail.reference_system_link_replace');
+        $config = Grav::instance()['config'];
+        $theme = $config->get('system.pages.theme');
+        $reference_system_link = $config->get('themes.' . $theme . '.hit_detail.reference_system_link');
+        $reference_system_link_replace = $config->get('themes.' . $theme . '.hit_detail.reference_system_link_replace');
 
         $array = [];
         $tmpNodes = IdfHelper::getNodeList($node, "./gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier");

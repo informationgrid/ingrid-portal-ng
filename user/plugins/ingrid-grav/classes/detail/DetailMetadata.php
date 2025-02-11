@@ -13,16 +13,16 @@ class DetailMetadata
         $this->theme = $theme;
     }
 
-    public function parse(\SimpleXMLElement $content, null|string $uuid, null|string $dataSourceName, array $providers, Grav $grav): null|array
+    public function parse(\SimpleXMLElement $content, null|string $uuid, null|string $dataSourceName, array $providers): null|array
     {
         $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
         switch ($this->theme) {
             case 'uvp':
             case 'uvp-ni':
                 if (!is_null($rootNode)) {
-                    $lang = $grav['language']->getLanguage();
+                    $lang = Grav::instance()['language']->getLanguage();
 
-                    return DetailMetadataParserIdfUVP::parse($rootNode, $uuid, $dataSourceName, $providers, $lang, $grav);
+                    return DetailParserMetadataIdfUVP::parse($rootNode, $uuid, $dataSourceName, $providers, $lang);
                 }
             default:
                 $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
@@ -30,15 +30,15 @@ class DetailMetadata
                     $uuid = IdfHelper::getNodeValue($rootNode, "./gmd:fileIdentifier/gco:CharacterString");
                 }
                 if (!is_null($rootNode)) {
-                    $lang = $grav['language']->getLanguage();
+                    $lang = Grav::instance()['language']->getLanguage();
 
-                    return DetailMetadataParserIdfISO::parse($rootNode, $uuid, $dataSourceName, $providers, $lang, $grav);
+                    return DetailParserMetadataIdfISO::parse($rootNode, $uuid, $dataSourceName, $providers, $lang);
                 }
         }
 
         $rootNode = $content->{'body'};
         if (!is_null($rootNode)) {
-            return DetailGenericParserIdf::parse($rootNode, $uuid);
+            return DetailParserGenericIdf::parse($rootNode, $uuid);
         }
         return null;
     }

@@ -4,14 +4,14 @@ namespace Grav\Plugin;
 
 use Grav\Common\Utils;
 
-class DetailAddressParserIdfISO
+class DetailParserAddressIdfISO
 {
 
     public static function parse(\SimpleXMLElement $node, string $uuid, string $lang): array
     {
         echo "<script>console.log('InGrid Detail parse address with " . $uuid . "');</script>";
 
-        $hierarchyParty = IdfHelper::getNode($node, "./idf:hierarchyParty[@uuid='".$uuid."']");
+        $hierarchyParty = IdfHelper::getNode($node, "//idf:hierarchyParty[@uuid='".$uuid."']");
         $type = IdfHelper::getNodeValue($hierarchyParty, "./idf:addressType");
         $address = [
             "uuid" => $uuid,
@@ -59,7 +59,7 @@ class DetailAddressParserIdfISO
             $role = "";
             $roleNode = IdfHelper::getNode($tmpNode, "./gmd:role/gmd:CI_RoleCode");
             if ($roleNode) {
-                $role = IdfHelper::getNodeValue($roleNode, "./@uuid");
+                $role = IdfHelper::getNodeValue($roleNode, "./@codeListValue");
             }
             $addresses = [];
             $tmpAddresses = IdfHelper::getNodeList($tmpNode, "./idf:hierarchyParty");
@@ -68,15 +68,30 @@ class DetailAddressParserIdfISO
                 $uuid = IdfHelper::getNodeValue($tmpAddress, "./@uuid");
                 $type = IdfHelper::getNodeValue($tmpAddress, "./idf:addressType");
                 $title = IdfHelper::getNodeValue($tmpAddress, "./idf:addressIndividualName | ./gmd:individualName");
-                if (!$title) {
+                if ($title) {
+                    $item = array (
+                        "uuid" => $uuid,
+                        "type" => $type,
+                        "title" => implode(' ', array_reverse(explode(', ', $title))),
+                    );
+                    $addresses[] = $item;
+                    $organisation = IdfHelper::getNodeValue($tmpAddress, "./idf:addressOrganisationName | ./gmd:organisationName/*[self::gco:CharacterString or self::gmx:Anchor]");
+                    if ($organisation) {
+                        $item = array(
+                            "type" => $type,
+                            "title" => $organisation,
+                        );
+                        $addresses[] = $item;
+                    }
+                } else {
                     $title = IdfHelper::getNodeValue($tmpAddress, "./idf:addressOrganisationName | ./gmd:organisationName/*[self::gco:CharacterString or self::gmx:Anchor]");
+                    $item = array (
+                        "uuid" => $uuid,
+                        "type" => $type,
+                        "title" => implode(' ', array_reverse(explode(', ', $title))),
+                    );
+                    $addresses[] = $item;
                 }
-                $item = array (
-                    "uuid" => $uuid,
-                    "type" => $type,
-                    "title" => implode(' ', array_reverse(explode(', ', $title))),
-                );
-                $addresses[] = $item;
             }
 
             $streets = [];
@@ -169,7 +184,7 @@ class DetailAddressParserIdfISO
         foreach ($nodes as $tmpNode) {
             $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
-            $title = DetailAddressParserIdfISO::getTitle($tmpNode);
+            $title = DetailParserAddressIdfISO::getTitle($tmpNode);
             $item = array(
                 "uuid" => $uuid,
                 "type" => $type,

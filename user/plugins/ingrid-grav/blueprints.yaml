@@ -35,6 +35,19 @@ form:
       label: PLUGIN_INGRID_GRAV.API_URL
       help: PLUGIN_INGRID_GRAV.API_URL_HELP
 
+    geo_api_url:
+      type: text
+      label: PLUGIN_INGRID_GRAV.GEO_API_URL
+      help: PLUGIN_INGRID_GRAV.GEO_API_URL_HELP
+    geo_api_user:
+      type: text
+      label: PLUGIN_INGRID_GRAV.GEO_API_USER
+      help: PLUGIN_INGRID_GRAV.GEO_API_USER_HELP
+    geo_api_pass:
+      type: text
+      label: PLUGIN_INGRID_GRAV.GEO_API_PASS
+      help: PLUGIN_INGRID_GRAV.GEO_API_PASS_HELP
+
     tabs:
       type: tabs
       active: 1

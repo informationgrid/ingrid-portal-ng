@@ -103,18 +103,17 @@ fi
 # Update ingrid api
 if [ "$INGRID_API" ]; then
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-search-result/ingrid-search-result.yaml
-  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
 fi
 
 # Update geo api
 if [ "$GEO_API_URL" ]; then
-  sed -i -e "s@geo_api_url:.*@geo_api_url: \'${GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+  sed -i -e "s@geo_api_url:.*@geo_api_url: \'${GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
   if [ "$GEO_API_USER" ]; then
-    sed -i -e "s@geo_api_user:.*@geo_api_user: ${GEO_API_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+    sed -i -e "s@geo_api_user:.*@geo_api_user: ${GEO_API_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
   fi
   if [ "$GEO_API_PASS" ]; then
-    sed -i -e "s@geo_api_pass:.*@geo_api_pass: ${GEO_API_PASS}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-detail/ingrid-detail.yaml
+    sed -i -e "s@geo_api_pass:.*@geo_api_pass: ${GEO_API_PASS}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
   fi
 fi
 

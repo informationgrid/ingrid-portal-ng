@@ -29,7 +29,15 @@
       "classes/utils/CountryHelper.php",
       "classes/utils/MimeTypeHelper.php",
       "classes/utils/SearchQueryHelper.php",
-      "classes/utils/TMPeriodDurationHelper.php"
+      "classes/utils/TMPeriodDurationHelper.php",
+      "classes/detail/DetailAddress.php",
+      "classes/detail/DetailMetadata.php",
+      "classes/detail/parser/DetailParserAddressIdfISO.php",
+      "classes/detail/parser/DetailParserMetadataIdfISO.php",
+      "classes/detail/parser/DetailParserMetadataIdfUVP.php",
+      "classes/detail/parser/DetailParserGenericIdf.php",
+      "classes/detail/zip/DetailCreateZipService.php",
+      "classes/detail/zip/DetailCreateZipUVPServiceImpl.php"
     ]
 
   }

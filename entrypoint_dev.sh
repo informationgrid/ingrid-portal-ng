@@ -11,7 +11,6 @@ cp -R /var/www/grav-admin/system/* /var/www/html/system
 # recover base plugins
 cp -R /var/www/grav-admin/user/plugins/* /var/www/html/user/plugins
 cd /var/www/html/user/plugins/ingrid-search-result && composer update
-cd /var/www/html/user/plugins/ingrid-detail && composer update
 cd /var/www/html/user/plugins/ingrid-rss && composer update
 cd /var/www/html/user/plugins/ingrid-codelist && composer update
 cd /var/www/html/user/plugins/ingrid-grav && composer update

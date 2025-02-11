@@ -2,7 +2,7 @@
 
 namespace Grav\Plugin;
 
-class DetailGenericParserIdf
+class DetailParserGenericIdf
 {
 
     public static function parse(\SimpleXMLElement $node, string $uuid): array

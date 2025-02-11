@@ -5,11 +5,11 @@ namespace Grav\Plugin;
 use Grav\Common\Utils;
 use Grav\Common\Grav;
 
-class DetailMetadataParserIdfUVP
+class DetailParserMetadataIdfUVP
 {
     static string $xPathStringLength = '[string-length(text()) > 0]';
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang, Grav $grav ): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang): array
     {
         echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
 
