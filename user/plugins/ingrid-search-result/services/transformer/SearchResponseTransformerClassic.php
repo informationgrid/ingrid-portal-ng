@@ -50,7 +50,10 @@ class SearchResponseTransformerClassic
                     if (isset($key)) {
                         $label = strtoupper('FACETS.' . $facetConfig['id'] . '.' . $key);
                         if (isset($facetConfig['codelist'])) {
-                            $label = CodelistHelper::getCodelistEntryByIdent([$facetConfig['codelist']], $key, $lang);
+                            $codelistValue = CodelistHelper::getCodelistEntryByIdent([$facetConfig['codelist']], $key, $lang);
+                            if ($codelistValue) {
+                                $label = $codelistValue;
+                            }
                         }
                         $items[] = new FacetItem(
                             $key,
