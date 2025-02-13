@@ -20,12 +20,12 @@ class ClassicParserISO
         if (in_array("address", $datatypes)) {
             $uuid = self::getValue($source, "t02_address.adr_id");
             $type = self::getValue($source, "t02_address.typ");
-            $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["505"], $type, $lang) : null;
+            $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["505"], $type, $lang) : "";
             $title = self::getAddressTitle($source, $type);
         } else if (in_array("metadata", $datatypes)) {
             $uuid = self::getValue($source, "t01_object.obj_id");
             $type = self::getValue($source, "t01_object.obj_class");
-            $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["8000"], $type, $lang) : null;
+            $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["8000"], $type, $lang) : "";
             $title = self::getValue($source, "title");
             $time = self::getTime($source);
         } else if (in_array("www", $datatypes)) {
@@ -71,7 +71,7 @@ class ClassicParserISO
             "title" => $title,
             "url" => in_array("www", $datatypes) ? self::getValue($source, "url") : null,
             "time" => $time,
-            "summary" => self::getValue($source, "summary") ?? self::getValue($source, "abstract"),
+            "summary" => self::getSummary($source),
             "datatypes" => $datatypes,
             "partners" => self::getValueArray($source, "partner"),
             "searchterms" => $searchTerms,
@@ -95,6 +95,26 @@ class ClassicParserISO
             "y2" => self::getValue($source, "y2"),
             "x2" => self::getValue($source, "x2"),
         ];
+    }
+
+    private static function getSummary($value): null|string
+    {
+        $summary = self::getValue($value, 'summary') ?? self::getValue($value, 'abstract');
+        if (!empty($summary) && str_contains($summary, '<')) {
+            $doc = new \DomDocument();
+            $summary = \mb_convert_encoding($summary, 'HTML-ENTITIES', 'UTF-8');
+            $doc->loadHTML($summary, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $summary = $doc->saveHTML();
+            while(str_starts_with($summary, '<p>')) {
+                $replace = '';
+                $find = '<p>';
+                $summary = preg_replace("@$find@", $replace, $summary, 1);
+                $find = '</p>';
+                $summary = preg_replace(strrev("@$find@"), strrev($replace), strrev($summary), 1);
+                $summary = strrev($summary);
+            }
+        }
+        return $summary;
     }
 
     private static function getPreviews($value, string $type): array
@@ -377,7 +397,11 @@ class ClassicParserISO
     private static function getValue($value, string $key): mixed
     {
         if (property_exists($value, $key)) {
-            return $value -> $key;
+            $tmpValue = $value->$key;
+            if (is_string($tmpValue)) {
+                return trim($value->$key);
+            }
+            return $tmpValue;
         }
         return null;
     }
@@ -385,7 +409,7 @@ class ClassicParserISO
     private static function getValueTime($value, string $key): null|string
     {
         if (property_exists($value, $key)) {
-            $time = $value -> $key;
+            $time = trim($value->$key);
             return date("d.m.Y", strtotime(substr($time,0,8)));
         }
         return null;

@@ -108,9 +108,6 @@ home:
     feeds_limit: 6
   categories:
     rss: 'type'
-    exclude_from_search:
-      - 'datatype:address'
-      - 'isfolder:true'
     facet_config: [
       {
         "id": "type",
@@ -349,7 +346,11 @@ home:
         }
       },
     ]
+    exclude_from_search:
+      - 'datatype:address'
+      - 'isfolder:true'
   hits:
+    exclude_from_search:
     num: 0
     sort:
       sortByDate: true
@@ -357,20 +358,7 @@ hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
-  exclude_from_search:
-    - 'datatype:address'
-    - 'isfolder:true'
-  sort:
-    enabled: false
-    sortByDate: false
-  expandable:
-    enabled: true
-  summary_replace_newline: ' '
-  summary_lines_limit: 5
-  links_max: 5
-  csw_enabled: true
-  rdf_enabled: false
-  partner_logo_enabled: true
+  hits_num: 10
   facet_config: [
     {
       "id": "type",
@@ -451,7 +439,6 @@ hit_search:
               }
             }
           },
-          search: "datatype:metadata"
         },
         "www": {
           "query": {
@@ -480,6 +467,10 @@ hit_search:
     },
     {
       "id": "modtime",
+      "dependency": {
+        "type": "metadata",
+        "metadata_group": "",
+      },
       "queries": {
         "lastMonth": {
           "query": {
@@ -553,6 +544,32 @@ hit_search:
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
   ]
+  exclude_from_search:
+    - 'datatype:address'
+    - 'isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: ' '
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: true
+hit_providers:
+  query:
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -595,11 +612,29 @@ map:
       geocoder: false
       spinloader: false
       clustering: false
+    geocoder:
+      enable: false
+      service:
+    position: 46.58,5.22,55.40,15.68
+measure:
+  enabled: false
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
 system:
   pages_to_404:
     - /api
     - /measure
   pages_to_redirect:
+catalog:
+  open_nodes_level: 3
+  display_partner: 1
+  sort_by_name: 1
+  open_on_new_tab: 1
+help:
+  default_hkey: about-1
 streams:
  schemes:
    theme:

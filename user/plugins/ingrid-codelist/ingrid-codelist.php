@@ -198,7 +198,7 @@ class InGridCodelistPlugin extends Plugin
                     }
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
         }
 
         return [$status, $msg];

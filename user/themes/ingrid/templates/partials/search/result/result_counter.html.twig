@@ -29,7 +29,7 @@
     </div>
 {% endif %}
 
-{% if hasSort %}
+{% if hasSort and numOfHits > 0 %}
     <div class="row">
         <span class="result-text no-margin">
             <b>{{ "SEARCH_RESULT.SORT"|t }}</b>
@@ -42,7 +42,7 @@
                         {% set key = param[0] %}
                         {% if key is not empty %}
                             {% set value = uri.query(key) %}
-                            {% if key != 'ranking' %}
+                            {% if key is not sameas('ranking') and key is not sameas('page') %}
                                 <input type="hidden" name="{{ key }}" value="{{ value }}"/>
                             {% endif %}
                         {% endif %}

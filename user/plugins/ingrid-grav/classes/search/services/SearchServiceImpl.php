@@ -23,16 +23,16 @@ class SearchServiceImpl implements SearchService
     {
         $this->facet_config = $facetConfig;
         $this->exclude = $excludeFromSearch;
-        $this->api = $grav['config']->get('plugins.ingrid-search-result.ingrid_api_url');
+        $this->api = $grav['config']->get('plugins.ingrid-grav.ingrid_api_url');
         $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];
         $this->sortByDate = $sortByDate;
 
         $theme = $grav['config']->get('system.pages.theme');
-        $queryFields = $grav['config']->get('themes.' . $theme . '.hit_search.query_fields') ?: $grav['config']->get('plugins.ingrid-search-result.hit_search.query_fields');
+        $queryFields = $grav['config']->get('themes.' . $theme . '.hit_search.query_fields');
         $this->queryFields = $queryFields ?: [];
-        $queryStringOperator = $grav['config']->get('themes.' . $theme . '.hit_search.query_string_operator') ?: $grav['config']->get('plugins.ingrid-search-result.hit_search.query_string_operator');
+        $queryStringOperator = $grav['config']->get('themes.' . $theme . '.hit_search.query_string_operator');
         $this->queryStringOperator = $queryStringOperator ?: 'AND';
     }
 
@@ -40,7 +40,11 @@ class SearchServiceImpl implements SearchService
     /**
      * @param string $query
      * @param int $page
-     * @return SearchResult
+     * @param array $selectedFacets
+     * @param $uri
+     * @param string $lang
+     * @param string $theme
+     * @return SearchResult|null
      * @throws GuzzleException
      */
     public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang, string $theme = ''): null|SearchResult

@@ -88,9 +88,6 @@ home:
   rss:
     feeds_limit: 6
   categories:
-    exclude_from_search:
-      - 'datatype:address'
-      - 'isfolder:true'
     facet_config: [
       {
         "id": "category",
@@ -382,15 +379,15 @@ home:
                         "should": [
                           {
                             "range": {
-                              "t01_object.mod_time": {
-                                "gte": "202401160"
+                              "modified": {
+                                "gte": "now-1y"
                               }
                             }
                           },
                           {
                             "range": {
-                              "approval_date": {
-                                "gte": "202401160"
+                              "decision_date": {
+                                "gte": "now-1y"
                               }
                             }
                           }
@@ -427,15 +424,15 @@ home:
                         "should": [
                           {
                             "range": {
-                              "t01_object.mod_time": {
-                                "gte": "202401160"
+                              "modified": {
+                                "gte": "now-1y"
                               }
                             }
                           },
                           {
                             "range": {
-                              "approval_date": {
-                                "gte": "202401160"
+                              "decision_date": {
+                                "gte": "now-1y"
                               }
                             }
                           }
@@ -472,15 +469,15 @@ home:
                         "should": [
                           {
                             "range": {
-                              "t01_object.mod_time": {
-                                "gte": "202401160"
+                              "modified": {
+                                "gte": "now-1y"
                               }
                             }
                           },
                           {
                             "range": {
-                              "approval_date": {
-                                "gte": "202401160"
+                              "decision_date": {
+                                "gte": "now-1y"
                               }
                             }
                           }
@@ -517,15 +514,15 @@ home:
                         "should": [
                           {
                             "range": {
-                              "t01_object.mod_time": {
-                                "gte": "202401160"
+                              "modified": {
+                                "gte": "now-1y"
                               }
                             }
                           },
                           {
                             "range": {
-                              "approval_date": {
-                                "gte": "202401160"
+                              "decision_date": {
+                                "gte": "now-1y"
                               }
                             }
                           }
@@ -574,15 +571,15 @@ home:
                         "should": [
                           {
                             "range": {
-                              "t01_object.mod_time": {
-                                "gte": "202401160"
+                              "modified": {
+                                "gte": "now-1y"
                               }
                             }
                           },
                           {
                             "range": {
-                              "approval_date": {
-                                "gte": "202401160"
+                              "decision_date": {
+                                "gte": "now-1y"
                               }
                             }
                           }
@@ -797,6 +794,9 @@ home:
         }
       },
     ]
+    exclude_from_search:
+      - 'datatype:address'
+      - 'isfolder:true'
   hits:
     exclude_from_search:
       - 'datatype:address'
@@ -809,20 +809,7 @@ hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
-  exclude_from_search:
-    - 'datatype:address'
-    - 'isfolder:true'
-  sort:
-    enabled: true
-    sortByDate: true
-  expandable:
-    enabled: false
-  summary_replace_newline: ' '
-  summary_lines_limit: 5
-  links_max: 5
-  csw_enabled: true
-  rdf_enabled: false
-  partner_logo_enabled: true
+  hits_num: 10
   facet_config: [
     {
       "id": "procedure",
@@ -861,15 +848,15 @@ hit_search:
                       "should": [
                         {
                           "range": {
-                            "t01_object.mod_time": {
-                              "gte": "202401160"
+                            "modified": {
+                              "gte": "now-1y"
                             }
                           }
                         },
                         {
                           "range": {
-                            "approval_date": {
-                              "gte": "202401160"
+                            "decision_date": {
+                              "gte": "now-1y"
                             }
                           }
                         }
@@ -904,15 +891,15 @@ hit_search:
                       "should": [
                         {
                           "range": {
-                            "t01_object.mod_time": {
-                              "gte": "202401160"
+                            "modified": {
+                              "gte": "now-1y"
                             }
                           }
                         },
                         {
                           "range": {
-                            "approval_date": {
-                              "gte": "202401160"
+                            "decision_date": {
+                              "gte": "now-1y"
                             }
                           }
                         }
@@ -947,15 +934,15 @@ hit_search:
                       "should": [
                         {
                           "range": {
-                            "t01_object.mod_time": {
-                              "gte": "202401160"
+                            "modified": {
+                              "gte": "now-1y"
                             }
                           }
                         },
                         {
                           "range": {
-                            "approval_date": {
-                              "gte": "202401160"
+                            "decision_date": {
+                              "gte": "now-1y"
                             }
                           }
                         }
@@ -990,15 +977,15 @@ hit_search:
                       "should": [
                         {
                           "range": {
-                            "t01_object.mod_time": {
-                              "gte": "202401160"
+                            "modified": {
+                              "gte": "now-1y"
                             }
                           }
                         },
                         {
                           "range": {
-                            "approval_date": {
-                              "gte": "202401160"
+                            "decision_date": {
+                              "gte": "now-1y"
                             }
                           }
                         }
@@ -1033,15 +1020,15 @@ hit_search:
                       "should": [
                         {
                           "range": {
-                            "t01_object.mod_time": {
-                              "gte": "202401160"
+                            "modified": {
+                              "gte": "now-1y"
                             }
                           }
                         },
                         {
                           "range": {
-                            "approval_date": {
-                              "gte": "202401160"
+                            "decision_date": {
+                              "gte": "now-1y"
                             }
                           }
                         }
@@ -1484,8 +1471,32 @@ hit_search:
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
   ]
+  exclude_from_search:
+    - 'datatype:address'
+    - 'isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  query_string_operator: AND
+  sort:
+    enabled: true
+    sortByDate: true
+  expandable:
+    enabled: false
+  summary_replace_newline: ' '
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: true
 hit_providers:
-  query: 'datatype:address AND (t02_address.typ:0 OR t02_address.typ:3)'
+  query: 'datatype:address (t02_address.typ:0 OR t02_address.typ:3)'
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -1567,15 +1578,15 @@ map:
                           "should": [
                             {
                               "range": {
-                                "t01_object.mod_time": {
-                                  "gte": "202401160"
+                                "modified": {
+                                  "gte": "now-1y"
                                 }
                               }
                             },
                             {
                               "range": {
-                                "approval_date": {
-                                  "gte": "202401160"
+                                "decision_date": {
+                                  "gte": "now-1y"
                                 }
                               }
                             }
@@ -1611,15 +1622,15 @@ map:
                           "should": [
                             {
                               "range": {
-                                "t01_object.mod_time": {
-                                  "gte": "202401160"
+                                "modified": {
+                                  "gte": "now-1y"
                                 }
                               }
                             },
                             {
                               "range": {
-                                "approval_date": {
-                                  "gte": "202401160"
+                                "decision_date": {
+                                  "gte": "now-1y"
                                 }
                               }
                             }
@@ -1655,15 +1666,15 @@ map:
                           "should": [
                             {
                               "range": {
-                                "t01_object.mod_time": {
-                                  "gte": "202401160"
+                                "modified": {
+                                  "gte": "now-1y"
                                 }
                               }
                             },
                             {
                               "range": {
-                                "approval_date": {
-                                  "gte": "202401160"
+                                "decision_date": {
+                                  "gte": "now-1y"
                                 }
                               }
                             }
@@ -1699,15 +1710,15 @@ map:
                           "should": [
                             {
                               "range": {
-                                "t01_object.mod_time": {
-                                  "gte": "202401160"
+                                "modified": {
+                                  "gte": "now-1y"
                                 }
                               }
                             },
                             {
                               "range": {
-                                "approval_date": {
-                                  "gte": "202401160"
+                                "decision_date": {
+                                  "gte": "now-1y"
                                 }
                               }
                             }
@@ -1744,15 +1755,15 @@ map:
                           "should": [
                             {
                               "range": {
-                                "t01_object.mod_time": {
-                                  "gte": "202401160"
+                                "modified": {
+                                  "gte": "now-1y"
                                 }
                               }
                             },
                             {
                               "range": {
-                                "approval_date": {
-                                  "gte": "202401160"
+                                "decision_date": {
+                                  "gte": "now-1y"
                                 }
                               }
                             }
@@ -1780,6 +1791,15 @@ system:
     - /api
     - /measure
   pages_to_redirect:
+catalog:
+  open_nodes_level: 3
+  display_partner: 1
+  sort_by_name: 1
+  open_on_new_tab: 1
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
 streams:
   schemes:
     theme:

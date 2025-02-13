@@ -102,7 +102,6 @@ fi
 
 # Update ingrid api
 if [ "$INGRID_API" ]; then
-  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-search-result/ingrid-search-result.yaml
   sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
 fi
 

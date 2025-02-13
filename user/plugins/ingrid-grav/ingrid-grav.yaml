@@ -3,12 +3,3 @@ ingrid_api_url: https://api.dev.informationgrid.eu
 geo_api_url: 'https://geo-api.informationgrid.eu/v1/convert?exportFormat='
 geo_api_user: admin
 geo_api_pass:
-datasource:
-  excludes:
-help:
-  default_hkey: about-1
-catalog:
-  open_nodes_level: 3
-  display_partner: 1
-  sort_by_name: 1
-  open_on_new_tab: 1

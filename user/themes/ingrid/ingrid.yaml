@@ -120,9 +120,78 @@ home:
     feeds_limit: 6
   categories:
     rss: 'type'
+    facet_config: [
+      {
+        "id": "type",
+        "queries": {
+          "www": {
+            "icon": "ic-www",
+            "query": {
+              "filter": {
+                "term": {
+                  "datatype": "www"
+                }
+              }
+            },
+          },
+          "metadata": {
+            "icon": "ic-metadata",
+            "query": {
+              "filter": {
+                "term": {
+                  "datatype": "metadata"
+                }
+              }
+            },
+          },
+          "inspire": {
+            "icon": "ic-inspire",
+            "query": {
+              "filter": {
+                "term": {
+                  "t04_search.searchterm": "inspireidentifiziert"
+                }
+              }
+            },
+          },
+          "opendata": {
+            "icon": "ic-opendata",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendata"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendataident"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+          },
+          "maps": {
+            "icon": "ic-map",
+            "query": {
+              "filter": {
+                "wildcard": {
+                  "capabilities_url": "http*"
+                }
+              }
+            },
+          },
+        }
+      }
+    ]
     exclude_from_search:
-      - 'isfolder:true'
+      - "isfolder:true"
   hits:
+    exclude_from_search:
     num: 0
     sort:
       sortByDate: true
@@ -130,8 +199,182 @@ hit:
   csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
   rdf_url: null
 hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "queries": {
+        "www": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "www"
+              }
+            }
+          },
+        },
+        "metadata": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
+            }
+          },
+        },
+        "inspire": {
+          "query": {
+            "filter": {
+              "term": {
+                "t04_search.searchterm": "inspireidentifiziert"
+              }
+            }
+          },
+        },
+        "opendata": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+        },
+        "hvd": {
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": "true"
+              }
+            }
+          },
+        },
+        "maps": {
+          "query": {
+            "filter": {
+              "wildcard": {
+                "capabilities_url": "http*"
+              }
+            }
+          },
+        },
+        "address": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "address"
+              }
+            }
+          },
+        },
+      }
+    },
+    {
+      "id": "metadata_group",
+      "openBy": {
+        "type": "metadata",
+      },
+      "codelist": "8000",
+      "query": {
+        "terms": {
+          "field": "t01_object.obj_class",
+          "exclude": "1000",
+          "min_doc_count": 0
+        }
+      },
+    },
+    {
+      "id": "modtime",
+      "dependency": {
+        "type": "metadata",
+        "metadata_group": "",
+      },
+      "queries": {
+        "lastMonth": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1M"
+                }
+              }
+            }
+          }
+        },
+        "lastThreeMonth": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-3M"
+                }
+              }
+            }
+          }
+        },
+        "lastYear": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1y"
+                }
+              }
+            }
+          }
+        },
+        "lastFiveYears": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-5y"
+                }
+              }
+            }
+          }
+        },
+        "olderFiveYears": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "lte": "now-5y"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "partner",
+      "codelist": "110",
+      "query": {
+        "terms": {
+          "field": "partner",
+          "min_doc_count": 0
+        }
+      },
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    }
+  ]
   exclude_from_search:
-    - 'isfolder:true'
+    - "isfolder:true"
   query_fields:
     - title^10.0
     - title.edge_ngram^4.0
@@ -153,6 +396,8 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: false
+hit_providers:
+  query:
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -195,10 +440,14 @@ map:
       geocoder: false
       spinloader: false
       clustering: false
+    geocoder:
+      enable: false
+      service:
+    position: 46.58,5.22,55.40,15.68
 measure:
   enabled: true
   networks:
-    exclude: null
+    exclude:
     initial:
       - luen
   url: 'https://dev.informationgrid.eu/ingrid-portal-apps/measures/index.html'
@@ -206,3 +455,12 @@ measure:
 system:
   pages_to_404:
   pages_to_redirect:
+catalog:
+  open_nodes_level: 3
+  display_partner: 1
+  sort_by_name: 1
+  open_on_new_tab: 1
+help:
+  default_hkey: about-1
+datasource:
+  excludes:

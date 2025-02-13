@@ -486,7 +486,7 @@ form:
         ## Tab search
         tab_search:
           type: tab
-          title: Treffer
+          title: Suche
 
           fields:
 
@@ -755,6 +755,50 @@ form:
                     type: commalist
                 default: ["pointOfContact","distributor","publisher","owner","processor","author"]
 
+## Tab catalog
+        tab_catalog:
+          type: tab
+          title: Katalog
+
+          fields:
+
+            catalog.open_nodes_level:
+              type: number
+              label: PLUGIN_INGRID_GRAV.CATALOG.OPEN_NODES_LEVEL
+              help: PLUGIN_INGRID_GRAV.CATALOG.OPEN_NODES_LEVEL_HELP
+              validate:
+                min: 0
+                max: 3
+            catalog.sort_by_name:
+              type: toggle
+              label: PLUGIN_INGRID_GRAV.CATALOG.SORT_BY_NAME
+              help: PLUGIN_INGRID_GRAV.CATALOG.SORT_BY_NAME_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            catalog.open_on_new_tab:
+              type: toggle
+              label: PLUGIN_INGRID_GRAV.CATALOG.OPEN_ON_NEW_TAB
+              help: PLUGIN_INGRID_GRAV.CATALOG.OPEN_ON_NEW_TAB_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            catalog.display_partner:
+              type: toggle
+              label: PLUGIN_INGRID_GRAV.CATALOG.DISPLAY_PARTNER
+              help: PLUGIN_INGRID_GRAV.CATALOG.DISPLAY_PARTNER_HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
 ## Tab map
         tab_map:
           type: tab
@@ -1008,3 +1052,39 @@ form:
               validate:
                   type: commalist
               default: ["luen"]
+
+## Tab help
+        tab_help:
+          type: tab
+          title: Hilfe
+          fields:
+
+            help.default_hkey:
+              type: text
+              label: PLUGIN_INGRID_GRAV.HELP.DEFAULT_KEY
+
+## Tab datasource
+        tab_datasource:
+          type: tab
+          title: Datenquellen
+          fields:
+
+            datasource.excludes:
+              type: selectize_datasource
+              selectize:
+                options:
+              label: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES
+              help: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES_HELP
+              validate:
+                type: commalist
+
+## Tab datasource
+        tab_provider:
+          type: tab
+          title: Anbieter
+          fields:
+
+            hit_providers.query:
+              type: text
+              label: PLUGIN_INGRID_GRAV.HELP.DEFAULT_KEY
+              help: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES_HELP

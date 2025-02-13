@@ -166,7 +166,7 @@
                 <h1>{{ "SEARCH_DETAIL.UVP_STEPS"|t }}
                     {% if hit.hasDocs %}
                         <div class="zip-download">
-                            {% set createZip = base_url_relative ~ "/detail/createZip?uuid=" ~ hit.uuid|url_encode %}
+                            {% set createZip = base_url_relative ~ "/detail/createZip?docuuid=" ~ hit.uuid|url_encode %}
                             <div hx-get="{{ createZip }}" hx-trigger="load once" hx-target="this">
                                 <span>{{ "SEARCH_DETAIL.DOWNLOAD_ZIP_PREPARE"|t }}</span>
                             </div>
@@ -228,7 +228,7 @@
             <div class="columns">
                 {% if hit.hasDocs %}
                     <div class="zip-download">
-                        {% set createZip = base_url_relative ~ "/detail/createZip?uuid=" ~ hit.uuid|url_encode %}
+                        {% set createZip = base_url_relative ~ "/detail/createZip?docuuid=" ~ hit.uuid|url_encode %}
                         <div hx-get="{{ createZip }}" hx-trigger="load once" hx-target="this">
                             <span>{{ "SEARCH_DETAIL.DOWNLOAD_ZIP_PREPARE"|t }}</span>
                         </div>
