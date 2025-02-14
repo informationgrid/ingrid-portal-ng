@@ -13,7 +13,11 @@
     }
   ],
   "require": {
-    "php": ">=8.3"
+    "php": ">=8.3",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11"
   },
   "autoload": {
     "psr-4": {
@@ -21,6 +25,14 @@
     },
     "classmap":  ["ingrid-grav.php"],
     "files": [
+      "classes/Catalog.php",
+      "classes/CategoryFacet.php",
+      "classes/Datasource.php",
+      "classes/Detail.php",
+      "classes/Help.php",
+      "classes/HitOverview.php",
+      "classes/Search.php",
+      "classes/Provider.php",
       "classes/utils/IdfHelper.php",
       "classes/utils/CodelistHelper.php",
       "classes/utils/CapabilitiesHelper.php",
@@ -37,7 +49,17 @@
       "classes/detail/parser/DetailParserMetadataIdfUVP.php",
       "classes/detail/parser/DetailParserGenericIdf.php",
       "classes/detail/zip/DetailCreateZipService.php",
-      "classes/detail/zip/DetailCreateZipUVPServiceImpl.php"
+      "classes/detail/zip/DetailCreateZipUVPServiceImpl.php",
+      "classes/search/model/SearchResult.php",
+      "classes/search/model/SearchResultHit.php",
+      "classes/search/model/FacetResult.php",
+      "classes/search/model/FacetItem.php",
+      "classes/search/services/SearchService.php",
+      "classes/search/services/SearchServiceImpl.php",
+      "classes/search/services/transformer/SearchResponseTransformerClassic.php",
+      "classes/search/services/parser/ClassicParserISO.php",
+      "classes/search/services/parser/ClassicParserUVP.php",
+      "classes/search/services/ElasticsearchService.php"
     ]
 
   }
