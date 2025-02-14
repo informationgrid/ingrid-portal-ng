@@ -580,4 +580,65 @@ class InGridGravPlugin extends Plugin
         $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
     }
 
+    /*
+     * Used in theme on default blueprint:
+     * "data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailContactOrderOptions'"
+     */
+    public static function getAdminDetailContactOrderOptions(): array
+    {
+        $grav = Grav::instance();
+        return array(
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.OPTIONS.POINTOFCONTACT'),
+                'value' => 'pointOfContact'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.OPTIONS.DISTRIBUTOR'),
+                'value' => 'distributor'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.OPTIONS.PUBLISHER'),
+                'value' => 'publisher'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.OPTIONS.OWNER'),
+                'value' => 'owner'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.OPTIONS.PROCESSOR'),
+                'value' => 'processor'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.OPTIONS.AUTHOR'),
+                'value' => 'author'
+            )
+        );
+    }
+
+    /*
+     * Used in theme on default blueprint:
+     * "data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailSortAddressOptions'"
+     */
+    public static function getAdminDetailSortAddressOptions(): array
+    {
+        $grav = Grav::instance();
+        return array(
+            array(
+            'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.0'),
+            'value' => '0'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.1'),
+                'value' => '1'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.2'),
+                'value' => '2'
+            ),
+            array(
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.3'),
+                'value' => '3'
+            )
+        );
+    }
 }

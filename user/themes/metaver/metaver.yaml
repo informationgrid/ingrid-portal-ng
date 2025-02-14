@@ -568,7 +568,7 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: true
-hit_providers:
+provider:
   query:
 hit_detail:
   summary_replace_newline: ' '

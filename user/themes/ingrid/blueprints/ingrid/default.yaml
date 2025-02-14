@@ -11,27 +11,25 @@ form:
 ## Tab system
         tab_system:
           type: tab
-          title: System
+          title: THEME.ADMIN.SYSTEM.TITLE
 
           fields:
 
             header.section:
               type: section
-              title: Header
+              title: THEME.ADMIN.SYSTEM.HEADER.TITLE
               underline: true
 
             header.title_extend:
               type: text
               label: Header Titel erweitern
               help: Erweitern Sie den Header Titel.
-              default: 'InGrid Portal'
 
             header.logo_enabled:
               type: toggle
               label: Header Logo enabled
               help: Disable or enable logo
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -53,31 +51,27 @@ form:
               type: text
               label: Logo Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
-              default: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
 
             header.menu_class:
               type: text
               label: Menu Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
-              default: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
 
             header.menu_dropdown:
-                type: toggle
-                label: Dropdown in Menu
-                highlight: 1
-                default: 1
-                options:
-                  1: PLUGIN_ADMIN.ENABLED
-                  0: PLUGIN_ADMIN.DISABLED
-                validate:
-                  type: bool
+              type: toggle
+              label: Dropdown in Menu
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
 
             header.shrink:
               type: toggle
               label: Header shrink enabled
               help: Disable or enable logo
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -86,7 +80,7 @@ form:
 
             footer.section:
               type: section
-              title: Footer
+              title: THEME.ADMIN.SYSTEM.FOOTER.TITLE
               underline: true
 
             footer.logo_enabled:
@@ -94,7 +88,6 @@ form:
               label: Footer Logo enabled
               help: Disable or enable logo
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -117,7 +110,6 @@ form:
               label: HR-Linie darstellen
               help: HR-Linie über dem Footer darstellen.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -128,26 +120,22 @@ form:
               type: text
               label: Copyright
               help: Trage Sie hier Ihren Copyright ein.
-              default: 'Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz'
 
             footer.copyright_class:
               type: text
               label: Copyright Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
-              default: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
 
             footer.menu_class:
               type: text
               label: Menu Breite
               help: Trage Sie hier die möglichen Breiten des Copyright ein.
-              default: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
 
             footer.share.enabled:
               type: toggle
               label: Teilen
               help: Teilen aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -159,7 +147,6 @@ form:
               label: Teilen auf "Plattform X"
               help: Teilen auf "Plattform X" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -171,7 +158,6 @@ form:
               label: Teilen auf "Facebook"
               help: Teilen auf "Facebook" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -183,7 +169,6 @@ form:
               label: Teilen auf "LinkedIn"
               help: Teilen auf "LinkedIn" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -195,7 +180,6 @@ form:
               label: Teilen auf "WhatsApp"
               help: Teilen auf "WhatsApp" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -207,7 +191,6 @@ form:
               label: Teilen auf "XING"
               help: Teilen auf "XING" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -219,7 +202,6 @@ form:
               label: Teilen per "E-Mail"
               help: Teilen per "E-Mail" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -231,7 +213,6 @@ form:
               label: Seite drucken
               help: Seite drucken aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -243,7 +224,6 @@ form:
               label: Seite "nach oben"
               help: Seite "nach oben" aktivieren.
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -252,20 +232,20 @@ form:
 
             menu.section:
               type: section
-              title: Menüs
+              title: THEME.ADMIN.SYSTEM.MENU.TITLE
               underline: true
 
             menu.main_fieldset:
               type: fieldset
-              title: Hauptmenü
-              help: Definiere dein Hauptmenü
-              text: Das Hauptmenü wird im Header des Portals angezeigt.
+              title: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TITLE
+              help: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.HELP
+              text: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TEXT
               collapsed: true
               collapsible: true
               fields:
                 menu.main:
                   type: list
-                  label: Hauptmenü
+                  label: THEME.ADMIN.SYSTEM.MENU.MAIN.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
@@ -273,29 +253,29 @@ form:
                   fields:
                     .ident:
                       id: key
-                      label: ID
+                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.IDENT.LABEL
                     .path:
                       type: pages
-                      label: Pfad
+                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.PATH.LABEL
                       show_modular: false
                       show_root: false
                       show_all: false
                       limit_levels: 2
                     .icon:
                       type: text
-                      label: Icon
+                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.ICON.LABEL
 
             menu.site_fieldset:
               type: fieldset
-              title: Seitenmenü
-              help: Definiere dein Seitenmenü.
-              text: Das Seitenmenü wird mit dem Button "Menü" angezeigt.
+              title: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TITLE
+              help: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.HELP
+              text: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TEXT
               collapsed: true
               collapsible: true
               fields:
                 menu.site:
                   type: list
-                  label: Seitenmenü
+                  label: THEME.ADMIN.SYSTEM.MENU.SITE.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
@@ -303,20 +283,19 @@ form:
                   fields:
                     .ident:
                       id: key
-                      label: ID
+                      label: THEME.ADMIN.SYSTEM.MENU.SITE.IDENT.LABEL
                     .path:
                       type: pages
-                      label: Pfad
+                      label: THEME.ADMIN.SYSTEM.MENU.SITE.PATH.LABEL
                       show_modular: false
                       show_root: false
                       show_all: false
                       limit_levels: 2
                     .highlighted:
                       type: toggle
-                      label: Hauptmenü
-                      help: Markieren Sie diesen Eintrag als ein 'Hauptmenü'.
+                      label: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.LABEL
+                      help: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.HELP
                       highlight: 1
-                      default: 0
                       options:
                         1: PLUGIN_ADMIN.YES
                         0: PLUGIN_ADMIN.NO
@@ -325,15 +304,15 @@ form:
 
             menu.footer_fieldset:
               type: fieldset
-              title: Fußmenü
-              help: Definiere dein Fußmenü.
-              text: Das Fußmenü wird wird am Ende jeder Seite angezeigt..
+              title: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TITLE
+              help: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.HELP
+              text: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TEXT
               collapsed: true
               collapsible: true
               fields:
                 menu.footer:
                   type: list
-                  label: Fußmenü
+                  label: THEME.ADMIN.SYSTEM.MENU.FOOTER.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
@@ -341,24 +320,24 @@ form:
                   fields:
                     .ident:
                       id: key
-                      label: ID
+                      label: THEME.ADMIN.SYSTEM.MENU.FOOTER.IDENT.LABEL
                     .path:
                       type: pages
-                      label: Pfad
+                      label: THEME.ADMIN.SYSTEM.MENU.FOOTER.PATH.LABEL
                       show_modular: false
                       show_root: false
                       show_all: false
                       limit_levels: 2
 
-            system.section:
+            others.section:
               type: section
-              title: Sonstiges
+              title: THEME.ADMIN.SYSTEM.OTHERS.TITLE
               underline: true
 
             system.pages_to_404:
               type: pages
-              label: Seiten ausschließen
-              help: Tragen Sie den Pfad der Portal-URL ein.
+              label: THEME.ADMIN.SYSTEM.PAGES_TO_404.LABEL
+              help: THEME.ADMIN.SYSTEM.PAGES_TO_404.HELP
               validate:
                 type: array
               show_modular: false
@@ -369,19 +348,19 @@ form:
 ## Tab home
         tab_home:
           type: tab
-          title: Startseite
+          title: THEME.ADMIN.HOME.TITLE
 
           fields:
             home.sort_modules_fieldset:
               type: fieldset
-              title: Startseite definieren
-              help: Konfiguriere und sortiere die Startseite
-              text: Konfiguriere und sortiere die Startseite.
+              title: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TITLE
+              help: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.HELP
+              text: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TEXT
               collapsed: true
               fields:
                 home.sort_modules:
                   type: list
-                  label: Startseite
+                  label: THEME.ADMIN.HOME.SORT_MODULES.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
@@ -390,52 +369,54 @@ form:
                   fields:
                     .ident:
                       id: key
-                      label: ID
+                      label: THEME.ADMIN.HOME.SORT_MODULES.IDENT.LABEL
                     .path:
                       type: pages
-                      label: Auswahl
-                      help: Wählen Sie das Modul aus.
+                      label: THEME.ADMIN.HOME.SORT_MODULES.PATH.LABEL
+                      help: THEME.ADMIN.HOME.SORT_MODULES.PATH.HELP
                       show_modular: true
                       show_root: false
                       show_all: false
                       start_route: /home
                     .hidden:
                       type: checkbox
-                      label: Ausblenden
-                      help: Blenden Sie ein Modul aus.
+                      label: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.LABEL
+                      help: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.HELP
                       validate:
                         type: bool
 
             home.categories:
               type: section
-              title: Kategorien (Stöbern in ...)
+              title: THEME.ADMIN.HOME.CATEGORIES.TITLE
               underline: true
 
             home.categories.rss:
               type: text
-              label: RSS Link anzeigen
-              help: Tragen Sie die Facetten-ID ein zu welcher Kategorie der RSS-Link hinzugefügt werden soll.
+              label: THEME.ADMIN.HOME.CATEGORIES.RSS.LABEL
+              help: THEME.ADMIN.HOME.CATEGORIES.RSS.HELP
 
             home.categories.exclude_from_search:
               type: selectize
+              label: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.LABEL
+              help: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.HELP
               selectize:
                 options:
                   - text: "datatype:address"
                     value: "datatype:address"
                   - text: "isfolder:true"
                     value: "isfolder:true"
-              label: Aus den Kategorien ausschließen
-              help: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
               validate:
                 type: commalist
 
             home.hits:
               type: section
-              title: Trefferübersicht
+              title: THEME.ADMIN.HOME.HITS.TITLE
               underline: true
 
             home.hits.exclude_from_search:
               type: selectize
+              label: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.LABEL
+              help: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.HELP
               selectize:
                 options:
                   - text: "datatype:address"
@@ -444,15 +425,13 @@ form:
                     value: "datatype:www"
                   - text: "isfolder:true"
                     value: "isfolder:true"
-              label: Aus den Treffern ausschließen
-              help: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
               validate:
                 type: commalist
 
             home.hits.num:
               type: range
-              label: Anzahl der Treffer
-              help: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+              label: THEME.ADMIN.HOME.HITS.NUM.LABEL
+              help: THEME.ADMIN.HOME.HITS.NUM.HELP
               validate:
                 type: number
                 min: 0
@@ -460,10 +439,9 @@ form:
 
             home.hits.sort.sortByDate:
               type: toggle
-              label: Trefferübersicht nach Datum sortiert (modtime)
-              help: Treffer sortiert nach Datum
+              label: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.LABEL
+              help: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -472,13 +450,13 @@ form:
 
             home.rss:
               type: section
-              title: RSS
+              title: THEME.ADMIN.HOME.RSS.TITLE
               underline: true
 
             home.rss.feeds_limit:
               type: range
-              label: Maximale Anzahl der RSS Feeds
-              help: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+              label: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.LABEL
+              help: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.HELP
               validate:
                 min: 1
                 max: 10
@@ -486,47 +464,45 @@ form:
         ## Tab search
         tab_search:
           type: tab
-          title: Suche
+          title: THEME.ADMIN.SEARCH.TITLE
 
           fields:
 
             hit.section:
               type: section
-              title: Allgemein
+              title: THEME.ADMIN.HIT.TITLE
               underline: true
 
             hit.csw_url:
               type: text
-              label: Link zum InGrid Interface-CSW
-              help: Trage Sie hier die URL zum InGrid Interface-CSW ein.
-              default: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
+              label: THEME.ADMIN.HIT.CSW_URL.LABEL
+              help: THEME.ADMIN.HIT.CSW_URL.HELP
 
             hit.rdf_url:
               type: text
-              label: Link zum InGrid Interface-RDF
-              help: Trage Sie hier die URL zum InGrid Interface-RDF ein.
-              default: ''
+              label: THEME.ADMIN.HIT.RDF_URL.LABEL
+              help: THEME.ADMIN.HIT.RDF_URL.HELP
 
             hit_search.section:
               type: section
-              title: Suchergebnis
+              title: THEME.ADMIN.HIT_SEARCH.TITLE
               underline: true
 
             hit_search.exclude_from_search:
               type: selectize
+              label: THEME.ADMIN.HIT_SEARCH.EXCLUDE_FROM_SEARCH.LABEL
               selectize:
                 options:
                   - text: "datatype:address"
                     value: "datatype:address"
                   - text: "isfolder:true"
                     value: "isfolder:true"
-              label: Aus der Suche ausschließen
               validate:
                 type: commalist
 
             hit_search.query_string_operator:
               type: toggle
-              label: Query String Operator
+              label: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.LABEL
               highlight: AND
               options:
                 "AND": AND
@@ -536,6 +512,7 @@ form:
 
             hit_search.query_fields:
               type: selectize
+              label: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.LABEL
               selectize:
                 options:
                   - text: "title^10.0"
@@ -554,16 +531,14 @@ form:
                     value: "content^0.2"
                   - text: "content.ngram^0.1"
                     value: "content.ngram^0.1"
-              label: Indexfelder für die Suche
               validate:
                 type: commalist
 
             hit_search.sort.enabled:
               type: toggle
-              label: Suchergebnis-Sortierung
-              help: Suchergebnis-Sortierung darstellen
+              label: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -572,10 +547,9 @@ form:
 
             hit_search.sort.sortByDate:
               type: toggle
-              label: Suchergebnisse nach Datum sortiert (modtime)
-              help: Treffer sortiert nach Datum
+              label: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -584,10 +558,9 @@ form:
 
             hit_search.expandable.enabled:
               type: toggle
-              label: Suchergebnisse aufklappbar
-              help: Suchergebnisse aufklappbar
+              label: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -596,34 +569,32 @@ form:
 
             hit_search.summary_replace_newline:
               type: text
-              label: Zeilenumbrüche des Beschreibungstextes ersetzen
-              help: Lege die Zeilenumbrüche des Beschreibungstextes fest.
-              default: ' '
+              label: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.HELP
               validate:
                 type: text
 
             hit_search.summary_lines_limit:
               type: range
-              label: Maximale Zeilenanzahl an Beschreibungstext
-              help: Lege die maximale Zeilenanzahl an Beschreibungstext fest.
+              label: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.HELP
               validate:
                 min: 0
                 max: 10
 
             hit_search.links_max:
               type: range
-              label: Maximale Anzahl der Verweise und Downloads
-              help: Lege die maximale Anzahl der dargestellten Verweise und Downloads fest.
+              label: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.HELP
               validate:
                 min: 0
                 max: 10
 
             hit_search.csw_enabled:
               type: toggle
-              label: ISO-Darstellung anzeigen
-              help: Darstellung des Links zur ISO-Darstellung.
+              label: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.HELP
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -632,10 +603,9 @@ form:
 
             hit_search.rdf_enabled:
               type: toggle
-              label: RDF-Darstellung anzeigen
-              help: Darstellung des Links zur RDF-Darstellung.
+              label: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -644,10 +614,9 @@ form:
 
             hit_search.partner_logo_enabled:
               type: toggle
-              label: Partner Wappen anzeigen
-              help: Aktivieren Sie die Darstellung der Partner Wappen.
+              label: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -656,35 +625,31 @@ form:
 
             hit_detail.section:
               type: section
-              title: Detaildarstellung
+              title: THEME.ADMIN.HIT_DETAIL.TITLE
               underline: true
 
             hit_detail.summary_replace_newline:
               type: text
-              label: Zeilenumbrüche des Beschreibungstextes ersetzen
-              help: Lege die Zeilenumbrüche des Beschreibungstextes fest.
-              default: ' '
+              label: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.HELP
               validate:
                 type: text
 
             hit_detail.reference_system_link:
               type: text
-              label: Link zur Reference-System
-              help: Trage Sie hier die URL zum Reference-System.
-              default: 'https://epsg.io/'
+              label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK.HELP
 
             hit_detail.reference_system_link_replace:
               type: text
-              label: Reference-Systemen ersetzen
-              help: Ersetzen des Teilstring bei den Reference-Systemen.
-              default: 'urn:ogc:def:crs:'
+              label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.HELP
 
             hit_detail.csw_enabled:
               type: toggle
-              label: ISO-Darstellung anzeigen
-              help: Darstellung des Links zur ISO-Darstellung.
+              label: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.HELP
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -693,10 +658,9 @@ form:
 
             hit_detail.rdf_enabled:
               type: toggle
-              label: RDF-Darstellung anzeigen
-              help: Darstellung des Links zur RDF-Darstellung.
+              label: THEME.ADMIN.HIT_DETAIL.RDF_ENABLED.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.RDF_ENABLED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -705,10 +669,9 @@ form:
 
             hit_detail.time_in_description:
               type: toggle
-              label: Zeitbezug in der Beschreibung anzeigen
-              help: Stellt den Zeitbezug in der Detaildarstellung dar.
+              label: THEME.ADMIN.HIT_DETAIL.TIME_IN_DESCRIPTION.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.TIME_IN_DESCRIPTION.HELP
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -717,62 +680,45 @@ form:
 
             hit_detail.address_order:
                 type: selectize
+                label: THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.LABEL
+                help: THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.HELP
                 selectize:
-                    options:
-                        - text: "Institution"
-                          value: "0"
-                        - text: "Einheit"
-                          value: "1"
-                        - text: "Person"
-                          value: "2"
-                        - text: "Freie Adresse"
-                          value: "3"
-                label: Sortierung Adress-Typ
-                help: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+                  data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailSortAddressOptions'
                 validate:
                     type: commalist
-                default: ["3","0","1","2"]
 
             hit_detail.contact_order:
                 type: selectize
+                label: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.LABEL
+                help: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.HELP
                 selectize:
-                    options:
-                        - text: "Ansprechpartner"
-                          value: "pointOfContact"
-                        - text: "Vertrieb"
-                          value: "distributor"
-                        - text: "Herausgeber"
-                          value: "publisher"
-                        - text: "Eigentümer"
-                          value: "owner"
-                        - text: "Bearbeiter"
-                          value: "processor"
-                        - text: "Autor"
-                          value: "author"
-                label: Sortierung Kontaktliste
-                help: Sortiert die Kontakte nach der festgelegten Reihenfolge
+                  data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailContactOrderOptions'
                 validate:
                     type: commalist
-                default: ["pointOfContact","distributor","publisher","owner","processor","author"]
 
 ## Tab catalog
         tab_catalog:
           type: tab
-          title: Katalog
+          title: THEME.ADMIN.CATALOG.TITLE
 
           fields:
 
+            catalog.section:
+              type: section
+              title: THEME.ADMIN.CATALOG.TITLE
+              underline: true
+
             catalog.open_nodes_level:
               type: number
-              label: PLUGIN_INGRID_GRAV.CATALOG.OPEN_NODES_LEVEL
-              help: PLUGIN_INGRID_GRAV.CATALOG.OPEN_NODES_LEVEL_HELP
+              label: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.LABEL
+              help: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.HELP
               validate:
                 min: 0
                 max: 3
             catalog.sort_by_name:
               type: toggle
-              label: PLUGIN_INGRID_GRAV.CATALOG.SORT_BY_NAME
-              help: PLUGIN_INGRID_GRAV.CATALOG.SORT_BY_NAME_HELP
+              label: THEME.ADMIN.CATALOG.SORT_BY_NAME.LABEL
+              help: THEME.ADMIN.CATALOG.SORT_BY_NAME.HELP
               highlight: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
@@ -781,8 +727,8 @@ form:
                 type: bool
             catalog.open_on_new_tab:
               type: toggle
-              label: PLUGIN_INGRID_GRAV.CATALOG.OPEN_ON_NEW_TAB
-              help: PLUGIN_INGRID_GRAV.CATALOG.OPEN_ON_NEW_TAB_HELP
+              label: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.LABEL
+              help: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.HELP
               highlight: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
@@ -791,8 +737,8 @@ form:
                 type: bool
             catalog.display_partner:
               type: toggle
-              label: PLUGIN_INGRID_GRAV.CATALOG.DISPLAY_PARTNER
-              help: PLUGIN_INGRID_GRAV.CATALOG.DISPLAY_PARTNER_HELP
+              label: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.LABEL
+              help: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.HELP
               highlight: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
@@ -802,21 +748,19 @@ form:
 ## Tab map
         tab_map:
           type: tab
-          title: Karte
+          title: THEME.ADMIN.MAP.TITLE
 
           fields:
-
             map.section:
               type: section
-              title: Karte
+              title: THEME.ADMIN.MAP.TITLE
               underline: true
 
             map.enabled:
               type: toggle
-              label: Karte aktivieren
-              help: Aktivieren Sie hier die Karte.
+              label: THEME.ADMIN.MAP.ENABLED.LABEL
+              help: THEME.ADMIN.MAP.ENABLED.HELP
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -825,21 +769,19 @@ form:
 
             map.url:
               type: text
-              label: Link zur Karte
-              help: Trage Sie hier die URL zur Karte.
-              default: '/ingrid-webmap-client/frontend/prd'
+              label: THEME.ADMIN.MAP.URL.LABEL
+              help: THEME.ADMIN.MAP.URL.HELP
 
             map.leaflet.section:
               type: section
-              title: Leaflet
+              title: THEME.ADMIN.MAP.LEAFLET.TITLE
               underline: true
 
             map.leaflet.enabled:
               type: toggle
-              label: Leaflet als Karte verwenden
-              help: Aktivieren Sie hier die Karte.
+              label: THEME.ADMIN.MAP.LEAFLET.ENABLED.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.ENABLED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -848,38 +790,32 @@ form:
 
             map.leaflet.epsg:
               type: text
-              label: EPSG der Karte
-              help: Trage Sie hier den EPSG der Karte ein
-              default: '3857'
+              label: THEME.ADMIN.MAP.LEAFLET.EPSG.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.EPSG.HELP
 
             map.leaflet.bg.layer.wmts.url:
               type: text
-              label: WMTS URL
-              help: Trage Sie hier die WMTS URL ein.
-              default: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.HELP
 
             map.leaflet.bg.layer.wms.url:
               type: text
-              label: WMS URL
-              help: Trage Sie hier die WMS URL ein.
-              default: ''
+              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.HELP
 
             map.leaflet.bg.layer.wms.name:
               type: text
-              label: WMS Layer Namen
-              help: Trage Sie hier die WMS Layer Namen ein.
-              default: ''
+              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.HELP
 
             map.leaflet.bg.layer.attribution:
               type: text
-              label: Leaflet Hintergrundkarte Attribution
-              help: Trage Sie hier die Attribution ein.
-              default: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.HELP
 
             map.leaflet.bg.layer.opacity:
               type: range
-              label: Sichtbarkeit der Hintergrundkarte
-              default: 1
+              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.OPACITY.LABEL
               validate:
                 min: 0
                 max: 1
@@ -887,14 +823,12 @@ form:
 
             map.leaflet.bbox.color:
               type: colorpicker
-              label: Leaflet BoundingBox-Farbe
-              help: Trage Sie hier die gewünschte Farbe in Hex-Format ein (z.B. #000000)
-              default: '#3278B9'
+              label: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.HELP
 
             map.leaflet.bbox.opacity:
               type: range
-              label: Sichtbarkeit der BoundingBox
-              default: 0.2
+              label: THEME.ADMIN.MAP.LEAFLET.BBOX.OPACITY.LABEL
               validate:
                 min: 0
                 max: 1
@@ -902,8 +836,7 @@ form:
 
             map.leaflet.bbox.weight:
               type: range
-              label: Linienbreite der BoundingBox
-              default: 1
+              label: THEME.ADMIN.MAP.LEAFLET.BBOX.WEIGHT.LABEL
               validate:
                 min: 1
                 max: 5
@@ -911,10 +844,9 @@ form:
 
             map.leaflet.bbox.inverted:
               type: toggle
-              label: BoundingBox invertiert darstellen
-              help: ''
+              label: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -923,10 +855,9 @@ form:
 
             map.leaflet.enable.wkt:
               type: toggle
-              label: WKT darstellen
-              help: ''
+              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -935,10 +866,9 @@ form:
 
             map.leaflet.enable.bwastr:
               type: toggle
-              label: BWaStr darstellen
-              help: ''
+              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.BWASTR.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.BWASTR.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -947,10 +877,9 @@ form:
 
             map.leaflet.enable.geocoder:
               type: toggle
-              label: Geocoder aktivieren
-              help: ''
+              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -959,10 +888,9 @@ form:
 
             map.leaflet.enable.spinloader:
               type: toggle
-              label: Spin-Loader aktivieren
-              help: ''
+              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -971,10 +899,9 @@ form:
 
             map.leaflet.enable.clustering:
               type: toggle
-              label: Custering aktivieren
-              help: ''
+              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.HELP
               highlight: 1
-              default: 0
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -984,21 +911,20 @@ form:
 ## Tab measure
         tab_measure:
           type: tab
-          title: Messwerte
+          title: THEME.ADMIN.MEASURE.TITLE
 
           fields:
 
             measure.section:
               type: section
-              title: Messwerte
+              title: THEME.ADMIN.MEASURE.TITLE
               underline: true
 
             measure.enabled:
               type: toggle
-              label: Messwerte-Client aktivieren
-              help: Aktivieren Sie hier den Messwerte-Client.
+              label: THEME.ADMIN.MEASURE.ENABLED.LABEL
+              help: THEME.ADMIN.MEASURE.ENABLED.HELP
               highlight: 1
-              default: 1
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED
@@ -1007,18 +933,18 @@ form:
 
             measure.url:
               type: text
-              label: Link zur Karte
-              help: Trage Sie hier die URL zur Karte.
-              default: 'https://dev.informationgrid.eu/ingrid-portal-apps/measures/index.html'
+              label: THEME.ADMIN.MEASURE.URL.LABEL
+              help: THEME.ADMIN.MEASURE.URL.HELP
 
             measure.elastic:
               type: text
-              label: Link zur Karte
-              help: Trage Sie hier die URL zur Karte.
-              default: 'https://dev.informationgrid.eu/elastic-measure/'
+              label: THEME.ADMIN.MEASURE.ELASTIC.LABEL
+              help: THEME.ADMIN.MEASURE.ELASTIC.HELP
 
             measure.networks.exclude:
               type: selectize
+              label: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.LABEL
+              help: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.HELP
               selectize:
                 options:
                   - text: "luen"
@@ -1029,14 +955,13 @@ form:
                     value: "odl"
                   - text: "uba"
                     value: "uba"
-              label: Sortierung Adress-Typ
-              help: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
               validate:
                   type: commalist
-              default: []
 
             measure.networks.initial:
               type: selectize
+              label: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.LABEL
+              help: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.HELP
               selectize:
                 options:
                   - text: "luen"
@@ -1047,44 +972,56 @@ form:
                     value: "odl"
                   - text: "uba"
                     value: "uba"
-              label: Sortierung Adress-Typ
-              help: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
               validate:
                   type: commalist
-              default: ["luen"]
 
 ## Tab help
         tab_help:
           type: tab
-          title: Hilfe
+          title: THEME.ADMIN.HELP.TITLE
           fields:
+
+            help.section:
+              type: section
+              title: THEME.ADMIN.HELP.TITLE
+              underline: true
 
             help.default_hkey:
               type: text
-              label: PLUGIN_INGRID_GRAV.HELP.DEFAULT_KEY
+              label: THEME.ADMIN.HELP.DEFAULT_HKEY.LABEL
 
 ## Tab datasource
         tab_datasource:
           type: tab
-          title: Datenquellen
+          title: THEME.ADMIN.DATASOURCE.TITLE
           fields:
+
+            datasource.section:
+              type: section
+              title: THEME.ADMIN.DATASOURCE.TITLE
+              underline: true
 
             datasource.excludes:
               type: selectize_datasource
+              label: THEME.ADMIN.DATASOURCE.EXCLUDES.LABEL
+              help: THEME.ADMIN.DATASOURCE.EXCLUDES.HELP
               selectize:
                 options:
-              label: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES
-              help: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES_HELP
               validate:
                 type: commalist
 
-## Tab datasource
+## Tab provider
         tab_provider:
           type: tab
-          title: Anbieter
+          title: THEME.ADMIN.PROVIDER.TITLE
           fields:
 
-            hit_providers.query:
+            provider.section:
+              type: section
+              title: THEME.ADMIN.PROVIDER.TITLE
+              underline: true
+
+            provider.query:
               type: text
-              label: PLUGIN_INGRID_GRAV.HELP.DEFAULT_KEY
-              help: PLUGIN_INGRID_GRAV.DATASOURCE.EXCLUDES_HELP
+              label: THEME.ADMIN.PROVIDER.QUERY.LABEL
+              help: THEME.ADMIN.PROVIDER.QUERY.HELP

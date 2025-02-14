@@ -15,7 +15,7 @@ class Provider
         $this->grav = $grav;
 
         $theme = $this->grav['config']->get('system.pages.theme');
-        $this->query = $this->grav['config']->get('themes.' . $theme . '.hit_providers.query') ?: '';
+        $this->query = $this->grav['config']->get('themes.' . $theme . '.provider.query') ?: '';
     }
 
     public function getContent(): array

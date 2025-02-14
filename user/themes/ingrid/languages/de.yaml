@@ -1085,3 +1085,358 @@ TOP:
 ERROR:
     404:
         TITLE: 'FEHLER 404: SEITE ODER DATEI NICHT GEFUNDEN'
+
+THEME:
+    ADMIN:
+        SYSTEM:
+            TITLE: System
+            HEADER:
+                TITLE: Header
+                TITLE_EXTEND:
+                    LABEL: Header Titel erweitern
+                    HELP: Erweitern Sie den Header Titel.
+                LOGO_ENABLED:
+                    LABEL: Header Logo enabled
+                    HELP: Disable or enable logo
+                LOGO:
+                    LABEL: Header Logo
+                    HELP: Header Logo
+                    DESCRIPTION: Will be used instead of default logo `theme://images/logo/logo.svg`
+                LOGO_CLASS:
+                    LABEL: Logo Breite
+                    HELP: Trage Sie hier die möglichen Breiten des Copyright ein.
+                MENU_CLASS:
+                    LABEL: Menu Breite
+                    HELP: Trage Sie hier die möglichen Breiten des Copyright ein.
+                MENU_DROPDOWN:
+                    LABEL: Dropdown in Menu
+                    help:
+                SHRINK:
+                    LABEL: Header shrink enabled
+                    HELP: Disable or enable logo
+            FOOTER:
+                TITLE: Footer
+                LOGO_ENABLED:
+                    LABEL: Footer Logo enabled
+                    HELP: Disable or enable logo
+                LOGO:
+                    LABEL: Footer Logo
+                    HELP: Footer Logo
+                    DESCRIPTION: Will be used instead of default logo `theme://images/logo/footer-logo.svg`
+                HR_LINE:
+                    LABEL: HR-Linie darstellen
+                    HELP: HR-Linie über dem Footer darstellen.
+                COPYRIGHT_TEXT:
+                    LABEL: Copyright
+                    HELP: Trage Sie hier Ihren Copyright ein.
+                COPYRIGHT_CLASS:
+                    LABEL: Copyright Breite
+                    HELP: Trage Sie hier die möglichen Breiten des Copyright ein.
+                MENU_CLASS:
+                    LABEL: Menu Breite
+                    HELP: Trage Sie hier die möglichen Breiten des Copyright ein.
+                SHARE:
+                    ENABLED:
+                        LABEL: Teilen
+                        HELP: Teilen aktivieren.
+                    ENABLED_X:
+                        LABEL: Teilen auf "Plattform X"
+                        HELP: Teilen auf "Plattform X" aktivieren.
+                    ENABLED_FACEBOOK:
+                        LABEL: Teilen auf "Facebook"
+                        HELP: Teilen auf "Facebook" aktivieren.
+                    ENABLED_LINKEDIN:
+                        LABEL: Teilen auf "LinkedIn"
+                        HELP: Teilen auf "LinkedIn" aktivieren.
+                    ENABLED_WHATSAPP:
+                        LABEL: Teilen auf "WhatsApp"
+                        HELP: Teilen auf "WhatsApp" aktivieren.
+                    ENABLED_XING:
+                        LABEL: Teilen auf "XING"
+                        HELP: Teilen auf "XING" aktivieren.
+                    ENABLED_MAIL:
+                        LABEL: Teilen per "E-Mail"
+                        HELP: Teilen per "E-Mail" aktivieren.
+                PRINT:
+                    ENABLED:
+                        LABEL: Seite drucken
+                        HELP: Seite drucken aktivieren.
+                UP:
+                    ENABLED:
+                        LABEL: Seite "nach oben"
+                        HELP: Seite "nach oben" aktivieren.
+            MENU:
+                TITLE: Menüs
+                MAIN_FIELDSET:
+                    TITLE: Hauptmenü
+                    HELP: Definiere dein Hauptmenü
+                    TEXT: Das Hauptmenü wird im Header des Portals angezeigt.
+                MAIN:
+                    LABEL: Hauptmenü
+                    IDENT:
+                        LABEL: ID
+                    PATH:
+                        LABEL: Pfad
+                    ICON:
+                        LABEL: Icon
+                SITE_FIELDSET:
+                    TITLE: Seitenmenü
+                    HELP: Definiere dein Seitenmenü.
+                    TEXT: Das Seitenmenü wird mit dem Button "Menü" angezeigt.
+                SITE:
+                    LABEL: Seitenmenü
+                    IDENT:
+                        LABEL: ID
+                    PATH:
+                        LABEL: Pfad
+                    HIGHLIGHTED:
+                        LABEL: Hauptmenü
+                        HELP: Markieren Sie diesen Eintrag als ein 'Hauptmenü'.
+                FOOTER_FIELDSET:
+                    TITLE: Fußmenü
+                    HELP: Definiere dein Fußmenü.
+                    TEXT: Das Fußmenü wird wird am Ende jeder Seite angezeigt..
+                FOOTER:
+                    LABEL: Footer
+                    IDENT:
+                        LABEL: ID
+                    PATH:
+                        LABEL: Pfad
+            OTHERS:
+                TITLE: Sonstiges
+            PAGES_TO_404:
+                LABEL: Seiten ausschließen
+                HELP: Tragen Sie den Pfad der Portal-URL ein.
+        HOME:
+            TITLE: Startseite
+            SORT_MODULES_FIELDSET:
+                TITLE: Startseite definieren
+                HELP: Konfiguriere und sortiere die Startseite
+                TEXT: Konfiguriere und sortiere die Startseite.
+            SORT_MODULES:
+                LABEL: Startseite
+                IDENT:
+                    LABEL: ID
+                PATH:
+                    LABEL: Auswahl
+                    HELP: Wählen Sie das Modul aus.
+                HIDDEN:
+                    LABEL: Ausblenden
+                    HELP: Blenden Sie ein Modul aus.
+            CATEGORIES:
+                TITLE: Kategorien (Stöbern in ...)
+                RSS:
+                    LABEL: RSS Link anzeigen
+                    HELP: Tragen Sie die Facetten-ID ein zu welcher Kategorie der RSS-Link hinzugefügt werden soll.
+                EXCLUDE_FROM_SEARCH:
+                    LABEL: Aus den Kategorien ausschließen
+                    HELP: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
+            HITS:
+                TITLE: Trefferübersicht
+                EXCLUDE_FROM_SEARCH:
+                    LABEL: Aus den Treffern ausschließen
+                    HELP: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
+                NUM:
+                    LABEL: Anzahl der Treffer
+                    HELP: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+                SORT:
+                    SORTBYDATE:
+                        LABEL: Trefferübersicht nach Datum sortiert (modtime)
+                        HELP: Treffer sortiert nach Datum
+            RSS:
+                TITLE: RSS
+                FEEDS_LIMIT:
+                    LABEL: Maximale Anzahl der RSS Feeds
+                    HELP: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+        SEARCH:
+            TITLE: Suche
+        HIT:
+            TITLE: Allgemein
+            CSW_URL:
+                LABEL: Link zum InGrid Interface-CSW
+                HELP: Trage Sie hier die URL zum InGrid Interface-CSW ein.
+            RDF_URL:
+                LABEL: Link zum InGrid Interface-RDF
+                HELP: Trage Sie hier die URL zum InGrid Interface-RDF ein.
+        HIT_SEARCH:
+            TITLE: Suchergebnis
+            EXCLUDE_FROM_SEARCH:
+                LABEL: Aus der Suche ausschließen
+            QUERY_STRING_OPERATOR:
+                LABEL: Query String Operator
+            QUERY_FIELDS:
+                LABEL: Indexfelder für die Suche
+            SORT:
+                ENABLED:
+                    LABEL: Suchergebnis-Sortierung
+                    HELP: Suchergebnis-Sortierung darstellen
+                SORTBYDATE:
+                    LABEL: Suchergebnisse nach Datum sortiert (modtime)
+                    HELP: Treffer sortiert nach Datum
+            EXPANDABLE:
+                ENABLED:
+                    LABEL: Suchergebnisse aufklappbar
+                    HELP: Suchergebnisse aufklappbar
+            SUMMARY_REPLACE_NEWLINE:
+                LABEL: Zeilenumbrüche des Beschreibungstextes ersetzen
+                HELP: Lege die Zeilenumbrüche des Beschreibungstextes fest.
+            SUMMARY_LINES_LIMIT:
+                LABEL: Maximale Zeilenanzahl an Beschreibungstext
+                HELP: Lege die maximale Zeilenanzahl an Beschreibungstext fest.
+            LINKS_MAX:
+                LABEL: Maximale Anzahl der Verweise und Downloads
+                HELP: Lege die maximale Anzahl der dargestellten Verweise und Downloads fest.
+            CSW_ENABLED:
+                LABEL: ISO-Darstellung anzeigen
+                HELP: Darstellung des Links zur ISO-Darstellung.
+            RDF_ENABLED:
+                LABEL: RDF-Darstellung anzeigen
+                HELP: Darstellung des Links zur RDF-Darstellung.
+            PARTNER_LOGO_ENABLED:
+                LABEL: Partner Wappen anzeigen
+                HELP: Aktivieren Sie die Darstellung der Partner Wappen.
+        HIT_DETAIL:
+            TITLE: Detaildarstellung
+            SUMMARY_REPLACE_NEWLINE:
+                LABEL: Zeilenumbrüche des Beschreibungstextes ersetzen
+                HELP: Lege die Zeilenumbrüche des Beschreibungstextes fest.
+            REFERENCE_SYSTEM_LINK:
+                LABEL: Link zur Reference-System
+                HELP: Trage Sie hier die URL zum Reference-System.
+            REFERENCE_SYSTEM_LINK_REPLACE:
+                LABEL: Reference-Systemen ersetzen
+                HELP: Ersetzen des Teilstring bei den Reference-Systemen.
+            CSW_ENABLED:
+                LABEL: ISO-Darstellung anzeigen
+                HELP: Darstellung des Links zur ISO-Darstellung.
+            RDF_ENABLED:
+                LABEL: RDF-Darstellung anzeigen
+                HELP: Darstellung des Links zur RDF-Darstellung.
+            TIME_IN_DESCRIPTION:
+                LABEL: Zeitbezug in der Beschreibung anzeigen
+                HELP: Stellt den Zeitbezug in der Detaildarstellung dar.
+            ADDRESS_ORDER:
+                LABEL: Sortierung Adress-Typ
+                HELP: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+                OPTIONS:
+                    0: Institution
+                    1: Einheit
+                    2: Person
+                    3: Freie Adresse
+            CONTACT_ORDER:
+                LABEL: Sortierung Kontaktliste
+                HELP: Sortiert die Kontakte nach der festgelegten Reihenfolge
+                OPTIONS:
+                    POINTOFCONTACT: Ansprechpartner
+                    DISTRIBUTOR: Vertrieb
+                    PUBLISHER: Herausgeber
+                    OWNER: Eigentümer
+                    PROCESSOR: Bearbeiter
+                    AUTHOR: Autor
+        CATALOG:
+            TITLE: Katalog
+            OPEN_NODES_LEVEL:
+                LABEL: Offene Hierarchie-Level
+                HELP: Legen Sie das Level fest, bis zu welcher Hierarchie die Knoten per Default geöffnet sein sollen.
+            SORT_BY_NAME:
+                LABEL: Sortierung nach Name
+                HELP: Sollen die Einträge nach Namen sortiert werden.
+            OPEN_ON_NEW_TAB:
+                LABEL: Links im neuem Tab anzeigen
+                HELP: Ist dieses Einstellung aktiv, so wird die Detaildarstellung in einem neuem Tab angezeigt.
+            DISPLAY_PARTNER:
+                LABEL: Partner anzeigen
+                HELP: Schalten Sie hier die Darstellung des Partners aus.
+        MAP:
+            TITLE: Karte
+            ENABLED:
+                LABEL: Karte aktivieren
+                HELP: Aktivieren Sie hier die Karte.
+            URL:
+                LABEL: Link zur Karte
+                HELP: Trage Sie hier die URL zur Karte.
+            LEAFLET:
+                TITLE: Leaflet
+                ENABLED:
+                    LABEL: Leaflet als Karte verwenden
+                    HELP: Aktivieren Sie hier die Karte.
+                EPSG:
+                    LABEL: EPSG der Karte
+                    HELP: Trage Sie hier den EPSG der Karte ein
+                BG:
+                    LAYER:
+                        WMTS:
+                            URL:
+                                LABEL: WMTS URL
+                                HELP: Trage Sie hier die WMTS URL ein.
+                        WMS:
+                            URL:
+                                LABEL: WMS URL
+                                HELP: Trage Sie hier die WMS URL ein.
+                            NAME:
+                                LABEL: WMS Layer Namen
+                                HELP: Trage Sie hier die WMS Layer Namen ein.
+                        ATTRIBUTION:
+                            LABEL: Leaflet Hintergrundkarte Attribution
+                            HELP: Trage Sie hier die Attribution ein.
+                        OPACITY:
+                            LABEL: Sichtbarkeit der Hintergrundkarte
+                BBOX:
+                    COLOR:
+                        LABEL: Leaflet BoundingBox-Farbe
+                        HELP: Trage Sie hier die gewünschte Farbe in Hex-Format ein (z.B. #000000)
+                    OPACITY:
+                        LABEL: Sichtbarkeit der BoundingBox
+                    WEIGHT:
+                        LABEL: Linienbreite der BoundingBox
+                    INVERTED:
+                        LABEL: BoundingBox invertiert darstellen
+                        HELP: BoundingBox invertiert darstellen
+                ENABLE:
+                    WKT:
+                        LABEL: WKT darstellen
+                        HELP: WKT darstellen
+                    BWASTR:
+                        LABEL: BWaStr darstellen
+                        HELP: BWaStr darstellen
+                    GEOCODER:
+                        LABEL: Geocoder aktivieren
+                        HELP: Geocoder aktivieren
+                    SPINLOADER:
+                        LABEL: Spin-Loader aktivieren
+                        HELP: Spin-Loader aktivieren
+                    CLUSTERING:
+                        LABEL: Custering aktivieren
+                        HELP: Custering aktivieren
+        MEASURE:
+            TITLE: Messwerte
+            ENABLED:
+                LABEL: Messwerte-Client aktivieren
+                HELP: Aktivieren Sie hier den Messwerte-Client.
+            URL:
+                LABEL: Link zur Karte
+                HELP: Trage Sie hier die URL zur Karte.
+            ELASTIC:
+                LABEL: Link zur Karte
+                HELP: Trage Sie hier die URL zur Karte.
+            NETWORKS:
+                EXCLUDE:
+                    LABEL: Sortierung Adress-Typ
+                    HELP: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+                INITIAL:
+                    LABEL: Sortierung Adress-Typ
+                    HELP: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+        HELP:
+            TITLE: Hilfe
+            DEFAULT_HKEY:
+                LABEL: Default Hilfeschlüssel
+        DATASOURCE:
+            TITLE: Datenquellen
+            EXCLUDES:
+                LABEL: Datenquellen ausschließen
+                HELP: Datenquellen auswählen oder eintragen um diese im Portal auszublenden
+        PROVIDER:
+            TITLE: Anbieter
+            QUERY:
+                LABEL: Suchquery für Anbieter
+                HELP: Suchquery für Anbieter

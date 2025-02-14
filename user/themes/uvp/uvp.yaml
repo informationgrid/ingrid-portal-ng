@@ -1495,7 +1495,7 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: true
-hit_providers:
+provider:
   query: 'datatype:address (t02_address.typ:0 OR t02_address.typ:3)'
 hit_detail:
   summary_replace_newline: ' '
