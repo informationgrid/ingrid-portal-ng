@@ -54,9 +54,9 @@ yq -i '.pages.markdown.auto_line_breaks = env(MARKDOWN_AUTO_LINE_BREAKS)' "$SYST
 
 # Update timezone
 if [ "$TZ" ]; then
-  yq -i '.pages.markdown.timezone = env(TZ)' "$SYSTEM_YAML"
+  yq -i '.timezone = env(TZ)' "$SYSTEM_YAML"
 else
-  yq -i '.pages.markdown.timezone = "Europe/Berlin"' "$SYSTEM_YAML"
+  yq -i '.timezone = "Europe/Berlin"' "$SYSTEM_YAML"
 fi
 
 # copy default cms pages
