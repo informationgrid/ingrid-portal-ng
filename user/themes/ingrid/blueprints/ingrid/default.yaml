@@ -1,1027 +1,1021 @@
 form:
   validation: loose
   fields:
-
     tabs:
       type: tabs
       active: 1
-
       fields:
-
-## Tab system
-        tab_system:
+## Tab general
+        tab_general:
           type: tab
-          title: THEME.ADMIN.SYSTEM.TITLE
-
+          title: THEME.ADMIN.GENERAL.TITLE
           fields:
-
-            header.section:
-              type: section
-              title: THEME.ADMIN.SYSTEM.HEADER.TITLE
-              underline: true
-
-            header.title_extend:
-              type: text
-              label: Header Titel erweitern
-              help: Erweitern Sie den Header Titel.
-
-            header.logo_enabled:
-              type: toggle
-              label: Header Logo enabled
-              help: Disable or enable logo
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            header.logo:
-              type: file
-              label: Header Logo
-              size: large
-              destination: 'theme://images/logo'
-              multiple: false
-              markdown: true
-              description: Will be used instead of default logo `theme://images/logo/logo.svg`
-              accept:
-                - image/*
-
-            header.logo_class:
-              type: text
-              label: Logo Breite
-              help: Trage Sie hier die möglichen Breiten des Copyright ein.
-
-            header.menu_class:
-              type: text
-              label: Menu Breite
-              help: Trage Sie hier die möglichen Breiten des Copyright ein.
-
-            header.menu_dropdown:
-              type: toggle
-              label: Dropdown in Menu
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            header.shrink:
-              type: toggle
-              label: Header shrink enabled
-              help: Disable or enable logo
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.section:
-              type: section
-              title: THEME.ADMIN.SYSTEM.FOOTER.TITLE
-              underline: true
-
-            footer.logo_enabled:
-              type: toggle
-              label: Footer Logo enabled
-              help: Disable or enable logo
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.logo:
-              type: file
-              label: Footer Logo
-              size: large
-              destination: 'theme://images/logo'
-              multiple: false
-              markdown: true
-              description: Will be used instead of default logo `theme://images/logo/footer-logo.svg`
-              accept:
-                - image/*
-
-            footer.hr_line:
-              type: toggle
-              label: HR-Linie darstellen
-              help: HR-Linie über dem Footer darstellen.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.copyright_text:
-              type: text
-              label: Copyright
-              help: Trage Sie hier Ihren Copyright ein.
-
-            footer.copyright_class:
-              type: text
-              label: Copyright Breite
-              help: Trage Sie hier die möglichen Breiten des Copyright ein.
-
-            footer.menu_class:
-              type: text
-              label: Menu Breite
-              help: Trage Sie hier die möglichen Breiten des Copyright ein.
-
-            footer.share.enabled:
-              type: toggle
-              label: Teilen
-              help: Teilen aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.share.enabled_x:
-              type: toggle
-              label: Teilen auf "Plattform X"
-              help: Teilen auf "Plattform X" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.share.enabled_facebook:
-              type: toggle
-              label: Teilen auf "Facebook"
-              help: Teilen auf "Facebook" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.share.enabled_linkedin:
-              type: toggle
-              label: Teilen auf "LinkedIn"
-              help: Teilen auf "LinkedIn" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.share.enabled_whatsapp:
-              type: toggle
-              label: Teilen auf "WhatsApp"
-              help: Teilen auf "WhatsApp" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.share.enabled_xing:
-              type: toggle
-              label: Teilen auf "XING"
-              help: Teilen auf "XING" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.share.enabled_mail:
-              type: toggle
-              label: Teilen per "E-Mail"
-              help: Teilen per "E-Mail" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.print.enabled:
-              type: toggle
-              label: Seite drucken
-              help: Seite drucken aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            footer.up.enabled:
-              type: toggle
-              label: Seite "nach oben"
-              help: Seite "nach oben" aktivieren.
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            menu.section:
-              type: section
-              title: THEME.ADMIN.SYSTEM.MENU.TITLE
-              underline: true
-
-            menu.main_fieldset:
-              type: fieldset
-              title: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TITLE
-              help: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.HELP
-              text: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TEXT
-              collapsed: true
-              collapsible: true
+            tabs_general:
+              type: tabs
+              active: 1
+              classes: side-tabs
               fields:
-                menu.main:
-                  type: list
-                  label: THEME.ADMIN.SYSTEM.MENU.MAIN.LABEL
-                  style: vertical
-                  controls: bottom
-                  collapsed: false
-
+    ## Tab system
+                tab_layout:
+                  type: tab
+                  title: THEME.ADMIN.LAYOUT.TITLE
                   fields:
-                    .ident:
-                      id: key
-                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.IDENT.LABEL
-                    .path:
-                      type: pages
-                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.PATH.LABEL
-                      show_modular: false
-                      show_root: false
-                      show_all: false
-                      limit_levels: 2
-                    .icon:
+                    header.section:
+                      type: section
+                      title: THEME.ADMIN.SYSTEM.HEADER.TITLE
+                      underline: true
+
+                    header.title_extend:
                       type: text
-                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.ICON.LABEL
+                      label: Header Titel erweitern
+                      help: Erweitern Sie den Header Titel.
 
-            menu.site_fieldset:
-              type: fieldset
-              title: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TITLE
-              help: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.HELP
-              text: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TEXT
-              collapsed: true
-              collapsible: true
-              fields:
-                menu.site:
-                  type: list
-                  label: THEME.ADMIN.SYSTEM.MENU.SITE.LABEL
-                  style: vertical
-                  controls: bottom
-                  collapsed: false
-
-                  fields:
-                    .ident:
-                      id: key
-                      label: THEME.ADMIN.SYSTEM.MENU.SITE.IDENT.LABEL
-                    .path:
-                      type: pages
-                      label: THEME.ADMIN.SYSTEM.MENU.SITE.PATH.LABEL
-                      show_modular: false
-                      show_root: false
-                      show_all: false
-                      limit_levels: 2
-                    .highlighted:
+                    header.logo_enabled:
                       type: toggle
-                      label: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.LABEL
-                      help: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.HELP
+                      label: Header Logo enabled
+                      help: Disable or enable logo
                       highlight: 1
                       options:
-                        1: PLUGIN_ADMIN.YES
-                        0: PLUGIN_ADMIN.NO
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
                       validate:
                         type: bool
 
-            menu.footer_fieldset:
-              type: fieldset
-              title: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TITLE
-              help: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.HELP
-              text: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TEXT
-              collapsed: true
-              collapsible: true
-              fields:
-                menu.footer:
-                  type: list
-                  label: THEME.ADMIN.SYSTEM.MENU.FOOTER.LABEL
-                  style: vertical
-                  controls: bottom
-                  collapsed: false
+                    header.logo:
+                      type: file
+                      label: Header Logo
+                      size: large
+                      destination: 'theme://images/logo'
+                      multiple: false
+                      markdown: true
+                      description: Will be used instead of default logo `theme://images/logo/logo.svg`
+                      accept:
+                        - image/*
 
+                    header.logo_class:
+                      type: text
+                      label: Logo Breite
+                      help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+                    header.menu_class:
+                      type: text
+                      label: Menu Breite
+                      help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+                    header.menu_dropdown:
+                      type: toggle
+                      label: Dropdown in Menu
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    header.shrink:
+                      type: toggle
+                      label: Header shrink enabled
+                      help: Disable or enable logo
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.section:
+                      type: section
+                      title: THEME.ADMIN.SYSTEM.FOOTER.TITLE
+                      underline: true
+
+                    footer.logo_enabled:
+                      type: toggle
+                      label: Footer Logo enabled
+                      help: Disable or enable logo
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.logo:
+                      type: file
+                      label: Footer Logo
+                      size: large
+                      destination: 'theme://images/logo'
+                      multiple: false
+                      markdown: true
+                      description: Will be used instead of default logo `theme://images/logo/footer-logo.svg`
+                      accept:
+                        - image/*
+
+                    footer.hr_line:
+                      type: toggle
+                      label: HR-Linie darstellen
+                      help: HR-Linie über dem Footer darstellen.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.copyright_text:
+                      type: text
+                      label: Copyright
+                      help: Trage Sie hier Ihren Copyright ein.
+
+                    footer.copyright_class:
+                      type: text
+                      label: Copyright Breite
+                      help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+                    footer.menu_class:
+                      type: text
+                      label: Menu Breite
+                      help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+                    footer.share.enabled:
+                      type: toggle
+                      label: Teilen
+                      help: Teilen aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.share.enabled_x:
+                      type: toggle
+                      label: Teilen auf "Plattform X"
+                      help: Teilen auf "Plattform X" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.share.enabled_facebook:
+                      type: toggle
+                      label: Teilen auf "Facebook"
+                      help: Teilen auf "Facebook" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.share.enabled_linkedin:
+                      type: toggle
+                      label: Teilen auf "LinkedIn"
+                      help: Teilen auf "LinkedIn" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.share.enabled_whatsapp:
+                      type: toggle
+                      label: Teilen auf "WhatsApp"
+                      help: Teilen auf "WhatsApp" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.share.enabled_xing:
+                      type: toggle
+                      label: Teilen auf "XING"
+                      help: Teilen auf "XING" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.share.enabled_mail:
+                      type: toggle
+                      label: Teilen per "E-Mail"
+                      help: Teilen per "E-Mail" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.print.enabled:
+                      type: toggle
+                      label: Seite drucken
+                      help: Seite drucken aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.up.enabled:
+                      type: toggle
+                      label: Seite "nach oben"
+                      help: Seite "nach oben" aktivieren.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    menu.section:
+                      type: section
+                      title: THEME.ADMIN.SYSTEM.MENU.TITLE
+                      underline: true
+
+                    menu.main_fieldset:
+                      type: fieldset
+                      title: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TITLE
+                      help: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.HELP
+                      text: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TEXT
+                      collapsed: true
+                      collapsible: true
+                      fields:
+                        menu.main:
+                          type: list
+                          label: THEME.ADMIN.SYSTEM.MENU.MAIN.LABEL
+                          style: vertical
+                          controls: bottom
+                          collapsed: false
+                          fields:
+                            .ident:
+                              id: key
+                              label: THEME.ADMIN.SYSTEM.MENU.MAIN.IDENT.LABEL
+                            .path:
+                              type: pages
+                              label: THEME.ADMIN.SYSTEM.MENU.MAIN.PATH.LABEL
+                              show_modular: false
+                              show_root: false
+                              show_all: false
+                              limit_levels: 2
+                            .icon:
+                              type: text
+                              label: THEME.ADMIN.SYSTEM.MENU.MAIN.ICON.LABEL
+
+                    menu.site_fieldset:
+                      type: fieldset
+                      title: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TITLE
+                      help: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.HELP
+                      text: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TEXT
+                      collapsed: true
+                      collapsible: true
+                      fields:
+                        menu.site:
+                          type: list
+                          label: THEME.ADMIN.SYSTEM.MENU.SITE.LABEL
+                          style: vertical
+                          controls: bottom
+                          collapsed: false
+                          fields:
+                            .ident:
+                              id: key
+                              label: THEME.ADMIN.SYSTEM.MENU.SITE.IDENT.LABEL
+                            .path:
+                              type: pages
+                              label: THEME.ADMIN.SYSTEM.MENU.SITE.PATH.LABEL
+                              show_modular: false
+                              show_root: false
+                              show_all: false
+                              limit_levels: 2
+                            .highlighted:
+                              type: toggle
+                              label: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.LABEL
+                              help: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.HELP
+                              highlight: 1
+                              options:
+                                1: PLUGIN_ADMIN.YES
+                                0: PLUGIN_ADMIN.NO
+                              validate:
+                                type: bool
+
+                    menu.footer_fieldset:
+                      type: fieldset
+                      title: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TITLE
+                      help: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.HELP
+                      text: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TEXT
+                      collapsed: true
+                      collapsible: true
+                      fields:
+                        menu.footer:
+                          type: list
+                          label: THEME.ADMIN.SYSTEM.MENU.FOOTER.LABEL
+                          style: vertical
+                          controls: bottom
+                          collapsed: false
+                          fields:
+                            .ident:
+                              id: key
+                              label: THEME.ADMIN.SYSTEM.MENU.FOOTER.IDENT.LABEL
+                            .path:
+                              type: pages
+                              label: THEME.ADMIN.SYSTEM.MENU.FOOTER.PATH.LABEL
+                              show_modular: false
+                              show_root: false
+                              show_all: false
+                              limit_levels: 2
+    ## Tab system
+                tab_system:
+                  type: tab
+                  title: THEME.ADMIN.SYSTEM.TITLE
                   fields:
-                    .ident:
-                      id: key
-                      label: THEME.ADMIN.SYSTEM.MENU.FOOTER.IDENT.LABEL
-                    .path:
+                    others.section:
+                      type: section
+                      title: THEME.ADMIN.SYSTEM.OTHERS.TITLE
+                      underline: true
+
+                    system.pages_to_404:
                       type: pages
-                      label: THEME.ADMIN.SYSTEM.MENU.FOOTER.PATH.LABEL
+                      label: THEME.ADMIN.SYSTEM.PAGES_TO_404.LABEL
+                      help: THEME.ADMIN.SYSTEM.PAGES_TO_404.HELP
+                      validate:
+                        type: array
                       show_modular: false
                       show_root: false
                       show_all: false
                       limit_levels: 2
+                      multiple: true
 
-            others.section:
-              type: section
-              title: THEME.ADMIN.SYSTEM.OTHERS.TITLE
-              underline: true
-
-            system.pages_to_404:
-              type: pages
-              label: THEME.ADMIN.SYSTEM.PAGES_TO_404.LABEL
-              help: THEME.ADMIN.SYSTEM.PAGES_TO_404.HELP
-              validate:
-                type: array
-              show_modular: false
-              show_root: false
-              show_all: false
-              limit_levels: 2
-              multiple: true
-## Tab home
-        tab_home:
+## Tab pages
+        tab_pages:
           type: tab
-          title: THEME.ADMIN.HOME.TITLE
-
+          title: THEME.ADMIN.PAGES.TITLE
           fields:
-            home.sort_modules_fieldset:
-              type: fieldset
-              title: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TITLE
-              help: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.HELP
-              text: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TEXT
-              collapsed: true
+            tabs_pages:
+              type: tabs
+              active: 1
+              classes: side-tabs
               fields:
-                home.sort_modules:
-                  type: list
-                  label: THEME.ADMIN.HOME.SORT_MODULES.LABEL
-                  style: vertical
-                  controls: bottom
-                  collapsed: false
-                  collapsible: false
-
+    ## Tab home
+                tab_home:
+                  type: tab
+                  title: THEME.ADMIN.HOME.TITLE
                   fields:
-                    .ident:
-                      id: key
-                      label: THEME.ADMIN.HOME.SORT_MODULES.IDENT.LABEL
-                    .path:
-                      type: pages
-                      label: THEME.ADMIN.HOME.SORT_MODULES.PATH.LABEL
-                      help: THEME.ADMIN.HOME.SORT_MODULES.PATH.HELP
-                      show_modular: true
-                      show_root: false
-                      show_all: false
-                      start_route: /home
-                    .hidden:
-                      type: checkbox
-                      label: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.LABEL
-                      help: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.HELP
+                    home.sort_modules_fieldset:
+                      type: fieldset
+                      title: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TITLE
+                      help: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.HELP
+                      text: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TEXT
+                      collapsed: true
+                      fields:
+                        home.sort_modules:
+                          type: list
+                          label: THEME.ADMIN.HOME.SORT_MODULES.LABEL
+                          style: vertical
+                          controls: bottom
+                          collapsed: false
+                          collapsible: false
+                          fields:
+                            .ident:
+                              id: key
+                              label: THEME.ADMIN.HOME.SORT_MODULES.IDENT.LABEL
+                            .path:
+                              type: pages
+                              label: THEME.ADMIN.HOME.SORT_MODULES.PATH.LABEL
+                              help: THEME.ADMIN.HOME.SORT_MODULES.PATH.HELP
+                              show_modular: true
+                              show_root: false
+                              show_all: false
+                              start_route: /home
+                            .hidden:
+                              type: checkbox
+                              label: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.LABEL
+                              help: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.HELP
+                              validate:
+                                type: bool
+
+                    home.categories:
+                      type: section
+                      title: THEME.ADMIN.HOME.CATEGORIES.TITLE
+                      underline: true
+
+                    home.categories.rss:
+                      type: text
+                      label: THEME.ADMIN.HOME.CATEGORIES.RSS.LABEL
+                      help: THEME.ADMIN.HOME.CATEGORIES.RSS.HELP
+
+                    home.categories.exclude_from_search:
+                      type: selectize
+                      label: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.LABEL
+                      help: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.HELP
+                      selectize:
+                        options:
+                          - text: "datatype:address"
+                            value: "datatype:address"
+                          - text: "isfolder:true"
+                            value: "isfolder:true"
+                      validate:
+                        type: commalist
+
+                    home.hits:
+                      type: section
+                      title: THEME.ADMIN.HOME.HITS.TITLE
+                      underline: true
+
+                    home.hits.exclude_from_search:
+                      type: selectize
+                      label: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.LABEL
+                      help: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.HELP
+                      selectize:
+                        options:
+                          - text: "datatype:address"
+                            value: "datatype:address"
+                          - text: "datatype:www"
+                            value: "datatype:www"
+                          - text: "isfolder:true"
+                            value: "isfolder:true"
+                      validate:
+                        type: commalist
+
+                    home.hits.num:
+                      type: range
+                      label: THEME.ADMIN.HOME.HITS.NUM.LABEL
+                      help: THEME.ADMIN.HOME.HITS.NUM.HELP
+                      validate:
+                        type: number
+                        min: 0
+                        max: 10
+
+                    home.hits.sort.sortByDate:
+                      type: toggle
+                      label: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.LABEL
+                      help: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
                       validate:
                         type: bool
 
-            home.categories:
-              type: section
-              title: THEME.ADMIN.HOME.CATEGORIES.TITLE
-              underline: true
-
-            home.categories.rss:
-              type: text
-              label: THEME.ADMIN.HOME.CATEGORIES.RSS.LABEL
-              help: THEME.ADMIN.HOME.CATEGORIES.RSS.HELP
-
-            home.categories.exclude_from_search:
-              type: selectize
-              label: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.LABEL
-              help: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.HELP
-              selectize:
-                options:
-                  - text: "datatype:address"
-                    value: "datatype:address"
-                  - text: "isfolder:true"
-                    value: "isfolder:true"
-              validate:
-                type: commalist
-
-            home.hits:
-              type: section
-              title: THEME.ADMIN.HOME.HITS.TITLE
-              underline: true
-
-            home.hits.exclude_from_search:
-              type: selectize
-              label: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.LABEL
-              help: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.HELP
-              selectize:
-                options:
-                  - text: "datatype:address"
-                    value: "datatype:address"
-                  - text: "datatype:www"
-                    value: "datatype:www"
-                  - text: "isfolder:true"
-                    value: "isfolder:true"
-              validate:
-                type: commalist
-
-            home.hits.num:
-              type: range
-              label: THEME.ADMIN.HOME.HITS.NUM.LABEL
-              help: THEME.ADMIN.HOME.HITS.NUM.HELP
-              validate:
-                type: number
-                min: 0
-                max: 10
-
-            home.hits.sort.sortByDate:
-              type: toggle
-              label: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.LABEL
-              help: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            home.rss:
-              type: section
-              title: THEME.ADMIN.HOME.RSS.TITLE
-              underline: true
-
-            home.rss.feeds_limit:
-              type: range
-              label: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.LABEL
-              help: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.HELP
-              validate:
-                min: 1
-                max: 10
-
-        ## Tab search
-        tab_search:
-          type: tab
-          title: THEME.ADMIN.SEARCH.TITLE
-
-          fields:
-
-            hit.section:
-              type: section
-              title: THEME.ADMIN.HIT.TITLE
-              underline: true
-
-            hit.csw_url:
-              type: text
-              label: THEME.ADMIN.HIT.CSW_URL.LABEL
-              help: THEME.ADMIN.HIT.CSW_URL.HELP
-
-            hit.rdf_url:
-              type: text
-              label: THEME.ADMIN.HIT.RDF_URL.LABEL
-              help: THEME.ADMIN.HIT.RDF_URL.HELP
-
-            hit_search.section:
-              type: section
-              title: THEME.ADMIN.HIT_SEARCH.TITLE
-              underline: true
-
-            hit_search.exclude_from_search:
-              type: selectize
-              label: THEME.ADMIN.HIT_SEARCH.EXCLUDE_FROM_SEARCH.LABEL
-              selectize:
-                options:
-                  - text: "datatype:address"
-                    value: "datatype:address"
-                  - text: "isfolder:true"
-                    value: "isfolder:true"
-              validate:
-                type: commalist
-
-            hit_search.query_string_operator:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.LABEL
-              highlight: AND
-              options:
-                "AND": AND
-                "OR": OR
-              validate:
-                type: text
-
-            hit_search.query_fields:
-              type: selectize
-              label: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.LABEL
-              selectize:
-                options:
-                  - text: "title^10.0"
-                    value: "title^10.0"
-                  - text: "title.edge_ngram^4.0"
-                    value: "title.edge_ngram^4.0"
-                  - text: "title.ngram^2.0"
-                    value: "title.ngram^2.0"
-                  - text: "summary"
-                    value: "summary"
-                  - text: "summary.edge_ngram^0.4"
-                    value: "summary.edge_ngram^0.4"
-                  - text: "summary.ngram^0.2"
-                    value: "summary.ngram^0.2"
-                  - text: "content^0.2"
-                    value: "content^0.2"
-                  - text: "content.ngram^0.1"
-                    value: "content.ngram^0.1"
-              validate:
-                type: commalist
-
-            hit_search.sort.enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_search.sort.sortByDate:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_search.expandable.enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_search.summary_replace_newline:
-              type: text
-              label: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.HELP
-              validate:
-                type: text
-
-            hit_search.summary_lines_limit:
-              type: range
-              label: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.HELP
-              validate:
-                min: 0
-                max: 10
-
-            hit_search.links_max:
-              type: range
-              label: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.HELP
-              validate:
-                min: 0
-                max: 10
-
-            hit_search.csw_enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_search.rdf_enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_search.partner_logo_enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.LABEL
-              help: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_detail.section:
-              type: section
-              title: THEME.ADMIN.HIT_DETAIL.TITLE
-              underline: true
-
-            hit_detail.summary_replace_newline:
-              type: text
-              label: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.LABEL
-              help: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.HELP
-              validate:
-                type: text
-
-            hit_detail.reference_system_link:
-              type: text
-              label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK.LABEL
-              help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK.HELP
-
-            hit_detail.reference_system_link_replace:
-              type: text
-              label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.LABEL
-              help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.HELP
-
-            hit_detail.csw_enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.LABEL
-              help: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_detail.rdf_enabled:
-              type: toggle
-              label: THEME.ADMIN.HIT_DETAIL.RDF_ENABLED.LABEL
-              help: THEME.ADMIN.HIT_DETAIL.RDF_ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_detail.time_in_description:
-              type: toggle
-              label: THEME.ADMIN.HIT_DETAIL.TIME_IN_DESCRIPTION.LABEL
-              help: THEME.ADMIN.HIT_DETAIL.TIME_IN_DESCRIPTION.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            hit_detail.address_order:
-                type: selectize
-                label: THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.LABEL
-                help: THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.HELP
-                selectize:
-                  data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailSortAddressOptions'
-                validate:
-                    type: commalist
-
-            hit_detail.contact_order:
-                type: selectize
-                label: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.LABEL
-                help: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.HELP
-                selectize:
-                  data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailContactOrderOptions'
-                validate:
-                    type: commalist
-
-## Tab catalog
-        tab_catalog:
-          type: tab
-          title: THEME.ADMIN.CATALOG.TITLE
-
-          fields:
-
-            catalog.section:
-              type: section
-              title: THEME.ADMIN.CATALOG.TITLE
-              underline: true
-
-            catalog.open_nodes_level:
-              type: number
-              label: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.LABEL
-              help: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.HELP
-              validate:
-                min: 0
-                max: 3
-            catalog.sort_by_name:
-              type: toggle
-              label: THEME.ADMIN.CATALOG.SORT_BY_NAME.LABEL
-              help: THEME.ADMIN.CATALOG.SORT_BY_NAME.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            catalog.open_on_new_tab:
-              type: toggle
-              label: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.LABEL
-              help: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            catalog.display_partner:
-              type: toggle
-              label: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.LABEL
-              help: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-## Tab map
-        tab_map:
-          type: tab
-          title: THEME.ADMIN.MAP.TITLE
-
-          fields:
-            map.section:
-              type: section
-              title: THEME.ADMIN.MAP.TITLE
-              underline: true
-
-            map.enabled:
-              type: toggle
-              label: THEME.ADMIN.MAP.ENABLED.LABEL
-              help: THEME.ADMIN.MAP.ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.url:
-              type: text
-              label: THEME.ADMIN.MAP.URL.LABEL
-              help: THEME.ADMIN.MAP.URL.HELP
-
-            map.leaflet.section:
-              type: section
-              title: THEME.ADMIN.MAP.LEAFLET.TITLE
-              underline: true
-
-            map.leaflet.enabled:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLED.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.leaflet.epsg:
-              type: text
-              label: THEME.ADMIN.MAP.LEAFLET.EPSG.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.EPSG.HELP
-
-            map.leaflet.bg.layer.wmts.url:
-              type: text
-              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.HELP
-
-            map.leaflet.bg.layer.wms.url:
-              type: text
-              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.HELP
-
-            map.leaflet.bg.layer.wms.name:
-              type: text
-              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.HELP
-
-            map.leaflet.bg.layer.attribution:
-              type: text
-              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.HELP
-
-            map.leaflet.bg.layer.opacity:
-              type: range
-              label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.OPACITY.LABEL
-              validate:
-                min: 0
-                max: 1
-                step: 0.1
-
-            map.leaflet.bbox.color:
-              type: colorpicker
-              label: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.HELP
-
-            map.leaflet.bbox.opacity:
-              type: range
-              label: THEME.ADMIN.MAP.LEAFLET.BBOX.OPACITY.LABEL
-              validate:
-                min: 0
-                max: 1
-                step: 0.1
-
-            map.leaflet.bbox.weight:
-              type: range
-              label: THEME.ADMIN.MAP.LEAFLET.BBOX.WEIGHT.LABEL
-              validate:
-                min: 1
-                max: 5
-                step: 1
-
-            map.leaflet.bbox.inverted:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.leaflet.enable.wkt:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.leaflet.enable.bwastr:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.BWASTR.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.BWASTR.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.leaflet.enable.geocoder:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.leaflet.enable.spinloader:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            map.leaflet.enable.clustering:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-## Tab measure
-        tab_measure:
-          type: tab
-          title: THEME.ADMIN.MEASURE.TITLE
-
-          fields:
-
-            measure.section:
-              type: section
-              title: THEME.ADMIN.MEASURE.TITLE
-              underline: true
-
-            measure.enabled:
-              type: toggle
-              label: THEME.ADMIN.MEASURE.ENABLED.LABEL
-              help: THEME.ADMIN.MEASURE.ENABLED.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            measure.url:
-              type: text
-              label: THEME.ADMIN.MEASURE.URL.LABEL
-              help: THEME.ADMIN.MEASURE.URL.HELP
-
-            measure.elastic:
-              type: text
-              label: THEME.ADMIN.MEASURE.ELASTIC.LABEL
-              help: THEME.ADMIN.MEASURE.ELASTIC.HELP
-
-            measure.networks.exclude:
-              type: selectize
-              label: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.LABEL
-              help: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.HELP
-              selectize:
-                options:
-                  - text: "luen"
-                    value: "luen"
-                  - text: "nlwkn"
-                    value: "nlwkn"
-                  - text: "odl"
-                    value: "odl"
-                  - text: "uba"
-                    value: "uba"
-              validate:
-                  type: commalist
-
-            measure.networks.initial:
-              type: selectize
-              label: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.LABEL
-              help: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.HELP
-              selectize:
-                options:
-                  - text: "luen"
-                    value: "luen"
-                  - text: "nlwkn"
-                    value: "nlwkn"
-                  - text: "odl"
-                    value: "odl"
-                  - text: "uba"
-                    value: "uba"
-              validate:
-                  type: commalist
-
-## Tab help
-        tab_help:
-          type: tab
-          title: THEME.ADMIN.HELP.TITLE
-          fields:
-
-            help.section:
-              type: section
-              title: THEME.ADMIN.HELP.TITLE
-              underline: true
-
-            help.default_hkey:
-              type: text
-              label: THEME.ADMIN.HELP.DEFAULT_HKEY.LABEL
-
-## Tab datasource
-        tab_datasource:
-          type: tab
-          title: THEME.ADMIN.DATASOURCE.TITLE
-          fields:
-
-            datasource.section:
-              type: section
-              title: THEME.ADMIN.DATASOURCE.TITLE
-              underline: true
-
-            datasource.excludes:
-              type: selectize_datasource
-              label: THEME.ADMIN.DATASOURCE.EXCLUDES.LABEL
-              help: THEME.ADMIN.DATASOURCE.EXCLUDES.HELP
-              selectize:
-                options:
-              validate:
-                type: commalist
-
-## Tab provider
-        tab_provider:
-          type: tab
-          title: THEME.ADMIN.PROVIDER.TITLE
-          fields:
-
-            provider.section:
-              type: section
-              title: THEME.ADMIN.PROVIDER.TITLE
-              underline: true
-
-            provider.query:
-              type: text
-              label: THEME.ADMIN.PROVIDER.QUERY.LABEL
-              help: THEME.ADMIN.PROVIDER.QUERY.HELP
+                    home.rss:
+                      type: section
+                      title: THEME.ADMIN.HOME.RSS.TITLE
+                      underline: true
+
+                    home.rss.feeds_limit:
+                      type: range
+                      label: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.LABEL
+                      help: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.HELP
+                      validate:
+                        min: 1
+                        max: 10
+
+    ## Tab search
+                tab_search:
+                  type: tab
+                  title: THEME.ADMIN.SEARCH.TITLE
+                  fields:
+                    hit_search.section:
+                      type: section
+                      title: THEME.ADMIN.HIT_SEARCH.TITLE
+                      underline: true
+
+                    hit_search.exclude_from_search:
+                      type: selectize
+                      label: THEME.ADMIN.HIT_SEARCH.EXCLUDE_FROM_SEARCH.LABEL
+                      selectize:
+                        options:
+                          - text: "datatype:address"
+                            value: "datatype:address"
+                          - text: "isfolder:true"
+                            value: "isfolder:true"
+                      validate:
+                        type: commalist
+
+                    hit_search.query_string_operator:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.LABEL
+                      highlight: AND
+                      options:
+                        "AND": AND
+                        "OR": OR
+                      validate:
+                        type: text
+
+                    hit_search.query_fields:
+                      type: selectize
+                      label: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.LABEL
+                      selectize:
+                        options:
+                          - text: "title^10.0"
+                            value: "title^10.0"
+                          - text: "title.edge_ngram^4.0"
+                            value: "title.edge_ngram^4.0"
+                          - text: "title.ngram^2.0"
+                            value: "title.ngram^2.0"
+                          - text: "summary"
+                            value: "summary"
+                          - text: "summary.edge_ngram^0.4"
+                            value: "summary.edge_ngram^0.4"
+                          - text: "summary.ngram^0.2"
+                            value: "summary.ngram^0.2"
+                          - text: "content^0.2"
+                            value: "content^0.2"
+                          - text: "content.ngram^0.1"
+                            value: "content.ngram^0.1"
+                      validate:
+                        type: commalist
+
+                    hit_search.sort.enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_search.sort.sortByDate:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_search.expandable.enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_search.summary_replace_newline:
+                      type: text
+                      label: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.HELP
+                      validate:
+                        type: text
+
+                    hit_search.summary_lines_limit:
+                      type: range
+                      label: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.HELP
+                      validate:
+                        min: 0
+                        max: 10
+
+                    hit_search.links_max:
+                      type: range
+                      label: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.HELP
+                      validate:
+                        min: 0
+                        max: 10
+
+                    hit_search.csw_enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_search.rdf_enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_search.partner_logo_enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                tab_detail:
+                  type: tab
+                  title: THEME.ADMIN.HIT_DETAIL.TITLE
+                  fields:
+                    hit_detail.section:
+                      type: section
+                      title: THEME.ADMIN.HIT_DETAIL.TITLE
+                      underline: true
+
+                    hit_detail.summary_replace_newline:
+                      type: text
+                      label: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.LABEL
+                      help: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.HELP
+                      validate:
+                        type: text
+
+                    hit_detail.reference_system_link:
+                      type: text
+                      label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK.LABEL
+                      help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK.HELP
+
+                    hit_detail.reference_system_link_replace:
+                      type: text
+                      label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.LABEL
+                      help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.HELP
+
+                    hit_detail.csw_enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_detail.rdf_enabled:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_DETAIL.RDF_ENABLED.LABEL
+                      help: THEME.ADMIN.HIT_DETAIL.RDF_ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_detail.time_in_description:
+                      type: toggle
+                      label: THEME.ADMIN.HIT_DETAIL.TIME_IN_DESCRIPTION.LABEL
+                      help: THEME.ADMIN.HIT_DETAIL.TIME_IN_DESCRIPTION.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    hit_detail.address_order:
+                        type: selectize
+                        label: THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.LABEL
+                        help: THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.HELP
+                        selectize:
+                          data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailSortAddressOptions'
+                        validate:
+                            type: commalist
+
+                    hit_detail.contact_order:
+                        type: selectize
+                        label: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.LABEL
+                        help: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.HELP
+                        selectize:
+                          data-options@: '\Grav\Plugin\InGridGravPlugin::getAdminDetailContactOrderOptions'
+                        validate:
+                            type: commalist
+
+    ## Tab catalog
+                tab_catalog:
+                  type: tab
+                  title: THEME.ADMIN.CATALOG.TITLE
+                  fields:
+                    catalog.section:
+                      type: section
+                      title: THEME.ADMIN.CATALOG.TITLE
+                      underline: true
+
+                    catalog.open_nodes_level:
+                      type: number
+                      label: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.LABEL
+                      help: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.HELP
+                      validate:
+                        min: 0
+                        max: 3
+                    catalog.sort_by_name:
+                      type: toggle
+                      label: THEME.ADMIN.CATALOG.SORT_BY_NAME.LABEL
+                      help: THEME.ADMIN.CATALOG.SORT_BY_NAME.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+                    catalog.open_on_new_tab:
+                      type: toggle
+                      label: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.LABEL
+                      help: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+                    catalog.display_partner:
+                      type: toggle
+                      label: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.LABEL
+                      help: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+     ## Tab map
+                tab_map:
+                  type: tab
+                  title: THEME.ADMIN.MAP.TITLE
+                  fields:
+                    map.section:
+                      type: section
+                      title: THEME.ADMIN.MAP.TITLE
+                      underline: true
+
+                    map.enabled:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.ENABLED.LABEL
+                      help: THEME.ADMIN.MAP.ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.url:
+                      type: text
+                      label: THEME.ADMIN.MAP.URL.LABEL
+                      help: THEME.ADMIN.MAP.URL.HELP
+
+                    map.leaflet.section:
+                      type: section
+                      title: THEME.ADMIN.MAP.LEAFLET.TITLE
+                      underline: true
+
+                    map.leaflet.enabled:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.ENABLED.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.leaflet.epsg:
+                      type: text
+                      label: THEME.ADMIN.MAP.LEAFLET.EPSG.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.EPSG.HELP
+
+                    map.leaflet.bg.layer.wmts.url:
+                      type: text
+                      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.HELP
+
+                    map.leaflet.bg.layer.wms.url:
+                      type: text
+                      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.HELP
+
+                    map.leaflet.bg.layer.wms.name:
+                      type: text
+                      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.HELP
+
+                    map.leaflet.bg.layer.attribution:
+                      type: text
+                      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.HELP
+
+                    map.leaflet.bg.layer.opacity:
+                      type: range
+                      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.OPACITY.LABEL
+                      validate:
+                        min: 0
+                        max: 1
+                        step: 0.1
+
+                    map.leaflet.bbox.color:
+                      type: colorpicker
+                      label: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.HELP
+
+                    map.leaflet.bbox.opacity:
+                      type: range
+                      label: THEME.ADMIN.MAP.LEAFLET.BBOX.OPACITY.LABEL
+                      validate:
+                        min: 0
+                        max: 1
+                        step: 0.1
+
+                    map.leaflet.bbox.weight:
+                      type: range
+                      label: THEME.ADMIN.MAP.LEAFLET.BBOX.WEIGHT.LABEL
+                      validate:
+                        min: 1
+                        max: 5
+                        step: 1
+
+                    map.leaflet.bbox.inverted:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.leaflet.enable.wkt:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.leaflet.enable.bwastr:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.BWASTR.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.BWASTR.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.leaflet.enable.geocoder:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.leaflet.enable.spinloader:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    map.leaflet.enable.clustering:
+                      type: toggle
+                      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.LABEL
+                      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+    ## Tab measure
+                tab_measure:
+                  type: tab
+                  title: THEME.ADMIN.MEASURE.TITLE
+                  fields:
+                    measure.section:
+                      type: section
+                      title: THEME.ADMIN.MEASURE.TITLE
+                      underline: true
+
+                    measure.enabled:
+                      type: toggle
+                      label: THEME.ADMIN.MEASURE.ENABLED.LABEL
+                      help: THEME.ADMIN.MEASURE.ENABLED.HELP
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    measure.url:
+                      type: text
+                      label: THEME.ADMIN.MEASURE.URL.LABEL
+                      help: THEME.ADMIN.MEASURE.URL.HELP
+
+                    measure.elastic:
+                      type: text
+                      label: THEME.ADMIN.MEASURE.ELASTIC.LABEL
+                      help: THEME.ADMIN.MEASURE.ELASTIC.HELP
+
+                    measure.networks.exclude:
+                      type: selectize
+                      label: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.LABEL
+                      help: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.HELP
+                      selectize:
+                        options:
+                          - text: "luen"
+                            value: "luen"
+                          - text: "nlwkn"
+                            value: "nlwkn"
+                          - text: "odl"
+                            value: "odl"
+                          - text: "uba"
+                            value: "uba"
+                      validate:
+                          type: commalist
+
+                    measure.networks.initial:
+                      type: selectize
+                      label: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.LABEL
+                      help: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.HELP
+                      selectize:
+                        options:
+                          - text: "luen"
+                            value: "luen"
+                          - text: "nlwkn"
+                            value: "nlwkn"
+                          - text: "odl"
+                            value: "odl"
+                          - text: "uba"
+                            value: "uba"
+                      validate:
+                          type: commalist
+
+    ## Tab help
+                tab_help:
+                  type: tab
+                  title: THEME.ADMIN.HELP.TITLE
+                  fields:
+                    help.section:
+                      type: section
+                      title: THEME.ADMIN.HELP.TITLE
+                      underline: true
+
+                    help.default_hkey:
+                      type: text
+                      label: THEME.ADMIN.HELP.DEFAULT_HKEY.LABEL
+
+    ## Tab datasource
+                tab_datasource:
+                  type: tab
+                  title: THEME.ADMIN.DATASOURCE.TITLE
+                  fields:
+                    datasource.section:
+                      type: section
+                      title: THEME.ADMIN.DATASOURCE.TITLE
+                      underline: true
+
+                    datasource.excludes:
+                      type: selectize_datasource
+                      label: THEME.ADMIN.DATASOURCE.EXCLUDES.LABEL
+                      help: THEME.ADMIN.DATASOURCE.EXCLUDES.HELP
+                      selectize:
+                        options:
+                      validate:
+                        type: commalist
+
+    ## Tab provider
+                tab_provider:
+                  type: tab
+                  title: THEME.ADMIN.PROVIDER.TITLE
+                  fields:
+                    provider.section:
+                      type: section
+                      title: THEME.ADMIN.PROVIDER.TITLE
+                      underline: true
+
+                    provider.query:
+                      type: text
+                      label: THEME.ADMIN.PROVIDER.QUERY.LABEL
+                      help: THEME.ADMIN.PROVIDER.QUERY.HELP

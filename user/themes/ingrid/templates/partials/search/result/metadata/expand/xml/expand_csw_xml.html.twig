@@ -1,5 +1,4 @@
 {% set csw_enabled = theme_var('hit_search.csw_enabled') %}
-{% set csw_url = theme_var('hit.csw_url') %}
 {% if csw_enabled and csw_url %}
 <p class="teaser-links-content">
     <a class="icon external-link" href="{{ csw_url ~ uuid }}" title="{{ "COMMON.XML_LINK"|t }}" target="_blank" rel="noopener noreferrer">

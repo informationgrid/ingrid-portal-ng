@@ -11,3 +11,7 @@ codelist_api:
   url: 'https://dev.informationgrid.eu/codelist-repo/rest/getCodelists'
   user:
   pass:
+csw:
+  url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
+rdf:
+  url: null

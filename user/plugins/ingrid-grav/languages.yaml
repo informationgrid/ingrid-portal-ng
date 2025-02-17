@@ -1,46 +1,68 @@
 en:
   PLUGIN_INGRID_GRAV:
-    INGRID_API: InGrid-API
-    INGRID_API_URL: URL
-    INGRID_API_URL_HELP: InGrid-API-URL eintragen
-    INGRID_API_USER: Benutzer (htaccess)
-    INGRID_API_USER_HELP: Benutzername zu InGrid-API. Per Docker-ENV "INGRID_API_USER" setzbar.
-    INGRID_API_PASS: Passwort (htaccess)
-    INGRID_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "INGRID_API_PASS" setzbar.
-    GEO_API: Geo-API
-    GEO_API_URL: URL
-    GEO_API_URL_HELP: URL zur Geo-API. Per Docker-ENV "GEO_API_URL" setzbar.
-    GEO_API_USER: Benutzer (htaccess)
-    GEO_API_USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "GEO_API_USER" setzbar.
-    GEO_API_PASS: Passwort (htaccess)
-    GEO_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
-    CODELIST_API: Geo-API
-    CODELIST_API_URL: URL
-    CODELIST_API_URL_HELP: URL zur Geo-API. Per Docker-ENV "CODELIST_API_URL" setzbar.
-    CODELIST_API_USER: Benutzer (htaccess)
-    CODELIST_API_USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "CODELIST_API_USER" setzbar.
-    CODELIST_API_PASS: Passwort (htaccess)
-    CODELIST_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
+    INGRID_API:
+      TITLE: InGrid-API
+      URL: URL
+      URL_HELP: InGrid-API-URL eintragen
+      USER: Benutzer (htaccess)
+      USER_HELP: Benutzername zu InGrid-API. Per Docker-ENV "INGRID_API_USER" setzbar.
+      PASS: Passwort (htaccess)
+      PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "INGRID_API_PASS" setzbar.
+    GEO_API:
+      TITLE: Geo-API
+      URL: URL
+      URL_HELP: URL zur Geo-API. Per Docker-ENV "GEO_API_URL" setzbar.
+      USER: Benutzer (htaccess)
+      USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "GEO_API_USER" setzbar.
+      PASS: Passwort (htaccess)
+      PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
+    CODELIST_API:
+      TITLE: Codelist-API
+      URL: URL
+      URL_HELP: URL zur Codelist-API. Per Docker-ENV "CODELIST_API_URL" setzbar.
+      USER: Benutzer (htaccess)
+      USER_HELP: Benutzername zu Codelist-API. Per Docker-ENV "CODELIST_API_USER" setzbar.
+      PASS: Passwort (htaccess)
+      PASS_HELP: Passwort zu Codelist-API. Per Docker-ENV "CODELIST_API_PASS" setzbar.
+    CSW:
+      TITLE: CSW
+      URL: Link zum Interface-CSW
+      URL_HELP: Trage Sie hier die URL zum Interface-CSW ein.
+    RDF:
+      TITLE: RDF
+      URL: Link zum Interface-RDF
+      URL_HELP: Trage Sie hier die URL zum Interface-RDF ein.
 de:
   PLUGIN_INGRID_GRAV:
-    INGRID_API: InGrid-API
-    INGRID_API_URL: URL
-    INGRID_API_URL_HELP: InGrid-API-URL eintragen
-    INGRID_API_USER: Benutzer (htaccess)
-    INGRID_API_USER_HELP: Benutzername zu InGrid-API. Per Docker-ENV "INGRID_API_USER" setzbar.
-    INGRID_API_PASS: Passwort (htaccess)
-    INGRID_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "INGRID_API_PASS" setzbar.
-    GEO_API: Geo-API
-    GEO_API_URL: URL
-    GEO_API_URL_HELP: URL zur Geo-API. Per Docker-ENV "GEO_API_URL" setzbar.
-    GEO_API_USER: Benutzer (htaccess)
-    GEO_API_USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "GEO_API_USER" setzbar.
-    GEO_API_PASS: Passwort (htaccess)
-    GEO_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
-    CODELIST_API: Geo-API
-    CODELIST_API_URL: URL
-    CODELIST_API_URL_HELP: URL zur Geo-API. Per Docker-ENV "CODELIST_API_URL" setzbar.
-    CODELIST_API_USER: Benutzer (htaccess)
-    CODELIST_API_USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "CODELIST_API_USER" setzbar.
-    CODELIST_API_PASS: Passwort (htaccess)
-    CODELIST_API_PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
+    INGRID_API:
+      TITLE: InGrid-API
+      URL: URL
+      URL_HELP: InGrid-API-URL eintragen
+      USER: Benutzer (htaccess)
+      USER_HELP: Benutzername zu InGrid-API. Per Docker-ENV "INGRID_API_USER" setzbar.
+      PASS: Passwort (htaccess)
+      PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "INGRID_API_PASS" setzbar.
+    GEO_API:
+      TITLE: Geo-API
+      URL: URL
+      URL_HELP: URL zur Geo-API. Per Docker-ENV "GEO_API_URL" setzbar.
+      USER: Benutzer (htaccess)
+      USER_HELP: Benutzername zu Geo-API. Per Docker-ENV "GEO_API_USER" setzbar.
+      PASS: Passwort (htaccess)
+      PASS_HELP: Passwort zu Geo-API. Per Docker-ENV "GEO_API_PASS" setzbar.
+    CODELIST_API:
+      TITLE: Codelist-API
+      URL: URL
+      URL_HELP: URL zur Codelist-API. Per Docker-ENV "CODELIST_API_URL" setzbar.
+      USER: Benutzer (htaccess)
+      USER_HELP: Benutzername zu Codelist-API. Per Docker-ENV "CODELIST_API_USER" setzbar.
+      PASS: Passwort (htaccess)
+      PASS_HELP: Passwort zu Codelist-API. Per Docker-ENV "CODELIST_API_PASS" setzbar.
+    CSW:
+      TITLE: CSW
+      URL: Link zum Interface-CSW
+      URL_HELP: Trage Sie hier die URL zum Interface-CSW ein.
+    RDF:
+      TITLE: RDF
+      URL: Link zum Interface-RDF
+      URL_HELP: Trage Sie hier die URL zum Interface-RDF ein.

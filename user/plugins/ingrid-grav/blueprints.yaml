@@ -32,51 +32,70 @@ form:
 
     ingrid_api:
       type: section
-      title: PLUGIN_INGRID_GRAV.INGRID_API
+      title: PLUGIN_INGRID_GRAV.INGRID_API.TITLE
       underline: true
     ingrid_api.url:
       type: text
-      label: PLUGIN_INGRID_GRAV.INGRID_API_URL
-      help: PLUGIN_INGRID_GRAV.INGRID_API_URL_HELP
+      label: PLUGIN_INGRID_GRAV.INGRID_API.URL
+      help: PLUGIN_INGRID_GRAV.INGRID_API.URL_HELP
     ingrid_api.user:
       type: text
-      label: PLUGIN_INGRID_GRAV.INGRID_API_USER
-      help: PLUGIN_INGRID_GRAV.INGRID_API_USER_HELP
+      label: PLUGIN_INGRID_GRAV.INGRID_API.USER
+      help: PLUGIN_INGRID_GRAV.INGRID_API.USER_HELP
     ingrid_api.pass:
       type: text
-      label: PLUGIN_INGRID_GRAV.INGRID_API_PASS
-      help: PLUGIN_INGRID_GRAV.INGRID_API_PASS_HELP
+      label: PLUGIN_INGRID_GRAV.INGRID_API.PASS
+      help: PLUGIN_INGRID_GRAV.INGRID_API.PASS_HELP
 
     geo_api:
       type: section
-      title: PLUGIN_INGRID_GRAV.GEO_API
+      title: PLUGIN_INGRID_GRAV.GEO_API.TITLE
       underline: true
     geo_api.url:
       type: text
-      label: PLUGIN_INGRID_GRAV.GEO_API_URL
-      help: PLUGIN_INGRID_GRAV.GEO_API_URL_HELP
+      label: PLUGIN_INGRID_GRAV.GEO_API.URL
+      help: PLUGIN_INGRID_GRAV.GEO_API.URL_HELP
     geo_api.user:
       type: text
-      label: PLUGIN_INGRID_GRAV.GEO_API_USER
-      help: PLUGIN_INGRID_GRAV.GEO_API_USER_HELP
+      label: PLUGIN_INGRID_GRAV.GEO_API.USER
+      help: PLUGIN_INGRID_GRAV.GEO_API.USER_HELP
     geo_api.pass:
       type: text
-      label: PLUGIN_INGRID_GRAV.GEO_API_PASS
-      help: PLUGIN_INGRID_GRAV.GEO_API_PASS_HELP
+      label: PLUGIN_INGRID_GRAV.GEO_API.PASS
+      help: PLUGIN_INGRID_GRAV.GEO_API.PASS_HELP
 
     codelist_api:
       type: section
-      title: PLUGIN_INGRID_GRAV.CODELIST_API
+      title: PLUGIN_INGRID_GRAV.CODELIST_API.TITLE
       underline: true
     codelist_api.url:
       type: text
-      label: PLUGIN_INGRID_GRAV.CODELIST_API_URL
-      help: PLUGIN_INGRID_GRAV.CODELIST_API_URL_HELP
+      label: PLUGIN_INGRID_GRAV.CODELIST_API.URL
+      help: PLUGIN_INGRID_GRAV.CODELIST_API.URL_HELP
     codelist_api.user:
       type: text
-      label: PLUGIN_INGRID_GRAV.CODELIST_API_USER
-      help: PLUGIN_INGRID_GRAV.CODELIST_API_USER_HELP
+      label: PLUGIN_INGRID_GRAV.CODELIST_API.USER
+      help: PLUGIN_INGRID_GRAV.CODELIST_API.USER_HELP
     codelist_api.pass:
       type: text
-      label: PLUGIN_INGRID_GRAV.CODELIST_API_PASS
-      help: PLUGIN_INGRID_GRAV.CODELIST_API_PASS_HELP
+      label: PLUGIN_INGRID_GRAV.CODELIST_API.PASS
+      help: PLUGIN_INGRID_GRAV.CODELIST_API.PASS_HELP
+
+    csw:
+      type: section
+      title: PLUGIN_INGRID_GRAV.CSW.TITLE
+      underline: true
+    csw.url:
+      type: text
+      label: PLUGIN_INGRID_GRAV.CSW.URL
+      help: PLUGIN_INGRID_GRAV.CSW.URL_HELP
+
+    rdf:
+      type: section
+      title: PLUGIN_INGRID_GRAV.RDF.TITLE
+      underline: true
+
+    rdf.url:
+      type: text
+      label: PLUGIN_INGRID_GRAV.RDF.URL
+      help: PLUGIN_INGRID_GRAV.RDF.URL_HELP

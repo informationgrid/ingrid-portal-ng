@@ -805,9 +805,6 @@ home:
     num: 2
     sort:
       sortByDate: true
-hit:
-  csw_url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
-  rdf_url: null
 hit_search:
   hits_num: 10
   facet_config: [

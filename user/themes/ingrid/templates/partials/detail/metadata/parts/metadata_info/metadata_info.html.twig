@@ -1,8 +1,6 @@
 {# Informationen zum Metadatensatz #}
 {% set displayISOXML = theme_var('hit_detail.csw_enabled') %}
-{% set cswURL = theme_var('hit.csw_url') %}
-{% set rdfURL = theme_var('hit_detail.rdf_enabled') %}
-{% set displayRDFXML = theme_var('hit.rdf_url') %}
+{% set displayRDFXML = theme_var('hit_detail.rdf_enabled') %}
 
 <div class="section">
     <a class="anchor" id="{{ hash_metadata_info }}"></a>
@@ -24,12 +22,12 @@
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
     {% endif %}
 {# XML Darstellung  #}
-    {% if displayISOXML and cswURL %}
-        {{ hit_macros.render_label_link("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, cswURL ~ uuid, "download") }}
+    {% if displayISOXML and csw_url %}
+        {{ hit_macros.render_label_link("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, csw_url ~ uuid, "download") }}
     {% endif %}
 {# RDF Darstellung  #}
-    {% if displayRDFXML and rdfURL %}
-        {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdfURL ~ uuid, "download" ) }}
+    {% if displayRDFXML and rdf_url %}
+        {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdf_url ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
     {{ hit_macros.render_label_link_list(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, "mail" ) }}

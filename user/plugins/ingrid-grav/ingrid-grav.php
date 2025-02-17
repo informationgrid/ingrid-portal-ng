@@ -116,6 +116,7 @@ class InGridGravPlugin extends Plugin
                 // Get page content
                 $this->enable([
                     'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
                 ]);
                 break;
         }
@@ -192,7 +193,6 @@ class InGridGravPlugin extends Plugin
                 // Detaildarstellung
                 $this->enable([
                     'onTwigSiteVariables' => ['onTwigSiteVariablesDetail', 0],
-                    'onTwigExtensions' => ['onTwigExtensionsDetail', 0],
                 ]);
                 break;
 
@@ -200,7 +200,6 @@ class InGridGravPlugin extends Plugin
                 // Startseite
                 $this->enable([
                     'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
-                    'onTwigExtensions' => ['onTwigExtensionsSearch', 0],
                 ]);
                 break;
 
@@ -208,7 +207,6 @@ class InGridGravPlugin extends Plugin
                 // Suche
                 $this->enable([
                     'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
-                    'onTwigExtensions' => ['onTwigExtensionsSearch', 0],
                 ]);
                 break;
 
@@ -492,17 +490,19 @@ class InGridGravPlugin extends Plugin
         if (!$this->isAdmin()) {
             $detail = new Detail($this->grav, $this->configApiUrl);
             $detail->getContent();
-
+            $twig = $this->grav['twig'];
             if ($detail->hit) {
-                $this->grav['twig']->twig_vars['detail_type'] = $detail->type;
-                $this->grav['twig']->twig_vars['hit'] = $detail->hit;
-                $this->grav['twig']->twig_vars['page_custom_title'] = $detail->hit["title"] ?? null;
-                $this->grav['twig']->twig_vars['partners'] = $detail->partners;
-                $this->grav['twig']->twig_vars['lang'] = $detail->lang;
-                $this->grav['twig']->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
-                $this->grav['twig']->twig_vars['timezone'] = !empty($detail->timezone) ? $detail->timezone : 'Europe/Berlin';
+                $twig->twig_vars['detail_type'] = $detail->type;
+                $twig->twig_vars['hit'] = $detail->hit;
+                $twig->twig_vars['page_custom_title'] = $detail->hit["title"] ?? null;
+                $twig->twig_vars['partners'] = $detail->partners;
+                $twig->twig_vars['lang'] = $detail->lang;
+                $twig->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));
+                $twig->twig_vars['timezone'] = !empty($detail->timezone) ? $detail->timezone : 'Europe/Berlin';
+                $twig->twig_vars['csw_url'] = $this->config()['csw']['url'];
+                $twig->twig_vars['rdf_url'] = $this->config()['rdf']['url'];
             } else {
-                $this->grav['twig']->twig_vars['hit'] = [];
+                $twig->twig_vars['hit'] = [];
             }
         }
     }
@@ -515,14 +515,16 @@ class InGridGravPlugin extends Plugin
         if (!$this->isAdmin()) {
             $search = new Search($this->grav, $this->configApiUrl);
             $search->getContent();
-
-            $this->grav['twig']->twig_vars['query'] = $search->query;
-            $this->grav['twig']->twig_vars['selected_facets'] = $search->selectedFacets;
-            $this->grav['twig']->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
-            $this->grav['twig']->twig_vars['search_result'] = $search->results;
-            $this->grav['twig']->twig_vars['hitsNum'] = $search->hitsNum;
-            $this->grav['twig']->twig_vars['pagingUrl'] = $search->getPagingUrl($this->grav['uri']);
-            $this->grav['twig']->twig_vars['search_ranking'] = $search->ranking;
+            $twig = $this->grav['twig'];
+            $twig->twig_vars['query'] = $search->query;
+            $twig->twig_vars['selected_facets'] = $search->selectedFacets;
+            $twig->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
+            $twig->twig_vars['search_result'] = $search->results;
+            $twig->twig_vars['hitsNum'] = $search->hitsNum;
+            $twig->twig_vars['pagingUrl'] = $search->getPagingUrl($this->grav['uri']);
+            $twig->twig_vars['search_ranking'] = $search->ranking;
+            $twig->twig_vars['csw_url'] = $this->config()['csw']['url'];
+            $twig->twig_vars['rdf_url'] = $this->config()['rdf']['url'];
 
         }
     }
@@ -578,16 +580,10 @@ class InGridGravPlugin extends Plugin
         exit;
     }
 
-    public function onTwigExtensionsDetail(): void
+    public function onTwigExtensions(): void
     {
-        require_once(__DIR__ . '/twig/DetailTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new DetailTwigExtension());
-    }
-
-    public function onTwigExtensionsSearch(): void
-    {
-        require_once(__DIR__ . '/twig/SearchResultHitTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new SearchResultHitTwigExtension());
+        require_once(__DIR__ . '/twig/InGridGravTwigExtension.php');
+        $this->grav['twig']->twig->addExtension(new InGridGravTwigExtension());
     }
 
     /*

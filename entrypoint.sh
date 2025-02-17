@@ -115,6 +115,14 @@ if [ "$CODELIST_PASS" ]; then
   yq -i '.codelist_api.pass = env(CODELIST_PASS)' "$INGRID_GRAV_YAML"
 fi
 
+if [ "$CSW_URL" ]; then
+  yq -i '.csw.url = env(CSW_URL)' "$INGRID_GRAV_YAML"
+fi
+
+if [ "$RDF_URL" ]; then
+  yq -i '.rdf.url = env(RDF_URL)' "$INGRID_GRAV_YAML"
+fi
+
 
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php

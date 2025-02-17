@@ -3,11 +3,11 @@ namespace Grav\Plugin;
 
 use Grav\Common\Twig\Extension\GravExtension;
 
-class DetailTwigExtension extends GravExtension
+class InGridGravTwigExtension extends GravExtension
 {
     public function getName()
     {
-        return 'DetailTwigExtension';
+        return 'InGridGravTwigExtension';
     }
 
     // Functions
@@ -17,6 +17,7 @@ class DetailTwigExtension extends GravExtension
             new \Twig_SimpleFunction('addKeyValue', [$this, 'addKeyValueToMap']),
             new \Twig_SimpleFunction('convertUrlInText', [$this, 'convertUrlInText']),
             new \Twig_SimpleFunction('getValueFromCodelist', [$this, 'getValueFromCodelist']),
+            new \Twig_SimpleFunction('getActionLinkFromFacets', [$this, 'getActionLinkFromFacets']),
         ];
     }
 
@@ -88,4 +89,16 @@ class DetailTwigExtension extends GravExtension
         return $array;
     }
 
+    public function getActionLinkFromFacets($facets, $facetId, $facetValue): string|null {
+        for ($i=0; $i < count($facets); $i++) {
+            if ($facets[$i]->id == $facetId) {
+                for ($j = 0; $j < count($facets[$i]->items); $j++) {
+                    if ($facets[$i]->items[$j]->value == $facetValue) {
+                        return $facets[$i]->items[$j]->actionLink;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -187,190 +187,8 @@ SEARCH:
 
 SEARCH_RESULT:
     RESULTS_REQUESTED: Your search is being processed.
-    FACETE_TITLE: Categories
-    FACETE_TITLE_TOPIC: Topics
-    FACETE_TITLE_TOPIC_DIALOG: Topics
-    FACETE_TITLE_TOPIC_TOOLTIP: Topics
-    FACETE_TITLE_PROVIDER: Providers
-    FACETE_TITLE_PROVIDER_DIALOG: Providers
-    FACETE_TITLE_PROVIDER_TOOLTIP: Providers
-    FACETE_TITLE_METADATA_TREE: Catalogues
-    FACETE_TITLE_METADATA_TREE_TOOLTIP: Catalogues
-    FACETE_TITLE_TYPES: Datatypes
-    FACETE_TITLE_TYPES_TOOLTIP: Datatypes
-    FACETE_TITLE_TYPES_SINGLE: Datatype
-    FACETE_TITLE_TYPES_SINGLE_TOOLTIP: Datatype
-    FACETE_TITLE_METACLASS: Metadata
-    FACETE_TITLE_METACLASS_TOOLTIP: Metadata
-    FACETE_TITLE_SERVICE: Service
-    FACETE_TITLE_SERVICE_TOOLTIP: Service
-    FACETE_TITLE_TIME: Time
-    FACETE_TITLE_TIME_TOOLTIP: Time
-    FACETE_TITLE_AREA: Space
-    FACETE_TITLE_AREA_TOOLTIP: Space
-    FACETE_TITLE_AREA_ADDRESS: Spatial Relations
-    FACETE_TITLE_AREA_ADDRESS_TOOLTIP: Spatial Relations
-    FACETE_TITLE_MEASURES: Measures
-    FACETE_TITLE_MEASURES_TOOLTIP: Measures
-    FACETE_TITLE_ATTRIBUTE: Attribute
-    FACETE_TITLE_ATTRIBUTE_TOOLTIP: Attribute
-    FACETE_TITLE_TIMEREF: Time reference
-    FACETE_TITLE_TIMEREF_TOOLTIP: Time reference
-    FACETE_TITLE_TIMEREF_FROM: From
-    FACETE_TITLE_TIMEREF_TO: To
-    FACETE_TITLE_TIMEREF_DELETE: Delete
-    FACETE_TITLE_DATENFORMAT: Data format
-    FACETE_TITLE_CATEGORY: Category
-    FACETE_TITLE_WATERWAY: Waterway
-    FACETE_CATEGORY_PLUS: More
-    FACETE_CATEGORY_MINUS: Less
-    FACETE_CATEGORY_DELETE: Delete
-    FACETE_CATEGORY_DELETE_ALL: Delete all selections.
-    FACETE_CATEGORY_DELETE_LAST: Delete last selection.
-    FACETE_CATEGORY_DELETE_BTN: Delete
-    FACETE_CATEGORY_ERROR: No hits found for this selections.
-    FACETE_CATEGORY_NO_HITS: Facete can not create by this search term.
-    FACETE_TOPIC_DELETE: Delete
-    FACETE_MEASURES_RADIATION: Radiation
-    FACETE_MEASURES_AIR: Air
-    FACETE_MEASURES_WATER: Water
-    FACETE_MEASURES_MISC: Other
-    FACETE_SERVICE_PRESS: News-Bulletins
-    FACETE_SERVICE_PUBLICATION: Publications
-    FACETE_SERVICE_EVENT: Events
-    FACETE_METACLASS_JOB: Organisational Unit / Task
-    FACETE_METACLASS_JOB_TOOLTIP: Organisational Unit / Task
-    FACETE_METACLASS_MAP: Geo-Information / Map
-    FACETE_METACLASS_MAP_TOOLTIP: Geo-Information / Map
-    FACETE_METACLASS_DOCUMENT: Document / Report / Literature
-    FACETE_METACLASS_DOCUMENT_TOOLTIP: Document / Report / Literature
-    FACETE_METACLASS_GEOSERVICE: Geo-Service
-    FACETE_METACLASS_GEOSERVICE_TOOLTIP: Geo-Service
-    FACETE_METACLASS_PROJECT: Enterprise / Project / Program
-    FACETE_METACLASS_PROJECT_TOOLTIP: Enterprise / Project / Program
-    FACETE_METACLASS_DATABASE: Data Pooling / Data Base
-    FACETE_METACLASS_DATABASE_TOOLTIP: Data Pooling / Data Base
-    FACETE_METACLASS_SERVICE: Service / Application / Information System
-    FACETE_METACLASS_SERVICE_TOOLTIP: Service / Application / Information System
-    FACETE_METACLASS_INSPIRE: INSPIRE relevant
-    FACETE_METACLASS_INSPIRE_TOOLTIP: INSPIRE relevant
-    FACETE_DATATYPE_WWW: Websites
-    FACETE_DATATYPE_WWW_TOOLTIP: Websites
-    FACETE_DATATYPE_FIS: Subject data bases
-    FACETE_DATATYPE_FIS_TOOLTIP: Subject data bases
-    FACETE_DATATYPE_MAP: Map
-    FACETE_DATATYPE_MAP_TOOLTIP: Map
-    FACETE_DATATYPE_ADDRESS: Address
-    FACETE_DATATYPE_ADDRESS_TOOLTIP: Address
-    FACETE_DATATYPE_RESEARCH: Research Projects
-    FACETE_DATATYPE_RESEARCH_TOOLTIP: Research Projects
-    FACETE_DATATYPE_LAW: Law
-    FACETE_DATATYPE_LAW_TOOLTIP: Law
-    FACETE_DATATYPE_CATALOG: Catalogs
-    FACETE_DATATYPE_CATALOG_TOOLTIP: Catalogs
-    FACETE_DATATYPE_METADATA: Metadata
-    FACETE_DATATYPE_METADATA_TOOLTIP: Metadata
-    FACETE_DATATYPE_TOPIC: Topic
-    FACETE_DATATYPE_TOPIC_TOOLTIP: Topic
-    FACETE_DATATYPE_SERVICE: Service
-    FACETE_DATATYPE_SERVICE_TOOLTIP: Service
-    FACETE_DATATYPE_MEASURE: Measure
-    FACETE_DATATYPE_MEASURE_TOOLTIP: Measure
-    FACETE_DATATYPE_OTHER: Other
-    FACETE_DATATYPE_OTHER_TOOLTIP: Other
-    FACETE_DATATYPE_AERIAL_PHOTOS: Aerial photos
-    FACETE_DATATYPE_SIMULATION_DATA: Simulation data
-    FACETE_DATATYPE_SIMULATION_DATA_TOOLTIP: Simulation data
-    FACETE_DATATYPE_SIMULATION_PREPROCESSING: Pre-processing
-    FACETE_DATATYPE_SIMULATION_PREPROCESSING_TOOLTIP: Pre-processing
-    FACETE_DATATYPE_SIMULATION_VARIANT: Variant
-    FACETE_DATATYPE_SIMULATION_VARIANT_TOOLTIP: Variant
-    FACETE_DATATYPE_SIMULATION_SCENARIO: Scenario
-    FACETE_DATATYPE_SIMULATION_SCENARIO_TOOLTIP: Scenario
-    FACETE_DATATYPE_SIMULATION_MODEL: Simulation model
-    FACETE_DATATYPE_SIMULATION_MODEL_TOOLTIP: Simulation model
-    FACETE_DATATYPE_SIMULATION_RUN: Simulation run
-    FACETE_DATATYPE_SIMULATION_RUN_TOOLTIP: Simulation run
-    FACETE_DATATYPE_SIMULATION_FILE: Simulation file
-    FACETE_DATATYPE_SIMULATION_FILE_TOOLTIP: Simulation file
-    FACETE_DATATYPE_SIMULATION_POSTPROCESSING: Post-processing
-    FACETE_DATATYPE_SIMULATION_POSTPROCESSING_TOOLTIP: Post-processing
-    FACETE_DATATYPE_MEASUREMENT_DATA: Measurement data
-    FACETE_DATATYPE_MEASUREMENT_DATA_TOOLTIP: Measurement data
-    FACETE_TIME_0: All
-    FACETE_TIME_0_TOOLTIP: All
-    FACETE_TIME_1: Last month
-    FACETE_TIME_1_TOOLTIP: Last month
-    FACETE_TIME_2: last 3 months
-    FACETE_TIME_2_TOOLTIP: last 3 months
-    FACETE_TIME_3: last year
-    FACETE_TIME_3_TOOLTIP: last year
-    FACETE_TIME_4: last 5 years
-    FACETE_TIME_4_TOOLTIP: last 5 years
-    FACETE_TIME_5: older than 5 years
-    FACETE_TIME_5_TOOLTIP: older than 5 years
-    FACETE_AREA_MAP: Map
-    FACETE_AREA_MAP_SEARCH: Map search
-    FACETE_AREA_MAP_SEARCH_DIALOG: Map search
-    FACETE_AREA_MAP_SEARCH_TOOLTIP: Map search
-    FACETE_AREA_MAP_OPTIONS: 'Spatial Constraints: (Required)'
-    FACETE_AREA_MAP_OPTIONS_INSIDE: The spatial footprint of the result is contained in the search area
-    FACETE_AREA_MAP_OPTIONS_INCLUDE: The spatial footprint of the result contains the search area
-    FACETE_AREA_MAP_OPTIONS_INTERSECT: The spatial footprint of the result intersects the search area
-    FACETE_AREA_MAP_DELETE: Delete all
-    FACETE_AREA_NAME: Geothesaurus
-    FACETE_AREA_NAME_SEARCH: Geothesaurus Search
-    FACETE_AREA_NAME_SEARCH_DIALOG: Geothesaurus Search
-    FACETE_AREA_NAME_SEARCH_TOOLTIP: Geothesaurus Search
-    FACETE_AREA_NAME_SEARCH_ERROR: No hit found for this geothesaurus searchterm.
-    FACETE_AREA_NAME_SEARCH_BUTTON: Search
-    FACETE_AREA_NAME_KEYWORD: Geographic Name
-    FACETE_AREA_NAME_RELATIONS: Spatial Relations
-    FACETE_AREA_NAME_DELETE: Delete all
-    FACETE_AREA_ADDRESS: Spatial Reference
-    FACETE_AREA_ADDRESS_DIALOG: Spatial Reference
-    FACETE_AREA_ADDRESS_ADD: Add Spatial Reference
-    FACETE_AREA_ADDRESS_TOOLTIP: Add Spatial Reference
-    FACETE_AREA_ADDRESS_STREET: Street
-    FACETE_AREA_ADDRESS_ZIP: Postal Code
-    FACETE_AREA_ADDRESS_CITY: City
-    FACETE_AREA_ADDRESS_DELETE: Delete all
-    FACETE_ATTRIBUTE: Attributes
-    FACETE_ATTRIBUTE_DIALOG: Attribute
-    FACETE_ATTRIBUTE_ADD: Add Attributes
-    FACETE_ATTRIBUTE_TOOLTIP: Add Attributes
-    FACETE_ATTRIBUTE_PROJECT: 'Project Name:'
-    FACETE_ATTRIBUTE_INSTITUTION: 'Institution:'
-    FACETE_ATTRIBUTE_LEADER: 'Project Manager:'
-    FACETE_ATTRIBUTE_INVOLVED: 'Participants:'
-    FACETE_ATTRIBUTE_ORG: 'Project Sponsor:'
-    FACETE_ATTRIBUTE_TIME: 'Running Time:'
-    FACETE_ATTRIBUTE_FROM: 'From:'
-    FACETE_ATTRIBUTE_TO: 'To:'
-    FACETE_ATTRIBUTE_TIMEFORMAT: (DD.MM.YYYY)
-    FACETE_ATTRIBUTE_DELETE: Delete all
-    FACETE_WATERWAY_DONAU_TITLE: Danube
-    FACETE_WATERWAY_MDK_TITLE: Main-Danube-Canal
-    FACETE_WATERWAY_MLK_TITLE: Mittelland Canal
-    FACETE_WATERWAY_MOSEL_TITLE: Moselle
-    FACETE_WATERWAY_NOK_TITLE: Kiel Canal
-    FACETE_WATERWAY_NORDSEE_TITLE: North Sea
-    FACETE_WATERWAY_OSTSEE_TITLE: Baltic Sea
-    FACETE_WATERWAY_RHEIN_TITLE: Rhine
-    FACETE_WILDCARD_NAME_SEARCH_BUTTON: Search
-    FACETE_WILDCARD_NAME_DELETE: Delete all
-    FACETE_DIALOG_ALL_SELECT: Select all
-    FACETE_DIALOG_ALL_DELETE: Deselect all
-    FACETE_DIALOG_CANCEL: Cancel
-    FACETE_DIALOG_COMMIT: Submit selection
-    FACETE_DIALOG_TOOLTIP_ALL_SELECT: Select all
-    FACETE_DIALOG_TOOLTIP_ALL_DELETE: Deselect all
-    FACETE_DIALOG_TOOLTIP_CANCEL: Cancel
-    FACETE_DIALOG_TOOLTIP_COMMIT: Submit selection
-    FACETE_DIALOG_TOOLTIP_CLOSE: Close dialog
-    FACETE_RESULT_ENTRIES: 'Options with result:'
-    FACETE_SELECTED_ENTRIES: 'Selected options:'
-    FACETE_UNSELECTED_ENTRIES: 'More options:'
+    FACET_CATEGORY_PLUS: More
+    FACET_CATEGORY_MINUS: Less
     FACET_DELETE_SELECTION: Delete all restrictions
     FACET_DELETE_SELECTION_TOOLTIP: Removal of the expenditure limitations
     SEARCH_TEASER_PORTLET_TITLE: Search in categories
@@ -399,8 +217,6 @@ SEARCH_RESULT:
     EXPORT_CSV_HEADER:
     EXPORT_CSV_BUTTON_TILTE:
     EXPORT_CSV_BUTTON_TITLE_TOOLTIP:
-    FACETE_FILTER_UP: Scroll filter up
-    FACETE_FILTER_DOWN: Scroll filter down
 
 CATEGORIES:
     TITLE: Search in categories
@@ -1088,6 +904,10 @@ ERROR:
 
 THEME:
     ADMIN:
+        GENERAL:
+            TITLE: General
+        LAYOUT:
+            TITLE: Layout
         SYSTEM:
             TITLE: System
             HEADER:
@@ -1207,6 +1027,8 @@ THEME:
             PAGES_TO_404:
                 LABEL: Seiten ausschließen
                 HELP: Tragen Sie den Pfad der Portal-URL ein.
+        PAGES:
+            TITLE: Pages
         HOME:
             TITLE: Startseite
             SORT_MODULES_FIELDSET:
@@ -1249,15 +1071,7 @@ THEME:
                     LABEL: Maximale Anzahl der RSS Feeds
                     HELP: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
         SEARCH:
-            TITLE: Suche
-        HIT:
-            TITLE: Allgemein
-            CSW_URL:
-                LABEL: Link zum InGrid Interface-CSW
-                HELP: Trage Sie hier die URL zum InGrid Interface-CSW ein.
-            RDF_URL:
-                LABEL: Link zum InGrid Interface-RDF
-                HELP: Trage Sie hier die URL zum InGrid Interface-RDF ein.
+            TITLE: Suchergebnis
         HIT_SEARCH:
             TITLE: Suchergebnis
             EXCLUDE_FROM_SEARCH:
