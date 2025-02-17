@@ -93,7 +93,7 @@ RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav && composer update
 
 # Install yq
 RUN wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
- && chmod +x /usr/local/bin/yq \
+ && chmod +x /usr/local/bin/yq
 
 COPY entrypoint.sh /entrypoint.sh
 #COPY grav.ini $PHP_INI_DIR/conf.d/
