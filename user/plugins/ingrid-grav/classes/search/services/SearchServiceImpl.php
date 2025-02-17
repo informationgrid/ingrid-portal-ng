@@ -23,7 +23,7 @@ class SearchServiceImpl implements SearchService
     {
         $this->facet_config = $facetConfig;
         $this->exclude = $excludeFromSearch;
-        $this->api = $grav['config']->get('plugins.ingrid-grav.ingrid_api_url');
+        $this->api = $grav['config']->get('plugins.ingrid-grav.ingrid_api.url');
         $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];

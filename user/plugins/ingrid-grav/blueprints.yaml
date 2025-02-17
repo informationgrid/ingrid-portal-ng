@@ -30,20 +30,53 @@ form:
       validate:
         type: bool
 
-    ingrid_api_url:
+    ingrid_api:
+      type: section
+      title: PLUGIN_INGRID_GRAV.INGRID_API
+      underline: true
+    ingrid_api.url:
       type: text
-      label: PLUGIN_INGRID_GRAV.API_URL
-      help: PLUGIN_INGRID_GRAV.API_URL_HELP
+      label: PLUGIN_INGRID_GRAV.INGRID_API_URL
+      help: PLUGIN_INGRID_GRAV.INGRID_API_URL_HELP
+    ingrid_api.user:
+      type: text
+      label: PLUGIN_INGRID_GRAV.INGRID_API_USER
+      help: PLUGIN_INGRID_GRAV.INGRID_API_USER_HELP
+    ingrid_api.pass:
+      type: text
+      label: PLUGIN_INGRID_GRAV.INGRID_API_PASS
+      help: PLUGIN_INGRID_GRAV.INGRID_API_PASS_HELP
 
-    geo_api_url:
+    geo_api:
+      type: section
+      title: PLUGIN_INGRID_GRAV.GEO_API
+      underline: true
+    geo_api.url:
       type: text
       label: PLUGIN_INGRID_GRAV.GEO_API_URL
       help: PLUGIN_INGRID_GRAV.GEO_API_URL_HELP
-    geo_api_user:
+    geo_api.user:
       type: text
       label: PLUGIN_INGRID_GRAV.GEO_API_USER
       help: PLUGIN_INGRID_GRAV.GEO_API_USER_HELP
-    geo_api_pass:
+    geo_api.pass:
       type: text
       label: PLUGIN_INGRID_GRAV.GEO_API_PASS
       help: PLUGIN_INGRID_GRAV.GEO_API_PASS_HELP
+
+    codelist_api:
+      type: section
+      title: PLUGIN_INGRID_GRAV.CODELIST_API
+      underline: true
+    codelist_api.url:
+      type: text
+      label: PLUGIN_INGRID_GRAV.CODELIST_API_URL
+      help: PLUGIN_INGRID_GRAV.CODELIST_API_URL_HELP
+    codelist_api.user:
+      type: text
+      label: PLUGIN_INGRID_GRAV.CODELIST_API_USER
+      help: PLUGIN_INGRID_GRAV.CODELIST_API_USER_HELP
+    codelist_api.pass:
+      type: text
+      label: PLUGIN_INGRID_GRAV.CODELIST_API_PASS
+      help: PLUGIN_INGRID_GRAV.CODELIST_API_PASS_HELP

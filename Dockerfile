@@ -9,6 +9,8 @@ ENV PHP_APCU_VERSION v5.1.23
 # renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
 ENV PHP_YAML_VERSION 2.2.3
 
+ENV YQ_VERSION=v4.45.1
+
 ENV ADMIN_EMAIL portal@test.de
 ENV ADMIN_FULL_NAME "The Admin"
 ENV TZ='Europe/Berlin'
@@ -40,6 +42,7 @@ RUN groupadd --system foo; \
         libxslt1-dev \
         libxml2 \
         cron \
+        wget \
     ; \
     docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
@@ -87,6 +90,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-rss && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-codelist && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav && composer update
+
+# Install yq
+RUN wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
+ && chmod +x /usr/local/bin/yq \
 
 COPY entrypoint.sh /entrypoint.sh
 #COPY grav.ini $PHP_INI_DIR/conf.d/

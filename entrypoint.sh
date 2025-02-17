@@ -26,60 +26,43 @@ fi
 
 ADMIN_YAML=/var/www/"$GRAV_FOLDER"/user/accounts/admin.yaml
 
+# Add admin user
 if [ ! -f "$ADMIN_YAML" ] && [ -n "$ADMIN_PASSWORD" ]; then
   cp /usr/share/grav-admin/user/accounts/admin.yaml.template "$ADMIN_YAML"
+  yq -i '.email = env(ADMIN_EMAIL)' "$ADMIN_YAML"
+  yq -i '.fullname = env(ADMIN_FULL_NAME)' "$ADMIN_YAML"
+
   hashed_password=$(htpasswd -bnBC 8 "" "$ADMIN_PASSWORD" | grep -oP '\$2[ayb]\$.{56}')
-  sed -ri "s/email:/email: ${ADMIN_EMAIL}/" "$ADMIN_YAML"
-  sed -ri "s/fullname:/fullname: ${ADMIN_FULL_NAME}/" "$ADMIN_YAML"
-  echo "hashed_password: ${hashed_password}" >> "$ADMIN_YAML"
+  yq -i '.hashed_password = env(hashed_password)' "$ADMIN_YAML"
 fi
 
 SYSTEM_YAML=/var/www/"$GRAV_FOLDER"/user/config/system.yaml
 
-# add language part to yaml if it doesn't exist yet
-if ! grep -q "^languages:" "$SYSTEM_YAML"; then
-  echo "languages:" >> "$SYSTEM_YAML"
-  echo "  supported:" >> "$SYSTEM_YAML"
-  echo "    - de" >> "$SYSTEM_YAML"
-  if [ "$LANG_EN_ENABLE" ]; then
-    echo "    - en" >> "$SYSTEM_YAML"
-  fi
-  echo "  default_lang: de" >> "$SYSTEM_YAML"
-  echo "  include_default_lang: false" >> "$SYSTEM_YAML"
+# Add languages
+yq -i '.languages.supported = ["de"]' "$SYSTEM_YAML"
+yq -i '.languages.default_lang = "de"' "$SYSTEM_YAML"
+yq -i '.languages.include_default_lang = false' "$SYSTEM_YAML"
+if [ "$LANG_EN_ENABLE" ]; then
+  yq -i '.languages.supported = ["de", "en"]' "$SYSTEM_YAML"
+fi
+
+# Add theme
+yq -i '.pages.theme = env(THEME)' "$SYSTEM_YAML"
+
+# Update system markdown
+yq -i '.pages.markdown.auto_line_breaks = env(MARKDOWN_AUTO_LINE_BREAKS)' "$SYSTEM_YAML"
+
+# Update timezone
+if [ "$TZ" ]; then
+  yq -i '.pages.markdown.timezone = env(TZ)' "$SYSTEM_YAML"
 else
-  sed -ri "s/supported: null/supported:\n    - de/" "$SYSTEM_YAML"
-  if [ "$LANG_EN_ENABLE" ]; then
-    if ! grep -q "^    - en" "$SYSTEM_YAML"; then
-      sed -i -e "s@^    - de@    - de\n    - en@" "$SYSTEM_YAML"
-    fi
-  fi
-  sed -ri "s/default_lang: null/default_lang: de/" "$SYSTEM_YAML"
-  sed -ri "s/include_default_lang: true/include_default_lang: false/" "$SYSTEM_YAML"
+  yq -i '.pages.markdown.timezone = "Europe/Berlin"' "$SYSTEM_YAML"
 fi
-
-if ! grep -q "^pages:" "$SYSTEM_YAML"; then
-  echo "pages:" >> "$SYSTEM_YAML"
-  echo "  theme: ${THEME}" >> "$SYSTEM_YAML"
-else
-  sed -ri "s/theme: quark/theme: ${THEME}/" "$SYSTEM_YAML"
-fi
-
-# Update system
-if [ "$MARKDOWN_AUTO_LINE_BREAKS" ]; then
-  if ! grep -q "^  markdown:" "$SYSTEM_YAML"; then
-    echo "  markdown:" >> "$SYSTEM_YAML"
-    echo "    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}" >> "$SYSTEM_YAML"
-  else
-    sed -i -e "s@    auto_line_breaks:.*@    auto_line_breaks: ${MARKDOWN_AUTO_LINE_BREAKS}@" ${SYSTEM_YAML}
-  fi
-fi
-
-sed -ri "s/timezone: null/timezone: 'Europe/Berlin'/" "$SYSTEM_YAML"
 
 # copy default cms pages
 if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms" ]; then
-  if ! grep -q "theme_add_cms:" "$SYSTEM_YAML"; then
-    echo "theme_add_cms: true" >> "$SYSTEM_YAML"
+  if ! yq '.theme_add_cms'; then
+    yq -i '.theme_add_cms = true' "$SYSTEM_YAML"
     cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/cms/* /var/www/"$GRAV_FOLDER"/user/pages/
   fi
 fi
@@ -100,21 +83,38 @@ if [ "$CODELIST_API" ]; then
   fi
 fi
 
+INGRID_GRAV_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/ingrid-grav/ingrid-grav.yaml
+
 # Update ingrid api
 if [ "$INGRID_API" ]; then
-  sed -i -e "s@ingrid_api_url:.*@ingrid_api_url: \'${INGRID_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
+  yq -i '.ingrid_api.url = env(INGRID_API)' "$INGRID_GRAV_YAML"
 fi
 
 # Update geo api
 if [ "$GEO_API_URL" ]; then
-  sed -i -e "s@geo_api_url:.*@geo_api_url: \'${GEO_API_URL}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
-  if [ "$GEO_API_USER" ]; then
-    sed -i -e "s@geo_api_user:.*@geo_api_user: ${GEO_API_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
-  fi
-  if [ "$GEO_API_PASS" ]; then
-    sed -i -e "s@geo_api_pass:.*@geo_api_pass: ${GEO_API_PASS}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-grav/ingrid-grav.yaml
-  fi
+  yq -i '.geo_api.url = env(GEO_API_URL)' "$INGRID_GRAV_YAML"
 fi
+
+if [ "$GEO_API_USER" ]; then
+  yq -i '.geo_api.user = env(GEO_API_USER)' "$INGRID_GRAV_YAML"
+fi
+
+if [ "$GEO_API_PASS" ]; then
+  yq -i '.geo_api.pass = env(GEO_API_PASS)' "$INGRID_GRAV_YAML"
+fi
+
+if [ "$CODELIST_API" ]; then
+  yq -i '.codelist_api.url = env(CODELIST_API)' "$INGRID_GRAV_YAML"
+fi
+
+if [ "$CODELIST_USER" ]; then
+  yq -i '.codelist_api.user = env(CODELIST_USER)' "$INGRID_GRAV_YAML"
+fi
+
+if [ "$CODELIST_PASS" ]; then
+  yq -i '.codelist_api.pass = env(CODELIST_PASS)' "$INGRID_GRAV_YAML"
+fi
+
 
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php

@@ -162,9 +162,9 @@ class DetailParserMetadataIdfISO
     {
 
         $config = Grav::instance()['config'];
-        $geo_api_url = getenv('GEO_API_URL') !== false ? getenv('GEO_API_URL') : $config->get('plugins.ingrid-grav.geo_api_url');
-        $geo_api_user = getenv('GEO_API_USER') !== false ? getenv('GEO_API_USER') : $config->get('plugins.ingrid-grav.geo_api_user');
-        $geo_api_pass = getenv('GEO_API_PASS') !== false ? getenv('GEO_API_PASS') : $config->get('plugins.ingrid-grav.geo_api_pass');
+        $geo_api_url = $config->get('plugins.ingrid-grav.geo_api.url');
+        $geo_api_user = $config->get('plugins.ingrid-grav.geo_api.user');
+        $geo_api_pass = $config->get('plugins.ingrid-grav.geo_api.pass');
         $geo_api = [
             'url' => $geo_api_url,
             'user' => $geo_api_user,

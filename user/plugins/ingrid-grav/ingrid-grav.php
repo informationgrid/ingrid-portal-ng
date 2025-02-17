@@ -66,7 +66,7 @@ class InGridGravPlugin extends Plugin
     {
 
         $config = $this->config();
-        $this->configApiUrl = $config['ingrid_api_url'];
+        $this->configApiUrl = $config['ingrid_api']['url'];
         $this->configApiUrlCatalog = $this->configApiUrl . '/portal/catalogs';
         $this->lang = $this->grav['language']->getLanguage();
 
@@ -79,7 +79,10 @@ class InGridGravPlugin extends Plugin
 
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
+
+        // Get rest content
         switch ($uri_path) {
+
             case '/utils/mimetype':
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
@@ -91,42 +94,6 @@ class InGridGravPlugin extends Plugin
                 ]);
                 break;
 
-            case '/datenquellen':
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesDatasource', 0]
-                ]);
-                break;
-
-            case '/hilfe':
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesHelp', 0]
-                ]);
-                break;
-
-            case '/datenkataloge':
-                $paramParentId = $uri->query('parentId') || "";
-                $paramIndex = $uri->query('index') || "";
-
-                if ($paramParentId && $paramIndex) {
-                    // Parent loading
-                    $this->enable([
-                        'onPageInitialized' => ['renderCustomTemplateCatalog', 0]
-                    ]);
-                } else {
-                    // Initial loading
-                    $this->enable([
-                        'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
-                    ]);
-                }
-                break;
-
-            case '/trefferanzeige':
-                // Detaildarstellung
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesDetail', 0],
-                    'onTwigExtensions' => ['onTwigExtensionsDetail', 0],
-                ]);
-                break;
             case '/detail/createZip':
                 // Create zip request
                 $this->enable([
@@ -139,45 +106,14 @@ class InGridGravPlugin extends Plugin
                     'onPageInitialized' => ['renderCustomTemplateDetailGetZip', 0],
                 ]);
                 break;
-
-            case '':
-            case '/':
-                // Startseite
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
-                    'onTwigExtensions' => ['onTwigExtensionsSearch', 0],
-                ]);
-                break;
-
-            case '/freitextsuche':
-                // Suche
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
-                    'onTwigExtensions' => ['onTwigExtensionsSearch', 0],
-                ]);
-                break;
-
-            case '/informationsanbieter':
-                // Informationsanbieter
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesProviders', 0],
-                ]);
-                break;
-
-            case '/kartendienste':
-                // UVP legend
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
-                ]);
-                break;
-
             case '/map/mapMarker':
-                 $this->enable([
+                $this->enable([
                     'onTwigSiteVariables' => ['onTwigSiteVariablesMapMarkers', 0],
                 ]);
                 break;
 
             default:
+                // Get page content
                 $this->enable([
                     'onPageInitialized' => ['onPageInitialized', 0],
                 ]);
@@ -206,7 +142,6 @@ class InGridGravPlugin extends Plugin
     public function onPageInitialized(): void
     {
         // Check themes config for redirected pages
-
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
         $page = $this->grav['pages']->find($uri_path);
@@ -220,6 +155,81 @@ class InGridGravPlugin extends Plugin
                 }
             }
         }
+
+        // Get pages content
+        switch ($page->folder()) {
+
+            case 'datasource':
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesDatasource', 0]
+                ]);
+                break;
+
+            case 'help':
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesHelp', 0]
+                ]);
+                break;
+
+            case 'catalog':
+                $paramParentId = $uri->query('parentId') || "";
+                $paramIndex = $uri->query('index') || "";
+
+                if ($paramParentId && $paramIndex) {
+                    // Parent loading
+                    $this->enable([
+                        'onPageInitialized' => ['renderCustomTemplateCatalog', 0]
+                    ]);
+                } else {
+                    // Initial loading
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
+                    ]);
+                }
+                break;
+
+            case 'detail':
+                // Detaildarstellung
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesDetail', 0],
+                    'onTwigExtensions' => ['onTwigExtensionsDetail', 0],
+                ]);
+                break;
+
+            case 'home':
+                // Startseite
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
+                    'onTwigExtensions' => ['onTwigExtensionsSearch', 0],
+                ]);
+                break;
+
+            case 'search':
+                // Suche
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
+                    'onTwigExtensions' => ['onTwigExtensionsSearch', 0],
+                ]);
+                break;
+
+            case 'provider':
+                // Informationsanbieter
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesProvider', 0],
+                ]);
+                break;
+
+            case 'map':
+                // UVP legend
+                $this->enable([
+                    'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
+                ]);
+                break;
+
+            default:
+                break;
+        }
+
     }
 
     /**
@@ -529,7 +539,7 @@ class InGridGravPlugin extends Plugin
         }
     }
 
-    public function onTwigSiteVariablesProviders(): void
+    public function onTwigSiteVariablesProvider(): void
     {
 
         if (!$this->isAdmin()) {
@@ -624,8 +634,8 @@ class InGridGravPlugin extends Plugin
         $grav = Grav::instance();
         return array(
             array(
-            'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.0'),
-            'value' => '0'
+                'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.0'),
+                'value' => '0'
             ),
             array(
                 'text' => $grav['language']->translate('THEME.ADMIN.HIT_DETAIL.ADDRESS_ORDER.OPTIONS.1'),

@@ -1,5 +1,13 @@
 enabled: true
-ingrid_api_url: https://api.dev.informationgrid.eu
-geo_api_url: 'https://geo-api.informationgrid.eu/v1/convert?exportFormat='
-geo_api_user: admin
-geo_api_pass:
+ingrid_api:
+  url: 'https://api.dev.informationgrid.eu'
+  user:
+  pass:
+geo_api:
+  url: 'https://geo-api.informationgrid.eu/v1/convert?exportFormat='
+  user:
+  pass:
+codelist_api:
+  url: 'https://dev.informationgrid.eu/codelist-repo/rest/getCodelists'
+  user:
+  pass:
