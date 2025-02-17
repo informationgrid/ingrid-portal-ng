@@ -42,7 +42,7 @@ SYSTEM_YAML=/var/www/"$GRAV_FOLDER"/user/config/system.yaml
 yq -i '.languages.supported = ["de"]' "$SYSTEM_YAML"
 yq -i '.languages.default_lang = "de"' "$SYSTEM_YAML"
 yq -i '.languages.include_default_lang = false' "$SYSTEM_YAML"
-if [ "$LANG_EN_ENABLE" ]; then
+if [ "$ENABLE_LANG_EN" ]; then
   yq -i '.languages.supported = ["de", "en"]' "$SYSTEM_YAML"
 fi
 
