@@ -25,41 +25,41 @@
                     {% set queries = queries|merge({
                         (selected_facet) : values|split(',')|filter(v => v != value)|join(',')
                     }) %}
-                    {% if facetItem %}
-                        {% set label = ('FACETS.FACET-LABEL.' ~ selected_facet ~ '.' ~ facetItem)|upper %}
-                        {% if search_result.facets %}
-                            {% set break = false %}
-                            {% for facetItem in search_result.facets if not break %}
-                                {% if selected_facet == facetItem.id %}
-                                    {% set breakChild = false %}
-                                    {% for facet in facetItem.items if not breakChild %}
-                                        {% if value == facet.value %}
-                                            {% set label = facet.label %}
-                                            {% set breakChild = true %}
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% set break = true %}
-                                {% elseif selected_facet == facetItem.toggle.id %}
-                                    {% set label = facetItem.toggle.label.pill %}
-                                    {% set queries = queries|merge({
-                                        (facetItem.toggle.id) : facetItem.toggle.active ? '' : facetItem.id
-                                    }) %}
-                                    {% set break = true %}
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                        {% for key, param in queries %}
-                            {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
-                        {% endfor %}
-                        <a href="{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
-                            {% set categoryLabel = ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t %}
-                            {% if categoryLabel == ('FACETS.FACET-LABEL.' ~ selected_facet)|upper %}
-                                {{ label|t }}
-                            {% else %}
-                                {{ ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t }}: {{ label|t }}
+                    {% if search_result.facets %}
+                        {% set label = '' %}
+                        {% set break = false %}
+                        {% for facetItem in search_result.facets if not break %}
+                            {% if selected_facet == facetItem.id %}
+                                {% set breakChild = false %}
+                                {% for facet in facetItem.items if not breakChild %}
+                                    {% if value == facet.value %}
+                                        {% set label = facet.label %}
+                                        {% set breakChild = true %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% set break = true %}
+                            {% elseif selected_facet == facetItem.toggle.id %}
+                                {% set label = facetItem.toggle.label.pill %}
+                                {% set queries = queries|merge({
+                                    (facetItem.toggle.id) : facetItem.toggle.active ? '' : facetItem.id
+                                }) %}
+                                {% set break = true %}
                             {% endif %}
-                            <span class="ic-ic-cross"></span>
-                        </a>
+                        {% endfor %}
+                        {% if label %}
+                            {% for key, param in queries %}
+                                {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                            {% endfor %}
+                            <a href="{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
+                                {% set categoryLabel = ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t %}
+                                {% if categoryLabel == ('FACETS.FACET-LABEL.' ~ selected_facet)|upper %}
+                                    {{ label|t }}
+                                {% else %}
+                                    {{ ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t }}: {{ label|t }}
+                                {% endif %}
+                                <span class="ic-ic-cross"></span>
+                            </a>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -87,7 +87,11 @@
             {% endif %}
         {% endfor %}
         {% for key, param in queries %}
-            {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' %}
+            {% if param == 'q' or param == 'ranking'%}
+                {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' ~ uri.query(param)|url_encode %}
+            {% else %}
+                {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' %}
+            {% endif %}
         {% endfor %}
         {% if selected_facets %}
             {% set break = false %}
