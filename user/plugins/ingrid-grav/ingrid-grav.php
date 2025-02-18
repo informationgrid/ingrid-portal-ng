@@ -157,77 +157,78 @@ class InGridGravPlugin extends Plugin
             }
         }
 
-        // Get pages content
-        switch ($page->folder()) {
+        if ($page) {
+            // Get pages content
+            switch ($page->folder()) {
 
-            case 'datasource':
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesDatasource', 0]
-                ]);
-                break;
-
-            case 'help':
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesHelp', 0]
-                ]);
-                break;
-
-            case 'catalog':
-                $paramParentId = $uri->query('parentId') || "";
-                $paramIndex = $uri->query('index') || "";
-
-                if ($paramParentId && $paramIndex) {
-                    // Parent loading
+                case 'datasource':
                     $this->enable([
-                        'onPageInitialized' => ['renderCustomTemplateCatalog', 0]
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesDatasource', 0]
                     ]);
-                } else {
-                    // Initial loading
+                    break;
+
+                case 'help':
                     $this->enable([
-                        'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesHelp', 0]
                     ]);
-                }
-                break;
+                    break;
 
-            case 'detail':
-                // Detaildarstellung
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesDetail', 0],
-                ]);
-                break;
+                case 'catalog':
+                    $paramParentId = $uri->query('parentId') || "";
+                    $paramIndex = $uri->query('index') || "";
 
-            case 'home':
-                // Startseite
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
-                ]);
-                break;
+                    if ($paramParentId && $paramIndex) {
+                        // Parent loading
+                        $this->enable([
+                            'onPageInitialized' => ['renderCustomTemplateCatalog', 0]
+                        ]);
+                    } else {
+                        // Initial loading
+                        $this->enable([
+                            'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
+                        ]);
+                    }
+                    break;
 
-            case 'search':
-                // Suche
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
-                ]);
-                break;
+                case 'detail':
+                    // Detaildarstellung
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesDetail', 0],
+                    ]);
+                    break;
 
-            case 'provider':
-                // Informationsanbieter
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesProvider', 0],
-                ]);
-                break;
+                case 'home':
+                    // Startseite
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesHome', 0],
+                    ]);
+                    break;
 
-            case 'map':
-                // UVP legend
-                $this->enable([
-                    'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
-                ]);
-                break;
+                case 'search':
+                    // Suche
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesSearch', 0],
+                    ]);
+                    break;
 
-            default:
-                break;
+                case 'provider':
+                    // Informationsanbieter
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesProvider', 0],
+                    ]);
+                    break;
+
+                case 'map':
+                    // UVP legend
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
+                    ]);
+                    break;
+
+                default:
+                    break;
+            }
         }
-
     }
 
     /**
