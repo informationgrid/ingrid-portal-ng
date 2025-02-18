@@ -24,6 +24,19 @@ en:
       USER_HELP: Benutzername zu Codelist-API. Per Docker-ENV "CODELIST_API_USER" setzbar.
       PASS: Passwort (htaccess)
       PASS_HELP: Passwort zu Codelist-API. Per Docker-ENV "CODELIST_API_PASS" setzbar.
+      CODELIST_INDEX_STATUS: Codelists indexing
+      ENABLE_INDEX_SCHEDULED_JOB: Enable index scheduled job
+      ENABLE_INDEX_SCHEDULED_JOB_HELP: Use the Grav Scheduler to kick off a background index job
+      SCHEDULED_JOB_FREQUENCY: Scheduled job frequency
+      SCHEDULED_JOB_LOG_FILE: Scheduled job log file
+      BUTTON_CODELIST_INDEXING: Indexing codelists
+      BUTTON_CODELIST_REINDEXING: Re-Indexing codelists
+      INDEXING_CODELIST_SUCCESS: '%s codelists reindexed on %s.'
+      INDEXING_CODELIST_UNSUCCESS: 'Error read codelist'
+      INDEXING_CODELIST_FAILED: 'Last indexing has failed on %s.'
+      INDEXING_CODELIST_EMPTY: Index not created.
+      INDEXING_UNPERMISSION: Insufficient permissions to reindex the search engine database.
+      GRAV_MENU_TEXT: Reindexing codelists
     CSW:
       TITLE: CSW
       URL: Link zum Interface-CSW
@@ -32,6 +45,21 @@ en:
       TITLE: RDF
       URL: Link zum Interface-RDF
       URL_HELP: Trage Sie hier die URL zum Interface-RDF ein.
+    RSS:
+      TITLE: RSS
+      RSS_INDEX_STATUS: RSS indexing
+      ENABLE_INDEX_SCHEDULED_JOB: Enable index scheduled job
+      ENABLE_INDEX_SCHEDULED_JOB_HELP: Use the Grav Scheduler to kick off a background index job
+      SCHEDULED_JOB_FREQUENCY: Scheduled job frequency
+      SCHEDULED_JOB_LOG_FILE: Scheduled job log file
+      BUTTON_RSS_INDEXING: Indexing RSS
+      BUTTON_RSS_REINDEXING: Re-Indexing RSS
+      INDEXING_RSS_SUCCESS: '%s RSS reindexed on %s.'
+      INDEXING_RSS_UNSUCCESS: 'Error read RSS'
+      INDEXING_RSS_FAILED: 'Last indexing has failed on %s.'
+      INDEXING_RSS_EMPTY: Index not created.
+      INDEXING_UNPERMISSION: Insufficient permissions to reindex the search engine database.
+      GRAV_MENU_TEXT: Reindexing RSS
 de:
   PLUGIN_INGRID_GRAV:
     INGRID_API:
@@ -58,6 +86,19 @@ de:
       USER_HELP: Benutzername zu Codelist-API. Per Docker-ENV "CODELIST_API_USER" setzbar.
       PASS: Passwort (htaccess)
       PASS_HELP: Passwort zu Codelist-API. Per Docker-ENV "CODELIST_API_PASS" setzbar.
+      CODELIST_INDEX_STATUS: Codelisten Indexierung
+      ENABLE_INDEX_SCHEDULED_JOB: Aktivierung Indexierung Zeitplan-Job
+      ENABLE_INDEX_SCHEDULED_JOB_HELP: Verwende den Grav Scheduler um dem Job im Hintergrund laufen zu lassen
+      SCHEDULED_JOB_FREQUENCY: Zeitplan Frequenz
+      SCHEDULED_JOB_LOG_FILE: Zeitplan Log-Datei
+      BUTTON_CODELIST_INDEXING: Codelisten indexieren
+      BUTTON_CODELIST_REINDEXING: Codelisten reindexieren
+      INDEXING_CODELIST_SUCCESS: '%s Codelisten wurden am %s indexiert.'
+      INDEXING_CODELIST_UNSUCCESS: Codelisten konnten nicht geladen werden.
+      INDEXING_CODELIST_FAILED: 'Letzte Indexierung am %s fehlerhaft.'
+      INDEXING_CODELIST_EMPTY: Noch nicht indexiert.
+      INDEXING_UNPERMISSION: Unzureichende Berechtigungen zum Neuindizieren.
+      GRAV_MENU_TEXT: Codelisten (re)indexieren
     CSW:
       TITLE: CSW
       URL: Link zum Interface-CSW
@@ -66,3 +107,18 @@ de:
       TITLE: RDF
       URL: Link zum Interface-RDF
       URL_HELP: Trage Sie hier die URL zum Interface-RDF ein.
+    RSS:
+      TITLE: RSS
+      RSS_INDEX_STATUS: RSS Indexierung
+      ENABLE_INDEX_SCHEDULED_JOB: Aktivierung Indexierung Zeitplan-Job
+      ENABLE_INDEX_SCHEDULED_JOB_HELP: Verwende den Grav Scheduler um dem Job im Hintergrund laufen zu lassen
+      SCHEDULED_JOB_FREQUENCY: Zeitplan Frequenz
+      SCHEDULED_JOB_LOG_FILE: Zeitplan Log-Datei
+      BUTTON_RSS_INDEXING: RSS indexieren
+      BUTTON_RSS_REINDEXING: RSS reindexieren
+      INDEXING_RSS_SUCCESS: '%s RSS wurden am %s indexiert.'
+      INDEXING_RSS_UNSUCCESS: RSS konnte nicht geladen werden.
+      INDEXING_RSS_FAILED: 'Letzte Indexierung am %s fehlerhaft.'
+      INDEXING_RSS_EMPTY: Noch nicht indexiert.
+      INDEXING_UNPERMISSION: Unzureichende Berechtigungen zum Neuindizieren.
+      GRAV_MENU_TEXT: RSS (re)indexieren

@@ -1,6 +1,7 @@
 <?php
 
 namespace Grav\Plugin;
+use Grav\Common\Grav;
 use SimpleXMLElement;
 use Exception;
 
@@ -10,8 +11,9 @@ class RssIndex
     {
     }
 
-    public static function indexJob(array $feeds, $log): void
+    public static function indexJob(array $feeds): void
     {
+        $log = Grav::instance()['log'];
         $log->debug('Start job: RSS Indexing');
         $array = array();
         foreach($feeds as $feed) {
@@ -36,8 +38,9 @@ class RssIndex
         $log->debug('Finished job: RSS Indexing');
     }
 
-    private static function getRssFeedItems(array $feed, array &$array, $log): void
+    private static function getRssFeedItems(array $feed, array &$array): void
     {
+        $log = Grav::instance()['log'];
         $url = $feed["url"];
         $lang = $feed["lang"];
         $summary = $feed["summary"];

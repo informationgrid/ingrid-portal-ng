@@ -2,14 +2,14 @@
 namespace Grav\Plugin\Console;
 
 use Grav\Console\ConsoleCommand;
-use Grav\Plugin\InGridRssPlugin;
+use Grav\Plugin\Codelist;
 
 /**
- * Class RssIndexCommand
+ * Class CodelistIndexCommand
  *
  * @package Grav\Plugin\Console
  */
-class RssIndexCommand extends ConsoleCommand
+class CodelistIndexCommand extends ConsoleCommand
 {
     /**
      * @var array
@@ -22,9 +22,9 @@ class RssIndexCommand extends ConsoleCommand
     protected function configure(): void
     {
         $this
-            ->setName('index')
-            ->setDescription("Indexing rss")
-            ->setHelp('The <info>index command</info> re-indexes the rss feeds.');
+            ->setName('index-codelist')
+            ->setDescription("Indexing codelist")
+            ->setHelp('The <info>index command</info> re-indexes the codelist.');
     }
 
     /**
@@ -38,7 +38,7 @@ class RssIndexCommand extends ConsoleCommand
         $this->output->writeln('<magenta>Re-indexing</magenta>');
         $this->output->writeln('');
         $start = microtime(true);
-        $output = InGridRssPlugin::indexJob();
+        $output = Codelist::indexJob();
         $this->output->write($output);
         $this->output->writeln('');
         $end =  number_format(microtime(true) - $start,1);

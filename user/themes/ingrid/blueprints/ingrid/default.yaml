@@ -15,7 +15,7 @@ form:
               active: 1
               classes: side-tabs
               fields:
-    ## Tab system
+    ## Tab layout
                 tab_layout:
                   type: tab
                   title: THEME.ADMIN.LAYOUT.TITLE
@@ -330,6 +330,39 @@ form:
                               show_root: false
                               show_all: false
                               limit_levels: 2
+                ## Tab rss
+                tab_rss:
+                  type: tab
+                  title: THEME.ADMIN.RSS.TITLE
+                  fields:
+                    rss:
+                      type: fieldset
+                      title: THEME.ADMIN.RSS.RSS_FEED
+                      text: THEME.ADMIN.RSS.RSS_FEED_HELP
+                      fields:
+                        .feeds:
+                          type: list
+                          label: THEME.ADMIN.RSS.RSS_LABEL
+                          style: vertical
+                          controls: bottom
+                          collapsed: true
+                          default: []
+                          fields:
+                            .url:
+                              type: text
+                              label: THEME.ADMIN.RSS.RSS_ENTRY_URL
+                            .summary:
+                              type: text
+                              label: THEME.ADMIN.RSS.RSS_ENTRY_DESCRIPTION
+                            .provider:
+                              type: text
+                              label: THEME.ADMIN.RSS.RSS_ENTRY_PROVIDER
+                            .lang:
+                              type: text
+                              label: THEME.ADMIN.RSS.RSS_ENTRY_LANG
+                            .category:
+                              type: text
+                              label: THEME.ADMIN.RSS.RSS_ENTRY_CATEGORY
     ## Tab system
                 tab_system:
                   type: tab

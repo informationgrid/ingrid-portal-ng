@@ -8,8 +8,6 @@
 /user/plugins/login/
 /user/plugins/markdown-notices/
 /user/plugins/problems/
-/user/plugins/ingrid-rss/vendor/
-/user/plugins/ingrid-codelist/vendor/
 /user/plugins/ingrid-grav/vendor/
 /user/themes/ingrid/node_modules
 /logs

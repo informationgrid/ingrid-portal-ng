@@ -1,6 +1,7 @@
 <?php
 
 namespace Grav\Plugin;
+use Grav\Common\Grav;
 use SimpleXMLElement;
 
 class CodelistIndex
@@ -9,10 +10,12 @@ class CodelistIndex
     {
     }
 
-    public static function indexJob(string $api, string $user, string $pass, $gravLang, $log): array
+    public static function indexJob(string $api, string $user, string $pass): array
     {
+        $log = Grav::instance()['log'];
+        $lang = Grav::instance()['language'];
         $log->debug('Start job: Codelist Synchronisation');
-        $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_UNSUCCESS']);
+        $msg = $lang->translate(['PLUGIN_INGRID_GRAV.CODELIST_API.INDEXING_CODELIST_UNSUCCESS']);
         $status = false;
 
         $opts = [
@@ -38,7 +41,7 @@ class CodelistIndex
                 "data" => $codelists
             );
             self::writeJsonFile(json_encode($result, JSON_PRETTY_PRINT), "user-data://codelists", "codelists.json");
-            $msg = $gravLang->translate(['PLUGIN_INGRID_CODELIST.INDEXING_CODELIST_SUCCESS', count($codelists), $time]);
+            $msg = $lang->translate(['PLUGIN_INGRID_GRAV.CODELIST_API.INDEXING_CODELIST_SUCCESS', count($codelists), $time]);
             $status = true;
         } else {
             $log->warn('Codelists could not be synchronized');

@@ -11,7 +11,16 @@ codelist_api:
   url: 'https://dev.informationgrid.eu/codelist-repo/rest/getCodelists'
   user:
   pass:
+  scheduled_index:
+    enabled: true
+    at: '*/5 * * * *'
+    logs: logs/ingrid-codelist-index.out
 csw:
   url: 'https://dev.informationgrid.eu/csw?REQUEST=GetRecordById&SERVICE=CSW&VERSION=2.0.2&id='
 rdf:
   url: null
+rss:
+  scheduled_index:
+    enabled: true
+    at: '*/15 * * * *'
+    logs: null

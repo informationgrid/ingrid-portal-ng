@@ -6,8 +6,7 @@ use Grav\Common\Plugin;
 use Grav\Common\Grav;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Pages;
-use Grav\Common\Twig\Twig;
-use GuzzleHttp\Client;
+use RocketTheme\Toolbox\Event\Event;
 
 /**
  * Class InGridGravPlugin
@@ -42,9 +41,12 @@ class InGridGravPlugin extends Plugin
                 // ['autoload', 100000],
                 ['onPluginsInitialized', 0]
             ],
+            'onAdminMenu'              => ['onAdminMenu', 0],
+            'onAdminTaskExecute'       => ['onAdminTaskExecute', 0],
             'onTwigTemplatePaths'      => ['onTwigTemplatePaths', 0],
             'onAdminTwigTemplatePaths' => ['onAdminTwigTemplatePaths', 0],
             'onPagesInitialized'       => ['onPagesInitialized', 0],
+            'onSchedulerInitialized'   => ['onSchedulerInitialized', 0],
             'onTwigLoader'             => ['onTwigLoader', 0],
         ];
     }
@@ -72,7 +74,7 @@ class InGridGravPlugin extends Plugin
 
         if ($this->isAdmin()) {
             $this->enable([
-                'onTwigSiteVariables' => ['onTwigAdminVariablesDatasource', 0]
+                'onTwigSiteVariables' => ['onTwigAdminVariables', 0]
             ]);
             return;
         }
@@ -82,7 +84,6 @@ class InGridGravPlugin extends Plugin
 
         // Get rest content
         switch ($uri_path) {
-
             case '/utils/mimetype':
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
@@ -125,6 +126,55 @@ class InGridGravPlugin extends Plugin
     public function onTwigTemplatePaths(): void
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+    }
+
+    public function onSchedulerInitialized(Event $e): void
+    {
+        $codelist = new Codelist($this->grav);
+        $codelist->setScheduler($e);
+
+        $rss = new Rss($this->grav);
+        $rss->setScheduler($e);
+    }
+
+    /**
+     * Add reindex button to the admin QuickTray
+     */
+    public function onAdminMenu(): void
+    {
+        $this->grav['twig']->plugins_quick_tray['InGrid Codelist'] = [
+            'authorize' => 'taskReindexCodelist',
+            'hint' => $this->grav['language']->translate(['PLUGIN_INGRID_GRAV.CODELIST_API.GRAV_MENU_TEXT']),
+            'class' => 'codelist-reindex',
+            'icon' => 'fa-book'
+        ];
+        $this->grav['twig']->plugins_quick_tray['InGrid RSS'] = [
+            'authorize' => 'taskReindexRss',
+            'hint' => $this->grav['language']->translate(['PLUGIN_INGRID_GRAV.RSS.GRAV_MENU_TEXT']),
+            'class' => 'rss-reindex',
+            'icon' => 'fa-rss'
+        ];
+    }
+
+    /**
+     * Handle the Reindex task from the admin
+     *
+     * @param Event $e
+     */
+    public function onAdminTaskExecute(Event $e): void
+    {
+        switch ($e['method']) {
+            case 'taskReindexCodelist':
+                $codelist = new Codelist($this->grav);
+                $codelist->taskReindex($e);
+                break;
+            case 'taskReindexRss':
+                $rss = new Rss($this->grav);
+                $rss->taskReindex($e);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -222,6 +272,13 @@ class InGridGravPlugin extends Plugin
                     // UVP legend
                     $this->enable([
                         'onTwigSiteVariables' => ['onTwigSiteVariablesMapLegend', 0],
+                    ]);
+                    break;
+
+                case 'rss':
+                    // Startseite
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesRss', 0],
                     ]);
                     break;
 
@@ -355,12 +412,25 @@ class InGridGravPlugin extends Plugin
         }
     }
 
-    public function onTwigAdminVariablesDatasource(): void
+    public function onTwigAdminVariables(): void
     {
         if ($this->isAdmin()) {
+            $twig = $this->grav['twig'];
             try {
                 $datasource = new Datasource($this->grav, $this->configApiUrlCatalog);
-                $this->grav['twig']->twig_vars['datasources'] = $datasource->getAdminContent();
+                $twig->twig_vars['datasources'] = $datasource->getAdminContent();
+
+                $codelist = new Codelist($this->grav);
+                [$status, $msg] = $codelist->getCount();
+                $twig->twig_vars['codelist_index_status'] = ['status' => $status, 'msg' => $msg];
+                $this->grav['assets']->addCss('plugin://ingrid-grav/assets/admin/codelist/codelist.css');
+                $this->grav['assets']->addJs('plugin://ingrid-grav/assets/admin/codelist/codelist.js');
+
+                $rss = new Rss($this->grav);
+                [$status, $msg] = $rss->getCount();
+                $twig->twig_vars['rss_index_status'] = ['status' => $status, 'msg' => $msg];
+                $this->grav['assets']->addCss('plugin://ingrid-grav/assets/admin/rss/rss.css');
+                $this->grav['assets']->addJs('plugin://ingrid-grav/assets/admin/rss/rss.js');
             } catch (\Exception $e) {
                 $this->grav['log']->error($e->getMessage());
             }
@@ -533,12 +603,16 @@ class InGridGravPlugin extends Plugin
     public function onTwigSiteVariablesHome(): void
     {
         if (!$this->isAdmin()) {
+            $twig = $this->grav['twig'];
 
             $categories = new CategoryFacet($this->grav);
-            $this->grav['twig']->twig_vars['categories_result'] = $categories->getContent();
+            $twig->twig_vars['categories_result'] = $categories->getContent();
 
             $hitsOverview = new HitOverview($this->grav);
-            $this->grav['twig']->twig_vars['hits_result'] = $hitsOverview->getContent();
+            $twig->twig_vars['hits_result'] = $hitsOverview->getContent();
+
+            $rss = new Rss($this->grav);
+            $twig->twig_vars['rss_feeds'] = $rss->getContent();
         }
     }
 
@@ -548,6 +622,14 @@ class InGridGravPlugin extends Plugin
         if (!$this->isAdmin()) {
             $provider = new Provider($this->grav);
             $this->grav['twig']->twig_vars['partners'] = $provider->getContent();
+        }
+    }
+
+    public function onTwigSiteVariablesRss(): void
+    {
+        if (!$this->isAdmin()) {
+            $rss = new Rss($this->grav);
+            $this->grav['twig']->twig_vars['rss_feeds'] = $rss->getContent();
         }
     }
 

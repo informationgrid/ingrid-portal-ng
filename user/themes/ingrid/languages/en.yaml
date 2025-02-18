@@ -1254,3 +1254,14 @@ THEME:
             QUERY:
                 LABEL: Suchquery für Anbieter
                 HELP: Suchquery für Anbieter
+        RSS:
+            TITLE: RSS feeds
+            RSS_FEED: RSS feeds
+            RSS_FEED_HELP: Add RSS feeds
+            RSS_LABEL: RSS
+            RSS_ENTRY_URL: URL
+            RSS_ENTRY_DESCRIPTION: Description
+            RSS_ENTRY_PROVIDER: Provider
+            RSS_ENTRY_LANG: Language
+            RSS_ENTRY_CATEGORY: Category
+

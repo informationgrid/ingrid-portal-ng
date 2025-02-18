@@ -72,17 +72,6 @@ mkdir -p assets backup cache images logs tmp
 chown www-data /proc/self/fd/1 /proc/self/fd/2
 chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 
-# Update codelist plugin
-if [ "$CODELIST_API" ]; then
-  sed -i -e "s@    url:.*@    url: \'${CODELIST_API}\'@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
-  if [ "$CODELIST_USER" ]; then
-    sed -i -e "s@    user:.*@    user: ${CODELIST_USER}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
-  fi
-  if [ "$CODELIST_PASS" ]; then
-    sed -i -e "s@    pass:.*@    pass: ${CODELIST_PASS}@" /var/www/${GRAV_FOLDER}/user/plugins/ingrid-codelist/ingrid-codelist.yaml
-  fi
-fi
-
 INGRID_GRAV_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/ingrid-grav/ingrid-grav.yaml
 
 # Update ingrid api
@@ -123,6 +112,15 @@ if [ "$RDF_URL" ]; then
   yq -i '.rdf.url = env(RDF_URL)' "$INGRID_GRAV_YAML"
 fi
 
+SCHEDULER_YAML=/var/www/"$GRAV_FOLDER"/user/config/scheduler.yaml
+
+if [ "$ENABLE_SCHEDULER_CODELIST" ]; then
+  yq -i '.status.ingrid-codelist-index = "enabled"' "$SCHEDULER_YAML"
+fi
+
+if [ "$ENABLE_SCHEDULER_RSS" ]; then
+  yq -i '.status.ingrid-rss-index = "enabled"' "$SCHEDULER_YAML"
+fi
 
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php

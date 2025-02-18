@@ -87,8 +87,6 @@ COPY user/blueprints /usr/share/grav-admin/user/blueprints
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN cd /usr/share/grav-admin/user/plugins/ingrid-rss && composer update
-RUN cd /usr/share/grav-admin/user/plugins/ingrid-codelist && composer update
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav && composer update
 
 # Install yq

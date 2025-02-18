@@ -461,3 +461,15 @@ help:
   default_hkey: about-1
 datasource:
   excludes:
+rss:
+  feeds:
+    - url: 'https://www.umwelt.niedersachsen.de/rss.php'
+      summary: 'Nds. Ministerium für Umwelt, Energie, Bauen und Klimaschutz (Test)'
+      provider: ni_mu
+      lang: de
+      category: all
+    - url: 'https://www.bmuv.de/events.rss'
+      summary: null
+      provider: BMUV
+      lang: de
+      category: all
