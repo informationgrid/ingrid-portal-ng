@@ -59,7 +59,12 @@
       "classes/search/services/transformer/SearchResponseTransformerClassic.php",
       "classes/search/services/parser/ClassicParserISO.php",
       "classes/search/services/parser/ClassicParserUVP.php",
-      "classes/search/services/ElasticsearchService.php"
+      "classes/search/services/ElasticsearchService.php",
+      "classes/Codelist.php",
+      "classes/indexing/codelist/CodelistIndex.php",
+      "classes/Rss.php",
+      "classes/indexing/rss/RssIndex.php",
+      "classes/indexing/rss/RssResult.php"
     ]
 
   }
