@@ -9,11 +9,8 @@ class Rss
 {
     var Grav $grav;
 
-    var string $lang;
-
     public function __construct(Grav $grav) {
         $this->grav = $grav;
-        $this->lang = $grav['language']->getLanguage();
     }
 
     public function getContent(): array
@@ -25,14 +22,13 @@ class Rss
     {
         $path = 'user-data://feeds/feeds.json';
         $status = false;
-        $grav = Grav::instance();
-        $msg = $grav['language']->translate(['PLUGIN_INGRID_RSS.INDEXING_RSS_EMPTY']);
+        $lang = $this->grav['language'];
+        $msg = $lang->translate(['PLUGIN_INGRID_GRAV.RSS.INDEXING_RSS_EMPTY']);
         try {
             if(file_exists($path)) {
                 $response = file_get_contents($path);
                 $json = json_decode($response, true);
-                $msg = '';
-                $msg .=  count($json["data"]) . ' RSS feeds reindexed on '. $json["status"]["time"];
+                $msg = $lang->translate(['PLUGIN_INGRID_GRAV.RSS.INDEXING_RSS_SUCCESS', count($json["data"]), $json["status"]["time"]]);
                 $status = true;
             }
         } catch (\Exception $e) {
