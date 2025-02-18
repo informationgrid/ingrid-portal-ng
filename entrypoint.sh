@@ -112,6 +112,14 @@ if [ "$RDF_URL" ]; then
   yq -i '.rdf.url = env(RDF_URL)' "$INGRID_GRAV_YAML"
 fi
 
+SITE_YAML=/var/www/"$GRAV_FOLDER"/user/config/site.yaml
+
+if [ "$SITE_DEFAULT_LANG" ]; then
+  yq -i '.default_lang = env(SITE_DEFAULT_LANG)' "$SITE_YAML"
+else
+  yq -i '.default_lang = "de"' "$SITE_YAML"
+fi
+
 SCHEDULER_YAML=/var/www/"$GRAV_FOLDER"/user/config/scheduler.yaml
 
 if [ "$ENABLE_SCHEDULER_CODELIST" ]; then
