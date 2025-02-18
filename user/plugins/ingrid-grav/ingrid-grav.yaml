@@ -23,4 +23,4 @@ rss:
   scheduled_index:
     enabled: true
     at: '*/15 * * * *'
-    logs: null
+    logs: logs/ingrid-rss-index.out
