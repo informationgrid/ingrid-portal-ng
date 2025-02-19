@@ -961,12 +961,8 @@ ERROR:
 
 THEME:
     ADMIN:
-        GENERAL:
-            TITLE: Allgemein
         LAYOUT:
             TITLE: Seitenstruktur
-        SYSTEM:
-            TITLE: System
             HEADER:
                 TITLE: Header
                 TITLE_EXTEND:
@@ -1079,11 +1075,22 @@ THEME:
                         LABEL: ID
                     PATH:
                         LABEL: Pfad
-            OTHERS:
-                TITLE: Sonstiges
+        REDIRECT:
+            TITLE: Redirect
             PAGES_TO_404:
-                LABEL: Seiten ausschließen
-                HELP: Tragen Sie den Pfad der Portal-URL ein.
+                LABEL: Portalseiten deaktivieren
+                HELP: Wählen Sie die Seiten aus.
+            PAGES_TO_REDIRECT:
+                TITLE: Portalseiten weiterleiten
+                HELP: Wählen Sie die Seiten aus.
+                TEXT: Ausgewählte Seiten werden zur festgelegten URL weitergeleitet.
+                LABEL: Seiten
+                IDENT:
+                    LABEL: ID
+                PATH:
+                    LABEL: Seite
+                URL:
+                    LABEL: URL
         PAGES:
             TITLE: Seiten
         HOME:

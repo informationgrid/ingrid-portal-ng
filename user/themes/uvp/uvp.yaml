@@ -796,14 +796,14 @@ home:
         }
       },
     ]
-    exclude_from_search:
-      - 'datatype:address'
-      - 'isfolder:true'
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
   hits:
-    exclude_from_search:
-      - 'datatype:address'
-      - 'datatype:www'
-      - 'isfolder:true'
+    add_to_search:
+      - '-datatype:address'
+      - '-datatype:www'
+      - '-isfolder:true'
     num: 2
     sort:
       sortByDate: true
@@ -1470,9 +1470,9 @@ hit_search:
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
   ]
-  exclude_from_search:
-    - 'datatype:address'
-    - 'isfolder:true'
+  add_to_search:
+    - '-datatype:address'
+    - '-isfolder:true'
   query_fields:
     - title^10.0
     - title.edge_ngram^4.0
@@ -1785,7 +1785,7 @@ map:
             }
           }
         }]
-system:
+redirect:
   pages_to_404:
     - /api
     - /measure

@@ -1,5 +1,5 @@
 ---
-title: Startseite - Informiert (CMS)
+title: Informiert (CMS)
 ---
 
 ## MetaVer informiert

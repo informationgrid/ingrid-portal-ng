@@ -1,5 +1,5 @@
 ---
-title: InGrid - Startseite - Informiert (CMS)
+title: Informiert (CMS)
 ---
 ### InGrid informiert
 

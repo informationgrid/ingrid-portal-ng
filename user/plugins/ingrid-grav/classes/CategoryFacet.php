@@ -9,7 +9,7 @@ class CategoryFacet
     var Grav $grav;
     var string $lang;
     var array $facetConfig;
-    var array $excludes;
+    var array $addToSearch;
     var string $theme;
 
     public function __construct(Grav $grav)
@@ -18,12 +18,12 @@ class CategoryFacet
         $this->lang = $this->grav['language']->getLanguage();
         $this->theme = $this->grav['config']->get('system.pages.theme');
         $this->facetConfig = $this->grav['config']->get('themes.' . $this->theme . '.home.categories.facet_config') ?: [];
-        $this->excludes = $this->grav['config']->get('themes.' . $this->theme . '.home.categories.exclude_from_search') ?: [];
+        $this->addToSearch = $this->grav['config']->get('themes.' . $this->theme . '.home.categories.add_to_search') ?: [];
     }
 
     public function getContent(): null|SearchResult
     {
-        $service = new SearchServiceImpl($this->grav, 0, $this->facetConfig, $this->excludes);
+        $service = new SearchServiceImpl($this->grav, 0, $this->facetConfig, $this->addToSearch);
         return $service->getSearchResults("", 1, [], $this->grav['uri'], $this->lang, $this->theme);
     }
 }

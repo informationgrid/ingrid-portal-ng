@@ -42,7 +42,7 @@ class Search
         // Theme config
         $facetConfig = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.facet_config') ?: [];
         $this->hitsNum = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.hits_num') ?: 0;
-        $excludeFromSearch = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.exclude_from_search') ?: [];
+        $addToSearch = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.add_to_search') ?: [];
         $sortByDate = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.sort.sortByDate') ?: false;
 
         if (!empty($this->ranking)) {
@@ -59,7 +59,7 @@ class Search
             }
         }
         $this->selectedFacets = $this->getSelectedFacets($facetConfig);
-        $service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $excludeFromSearch, $sortByDate);
+        $service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $addToSearch, $sortByDate);
         $this->results = $service->getSearchResults($this->query, $this->page, $this->selectedFacets, $this->grav['uri'], $this->lang, $this->theme);
     }
 

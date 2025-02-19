@@ -13,7 +13,7 @@ form:
           fields:
             header.section:
               type: section
-              title: THEME.ADMIN.SYSTEM.HEADER.TITLE
+              title: THEME.ADMIN.LAYOUT.HEADER.TITLE
               underline: true
 
             header.title_extend:
@@ -76,7 +76,7 @@ form:
 
             footer.section:
               type: section
-              title: THEME.ADMIN.SYSTEM.FOOTER.TITLE
+              title: THEME.ADMIN.LAYOUT.FOOTER.TITLE
               underline: true
 
             footer.logo_enabled:
@@ -239,67 +239,67 @@ form:
 
             menu.section:
               type: section
-              title: THEME.ADMIN.SYSTEM.MENU.TITLE
+              title: THEME.ADMIN.LAYOUT.MENU.TITLE
               underline: true
 
             menu.main_fieldset:
               type: fieldset
-              title: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TITLE
-              help: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.HELP
-              text: THEME.ADMIN.SYSTEM.MENU.MAIN_FIELDSET.TEXT
+              title: THEME.ADMIN.LAYOUT.MENU.MAIN_FIELDSET.TITLE
+              help: THEME.ADMIN.LAYOUT.MENU.MAIN_FIELDSET.HELP
+              text: THEME.ADMIN.LAYOUT.MENU.MAIN_FIELDSET.TEXT
               collapsed: true
               collapsible: true
               fields:
                 menu.main:
                   type: list
-                  label: THEME.ADMIN.SYSTEM.MENU.MAIN.LABEL
+                  label: THEME.ADMIN.LAYOUT.MENU.MAIN.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
                   fields:
                     .ident:
                       id: key
-                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.IDENT.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.MAIN.IDENT.LABEL
                     .path:
                       type: pages
-                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.PATH.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.MAIN.PATH.LABEL
                       show_modular: false
                       show_root: false
                       show_all: false
                       limit_levels: 2
                     .icon:
                       type: text
-                      label: THEME.ADMIN.SYSTEM.MENU.MAIN.ICON.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.MAIN.ICON.LABEL
 
             menu.site_fieldset:
               type: fieldset
-              title: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TITLE
-              help: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.HELP
-              text: THEME.ADMIN.SYSTEM.MENU.SITE_FIELDSET.TEXT
+              title: THEME.ADMIN.LAYOUT.MENU.SITE_FIELDSET.TITLE
+              help: THEME.ADMIN.LAYOUT.MENU.SITE_FIELDSET.HELP
+              text: THEME.ADMIN.LAYOUT.MENU.SITE_FIELDSET.TEXT
               collapsed: true
               collapsible: true
               fields:
                 menu.site:
                   type: list
-                  label: THEME.ADMIN.SYSTEM.MENU.SITE.LABEL
+                  label: THEME.ADMIN.LAYOUT.MENU.SITE.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
                   fields:
                     .ident:
                       id: key
-                      label: THEME.ADMIN.SYSTEM.MENU.SITE.IDENT.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.SITE.IDENT.LABEL
                     .path:
                       type: pages
-                      label: THEME.ADMIN.SYSTEM.MENU.SITE.PATH.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.SITE.PATH.LABEL
                       show_modular: false
                       show_root: false
                       show_all: false
                       limit_levels: 2
                     .highlighted:
                       type: toggle
-                      label: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.LABEL
-                      help: THEME.ADMIN.SYSTEM.MENU.SITE.HIGHLIGHTED.HELP
+                      label: THEME.ADMIN.LAYOUT.MENU.SITE.HIGHLIGHTED.LABEL
+                      help: THEME.ADMIN.LAYOUT.MENU.SITE.HIGHLIGHTED.HELP
                       highlight: 1
                       options:
                         1: PLUGIN_ADMIN.YES
@@ -309,25 +309,25 @@ form:
 
             menu.footer_fieldset:
               type: fieldset
-              title: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TITLE
-              help: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.HELP
-              text: THEME.ADMIN.SYSTEM.MENU.FOOTER_FIELDSET.TEXT
+              title: THEME.ADMIN.LAYOUT.MENU.FOOTER_FIELDSET.TITLE
+              help: THEME.ADMIN.LAYOUT.MENU.FOOTER_FIELDSET.HELP
+              text: THEME.ADMIN.LAYOUT.MENU.FOOTER_FIELDSET.TEXT
               collapsed: true
               collapsible: true
               fields:
                 menu.footer:
                   type: list
-                  label: THEME.ADMIN.SYSTEM.MENU.FOOTER.LABEL
+                  label: THEME.ADMIN.LAYOUT.MENU.FOOTER.LABEL
                   style: vertical
                   controls: bottom
                   collapsed: false
                   fields:
                     .ident:
                       id: key
-                      label: THEME.ADMIN.SYSTEM.MENU.FOOTER.IDENT.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.FOOTER.IDENT.LABEL
                     .path:
                       type: pages
-                      label: THEME.ADMIN.SYSTEM.MENU.FOOTER.PATH.LABEL
+                      label: THEME.ADMIN.LAYOUT.MENU.FOOTER.PATH.LABEL
                       show_modular: false
                       show_root: false
                       show_all: false
@@ -380,16 +380,10 @@ form:
               label: THEME.ADMIN.HOME.CATEGORIES.RSS.LABEL
               help: THEME.ADMIN.HOME.CATEGORIES.RSS.HELP
 
-            home.categories.exclude_from_search:
+            home.categories.add_to_search:
               type: selectize
               label: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.LABEL
               help: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.HELP
-              selectize:
-                options:
-                  - text: "datatype:address"
-                    value: "datatype:address"
-                  - text: "isfolder:true"
-                    value: "isfolder:true"
               validate:
                 type: commalist
 
@@ -398,18 +392,10 @@ form:
               title: THEME.ADMIN.HOME.HITS.TITLE
               underline: true
 
-            home.hits.exclude_from_search:
+            home.hits.add_to_search:
               type: selectize
               label: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.LABEL
               help: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.HELP
-              selectize:
-                options:
-                  - text: "datatype:address"
-                    value: "datatype:address"
-                  - text: "datatype:www"
-                    value: "datatype:www"
-                  - text: "isfolder:true"
-                    value: "isfolder:true"
               validate:
                 type: commalist
 
@@ -456,15 +442,9 @@ form:
               title: THEME.ADMIN.HIT_SEARCH.TITLE
               underline: true
 
-            hit_search.exclude_from_search:
+            hit_search.add_to_search:
               type: selectize
               label: THEME.ADMIN.HIT_SEARCH.EXCLUDE_FROM_SEARCH.LABEL
-              selectize:
-                options:
-                  - text: "datatype:address"
-                    value: "datatype:address"
-                  - text: "isfolder:true"
-                    value: "isfolder:true"
               validate:
                 type: commalist
 
@@ -481,24 +461,6 @@ form:
             hit_search.query_fields:
               type: selectize
               label: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.LABEL
-              selectize:
-                options:
-                  - text: "title^10.0"
-                    value: "title^10.0"
-                  - text: "title.edge_ngram^4.0"
-                    value: "title.edge_ngram^4.0"
-                  - text: "title.ngram^2.0"
-                    value: "title.ngram^2.0"
-                  - text: "summary"
-                    value: "summary"
-                  - text: "summary.edge_ngram^0.4"
-                    value: "summary.edge_ngram^0.4"
-                  - text: "summary.ngram^0.2"
-                    value: "summary.ngram^0.2"
-                  - text: "content^0.2"
-                    value: "content^0.2"
-                  - text: "content.ngram^0.1"
-                    value: "content.ngram^0.1"
               validate:
                 type: commalist
 
@@ -1013,20 +975,20 @@ form:
                       type: text
                       label: THEME.ADMIN.RSS.RSS_ENTRY_CATEGORY
 
-## Tab system
-        tab_system:
+## Tab redirect
+        tab_redirect:
           type: tab
-          title: THEME.ADMIN.SYSTEM.TITLE
+          title: THEME.ADMIN.REDIRECT.TITLE
           fields:
             others.section:
               type: section
-              title: THEME.ADMIN.SYSTEM.OTHERS.TITLE
+              title: THEME.ADMIN.REDIRECT.TITLE
               underline: true
 
-            system.pages_to_404:
+            redirect.pages_to_404:
               type: pages
-              label: THEME.ADMIN.SYSTEM.PAGES_TO_404.LABEL
-              help: THEME.ADMIN.SYSTEM.PAGES_TO_404.HELP
+              label: THEME.ADMIN.REDIRECT.PAGES_TO_404.LABEL
+              help: THEME.ADMIN.REDIRECT.PAGES_TO_404.HELP
               validate:
                 type: array
               show_modular: false
@@ -1034,3 +996,36 @@ form:
               show_all: false
               limit_levels: 2
               multiple: true
+
+            redirect.site_fieldset:
+              type: fieldset
+              title: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.TITLE
+              help: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.HELP
+              text: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.TEXT
+              collapsed: true
+              collapsible: true
+              fields:
+                redirect.pages_to_redirect:
+                  type: list
+                  label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.LABEL
+                  style: vertical
+                  controls: bottom
+                  collapsed: false
+                  fields:
+                    .ident:
+                      id: key
+                      label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.IDENT.LABEL
+                    .path:
+                      type: pages
+                      label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PATH.LABEL
+                      show_modular: false
+                      show_root: false
+                      show_all: false
+                      limit_levels: 2
+                      validate:
+                        required: true
+                    .url:
+                      type: text
+                      label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.URL.LABEL
+                      validate:
+                        required: true
