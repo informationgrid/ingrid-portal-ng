@@ -616,7 +616,6 @@ map:
       service:
     position: 46.58,5.22,55.40,15.68
 measure:
-  enabled: false
   networks:
     exclude:
     initial:

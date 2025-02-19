@@ -444,12 +444,11 @@ map:
       service:
     position: 46.58,5.22,55.40,15.68
 measure:
-  enabled: true
   networks:
     exclude:
     initial:
       - luen
-  url: 'https://dev.informationgrid.eu/ingrid-portal-apps/measures/index.html'
+  url: '/assets/mvis'
   elastic: 'https://dev.informationgrid.eu/elastic-measure/'
 system:
   pages_to_404:

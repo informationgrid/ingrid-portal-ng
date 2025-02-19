@@ -67,11 +67,6 @@ if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms" ]; then
   fi
 fi
 
-mkdir -p assets backup cache images logs tmp
-
-chown www-data /proc/self/fd/1 /proc/self/fd/2
-chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
-
 INGRID_GRAV_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/ingrid-grav/ingrid-grav.yaml
 
 # Update ingrid api
@@ -129,6 +124,18 @@ fi
 if [ "$ENABLE_SCHEDULER_RSS" ]; then
   yq -i '.status.ingrid-rss-index = "enabled"' "$SCHEDULER_YAML"
 fi
+
+mkdir -p assets backup cache images logs tmp
+
+# Install mvis
+cd /var/www
+curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip && \
+unzip mvis.zip && \
+mv /var/www/measurement-client-"$MVIS_VERSION" /var/www/"$GRAV_FOLDER"/assets/mvis && \
+rm mvis.zip
+
+chown www-data /proc/self/fd/1 /proc/self/fd/2
+chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
 
 # init gravcms scheduler
 ln -s /usr/local/bin/php /usr/bin/php

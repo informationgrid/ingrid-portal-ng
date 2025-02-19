@@ -1281,22 +1281,19 @@ THEME:
                         HELP: Custering aktivieren
         MEASURE:
             TITLE: Messwerte
-            ENABLED:
-                LABEL: Messwerte-Client aktivieren
-                HELP: Aktivieren Sie hier den Messwerte-Client.
             URL:
-                LABEL: Link zur Karte
-                HELP: Trage Sie hier die URL zur Karte.
+                LABEL: URL zum MVIS-Client
+                HELP: Trage die URL zum MVIS-Client
             ELASTIC:
-                LABEL: Link zur Karte
-                HELP: Trage Sie hier die URL zur Karte.
+                LABEL: URL zu MVIS-Elasticsearch
+                HELP: Trage die URL zu MVIS-Elasticsearch ein.
             NETWORKS:
                 EXCLUDE:
-                    LABEL: Sortierung Adress-Typ
-                    HELP: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+                    LABEL: Messnetze exkludieren
+                    HELP: Trage die Messwertnetze ein, die nicht aufgelistet werden sollen.
                 INITIAL:
-                    LABEL: Sortierung Adress-Typ
-                    HELP: Sortiert die Typen eines Kontaktes nach der festgelegten Reihenfolge
+                    LABEL: Initiale Messnetze
+                    HELP: Trage die Messwertnetze ein, die per Default aktiviert seien sollen.
         HELP:
             TITLE: Hilfe
             DEFAULT_HKEY:

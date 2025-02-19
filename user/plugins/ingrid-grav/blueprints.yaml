@@ -119,32 +119,6 @@ form:
               type: text
               label: PLUGIN_INGRID_GRAV.CODELIST_API.SCHEDULED_JOB_LOG_FILE
               size: medium
-        tab_csw:
-          type: tab
-          title: PLUGIN_INGRID_GRAV.CSW.TITLE
-          fields:
-            csw:
-              type: section
-              title: PLUGIN_INGRID_GRAV.CSW.TITLE
-              underline: true
-            csw.url:
-              type: text
-              label: PLUGIN_INGRID_GRAV.CSW.URL
-              help: PLUGIN_INGRID_GRAV.CSW.URL_HELP
-
-        tab_rdf:
-          type: tab
-          title: PLUGIN_INGRID_GRAV.RDF.TITLE
-          fields:
-            rdf:
-              type: section
-              title: PLUGIN_INGRID_GRAV.RDF.TITLE
-              underline: true
-
-            rdf.url:
-              type: text
-              label: PLUGIN_INGRID_GRAV.RDF.URL
-              help: PLUGIN_INGRID_GRAV.RDF.URL_HELP
 
         tab_rss:
           type: tab
@@ -183,3 +157,30 @@ form:
               label: PLUGIN_INGRID_GRAV.RSS.SCHEDULED_JOB_LOG_FILE
               default: 'logs/ingrid-rss-index.out'
               size: medium
+
+        tab_csw:
+          type: tab
+          title: PLUGIN_INGRID_GRAV.CSW.TITLE
+          fields:
+            csw:
+              type: section
+              title: PLUGIN_INGRID_GRAV.CSW.TITLE
+              underline: true
+            csw.url:
+              type: text
+              label: PLUGIN_INGRID_GRAV.CSW.URL
+              help: PLUGIN_INGRID_GRAV.CSW.URL_HELP
+
+        tab_rdf:
+          type: tab
+          title: PLUGIN_INGRID_GRAV.RDF.TITLE
+          fields:
+            rdf:
+              type: section
+              title: PLUGIN_INGRID_GRAV.RDF.TITLE
+              underline: true
+
+            rdf.url:
+              type: text
+              label: PLUGIN_INGRID_GRAV.RDF.URL
+              help: PLUGIN_INGRID_GRAV.RDF.URL_HELP
