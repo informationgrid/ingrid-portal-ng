@@ -13,16 +13,16 @@ class SearchServiceImpl implements SearchService
     private Client $client;
     private $log;
     private array $facet_config;
-    private array $exclude;
+    private array $addToSearch;
     private bool $sortByDate;
     private array $queryFields;
     private string $queryStringOperator;
 
 
-    function __construct($grav, int $hitsNum, array $facetConfig = [], array $excludeFromSearch = [], bool $sortByDate = false)
+    function __construct($grav, int $hitsNum, array $facetConfig = [], array $addToSearch = [], bool $sortByDate = false)
     {
         $this->facet_config = $facetConfig;
-        $this->exclude = $excludeFromSearch;
+        $this->addToSearch = $addToSearch;
         $this->api = $grav['config']->get('plugins.ingrid-grav.ingrid_api.url');
         $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
@@ -75,7 +75,7 @@ class SearchServiceImpl implements SearchService
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [
-                'body' => $this->transformQuery($query, $page - 1, $selectedFacets, $this->exclude)
+                'body' => $this->transformQuery($query, $page - 1, $selectedFacets)
             ]);
             $result = json_decode($apiResponse->getBody()->getContents());
             return $result->hits;
@@ -124,7 +124,7 @@ class SearchServiceImpl implements SearchService
 
     private function transformQuery($query, $page, array $selectedFacets): string
     {
-        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $this->exclude, $this->sortByDate, $this->queryFields, $this->queryStringOperator);
+        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $this->addToSearch, $this->sortByDate, $this->queryFields, $this->queryStringOperator);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;
     }

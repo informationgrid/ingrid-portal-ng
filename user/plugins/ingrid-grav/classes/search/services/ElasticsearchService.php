@@ -11,7 +11,7 @@ class ElasticsearchService
     {
         if (count($excludeFromSearch) > 0) {
             foreach ($excludeFromSearch as $exclude) {
-                $query .= ' -' . $exclude;
+                $query .= ' ' . $exclude;
             }
         }
         SearchQueryHelper::replaceInGridQuery($query);

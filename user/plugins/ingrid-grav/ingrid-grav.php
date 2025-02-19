@@ -198,11 +198,22 @@ class InGridGravPlugin extends Plugin
         $page = $this->grav['pages']->find($uri_path);
         if ($page) {
             $theme = $this->grav['config']->get('system.pages.theme');
-            $pages_to_404 = $this->grav['config']->get('themes.' . $theme . '.system.pages_to_404');
-            $pages_to_redirect = $this->grav['config']->get('themes.' . $theme . '.system.pages_to_redirect');
+            $pages_to_404 = $this->grav['config']->get('themes.' . $theme . '.redirect.pages_to_404');
+            $pages_to_redirect = $this->grav['config']->get('themes.' . $theme . '.redirect.pages_to_redirect');
             if (!empty($pages_to_404)) {
                 if (in_array($page->rawRoute(), $pages_to_404)) {
                     $this->grav->redirect('/error');
+                }
+            }
+            if (!empty($pages_to_redirect)) {
+                foreach ($pages_to_redirect as $redirect) {
+                    $redirectPath = $redirect['path'];
+                    $redirectUrl = $redirect['url'];
+                    if (!empty($redirectPath) && !empty($redirectUrl)) {
+                        if ($redirectPath == $page->rawRoute()) {
+                            $this->grav->redirect($redirectUrl);
+                        }
+                    }
                 }
             }
         }
