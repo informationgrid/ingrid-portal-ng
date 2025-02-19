@@ -3,6 +3,10 @@ title: Datenschutz
 custom_title:
   html: PAGES.PRIVACY
   menu: PAGES.PRIVACY_MENU_TITLE
+meta:
+  title: PAGES.PRIVACY_META_TITLE
+  keywords: PAGES.PRIVACY_META_KEYWORDS
+  description: PAGES.PRIVACY_META_DESCRIPTION
 visible: true
 routes:
   default: /datenschutz

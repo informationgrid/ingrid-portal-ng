@@ -1,5 +1,15 @@
 ---
-title: UVP - Barrierefreiheit (CMS)
+title: Barrierefreiheit
+custom_title:
+  html: PAGES.ACCESSIBILITY
+  menu: PAGES.ACCESSIBILITY_MENU_TITLE
+meta:
+  title: PAGES.ACCESSIBILITY_META_TITLE
+  keywords: PAGES.ACCESSIBILITY_META_KEYWORDS
+  description: PAGES.ACCESSIBILITY_META_DESCRIPTION
+visible: true
+routes:
+  default: /barrierefreiheit
 ---
 
 ## Erklärung zur Barrierefreiheit

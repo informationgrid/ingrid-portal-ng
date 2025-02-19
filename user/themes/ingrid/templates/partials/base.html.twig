@@ -8,6 +8,8 @@
     <title>
         {% if page_custom_title %}
             {{ page_custom_title }} |
+        {% elseif header.meta.title %}
+            {{ header.meta.title|t|e }} |
         {% elseif header.custom_title.html %}
             {{ header.custom_title.html|t|e }} |
          {% elseif header.title %}
@@ -18,7 +20,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% include 'partials/metadata.html.twig' %}
+    {% include 'partials/header/metadata.html.twig' %}
     {% include 'partials/header/favicon/favicon.html.twig' %}
     <link rel="canonical" href="{{ page.canonical(true)|e }}" />
 {% endblock head %}

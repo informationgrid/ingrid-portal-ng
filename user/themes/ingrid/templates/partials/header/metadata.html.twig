@@ -1,0 +1,11 @@
+{% set copyright = theme_var('footer.copyright.text') %}
+
+{% if page.header.meta.description %}
+    <meta name="description" content="{{ page.header.meta.description|t|raw }}" />
+{% endif %}
+{% if page.header.meta.keywords %}
+    <meta name="keywords" lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}" content="{{ page.header.meta.keywords|t|raw }}" />
+{% endif %}
+<meta name="author" content="{{ copyright|raw }}" />
+<meta name="copyright" content="{{ copyright|raw }}" />
+<meta name="robots" content="index,follow" />
