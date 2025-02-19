@@ -448,7 +448,7 @@ measure:
     exclude:
     initial:
       - luen
-  url: '/assets/mvis'
+  url: '/assets/mvis/index.html'
   elastic: 'https://dev.informationgrid.eu/elastic-measure/'
 system:
   pages_to_404:
