@@ -1,6 +1,6 @@
 {% import 'macros/default_macros.html.twig' as macros %}
 
-{% set footer_copyright_class = theme_var('footer.copyright_class') %}
+{% set footer_copyright_class = theme_var('footer.copyright.class') %}
 {% set footer_menu_class = theme_var('footer.menu_class') %}
 {% set footer_hr_line = theme_var('footer.hr_line') %}
 {% set menu_footer = theme_var('menu.footer') %}
@@ -16,7 +16,7 @@
         <hr>
         {% endif %}
         <div class="row">
-            <div class="{{ footer_copyright_class }} columns">
+            <div class="{{ footer_copyright.class }} columns">
                 {% include 'partials/footer/logo.html.twig' %}
                 {% include 'partials/footer/copyright.html.twig' %}
             </div>

@@ -9,8 +9,10 @@ header:
   logo: {  }
 footer:
   logo_enabled: true
-  copyright_text: '2024 Landesbetrieb Geoinformation und Vermessung. Alle Rechte vorbehalten.'
-  copyright_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+  copyright:
+    text: 'Landesbetrieb Geoinformation und Vermessung. Alle Rechte vorbehalten.'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
   logo: {  }

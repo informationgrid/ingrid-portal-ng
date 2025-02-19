@@ -121,12 +121,23 @@ form:
                       validate:
                         type: bool
 
-                    footer.copyright_text:
+                    footer.copyright.text:
                       type: text
                       label: Copyright
                       help: Trage Sie hier Ihren Copyright ein.
 
-                    footer.copyright_class:
+                    footer.copyright.show_year:
+                      type: toggle
+                      label: Copyright Jahr anzeigen
+                      help: Zeigt das Jahr im Copyright an.
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.ENABLED
+                        0: PLUGIN_ADMIN.DISABLED
+                      validate:
+                        type: bool
+
+                    footer.copyright.class:
                       type: text
                       label: Copyright Breite
                       help: Trage Sie hier die möglichen Breiten des Copyright ein.

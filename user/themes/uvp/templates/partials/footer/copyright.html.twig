@@ -1,7 +1,8 @@
-{% set copyright_text = theme_var('footer.copyright_text') %}
+{% set copyright_text = theme_var('footer.copyright.text') %}
+{% set copyright_show_year = theme_var('footer.copyright.show_year') %}
 
 {% if copyright_text %}
 <div class="copyright">
-    <p class="copyright_text">{{ copyright_text }}</p>
+    <p class="copyright_text">{% if copyright_show_year %}{{ "now"|date("Y") }} {% endif %}{{ copyright.text }}</p>
 </div>
 {% endif %}
