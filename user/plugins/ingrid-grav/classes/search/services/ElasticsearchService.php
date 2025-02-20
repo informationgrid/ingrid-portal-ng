@@ -7,12 +7,10 @@ use stdClass;
 class ElasticsearchService
 {
 
-    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $excludeFromSearch, bool $sortByDate, array $queryFields, string $queryStringOperator): string
+    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $addToSearch, bool $sortByDate, array $queryFields, string $queryStringOperator): string
     {
-        if (count($excludeFromSearch) > 0) {
-            foreach ($excludeFromSearch as $exclude) {
-                $query .= ' ' . $exclude;
-            }
+        if (count($addToSearch) > 0) {
+            $query .= ' ' . implode(' ', $addToSearch);
         }
         SearchQueryHelper::replaceInGridQuery($query);
         $aggs = ElasticsearchService::mapFacets($query, $facet_config, $selectedFacets, $queryFields, $queryStringOperator);
