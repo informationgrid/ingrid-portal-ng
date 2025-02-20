@@ -580,7 +580,7 @@
                         <div class="js-expand-box js-expand-text js-non-expand-text">
                             <div class="js-expand-text-content">
                     {% endif %}
-                    <p {% if css %}class="{{ css }}"{% endif %}>{{ convertUrlInText(text)|raw }}</p>
+                    <p {% if css %}class="{{ css }}"{% endif %}>{{ convertUrlInText(removeHashLocale(text))|raw }}</p>
                     {% if expandable %}
                             </div>
                             <div class="desc-fade"></div>
@@ -614,10 +614,10 @@
                 {% endif %}
                 <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
                     <span class="ic-ic-external"></span>
-                    <span class="text">{{ entryToJson.name }}</span>
+                    <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
                 </a>
                 {%  if entryToJson.quelle %}
-                    {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ entryToJson.quelle }}
+                    {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
                 {% endif %}
             </p>
         {% else %}
@@ -709,14 +709,14 @@
                           <p class="list-item">
                               <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
                                   <span class="ic-ic-external"></span>
-                                  <span class="text">{{ entryToJson.name }}</span>
+                                  <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
                               </a>
                               {%  if entryToJson.quelle %}
-                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ entryToJson.quelle }}
+                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
                               {% endif %}
                           </p>
                         {% else %}
-                          <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
+                          <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                         {% endif %}
                     {% endfor %}
                     </div>

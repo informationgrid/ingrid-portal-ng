@@ -18,6 +18,7 @@ class InGridGravTwigExtension extends GravExtension
             new \Twig_SimpleFunction('convertUrlInText', [$this, 'convertUrlInText']),
             new \Twig_SimpleFunction('getValueFromCodelist', [$this, 'getValueFromCodelist']),
             new \Twig_SimpleFunction('getActionLinkFromFacets', [$this, 'getActionLinkFromFacets']),
+            new \Twig_SimpleFunction('removeHashLocale', [$this, 'removeHashLocale']),
         ];
     }
 
@@ -40,6 +41,15 @@ class InGridGravTwigExtension extends GravExtension
             return $value;
         }
         return $codelistValue;
+    }
+
+    public function removeHashLocale(string $text): string
+    {
+        $check = '#locale-';
+        if (str_contains($text, $check)) {
+            return explode($check, $text)[0];
+        }
+        return $text;
     }
 
     // Filters

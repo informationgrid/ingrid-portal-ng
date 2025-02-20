@@ -593,6 +593,7 @@ class DetailParserMetadataIdfISO
             foreach ($values as $value) {
                 $exists = false;
                 foreach ($constraints as $constraint) {
+                    $value = str_replace('Quellenvermerk: ', '', $value);
                     if (str_contains($constraint, $value) or str_contains($constraint, "\"" . $value . "\"")) {
                         $exists = true;
                         break;
