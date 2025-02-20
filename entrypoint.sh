@@ -62,7 +62,11 @@ else
 fi
 
 # Update cache
-yq -i '.cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
+if [ "$ENABLE_CACHE" ]; then
+  yq -i '.cache.enabled = true' "$SYSTEM_YAML"
+else
+  yq -i '.cache.enabled = false' "$SYSTEM_YAML"
+fi
 
 # copy default cms pages
 if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms" ]; then
