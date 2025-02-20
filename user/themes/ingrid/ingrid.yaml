@@ -125,7 +125,7 @@ home:
     facet_config: [
       {
         "id": "type",
-        "queries": {
+        "facets": {
           "www": {
             "icon": "ic-www",
             "query": {
@@ -203,7 +203,7 @@ hit_search:
   facet_config: [
     {
       "id": "type",
-      "queries": {
+      "facets": {
         "www": {
           "query": {
             "filter": {
@@ -301,8 +301,8 @@ hit_search:
         "type": "metadata",
         "metadata_group": "",
       },
-      "queries": {
-        "lastMonth": {
+      "facets": {
+        "last_month": {
           "query": {
             "filter": {
               "range": {
@@ -313,7 +313,7 @@ hit_search:
             }
           }
         },
-        "lastThreeMonth": {
+        "last_three_month": {
           "query": {
             "filter": {
               "range": {
@@ -324,7 +324,7 @@ hit_search:
             }
           }
         },
-        "lastYear": {
+        "last_year": {
           "query": {
             "filter": {
               "range": {
@@ -335,7 +335,7 @@ hit_search:
             }
           }
         },
-        "lastFiveYears": {
+        "last_five_years": {
           "query": {
             "filter": {
               "range": {
@@ -346,7 +346,7 @@ hit_search:
             }
           }
         },
-        "olderFiveYears": {
+        "older_five_years": {
           "query": {
             "filter": {
               "range": {

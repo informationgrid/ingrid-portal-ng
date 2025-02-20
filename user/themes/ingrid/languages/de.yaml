@@ -925,11 +925,11 @@ FACETS:
         MODTIME: Aktualität
         MAP: Raumbezug
     MODTIME:
-        LASTMONTH: "letzter Monat"
-        LASTTHREEMONTH: "letzte 3 Monat"
-        LASTYEAR: "letztes Jahr"
-        LASTFIVEYEARS: "letzte 5 Jahre"
-        OLDERFIVEYEARS: "älter als 5 Jahre"
+        LAST_MONTH: "letzter Monat"
+        LAST_THREE_MONTH: "letzte 3 Monat"
+        LAST_YEAR: "letztes Jahr"
+        LAST_FIVE_YEARS: "letzte 5 Jahre"
+        OLDER_FIVE_YEARS: "älter als 5 Jahre"
     TYPE:
         METADATA: Metadaten
         INSPIRE: INSPIRE

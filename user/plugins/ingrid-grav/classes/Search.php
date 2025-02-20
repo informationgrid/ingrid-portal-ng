@@ -167,8 +167,8 @@ class Search
                     }
                 }
             }
-            if (isset($facet['queries'])) {
-                $this->getSelectedFacetsFromConfig($facet['queries'], $params, $id);
+            if (isset($facet['facets'])) {
+                $this->getSelectedFacetsFromConfig($facet['facets'], $params, $id);
             }
         }
         if ($parentId and !empty($values)) {

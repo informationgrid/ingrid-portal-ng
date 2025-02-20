@@ -93,11 +93,11 @@ home:
     facet_config: [
       {
         "id": "category",
-        "queries": {
+        "facets": {
           "energie": {
             "label": "Wärmeerzeugung, Bergbau und Energie",
             "icon": "ic-UVPG-1",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -110,7 +110,7 @@ home:
           "baustoffe": {
             "label": "Steine und Erden, Glas, Keramik, Baustoffe",
             "icon": "ic-UVPG-2",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -123,7 +123,7 @@ home:
           "verarbeitung": {
             "label": "Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung",
             "icon": "ic-UVPG-3",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -136,7 +136,7 @@ home:
           "chemie": {
             "label": "Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung",
             "icon": "ic-UVPG-4",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -149,7 +149,7 @@ home:
           "kunststoff": {
             "label": "Oberflächenbehandlung von Kunststoffen",
             "icon": "ic-UVPG-5",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -162,7 +162,7 @@ home:
           "holzzellstoff": {
             "label": "Holz, Zellstoff",
             "icon": "ic-UVPG-6",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -175,7 +175,7 @@ home:
           "erzeugnisse": {
             "label": "Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse",
             "icon": "ic-UVPG-7",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -188,7 +188,7 @@ home:
           "verwertungbeseitigungabfaellen": {
             "label": "Verwertung und Beseitigung von Abfällen und sonstigen Stoffen",
             "icon": "ic-UVPG-8",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -201,7 +201,7 @@ home:
           "lagerungstoffengemischen": {
             "label": "Lagerung von Stoffen und Gemischen",
             "icon": "ic-UVPG-9",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -214,7 +214,7 @@ home:
           "industrieanlagen": {
             "label": "Sonstige Industrieanlagen",
             "icon": "ic-UVPG-10",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -227,7 +227,7 @@ home:
           "kernenergie": {
             "label": "Kernenergie",
             "icon": "ic-UVPG-11",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -240,7 +240,7 @@ home:
           "abfalldeponien": {
             "label": "Abfalldeponien",
             "icon": "ic-UVPG-12",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -253,7 +253,7 @@ home:
           "wasservorhaben": {
             "label": "Wasserwirtschaftliche Vorhaben",
             "icon": "ic-UVPG-13",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -266,7 +266,7 @@ home:
           "verkehrsvorhaben": {
             "label": "Verkehrsvorhaben",
             "icon": "ic-UVPG-14",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -279,7 +279,7 @@ home:
           "bergbaukohlendioxid": {
             "label": "Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid",
             "icon": "ic-UVPG-15",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -292,7 +292,7 @@ home:
           "flurbereinigung": {
             "label": "Flurbereinigung",
             "icon": "ic-UVPG-16",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -305,7 +305,7 @@ home:
           "forstlandvorhaben": {
             "label": "Forstliche und landwirtschaftliche Vorhaben",
             "icon": "ic-UVPG-17",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -318,7 +318,7 @@ home:
           "bauvorhaben": {
             "label": "Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan",
             "icon": "ic-UVPG-18",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -331,7 +331,7 @@ home:
           "anlagen": {
             "label": "Leitungsanlagen und vergleichbare Anlagen",
             "icon": "ic-UVPG-19",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -355,11 +355,11 @@ home:
             "off": "COMMON.TOGGLE_APPROVAL_DATE_OFF",
           }
         },
-        "queries": {
+        "facets": {
           "obj_class_zv": {
             "label": "Zulassungsverfahren",
             "icon": "ic-Z",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -404,7 +404,7 @@ home:
           "obj_class_ro": {
             "label": "Raumordnungsverfahren",
             "icon": "ic-R",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -449,7 +449,7 @@ home:
           "obj_class_li": {
             "label": "Linienbestimmung nach Bundesfernstraßengesetz oder Landesstraßenrecht",
             "icon": "ic-L",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -494,7 +494,7 @@ home:
           "obj_class_av": {
             "label": "Ausländische Vorhaben",
             "icon": "ic-A",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -539,7 +539,7 @@ home:
           "obj_class_blp": {
             "label": "Bauleitplanung",
             "icon": "ic-B",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -551,7 +551,7 @@ home:
           "obj_class_nv": {
             "label": "Negative Vorprüfungen",
             "icon": "ic-N",
-            "display": true,
+            "display_on_empty": true,
             "query": {
               "filter": {
                 "term": {
@@ -597,10 +597,10 @@ home:
       },
       {
         "id": "partner",
-        "queries": {
+        "facets": {
           "bw": {
             "icon": "images/partner/svg/bw.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -613,7 +613,7 @@ home:
           },
           "by": {
             "icon": "images/partner/svg/by.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -626,7 +626,7 @@ home:
           },
           "be": {
             "icon": "images/partner/svg/be.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -639,7 +639,7 @@ home:
           },
           "hb": {
             "icon": "images/partner/svg/hb.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -652,7 +652,7 @@ home:
           },
           "hh": {
             "icon": "images/partner/svg/hh.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -665,7 +665,7 @@ home:
           },
           "he": {
             "icon": "images/partner/svg/he.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -678,7 +678,7 @@ home:
           },
           "mv": {
             "icon": "images/partner/svg/mv.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -691,7 +691,7 @@ home:
           },
           "ni": {
             "icon": "images/partner/svg/ni.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -704,7 +704,7 @@ home:
           },
           "nw": {
             "icon": "images/partner/svg/nw.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -717,7 +717,7 @@ home:
           },
           "rp": {
             "icon": "images/partner/svg/rp.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -730,7 +730,7 @@ home:
           },
           "sl": {
             "icon": "images/partner/svg/sl.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -743,7 +743,7 @@ home:
           },
           "sn": {
             "icon": "images/partner/svg/sn.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -756,7 +756,7 @@ home:
           },
           "st": {
             "icon": "images/partner/svg/st.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -769,7 +769,7 @@ home:
           },
           "sh": {
             "icon": "images/partner/svg/sh.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -782,7 +782,7 @@ home:
           },
           "th": {
             "icon": "images/partner/svg/th.svg",
-            "display": true,
+            "display_on_empty": true,
             "codelist": "110",
             "query": {
               "filter": {
@@ -823,7 +823,7 @@ hit_search:
           "off": "COMMON.TOGGLE_APPROVAL_DATE_OFF",
         }
       },
-      "queries": {
+      "facets": {
         "obj_class_zv": {
           "label": "Zulassungsverfahren",
           "query": {
@@ -1056,7 +1056,7 @@ hit_search:
       "open": true,
       "listLimit": 6,
       "sort": "name",
-      "queries": {
+      "facets": {
         "energie": {
           "label": "Wärmeerzeugung, Bergbau und Energie",
           "query": {
@@ -1251,7 +1251,7 @@ hit_search:
     },
     {
       "id": "partner",
-      "queries": {
+      "facets": {
         "bw": {
           "codelist": "110",
           "query": {
@@ -1407,8 +1407,8 @@ hit_search:
     {
       "id": "modtime",
       "info": "FACETS.INFO.ACTUALITY",
-      "queries": {
-        "lastMonth": {
+      "facets": {
+        "last_month": {
           "query": {
             "filter": {
               "range": {
@@ -1419,7 +1419,7 @@ hit_search:
             }
           }
         },
-        "lastThreeMonth": {
+        "last_three_month": {
           "query": {
             "filter": {
               "range": {
@@ -1430,7 +1430,7 @@ hit_search:
             }
           }
         },
-        "lastYear": {
+        "last_year": {
           "query": {
             "filter": {
               "range": {
@@ -1441,7 +1441,7 @@ hit_search:
             }
           }
         },
-        "lastFiveYears": {
+        "last_five_years": {
           "query": {
             "filter": {
               "range": {
@@ -1452,7 +1452,7 @@ hit_search:
             }
           }
         },
-        "olderFiveYears": {
+        "older_five_years": {
           "query": {
             "filter": {
               "range": {
@@ -1552,7 +1552,7 @@ map:
       facet_config: [
         {
           "id": "legend",
-          "queries": {
+          "facets": {
             "obj_class_zv": {
               "query": {
                 "filter": {

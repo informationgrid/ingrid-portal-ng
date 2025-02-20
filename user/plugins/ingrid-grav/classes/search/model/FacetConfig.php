@@ -9,7 +9,7 @@ readonly class FacetConfig
         public string $id,
         public string $label,
         public ?array $query,
-        public ?array $queries,
+        public ?array $facets,
     )
     {
     }

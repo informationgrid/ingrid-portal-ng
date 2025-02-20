@@ -90,35 +90,35 @@ class ElasticsearchService
      * @param FacetConfig[] $facets
      * @return object
      */
-    private static function mapFacets(string $query, array $facets, array $selected_facets, array $queryFields, string $queryStringOperator): object
+    private static function mapFacets(string $query, array $facetConfig, array $selectedFacets, array $queryFields, string $queryStringOperator): object
     {
         $result = array();
-        foreach ($facets as $facet) {
-            if (property_exists((object)$facet, 'queries')) {
+        foreach ($facetConfig as $facet) {
+            if (property_exists((object)$facet, 'facets')) {
 
-                list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query, $queryFields, $queryStringOperator);
-                $queries = $facet['queries'];
+                list($queryString, $filter) = self::getFilterForFacet($selectedFacets, $facetConfig, $facet['id'], $query, $queryFields, $queryStringOperator);
+                $facets = $facet['facets'];
 
-                foreach ($queries as $subfacet_id => $subfacet_value) {
-                    $result[$subfacet_id]['global'] = new stdClass();
+                foreach ($facets as $subFacetId => $subFacetValue) {
+                    $result[$subFacetId]['global'] = new stdClass();
 
-                    $result = self::addFilterToFacet($filter, $queryString, $result, $subfacet_id);
-                    $tmpQuery = $subfacet_value['query'];
+                    $result = self::addFilterToFacet($filter, $queryString, $result, $subFacetId);
+                    $tmpQuery = $subFacetValue['query'];
                     $isToggle = (isset($facet['toggle']['active']) && $facet['toggle']['active']) ||
-                        (isset($subfacet_value['toggle']['active']) && $subfacet_value['toggle']['active']);
+                        (isset($subFacetValue['toggle']['active']) && $subFacetValue['toggle']['active']);
                     if ($isToggle) {
-                        if (isset($subfacet_value['query_toggle'])) {
-                            $tmpQuery = $subfacet_value['query_toggle'];
+                        if (isset($subFacetValue['query_toggle'])) {
+                            $tmpQuery = $subFacetValue['query_toggle'];
                         }
                     }
-                    $result[$subfacet_id]['aggs']['filtered']['aggs']['final'] = $tmpQuery;
+                    $result[$subFacetId]['aggs']['filtered']['aggs']['final'] = $tmpQuery;
                 }
             } else if (property_exists((object)$facet, 'query')) {
                 // the facet should not depend on the actual query
                 $result[$facet['id']]['global'] = new stdClass();
 
                 // add filter for the facet
-                list($queryString, $filter) = self::getFilterForFacet($selected_facets, $facets, $facet['id'], $query, $queryFields, $queryStringOperator);
+                list($queryString, $filter) = self::getFilterForFacet($selectedFacets, $facetConfig, $facet['id'], $query, $queryFields, $queryStringOperator);
                 $result = self::addFilterToFacet($filter, $queryString, $result, $facet['id']);
 
                 // add actual facet
@@ -144,44 +144,44 @@ class ElasticsearchService
                 $subQuery[] = sprintf($foundObject['search'], $item);
             }
             $result[] = join(' OR ', $subQuery);
-        } else if (property_exists((object)$foundObject, 'queries')) {
+        } else if (property_exists((object)$foundObject, 'facets')) {
             $values = explode(",", $selectionValue);
-            $queries = $foundObject['queries'];
-            $temp_filter = array();
+            $facets = $foundObject['facets'];
+            $tempFilter = array();
             $isToggle = isset($foundObject['toggle']['active']) && $foundObject['toggle']['active'];
             if ($isToggle) {
                 foreach ($values as $value) {
-                    if (isset($queries[$value])) {
-                        $query = $queries[$value];
+                    if (isset($facets[$value])) {
+                        $query = $facets[$value];
                         if (isset($query['query_toggle']['filter'])) {
-                            $temp_filter[] = json_encode($query['query_toggle']['filter']);
+                            $tempFilter[] = json_encode($query['query_toggle']['filter']);
                         } else {
-                            $temp_filter[] = json_encode($query['query']['filter']);
+                            $tempFilter[] = json_encode($query['query']['filter']);
                         }
                     } else {
-                        foreach ($queries as $query) {
+                        foreach ($facets as $query) {
                             if (isset($query['query_toggle']['filter'])) {
-                                $temp_filter[] = json_encode($query['query_toggle']['filter']);
+                                $tempFilter[] = json_encode($query['query_toggle']['filter']);
                             } else if (isset($query['query']['filter'])) {
-                                $temp_filter[] = json_encode($query['query']['filter']);
+                                $tempFilter[] = json_encode($query['query']['filter']);
                             }
                         }
                     }
                 }
             } else {
                 foreach ($values as $value) {
-                    if (isset($queries[$value])) {
-                        $facet1 = $queries[$value];
-                        if (property_exists((object)$facet1, 'query') && property_exists((object)$facet1['query'], 'filter')) {
-                            $temp_filter[] = json_encode($facet1['query']['filter']);
+                    if (isset($facets[$value])) {
+                        $facet = $facets[$value];
+                        if (property_exists((object)$facet, 'query') && property_exists((object)$facet['query'], 'filter')) {
+                            $tempFilter[] = json_encode($facet['query']['filter']);
                         } else {
-                            $result[] = $queries[$selectionValue]['query'];
+                            $result[] = $facets[$selectionValue]['query'];
                         }
                     }
                 }
             }
             // we need to combine facets within a group by OR
-            $filter[] = '{"bool": { "should": [ ' . join(",", $temp_filter) . ']}}';
+            $filter[] = '{"bool": { "should": [ ' . join(",", $tempFilter) . ']}}';
         } else if (property_exists((object)$foundObject, 'filter')) {
             $filter[] = sprintf($foundObject['filter'], ...explode(",", $selectionValue));
         }
@@ -189,13 +189,13 @@ class ElasticsearchService
     }
 
     /**
-     * @param $facet_config
+     * @param $facetConfig
      * @param int|string $selectionKey
      * @return array
      */
-    public static function findByFacetId($facet_config, int|string $selectionKey): array
+    public static function findByFacetId($facetConfig, int|string $selectionKey): array
     {
-        return array_filter($facet_config, function ($facet) use ($selectionKey) {
+        return array_filter($facetConfig, function ($facet) use ($selectionKey) {
             $found = $facet['id'] === $selectionKey;
             if (!$found and isset($facet['toggle'])) {
                 $toggle = $facet['toggle'];
@@ -206,17 +206,17 @@ class ElasticsearchService
     }
 
     /**
-     * @param array $selected_facets
+     * @param array $selectedFacets
      * @param array $facets
      * @param $id
      * @param string $query
      * @return array
      */
-    public static function getFilterForFacet(array $selected_facets, array $facets, $id, string $query, array $queryFields, string $queryStringOperator): array
+    public static function getFilterForFacet(array $selectedFacets, array $facets, $id, string $query, array $queryFields, string $queryStringOperator): array
     {
         $queryString = array();
         $filter = array();
-        $hasSelection = !empty($selected_facets);
+        $hasSelection = !empty($selectedFacets);
         if (!$hasSelection) {
             if ($query != "") {
                 $queryString = array("query_string" => array(
@@ -226,7 +226,7 @@ class ElasticsearchService
                 ));
             }
         } else {
-            $finalSelectedFacets = $selected_facets;
+            $finalSelectedFacets = $selectedFacets;
             $queryFromFacets = ElasticsearchService::getQueryFromFacets($facets, $finalSelectedFacets, $id);
             if ($query == "" && $queryFromFacets->query == "") {
                 $queryString = array("match_all" => new stdClass());
@@ -247,17 +247,17 @@ class ElasticsearchService
      * @param mixed $filter
      * @param mixed $queryString
      * @param array $result
-     * @param int|string $subfacet_id
+     * @param int|string $subFacetId
      * @return array
      */
-    public static function addFilterToFacet(mixed $filter, mixed $queryString, array $result, int|string $subfacet_id): array
+    public static function addFilterToFacet(mixed $filter, mixed $queryString, array $result, int|string $subFacetId): array
     {
         if ($filter || $queryString) {
-            $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'] = array();
-            if ($filter) $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'][] = $filter;
-            if ($queryString) $result[$subfacet_id]['aggs']['filtered']['filter']['bool']['must'][] = $queryString;
+            $result[$subFacetId]['aggs']['filtered']['filter']['bool']['must'] = array();
+            if ($filter) $result[$subFacetId]['aggs']['filtered']['filter']['bool']['must'][] = $filter;
+            if ($queryString) $result[$subFacetId]['aggs']['filtered']['filter']['bool']['must'][] = $queryString;
         } else {
-            $result[$subfacet_id]['aggs']['filtered']['filter']['match_all'] = new stdClass();
+            $result[$subFacetId]['aggs']['filtered']['filter']['match_all'] = new stdClass();
         }
         return $result;
     }

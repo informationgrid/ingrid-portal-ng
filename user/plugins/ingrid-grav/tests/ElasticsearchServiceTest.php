@@ -167,7 +167,7 @@ final class ElasticsearchServiceTest extends TestCase
                       {
                         "id": "special-types",
                         "label": "Ergebnistypen",
-                        "queries": {
+                        "facets": {
                           "inspire": {
                             "query": {
                               "filter": {
@@ -186,7 +186,7 @@ final class ElasticsearchServiceTest extends TestCase
                     {
                         "id": "special-types",
                         "label": "Ergebnistypen",
-                        "queries": {
+                        "facets": {
                           "metadata": {
                             "query": {
                               "filter": {
@@ -214,7 +214,7 @@ final class ElasticsearchServiceTest extends TestCase
                     $result[] = '
                     {
                         "id": "actuality",
-                        "queries": {
+                        "facets": {
                           "lastMonth": {
                             "query": {
                               "filter": {

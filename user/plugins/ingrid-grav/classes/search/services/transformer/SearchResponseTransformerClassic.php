@@ -26,8 +26,8 @@ class SearchResponseTransformerClassic
 
         foreach ($config as $facetConfig) {
             $items = array();
-            if (property_exists((object)$facetConfig, 'queries')) {
-                foreach ($facetConfig['queries'] as $key => $query) {
+            if (property_exists((object)$facetConfig, 'facets')) {
+                foreach ($facetConfig['facets'] as $key => $query) {
                     if (isset($key)) {
                         $label = $query['label'] ?? strtoupper('FACETS.' . $facetConfig['id'] . '.' . $key);
                         if (isset($facetConfig['codelist']) or isset($query['codelist'])) {
@@ -39,7 +39,7 @@ class SearchResponseTransformerClassic
                             ((array)$aggregations)[$key]->filtered->final->doc_count,
                             SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key),
                             $query['icon'] ?? null,
-                            $query['display'] ?? false,
+                            $query['display_on_empty'] ?? false,
                         );
                     }
                 }

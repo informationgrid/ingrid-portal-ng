@@ -113,7 +113,7 @@ home:
     facet_config: [
       {
         "id": "type",
-        "queries": {
+        "facets": {
           "www": {
             "icon": "ic-www",
             "query": {
@@ -179,7 +179,7 @@ home:
       },{
         "id": "partner",
         "label": "Bundesländern",
-        "queries": {
+        "facets": {
           "bw": {
             "icon": "images/partner/svg/bw.svg",
             "codelist": "110",
@@ -364,7 +364,7 @@ hit_search:
     {
       "id": "type",
       "open": true,
-      "queries": {
+      "facets": {
         "inspire": {
           "query": {
             "filter": {
@@ -473,8 +473,8 @@ hit_search:
         "type": "metadata",
         "metadata_group": "",
       },
-      "queries": {
-        "lastMonth": {
+      "facets": {
+        "last_month": {
           "query": {
             "filter": {
               "range": {
@@ -485,7 +485,7 @@ hit_search:
             }
           }
         },
-        "lastThreeMonth": {
+        "last_three_month": {
           "query": {
             "filter": {
               "range": {
@@ -496,7 +496,7 @@ hit_search:
             }
           }
         },
-        "lastYear": {
+        "last_year": {
           "query": {
             "filter": {
               "range": {
@@ -507,7 +507,7 @@ hit_search:
             }
           }
         },
-        "lastFiveYears": {
+        "last_five_years": {
           "query": {
             "filter": {
               "range": {
@@ -518,7 +518,7 @@ hit_search:
             }
           }
         },
-        "olderFiveYears": {
+        "older_five_years": {
           "query": {
             "filter": {
               "range": {
