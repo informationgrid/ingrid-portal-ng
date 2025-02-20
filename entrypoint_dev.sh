@@ -2,6 +2,7 @@
 
 THEME=${THEME:-ingrid}
 GRAV_FOLDER=${GRAV_FOLDER:-html}
+MVIS_VERSION=${MVIS_VERSION:-2.0.9}
 
 sed -ri "s/theme: quark/theme: ${THEME}/" /var/www/html/user/config/system.yaml
 

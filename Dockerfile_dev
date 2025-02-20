@@ -2,7 +2,6 @@ FROM php:8.3-apache@sha256:41ce934bddbd1b79927187723bbfeab8ec730d1604bbbf5b00ce9
 
 ENV GRAV_VERSION=1.7.48
 ENV TZ='Europe/Berlin'
-ENV MVIS_VERSION=2.0.9
 
 # Update system
 RUN apt-get update

@@ -2,6 +2,8 @@
 
 THEME=${THEME:-ingrid}
 GRAV_FOLDER=${GRAV_FOLDER:-html}
+MVIS_VERSION=${MVIS_VERSION:-2.0.9}
+ENABLE_CACHE=${ENABLE_CACHE:-true}
 
 mkdir -p /var/www/"$GRAV_FOLDER"
 cd /var/www/"$GRAV_FOLDER"
@@ -58,6 +60,9 @@ if [ "$TZ" ]; then
 else
   yq -i '.timezone = "Europe/Berlin"' "$SYSTEM_YAML"
 fi
+
+# Update cache
+yq -i '.cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
 
 # copy default cms pages
 if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms" ]; then
