@@ -3,15 +3,16 @@
 {% block content %}
     {% import 'macros/hit_macros.html.twig' as macros %}
 
+    {% set catalogLeafRest = base_url ~ '/catalog/leaf' %}
     <div class="body" role="main">
         <div class="search-filtered row content-small">
             <div class="columns catalog">
                 {% for partner in partners %}
                     {% if displayPartner %}
-                        {{ macros.render_catalog_node(partner, page.find('/detail').url, openOnNewTab) }}
+                        {{ macros.render_catalog_node(partner, page.find('/detail').url, catalogLeafRest, openOnNewTab) }}
                     {% else %}
                         {% for provider in partner.children %}
-                            {{ macros.render_catalog_node(provider, page.find('/detail').url, openOnNewTab) }}
+                            {{ macros.render_catalog_node(provider, page.find('/detail').url, catalogLeafRest, openOnNewTab) }}
                         {% endfor %}
                     {% endif %}
                 {% endfor %}

@@ -122,7 +122,8 @@ class Catalog
         return $twig->twig()->render($theme_path . '/partials/catalog/catalog-item.html.twig', [
             'openOnNewTab' => $this->configCatalogOpenOnNewTab,
             'items' => $children,
-            'detailPage' => $detailPage ? $uri->rootUrl() . $detailPage->route() : ''
+            'detailPage' => $detailPage ? $uri->rootUrl() . $detailPage->route() : '',
+            'catalogLeafRest' => $uri->rootUrl() . '/catalog/leaf',
         ]);
     }
 

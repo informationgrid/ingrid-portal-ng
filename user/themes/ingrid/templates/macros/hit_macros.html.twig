@@ -1171,7 +1171,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_catalog_node (node, detailPath, openOnNewTab) %}
+{% macro render_catalog_node (node, detailPath, catalogLeafPath, openOnNewTab) %}
     {% set nodeLevel = node.level %}
     {% set nodeId = node.id %}
     {% set nodeUuid = node.uuid %}
@@ -1192,7 +1192,7 @@
     {% if nodeUrl and node.isAddress %}
         {% set nodeUrl = nodeUrl ~ "&type=address" %}
     {% endif %}
-    {% set nodeRequest = base_url ~ '/catalog/leaf?parentId=' ~ nodeUuid ~ '&index=' ~ linkIdent ~ '&level=' ~ nodeLevel ~ '&node=' ~ linkId ~ '&partner=' ~ node.partner %}
+    {% set nodeRequest = catalogLeafPath ~ '?parentId=' ~ nodeUuid ~ '&index=' ~ linkIdent ~ '&level=' ~ nodeLevel ~ '&node=' ~ linkId ~ '&partner=' ~ node.partner %}
     {% set nodeRequestDisable = openNodesLevel > nodeLevel %}
 
     {% if node.children or node.hasChildren %}
@@ -1223,7 +1223,7 @@
                     {% endif %}
             {% if node.children %}
                 {% for childNode in node.children %}
-                    {{ _self.render_catalog_node(childNode, detailPath, openOnNewTab) }}
+                    {{ _self.render_catalog_node(childNode, detailPath, catalogLeafPath, openOnNewTab) }}
                 {% endfor %}
             {% endif %}
                 </div>
