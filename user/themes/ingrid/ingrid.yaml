@@ -293,6 +293,7 @@ hit_search:
           "min_doc_count": 0
         }
       },
+      "search": "t01_object.obj_class:%d"
     },
     {
       "id": "modtime",
@@ -367,6 +368,7 @@ hit_search:
           "min_doc_count": 0
         }
       },
+      "search": "partner:%s"
     },
     {
       "id": "bbox",
