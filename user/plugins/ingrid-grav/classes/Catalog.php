@@ -119,12 +119,10 @@ class Catalog
 
         $children = $this->getCatalogChildren($paramIndex, $paramLevel, $paramPartner, $paramNode, $paramParentId);
         $detailPage = $this->grav['pages']->find('/detail');
-        $catalogPage = $this->grav['pages']->find('/catalog');
         return $twig->twig()->render($theme_path . '/partials/catalog/catalog-item.html.twig', [
             'openOnNewTab' => $this->configCatalogOpenOnNewTab,
             'items' => $children,
-            'detailPage' => $detailPage ? $uri->rootUrl() . $detailPage->route() : '',
-            'catalogPage' => $catalogPage ? $uri->rootUrl() . $catalogPage->route() : '',
+            'detailPage' => $detailPage ? $uri->rootUrl() . $detailPage->route() : ''
         ]);
     }
 

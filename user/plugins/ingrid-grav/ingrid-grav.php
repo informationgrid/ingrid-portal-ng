@@ -112,7 +112,11 @@ class InGridGravPlugin extends Plugin
                     'onTwigSiteVariables' => ['onTwigSiteVariablesMapMarkers', 0],
                 ]);
                 break;
-
+            case '/catalog/leaf':
+                $this->enable([
+                    'onPageInitialized' => ['renderCustomTemplateCatalog', 0],
+                ]);
+                break;
             default:
                 // Get page content
                 $this->enable([
@@ -235,20 +239,9 @@ class InGridGravPlugin extends Plugin
                     break;
 
                 case 'catalog':
-                    $paramParentId = $uri->query('parentId') || "";
-                    $paramIndex = $uri->query('index') || "";
-
-                    if ($paramParentId && $paramIndex) {
-                        // Parent loading
-                        $this->enable([
-                            'onPageInitialized' => ['renderCustomTemplateCatalog', 0]
-                        ]);
-                    } else {
-                        // Initial loading
-                        $this->enable([
-                            'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
-                        ]);
-                    }
+                    $this->enable([
+                        'onTwigSiteVariables' => ['onTwigSiteVariablesCatalog', 0]
+                    ]);
                     break;
 
                 case 'detail':

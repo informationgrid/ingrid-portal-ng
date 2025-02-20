@@ -8,10 +8,10 @@
             <div class="columns catalog">
                 {% for partner in partners %}
                     {% if displayPartner %}
-                        {{ macros.render_catalog_node(partner, page.find('/detail').url, page.find('/catalog').url, openOnNewTab) }}
+                        {{ macros.render_catalog_node(partner, page.find('/detail').url, openOnNewTab) }}
                     {% else %}
                         {% for provider in partner.children %}
-                            {{ macros.render_catalog_node(provider, page.find('/detail').url, page.find('/catalog').url, openOnNewTab) }}
+                            {{ macros.render_catalog_node(provider, page.find('/detail').url, openOnNewTab) }}
                         {% endfor %}
                     {% endif %}
                 {% endfor %}
