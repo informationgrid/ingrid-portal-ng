@@ -124,6 +124,8 @@ class SearchServiceImpl implements SearchService
 
     private function transformQuery($query, $page, array $selectedFacets): string
     {
+        SearchQueryHelper::replaceInGridQuery($query);
+        SearchQueryHelper::transformColonQuery($query);
         $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $this->addToSearch, $this->sortByDate, $this->queryFields, $this->queryStringOperator);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;

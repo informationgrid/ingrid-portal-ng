@@ -16,4 +16,26 @@ class SearchQueryHelper
             $query = str_replace($key, $value, $query);
         }
     }
+
+    public static function transformColonQuery(string &$query): void
+    {
+        $tmpQuery = '';
+        $splits = explode(' ', trim($query));
+        foreach ($splits as $split) {
+            if (str_contains($split, ':')) {
+                $fieldQuery = $split;
+                $termQuery = str_replace(':', '\:', $split);
+                if (str_ends_with($fieldQuery, ':')) {
+                    $fieldQuery = $fieldQuery . '\'\'';
+                }
+                $tmpQuery .= '((' . $fieldQuery . ') OR (' . $termQuery . '))';
+            } else
+                $tmpQuery .= empty($tmpQuery) ? $split : ' ' . $split;
+
+        }
+        if (!empty($tmpQuery)) {
+            $query = '(' . $tmpQuery . ')';
+        }
+    }
+
 }

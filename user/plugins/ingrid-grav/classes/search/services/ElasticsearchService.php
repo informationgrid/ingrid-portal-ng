@@ -12,7 +12,6 @@ class ElasticsearchService
         if (count($addToSearch) > 0) {
             $query .= ' ' . implode(' ', $addToSearch);
         }
-        SearchQueryHelper::replaceInGridQuery($query);
         $aggs = ElasticsearchService::mapFacets($query, $facet_config, $selectedFacets, $queryFields, $queryStringOperator);
         $queryFromFacets = ElasticsearchService::getQueryFromFacets($facet_config, $selectedFacets);
 
