@@ -33,7 +33,7 @@
                                 {% set breakChild = false %}
                                 {% for facet in facetItem.items if not breakChild %}
                                     {% if value == facet.value %}
-                                        {% set label = facetItem.label|t ~ ': ' ~ facet.label %}
+                                        {% set label = facetItem.label|t ~ ': ' ~ facet.label|t %}
                                         {% set breakChild = true %}
                                     {% endif %}
                                 {% endfor %}
