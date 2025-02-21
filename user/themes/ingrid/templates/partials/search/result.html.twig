@@ -33,7 +33,7 @@
                                 {% set breakChild = false %}
                                 {% for facet in facetItem.items if not breakChild %}
                                     {% if value == facet.value %}
-                                        {% set label = facet.label %}
+                                        {% set label = facetItem.label|t ~ ': ' ~ facet.label %}
                                         {% set breakChild = true %}
                                     {% endif %}
                                 {% endfor %}
@@ -51,12 +51,7 @@
                                 {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
                             {% endfor %}
                             <a href="{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
-                                {% set categoryLabel = ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t %}
-                                {% if categoryLabel == ('FACETS.FACET-LABEL.' ~ selected_facet)|upper %}
-                                    {{ label|t }}
-                                {% else %}
-                                    {{ ('FACETS.FACET-LABEL.' ~ selected_facet)|upper|t }}: {{ label|t }}
-                                {% endif %}
+                                {{ label|t }}
                                 <span class="ic-ic-cross"></span>
                             </a>
                         {% endif %}
