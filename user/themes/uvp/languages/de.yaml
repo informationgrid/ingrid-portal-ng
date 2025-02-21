@@ -49,7 +49,7 @@ SEARCH_RESULT:
 
 FACETS:
   FACET-LABEL:
-    PARTNER: Bundesländer
+    PROVIDER: Bundesländer
     PROCEDURE: Verfahrenstypen
     CATEGORY: Kategorien
   INFO:

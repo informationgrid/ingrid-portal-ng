@@ -177,7 +177,7 @@ home:
           },
         }
       },{
-        "id": "partner",
+        "id": "provider",
         "label": "Bundesländern",
         "facets": {
           "bw": {
@@ -532,7 +532,7 @@ hit_search:
       }
     },
     {
-      "id": "partner",
+      "id": "provider",
       "codelist": "110",
       "query": {
         "terms": {

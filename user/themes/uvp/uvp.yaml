@@ -596,7 +596,7 @@ home:
         }
       },
       {
-        "id": "partner",
+        "id": "provider",
         "facets": {
           "bw": {
             "icon": "images/partner/svg/bw.svg",
@@ -1250,7 +1250,7 @@ hit_search:
       }
     },
     {
-      "id": "partner",
+      "id": "provider",
       "facets": {
         "bw": {
           "codelist": "110",

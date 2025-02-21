@@ -360,7 +360,7 @@ hit_search:
       }
     },
     {
-      "id": "partner",
+      "id": "provider",
       "codelist": "110",
       "query": {
         "terms": {

@@ -920,7 +920,7 @@ FACETS:
     FACET-LABEL:
         TYPE: Datatypes
         METADATA_GROUP: Meta data
-        PARTNER: Provider
+        PROVIDER: Provider
         BBOX: Map search
         MODTIME: Time
         MAP: Raumbezug

@@ -920,7 +920,7 @@ FACETS:
     FACET-LABEL:
         TYPE: Ergebnistypen
         METADATA_GROUP: Metadaten
-        PARTNER: Anbieter
+        PROVIDER: Anbieter
         BBOX: Auf Karte festlegen
         MODTIME: Aktualität
         MAP: Raumbezug
