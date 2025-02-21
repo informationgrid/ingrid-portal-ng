@@ -126,7 +126,7 @@ class ClassicParserISO
             $url = preg_replace("/.* src='/i", "", $preview);
             $url = preg_replace("/'.*/i", "", $url);
 
-            $title = preg_replace("/.* title='/i", "", $preview);
+            $title = preg_replace("/.* alt='/i", "", $preview);
             $title = preg_replace("/'.*/i", "", $title);
 
             $img = $preview;

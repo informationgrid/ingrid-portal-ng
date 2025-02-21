@@ -496,7 +496,7 @@ function elementInViewport(el) {
 function loadDefaultMapImage(elem, partner, theme) {
     elem.onerror = null;
     var image = 'image_map';
-    if(partner && partner != 'bund') {
+    if(partner && partner !== 'bund') {
       image += '_' + partner;
     }
     var defaultImage = theme + '/maps/' + image + '.png';
@@ -509,7 +509,7 @@ function loadDefaultMapImage(elem, partner, theme) {
           var http = new XMLHttpRequest();
           http.open('GET', src, true);
           http.onreadystatechange = function() {
-            if (this.readyState == this.DONE) {
+            if (this.readyState === this.DONE) {
               if (this.status === 200) {
                 if(this.response && this.response !== src){
                   elem.src = this.response;

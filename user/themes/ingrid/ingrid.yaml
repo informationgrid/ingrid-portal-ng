@@ -362,6 +362,11 @@ hit_search:
     {
       "id": "provider",
       "codelist": "110",
+      "extend_facet_selection_config": {
+        "field": "provider",
+        "listLimit": 6,
+        "sort": "name"
+      },
       "query": {
         "terms": {
           "field": "partner",

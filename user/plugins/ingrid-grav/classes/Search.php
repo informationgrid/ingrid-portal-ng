@@ -58,6 +58,7 @@ class Search
                 $ranking = 'score';
             }
         }
+        $this->addFacetsBySelection($facetConfig);
         $this->selectedFacets = $this->getSelectedFacets($facetConfig);
         $service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $addToSearch, $sortByDate);
         $this->results = $service->getSearchResults($this->query, $this->page, $this->selectedFacets, $this->grav['uri'], $this->lang, $this->theme);
@@ -96,10 +97,67 @@ class Search
         return $output;
     }
 
+    private function addFacetsBySelection(array &$facetConfig): void
+    {
+        $queryParams = $this->grav['uri']->query(null, true);
+        $extendedFacets = array_filter($facetConfig, function ($facet) {
+            return isset($facet['extend_facet_selection_config']);
+        });
+        if (!empty($extendedFacets)) {
+            foreach ($facetConfig as $facetKey => $facet) {
+                if (isset($queryParams[$facet['id']])) {
+                    $addFacet = $facet['extend_facet_selection_config'] ?? null;
+                    if ($addFacet) {
+                        $field = $addFacet['field'] ?? null;
+                        if ($field === 'provider') {
+                            $listLimit = $addFacet['listLimit'] ?? null;
+                            $sort = $addFacet['sort'] ?? null;
+                            $partners = CodelistHelper::getCodelistPartnerProviders();
+                            $paramValues = array_reverse(explode(',', $queryParams[$facet['id']]));
+                            foreach ($paramValues as $value) {
+                                $items = array_filter($partners, function ($partner) use ($value) {
+                                    return $partner['ident'] === $value;
+                                });
+                                foreach ($items as $item) {
+                                    if ($item['ident'] == $value) {
+                                        $providers = $item['providers'];
+                                        $newFacets = [];
+                                        foreach ($providers as $provider) {
+                                            $newFacets[$provider['ident']] = array(
+                                                "label" => $provider['name'],
+                                                "query" => array(
+                                                    "filter" => array(
+                                                        "term" => array(
+                                                            $field => $provider['ident']
+                                                        )
+                                                    )
+                                                )
+                                            );
+                                        }
+                                        if (!empty($newFacets)) {
+                                            array_splice($facetConfig, $facetKey + 1, 0, array(
+                                                array(
+                                                    "id" => $value,
+                                                    "label" => $item['name'],
+                                                    "listLimit" => $listLimit,
+                                                    "sort" => $sort,
+                                                    "facets" => $newFacets
+                                                )
+                                            ));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     private function getSelectedFacets(array &$facetConfig): array
     {
-        $query_params = $this->grav['uri']->query(null, true);
-        foreach ($query_params as $key => $param) {
+        $queryParams = $this->grav['uri']->query(null, true);
+        foreach ($queryParams as $key => $param) {
             $list = array_filter($facetConfig, function ($facet) use ($key) {
                 $found = $facet['id'] === $key;
                 if (!$found and isset($facet['toggle'])) {
@@ -109,11 +167,11 @@ class Search
                 return $found;
             });
             if (empty($list)) {
-                unset($query_params[$key]);
+                unset($queryParams[$key]);
             }
         }
-        $this->getSelectedFacetsFromConfig($facetConfig, $query_params, null);
-        return $query_params;
+        $this->getSelectedFacetsFromConfig($facetConfig, $queryParams, null);
+        return $queryParams;
     }
 
     public function getPagingUrl(mixed $uri): string
