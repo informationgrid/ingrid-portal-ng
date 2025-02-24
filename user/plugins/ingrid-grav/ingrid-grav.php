@@ -600,6 +600,7 @@ class InGridGravPlugin extends Plugin
             $twig->twig_vars['search_ranking'] = $search->ranking;
             $twig->twig_vars['csw_url'] = $this->config()['csw']['url'];
             $twig->twig_vars['rdf_url'] = $this->config()['rdf']['url'];
+            $twig->twig_vars['display_sort_hits'] = $search->isSortHitsEnable();
 
         }
     }

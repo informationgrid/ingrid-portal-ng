@@ -16,7 +16,7 @@
                      tabindex="1">
                     <div class="boxes">
                         {% for item in search_result.facets %}
-                            {% set dependencyItems = item.dependency %}
+                            {% set dependencyItems = item.displayDependOn %}
                             {% set isDependencySelect = false %}
                             {% for key, param in dependencyItems if not isDependencySelect %}
                                 {% if selected_facets[key] is not null %}

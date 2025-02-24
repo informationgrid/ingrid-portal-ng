@@ -37,7 +37,7 @@ class SearchResponseTransformerClassic
                             $key,
                             $label,
                             ((array)$aggregations)[$key]->filtered->final->doc_count,
-                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key),
+                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key, $config),
                             $query['icon'] ?? null,
                             $query['display_on_empty'] ?? false,
                         );
@@ -59,7 +59,7 @@ class SearchResponseTransformerClassic
                             $key,
                             $label,
                             $bucket->doc_count,
-                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key),
+                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key, $config),
                             null,
                             false,
                         );
@@ -70,35 +70,40 @@ class SearchResponseTransformerClassic
                     '',
                     '',
                     -1,
-                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null),
+                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null, $config),
                     null,
                     false,
                 );
             }
-            $label = $facetConfig['label'] ?? 'FACETS.FACET-LABEL.' . strtoupper($facetConfig['id']);
-            $listLimit = $facetConfig['listLimit'] ?? null;
+            $label = $facetConfig['label'] ?? 'FACETS.FACET_LABEL.' . strtoupper($facetConfig['id']);
+            $listLimit = $facetConfig['list_limit'] ?? null;
             $info = $facetConfig['info'] ?? null;
             $toggle = $facetConfig['toggle'] ?? null;
             $open = $facetConfig['open'] ?? false;
-            $openBy = $facetConfig['openBy'] ?? null;
+            $openBy = $facetConfig['open_by'] ?? null;
             $sort = $facetConfig['sort'] ?? null;
-            if ($sort == 'name') {
-                usort($items, function ($a, $b) {
-                    return strcasecmp($a->label, $b->label);
-                });
-            } else if ($sort == 'count') {
-                sort($items, function ($a, $b) {
-                    return strcasecmp($a->docCount, $b->docCount);
-                });
+            switch ($sort) {
+                case 'name':
+                    usort($items, function ($a, $b) {
+                        return strcasecmp($a->label, $b->label);
+                    });
+                    break;
+                case 'count':
+                    sort($items, function ($a, $b) {
+                        return strcasecmp($a->docCount, $b->docCount);
+                    });
+                    break;
+                default:
+                    break;
             }
-            $dependency = $facetConfig['dependency'] ?? null;
-            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info, $toggle, $open, $openBy, $dependency);
+            $displayDependOn = $facetConfig['display_depend_on'] ?? null;
+            $result[] = new FacetResult($facetConfig['id'], $label, $items, $listLimit, $info, $toggle, $open, $openBy, $displayDependOn);
         }
 
         return $result;
     }
 
-    private static function createActionUrl($uri, $facetConfigId, $key): string {
+    private static function createActionUrl($uri, $facetConfigId, $key, array $facetConfig): string {
         $query_params = $uri->query(null, true);
 
         // Get the full current URL without query parameters
@@ -111,7 +116,10 @@ class SearchResponseTransformerClassic
             if ($facetConfigId == 'bbox') {
                 unset($query_params[$facetConfigId]);
             } else {
-                $valueAsArray = explode(",", $query_params[$facetConfigId]);
+                $valueAsArray = [];
+                if (!empty($query_params[$facetConfigId])) {
+                    $valueAsArray = explode(",", $query_params[$facetConfigId]);
+                }
                 $found = array_search($key, $valueAsArray);
                 if ($found !== false) {
                     array_splice($valueAsArray, $found, 1);
@@ -126,6 +134,36 @@ class SearchResponseTransformerClassic
             }
         } else {
             $query_params[$facetConfigId] = $key;
+            foreach ($facetConfig as $facet) {
+                if ($facet['id'] === $facetConfigId) {
+                    if (isset($facet['select_other'])) {
+                        foreach ($facet['select_other'] as $otherKey => $otherParam) {
+                            if (!isset($query_params[$otherKey])) {
+                                $query_params[$otherKey] = $otherParam;
+                            } else {
+                                $paramValues = [];
+                                if (!empty($query_params[$otherKey])) {
+                                    $paramValues = explode(',', $query_params[$otherKey]);
+                                }
+                                if (!in_array($otherParam, $paramValues)) {
+                                    $paramValues[] = $otherParam;
+                                    $query_params[$otherKey] = implode(',', $paramValues);
+                                }
+                            }
+                        }
+                    } else if (isset($facet['facets'])) {
+                        foreach ($facet['facets'] as $subFacetKey => $subFacet) {
+                            if ($key === $subFacetKey) {
+                                if (isset($subFacet['active']) && $subFacet['active']) {
+                                    $query_params[$facetConfigId] = '';
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
         }
 
         if (isset($query_params['more'])) {

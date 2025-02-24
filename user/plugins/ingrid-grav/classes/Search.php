@@ -202,6 +202,7 @@ class Search
             if (isset($facet['id'])) {
                 $id = $facet['id'];
             }
+
             if (isset($facet['toggle'])) {
                 $toggle = $facet['toggle'];
                 $toggleId = $toggle['id'];
@@ -225,6 +226,7 @@ class Search
                     }
                 }
             }
+
             if (isset($facet['facets'])) {
                 $this->getSelectedFacetsFromConfig($facet['facets'], $params, $id);
             }
@@ -331,5 +333,27 @@ class Search
             return $value -> $key;
         }
         return null;
+    }
+
+    public function isSortHitsEnable(): bool
+    {
+        $facetConfig = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.facet_config') ?: [];
+        foreach ($this->selectedFacets as $key => $param) {
+            foreach ($facetConfig as $facet) {
+                if ($facet['id'] === $key) {
+                    if (isset($facet['display_sort_hits_on_selection']) && $facet['display_sort_hits_on_selection']) {
+                        return true;
+                    }
+                    if (isset($facet['facets'])) {
+                        foreach ($facet['facets'] as $subFacet) {
+                            if (isset($subFacet['display_sort_hits_on_selection']) && $subFacet['display_sort_hits_on_selection']) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }

@@ -48,7 +48,7 @@ SEARCH_RESULT:
   SORT_DATE_INFO: Bauleitpläne können bei der Sortierung nach "Aktualität" leider nicht berücksichtigt werden.
 
 FACETS:
-  FACET-LABEL:
+  FACET_LABEL:
     PROVIDER: Bundesländer
     PROCEDURE: Verfahrenstypen
     CATEGORY: Kategorien

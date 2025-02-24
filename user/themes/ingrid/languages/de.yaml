@@ -917,13 +917,15 @@ CATALOG_HIERARCHY:
     LOADING: Laden ...
 
 FACETS:
-    FACET-LABEL:
+    FACET_LABEL:
         TYPE: Ergebnistypen
         METADATA_GROUP: Metadaten
         PROVIDER: Anbieter
         BBOX: Auf Karte festlegen
         MODTIME: Aktualität
         MAP: Raumbezug
+    FACET_PILL:
+        TYPE: Ergebnistyp
     MODTIME:
         LAST_MONTH: "letzter Monat"
         LAST_THREE_MONTH: "letzte 3 Monat"

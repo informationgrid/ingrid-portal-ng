@@ -19,7 +19,7 @@ readonly class FacetResult
         public null|array $toggle,
         public null|bool $open,
         public null|array $openBy,
-        public null|array $dependency,
+        public null|array $displayDependOn,
     )
     {
     }

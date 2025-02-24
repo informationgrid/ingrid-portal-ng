@@ -1054,7 +1054,7 @@ hit_search:
     {
       "id": "category",
       "open": true,
-      "listLimit": 6,
+      "list_limit": 6,
       "sort": "name",
       "facets": {
         "energie": {

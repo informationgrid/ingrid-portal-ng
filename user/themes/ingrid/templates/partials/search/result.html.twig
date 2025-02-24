@@ -14,7 +14,7 @@
                 {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' ~ uri.query(param)|url_encode %}
             {% endfor %}
             <a href="{{ actionLink }}" class="button pill">
-                {{ 'FACETS.FACET-LABEL.MAP'|t }}: {{ values }}
+                {{ 'FACETS.FACET_LABEL.MAP'|t }}: {{ values }}
                 <span class="ic-ic-cross"></span>
             </a>
         {% else %}
@@ -33,7 +33,11 @@
                                 {% set breakChild = false %}
                                 {% for facet in facetItem.items if not breakChild %}
                                     {% if value == facet.value %}
-                                        {% set label = facetItem.label|t ~ ': ' ~ facet.label|t %}
+                                        {% set pill_label = facetItem.label|t %}
+                                        {% if ('FACETS.FACET_PILL.' ~ facetItem.id|upper)|t != 'FACETS.FACET_PILL.' ~ facetItem.id|upper %}
+                                            {% set pill_label = ('FACETS.FACET_PILL.' ~ facetItem.id|upper)|t %}
+                                        {% endif %}
+                                        {% set label = pill_label ~ ': ' ~ facet.label|t %}
                                         {% set breakChild = true %}
                                     {% endif %}
                                 {% endfor %}

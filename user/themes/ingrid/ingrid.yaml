@@ -214,6 +214,7 @@ hit_search:
           },
         },
         "metadata": {
+          "display_sort_hits_on_selection": true,
           "query": {
             "filter": {
               "term": {
@@ -282,9 +283,13 @@ hit_search:
     },
     {
       "id": "metadata_group",
-      "openBy": {
+      "open_by": {
         "type": "metadata",
       },
+      "select_other": {
+        "type": "metadata",
+      },
+      "display_sort_hits_on_selection": true,
       "codelist": "8000",
       "query": {
         "terms": {
@@ -297,7 +302,7 @@ hit_search:
     },
     {
       "id": "modtime",
-      "dependency": {
+      "display_depend_on": {
         "type": "metadata",
         "metadata_group": "",
       },
@@ -364,7 +369,7 @@ hit_search:
       "codelist": "110",
       "extend_facet_selection_config": {
         "field": "provider",
-        "listLimit": 6,
+        "list_limit": 6,
         "sort": "name"
       },
       "query": {
