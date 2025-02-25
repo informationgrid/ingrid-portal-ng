@@ -70,7 +70,10 @@ fi
 
 # copy default cms pages
 if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/cms" ]; then
-  if ! yq '.theme_add_cms'; then
+  if yq '.theme_add_cms'; then
+    echo "Init cms pages has been copied."
+  else
+    echo "Copy init cms pages."
     yq -i '.theme_add_cms = true' "$SYSTEM_YAML"
     cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/cms/* /var/www/"$GRAV_FOLDER"/user/pages/
   fi
