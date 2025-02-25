@@ -58,7 +58,13 @@ class InGridGravTwigExtension extends GravExtension
         return [
             new \Twig_SimpleFilter('filterLinks', [$this, 'filterLinksByKind']),
             new \Twig_SimpleFilter('sortContacts', [$this, 'sortContactsByRole']),
+            new \Twig_SimpleFilter('inArrayLowerCase', [$this, 'inArrayLowerCase']),
         ];
+    }
+
+    public function inArrayLowerCase(array $links, string $filter): bool
+    {
+        return in_array(strtolower($filter), array_map("strtolower", $links));
     }
 
     public function filterLinksByKind(array $links, string $kind): array

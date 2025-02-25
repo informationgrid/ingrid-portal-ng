@@ -3,11 +3,11 @@
 {% set isOpendata = false %}
 {% set isHVD = false %}
 
-{% if 'inspire' in infoRefs_keyword.search_terms %}
+{% if infoRefs_keyword.search_terms|inArrayLowerCase('inspire') %}
     {% set isInspire = true %}
 {% endif %}
 
-{% if 'opendata' in infoRefs_keyword.search_terms %}
+{% if infoRefs_keyword.search_terms|inArrayLowerCase('opendata') %}
     {% set isOpendata = true %}
 {% endif %}
 

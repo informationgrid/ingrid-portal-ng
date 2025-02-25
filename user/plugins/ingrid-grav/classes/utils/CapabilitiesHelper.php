@@ -80,7 +80,19 @@ class CapabilitiesHelper
                 $url .= '&SERVICE=' . $service;
             }
             $layersParam = $service . '||' . $url;
-            if($additional != null) {
+            if ($additional != null) {
+                $layersParam .= '||' . $additional;
+            }
+            return urlencode($layersParam);
+        } else if (!empty($url) && ($serviceType === "view")) {
+            $defaultService = "WMS";
+            if (str_contains('?', $url)) {
+                if (str_contains('service=', strtolower($url))) {
+                   $url .= '&SERVICE=' . $defaultService;
+                }
+            }
+            $layersParam = $defaultService . '||' . $url;
+            if ($additional != null) {
                 $layersParam .= '||' . $additional;
             }
             return urlencode($layersParam);
