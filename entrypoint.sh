@@ -63,7 +63,7 @@ else
 fi
 
 # Update cache
-if [ "$ENABLE_CACHE" == "true" ]; then
+if [ "$ENABLE_CACHE" = "true" ]; then
   yq -i '.cache.enabled = true' "$SYSTEM_YAML"
 else
   yq -i '.cache.enabled = false' "$SYSTEM_YAML"
@@ -141,7 +141,7 @@ fi
 mkdir -p assets backup cache images logs tmp
 
 # Install mvis
-if [ "$ENABLE_MVIS" == "true" ]; then
+if [ "$ENABLE_MVIS" = "true" ]; then
   cd /var/www
   curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip && \
   unzip mvis.zip && \
