@@ -52,7 +52,9 @@
                         {% endfor %}
                         {% if label %}
                             {% for key, param in queries %}
-                                {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                                {% if param %}
+                                    {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                                {% endif %}
                             {% endfor %}
                             <a href="{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
                                 {{ label|t }}
