@@ -19,6 +19,7 @@ class InGridGravTwigExtension extends GravExtension
             new \Twig_SimpleFunction('getValueFromCodelist', [$this, 'getValueFromCodelist']),
             new \Twig_SimpleFunction('getActionLinkFromFacets', [$this, 'getActionLinkFromFacets']),
             new \Twig_SimpleFunction('removeHashLocale', [$this, 'removeHashLocale']),
+            new \Twig_SimpleFunction('getMimeByContentType', [$this, 'getMimeByContentType']),
         ];
     }
 
@@ -48,6 +49,15 @@ class InGridGravTwigExtension extends GravExtension
         $check = '#locale-';
         if (str_contains($text, $check)) {
             return explode($check, $text)[0];
+        }
+        return $text;
+    }
+
+    public function getMimeByContentType(string $text): string
+    {
+        $mime = MimeTypeHelper::getMimetypeExtension($text);
+        if ($mime) {
+            return $mime;
         }
         return $text;
     }

@@ -1,0 +1,62 @@
+<script>
+    $( document ).ready(function() {
+        $('.document-list a.icon').has('span.ic-ic-external, span.ic-ic-download').each(function(index) {
+            var a = $(this);
+            var aParent = a.parent();
+            if (a) {
+                if(a.length > 0){
+                    var href = a[0].href;
+                    var spanParent = aParent.find('.info--right');
+                    if(spanParent.length === 0) {
+                        aParent.prepend('<div class="info--right"></div>');
+                        spanParent = aParent.find('.info--right');
+                    }
+                    if(href){
+                        spanParent.append('<span></span>');
+                        var span = spanParent.find('span:empty');
+                        getLinkFileDataType('{{ base_url_relative}}/utils/mimetype?url=' + encodeURIComponent(href), span);
+                    }
+                }
+            }
+        });
+    });
+
+    function getLinkFileDataType(url, element, elementParent) {
+        var respJson;
+        var http = new XMLHttpRequest();
+        http.open('GET', url, true);
+        http.onreadystatechange = function() {
+            if (this.readyState === this.DONE) {
+                if (this.status === 200) {
+                    if(this.response){
+                        var text = this.response.toUpperCase();
+                        var list = element.parent().find('span:contains("' + text + '")');
+                        if(list.length === 0) {
+                            element.text(text);
+
+                            var parentTeaser = $(element).closest('.teaser-data.search');
+                            if(parentTeaser.length > 0) {
+                                var teaserInfo = $(parentTeaser).find('.teaser-info');
+                                if(teaserInfo.length > 0) {
+                                    var teaserInfoEntries = $(teaserInfo).find('span');
+                                    var teaserInfoEntryList = [];
+                                    teaserInfoEntries.each(function(){
+                                        var teaserInfoEntry = $(this).text().trim();
+                                        teaserInfoEntryList.push(teaserInfoEntry);
+                                    });
+                                    if(teaserInfoEntryList.indexOf(text) === -1){
+                                        teaserInfo.append('<span>' + text + '</span>');
+                                    }
+                                }
+                            }
+                        } else {
+                            element.remove();
+                        }
+                    }
+                }
+            }
+        };
+        http.send();
+        return ('');
+    }
+</script>

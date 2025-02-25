@@ -113,7 +113,6 @@ class MimeTypeHelper
             "application/x-mif" => "mif",
             "application/x-msdos-program" => "exe",
             "application/x-netcdf" => "cdf nc",
-            "application/x-netcdf" => "nc",
             "application/x-perl" => "pl pm",
             "application/x-python" => "py",
             "application/x-rar-compressed" => "rar",
@@ -208,8 +207,9 @@ class MimeTypeHelper
             "application/x-7z-compressed" => "7z",
             "application/x-bzip" => "bz",
             "text/csv" => "csv",
-            "text/css" => "css",
             "application/x-bzip2" => "bz2",
+            "application/atom+xml" => "atom",
+            "application/opensearchdescription+xml" => "opensearch"
         ];
         return isset($mime_map[$mime]) ? $mime_map[$mime] : false;
     }

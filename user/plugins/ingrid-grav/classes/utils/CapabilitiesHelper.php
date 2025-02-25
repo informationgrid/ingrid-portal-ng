@@ -38,8 +38,8 @@ class CapabilitiesHelper
                 }
             }
             return $url;
-        } else if (!empty($url) && isset($serviceType) && strcasecmp($serviceType, "view")){
-            $defaultService = "WMS";
+        } else if (!empty($url) && isset($serviceType) && $serviceType === 'view'){
+            $defaultService = 'WMS';
             if (strpos($url, '?')) {
                 if (!stripos($url, 'service=')) {
                     $url .= '&SERVICE=' . $defaultService;

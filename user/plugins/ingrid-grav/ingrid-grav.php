@@ -475,7 +475,7 @@ class InGridGravPlugin extends Plugin
             $output = $twig->twig()->render($theme_path . '/_rest/utils/mimetype.html.twig', [
                 'mimeType' => $mimeType
             ]);
-            echo $output;
+            echo trim($output);
         } catch (\Exception $e) {
             $this->grav['log']->error('Error load mime type: ' . $e->getMessage());
         }

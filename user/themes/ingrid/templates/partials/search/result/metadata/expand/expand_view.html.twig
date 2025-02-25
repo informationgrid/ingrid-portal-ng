@@ -19,12 +19,6 @@
                         {% for link in access %}
                         <div class="list-item">
                             <div>
-                                <div class="info--right">
-                                    {% if link.url %}
-                                        {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
-                                        <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
-                                    {% endif %}
-                                </div>
                                 <a href="{{ link.url }}" class="icon external-link" title="{{ link.title }}" target="_blank" rel="noopener noreferrer">
                                     <span class="ic-ic-external"></span>
                                     <span class="text">
@@ -59,10 +53,6 @@
                             <div class="list-item">
                                 <div>
                                     <div class="info--right">
-                                        {% if link.url %}
-                                            {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
-                                            <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
-                                        {% endif %}
                                         {% if link.serviceType %}
                                             <span>{{ link.serviceType }}</span>
                                         {% endif %}
@@ -126,10 +116,6 @@
                                 <div class="list-item">
                                     <div>
                                         <div class="info--right">
-                                            {% if link.url %}
-                                                {% set getMime = base_url_relative ~ "/utils/mimetype?url=" ~ link.url|url_encode %}
-                                                <div hx-get="{{ getMime }}" hx-trigger="load once" hx-target="this"></div>
-                                            {% endif %}
                                             {% if link.applicationProfile %}
                                                 {% set infoText = "COMMON.SERVICE_TYPE_" ~ link.applicationProfile|upper %}
                                                 {% if infoText|t == infoText %}
@@ -241,15 +227,15 @@
                     </div>
                     <script>
                         var swiper_{{ hitOpenId }} = new Swiper (".swiper-container_{{ hitOpenId }}", {
-                        spaceBetween: 10,
-                        grabCursor: true,
-                        updateOnWindowResize: true,
-                        observer: true,
-                        observeParents: true,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true
-                        }
+                            spaceBetween: 10,
+                            grabCursor: true,
+                            updateOnWindowResize: true,
+                            observer: true,
+                            observeParents: true,
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true
+                            }
                         });
                     </script>
                 {% else %}
