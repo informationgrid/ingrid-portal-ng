@@ -110,7 +110,7 @@ class Search
                     if ($addFacet) {
                         $field = $addFacet['field'] ?? null;
                         if ($field === 'provider') {
-                            $listLimit = $addFacet['listLimit'] ?? null;
+                            $listLimit = $addFacet['list_limit'] ?? null;
                             $sort = $addFacet['sort'] ?? null;
                             $partners = CodelistHelper::getCodelistPartnerProviders();
                             $paramValues = array_reverse(explode(',', $queryParams[$facet['id']]));
@@ -139,7 +139,7 @@ class Search
                                                 array(
                                                     "id" => $value,
                                                     "label" => $item['name'],
-                                                    "listLimit" => $listLimit,
+                                                    "list_limit" => $listLimit,
                                                     "sort" => $sort,
                                                     "facets" => $newFacets
                                                 )
