@@ -3,6 +3,7 @@
 THEME=${THEME:-ingrid}
 GRAV_FOLDER=${GRAV_FOLDER:-html}
 MVIS_VERSION=${MVIS_VERSION:-2.0.9}
+ENABLE_MVIS=${ENABLE_MVIS:-true}
 ENABLE_CACHE=${ENABLE_CACHE:-true}
 
 mkdir -p /var/www/"$GRAV_FOLDER"
@@ -140,11 +141,13 @@ fi
 mkdir -p assets backup cache images logs tmp
 
 # Install mvis
-cd /var/www
-curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip && \
-unzip mvis.zip && \
-mv /var/www/measurement-client-"$MVIS_VERSION" /var/www/"$GRAV_FOLDER"/assets/mvis && \
-rm mvis.zip
+if [ "$ENABLE_MVIS" ]; then
+  cd /var/www
+  curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip && \
+  unzip mvis.zip && \
+  mv /var/www/measurement-client-"$MVIS_VERSION" /var/www/"$GRAV_FOLDER"/assets/mvis && \
+  rm mvis.zip
+fi
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2
 chown -R www-data:www-data /var/www/"$GRAV_FOLDER"
