@@ -25,7 +25,7 @@ class Catalog
         $this->lang = $grav['language']->getLanguage();
 
         $theme = $this->grav['config']->get('system.pages.theme');
-        $this->configCatalogOpenNodesLevel = $this->grav['config']->get('themes.' . $theme . '.catalog.open_nodes_level') ?: 3;
+        $this->configCatalogOpenNodesLevel = $this->grav['config']->get('themes.' . $theme . '.catalog.open_nodes_level');
         $this->configCatalogDisplayPartner = $this->grav['config']->get('themes.' . $theme . '.catalog.display_partner') ?: true;
         $this->configCatalogOpenOnNewTab = $this->grav['config']->get('themes.' . $theme . '.catalog.open_on_new_tab') ?: true;
         $this->configCatalogSortByName = $this->grav['config']->get('themes.' . $theme . '.catalog.sort_by_name') ?: true;

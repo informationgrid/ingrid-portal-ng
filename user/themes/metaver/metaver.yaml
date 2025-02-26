@@ -636,12 +636,51 @@ redirect:
     - /measure
   pages_to_redirect:
 catalog:
-  open_nodes_level: 3
-  display_partner: 1
-  sort_by_name: 1
-  open_on_new_tab: 1
+  open_nodes_level: 0
+  display_partner: true
+  sort_by_name: true
+  open_on_new_tab: true
 help:
   default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+    - url: 'https://www.saarland.de/mukmav/DE/aktuelles/rss-feeds/_feeds/aktuelle_meldungen_feed.xml'
+      summary: 'Land Saarland - Staatskanzlei des Saarlandes. Dies ist der Aktuelle-Meldungen-RSS-Feed des Saarlandes.'
+      provider: 'Land Saarland - Staatskanzlei des Saarlandes'
+      lang: de
+      category: all
+    - url: 'http://service.mvnet.de/_php/feedcreator/feeds/feed_Regierungsportal_107.xml'
+      summary: 'Ministerium für Klimaschutz, Landwirtschaft, ländliche Räume und Umwelt - Aktuelles.'
+      provider: 'Ministerpräsidentin des Landes Mecklenburg-Vorpommern - Staatskanzlei'
+      lang: de
+      category: all
+    - url: 'https://www.lvermgeo.sachsen-anhalt.de/de/rss-feed-news.html'
+      summary: 'Landesamt für Vermessung und Geoinformation Sachsen-Anhalt (LVermGeo) - News'
+      provider: 'Landesamt für Vermessung und Geoinformation Sachsen-Anhalt (LVermGeo)'
+      lang: de
+      category: all
+    - url: 'https://mluk.brandenburg.de/mluk/de/rss/~pressemitteilungen-des-mlukrss.xml'
+      summary: 'Ministerium für Landwirtschaft, Umwelt und Klimaschutz (MLUK) des Landes Brandenburg. Pressemitteilungen'
+      provider: 'Ministerium für Landwirtschaft, Umwelt und Klimaschutz (MLUK) des Landes Brandenburg'
+      lang: de
+      category: all
+    - url: 'https://umwelt.hessen.de/Presse-Feed/all'
+      summary: 'Hessisches Ministerium für Umwelt, Klimaschutz, Landwirtschaft und Verbraucherschutz - Alle Pressemitteilungen'
+      provider: 'Hessisches Ministerium für Umwelt, Klimaschutz, Landwirtschaft und Verbraucherschutz'
+      lang: de
+      category: all
+    - url: 'https://geoportal.sachsen.de/cps/rss.xsl/rss.xml'
+      summary: 'Freistaat Sachsen. Aktuelle Meldungen des Geoportals'
+      provider: 'Freistaat Sachsen'
+      lang: de
+      category: all
+    - url: 'https://www.sachsen-anhalt.de/bs/pressemitteilungen/rss-feeds/?no_cache=1&type=9988&tx_tsarssinclude_rss%5Buid%5D=210&tx_tsarssinclude_rss%5Baction%5D=feed&tx_tsarssinclude_rss%5Bcontroller%5D=Rss'
+      summary: 'Pressemitteilungen der Landesverwaltung Sachsen-Anhalt sowie nachgeordneter Behörden und Bereiche'
+      provider: 'Landesportal Sachsen-Anhalt - Ministerium für Wissenschaft, Energie, Klimaschutz und Umwelt'
+      lang: de
+      category: all
 streams:
  schemes:
    theme:
