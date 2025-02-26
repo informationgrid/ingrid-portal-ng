@@ -113,20 +113,8 @@
 
 {% if search_result.hits|length > 0 %}
     {% include 'partials/global/map/leaflet.html.twig' %}
-    {% for hit in search_result.hits %}
-        {% if in_array('address', hit.datatypes) %}
-            {% include 'partials/search/result/address/result_address.html.twig' with {hit:hit, counter: loop.index0} %}
-        {% elseif in_array('blp', hit.datatypes) %}
-            {% include 'partials/search/result/blp/result_blp.html.twig' ignore missing with {hit:hit} %}
-        {% elseif in_array('www', hit.datatypes) %}
-            {% include 'partials/search/result/www/result_www.html.twig' with {hit:hit} %}
-        {% else %}
-            {% include 'partials/search/result/metadata/result_metadata.html.twig' with {hit:hit, counter: loop.index0} %}
-        {% endif %}
-  {% endfor %}
-  {% include 'partials/search/result/result_counter_bottom.html.twig' %}
+    {% include 'partials/search/result/result_hits.html.twig' %}
+    {% include 'partials/search/result/result_counter_bottom.html.twig' %}
 {% else %}
     <p><strong>{{ "COMMON.RESULT_NORESULTS"|t }}</strong><br /><br /></p>
 {% endif %}
-
-{% include 'partials/search/result/result_reference_list_datatype.html.twig' %}

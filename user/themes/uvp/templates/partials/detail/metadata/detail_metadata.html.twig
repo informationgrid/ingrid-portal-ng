@@ -243,6 +243,7 @@
         </div>
     {% endif %}
 </div>
+{% do assets.addJs('theme://js/htmx.min.js', {group: 'bottom'}) %}
 
 {% macro render_date (title, from, to, info) %}
     {%  if from or to %}

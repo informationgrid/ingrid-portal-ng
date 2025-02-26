@@ -1,0 +1,9 @@
+{# @var search_result \Grav\Plugin\SearchResult #}
+
+{% for hit in search_result.hits %}
+    {% if in_array('blp', hit.datatypes) %}
+        {% include 'partials/search/result/blp/result_blp.html.twig' ignore missing with {hit:hit} %}
+    {% else %}
+        {% include 'partials/search/result/metadata/result_metadata.html.twig' with {hit:hit, counter: loop.index0} %}
+    {% endif %}
+{% endfor %}
