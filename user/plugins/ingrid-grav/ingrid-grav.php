@@ -84,7 +84,7 @@ class InGridGravPlugin extends Plugin
 
         // Get rest content
         switch ($uri_path) {
-            case '/rest/getMimeTypepe':
+            case '/rest/getMimeType':
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
                 ]);
