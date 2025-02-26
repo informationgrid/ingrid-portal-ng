@@ -14,7 +14,7 @@
                     if(href){
                         spanParent.append('<span></span>');
                         var span = spanParent.find('span:empty');
-                        getLinkFileDataType('{{ base_url_relative}}/utils/mimetype?url=' + encodeURIComponent(href), span);
+                        getLinkFileDataType('rest/getMimeType?url=' + encodeURIComponent(href), span);
                     }
                 }
             }

@@ -1,5 +1,5 @@
 {% import 'macros/hit_macros.html.twig' as macros %}
 
 {% for item in items %}
-    {{ macros.render_catalog_node(item, base_url_relative ~ detailPage, catalogLeafRest, openOnNewTab) }}
+    {{ macros.render_catalog_node(item, detailPage, catalogLeafRest, openOnNewTab) }}
 {% endfor %}

@@ -84,35 +84,35 @@ class InGridGravPlugin extends Plugin
 
         // Get rest content
         switch ($uri_path) {
-            case '/utils/mimetype':
+            case '/rest/getMimeTypepe':
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateMimetype', 0],
                 ]);
                 break;
-            case '/utils/getUrlFileSize':
+            case '/rest/getUrlFileSize':
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateUrlFileSize', 0],
                 ]);
                 break;
 
-            case '/detail/createZip':
+            case '/rest/createDetailZip':
                 // Create zip request
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateDetailCreateZip', 0],
                 ]);
                 break;
-            case '/detail/getZip':
+            case '/rest/getDetailZip':
                 // Get zip request
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateDetailGetZip', 0],
                 ]);
                 break;
-            case '/map/mapMarker':
+            case '/rest/getMapMarkers':
                 $this->enable([
                     'onTwigSiteVariables' => ['onTwigSiteVariablesMapMarkers', 0],
                 ]);
                 break;
-            case '/catalog/leaf':
+            case '/rest/getCatalogLeaf':
                 $this->enable([
                     'onPageInitialized' => ['renderCustomTemplateCatalog', 0],
                 ]);

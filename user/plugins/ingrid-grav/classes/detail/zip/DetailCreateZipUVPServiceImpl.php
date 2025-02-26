@@ -49,7 +49,7 @@ class DetailCreateZipUVPServiceImpl implements DetailCreateZipService
         if(file_exists($this->filenameZip)) {
             $filesize = filesize($this->filenameZip);
             if ($filesize) {
-                return ['/detail/getZip?plugid=' . $this->plugId . '&uuid=' . $this->uuid, StringHelper::formatBytes($filesize)];
+                return ['rest/getDetailZip?plugid=' . $this->plugId . '&uuid=' . $this->uuid, StringHelper::formatBytes($filesize)];
             }
         }
         return [];

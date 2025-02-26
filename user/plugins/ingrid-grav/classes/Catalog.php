@@ -123,7 +123,7 @@ class Catalog
             'openOnNewTab' => $this->configCatalogOpenOnNewTab,
             'items' => $children,
             'detailPage' => $detailPage ? $uri->rootUrl() . $detailPage->route() : '',
-            'catalogLeafRest' => $uri->rootUrl() . '/catalog/leaf',
+            'catalogLeafRest' => 'rest/getCatalogLeaf',
         ]);
     }
 
