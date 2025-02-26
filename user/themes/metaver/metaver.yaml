@@ -433,6 +433,7 @@ hit_search:
           },
         },
         "metadata": {
+          "display_sort_hits_on_selection": true,
           "query": {
             "filter": {
               "term": {
@@ -457,6 +458,7 @@ hit_search:
       "open_by": {
         "type": "metadata",
       },
+      "display_sort_hits_on_selection": true,
       "codelist": "8000",
       "query": {
         "terms": {
