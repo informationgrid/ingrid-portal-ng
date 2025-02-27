@@ -1,18 +1,1 @@
-{% set isSecure = hasAccessConstraint %}
-{% set isInspire = false %}
-{% set isOpendata = false %}
-{% set isHVD = false %}
-
-{% if infoRefs_keyword.searchTerms and infoRefs_keyword.searchTerms|inArrayLowerCase('inspire') %}
-    {% set isInspire = true %}
-{% endif %}
-
-{% if infoRefs_keyword.searchTerms and infoRefs_keyword.searchTerms|inArrayLowerCase('opendata') %}
-    {% set isOpendata = true %}
-{% endif %}
-
-{% if infoRefs_keyword.hvd|length > 0 %}
-    {% set isHVD = true %}
-{% endif %}
-
-{{ hit_macros.render_hit_searchterm (isInspire, isOpendata, isSecure, isHVD) }}
+{{ hit_macros.render_hit_searchterm (isInspire, isOpendata, hasAccessConstraint, isHVD) }}

@@ -565,7 +565,7 @@ class InGridGravPlugin extends Plugin
             $detail = new Detail($this->grav, $this->configApiUrl);
             $detail->getContent();
             $twig = $this->grav['twig'];
-            if ($detail->hit) {
+            if (isset($detail->hit)) {
                 $twig->twig_vars['detail_type'] = $detail->type;
                 $twig->twig_vars['hit'] = $detail->hit;
                 $twig->twig_vars['page_custom_title'] = $detail->hit->title ?? null;

@@ -40,6 +40,12 @@ class DetailParserMetadataIdfISO
         self::getInfoRefs($node, $metadata->metaClass, $metadata, $lang);
         self::getDataQualityRefs($node, $metadata);
         self::getMetaInfoRefs($node, $uuid, $dataSourceName, $providers, $metadata, $lang);
+
+        $metadata->isInspire = in_array(strtolower('inspire'), array_map('strtolower', $metadata->searchTerms)) ||
+            in_array(strtolower('inspireidentifiziert'), array_map('strtolower', $metadata->searchTerms));
+        $metadata->isOpendata = in_array(strtolower('opendata'), array_map('strtolower', $metadata->searchTerms)) ||
+            in_array(strtolower('opendataident'), array_map('strtolower', $metadata->searchTerms));
+        $metadata->isHVD = count($metadata->hvd) > 0;
         return $metadata;
     }
 

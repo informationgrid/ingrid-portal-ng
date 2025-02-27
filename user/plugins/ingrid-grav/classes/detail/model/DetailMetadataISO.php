@@ -13,6 +13,9 @@ class DetailMetadataISO
     public ?array $altTitle;
     public ?string $summary;
     public ?string $hasAccessConstraint;
+    public bool $isInspire;
+    public bool $isOpendata;
+    public bool $isHVD;
     public ?array $previews;
     public ?string $mapUrl;
     public ?array  $links;
