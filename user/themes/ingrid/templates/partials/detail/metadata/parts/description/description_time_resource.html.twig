@@ -4,10 +4,10 @@
         <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference_record"{% else %}id="{{ hash_time }}_time_reference_record"{% endif %}></a>
         {{ hit_macros.render_group_title("SEARCH_DETAIL.TIME_REFERENCE_RECORD"|t) }}
 {# Erstellung #}
-        {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "creation", lang), timeRefs.creation ? timeRefs.creation|date("d.m.Y", false)|e ) }}
+        {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "creation", lang), timeRefs.timeCreation ? timeRefs.timeCreation|date("d.m.Y", false)|e ) }}
 {# Publikation #}
-        {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "publication", lang), timeRefs.publication ? timeRefs.publication|date("d.m.Y", false)|e ) }}
+        {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "publication", lang), timeRefs.timePublication ? timeRefs.timePublication|date("d.m.Y", false)|e ) }}
 {# letzte Änderung #}
-        {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "revision", lang), timeRefs.revision ? timeRefs.revision|date("d.m.Y", false)|e ) }}
+        {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "revision", lang), timeRefs.timeRevision ? timeRefs.timeRevision|date("d.m.Y", false)|e ) }}
     </div>
 {% endif %}

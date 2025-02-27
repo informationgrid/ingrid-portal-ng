@@ -5,15 +5,11 @@ namespace Grav\Plugin;
 class DetailParserGenericIdf
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid): array
+    public static function parse(\SimpleXMLElement $node, string $uuid): DetailMetadataHTML
     {
-        echo "<script>console.log('InGrid Detail parse HTML with " . $uuid . "');</script>";
-
-        $metadata = array();
+        $metadata = new DetailMetadataHTML($uuid);
         if ($node->children()) {
-            $metadata = [
-                'html' => self::getHtmlContent($node->children())
-            ];
+            $metadata->html = self::getHtmlContent($node->children());
         }
         return $metadata;
     }

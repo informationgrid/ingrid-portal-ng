@@ -6,14 +6,16 @@ use Grav\Common\Grav;
 
 class DetailMetadata
 {
-    var string $theme;
+    public string $theme;
 
     public function __construct($theme)
     {
         $this->theme = $theme;
     }
 
-    public function parse(\SimpleXMLElement $content, null|string $uuid, null|string $dataSourceName, array $providers): null|array
+    public function parse(\SimpleXMLElement $content, ?string $uuid, ?string $dataSourceName, array $providers): null|DetailMetadataISO|DetailMetadataUVP|DetailMetadataHTML
+
+
     {
         $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
         switch ($this->theme) {
@@ -24,6 +26,7 @@ class DetailMetadata
 
                     return DetailParserMetadataIdfUVP::parse($rootNode, $uuid, $dataSourceName, $providers, $lang);
                 }
+                break;
             default:
                 $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
                 if (!$uuid) {
@@ -34,6 +37,7 @@ class DetailMetadata
 
                     return DetailParserMetadataIdfISO::parse($rootNode, $uuid, $dataSourceName, $providers, $lang);
                 }
+                break;
         }
 
         $rootNode = $content->{'body'};

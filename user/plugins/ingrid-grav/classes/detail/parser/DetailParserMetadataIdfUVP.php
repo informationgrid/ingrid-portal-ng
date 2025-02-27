@@ -9,27 +9,21 @@ class DetailParserMetadataIdfUVP
 {
     static string $xPathStringLength = '[string-length(text()) > 0]';
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, null|string $dataSourceName, array $providers, string $lang): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, ?string $dataSourceName, array $providers, string $lang): DetailMetadataUVP
     {
-        echo "<script>console.log('InGrid Detail parse metadata with " . $uuid . "');</script>";
-
-        $type = IdfHelper::getNodeValue($node, "./type" . self::$xPathStringLength);
-        $title = IdfHelper::getNodeValue($node, "./name" . self::$xPathStringLength);
-        $metadata = [
-            "uuid" => $uuid,
-            "parent_uuid" => IdfHelper::getNodeValue($node, "./parent_id" . self::$xPathStringLength),
-            "type" => $type,
-            "type_name" => CodelistHelper::getCodelistEntry(["8001"], $type, $lang),
-            "title" => $title,
-            "summary" => IdfHelper::getNodeValue($node, "./descr" . self::$xPathStringLength),
-            "date" => IdfHelper::getNodeValue($node, "./date" . self::$xPathStringLength),
-            "categories" => IdfHelper::getNodeValueList($node, "./uvpgs/uvpg[@category and string-length(@category)!=0]/@category"),
-            "steps" => self::getSteps($node),
-            "negative" => self::getNegative($node),
-            "addresses" => self::getAddresses($node, $lang),
-            "bbox" => self::getBBox($node, $title),
-            "hasDocs" => count(IdfHelper::getNodeValueList($node,"//docs/doc")) > 0
-        ];
+        $metadata = new DetailMetadataUVP($uuid);
+        $metadata->parentUuid = IdfHelper::getNodeValue($node, "./parent_id" . self::$xPathStringLength);
+        $metadata->metaClass = IdfHelper::getNodeValue($node, "./type" . self::$xPathStringLength);
+        $metadata->metaClassName = CodelistHelper::getCodelistEntry(["8001"], $metadata->metaClass, $lang);
+        $metadata->title = IdfHelper::getNodeValue($node, "./name" . self::$xPathStringLength);
+        $metadata->summary = IdfHelper::getNodeValue($node, "./descr" . self::$xPathStringLength);
+        $metadata->date = IdfHelper::getNodeValue($node, "./date" . self::$xPathStringLength);
+        $metadata->categories = IdfHelper::getNodeValueList($node, "./uvpgs/uvpg[@category and string-length(@category)!=0]/@category");
+        $metadata->steps = self::getSteps($node);
+        $metadata->negative = self::getNegative($node);
+        $metadata->addresses = self::getAddresses($node, $lang);
+        $metadata->bbox = self::getBBox($node, $metadata->title);
+        $metadata->hasDocs = count(IdfHelper::getNodeValueList($node,"//docs/doc")) > 0;
         return $metadata;
     }
 

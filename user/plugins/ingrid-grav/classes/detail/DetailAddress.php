@@ -6,14 +6,14 @@ use Grav\Common\Grav;
 
 class DetailAddress
 {
-    var string $theme;
+    public string $theme;
 
     public function __construct($theme)
     {
         $this->theme = $theme;
     }
 
-    public static function parse(\SimpleXMLElement $content, null|string $uuid): null|array
+    public static function parse(\SimpleXMLElement $content, ?string $uuid): ?DetailAddressISO
     {
         $rootNode = IdfHelper::getNode($content, '//gmd:CI_ResponsibleParty | //idf:idfResponsibleParty');
         if (!is_null($rootNode)) {

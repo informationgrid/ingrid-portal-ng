@@ -7,9 +7,9 @@ use RocketTheme\Toolbox\Event\Event;
 
 class Codelist
 {
-    var Grav $grav;
+    public Grav $grav;
 
-    var string $lang;
+    public string $lang;
 
     public function __construct(Grav $grav) {
         $this->grav = $grav;

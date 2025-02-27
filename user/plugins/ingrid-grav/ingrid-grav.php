@@ -15,13 +15,12 @@ use RocketTheme\Toolbox\Event\Event;
 class InGridGravPlugin extends Plugin
 {
 
-    var string $configApiUrl;
-    var string $configApiUrlCatalog;
+    public string $configApiUrl;
+    public string $configApiUrlCatalog;
 
-    // Catalog
-    var string $lang;
+    public string $lang;
 
-    var SearchService $service;
+    public SearchService $service;
 
     /**
      * @return array
@@ -302,7 +301,7 @@ class InGridGravPlugin extends Plugin
      * @return Page
      * @throws \Exception
      */
-    public function addPage($url, $filename, $parent = null, $route = null): Page
+    public function addPage(string $url, string $filename, ?Page $parent = null, ?string $route = null): Page
     {
         /** @var Pages $pages */
         $pages = $this->grav['pages'];
@@ -329,7 +328,7 @@ class InGridGravPlugin extends Plugin
         return $page;
     }
 
-    public function addPageFromTheme($url, $filename, $parent = null, $route = null): Page
+    public function addPageFromTheme(string $url, string $filename, ?Page $parent = null, ?string $route = null): Page
     {
         /** @var Pages $pages */
         $pages = $this->grav['pages'];
@@ -569,7 +568,7 @@ class InGridGravPlugin extends Plugin
             if ($detail->hit) {
                 $twig->twig_vars['detail_type'] = $detail->type;
                 $twig->twig_vars['hit'] = $detail->hit;
-                $twig->twig_vars['page_custom_title'] = $detail->hit["title"] ?? null;
+                $twig->twig_vars['page_custom_title'] = $detail->hit->title ?? null;
                 $twig->twig_vars['partners'] = $detail->partners;
                 $twig->twig_vars['lang'] = $detail->lang;
                 $twig->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));

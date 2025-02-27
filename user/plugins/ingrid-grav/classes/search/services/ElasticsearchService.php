@@ -51,7 +51,7 @@ class ElasticsearchService
         ));
     }
 
-    private static function getQueryFromFacets($facet_config, array $selectedFacets, $ignoreFacetId = null): object
+    private static function getQueryFromFacets(array $facet_config, array $selectedFacets, ?string $ignoreFacetId = null): object
     {
         $result = array();
         $filter = array();

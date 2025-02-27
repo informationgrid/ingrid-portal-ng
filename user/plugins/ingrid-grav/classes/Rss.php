@@ -7,7 +7,7 @@ use RocketTheme\Toolbox\Event\Event;
 
 class Rss
 {
-    var Grav $grav;
+    public Grav $grav;
 
     public function __construct(Grav $grav) {
         $this->grav = $grav;

@@ -1,3 +1,5 @@
+{# @var hit \Grav\Plugin\DetailMetadataUVP #}
+
 {% include 'partials/global/map/leaflet.html.twig' %}
 
 {% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
@@ -13,7 +15,7 @@
                     <br>
                     <br>
                     <div class="helper text">
-                        <span>{{ hit.type_name }}</span>
+                        <span>{{ hit.metaClassName }}</span>
                     </div>
                     <h1>
                         {{ hit.title }}

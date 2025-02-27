@@ -6,15 +6,15 @@ use Grav\Common\Grav;
 
 class DetailCreateZipUVPServiceImpl implements DetailCreateZipService
 {
-    var string $path;
-    var string $filenameProcess;
-    var string $filenameStats;
-    var string $filenameStatsUpdate;
-    var string $filenameZip;
-    var string $title;
-    var string $uuid;
-    var string $plugId;
-    var Grav $grav;
+    public string $path;
+    public string $filenameProcess;
+    public string $filenameStats;
+    public string $filenameStatsUpdate;
+    public string $filenameZip;
+    public string $title;
+    public string $uuid;
+    public string $plugId;
+    public Grav $grav;
 
     public function __construct(string $path, string $title, string $uuid, string $plugId, Grav $grav)
     {
@@ -32,7 +32,7 @@ class DetailCreateZipUVPServiceImpl implements DetailCreateZipService
         $this->filenameZip = $this->path . '/' . $title . '.zip';
     }
 
-    public function parse(\SimpleXMLElement $content): null|array
+    public function parse(\SimpleXMLElement $content): ?array
     {
         if (!file_exists($this->filenameProcess)) {
             if (!file_exists($this->filenameStats)) {

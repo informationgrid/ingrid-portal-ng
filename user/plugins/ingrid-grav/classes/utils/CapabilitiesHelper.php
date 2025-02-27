@@ -5,7 +5,7 @@ namespace Grav\Plugin;
 class CapabilitiesHelper
 {
 
-    public static function getCapabilitiesUrl(string $url, null|string $serviceVersion = null, null|string $serviceType = null): null|string
+    public static function getCapabilitiesUrl(string $url, ?string $serviceVersion, ?string $serviceType): ?string
     {
         if ($serviceVersion) {
             $tmpService = self::extractServiceFromServiceTypeVersion($serviceVersion);
@@ -50,7 +50,7 @@ class CapabilitiesHelper
         return $url;
     }
 
-    public static function getMapUrl(string $url, null|string $serviceVersion = null, null|string $serviceType = null, null|string $additional = null): null|string
+    public static function getMapUrl(string $url, ?string $serviceVersion = null, ?string $serviceType = null, ?string $additional = null): ?string
     {
         if ($serviceVersion) {
             $tmpService = self::extractServiceFromServiceTypeVersion($serviceVersion);
@@ -100,7 +100,7 @@ class CapabilitiesHelper
         return null;
     }
 
-    public static function extractServiceFromServiceTypeVersion(string $serviceTypeVersion): null|string {
+    public static function extractServiceFromServiceTypeVersion(string $serviceTypeVersion): ?string {
         $splitVersion = explode(",", $serviceTypeVersion);
         $i = 0;
         $tmpVersion = $splitVersion[$i];
@@ -133,7 +133,7 @@ class CapabilitiesHelper
         return null;
     }
 
-    public static function getHitServiceType(null|string $serviceTypeVersion, null|string $serviceType): null|string
+    public static function getHitServiceType(?string $serviceTypeVersion, ?string $serviceType): ?string
     {
         if (!empty($serviceTypeVersion)) {
             $service = self::extractServiceFromServiceTypeVersion($serviceTypeVersion);

@@ -6,11 +6,11 @@ use Grav\Common\Grav;
 
 class CategoryFacet
 {
-    var Grav $grav;
-    var string $lang;
-    var array $facetConfig;
-    var array $addToSearch;
-    var string $theme;
+    public Grav $grav;
+    public string $lang;
+    public array $facetConfig;
+    public array $addToSearch;
+    public string $theme;
 
     public function __construct(Grav $grav)
     {
@@ -21,7 +21,7 @@ class CategoryFacet
         $this->addToSearch = $this->grav['config']->get('themes.' . $this->theme . '.home.categories.add_to_search') ?: [];
     }
 
-    public function getContent(): null|SearchResult
+    public function getContent(): ?SearchResult
     {
         $service = new SearchServiceImpl($this->grav, 0, $this->facetConfig, $this->addToSearch);
         return $service->getSearchResults("", 1, [], $this->grav['uri'], $this->lang, $this->theme);

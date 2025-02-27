@@ -13,7 +13,7 @@ readonly class SearchResultHit
         public ?array  $datatypes,
         public ?string $isOpendata,
         public ?string $isInspire,
-        public ?string $hasAccessContraint,
+        public ?string $hasAccessConstraint,
         public ?string $title,
         public ?string $url,
         public ?string $summary,

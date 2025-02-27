@@ -9,17 +9,17 @@
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
 {# Datum #}
     {% set dateFormat = "d.m.Y" %}
-    {% if "T" in metaInfoRefs.mod_time %}
+    {% if "T" in metaInfoRefs.modTime %}
         {% set dateFormat = "d.m.Y H:i:s" %}
     {% endif %}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.mod_time ? metaInfoRefs.mod_time|date(dateFormat, false)|e) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.modTime ? metaInfoRefs.modTime|date(dateFormat, false)|e) }}
 {# Sprache Metadatensatz #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Weitere #}
     {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_others.html.twig' %}
 {# Datensatz/Datenserie #}
     {% if class == 1 %}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchy_level) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchyLevel) }}
     {% endif %}
 {# XML Darstellung  #}
     {% if displayISOXML and csw_url %}
@@ -30,7 +30,7 @@
         {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdf_url ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
-    {{ hit_macros.render_label_link_list(metaInfoRefs.contact_meta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contact_meta.mail, "mail" ) }}
+    {{ hit_macros.render_label_link_list(metaInfoRefs.contactMeta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contactMeta.mail, "mail" ) }}
 {# Metadatenquellen #}
     {% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
     <div class="table table--lined">

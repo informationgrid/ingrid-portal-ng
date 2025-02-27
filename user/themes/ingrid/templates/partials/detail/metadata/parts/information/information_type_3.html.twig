@@ -28,7 +28,7 @@
     {% include 'partials/detail/metadata/parts/information/information_type_3_operations.html.twig' %}
 {# Operation -> Zugriffsadresse #}
     {% set tmpTitle = "SEARCH_DETAIL.SHOWGETCAPABILITYURL"|t %}
-    {% if accessConstraint is same as("true") %}
+    {% if hasAccessConstraint is same as("true") %}
         {% set tmpTitle = "SEARCH_DETAIL.SHOWGETCAPABILITYURLRESTRICTED"|t %}
     {% endif %}
     {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}

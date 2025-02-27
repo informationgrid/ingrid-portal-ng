@@ -47,7 +47,7 @@ class SearchServiceImpl implements SearchService
      * @return SearchResult|null
      * @throws GuzzleException
      */
-    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang, string $theme = ''): null|SearchResult
+    public function getSearchResults(string $query, int $page, array $selectedFacets, $uri, string $lang, string $theme = ''): ?SearchResult
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [
@@ -71,7 +71,7 @@ class SearchServiceImpl implements SearchService
         return null;
     }
 
-    public function getSearchResultOriginalHits(string $query, int $page, array $selectedFacets): null|array
+    public function getSearchResultOriginalHits(string $query, int $page, array $selectedFacets): ?array
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [

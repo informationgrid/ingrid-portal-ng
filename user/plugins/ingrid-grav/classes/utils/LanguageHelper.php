@@ -118,12 +118,15 @@ class LanguageHelper
         return $name;
     }
 
-    public static function getNamesFromIso639_2(array $isoCodes, string $lang): array
+    public static function getNamesFromIso639_2(?array $isoCodes, string $lang): ?array
     {
-        $array = [];
-        foreach ($isoCodes as $isoCode) {
-            $array[] = self::getNameFromIso639_2($isoCode, $lang);
+        if ($isoCodes) {
+            $array = [];
+            foreach ($isoCodes as $isoCode) {
+                $array[] = self::getNameFromIso639_2($isoCode, $lang);
+            }
+            return $array;
         }
-        return $array;
+        return null;
     }
 }

@@ -12,37 +12,37 @@
 
     {# Durch die Ressource abgedeckte Zeitspanne #}
         {% set toIndeterminate = "" %}
-        {% if timRef.fromType and timRef.fromType == "now" %}
+        {% if timRef.timeFromType and timRef.timeFromType == "now" %}
             {% set toIndeterminate = "COMMON.TIME_UNTILNOW"|t %}
         {% else %}
             {% set toIndeterminate = "COMMON.TIME_UNTILUNKNOWN"|t %}
         {% endif %}
-        {% if timeRefs.beginTime or timeRefs.endTime or timeRefs.atTime %}
-            {% set atTime = timeRefs.atTime ? timeRefs.atTime|date("d.m.Y", false) : "" %}
-            {% set beginTime = timeRefs.beginTime ? timeRefs.beginTime|date("d.m.Y", false) : "" %}
-            {% set endTime = timeRefs.endTime ? timeRefs.endTime|date("d.m.Y", false) : "" %}
-            {% if atTime %}
-                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_AT"|t ~ " " ~ atTime) }}
-            {% elseif beginTime == endTime %}
-                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_AT"|t ~ " " ~ beginTime) }}
-            {% elseif beginTime and endTime is empty %}
-                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_SINCE"|t ~ " " ~ beginTime ~ toIndeterminate) }}
-            {% elseif beginTime is empty and endTime %}
-                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_UNTIL"|t ~ " " ~ endTime) }}
-            {% elseif beginTime != endTime %}
-                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_FROM"|t ~ " " ~ beginTime ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ endTime) }}
+        {% if timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt %}
+            {% set timeAt = timeRefs.timeAt ? timeRefs.timeAt|date("d.m.Y", false) : "" %}
+            {% set timeBegin = timeRefs.timeBegin ? timeRefs.timeBegin|date("d.m.Y", false) : "" %}
+            {% set timeEnd = timeRefs.timeEnd ? timeRefs.timeEnd|date("d.m.Y", false) : "" %}
+            {% if timeAt %}
+                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_AT"|t ~ " " ~ timeAt) }}
+            {% elseif timeBegin == timeEnd %}
+                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_AT"|t ~ " " ~ timeBegin) }}
+            {% elseif timeBegin and timeEnd is empty %}
+                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_SINCE"|t ~ " " ~ timeBegin ~ toIndeterminate) }}
+            {% elseif timeBegin is empty and timeEnd %}
+                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_UNTIL"|t ~ " " ~ timeEnd) }}
+            {% elseif timeBegin != timeEnd %}
+                {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_FROM"|t ~ " " ~ timeBegin ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeEnd) }}
             {% endif %}
         {% endif %}
     {# Zeitliche Genauigkeit #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.TIME_MEASUREMENT"|t, timeRefs.measureValue ~ timeRefs.measureUnit) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.TIME_MEASUREMENT"|t, timeRefs.timeMeasureValue ~ timeRefs.timeMeasureUnit) }}
     {# Status #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_STATUS"|t, timeRefs.status, "text-capitalize") }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_STATUS"|t, timeRefs.timeStatus, "text-capitalize") }}
     {# Periodizität #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.period, "text-capitalize") }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.timePeriod, "text-capitalize") }}
     {# Intervall der Erhebung #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_INTERVAL"|t, timeRefs.interval) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_INTERVAL"|t, timeRefs.timeInterval) }}
     {# Erläuterung zum Zeitbezug #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_DESCR"|t, timeRefs.descr) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_DESCR"|t, timeRefs.timeDescr) }}
     </div>
 {% endif %}
 

@@ -7,9 +7,9 @@ use GuzzleHttp\Client;
 
 class Datasource
 {
-    var Grav $grav;
-    var string $configApi;
-    var array $excludes;
+    public Grav $grav;
+    public string $configApi;
+    public array $excludes;
 
     public function __construct(Grav $grav, string $api)
     {

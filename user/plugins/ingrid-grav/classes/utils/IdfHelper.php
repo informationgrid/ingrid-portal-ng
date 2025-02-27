@@ -26,7 +26,7 @@ class IdfHelper
         $node->registerXPathNamespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance');
     }
 
-    public static function getNode(\SimpleXMLElement $node, string $xpath): null|\SimpleXMLElement
+    public static function getNode(\SimpleXMLElement $node, string $xpath): ?\SimpleXMLElement
     {
         self::registerNamespaces($node);
         $tmpNode = $node->xpath($xpath);
@@ -36,7 +36,7 @@ class IdfHelper
         return null;
     }
 
-    public static function getNodeValue(\SimpleXMLElement $node, string $xpath, null|array $codelist = null, null|string $lang = null): null|string
+    public static function getNodeValue(\SimpleXMLElement $node, string $xpath, ?array $codelist = null, ?string $lang = null): ?string
     {
         self::registerNamespaces($node);
         $tmpNode = $node->xpath($xpath);
@@ -71,7 +71,7 @@ class IdfHelper
         return [];
     }
 
-    public static function getNodeValueList(\SimpleXMLElement $node, string $xpath, null|array $codelist = null, null|string $lang = null): array
+    public static function getNodeValueList(\SimpleXMLElement $node, string $xpath, ?array $codelist = null, ?string $lang = null): array
     {
         self::registerNamespaces($node);
         $array = array();
@@ -99,7 +99,7 @@ class IdfHelper
         return $array;
     }
 
-    public static function getNodeValueListCodelistCompare($node, string $xpath, null|array $codelist = null, null|string $lang = null, bool $addEqual = true): array
+    public static function getNodeValueListCodelistCompare($node, string $xpath, ?array $codelist, ?string $lang, bool $addEqual = true): array
     {
         self::registerNamespaces($node);
         $array = array();

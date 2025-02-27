@@ -9,16 +9,16 @@ use PHPUnit\Exception;
 class Search
 {
 
-    var Grav $grav;
-    var string $configApi;
-    var string $lang;
-    var string $theme;
-    var null|SearchResult $results;
-    var string $query;
-    var array $selectedFacets;
-    var int $hitsNum;
-    var string $ranking;
-    var int $page;
+    public Grav $grav;
+    public string $configApi;
+    public string $lang;
+    public string $theme;
+    public ?SearchResult $results;
+    public string $query;
+    public array $selectedFacets;
+    public int $hitsNum;
+    public string $ranking;
+    public int $page;
 
     public function __construct(Grav $grav, string $api)
     {
@@ -194,7 +194,7 @@ class Search
         return $url;
     }
 
-    private function getSelectedFacetsFromConfig(array &$facets, array &$params, null|string $parentId): void
+    private function getSelectedFacetsFromConfig(array &$facets, array &$params, ?string $parentId): void
     {
         $values = [];
         foreach ($facets as $key => $facet) {

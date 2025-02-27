@@ -7,16 +7,16 @@ use GuzzleHttp\Client;
 
 class Detail
 {
-    var Grav $grav;
-    var string $configApi;
-    var string $lang;
-    var string $uuid;
-    var string $type;
-    var string $cswUrl;
-    var string $theme;
-    var string $timezone;
-    var array $hit;
-    var array $partners;
+    public Grav $grav;
+    public string $configApi;
+    public string $lang;
+    public string $uuid;
+    public string $type;
+    public string $cswUrl;
+    public string $theme;
+    public string $timezone;
+    public null|DetailMetadataISO|DetailAddressISO $hit;
+    public array $partners;
 
     public function __construct(Grav $grav, string $api)
     {
@@ -28,7 +28,6 @@ class Detail
         $this->cswUrl = $this->grav['uri']->query('cswUrl') ?: '';
         $this->theme = $this->grav['config']->get('system.pages.theme');
         $this->timezone = $this->grav['config']->get('system.timezone') ?: 'Europe/Berlin';
-        $this->hit = [];
     }
 
     public function getContent(): void
@@ -104,7 +103,7 @@ class Detail
         return $output;
     }
 
-    private function getResponseContent(string $api, string $uuid, string $type): null|string
+    private function getResponseContent(string $api, string $uuid, string $type): ?string
     {
         try {
             $client = new Client(['base_uri' => $api]);

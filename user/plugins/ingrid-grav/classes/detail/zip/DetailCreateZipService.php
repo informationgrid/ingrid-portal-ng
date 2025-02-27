@@ -5,6 +5,6 @@ use Grav\Common\Grav;
 
 interface DetailCreateZipService
 {
-    public function parse(\SimpleXMLElement $content) : null|array;
+    public function parse(\SimpleXMLElement $content) : ?array;
 
 }

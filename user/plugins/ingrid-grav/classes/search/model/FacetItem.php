@@ -9,8 +9,8 @@ readonly class FacetItem
         public string $label,
         public string $docCount,
         public string $actionLink,
-        public null|string $icon,
-        public null|bool $displayOnEmpty,
+        public ?string $icon,
+        public ?bool $displayOnEmpty,
     )
     {
     }

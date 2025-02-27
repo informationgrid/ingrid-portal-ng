@@ -5,7 +5,7 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.SPACIAL_REFERENCE_TAB"|t)}}
     <div class="row columns">
     {# Karte #}
-        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, geojson: mapRefs.polygon_geojson, isDetail: true, mapId: 'map_detail' }%}
+        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, geojson: mapRefs.polygonGeojson, isDetail: true, mapId: 'map_detail' }%}
     {# Geothesaurus-Raumbezug #}
         {% set header = [
             "",
@@ -24,10 +24,10 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight) }}
     {# Erläuterung zum Raumbezug #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.loc_descr) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.locDescr) }}
     {# Begrenzungspolygon als WKT #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygon_wkt, "", true) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygonWkt, "", true) }}
     {# Koordinatensystem #}
-        {{ hit_macros.render_label_link_list_row("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referencesystem_id ?? [])|sort, true, "referencesystem_id", 5, paramsMore) }}
+        {{ hit_macros.render_label_link_list_row("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referenceSystemId ?? [])|sort, true, "referencesystem_id", 5, paramsMore) }}
     </div>
 </div>

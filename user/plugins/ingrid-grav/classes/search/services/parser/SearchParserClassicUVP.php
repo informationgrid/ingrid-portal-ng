@@ -4,7 +4,7 @@ namespace Grav\Plugin;
 use Grav\Common\Plugin;
 use Grav\Common\Utils;
 
-class ClassicParserUVP
+class SearchParserClassicUVP
 {
 
     public static function parseHits($source, string $lang): array
@@ -48,7 +48,7 @@ class ClassicParserUVP
         ];
     }
 
-    private static function getBBoxes($value, null|string $title): array
+    private static function getBBoxes($value, ?string $title): array
     {
         $array = [];
         if (property_exists($value, "x1")) {
@@ -90,7 +90,7 @@ class ClassicParserUVP
         return null;
     }
 
-    private static function getValueTime($value, string $key): null|string
+    private static function getValueTime($value, string $key): ?string
     {
         if (property_exists($value, $key)) {
             $time = $value -> $key;

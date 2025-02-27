@@ -7,16 +7,16 @@ use PHPUnit\Framework\Exception;
 
 class Catalog
 {
-    var Grav $grav;
-    var string $configApi;
-    var int $configCatalogOpenNodesLevel;
-    var bool $configCatalogDisplayPartner;
-    var bool $configCatalogOpenOnNewTab;
-    var bool $configCatalogSortByName;
-    var string $paramCatalogOpenNodes;
-    var array $openCatalogNodes;
+    public Grav $grav;
+    public string $configApi;
+    public int $configCatalogOpenNodesLevel;
+    public bool $configCatalogDisplayPartner;
+    public bool $configCatalogOpenOnNewTab;
+    public bool $configCatalogSortByName;
+    public string $paramCatalogOpenNodes;
+    public array $openCatalogNodes;
 
-    var string $lang;
+    public string $lang;
 
     public function __construct(Grav $grav, string $api)
     {
@@ -174,7 +174,7 @@ class Catalog
         ];
     }
 
-    public function getCatalogChildren(string $id, int $level, string $partner, string $catalogId, null|string $parentId = null): array
+    public function getCatalogChildren(string $id, int $level, string $partner, string $catalogId, ?string $parentId = null) : array
     {
         $list = [];
         $catalog_api = $this->configApi . '/' . $id . '/hierarchy';

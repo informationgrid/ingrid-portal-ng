@@ -12,9 +12,9 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
     {# Inhalte der Datensammlung/Datenbank #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_PARA_PARAMETER"|t ~ " (" ~ "SEARCH_DETAIL.T011_OBJ_DATA_PARA_UNIT"|t ~ ")", infoRefs.data_para) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_PARA_PARAMETER"|t ~ " (" ~ "SEARCH_DETAIL.T011_OBJ_DATA_PARA_UNIT"|t ~ ")", infoRefs.dataPara) }}
     {# Methode/Datengrundlage #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_BASE"|t, infoRefs.data_base) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_BASE"|t, infoRefs.dataBase) }}
     {# Erläuterungen zum Fachbezug #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_DESCRIPTION"|t, infoRefs.data_description) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_DESCRIPTION"|t, infoRefs.dataDescription) }}
 </div>

@@ -7,25 +7,20 @@ use Grav\Common\Utils;
 class DetailParserAddressIdfISO
 {
 
-    public static function parse(\SimpleXMLElement $node, string $uuid, string $lang): array
+    public static function parse(\SimpleXMLElement $node, string $uuid, string $lang): DetailAddressISO
     {
-        echo "<script>console.log('InGrid Detail parse address with " . $uuid . "');</script>";
-
+        $address = new DetailAddressISO($uuid);
         $hierarchyParty = IdfHelper::getNode($node, "//idf:hierarchyParty[@uuid='".$uuid."']");
         $type = IdfHelper::getNodeValue($hierarchyParty, "./idf:addressType");
-        $address = [
-            "uuid" => $uuid,
-            "type" => $type,
-            "title" => self::getTitle($hierarchyParty, $type),
-            "summary" => IdfHelper::getNodeValue($node, "./gmd:positionName/*[self::gco:CharacterString or self::gmx:Anchor]"),
-            "contacts" => self::getContacts($node, $lang),
-            "links" => self::getLinks($node, $lang),
-        ];
-        //var_dump($address);
+        $address->addressClass = $type;
+        $address->title = self::getTitle($hierarchyParty, $address->addressClass);
+        $address->summary = IdfHelper::getNodeValue($node, "./gmd:positionName/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $address->contacts = self::getContacts($node, $lang);
+        $address->links = self::getLinks($node, $lang);
         return $address;
     }
 
-    public static function getTitle(\SimpleXMLElement $node, string $type): null|string
+    public static function getTitle(\SimpleXMLElement $node, string $type): ?string
     {
         $title = null;
         $addressIndividualName = IdfHelper::getNodeValue($node, "./idf:addressIndividualName");
@@ -183,7 +178,7 @@ class DetailParserAddressIdfISO
         foreach ($nodes as $tmpNode) {
             $uuid = IdfHelper::getNodeValue($tmpNode, "./@uuid");
             $type = IdfHelper::getNodeValue($tmpNode, "./idf:addressType");
-            $title = DetailParserAddressIdfISO::getTitle($tmpNode);
+            $title = DetailParserAddressIdfISO::getTitle($tmpNode, $type);
             $item = array(
                 "uuid" => $uuid,
                 "type" => $type,

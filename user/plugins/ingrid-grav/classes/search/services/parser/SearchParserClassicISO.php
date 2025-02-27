@@ -4,7 +4,7 @@ namespace Grav\Plugin;
 use Grav\Common\Plugin;
 use Grav\Common\Utils;
 
-class ClassicParserISO
+class SearchParserClassicISO
 {
 
     public static function parseHits($source, string $lang): array
@@ -50,9 +50,9 @@ class ClassicParserISO
                 $isOpendata = "Y";
             }
         }
-        $hasAccessContraint = self::getValue($source, "t011_obj_serv.has_access_constraint");
-        if (empty($hasAccessContraint)) {
-            $hasAccessContraint = "N";
+        $hasAccessConstraint = self::getValue($source, "t011_obj_serv.has_access_constraint");
+        if (empty($hasAccessConstraint)) {
+            $hasAccessConstraint = "N";
         }
         $servType = self::getFirstValue($source, "t011_obj_serv.type");
         if (!$servType) {
@@ -84,7 +84,7 @@ class ClassicParserISO
             "additional_html_1" => self::getPreviews($source, "additional_html_1"),
             "isInspire" => !($isInspire == "N"),
             "isOpendata" => !($isOpendata == "N"),
-            "hasAccessContraint" => !($hasAccessContraint == "N"),
+            "hasAccessConstraint" => !($hasAccessConstraint == "N"),
             "isHVD" => !(self::getValue($source, "is_hvd") === 'false'),
             "obj_serv_type" => $obj_serv_type,
             "mapUrl" => $capUrl ? CapabilitiesHelper::getMapUrl($capUrl, $servTypeVersion, $servType) : null,
@@ -97,7 +97,7 @@ class ClassicParserISO
         ];
     }
 
-    private static function getSummary($value): null|string
+    private static function getSummary($value): ?string
     {
         $summary = self::getValue($value, 'summary') ?? self::getValue($value, 'abstract');
         if (!empty($summary) && str_contains($summary, '<')) {
@@ -193,7 +193,7 @@ class ClassicParserISO
     }
 
 
-    private static function getLinks($value, string $type, null|string $serviceTyp, null|string $serviceTypeVersion, array &$serviceTypes): array
+    private static function getLinks($value, string $type, ?string $serviceTyp, ?string $serviceTypeVersion, array &$serviceTypes): array
     {
         $referenceAllUUID = [];
         $referenceAllName = [];
@@ -354,7 +354,7 @@ class ClassicParserISO
         ];
     }
 
-    private static function getBBoxes($value, null|string $title): array
+    private static function getBBoxes($value, ?string $title): array
     {
         $array = array();
         if (property_exists($value, "x1")) {
@@ -406,7 +406,7 @@ class ClassicParserISO
         return null;
     }
 
-    private static function getValueTime($value, string $key): null|string
+    private static function getValueTime($value, string $key): ?string
     {
         if (property_exists($value, $key)) {
             $time = trim($value->$key);

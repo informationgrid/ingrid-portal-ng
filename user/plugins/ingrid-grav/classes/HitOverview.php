@@ -6,12 +6,12 @@ use Grav\Common\Grav;
 
 class HitOverview
 {
-    var Grav $grav;
-    var string $lang;
-    var int $hitsNum;
-    var bool $sortByDate;
-    var array $addToSearch;
-    var string $theme;
+    public Grav $grav;
+    public string $lang;
+    public int $hitsNum;
+    public bool $sortByDate;
+    public array $addToSearch;
+    public string $theme;
 
     public function __construct(Grav $grav)
     {
@@ -23,7 +23,7 @@ class HitOverview
         $this->sortByDate = $this->grav['config']->get('themes.' . $this->theme . '.home.hits.sort.sortByDate') ?? 0;
     }
 
-    public function getContent(): null|SearchResult
+    public function getContent(): ?SearchResult
     {
         if ($this->hitsNum > 0) {
             $service = new SearchServiceImpl($this->grav, $this->hitsNum, [], $this->addToSearch, $this->sortByDate);

@@ -12,11 +12,11 @@
     {# Herstellungszweck #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_INFO_NOTE"|t, infoRefs_additional.purpose) }}
     {# Rechtliche Grundlagen #}
-        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T015_LEGIST_NAME"|t, infoRefs_additional.legal_basis) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T015_LEGIST_NAME"|t, infoRefs_additional.legalBasis) }}
     {# XML-Export-Kriterium #}
-        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T014_INFO_IMPART_NAME"|t, infoRefs_additional.export_criteria) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T014_INFO_IMPART_NAME"|t, infoRefs_additional.exportCriteria) }}
     {# Sprache des Datensatzes #}
-        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.language_code) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.languageCode) }}
     {# Konformität #}
         {% set header = [
             "SEARCH_DETAIL.OBJECT_CONFORMITY_SPECIFICATION"|t,
@@ -43,7 +43,7 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.T0112_MEDIA_OPTION_MEDIUM"|t, header, infoRefs_additional.media) }}
     {# Bestellinformationen #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_ORDERING_INSTRUCTIONS"|t, infoRefs_additional.order_instructions) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_ORDERING_INSTRUCTIONS"|t, infoRefs_additional.orderInstructions) }}
     </div>
 {% endif %}
 
@@ -55,15 +55,15 @@
     {# Kategorien #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_category.html.twig' %}
     {# Verschlagwortung #}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspire_themes ?? [])|sort, true, "search_terms_inspire", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priority_dataset ?? [])|sort, true, "search_terms_priority", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatial_scope ?? [])|sort, true, "search_terms_spatial", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemet_concepts ?? [])|sort, true, "search_terms_gemet", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.adv_group ?? [])|sort, true, "search_terms_inspire_invekos", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspireThemes ?? [])|sort, true, "search_terms_inspire", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priorityDataset ?? [])|sort, true, "search_terms_priority", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatialScope ?? [])|sort, true, "search_terms_spatial", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemetConcepts ?? [])|sort, true, "search_terms_gemet", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.advGroup ?? [])|sort, true, "search_terms_inspire_invekos", 10, paramsMore) }}
     {# INSPIRE-InVeKoS #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_invekos.html.twig' %}
     {# ISO-Themenkategorien #}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY"|t, infoRefs_keyword.topic_category) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY"|t, infoRefs_keyword.topicCategory) }}
     {# HVD #}
         {{ hit_macros.render_teaser_list("SEARCH_DETAIL.HVD_GROUP"|t, infoRefs_keyword.hvd) }}
     {# Suchbegriffe #}

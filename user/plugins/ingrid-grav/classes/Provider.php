@@ -7,8 +7,8 @@ use GuzzleHttp\Client;
 
 class Provider
 {
-    var Grav $grav;
-    var string $query;
+    public Grav $grav;
+    public string $query;
 
     public function __construct(Grav $grav)
     {

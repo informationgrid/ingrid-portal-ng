@@ -1,0 +1,127 @@
+<?php
+
+namespace Grav\Plugin;
+
+class DetailMetadataISO
+{
+
+    public string $uuid;
+    public ?string $parentUuid;
+    public ?string $metaClass;
+    public ?string $metaClassName;
+    public ?string $title;
+    public ?array $altTitle;
+    public ?string $summary;
+    public ?string $hasAccessConstraint;
+    public ?array $previews;
+    public ?string $mapUrl;
+    public ?array  $links;
+    public ?array  $contacts;
+    public ?string $timeAt;
+    public ?string $timeBegin;
+    public ?string $timeEnd;
+    public ?string $timeFromType;
+    public ?string $timeStatus;
+    public ?string $timePeriod;
+    public ?string $timeInterval;
+    public ?string $timeDescr;
+    public ?string $timeCreation;
+    public ?string $timePublication;
+    public ?string $timeRevision;
+    public ?string $timeMeasureValue;
+    public ?string $timeMeasureUnit;
+    public ?array $regionKey;
+    public ?string $locDescr;
+    public bool|string $polygonWkt;
+    public bool|string $polygonGeojson;
+    public ?array $bboxes;
+    public ?array $geographicElement;
+    public ?array $areaHeight;
+    public ?array $referenceSystemId;
+    public ?array $useConstraints;
+    public ?array $accessConstraints;
+    public ?array $useLimitations;
+    public ?array $inspireThemes;
+    public ?array $priorityDataset;
+    public ?array $spatialScope;
+    public ?array $gemetConcepts;
+    public ?array $invekos;
+    public ?array $hvd;
+    public ?array $searchTerms;
+    public ?array $advGroup;
+    public ?array $topicCategory;
+    public ?array $classifications;
+    public ?string $lineageStatement;
+    public ?string $serviceType;
+    public ?array $serviceTypeVersions;
+    public ?string $environmentDescription;
+    public ?string $processStepDescription;
+    public ?string $sourceDescription;
+    public ?string $supplementalInformation;
+    public ?string $supplementalInformationAbstract;
+    public ?string $operationConnectPoint;
+    public ?string $identifierCode;
+    public ?array $spatialRepresentations;
+    public ?string $includedWithDataset;
+    public ?array $featureTypes;
+    public ?string $literaturAutor;
+    public ?string $literaturLoc;
+    public ?string $literaturPublisher;
+    public ?string $literaturPublishLoc;
+    public ?string $literaturPublishing;
+    public ?string $literaturPublishIn;
+    public ?string $literaturPublishYear;
+    public ?string $literaturVolume;
+    public ?array $literaturSides;
+    public ?string $literaturIsbn;
+    public ?string $literaturTyp;
+    public ?string $literaturBase;
+    public ?string $literaturDocInfo;
+    public ?string $literaturDescription;
+    public ?string $projectLeader;
+    public ?string $projectMember;
+    public ?string $projectDescription;
+    public ?string $dataPara;
+    public ?string $dataBase;
+    public ?string $dataDescription;
+    public ?array $featureCatalogues;
+    public ?array $symbolCatalogues;
+    public ?array $vectors;
+    public ?array $resolutions;
+    public ?array $operations;
+    public ?string $publishId;
+    public ?string $usage;
+    public ?string $purpose;
+    public ?array $legalBasis;
+    public ?array $exportCriteria;
+    public ?array $languageCode;
+    public ?array $conformity;
+    public ?array $dataformat;
+    public ?string $geodataLink;
+    public ?array $media;
+    public ?string $orderInstructions;
+    public ?string $completenessOmission;
+    public ?string $accuracyVertical;
+    public ?string $accuracyGeographic;
+    public ?array $completenessCommission;
+    public ?array $conceptualConsistency;
+    public ?array $domainConsistency;
+    public ?array $formatConsistency;
+    public ?array $topologicalConsistency;
+    public ?array $temporalConsistency;
+    public ?array $thematicClassificationCorrectness;
+    public ?array $nonQuantitativeAttributeAccuracy;
+    public ?array $quantitativeAttributeAccuracy;
+    public ?array $relativeInternalPositionalAccuracy;
+    public ?string $modTime;
+    public ?string $lang;
+    public ?string $hierarchyLevel;
+    public ?array $contactMeta;
+    public ?string $dataSourceName;
+    public ?array $providers;
+
+    public function __construct(string $uuid)
+    {
+        $this->uuid = $uuid;
+    }
+}

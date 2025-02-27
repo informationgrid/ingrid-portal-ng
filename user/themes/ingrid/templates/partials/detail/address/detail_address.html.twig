@@ -1,3 +1,5 @@
+{# @var hit \Grav\Plugin\DetailAddressISO #}
+
 {% import 'macros/hit_macros.html.twig' as hit_macros %}
 
 {# theme_var #}
@@ -6,8 +8,8 @@
 {# var #}
 {% set hit = hit %}
 {% set title = hit.title %}
-{% set type = hit.type %}
-{% set type_name = "COMMON.UDK_ADR_CLASS_NAME_" ~ type %}
+{% set addressClass = hit.addressClass %}
+{% set addressClassName = "COMMON.UDK_ADR_CLASS_NAME_" ~ addressClass %}
 {% set summary = hit.summary %}
 {% set contactRefs = hit.contacts %}
 {% set linkRefs = hit.links %}
@@ -39,7 +41,7 @@
             </div>
             <div class="xsmall-24 large-18 xlarge-18 columns">
                 <div class="helper icon">
-                    {{ hit_macros.render_address_icon(type, type_name|t ) }}
+                    {{ hit_macros.render_address_icon(addressClass, addressClassName|t ) }}
                 </div>
                 <h2>{{ title }}</h2>
             </div>

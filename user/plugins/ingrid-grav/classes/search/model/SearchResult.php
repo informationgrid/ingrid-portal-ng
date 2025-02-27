@@ -13,7 +13,7 @@ readonly class SearchResult
         /** @var SearchResultHit[] */
         public array $hits,
         /** @var FacetResult[] */
-        public null|array $facets
+        public ?array $facets
     )
     {
     }

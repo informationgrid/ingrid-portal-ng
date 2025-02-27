@@ -6,11 +6,11 @@ use Grav\Common\Grav;
 
 class Help
 {
-    var Grav $grav;
-    var string $lang;
-    var string $default_hkey;
-    var string $helpMenu;
-    var string $helpContent;
+    public Grav $grav;
+    public string $lang;
+    public string $default_hkey;
+    public string $helpMenu;
+    public string $helpContent;
 
     public function __construct(Grav $grav)
     {

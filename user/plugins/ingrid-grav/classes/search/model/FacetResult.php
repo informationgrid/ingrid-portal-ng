@@ -7,19 +7,19 @@ readonly class FacetResult
 
     /**
      * @param string $id
-     * @param null|string $label
+     * @param ?string $label
      * @param FacetItem[] $items
      */
     public function __construct(
         public string $id,
-        public null|string $label,
+        public ?string $label,
         public array  $items,
-        public null|int $listLimit,
-        public null|string $info,
-        public null|array $toggle,
-        public null|bool $open,
-        public null|array $openBy,
-        public null|array $displayDependOn,
+        public ?int $listLimit,
+        public ?string $info,
+        public ?array $toggle,
+        public ?bool $open,
+        public ?array $openBy,
+        public ?array $displayDependOn,
     )
     {
     }
