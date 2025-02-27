@@ -118,12 +118,22 @@ class Detail
 
     private function transformQuery(string $uuid, string $type): string
     {
-        $indexField = "t01_object.obj_id";
-        if($type == "address") {
-            $indexField = "t02_address.adr_id";
+        $theme = $this->grav['config']->get('system.pages.theme');
+        $queryStringOperator = $this->grav['config']->get('themes.' . $theme . '.hit_search.query_string_operator');
+        $queryStringOperator = $queryStringOperator ?: 'AND';
+
+        $indexField = 't01_object.obj_id';
+        $datatype = '-datatype:address';
+        if($type == 'address') {
+            $indexField = 't02_address.adr_id';
+            $datatype = 'datatype:address';
         }
-        $query = array("query" => array("query_string" => array("query" => $indexField . ":\"" . $uuid . "\"")));
-        return json_encode($query);
+        $queryString = array("query_string" => array (
+                "query" => $indexField . ':"' . $uuid . '" ' . $datatype,
+                "default_operator" => $queryStringOperator,
+            )
+        );
+        return json_encode(array("query" => $queryString));
     }
 
 }
