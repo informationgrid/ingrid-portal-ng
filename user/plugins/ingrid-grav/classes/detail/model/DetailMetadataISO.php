@@ -75,7 +75,7 @@ class DetailMetadataISO
     public ?string $literaturPublishIn;
     public ?string $literaturPublishYear;
     public ?string $literaturVolume;
-    public ?array $literaturSides;
+    public ?string $literaturSide;
     public ?string $literaturIsbn;
     public ?string $literaturTyp;
     public ?string $literaturBase;

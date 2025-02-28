@@ -812,7 +812,7 @@ class DetailParserMetadataIdfISO
         $metadata->literaturVolume = IdfHelper::getNodeValue($node, $xpathExpression);
 
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:series/gmd:CI_Series/gmd:page/*[self::gco:CharacterString or self::gmx:Anchor]";
-        $metadata->literaturSides = IdfHelper::getNodeValue($node, $xpathExpression);
+        $metadata->literaturSide = IdfHelper::getNodeValue($node, $xpathExpression);
 
         $xpathExpression = "./gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/gmd:ISBN/*[self::gco:CharacterString or self::gmx:Anchor]";
         $metadata->literaturIsbn = IdfHelper::getNodeValue($node, $xpathExpression);
