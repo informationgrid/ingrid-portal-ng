@@ -1,1 +1,6 @@
+
+{% if 'addLeafletMapWithId' in hit.html %}
+    {% include 'partials/global/map/leaflet.html.twig' %}
+{% endif %}
+
 {{ hit.html|raw }}

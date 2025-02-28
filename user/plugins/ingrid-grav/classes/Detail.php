@@ -15,7 +15,7 @@ class Detail
     public string $cswUrl;
     public string $theme;
     public string $timezone;
-    public null|DetailMetadataISO|DetailAddressISO $hit;
+    public null|DetailMetadataISO|DetailAddressISO|DetailMetadataHTML $hit;
     public array $partners;
 
     public function __construct(Grav $grav, string $api)
@@ -124,7 +124,7 @@ class Detail
 
         $indexField = 't01_object.obj_id';
         $datatype = '-datatype:address';
-        if($type == 'address') {
+        if ($type == 'address') {
             $indexField = 't02_address.adr_id';
             $datatype = 'datatype:address';
         }
