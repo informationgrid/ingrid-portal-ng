@@ -86,7 +86,7 @@ class ElasticsearchService
             $foundObject = reset($filteredObjects);
 
             if ($foundObject) {
-                list($result, $filter) = self::getQueryAndFilter($foundObject, $selectionValue, $result, $filter);
+                list($result, $filter) = self::getFilter($foundObject, $selectionValue, $result, $filter);
             }
         }
 
@@ -155,7 +155,7 @@ class ElasticsearchService
      * @param array $filter
      * @return array
      */
-    public static function getQueryAndFilter(mixed $foundObject, mixed $selectionValue, array $result, array $filter): array
+    public static function getFilter(mixed $foundObject, mixed $selectionValue, array $result, array $filter): array
     {
         if (property_exists((object)$foundObject, 'search')) {
             $explodedSelection = explode(",", $selectionValue);
@@ -229,10 +229,11 @@ class ElasticsearchService
         });
     }
 
-    public static function addFilterToFacet(array &$filterMust, array $facetConfig, array $selectedFacets, string $facetId): void
+    public static function addFilterToFacet(array &$filter, array $facetConfig, array $selectedFacets, string $facetId): void
     {
         foreach ($selectedFacets as $selectedFacetId => $selectedFacetValues) {
             if ($selectedFacetId !== $facetId) {
+                $shouldGroup = [];
                 if ($selectedFacetId === 'bbox') {
                     $selectedFacet = self::findByFacetId($facetConfig, $selectedFacetId);
 
@@ -240,11 +241,11 @@ class ElasticsearchService
                     $foundObject = reset($selectedFacet);
 
                     if (isset($foundObject['filter'])) {
-                        $filter = sprintf($foundObject['filter'], ...explode(",", $selectedFacetValues));
-                        if (str_starts_with($filter, '{')) {
-                            $splits = explode(",", $filter);
+                        $facetFilter = sprintf($foundObject['filter'], ...explode(",", $selectedFacetValues));
+                        if (str_starts_with($facetFilter, '{')) {
+                            $splits = explode(",", $facetFilter);
                             foreach ($splits as $split) {
-                                $filterMust[] = json_decode($split);
+                                $shouldGroup[] = json_decode($split, true);
                             }
                         }
                     }
@@ -258,7 +259,7 @@ class ElasticsearchService
 
                         if ($foundObject) {
                             if (isset($foundObject['search'])) {
-                                $filterMust[] = array(
+                                $shouldGroup[] = array(
                                     "query_string" => array(
                                         "query" => sprintf($foundObject['search'], $value)
                                     )
@@ -271,17 +272,24 @@ class ElasticsearchService
                                             $toggleQueries[] = $toggleFacet['query_toggle']['filter'] ?? $toggleFacet['query']['filter'];
                                         }
                                     }
-                                    $filterMust[] = array(
+                                    $shouldGroup[] = array(
                                         "bool" => array(
                                             "should" => $toggleQueries,
                                         )
                                     );
                                 } else {
-                                    $filterMust[] = $foundObject['facets'][$value]['query']['filter'];
+                                    $shouldGroup[] = $foundObject['facets'][$value]['query']['filter'];
                                 }
                             }
                         }
                     }
+                }
+                if (!empty($shouldGroup)) {
+                    $filter[] = array(
+                        "bool" => array(
+                            "should" => $shouldGroup
+                        )
+                    );
                 }
             }
         }
