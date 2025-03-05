@@ -2,13 +2,12 @@
 
 namespace Grav\Plugin;
 
-readonly class FacetItem
+readonly class FacetItemMulti
 {
     public function __construct(
         public string $value,
         public string $label,
-        public string $docCount,
-        public string $actionLink,
+        public array $items,
         public ?string $icon = null,
         public ?bool $displayOnEmpty = false,
     )

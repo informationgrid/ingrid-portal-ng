@@ -63,7 +63,7 @@ class SearchServiceImpl implements SearchService
                 numPage: $page,
                 listOfPages: $this->getPageRanges($page, $numOfPages),
                 hits: SearchResponseTransformerClassic::parseHits($result->hits ?? null, $lang, $theme),
-                facets: isset($result->aggregations) ? SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations, $this->facet_config, $uri, $lang) : null,
+                facets: isset($result->aggregations->global_filter_aggregations->global_filter) ? SearchResponseTransformerClassic::parseAggregations((object)$result->aggregations->global_filter_aggregations->global_filter, $this->facet_config, $uri, $lang) : null,
             );
         } catch (\Exception $e) {
             $this->log->error('Error on search with "' . $query . '": ' . $e);

@@ -81,6 +81,7 @@ class InGridGravPlugin extends Plugin
         $uri = $this->grav['uri'];
         $uri_path = $uri->path();
 
+        $this->grav['log']->debug('Incoming request URL on ingrid-grav plugin: ' . $uri_path);
         // Get rest content
         switch ($uri_path) {
             case '/rest/getMimeType':
@@ -448,7 +449,9 @@ class InGridGravPlugin extends Plugin
     {
         try {
             $paramUrl = $this->grav['uri']->query('url') ?: "";
-            $headers = get_headers($paramUrl, true);
+            $opts['http']['timeout'] = 3;
+            $context = stream_context_create( $opts );
+            $headers = get_headers($paramUrl, true, $context);
             if (substr($headers[0], 9, 3) == 200) {
                 $contentLength = $headers['Content-Length'];
                 echo StringHelper::formatBytes($contentLength);

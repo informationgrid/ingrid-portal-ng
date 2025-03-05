@@ -58,6 +58,7 @@
       "classes/search/model/SearchResultHit.php",
       "classes/search/model/FacetResult.php",
       "classes/search/model/FacetItem.php",
+      "classes/search/model/FacetItemMulti.php",
       "classes/search/services/SearchService.php",
       "classes/search/services/SearchServiceImpl.php",
       "classes/search/services/transformer/SearchResponseTransformerClassic.php",

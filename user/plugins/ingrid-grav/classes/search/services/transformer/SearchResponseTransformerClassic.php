@@ -33,18 +33,41 @@ class SearchResponseTransformerClassic
                         if (isset($facetConfig['codelist']) or isset($query['codelist'])) {
                             $label = CodelistHelper::getCodelistEntryByIdent([$query['codelist'] ?? $facetConfig['codelist']], $key, $lang);
                         }
-                        $items[] = new FacetItem(
-                            $key,
-                            $label,
-                            ((array)$aggregations)[$key]->filtered->final->doc_count,
-                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key, $config),
-                            $query['icon'] ?? null,
-                            $query['display_on_empty'] ?? false,
-                        );
+                        if (isset($query['query'])) {
+                            $items[] = new FacetItem(
+                                $key,
+                                $label,
+                                ((array)$aggregations)[$key]->doc_count,
+                                SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key, $config),
+                                $query['icon'] ?? null,
+                                $query['display_on_empty'] ?? false,
+                            );
+                        } else if (isset($query['facets'])) {
+                            $splitFacets = $query['facets'];
+                            $multiFacets = [];
+                            foreach ($splitFacets as $splitFacetId => $splitFacetValue) {
+                                $newKey = $key . '_' . $splitFacetId;
+                                $item = [];
+                                $item['label'] = $splitFacetValue['label'];
+                                $item['count'] = ((array)$aggregations)[$newKey]->doc_count;
+                                $item['actionLink'] = SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $key, $config);
+                                if (isset($splitFacetValue['extend_href'])) {
+                                    $item['actionLink'] = $item['actionLink'] . $splitFacetValue['extend_href'];
+                                }
+                                $multiFacets[] = $item;
+                            }
+                            $items[] = new FacetItemMulti(
+                                $key,
+                                $label,
+                                $multiFacets,
+                                $query['icon'] ?? null,
+                                $query['display_on_empty'] ?? false,
+                            );
+                        }
                     }
                 }
             } else if (property_exists((object)$facetConfig, 'query')) {
-                $buckets = ((array)$aggregations)[$facetConfig['id']]->filtered->final->buckets;
+                $buckets = ((array)$aggregations)[$facetConfig['id']]->buckets;
                 foreach ($buckets as $bucket) {
                     $key = $bucket->key;
                     if (isset($key)) {
@@ -58,10 +81,8 @@ class SearchResponseTransformerClassic
                         $items[] = new FacetItem(
                             $key,
                             $label,
-                            $bucket->doc_count,
-                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key, $config),
-                            null,
-                            false,
+                            $bucket->final->doc_count ?? $bucket->doc_count,
+                            SearchResponseTransformerClassic::createActionUrl($uri, $facetConfig["id"], $bucket->key, $config)
                         );
                     }
                 }
@@ -70,9 +91,7 @@ class SearchResponseTransformerClassic
                     '',
                     '',
                     -1,
-                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null, $config),
-                    null,
-                    false,
+                    SearchResponseTransformerClassic::createActionUrl($uri, 'bbox', null, $config)
                 );
             }
             $label = $facetConfig['label'] ?? 'FACETS.FACET_LABEL.' . strtoupper($facetConfig['id']);

@@ -105,7 +105,6 @@ home:
                 }
               }
             },
-
           },
           "baustoffe": {
             "label": "Steine und Erden, Glas, Keramik, Baustoffe",
@@ -118,7 +117,6 @@ home:
                 }
               }
             },
-
           },
           "verarbeitung": {
             "label": "Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung",
@@ -131,7 +129,6 @@ home:
                 }
               }
             },
-
           },
           "chemie": {
             "label": "Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung",
@@ -144,7 +141,6 @@ home:
                 }
               }
             },
-
           },
           "kunststoff": {
             "label": "Oberflächenbehandlung von Kunststoffen",
@@ -157,7 +153,6 @@ home:
                 }
               }
             },
-
           },
           "holzzellstoff": {
             "label": "Holz, Zellstoff",
@@ -170,7 +165,6 @@ home:
                 }
               }
             },
-
           },
           "erzeugnisse": {
             "label": "Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse",
@@ -183,7 +177,6 @@ home:
                 }
               }
             },
-
           },
           "verwertungbeseitigungabfaellen": {
             "label": "Verwertung und Beseitigung von Abfällen und sonstigen Stoffen",
@@ -196,7 +189,6 @@ home:
                 }
               }
             },
-
           },
           "lagerungstoffengemischen": {
             "label": "Lagerung von Stoffen und Gemischen",
@@ -209,7 +201,6 @@ home:
                 }
               }
             },
-
           },
           "industrieanlagen": {
             "label": "Sonstige Industrieanlagen",
@@ -222,7 +213,6 @@ home:
                 }
               }
             },
-
           },
           "kernenergie": {
             "label": "Kernenergie",
@@ -235,7 +225,6 @@ home:
                 }
               }
             },
-
           },
           "abfalldeponien": {
             "label": "Abfalldeponien",
@@ -248,7 +237,6 @@ home:
                 }
               }
             },
-
           },
           "wasservorhaben": {
             "label": "Wasserwirtschaftliche Vorhaben",
@@ -261,7 +249,6 @@ home:
                 }
               }
             },
-
           },
           "verkehrsvorhaben": {
             "label": "Verkehrsvorhaben",
@@ -274,7 +261,6 @@ home:
                 }
               }
             },
-
           },
           "bergbaukohlendioxid": {
             "label": "Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid",
@@ -287,7 +273,6 @@ home:
                 }
               }
             },
-
           },
           "flurbereinigung": {
             "label": "Flurbereinigung",
@@ -300,7 +285,6 @@ home:
                 }
               }
             },
-
           },
           "forstlandvorhaben": {
             "label": "Forstliche und landwirtschaftliche Vorhaben",
@@ -313,7 +297,6 @@ home:
                 }
               }
             },
-
           },
           "bauvorhaben": {
             "label": "Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan",
@@ -326,7 +309,6 @@ home:
                 }
               }
             },
-
           },
           "anlagen": {
             "label": "Leitungsanlagen und vergleichbare Anlagen",
@@ -339,7 +321,6 @@ home:
                 }
               }
             },
-
           }
         }
       },
@@ -538,6 +519,7 @@ home:
           },
           "obj_class_blp": {
             "label": "Bauleitplanung",
+            "extend_href": "&procedure=obj_class_blp&ranking=score",
             "icon": "ic-B",
             "display_on_empty": true,
             "query": {
@@ -602,196 +584,1081 @@ home:
             "icon": "images/partner/svg/bw.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "bw"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "bw"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "bw"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "by": {
             "icon": "images/partner/svg/by.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "by"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "by"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "by"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "be": {
             "icon": "images/partner/svg/be.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "be"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "be"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "be"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "hb": {
             "icon": "images/partner/svg/hb.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "hb"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "hb"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "hb"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "hh": {
             "icon": "images/partner/svg/hh.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "hh"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "hh"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "hh"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "he": {
             "icon": "images/partner/svg/he.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "he"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "he"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "he"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "mv": {
             "icon": "images/partner/svg/mv.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "mv"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "mv"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "mv"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "ni": {
             "icon": "images/partner/svg/ni.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "ni"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "ni"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "ni"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "nw": {
             "icon": "images/partner/svg/nw.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "nw"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "nw"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "nw"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "rp": {
             "icon": "images/partner/svg/rp.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "rp"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "rp"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "rp"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "sl": {
             "icon": "images/partner/svg/sl.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "sl"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "sl"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "sl"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "sn": {
             "icon": "images/partner/svg/sn.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "sn"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "sn"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "sn"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "st": {
             "icon": "images/partner/svg/st.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "st"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "st"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "st"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "sh": {
             "icon": "images/partner/svg/sh.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "sh"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "sh"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "sh"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
           "th": {
             "icon": "images/partner/svg/th.svg",
             "display_on_empty": true,
             "codelist": "110",
-            "query": {
-              "filter": {
-                "term": {
-                  "partner": "th"
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "th"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "th"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
-            },
-
+            }
           },
         }
       },
@@ -1041,6 +1908,7 @@ hit_search:
         },
         "obj_class_blp": {
           "label": "Bauleitplanung",
+          "extend_href": "&procedure=obj_class_blp&ranking=score",
           "query": {
             "filter": {
               "term": {
