@@ -14,8 +14,6 @@ class DetailMetadata
     }
 
     public function parse(\SimpleXMLElement $content, ?string $uuid, ?string $dataSourceName, array $providers): null|DetailMetadataISO|DetailMetadataUVP|DetailMetadataHTML
-
-
     {
         $rootNode = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
         switch ($this->theme) {

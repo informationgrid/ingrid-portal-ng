@@ -17,6 +17,7 @@ class Detail
     public string $timezone;
     public null|DetailMetadataISO|DetailAddressISO|DetailMetadataHTML|DetailMetadataUVP $hit;
     public array $partners;
+    public string $title;
 
     public function __construct(Grav $grav, string $api)
     {
@@ -47,6 +48,7 @@ class Detail
                         $dataSourceName = ElasticsearchHelper::getValue($esHit, 'dataSourceName');
                         $this->partners = ElasticsearchHelper::getValueArray($esHit, 'partner');
                         $tmpProviders = ElasticsearchHelper::getValueArray($esHit, 'provider');
+                        $this->title = ElasticsearchHelper::getValue($esHit, 'title');
                         foreach ($tmpProviders as $provider) {
                             $providers[] = CodelistHelper::getCodelistEntryByIdent(['111'], $provider, $this->lang);
                         }

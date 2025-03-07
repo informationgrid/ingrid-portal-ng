@@ -145,20 +145,23 @@ class SearchParserClassicISO
         $title = ElasticsearchHelper::getValue($esHit, "title");
         if ($type == "2" or $type == "3") {
             $title = "";
-            $title = $title . (property_exists($esHit, "t02_address.firstname") ? ElasticsearchHelper::getValue($esHit, "t02_address.firstname") . " " : "");
-            $title = $title . (property_exists($esHit, "t02_address.lastname") ? ElasticsearchHelper::getValue($esHit, "t02_address.lastname") . " " : "");
+            $title = $title . (ElasticsearchHelper::getValue($esHit, "t02_address.firstname") ?? "");
+            if (!empty($title)) {
+                $title .= " ";
+            }
+            $title = $title . (ElasticsearchHelper::getValue($esHit, "t02_address.lastname") ?? "");
         }
-        if (property_exists($esHit, "t02_address.parents.title")) {
-            $parents = ElasticsearchHelper::getValue($esHit, "t02_address.parents.title");
-            if (is_string($parents)) {
-                $title = ElasticsearchHelper::getValue($esHit, "t02_address.parents.title") . ', ' . $title;
-            } else {
+        if ($type !== "0") {
+            $parents = ElasticsearchHelper::getValueArray($esHit, "t02_address.parents.title");
+            if (!empty($parents)) {
                 foreach ($parents as $parent) {
-                    $title = $parent . ', ' . $title;
+                    if (!empty($parent)) {
+                        $title = $parent . ', ' . $title;
+                    }
                 }
             }
         }
-        return $title;
+        return $title . ' ';
     }
 
     private static function getLicense(\stdClass $esHit, string $lang): mixed

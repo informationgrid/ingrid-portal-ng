@@ -8,7 +8,14 @@
         <div class="page-wrapper">
             <div class="row content-small">
                 <div class="columns">
-                    <a class="helper icon" href="$searchLink" title="{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}">
+                    {% set backLink = page.find('/search').url ~ '?' %}
+                    {% set queries = uri.query(null, true) %}
+                    {% for key, param in queries %}
+                        {% if key is not sameas('docuuid') %}
+                            {% set backLink = backLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                        {% endif %}
+                    {% endfor %}
+                    <a class="helper icon" href="{{ backLink }}" title="{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}">
                         <span class="ic-ic-arrow-left"></span>
                         <span class="text">{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}</span>
                     </a>

@@ -571,7 +571,11 @@ class InGridGravPlugin extends Plugin
             if (isset($detail->hit)) {
                 $twig->twig_vars['detail_type'] = $detail->type;
                 $twig->twig_vars['hit'] = $detail->hit;
-                $twig->twig_vars['page_custom_title'] = $detail->hit->title ?? null;
+                if ($detail->hit instanceof DetailMetadataHTML) {
+                    $twig->twig_vars['page_custom_title'] = $detail->title ?? null;
+                } else {
+                    $twig->twig_vars['page_custom_title'] = $detail->hit->title ?? null;
+                }
                 $twig->twig_vars['partners'] = $detail->partners;
                 $twig->twig_vars['lang'] = $detail->lang;
                 $twig->twig_vars['paramsMore'] = explode(",", $this->grav['uri']->query('more'));

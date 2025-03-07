@@ -19,7 +19,14 @@
         <div class="page-wrapper" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
             <div class="row">
                 <div class="xsmall-24 large-6 xlarge-6 columns">
-                    <a class="helper icon" href="{{ page.find('/search').url }}" title="{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}" rel="noopener noreferrer">
+                    {% set backLink = page.find('/search').url ~ '?' %}
+                    {% set queries = uri.query(null, true) %}
+                    {% for key, param in queries %}
+                        {% if key is not sameas('docuuid') %}
+                            {% set backLink = backLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                        {% endif %}
+                    {% endfor %}
+                    <a class="helper icon" href="{{ backLink }}" title="{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}" rel="noopener noreferrer">
                         <span class="ic-ic-arrow-left"></span>
                         <span class="text text-normal">{{ "SEARCH_DETAIL.BACK_TO_RESULTS"|t }}</span>
                     </a>
