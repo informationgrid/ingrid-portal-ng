@@ -45,43 +45,45 @@
                         </div>
                         {% endif %}
                         {% for facetItem in facet.items %}
-                            <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
-                                <div class="teaser">
-                                    <div class="blue-border"></div>
-                                    {% if facetItem.items %}
-                                        <p class="teaser-link">
-                                        {% if "/" in facetItem.icon %}
-                                            <img style="margin: auto;" class="bx-top-s icon-{{ facetItem.id }}" src="{{ url('theme://' ~ facetItem.icon) }}" alt="icon"/>
-                                        {% else %}
-                                            <span class="{{ facetItem.icon }}"></span>
-                                        {% endif %}
-                                            <span class="text">{{ facetItem.label|t }}</span>
-                                            <span class="teaser-link-list">
-                                                {% for item in facetItem.items %}
-                                                    <a href="{{ page.find('/search').url ~ item.actionLink }}" title="{{ item.label|t }} ({{ facetItem.label|t }})">
-                                                        {{ item.label }}
-                                                        <span class="teaser-number">
-                                                            {{ item.count }}
-                                                        </span>
-                                                    </a>
-                                                {% endfor %}
-                                            </span>
-                                        </p>
-                                    {% elseif facetItem.docCount > 0 or facetItem.displayOnEmpty%}
-                                        <a class="teaser-link" href="{{ page.find('/search').url ~ facetItem.actionLink }}">
+                            {% if facetItem.docCount > 0 or facetItem.displayOnEmpty %}
+                                <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
+                                    <div class="teaser">
+                                        <div class="blue-border"></div>
+                                        {% if facetItem.items %}
+                                            <p class="teaser-link">
                                             {% if "/" in facetItem.icon %}
                                                 <img style="margin: auto;" class="bx-top-s icon-{{ facetItem.id }}" src="{{ url('theme://' ~ facetItem.icon) }}" alt="icon"/>
                                             {% else %}
                                                 <span class="{{ facetItem.icon }}"></span>
                                             {% endif %}
-                                            <span class="text">{{ facetItem.label|t }}</span>
-                                            <span class="teaser-number">
-                                                {{ facetItem.docCount }}
-                                            </span>
-                                        </a>
-                                    {% endif %}
+                                                <span class="text">{{ facetItem.label|t }}</span>
+                                                <span class="teaser-link-list">
+                                                    {% for item in facetItem.items %}
+                                                        <a href="{{ page.find('/search').url ~ item.actionLink }}" title="{{ item.label|t }} ({{ facetItem.label|t }})">
+                                                            {{ item.label }}
+                                                            <span class="teaser-number">
+                                                                {{ item.count }}
+                                                            </span>
+                                                        </a>
+                                                    {% endfor %}
+                                                </span>
+                                            </p>
+                                        {% else %}
+                                            <a class="teaser-link" href="{{ page.find('/search').url ~ facetItem.actionLink }}">
+                                                {% if "/" in facetItem.icon %}
+                                                    <img style="margin: auto;" class="bx-top-s icon-{{ facetItem.id }}" src="{{ url('theme://' ~ facetItem.icon) }}" alt="icon"/>
+                                                {% else %}
+                                                    <span class="{{ facetItem.icon }}"></span>
+                                                {% endif %}
+                                                <span class="text">{{ facetItem.label|t }}</span>
+                                                <span class="teaser-number">
+                                                    {{ facetItem.docCount }}
+                                                </span>
+                                            </a>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>

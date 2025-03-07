@@ -283,24 +283,26 @@ class SearchParserClassicISO
         $urlReferenceDatatype = ElasticsearchHelper::getValueArray($esHit, "t017_url_ref.datatype");
 
         foreach ($urlReferenceLink as $count => $url) {
-            $format = !empty($urlReferenceSpecialRef[$count]) ? $urlReferenceSpecialRef[$count] : null;
-            $kind = "other";
-            if ($format == "9990") {
-                $kind = "download";
-            } else if ($format == "3600") {
-                $kind = "reference";
-            }
-            $array[] = [
-                "url" => $url,
-                "title" => !empty($urlReferenceContent[$count]) ? $urlReferenceContent[$count] : $url,
-                "serviceType" => $format == "9900" && count($urlReferenceDatatype) > $count ? $urlReferenceDatatype[$count] : "",
-                "type" => $format == "3600" ? "1" : null,
-                "typeName" => $format == "3600" ? CodelistHelper::getCodelistEntry(['8000'], "1", 'de') : null,
-                "kind" => $kind,
-            ];
-            if (count($urlReferenceDatatype) > $count) {
-                if (!in_array($urlReferenceDatatype[$count], $serviceTypes)) {
-                    $serviceTypes[] = $urlReferenceDatatype[$count];
+            if(!empty($url)) {
+                $format = !empty($urlReferenceSpecialRef[$count]) ? $urlReferenceSpecialRef[$count] : null;
+                $kind = "other";
+                if ($format == "9990") {
+                    $kind = "download";
+                } else if ($format == "3600") {
+                    $kind = "reference";
+                }
+                $array[] = [
+                    "url" => $url,
+                    "title" => !empty($urlReferenceContent[$count]) ? $urlReferenceContent[$count] : $url,
+                    "serviceType" => $format == "9900" && count($urlReferenceDatatype) > $count ? $urlReferenceDatatype[$count] : "",
+                    "type" => $format == "3600" ? "1" : null,
+                    "typeName" => $format == "3600" ? CodelistHelper::getCodelistEntry(['8000'], "1", 'de') : null,
+                    "kind" => $kind,
+                ];
+                if (count($urlReferenceDatatype) > $count) {
+                    if (!in_array($urlReferenceDatatype[$count], $serviceTypes)) {
+                        $serviceTypes[] = $urlReferenceDatatype[$count];
+                    }
                 }
             }
         }
