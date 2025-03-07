@@ -15,7 +15,7 @@ class Detail
     public string $cswUrl;
     public string $theme;
     public string $timezone;
-    public null|DetailMetadataISO|DetailAddressISO|DetailMetadataHTML $hit;
+    public null|DetailMetadataISO|DetailAddressISO|DetailMetadataHTML|DetailMetadataUVP $hit;
     public array $partners;
 
     public function __construct(Grav $grav, string $api)

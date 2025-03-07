@@ -410,12 +410,12 @@ hit_search:
                 "should": [
                   {
                     "term": {
-                      "t04_search.searchterm": "advmis"
+                      "t04_search.searchterm": "AdVMIS"
                     }
                   },
                   {
                     "term": {
-                      "t04_search.searchterm": "adv"
+                      "t04_search.searchterm": "AdV"
                     }
                   }
                 ]
@@ -541,6 +541,7 @@ hit_search:
         "list_limit": 6,
         "sort": "name"
       },
+      "sort": "name",
       "query": {
         "terms": {
           "field": "partner",

@@ -1829,7 +1829,7 @@ hit_search:
           }
         },
         "obj_class_li": {
-          "label": "Linienbestimmung",
+          "label": "Linienbestimmungen",
           "query": {
             "filter": {
               "term": {
