@@ -7,7 +7,7 @@ use Grav\Common\Utils;
 class SearchParserClassicISO
 {
 
-    public static function parseHits($source, string $lang): array
+    public static function parseHits(\stdClass $esHit, string $lang): array
     {
         $uuid = null;
         $type = null;
@@ -15,24 +15,24 @@ class SearchParserClassicISO
         $title = null;
         $time = null;
         $serviceTypes = [];
-        $datatypes = self::getValueArray($source, "datatype");
+        $datatypes = ElasticsearchHelper::getValueArray($esHit, "datatype");
 
         if (in_array("address", $datatypes)) {
-            $uuid = self::getValue($source, "t02_address.adr_id");
-            $type = self::getValue($source, "t02_address.typ");
+            $uuid = ElasticsearchHelper::getValue($esHit, "t02_address.adr_id");
+            $type = ElasticsearchHelper::getValue($esHit, "t02_address.typ");
             $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["505"], $type, $lang) : "";
-            $title = self::getAddressTitle($source, $type);
+            $title = self::getAddressTitle($esHit, $type);
         } else if (in_array("metadata", $datatypes)) {
-            $uuid = self::getValue($source, "t01_object.obj_id");
-            $type = self::getValue($source, "t01_object.obj_class");
+            $uuid = ElasticsearchHelper::getValue($esHit, "t01_object.obj_id");
+            $type = ElasticsearchHelper::getValue($esHit, "t01_object.obj_class");
             $type_name = isset($type) ? CodelistHelper::getCodelistEntry(["8000"], $type, $lang) : "";
-            $title = self::getValue($source, "title");
-            $time = self::getTime($source);
+            $title = ElasticsearchHelper::getValue($esHit, "title");
+            $time = self::getTime($esHit);
         } else if (in_array("www", $datatypes)) {
-            $title = self::getValue($source, "title");
+            $title = ElasticsearchHelper::getValue($esHit, "title");
         }
-        $searchTerms = self::getValueArray($source, "t04_search.searchterm");
-        $isInspire = self::getValue($source, "t01_object.is_inspire_relevant");
+        $searchTerms = ElasticsearchHelper::getValueArray($esHit, "t04_search.searchterm");
+        $isInspire = ElasticsearchHelper::getValue($esHit, "t01_object.is_inspire_relevant");
         if (empty($isInspire)) {
             $isInspire = "N";
         }
@@ -41,7 +41,7 @@ class SearchParserClassicISO
                 $isInspire = "Y";
             }
         }
-        $isOpendata = self::getValue($source, "t01_object.is_open_data");
+        $isOpendata = ElasticsearchHelper::getValue($esHit, "t01_object.is_open_data");
         if (empty($isOpendata)) {
             $isOpendata = "N";
         }
@@ -50,56 +50,56 @@ class SearchParserClassicISO
                 $isOpendata = "Y";
             }
         }
-        $hasAccessConstraint = self::getValue($source, "t011_obj_serv.has_access_constraint");
+        $hasAccessConstraint = ElasticsearchHelper::getValue($esHit, "t011_obj_serv.has_access_constraint");
         if (empty($hasAccessConstraint)) {
             $hasAccessConstraint = "N";
         }
-        $servType = self::getFirstValue($source, "t011_obj_serv.type");
+        $servType = ElasticsearchHelper::getFirstValue($esHit, "t011_obj_serv.type");
         if (!$servType) {
-            $servType = self::getFirstValue($source, "refering.object_reference.type");
+            $servType = ElasticsearchHelper::getFirstValue($esHit, "refering.object_reference.type");
         }
-        $servTypeVersion = self::getFirstValue($source, "t011_obj_serv_version.version_value");
+        $servTypeVersion = ElasticsearchHelper::getFirstValue($esHit, "t011_obj_serv_version.version_value");
         if (!$servTypeVersion) {
-            $servTypeVersion = self::getFirstValue($source, "refering.object_reference.version");
+            $servTypeVersion = ElasticsearchHelper::getFirstValue($esHit, "refering.object_reference.version");
         }
         $obj_serv_type = $servType;
-        $capUrl = self::getFirstValue($source, "capabilities_url");
+        $capUrl = ElasticsearchHelper::getFirstValue($esHit, "capabilities_url");
         return [
             "uuid" => $uuid,
             "type" => $type,
             "type_name" => $type_name,
             "title" => $title,
-            "url" => in_array("www", $datatypes) ? self::getValue($source, "url") : null,
+            "url" => in_array("www", $datatypes) ? ElasticsearchHelper::getValue($esHit, "url") : null,
             "time" => $time,
-            "summary" => self::getSummary($source),
+            "summary" => self::getSummary($esHit),
             "datatypes" => $datatypes,
-            "partners" => self::getValueArray($source, "partner"),
+            "partners" => ElasticsearchHelper::getValueArray($esHit, "partner"),
             "searchterms" => $searchTerms,
-            "map_bboxes" => self::getBBoxes($source, $title),
-            "t011_obj_serv.type" => self::getValue($source, "t011_obj_serv.type"),
-            "t011_obj_serv.type_key" => self::getValue($source, "t011_obj_serv.type_key"),
-            "license" => self::getLicense($source, $lang),
-            "links" => isset($type) ? self::getLinks($source, $type, $servType, $servTypeVersion, $serviceTypes) : [],
+            "map_bboxes" => ElasticsearchHelper::getBBoxes($esHit, $title),
+            "t011_obj_serv.type" => ElasticsearchHelper::getValue($esHit, "t011_obj_serv.type"),
+            "t011_obj_serv.type_key" => ElasticsearchHelper::getValue($esHit, "t011_obj_serv.type_key"),
+            "license" => self::getLicense($esHit, $lang),
+            "links" => isset($type) ? self::getLinks($esHit, $type, $servType, $servTypeVersion, $serviceTypes) : [],
             "serviceTypes" => $serviceTypes,
-            "additional_html_1" => self::getPreviews($source, "additional_html_1"),
+            "additional_html_1" => self::getPreviews($esHit, "additional_html_1"),
             "isInspire" => !($isInspire == "N"),
             "isOpendata" => !($isOpendata == "N"),
             "hasAccessConstraint" => !($hasAccessConstraint == "N"),
-            "isHVD" => !(self::getValue($source, "is_hvd") === 'false'),
+            "isHVD" => !(ElasticsearchHelper::getValue($esHit, "is_hvd") === 'false'),
             "obj_serv_type" => $obj_serv_type,
             "mapUrl" => $capUrl ? CapabilitiesHelper::getMapUrl($capUrl, $servTypeVersion, $servType) : null,
-            "mapUrlClient" => self::getFirstValue($source, "capabilities_url_with_client"),
-            "wkt" => self::getValue($source, "wkt_geo_text"),
-            "y1" => self::getValue($source, "y1"),
-            "x1" => self::getValue($source, "x1"),
-            "y2" => self::getValue($source, "y2"),
-            "x2" => self::getValue($source, "x2"),
+            "mapUrlClient" => ElasticsearchHelper::getFirstValue($esHit, "capabilities_url_with_client"),
+            "wkt" => ElasticsearchHelper::getValue($esHit, "wkt_geo_text"),
+            "y1" => ElasticsearchHelper::getValue($esHit, "y1"),
+            "x1" => ElasticsearchHelper::getValue($esHit, "x1"),
+            "y2" => ElasticsearchHelper::getValue($esHit, "y2"),
+            "x2" => ElasticsearchHelper::getValue($esHit, "x2"),
         ];
     }
 
-    private static function getSummary($value): ?string
+    private static function getSummary(\stdClass $esHit): ?string
     {
-        $summary = self::getValue($value, 'summary') ?? self::getValue($value, 'abstract');
+        $summary = ElasticsearchHelper::getValue($esHit, 'summary') ?? ElasticsearchHelper::getValue($esHit, 'abstract');
         if (!empty($summary) && str_contains($summary, '<')) {
             $doc = new \DomDocument();
             $summary = \mb_convert_encoding($summary, 'HTML-ENTITIES', 'UTF-8');
@@ -117,11 +117,11 @@ class SearchParserClassicISO
         return $summary;
     }
 
-    private static function getPreviews($value, string $type): array
+    private static function getPreviews(\stdClass $esHit, string $type): array
     {
         $array = [];
 
-        $previews = self::getValueArray($value, $type);
+        $previews = ElasticsearchHelper::getValueArray($esHit, $type);
         foreach ($previews as $preview) {
             $url = preg_replace("/.* src='/i", "", $preview);
             $url = preg_replace("/'.*/i", "", $url);
@@ -140,18 +140,18 @@ class SearchParserClassicISO
         return $array;
     }
 
-    private static function getAddressTitle($value, string $type): string
+    private static function getAddressTitle(\stdClass $esHit, string $type): string
     {
-        $title = self::getValue($value, "title");
+        $title = ElasticsearchHelper::getValue($esHit, "title");
         if ($type == "2" or $type == "3") {
             $title = "";
-            $title = $title . (property_exists($value, "t02_address.firstname") ? self::getValue($value, "t02_address.firstname") . " " : "");
-            $title = $title . (property_exists($value, "t02_address.lastname") ? self::getValue($value, "t02_address.lastname") . " " : "");
+            $title = $title . (property_exists($esHit, "t02_address.firstname") ? ElasticsearchHelper::getValue($esHit, "t02_address.firstname") . " " : "");
+            $title = $title . (property_exists($esHit, "t02_address.lastname") ? ElasticsearchHelper::getValue($esHit, "t02_address.lastname") . " " : "");
         }
-        if (property_exists($value, "t02_address.parents.title")) {
-            $parents = self::getValue($value, "t02_address.parents.title");
+        if (property_exists($esHit, "t02_address.parents.title")) {
+            $parents = ElasticsearchHelper::getValue($esHit, "t02_address.parents.title");
             if (is_string($parents)) {
-                $title = self::getValue($value, "t02_address.parents.title") . ', ' . $title;
+                $title = ElasticsearchHelper::getValue($esHit, "t02_address.parents.title") . ', ' . $title;
             } else {
                 foreach ($parents as $parent) {
                     $title = $parent . ', ' . $title;
@@ -161,10 +161,10 @@ class SearchParserClassicISO
         return $title;
     }
 
-    private static function getLicense($value, string $lang): mixed
+    private static function getLicense(\stdClass $esHit, string $lang): mixed
     {
-        $licenseKey = self::getFirstValue($value, "object_use_constraint.license_key");
-        $licenseValue = self::getFirstValue($value, "object_use_constraint.license_value");
+        $licenseKey = ElasticsearchHelper::getFirstValue($esHit, "object_use_constraint.license_key");
+        $licenseValue = ElasticsearchHelper::getFirstValue($esHit, "object_use_constraint.license_value");
 
         if ($licenseKey || $licenseValue) {
             if ($licenseKey) {
@@ -193,7 +193,7 @@ class SearchParserClassicISO
     }
 
 
-    private static function getLinks($value, string $type, ?string $serviceTyp, ?string $serviceTypeVersion, array &$serviceTypes): array
+    private static function getLinks(\stdClass $esHit, string $type, ?string $serviceTyp, ?string $serviceTypeVersion, array &$serviceTypes): array
     {
         $referenceAllUUID = [];
         $referenceAllName = [];
@@ -203,11 +203,11 @@ class SearchParserClassicISO
         $referenceAllServiceType = [];
 
         $array = array ();
-        $referingObjRefUUID = self::getValueArray($value, "refering.object_reference.obj_uuid");
-        $referingObjRefName = self::getValueArray($value, "refering.object_reference.obj_name");
-        $referingObjRefClass = self::getValueArray($value, "refering.object_reference.obj_class");
-        $referingObjRefType = self::getValueArray($value, "refering.object_reference.type");
-        $referingObjRefVersion = self::getValueArray($value, "refering.object_reference.version");
+        $referingObjRefUUID = ElasticsearchHelper::getValueArray($esHit, "refering.object_reference.obj_uuid");
+        $referingObjRefName = ElasticsearchHelper::getValueArray($esHit, "refering.object_reference.obj_name");
+        $referingObjRefClass = ElasticsearchHelper::getValueArray($esHit, "refering.object_reference.obj_class");
+        $referingObjRefType = ElasticsearchHelper::getValueArray($esHit, "refering.object_reference.type");
+        $referingObjRefVersion = ElasticsearchHelper::getValueArray($esHit, "refering.object_reference.version");
 
         foreach ($referingObjRefUUID as $count => $objUuid) {
             if (str_starts_with($objUuid, "http")) {
@@ -239,11 +239,11 @@ class SearchParserClassicISO
             }
         }
 
-        $objRefUUID = self::getValueArray($value, "object_reference.obj_uuid");
-        $objRefName = self::getValueArray($value, "object_reference.obj_name");
-        $objRefClass = self::getValueArray($value, "object_reference.obj_class");
-        $objRefType = self::getValueArray($value, "object_reference.type");
-        $objRefVersion = self::getValueArray($value, "object_reference.version");
+        $objRefUUID = ElasticsearchHelper::getValueArray($esHit, "object_reference.obj_uuid");
+        $objRefName = ElasticsearchHelper::getValueArray($esHit, "object_reference.obj_name");
+        $objRefClass = ElasticsearchHelper::getValueArray($esHit, "object_reference.obj_class");
+        $objRefType = ElasticsearchHelper::getValueArray($esHit, "object_reference.type");
+        $objRefVersion = ElasticsearchHelper::getValueArray($esHit, "object_reference.version");
 
         foreach ($objRefUUID as $count => $objUuid) {
             if (str_starts_with($objUuid, "http")) {
@@ -277,10 +277,10 @@ class SearchParserClassicISO
             }
         }
 
-        $urlReferenceLink = self::getValueArray($value, "t017_url_ref.url_link");
-        $urlReferenceContent = self::getValueArray($value, "t017_url_ref.content");
-        $urlReferenceSpecialRef = self::getValueArray($value, "t017_url_ref.special_ref");
-        $urlReferenceDatatype = self::getValueArray($value, "t017_url_ref.datatype");
+        $urlReferenceLink = ElasticsearchHelper::getValueArray($esHit, "t017_url_ref.url_link");
+        $urlReferenceContent = ElasticsearchHelper::getValueArray($esHit, "t017_url_ref.content");
+        $urlReferenceSpecialRef = ElasticsearchHelper::getValueArray($esHit, "t017_url_ref.special_ref");
+        $urlReferenceDatatype = ElasticsearchHelper::getValueArray($esHit, "t017_url_ref.datatype");
 
         foreach ($urlReferenceLink as $count => $url) {
             $format = !empty($urlReferenceSpecialRef[$count]) ? $urlReferenceSpecialRef[$count] : null;
@@ -318,9 +318,9 @@ class SearchParserClassicISO
 
         // URL des Zugangs
         if ($type == "3") {
-            $connectPointLink = self::getFirstValue($value, "capabilities_url");
+            $connectPointLink = ElasticsearchHelper::getFirstValue($esHit, "capabilities_url");
             if (empty($connectPointLink)) {
-                $connectPointLink = self::getFirstValue($value, "t011_obj_serv_op_connpoint.connect_point");
+                $connectPointLink = ElasticsearchHelper::getFirstValue($esHit, "t011_obj_serv_op_connpoint.connect_point");
             }
             if ($connectPointLink) {
                 $capURL = CapabilitiesHelper::getCapabilitiesUrl($connectPointLink, $serviceTypeVersion, $serviceTyp);
@@ -331,8 +331,8 @@ class SearchParserClassicISO
                 ];
             }
         } else if ($type == "6") {
-            $connectPointLink = self::getValueArray($value, "t011_obj_serv_url.url");
-            $connectPointLinkName = self::getValueArray($value, "t011_obj_serv_url.name");
+            $connectPointLink = ElasticsearchHelper::getValueArray($esHit, "t011_obj_serv_url.url");
+            $connectPointLinkName = ElasticsearchHelper::getValueArray($esHit, "t011_obj_serv_url.name");
             foreach ($connectPointLink as $count => $url) {
                 $array[] = [
                     "url" => $url,
@@ -344,86 +344,13 @@ class SearchParserClassicISO
         return Utils::sortArrayByKey($array, "title", SORT_ASC);
     }
 
-    private static function getTime($value): array
+    private static function getTime($esHit): array
     {
         return [
-            "type" => self::getValue($value, "t01_object.time_type"),
-            "t0" => self::getValueTime($value, "t0"),
-            "t1" => self::getValueTime($value, "t1"),
-            "t2" => self::getValueTime($value, "t2"),
+            "type" => ElasticsearchHelper::getValue($esHit, "t01_object.time_type"),
+            "t0" => ElasticsearchHelper::getValueTime($esHit, "t0"),
+            "t1" => ElasticsearchHelper::getValueTime($esHit, "t1"),
+            "t2" => ElasticsearchHelper::getValueTime($esHit, "t2"),
         ];
     }
-
-    private static function getBBoxes($value, ?string $title): array
-    {
-        $array = array();
-        if (property_exists($value, "x1")) {
-            $x1s = self::toArray(self::getValue($value, "x1"));
-            $y1s = self::toArray(self::getValue($value, "y1"));
-            $x2s = self::toArray(self::getValue($value, "x2"));
-            $y2s = self::toArray(self::getValue($value, "y2"));
-            $locations = self::toArray(self::getValue($value, "location"));
-
-            $count = 0;
-            foreach ($x1s as $x1) {
-                $array[] = [
-                    "title" => $locations[$count] ?? $title,
-                    "westBoundLongitude" => (float) $x1s[$count],
-                    "southBoundLatitude" => (float) $y1s[$count],
-                    "eastBoundLongitude" => (float) $x2s[$count],
-                    "northBoundLatitude" => (float) $y2s[$count],
-                ];
-                $count++;
-            }
-        }
-        return $array;
-    }
-
-    private static function getObjServType($node)
-    {
-        $array = array();
-        return $array;
-    }
-
-    private static function toArray($value): array
-    {
-        if (isset($value)) {
-            if (gettype($value) == "array") return $value;
-            return array($value);
-        }
-        return [];
-    }
-
-    private static function getValue($value, string $key): mixed
-    {
-        if (property_exists($value, $key)) {
-            $tmpValue = $value->$key;
-            if (is_string($tmpValue)) {
-                return trim($value->$key);
-            }
-            return $tmpValue;
-        }
-        return null;
-    }
-
-    private static function getValueTime($value, string $key): ?string
-    {
-        if (property_exists($value, $key)) {
-            $time = trim($value->$key);
-            return date("d.m.Y", strtotime(substr($time,0,8)));
-        }
-        return null;
-    }
-
-    private static function getValueArray($value, string $key): array
-    {
-        return self::toArray(self::getValue($value, $key)) ?? [];
-    }
-
-    private static function getFirstValue($value, string $key): mixed
-    {
-        $array = self::getValueArray($value, $key);
-        return $array[0] ?? null;
-    }
-
 }

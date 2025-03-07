@@ -27,7 +27,7 @@ class Search
         $this->lang = $grav['language']->getLanguage();
         $this->theme = $this->grav['config']->get('system.pages.theme');
         $this->results = null;
-        $this->query = $this->grav['uri']->query('q') ?: '';
+        $this->query = $this->grav['uri']->query('q') ?? '';
         $this->selectedFacets = [];
         $this->hitsNum = 0;
         $this->ranking = '';
@@ -40,27 +40,21 @@ class Search
         $this->ranking = $this->grav['uri']->query('ranking') ?: '';
 
         // Theme config
-        $facetConfig = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.facet_config') ?: [];
-        $this->hitsNum = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.hits_num') ?: 0;
-        $addToSearch = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.add_to_search') ?: [];
-        $sortByDate = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.sort.sortByDate') ?: false;
-
-        if (!empty($this->ranking)) {
-            if ($this->ranking === 'date') {
-                $sortByDate = true;
-            } else {
-                $sortByDate = false;
-            }
-        } else {
+        $searchSettings = $this->grav['config']->get('themes.' . $this->theme . '.hit_search') ?? [];
+        $facetConfig = $searchSettings['facet_config'] ?? [];
+        $this->hitsNum = $searchSettings['hits_num'] ?? 0;
+        $sortByDate = $searchSettings['sort']['sortByDate'] ?? false;
+        if (empty($ranking)) {
             if ($sortByDate) {
-                $ranking = 'date';
+                $this->ranking = 'date';
             } else {
-                $ranking = 'score';
+                $this->ranking = 'score';
             }
         }
+
         $this->addFacetsBySelection($facetConfig);
         $this->selectedFacets = $this->getSelectedFacets($facetConfig);
-        $service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, $addToSearch, $sortByDate);
+        $service = new SearchServiceImpl($this->grav, $this->grav['uri'], $facetConfig, $searchSettings);
         $this->results = $service->getSearchResults($this->query, $this->page, $this->selectedFacets, $this->grav['uri'], $this->lang, $this->theme);
     }
 
@@ -68,9 +62,10 @@ class Search
     {
         $this->hitsNum = 0;
         // Theme config
-        $facetConfig = $this->grav['config']->get('themes.' . $this->theme . '.map.leaflet.legend.facet_config') ?? [];
+        $searchSettings = $this->grav['config']->get('themes.' . $this->theme . '.map.leaflet.legend') ?? [];
+        $facetConfig = $searchSettings['facet_config'] ?? [];
         if ($this->theme === 'uvp') {
-            $service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, []);
+            $service = new SearchServiceImpl($this->grav, $this->grav['uri'], $facetConfig, $searchSettings);
             $results = $service->getSearchResults("", 1, [], $this->grav['uri'], $this->lang);
             if ($results) {
                 $this->results = $results;
@@ -84,12 +79,12 @@ class Search
 
         if ($this->theme === 'uvp') {
             $this->page = $this->grav['uri']->query('page') ?: '';
-            $this->hitsNum = $this->grav['config']->get('themes.' . $this->theme . '.map.leaflet.legend.marker_num') ?: 100;
-            $facetConfig = $this->grav['config']->get('themes.' . $this->theme . '.map.leaflet.legend.facet_config') ?? [];
-            $this->selectedFacets = $this->getSelectedFacets($facetConfig);
+            $searchSettings = $this->grav['config']->get('themes.' . $this->theme . '.map.leaflet.legend') ?? [];
+            $facetConfig = $searchSettings['facet_config'] ?? [];
+            $this->selectedFacets = $this->getSelectedFacets($searchSettings);
 
-            $service = new SearchServiceImpl($this->grav, $this->hitsNum, $facetConfig, []);
-            $hits = $service->getSearchResultOriginalHits('', $this->page, $this->selectedFacets);
+            $service = new SearchServiceImpl($this->grav, $this->grav['uri'], $facetConfig, $searchSettings);
+            $hits = $service->getSearchResultsUnparsed('', $this->page, $this->selectedFacets);
             if ($hits) {
                 $output = $this->getMapMarkers($hits);
             }

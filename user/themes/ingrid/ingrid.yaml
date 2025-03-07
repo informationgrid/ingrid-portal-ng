@@ -195,7 +195,7 @@ home:
   hits:
     add_to_search:
       - "-isfolder:true"
-    num: 0
+    hits_num: 0
     sort:
       sortByDate: true
 hit_search:
@@ -396,6 +396,27 @@ hit_search:
     - summary.ngram^0.2
     - content^0.2
     - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
   query_string_operator: AND
   sort:
     enabled: false
@@ -410,6 +431,13 @@ hit_search:
   partner_logo_enabled: false
 provider:
   query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -429,6 +457,18 @@ hit_detail:
     - owner
     - processor
     - author
+  requested_fields:
+    - partner
+    - provider
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
 map:
   enabled: true
   url: /ingrid-webmap-client/frontend/prd

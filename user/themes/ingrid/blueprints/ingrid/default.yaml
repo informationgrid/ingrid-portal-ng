@@ -382,8 +382,8 @@ form:
 
             home.categories.add_to_search:
               type: selectize
-              label: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.LABEL
-              help: THEME.ADMIN.HOME.CATEGORIES.EXCLUDE_FROM_SEARCH.HELP
+              label: THEME.ADMIN.HOME.CATEGORIES.ADD_TO_SEARCH.LABEL
+              help: THEME.ADMIN.HOME.CATEGORIES.ADD_TO_SEARCH.HELP
               validate:
                 type: commalist
 
@@ -394,19 +394,58 @@ form:
 
             home.hits.add_to_search:
               type: selectize
-              label: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.LABEL
-              help: THEME.ADMIN.HOME.HITS.EXCLUDE_FROM_SEARCH.HELP
+              label: THEME.ADMIN.HOME.HITS.ADD_TO_SEARCH.LABEL
+              help: THEME.ADMIN.HOME.HITS.ADD_TO_SEARCH.HELP
               validate:
                 type: commalist
 
-            home.hits.num:
+            home.hits.hits_num:
               type: range
-              label: THEME.ADMIN.HOME.HITS.NUM.LABEL
-              help: THEME.ADMIN.HOME.HITS.NUM.HELP
+              label: THEME.ADMIN.HOME.HITS.HITS_NUM.LABEL
+              help: THEME.ADMIN.HOME.HITS.HITS_NUM.HELP
               validate:
                 type: number
                 min: 0
                 max: 10
+
+            home.hits.query_string_operator:
+              type: toggle
+              label: THEME.ADMIN.HOME.HITS.QUERY_STRING_OPERATOR.LABEL
+              help: THEME.ADMIN.HOME.HITS.QUERY_STRING_OPERATOR.HELP
+              highlight: AND
+              options:
+                "AND": AND
+                "OR": OR
+              validate:
+                type: text
+
+            home.hits.query_fields:
+              type: selectize
+              label: THEME.ADMIN.HOME.HITS.QUERY_FIELDS.LABEL
+              help: THEME.ADMIN.HOME.HITS.QUERY_FIELDS.HELP
+              validate:
+                type: commalist
+
+            home.hits.requested_fields:
+              type: selectize
+              label: THEME.ADMIN.HOME.HITS.REQUESTED_FIELDS.LABEL
+              help: THEME.ADMIN.HOME.HITS.REQUESTED_FIELDS.HELP
+              validate:
+                type: commalist
+
+            home.hits.source.include:
+              type: selectize
+              label: THEME.ADMIN.HOME.HITS.SOURCE.INCLUDE.LABEL
+              help: THEME.ADMIN.HOME.HITS.SOURCE.INCLUDE.HELP
+              validate:
+                type: commalist
+
+            home.hits.source.exclude:
+              type: selectize
+              label: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.LABEL
+              help: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.HELP
+              validate:
+                type: commalist
 
             home.hits.sort.sortByDate:
               type: toggle
@@ -444,13 +483,23 @@ form:
 
             hit_search.add_to_search:
               type: selectize
-              label: THEME.ADMIN.HIT_SEARCH.EXCLUDE_FROM_SEARCH.LABEL
+              label: THEME.ADMIN.HIT_SEARCH.ADD_TO_SEARCH.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.ADD_TO_SEARCH.HELP
               validate:
                 type: commalist
+
+            hit_search.hits_num:
+              type: range
+              label: THEME.ADMIN.HIT_SEARCH.HITS_NUM.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.HITS_NUM.HELP
+              validate:
+                min: 5
+                max: 100
 
             hit_search.query_string_operator:
               type: toggle
               label: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.HELP
               highlight: AND
               options:
                 "AND": AND
@@ -461,6 +510,28 @@ form:
             hit_search.query_fields:
               type: selectize
               label: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.HELP
+              validate:
+                type: commalist
+
+            hit_search.requested_fields:
+              type: selectize
+              label: THEME.ADMIN.HIT_SEARCH.REQUESTED_FIELDS.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.REQUESTED_FIELDS.HELP
+              validate:
+                type: commalist
+
+            hit_search.source.include:
+              type: selectize
+              label: THEME.ADMIN.HIT_SEARCH.SOURCE.INCLUDE.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SOURCE.INCLUDE.HELP
+              validate:
+                type: commalist
+
+            hit_search.source.exclude:
+              type: selectize
+              label: THEME.ADMIN.HIT_SEARCH.SOURCE.EXCLUDE.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SOURCE.EXCLUDE.HELP
               validate:
                 type: commalist
 
@@ -562,6 +633,38 @@ form:
               title: THEME.ADMIN.HIT_DETAIL.TITLE
               underline: true
 
+            hit_detail.query_string_operator:
+              type: toggle
+              label: THEME.ADMIN.HIT_DETAIL.QUERY_STRING_OPERATOR.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.QUERY_STRING_OPERATOR.HELP
+              highlight: AND
+              options:
+                "AND": AND
+                "OR": OR
+              validate:
+                type: text
+
+            hit_detail.requested_fields:
+              type: selectize
+              label: THEME.ADMIN.HIT_DETAIL.REQUESTED_FIELDS.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.REQUESTED_FIELDS.HELP
+              validate:
+                type: commalist
+
+            hit_detail.source.include:
+              type: selectize
+              label: THEME.ADMIN.HIT_DETAIL.SOURCE.INCLUDE.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.SOURCE.INCLUDE.HELP
+              validate:
+                type: commalist
+
+            hit_detail.source.exclude:
+              type: selectize
+              label: THEME.ADMIN.HIT_DETAIL.SOURCE.EXCLUDE.LABEL
+              help: THEME.ADMIN.HIT_DETAIL.SOURCE.EXCLUDE.HELP
+              validate:
+                type: commalist
+
             hit_detail.summary_replace_newline:
               type: text
               label: THEME.ADMIN.HIT_DETAIL.SUMMARY_REPLACE_NEWLINE.LABEL
@@ -644,6 +747,7 @@ form:
               type: number
               label: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.LABEL
               help: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.HELP
+              default: 0
               validate:
                 min: 0
                 max: 3
@@ -806,17 +910,6 @@ form:
               validate:
                 type: bool
 
-            map.leaflet.enable.geocoder:
-              type: toggle
-              label: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.LABEL
-              help: THEME.ADMIN.MAP.LEAFLET.ENABLE.GEOCODER.HELP
-              highlight: 1
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
             map.leaflet.enable.spinloader:
               type: toggle
               label: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.LABEL
@@ -839,6 +932,21 @@ form:
               validate:
                 type: bool
 
+            map.leaflet.geocoder.enable:
+              type: toggle
+              label: THEME.ADMIN.MAP.LEAFLET.GEOCODER.ENABLE.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.GEOCODER.ENABLE.HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            map.leaflet.geocoder.service:
+              type: text
+              label: THEME.ADMIN.MAP.LEAFLET.GEOCODER.SERVICE.LABEL
+              help: THEME.ADMIN.MAP.LEAFLET.GEOCODER.SERVICE.HELP
 ## Tab measure
         tab_measure:
           type: tab
@@ -941,6 +1049,36 @@ form:
               label: THEME.ADMIN.PROVIDER.QUERY.LABEL
               help: THEME.ADMIN.PROVIDER.QUERY.HELP
 
+            provider.hits_num:
+              type: range
+              label: THEME.ADMIN.PROVIDER.HITS_NUM.LABEL
+              help: THEME.ADMIN.PROVIDER.HITS_NUM.HELP
+              default: 0
+              validate:
+                type: number
+                min: 0
+                max: 1000
+
+            provider.requested_fields:
+              type: selectize
+              label: THEME.ADMIN.PROVIDER.REQUESTED_FIELDS.LABEL
+              help: THEME.ADMIN.PROVIDER.REQUESTED_FIELDS.HELP
+              validate:
+                type: commalist
+
+            provider.source.include:
+              type: selectize
+              label: THEME.ADMIN.PROVIDER.SOURCE.INCLUDE.LABEL
+              help: THEME.ADMIN.PROVIDER.SOURCE.INCLUDE.HELP
+              validate:
+                type: commalist
+
+            provider.source.exclude:
+              type: selectize
+              label: THEME.ADMIN.PROVIDER.SOURCE.EXCLUDE.LABEL
+              help: THEME.ADMIN.PROVIDER.SOURCE.EXCLUDE.HELP
+              validate:
+                type: commalist
 ## Tab rss
         tab_rss:
           type: tab

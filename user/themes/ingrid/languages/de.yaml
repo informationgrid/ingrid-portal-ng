@@ -1116,17 +1116,33 @@ THEME:
                 RSS:
                     LABEL: RSS Link anzeigen
                     HELP: Tragen Sie die Facetten-ID ein zu welcher Kategorie der RSS-Link hinzugefügt werden soll.
-                EXCLUDE_FROM_SEARCH:
+                ADD_TO_SEARCH:
                     LABEL: Aus den Kategorien ausschließen
                     HELP: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
             HITS:
                 TITLE: Trefferübersicht
-                EXCLUDE_FROM_SEARCH:
-                    LABEL: Aus den Treffern ausschließen
-                    HELP: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
-                NUM:
+                ADD_TO_SEARCH:
+                    LABEL: Suchanfrage erweitern
+                    HELP: Suchanfrage erweitern
+                HITS_NUM:
                     LABEL: Anzahl der Treffer
                     HELP: Lege die maximale Anzahl der dargestellten RSS Feeds fest.
+                QUERY_STRING_OPERATOR:
+                    LABEL: Query String Operator
+                    HELP: Query String Operator
+                QUERY_FIELDS:
+                    LABEL: Indexfelder für die Suche
+                    HELP: Indexfelder für die Suche
+                REQUESTED_FIELDS:
+                    LABEL: Felder anfragen
+                    HELP: Felder anfragen
+                SOURCE:
+                    INCLUDE:
+                        LABEL: Indexfelder anfordern
+                        HELP: Indexfelder anfordern
+                    EXCLUDE:
+                        LABEL: Indexfelder ausschließen
+                        HELP: Indexfelder ausschließen
                 SORT:
                     SORTBYDATE:
                         LABEL: Trefferübersicht nach Datum sortiert (modtime)
@@ -1140,12 +1156,28 @@ THEME:
             TITLE: Suchergebnis
         HIT_SEARCH:
             TITLE: Suchergebnis
-            EXCLUDE_FROM_SEARCH:
-                LABEL: Aus der Suche ausschließen
+            HITS_NUM:
+                LABEL: Anzahl Treffer
+                HELP: Anzahl Treffer pro Seite
+            ADD_TO_SEARCH:
+                LABEL: Suche erweitern
+                HELP: Suche erweitern
             QUERY_STRING_OPERATOR:
                 LABEL: Query String Operator
+                HELP: Query String Operator
             QUERY_FIELDS:
                 LABEL: Indexfelder für die Suche
+                HELP: Indexfelder für die Suche
+            REQUESTED_FIELDS:
+                LABEL: Felder anfragen
+                HELP: Felder anfragen
+            SOURCE:
+                INCLUDE:
+                    LABEL: Indexfelder anfordern
+                    HELP: Indexfelder anfordern
+                EXCLUDE:
+                    LABEL: Indexfelder ausschließen
+                    HELP: Indexfelder ausschließen
             SORT:
                 ENABLED:
                     LABEL: Suchergebnis-Sortierung
@@ -1177,6 +1209,19 @@ THEME:
                 HELP: Aktivieren Sie die Darstellung der Partner Wappen.
         HIT_DETAIL:
             TITLE: Detaildarstellung
+            QUERY_STRING_OPERATOR:
+                LABEL: Query String Operator
+                HELP: Query String Operator
+            REQUESTED_FIELDS:
+                LABEL: Felder anfragen
+                HELP: Felder anfragen
+            SOURCE:
+                INCLUDE:
+                    LABEL: Indexfelder anfordern
+                    HELP: Indexfelder anfordern
+                EXCLUDE:
+                    LABEL: Indexfelder ausschließen
+                    HELP: Indexfelder ausschließen
             SUMMARY_REPLACE_NEWLINE:
                 LABEL: Zeilenumbrüche des Beschreibungstextes ersetzen
                 HELP: Lege die Zeilenumbrüche des Beschreibungstextes fest.
@@ -1279,15 +1324,19 @@ THEME:
                     BWASTR:
                         LABEL: BWaStr darstellen
                         HELP: BWaStr darstellen
-                    GEOCODER:
-                        LABEL: Geocoder aktivieren
-                        HELP: Geocoder aktivieren
                     SPINLOADER:
                         LABEL: Spin-Loader aktivieren
                         HELP: Spin-Loader aktivieren
                     CLUSTERING:
                         LABEL: Custering aktivieren
                         HELP: Custering aktivieren
+                GEOCODER:
+                    ENABLE:
+                        LABEL: Geocoder aktivieren
+                        HELP: Geocoder aktivieren
+                    SERVICE:
+                        LABEL: Geocoder-Dienst
+                        HELP: Geocoder-Dienst
         MEASURE:
             TITLE: Messwerte
             URL:
@@ -1317,6 +1366,19 @@ THEME:
             QUERY:
                 LABEL: Suchquery für Anbieter
                 HELP: Suchquery für Anbieter
+            HITS_NUM:
+                LABEL: Anzahl der Anbieter
+                HELP: Anzahl der Anbieter
+            REQUESTED_FIELDS:
+                LABEL: Felder anfragen
+                HELP: Felder anfragen
+            SOURCE:
+                INCLUDE:
+                    LABEL: Indexfelder anfordern
+                    HELP: Indexfelder anfordern
+                EXCLUDE:
+                    LABEL: Indexfelder ausschließen
+                    HELP: Indexfelder ausschließen
         RSS:
             TITLE: RSS Feeds
             RSS_LABEL: RSS

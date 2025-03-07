@@ -41,12 +41,12 @@ class Detail
             if ($responseContent) {
                 $hits = json_decode($responseContent)->hits;
                 if (count($hits) > 0) {
-                    $this->source = $hits[0]->_source;
-                    if ($this->source) {
-                        $response = $this->source->idf;
-                        $dataSourceName = $this->source->dataSourceName;
-                        $this->partners = $this->source->partner;
-                        $tmpProviders = $this->source->provider;
+                    $esHit = $hits[0];
+                    if ($esHit) {
+                        $response = ElasticsearchHelper::getValue($esHit, 'idf');
+                        $dataSourceName = ElasticsearchHelper::getValue($esHit, 'dataSourceName');
+                        $this->partners = ElasticsearchHelper::getValueArray($esHit, 'partner');
+                        $tmpProviders = ElasticsearchHelper::getValueArray($esHit, 'provider');
                         foreach ($tmpProviders as $provider) {
                             $providers[] = CodelistHelper::getCodelistEntryByIdent(['111'], $provider, $this->lang);
                         }
@@ -81,10 +81,10 @@ class Detail
             $plugId = null;
             $title = null;
             if (count($hits) > 0) {
-                $source = $hits[0]->_source;
-                $response = $source->idf;
-                $plugId = $source->iPlugId;
-                $title = $source->title;
+                $esHit = $hits[0];
+                $response = ElasticsearchHelper::getValue($esHit, 'idf');
+                $plugId = ElasticsearchHelper::getValue($esHit, 'iPlugId');
+                $title = ElasticsearchHelper::getValue($esHit,'title');
             }
             if (!empty($response)) {
                 $parser = new DetailCreateZipUVPServiceImpl('downloads/zip', $title, $this->uuid, $plugId, $this->grav);
@@ -119,8 +119,11 @@ class Detail
     private function transformQuery(string $uuid, string $type): string
     {
         $theme = $this->grav['config']->get('system.pages.theme');
-        $queryStringOperator = $this->grav['config']->get('themes.' . $theme . '.hit_search.query_string_operator');
-        $queryStringOperator = $queryStringOperator ?: 'AND';
+        $searchSettings = $this->grav['config']->get('themes.' . $theme . '.hit_detail');
+        $queryStringOperator = $searchSettings['query_string_operator'] ?? 'AND';
+        $sourceInclude = $searchSettings['source']['include'] ?? [];
+        $sourceExclude = $searchSettings['source']['exclude'] ?? [];
+        $requestedFields = $searchSettings['requested_fields'] ?? [];
 
         $indexField = 't01_object.obj_id';
         $datatype = '-datatype:address';
@@ -133,7 +136,25 @@ class Detail
                 "default_operator" => $queryStringOperator,
             )
         );
-        return json_encode(array("query" => $queryString));
+        $source = [];
+        if (!empty($sourceInclude)
+            || !empty($sourceExclude)) {
+            if (!empty($sourceInclude)) {
+                $source['include'] = $sourceInclude;
+            }
+            if (!empty($sourceExclude)){
+                $source['exclude'] = $sourceExclude;
+            }
+        } else {
+            $source = true;
+        }
+        $query = json_encode(array(
+            "query" => $queryString,
+            "fields" => $requestedFields,
+            "_source" => $source
+        ));
+        $this->grav['log']->debug('Elasticsearch query detail: ' . $query);
+        return $query;
     }
 
 }

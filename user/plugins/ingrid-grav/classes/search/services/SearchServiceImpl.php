@@ -2,6 +2,8 @@
 
 namespace Grav\Plugin;
 
+use Grav\Common\Grav;
+use Grav\Common\Uri;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -17,23 +19,31 @@ class SearchServiceImpl implements SearchService
     private bool $sortByDate;
     private array $queryFields;
     private string $queryStringOperator;
+    private array $requestedFields;
+    private array $searchSourceSettings;
 
-
-    function __construct($grav, int $hitsNum, array $facetConfig = [], array $addToSearch = [], bool $sortByDate = false)
+    function __construct(Grav $grav, Uri $uri, array $facetConfig, array $searchSettings)
     {
-        $this->facet_config = $facetConfig;
-        $this->addToSearch = $addToSearch;
         $this->api = $grav['config']->get('plugins.ingrid-grav.ingrid_api.url');
-        $this->hitsNum = $hitsNum;
         $this->client = new Client(['base_uri' => $this->api]);
         $this->log = $grav['log'];
+        $this->facet_config = $facetConfig;
+        $this->addToSearch = $searchSettings['add_to_search'] ?? [];
+        $this->hitsNum = $searchSettings['hits_num'] ?? 0;
+        $this->queryFields = $searchSettings['query_fields'] ?? [];
+        $this->queryStringOperator = $searchSettings['query_string_operator'] ?? 'AND';
+        $this->requestedFields = $searchSettings['requested_fields'] ?? [];
+        $this->searchSourceSettings = $searchSettings['source'] ?? [];
+        $sortByDate = $searchSettings['sort']['sortByDate'] ?? false;
+        $ranking = $uri->query('ranking') ?? '';
+        if (!empty($ranking)) {
+            if ($ranking === 'date') {
+                $sortByDate = true;
+            } else {
+                $sortByDate = false;
+            }
+        }
         $this->sortByDate = $sortByDate;
-
-        $theme = $grav['config']->get('system.pages.theme');
-        $queryFields = $grav['config']->get('themes.' . $theme . '.hit_search.query_fields');
-        $this->queryFields = $queryFields ?: [];
-        $queryStringOperator = $grav['config']->get('themes.' . $theme . '.hit_search.query_string_operator');
-        $this->queryStringOperator = $queryStringOperator ?: 'AND';
     }
 
 
@@ -71,7 +81,7 @@ class SearchServiceImpl implements SearchService
         return null;
     }
 
-    public function getSearchResultOriginalHits(string $query, int $page, array $selectedFacets): ?array
+    public function getSearchResultsUnparsed(string $query, int $page, array $selectedFacets): ?array
     {
         try {
             $apiResponse = $this->client->request('POST', 'portal/search', [
@@ -126,7 +136,7 @@ class SearchServiceImpl implements SearchService
     {
         SearchQueryHelper::replaceInGridQuery($query);
         SearchQueryHelper::transformColonQuery($query);
-        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $this->addToSearch, $this->sortByDate, $this->queryFields, $this->queryStringOperator);
+        $result = ElasticsearchService::convertToQuery($query, $this->facet_config, $page, $this->hitsNum, $selectedFacets, $this->addToSearch, $this->sortByDate, $this->queryFields, $this->queryStringOperator, $this->requestedFields, $this->searchSourceSettings);
         $this->log->debug('Elasticsearch query: ' . $result);
         return $result;
     }

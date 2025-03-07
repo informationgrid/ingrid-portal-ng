@@ -7,7 +7,7 @@ use stdClass;
 class ElasticsearchService
 {
 
-    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $addToSearch, bool $sortByDate, array $queryFields, string $queryStringOperator): string
+    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $addToSearch, bool $sortByDate, array $queryFields, string $queryStringOperator, array $requestedFields = [], array $sourceSettings = []): string
     {
         if (count($addToSearch) > 0) {
             $query .= ' ' . implode(' ', $addToSearch);
@@ -28,12 +28,25 @@ class ElasticsearchService
         $sortQuery = array(
             "_score"
         );
+
         if ($sortByDate) {
             $sortQuery[] = array(
                 "t01_object.mod_time" => array(
                     "order" => "desc"
                 )
             );
+        }
+        $source = [];
+        if (!empty($sourceSettings['include'])
+            || !empty($sourceSettings['exclude'])) {
+            if (!empty($sourceSettings['include'])) {
+                $source['include'] = $sourceSettings['include'];
+            }
+            if (!empty($sourceSettings['exclude'])){
+                $source['exclude'] = $sourceSettings['exclude'];
+            }
+        } else {
+            $source = true;
         }
         $filter = json_decode($queryFromFacets->filter);
         return json_encode(array(
@@ -46,6 +59,8 @@ class ElasticsearchService
                     "filter" => $filter
                 )
             ),
+            "fields" => $requestedFields ?? [],
+            "_source" => $source,
             "aggs" => array(
                 "global_filter_aggregations" => array(
                     "global" => new stdClass(),

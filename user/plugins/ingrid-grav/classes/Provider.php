@@ -8,22 +8,23 @@ use GuzzleHttp\Client;
 class Provider
 {
     public Grav $grav;
+    public string $theme;
     public string $query;
 
     public function __construct(Grav $grav)
     {
         $this->grav = $grav;
 
-        $theme = $this->grav['config']->get('system.pages.theme');
-        $this->query = $this->grav['config']->get('themes.' . $theme . '.provider.query') ?: '';
+        $this->theme = $this->grav['config']->get('system.pages.theme');
+        $this->query = $this->grav['config']->get('themes.' . $this->theme . '.provider.query') ?: '';
     }
 
     public function getContent(): array
     {
         if ($this->query) {
-            $hitsNum = 1000;
-            $service = new SearchServiceImpl($this->grav, $hitsNum, [], []);
-            $results = $service->getSearchResultOriginalHits($this->query, 1, []);
+            $searchSettings = $this->grav['config']->get('themes.' . $this->theme . '.provider') ?? [];
+            $service = new SearchServiceImpl($this->grav, $this->grav['uri'], [], $searchSettings);
+            $results = $service->getSearchResultsUnparsed($this->query, 1, []);
             return $this->getPartners($results);
         } else {
             return CodelistHelper::getCodelistPartnerProviders();
@@ -40,11 +41,10 @@ class Provider
                 'ident' => $partner['ident'],
             ];
             $providerList = array();
-            foreach ($results as $result) {
-                $hit = $result->_source;
-                $hitPartners = $hit->partner;
-                $name = self::getValue($hit, 'title');
-                $parentName = self::getValue($hit, 't02_address.parents.title');
+            foreach ($results as $esHit) {
+                $esHitPartners = ElasticsearchHelper::getValueArray($esHit, 'partner');
+                $name = ElasticsearchHelper::getValue($esHit, 'title');
+                $parentName = ElasticsearchHelper::getValue($esHit, 't02_address.parents.title');
                 if ($parentName) {
                     if (is_array($parentName)) {
                         foreach ($parentName as $parentTitle) {
@@ -54,22 +54,17 @@ class Provider
                         $name = $parentName . '<br>' . $name;
                     }
                 }
-                $exists = in_array($newPartner['ident'], $hitPartners);
+                $exists = in_array($newPartner['ident'], $esHitPartners);
                 if ($exists && !empty($name)) {
                     $providerExists = in_array($name, array_column($providerList, 'name'));
                     if ( $providerExists === false) {
                         $url = null;
-                        $commTypeKeys = self::getValue($hit, 't021_communication.commtype_key');
-                        if (is_array($commTypeKeys)) {
+                        $commTypeKeys = ElasticsearchHelper::getValueArray($esHit, 't021_communication.commtype_key');
+                        if (!empty($commTypeKeys)) {
                             $existsCommTypeKey = array_search('4', $commTypeKeys);
                             if ($existsCommTypeKey !== false) {
-                                $commValues = self::getValue($hit, 't021_communication.comm_value');
+                                $commValues = ElasticsearchHelper::getValueArray($esHit, 't021_communication.comm_value');
                                 $url = $commValues[$existsCommTypeKey];
-                            }
-                        } else {
-                            if ($commTypeKeys == '4') {
-                                $commValues = self::getValue($hit, 't021_communication.comm_value');
-                                $url = $commValues;
                             }
                         }
                         if (!empty($url) && !str_starts_with($url, 'http')) {
@@ -87,13 +82,5 @@ class Provider
             $list[] = $newPartner;
         }
         return $list;
-    }
-
-    private function getValue($value, string $key): mixed
-    {
-        if (property_exists($value, $key)) {
-            return $value -> $key;
-        }
-        return null;
     }
 }

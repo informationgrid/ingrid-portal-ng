@@ -25,12 +25,13 @@ class Catalog
         $this->lang = $grav['language']->getLanguage();
 
         $theme = $this->grav['config']->get('system.pages.theme');
-        $this->configCatalogOpenNodesLevel = $this->grav['config']->get('themes.' . $theme . '.catalog.open_nodes_level');
-        $this->configCatalogDisplayPartner = $this->grav['config']->get('themes.' . $theme . '.catalog.display_partner') ?: true;
-        $this->configCatalogOpenOnNewTab = $this->grav['config']->get('themes.' . $theme . '.catalog.open_on_new_tab') ?: true;
-        $this->configCatalogSortByName = $this->grav['config']->get('themes.' . $theme . '.catalog.sort_by_name') ?: true;
+        $catalogSetting = $this->grav['config']->get('themes.' . $theme . '.catalog');
+        $this->configCatalogOpenNodesLevel = $catalogSetting['open_nodes_level'];
+        $this->configCatalogDisplayPartner = $catalogSetting['display_partner'] ?? true;
+        $this->configCatalogOpenOnNewTab = $catalogSetting['open_on_new_tab'] ?? true;
+        $this->configCatalogSortByName = $catalogSetting['sort_by_name'] ?? true;
 
-        $this->paramCatalogOpenNodes = $this->grav['uri']->query('openNodes') ?: "";
+        $this->paramCatalogOpenNodes = $this->grav['uri']->query('openNodes') ?? "";
         $this->openCatalogNodes = [];
     }
 
@@ -108,11 +109,11 @@ class Catalog
         $twig = $this->grav['twig'];
         $uri = $this->grav['uri'];
 
-        $paramParentId = $uri->query('parentId') ?: "";
-        $paramIndex = $uri->query('index') ?: "";
-        $paramLevel = $uri->query('level') ?: "";
-        $paramPartner = $uri->query('partner') ?: "";
-        $paramNode = $uri->query('node') ?: "";
+        $paramParentId = $uri->query('parentId') ?? "";
+        $paramIndex = $uri->query('index') ?? "";
+        $paramLevel = $uri->query('level') ?? "";
+        $paramPartner = $uri->query('partner') ?? "";
+        $paramNode = $uri->query('node') ?? "";
 
         // Use the @theme notation to reference the template in the theme
         $theme_path = $twig->addPath($this->grav['locator']->findResource('theme://templates'));

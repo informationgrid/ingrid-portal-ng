@@ -1671,7 +1671,15 @@ home:
       - '-datatype:address'
       - '-datatype:www'
       - '-isfolder:true'
-    num: 2
+    query_fields:
+    requested_fields:
+    source:
+      include:
+      exclude:
+        - content
+        - idf
+    query_string_operator: AND
+    hits_num: 2
     sort:
       sortByDate: true
 hit_search:
@@ -2350,6 +2358,12 @@ hit_search:
     - summary.ngram^0.2
     - content^0.2
     - content.ngram^0.1
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
   query_string_operator: AND
   sort:
     enabled: true
@@ -2364,6 +2378,19 @@ hit_search:
   partner_logo_enabled: true
 provider:
   query: 'datatype:address (t02_address.typ:0 OR t02_address.typ:3)'
+  hits_num: 1000
+  requested_fields:
+    - t021_communication.commtype_key
+    - t021_communication.comm_value
+  source:
+    include:
+      - title
+      - t02_address.parents.title
+      - name
+      - partner
+    exclude:
+      - content
+      - idf
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -2383,6 +2410,12 @@ hit_detail:
     - owner
     - processor
     - author
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+  query_string_operator: AND
 map:
   enabled: true
   url: /ingrid-webmap-client/frontend/prd

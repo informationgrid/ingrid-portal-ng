@@ -200,14 +200,12 @@ class SearchResponseTransformerClassic
 
     private static function parseHit($esHit, string $lang, string $theme): array
     {
-        $source = $esHit->_source;
-
         switch ($theme) {
             case 'uvp':
             case 'uvp-ni':
-                return SearchParserClassicUVP::parseHits($source, $lang);
+                return SearchParserClassicUVP::parseHits($esHit, $lang);
             default:
-                return SearchParserClassicISO::parseHits($source, $lang);
+                return SearchParserClassicISO::parseHits($esHit, $lang);
         }
     }
 

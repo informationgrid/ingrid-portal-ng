@@ -42,6 +42,7 @@
       "classes/utils/MimeTypeHelper.php",
       "classes/utils/SearchQueryHelper.php",
       "classes/utils/TMPeriodDurationHelper.php",
+      "classes/utils/ElasticsearchHelper.php",
       "classes/detail/DetailAddress.php",
       "classes/detail/DetailMetadata.php",
       "classes/detail/parser/DetailParserAddressIdfISO.php",
