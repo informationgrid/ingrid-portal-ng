@@ -20,7 +20,13 @@ class InGridGravTwigExtension extends GravExtension
             new \Twig_SimpleFunction('getActionLinkFromFacets', [$this, 'getActionLinkFromFacets']),
             new \Twig_SimpleFunction('removeHashLocale', [$this, 'removeHashLocale']),
             new \Twig_SimpleFunction('getMimeByContentType', [$this, 'getMimeByContentType']),
+            new \Twig_SimpleFunction('urlDecode', [$this, 'urlDecode']),
         ];
+    }
+
+    public function urlDecode(string $text): string
+    {
+        return urldecode($text);
     }
 
     public function addKeyValueToMap($map, $key, $value)

@@ -294,7 +294,7 @@
             {% if linkText is empty %}
                 {% set linkText = linkSplit[linkSplit|length - 2] %}
             {% endif %}
-            {{ linkText }}
+            {{ urlDecode(linkText) }}
             <span class="downloadText">
                 {% set getUrlFileSize = "rest/getUrlFileSize?url=" ~ entryLink|url_encode %}
                 <span hx-get="{{ getUrlFileSize }}" hx-trigger="load once" hx-target="this">
@@ -350,7 +350,7 @@
                         {% if linkText is empty %}
                             {% set linkText = linkSplit[linkSplit|length - 2] %}
                         {% endif %}
-                        {{ linkText }}
+                        {{ urlDecode(linkText) }}
                         <span class="downloadText">
                             {% set getUrlFileSize = "rest/getUrlFileSize?url=" ~ entryLink|url_encode %}
                             <span hx-get="{{ getUrlFileSize }}" hx-trigger="load once" hx-target="this">

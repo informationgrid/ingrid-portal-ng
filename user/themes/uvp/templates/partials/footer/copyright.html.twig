@@ -3,6 +3,6 @@
 
 {% if copyright_text %}
 <div class="copyright">
-    <p class="copyright_text">{% if copyright_show_year %}{{ "now"|date("Y") }} {% endif %}{{ copyright.text }}</p>
+    <p class="copyright_text">&copy; {% if copyright_show_year %}{{ "now"|date("Y") }} {% endif %}{{ copyright_text }}</p>
 </div>
 {% endif %}
