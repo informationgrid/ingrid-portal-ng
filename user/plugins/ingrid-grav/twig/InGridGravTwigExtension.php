@@ -75,7 +75,14 @@ class InGridGravTwigExtension extends GravExtension
             new \Twig_SimpleFilter('filterLinks', [$this, 'filterLinksByKind']),
             new \Twig_SimpleFilter('sortContacts', [$this, 'sortContactsByRole']),
             new \Twig_SimpleFilter('inArrayLowerCase', [$this, 'inArrayLowerCase']),
+            new \Twig_SimpleFilter('sortIgnoreCase', [$this, 'sortIgnoreCase']),
         ];
+    }
+
+    public function sortIgnoreCase(array $array): array
+    {
+        sort($array,SORT_NATURAL | SORT_FLAG_CASE);
+        return $array;
     }
 
     public function inArrayLowerCase(array $links, string $filter): bool
@@ -96,7 +103,7 @@ class InGridGravTwigExtension extends GravExtension
 
     public function sortContactsByRole(array $contacts, array $sortList): array
     {
-        $array = array();
+        $array = [];
         if ($contacts && $sortList) {
             foreach ($sortList as $sort) {
                 foreach ($contacts as $contact) {

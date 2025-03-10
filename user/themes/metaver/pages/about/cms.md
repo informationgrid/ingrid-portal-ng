@@ -8,6 +8,8 @@ meta:
   keywords: PAGES.ABOUT_META_KEYWORDS
   description: PAGES.ABOUT_META_DESCRIPTION
 visible: true
+routes:
+  default: /hintergrundinformationen
 ---
 
 Willkommen im MetadatenVerbund (MetaVer), dem gemeinsamen Metadatenportal der Länder Brandenburg, Freie Hansestadt Bremen, Freie und Hansestadt Hamburg, Hessen, Mecklenburg-Vorpommern, Saarland, Sachsen und Sachsen-Anhalt. Der gemeinsame Betrieb der Metadatenkataloge wird durch die Freie und Hansestadt Hamburg organisiert, für den Inhalt der Kataloge sind aber die einzelnen Bundesländer verantwortlich. Die Metadatenkataloge sind ein praktisches und umfassendes Hilfsmittel, mit denen Antworten auf viele Fragen zu finden sind, z.B.:

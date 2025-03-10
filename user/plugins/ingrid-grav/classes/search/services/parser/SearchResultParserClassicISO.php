@@ -4,7 +4,7 @@ namespace Grav\Plugin;
 use Grav\Common\Plugin;
 use Grav\Common\Utils;
 
-class SearchParserClassicISO
+class SearchResultParserClassicISO
 {
 
     public static function parseHits(\stdClass $esHit, string $lang): array

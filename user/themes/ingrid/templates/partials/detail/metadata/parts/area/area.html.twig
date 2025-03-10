@@ -28,6 +28,6 @@
     {# Begrenzungspolygon als WKT #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_POLYGON_WKT"|t, mapRefs.polygonWkt, "", true) }}
     {# Koordinatensystem #}
-        {{ hit_macros.render_label_link_list_row("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referenceSystemId ?? [])|sort, true, "referencesystem_id", 5, paramsMore) }}
+        {{ hit_macros.render_label_link_list_row("SEARCH_DETAIL.T011_OBJ_GEO_REFERENCESYSTEM_ID"|t, (mapRefs.referenceSystemId ?? [])|sortIgnoreCase, true, "referencesystem_id", 5, paramsMore) }}
     </div>
 </div>

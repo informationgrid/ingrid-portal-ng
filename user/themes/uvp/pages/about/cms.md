@@ -8,6 +8,8 @@ meta:
   keywords: PAGES.ABOUT_META_KEYWORDS
   description: PAGES.ABOUT_META_DESCRIPTION
 visible: true
+routes:
+  default: /hintergrundinformationen
 ---
 
 Willkommen im UVP-Portal der Länder Baden-Württemberg, Bayern, Brandenburg, Berlin, Bremen, Hessen, Hamburg, Mecklenburg-Vorpommern, Nordrhein-Westfalen, Rheinland-Pfalz, Schleswig-Holstein, Saarland, Sachsen-Anhalt, Sachsen, und Thüringen.

@@ -55,11 +55,11 @@
     {# Kategorien #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_category.html.twig' %}
     {# Verschlagwortung #}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspireThemes ?? [])|sort, true, "search_terms_inspire", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priorityDataset ?? [])|sort, true, "search_terms_priority", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatialScope ?? [])|sort, true, "search_terms_spatial", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemetConcepts ?? [])|sort, true, "search_terms_gemet", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.advGroup ?? [])|sort, true, "search_terms_inspire_invekos", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspireThemes ?? [])|sortIgnoreCase, true, "search_terms_inspire", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priorityDataset ?? [])|sortIgnoreCase, true, "search_terms_priority", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatialScope ?? [])|sortIgnoreCase, true, "search_terms_spatial", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemetConcepts ?? [])|sortIgnoreCase, true, "search_terms_gemet", 10, paramsMore) }}
+        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.advGroup ?? [])|sortIgnoreCase, true, "search_terms_inspire_invekos", 10, paramsMore) }}
     {# INSPIRE-InVeKoS #}
         {% include 'partials/detail/metadata/parts/information/information_keywords_invekos.html.twig' %}
     {# ISO-Themenkategorien #}

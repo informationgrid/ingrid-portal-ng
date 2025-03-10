@@ -904,7 +904,7 @@ class DetailParserMetadataIdfISO
                                 $priorityDataset[] = $tmpValue;
                             }
                         } else if (str_contains(strtolower($thesaurs_name), 'inspire')) {
-                            $tmpValue = CodelistHelper::getCodelistEntry(['6100'], $keyword, $lang);
+                            $tmpValue = CodelistHelper::getCodelistEntryByLocalisation(['6100'], $keyword, $lang);
                             if (empty($tmpValue)){
                                 $tmpValue = $keyword;
                             }

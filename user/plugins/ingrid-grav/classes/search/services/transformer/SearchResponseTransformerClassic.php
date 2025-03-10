@@ -203,9 +203,9 @@ class SearchResponseTransformerClassic
         switch ($theme) {
             case 'uvp':
             case 'uvp-ni':
-                return SearchParserClassicUVP::parseHits($esHit, $lang);
+                return SearchResultParserClassicUVP::parseHits($esHit, $lang);
             default:
-                return SearchParserClassicISO::parseHits($esHit, $lang);
+                return SearchResultParserClassicISO::parseHits($esHit, $lang);
         }
     }
 

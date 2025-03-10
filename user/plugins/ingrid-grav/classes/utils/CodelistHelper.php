@@ -1,7 +1,6 @@
 <?php
 
 namespace Grav\Plugin;
-use Grav\Common\Plugin;
 
 class CodelistHelper
 {
@@ -20,13 +19,27 @@ class CodelistHelper
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
                 if ($codelistEntry) {
-                    $codelistEntryLang = self::getNode($codelistEntry, './localisations/' . $lang);
-                    return $codelistEntryLang;
+                    return self::getNode($codelistEntry, './localisations/' . $lang);
                 }
             }
         }
         return null;
     }
+
+    public static function getCodelistEntryByLocalisation(array $codelistIds, string $entryId, string $lang): ?string
+    {
+        foreach ($codelistIds as $codelistId) {
+            $codelist = self::getCodelist($codelistId);
+            if ($codelist) {
+                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/*/text() = "' . $entryId . '"]');
+                if ($codelistEntry) {
+                    return self::getNode($codelistEntry, './localisations/' . $lang);
+                }
+            }
+        }
+        return null;
+    }
+
 
     public static function getCodelistEntryByIso(array $codelistIds, ?string $entryId, string $lang): ?string
     {
@@ -36,8 +49,7 @@ class CodelistHelper
                 if (!is_null($codelist)) {
                     $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/iso = "' . $entryId . '"]');
                     if ($codelistEntry) {
-                        $codelistEntryLang = self::getNode($codelistEntry, './localisations/' . $lang);
-                        return $codelistEntryLang;
+                        return self::getNode($codelistEntry, './localisations/' . $lang);
                     }
                 }
             }
@@ -66,8 +78,7 @@ class CodelistHelper
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./data = "'. $entryId .'"]');
                 if ($codelistEntry) {
-                    $codelistEntryLang = self::getNode($codelistEntry, './localisations/' . $lang);
-                    return $codelistEntryLang;
+                    return self::getNode($codelistEntry, './localisations/' . $lang);
                 }
             }
         }
@@ -81,8 +92,7 @@ class CodelistHelper
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/ident = "'. $entryId .'"]');
                 if ($codelistEntry) {
-                    $codelistEntryLang = self::getNode($codelistEntry, './localisations[./ident = "'. $entryId .'"]/name');
-                    return $codelistEntryLang;
+                    return self::getNode($codelistEntry, './localisations[./ident = "'. $entryId .'"]/name');
                 }
             }
         }
