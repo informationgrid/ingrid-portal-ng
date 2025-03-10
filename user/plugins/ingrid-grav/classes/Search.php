@@ -81,7 +81,7 @@ class Search
             $this->page = $this->grav['uri']->query('page') ?: '';
             $searchSettings = $this->grav['config']->get('themes.' . $this->theme . '.map.leaflet.legend') ?? [];
             $facetConfig = $searchSettings['facet_config'] ?? [];
-            $this->selectedFacets = $this->getSelectedFacets($searchSettings);
+            $this->selectedFacets = $this->getSelectedFacets($facetConfig);
 
             $service = new SearchServiceImpl($this->grav, $this->grav['uri'], $facetConfig, $searchSettings);
             $hits = $service->getSearchResultsUnparsed('', $this->page, $this->selectedFacets);

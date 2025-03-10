@@ -2443,7 +2443,7 @@ map:
       service: 'https://geocoding.geofabrik.de/e0ed3105bbf646fb9ba3e2b92cd2703c/'
     position: 46.58,5.22,55.40,15.68
     legend:
-      marker_num: 100
+      hits_num: 100
       enable:
         blp: false
         zv: true
