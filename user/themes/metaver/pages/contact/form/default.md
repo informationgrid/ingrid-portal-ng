@@ -24,7 +24,7 @@ forms:
         autocomplete: off
         type: hidden
 
-      - name: user_subject
+      - name: user-subject
         label: CONTACT.FORM_SUBJECT
         placeholder: CONTACT.FORM_SUBJECT
         type: text
@@ -32,7 +32,7 @@ forms:
         validate:
           required: true
 
-      - name: user_message
+      - name: user-message
         label: CONTACT.FORM_MESSAGE
         size: long
         placeholder: CONTACT.FORM_MESSAGE
@@ -42,13 +42,16 @@ forms:
         validate:
           required: true
 
-      - name: user_technical
+      - name: user-technical
         label: CONTACT.FORM_TECHNICAL
         placeholder: CONTACT.FORM_TECHNICAL
-        type: checkbox
+        type: checkbox_label
         outerclasses: form-element
+        wrapper_classes: control-group
+        label_classes: control control--checkbox field-toggle__label field-toggle__label--boxed
+        on_change: ingrid_disableElementByCheckbox('user-technical', 'user-company')
 
-      - name: user_company
+      - name: user-company
         label: CONTACT.FORM_COMPANY
         type: select
         outerclasses: form-element
@@ -62,7 +65,7 @@ forms:
           sn: Sachsen
           sa: Sachsen-Anhalt
 
-      - name: user_email
+      - name: user-email
         label: CONTACT.FORM_EMAIL
         placeholder: CONTACT.FORM_EMAIL
         type: email
@@ -71,7 +74,7 @@ forms:
           rule: email
           required: true
 
-      - name: user_name
+      - name: user-name
         label: CONTACT.FORM_NAME
         placeholder: CONTACT.FORM_NAME
         type: text
@@ -89,8 +92,8 @@ forms:
           to:
             - "{{ config.plugins.email.from }}"
           reply_to:
-            - "{{ form.value.user_email }}"
-          subject: "{{ form.value.user_subject }}"
+            - "{{ form.value.user-email }}"
+          subject: "{{ form.value.user-subject }}"
           body: "{% include 'forms/contact/contact.email.html.twig' %}"
       - save:
           fileprefix: contact-

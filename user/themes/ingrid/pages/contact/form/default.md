@@ -23,7 +23,7 @@ forms:
         autocomplete: off
         type: hidden
 
-      - name: user_message
+      - name: user-message
         label: CONTACT.FORM_MESSAGE
         size: long
         placeholder: CONTACT.FORM_MESSAGE
@@ -33,7 +33,7 @@ forms:
         validate:
           required: true
 
-      - name: user_firstname
+      - name: user-firstname
         label: CONTACT.FORM_FIRSTNAME
         placeholder: CONTACT.FORM_FIRSTNAME
         autocomplete: on
@@ -42,7 +42,7 @@ forms:
         validate:
           required: true
 
-      - name: user_lastname
+      - name: user-lastname
         label: CONTACT.FORM_LASTNAME
         placeholder: CONTACT.FORM_LASTNAME
         autocomplete: on
@@ -51,14 +51,14 @@ forms:
         validate:
           required: true
 
-      - name: user_organisation
+      - name: user-organisation
         label: CONTACT.FORM_COMPANY
         placeholder: CONTACT.FORM_COMPANY
         autocomplete: on
         type: text
         outerclasses: form-element
 
-      - name: user_email
+      - name: user-email
         label: CONTACT.FORM_EMAIL
         placeholder: CONTACT.FORM_EMAIL
         type: email
@@ -67,7 +67,7 @@ forms:
           rule: email
           required: true
 
-      - name: user_phone
+      - name: user-phone
         label: CONTACT.FORM_PHONE
         placeholder: CONTACT.FORM_PHONE
         type: text
@@ -85,7 +85,7 @@ forms:
           to:
             - "{{ config.plugins.email.from }}"
           reply_to:
-            - "{{ form.value.user_email }}"
+            - "{{ form.value.user-email }}"
           subject: CONTACT.REPORT_EMAIL_SUBJECT
           body: "{% include 'forms/contact/contact.email.html.twig' %}"
       - save:

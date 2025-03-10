@@ -10598,11 +10598,25 @@ div.description {
 }
 
 /* Show check mark */
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+
 .control .control__indicator.checked:after {
   display: block;
 }
 
 /* Checkbox tick */
+.control--checkbox input:checked .control__indicator:after {
+  top: 4px;
+  left: 8px;
+  width: 5px;
+  height: 12px;
+  transform: rotate(45deg);
+  border: solid #349980;
+  border-width: 0 3px 3px 0;
+}
+
 .control--checkbox .control__indicator:after {
   top: 4px;
   left: 8px;

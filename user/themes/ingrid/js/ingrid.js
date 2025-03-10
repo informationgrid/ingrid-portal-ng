@@ -68,7 +68,7 @@ function ingrid_enableButtonByCheckbox(id, buttonName){
 }
 
 function ingrid_disableElementByCheckbox(checkBoxName, elementName){
-  var checkboxes = document.getElementsByName(checkBoxName);
+  var checkboxes = document.getElementsByName('data['+ checkBoxName + ']');
   for (var i=0; i<checkboxes.length; i++){
         var isCheckboxSelect = false;
         for (var j=0; j<checkboxes.length; j++){
@@ -76,7 +76,7 @@ function ingrid_disableElementByCheckbox(checkBoxName, elementName){
                 isCheckboxSelect = true;
             }
         }
-        document.getElementsByName(elementName)[0].disabled = isCheckboxSelect;
+        document.getElementsByName('data['+ elementName + ']')[0].disabled = isCheckboxSelect;
   }
 }
 
