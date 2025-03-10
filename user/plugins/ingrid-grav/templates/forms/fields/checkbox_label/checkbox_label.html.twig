@@ -1,9 +1,6 @@
 {% extends "forms/field.html.twig" %}
 
 {% block label %}
-{% endblock %}
-
-{% block input %}
     {% set id = field.id|default(field.name)|hyphenize %}
     <div class="{{ form_field_wrapper_classes ?: 'form-input-wrapper' }} {{ field.size }} {{ field.wrapper_classes }}">
         <label class="{{ field.label_classes }}" for="{{ id|e }}">
@@ -46,4 +43,7 @@
             {{ field.validate.required in ['on', 'true', 1] ? '<span class="required">*</span>' }}
         </label>
     </div>
+{% endblock %}
+
+{% block input %}
 {% endblock %}
