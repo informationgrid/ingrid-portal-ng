@@ -1106,7 +1106,7 @@ class DetailParserMetadataIdfISO
             $item[] = $map;
 
             $map = [];
-            $value = IdfHelper::getNodeValue($tmpNode, "./srv:invocationName/*[self::gco:CharacterString or self::gmx:Anchor]");
+            $value = IdfHelper::getNodeValue($tmpNode, "./srv:connectPoint/gmd:CI_OnlineResource/gmd:linkage/gmd:URL");
             if ($value) {
                 $map["value"] = $value;
                 $map["type"] = "text";
