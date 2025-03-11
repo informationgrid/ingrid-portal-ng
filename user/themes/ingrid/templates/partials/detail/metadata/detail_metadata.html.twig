@@ -184,6 +184,9 @@
 {% set dataQualityRefs = addKeyValue(dataQualityRefs, "quantitativeAttributeAccuracy", hit.quantitativeAttributeAccuracy) %}
 {% set dataQualityRefs = addKeyValue(dataQualityRefs, "relativeInternalPositionalAccuracy", hit.relativeInternalPositionalAccuracy) %}
 
+{# Zusatzfelder #}
+{% set additionalFields = hit.additionalFields %}
+
 {# booleans #}
 {% set hasOverview = (links|length > 0 or useRefs.useConstraints.constraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
 {% set hasDescription = (alternateTitle or summary) %}
@@ -197,6 +200,7 @@
 {% set hasContact = (contactRefs|length > 0) %}
 {% set hasInfo = (infoRefs_additional|length > 0 or infoRefs_keyword|length > 0 ) %}
 {% set hasDataquality = (dataQualityRefs|length > 0) %}
+{% set hasAdditionalFields = (additionalFields|length > 0) %}
 {% set hasMetadataInfo = (metaInfoRefs|length > 0) %}
 {% set hasBibliographicalInfo = false %}
 

@@ -85,6 +85,10 @@
             {% if hasDataquality %}
                 {% include 'partials/detail/metadata/parts/dataquality/dataquality.html.twig' %}
             {% endif %}
+    {# Zusatzfelder #}
+            {% if hasAdditionalFields %}
+                {% include 'partials/detail/metadata/parts/additional_fields/additional_fields.html.twig' %}
+            {% endif %}
     {# Infos zur Datensatzbeschreibung #}
             {% if hasMetadataInfo %}
                 {% include 'partials/detail/metadata/parts/metadata_info/metadata_info.html.twig' %}

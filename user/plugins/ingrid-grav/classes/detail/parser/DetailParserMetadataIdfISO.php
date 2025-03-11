@@ -39,6 +39,7 @@ class DetailParserMetadataIdfISO
         self::getKeywords($node, $metadata, $lang);
         self::getInfoRefs($node, $metadata->metaClass, $metadata, $lang);
         self::getDataQualityRefs($node, $metadata);
+        self::getAdditionalFields($node, $metadata, $lang);
         self::getMetaInfoRefs($node, $uuid, $dataSourceName, $providers, $metadata, $lang);
 
         $metadata->isInspire = in_array(strtolower('inspire'), array_map('strtolower', $metadata->searchTerms)) ||
@@ -1407,5 +1408,32 @@ class DetailParserMetadataIdfISO
         if (!empty($value)) {
             $array[$id] = $value;
         }
+    }
+
+    private static function getAdditionalFields(\SimpleXMLElement $node, DetailMetadataISO $metadata, string $lang): void
+    {
+        $array = [];
+        $xpathExpression = './idf:additionalDataSection';
+        $additionalDataSections = IdfHelper::getNodeList($node, $xpathExpression);
+        foreach ($additionalDataSections as $additionalDataSection) {
+            $sectionTitle = IdfHelper::getNodeValue($additionalDataSection, './idf:title[@lang="'. $lang . '"]');
+            $items = [];
+            $additionalDataFields = IdfHelper::getNodeList($additionalDataSection, './idf:additionalDataField');
+            foreach ($additionalDataFields as $additionalDataField) {
+                $fieldTitle = IdfHelper::getNodeValue($additionalDataField, './idf:title[@lang="'. $lang . '"]');
+                $fieldData = IdfHelper::getNodeValue($additionalDataField, './idf:data');
+                $items[] = array(
+                    "title" => $fieldTitle,
+                    "data" => $fieldData
+                );
+            }
+            if (!empty($items)) {
+                $array[] = array(
+                    "title" => $sectionTitle,
+                    "items" => $items
+                );
+            }
+        }
+        $metadata->additionalFields = $array;
     }
 }

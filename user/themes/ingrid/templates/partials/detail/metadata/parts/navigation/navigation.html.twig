@@ -157,6 +157,21 @@
                         </div>
                     </li>
                 {% endif %}
+            {# Zusatzfelder #}
+                {% if hasAdditionalFields %}
+                    {% for additionalField in additionalFields %}
+                        {% set hash_additionalFields = ("additional-field-" ~ additionalField.title)|hyphenize %}
+                        <li class="accordion-item" data-accordion-item>
+                            <a href="#{{ hash_additionalFields }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_additionalFields }}-accordion-label">
+                                <span class="text">{{ additionalField.title }}</span>
+                            </a>
+                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_additionalFields }}-accordion-label" id="{{ hash_additionalFields }}-accordion">
+                                <div class="boxes">
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% endif %}
             {# Metadatensatz #}
                 {% if hasMetadataInfo %}
                     <li class="accordion-item" data-accordion-item>

@@ -122,6 +122,7 @@ class DetailMetadataISO
     public ?array $contactMeta;
     public ?string $dataSourceName;
     public ?array $providers;
+    public ?array $additionalFields;
 
     public function __construct(string $uuid)
     {

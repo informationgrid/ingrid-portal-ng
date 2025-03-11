@@ -1,0 +1,13 @@
+{# Zusatzfelder #}
+{% for additionalField in additionalFields %}
+    <div class="section">
+        {% set hash_additionalFields = ("additional-field-" ~ additionalField.title)|hyphenize %}
+        <a class="anchor" id="{{ hash_additionalFields }}"></a>
+        {{ hit_macros.render_title(additionalField.title) }}
+        <div class="row columns">
+            {% for additionalItem in additionalField.items %}
+                {{ hit_macros.render_label_text_row(additionalItem.title, additionalItem.data) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
