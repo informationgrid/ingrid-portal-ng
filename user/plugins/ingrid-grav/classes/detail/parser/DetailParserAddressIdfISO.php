@@ -27,11 +27,11 @@ class DetailParserAddressIdfISO
         $addressOrganisationName = IdfHelper::getNodeValue($node, "./idf:addressOrganisationName");
         if($type == "2") {
             if($addressIndividualName) {
-                $title = $addressIndividualName;
+                $title = implode(' ', array_reverse(explode(', ', $addressIndividualName)));
             }
         } else if($type == "3") {
             if($addressIndividualName) {
-                $title = $addressIndividualName;
+                $title = implode(' ', array_reverse(explode(', ', $addressIndividualName)));
             } else if($addressOrganisationName) {
                 $title = $addressOrganisationName;
             }
@@ -40,7 +40,7 @@ class DetailParserAddressIdfISO
                 $title = $addressOrganisationName;
             }
         }
-        return implode(' ', array_reverse(explode(', ', $title)));
+        return $title;
     }
 
     public static function getContacts(\SimpleXMLElement $node, string $lang): array
@@ -83,7 +83,7 @@ class DetailParserAddressIdfISO
                     $item = array (
                         "uuid" => $uuid,
                         "type" => $type,
-                        "title" => implode(' ', array_reverse(explode(', ', $title))),
+                        "title" => $title,
                     );
                     $addresses[] = $item;
                 }

@@ -663,17 +663,11 @@ class DetailParserMetadataIdfISO
                 $uuid = IdfHelper::getNodeValue($tmpAddress, "./@uuid");
                 $type = IdfHelper::getNodeValue($tmpAddress, "./idf:addressType");
                 $title = IdfHelper::getNodeValue($tmpAddress, "./idf:addressIndividualName | ./gmd:individualName/*[self::gco:CharacterString or self::gmx:Anchor]");
+                if (!is_null($title)) {
+                    $title = implode(' ', array_reverse(explode(', ', $title)));
+                }
                 if (is_null($title)) {
                     $title = IdfHelper::getNodeValue($tmpAddress, "./idf:addressOrganisationName | ./gmd:organisationName/*[self::gco:CharacterString or self::gmx:Anchor]");
-                }
-                if (!is_null($title)) {
-                    $tmpSplitTitle = explode(',', $title);
-                    $tmpIndex = count($tmpSplitTitle);
-                    $newTitle = "";
-                    while($tmpIndex) {
-                        $newTitle = $newTitle ." ". $tmpSplitTitle[--$tmpIndex];
-                    }
-                    $title = $newTitle;
                 }
                 $individualName = IdfHelper::getNodeValue($tmpAddress, "./idf:addressIndividualName | ./gmd:individualName/*[self::gco:CharacterString or self::gmx:Anchor]");
                 $organisationName = IdfHelper::getNodeValue($tmpAddress, "./idf:addressOrganisationName | ./gmd:organisationName/*[self::gco:CharacterString or self::gmx:Anchor]");
