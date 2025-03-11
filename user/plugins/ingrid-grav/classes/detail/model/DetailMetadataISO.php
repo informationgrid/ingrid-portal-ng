@@ -84,7 +84,7 @@ class DetailMetadataISO
     public ?string $projectLeader;
     public ?string $projectMember;
     public ?string $projectDescription;
-    public ?string $dataPara;
+    public ?array $dataPara;
     public ?string $dataBase;
     public ?string $dataDescription;
     public ?array $featureCatalogues;

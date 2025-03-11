@@ -709,7 +709,7 @@ class DetailParserMetadataIdfISO
             $facsimile = IdfHelper::getNodeValue($tmpNode, "./gmd:contactInfo/gmd:CI_Contact/gmd:phone/gmd:CI_Telephone/gmd:facsimile/*[self::gco:CharacterString or self::gmx:Anchor]");
             $url = IdfHelper::getNodeValue($tmpNode, "./gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL");
             if ($url) {
-                $url = str_starts_with('http', $url) ? $url : 'https://' . $url;
+                $url = str_starts_with($url, 'http') ? $url : 'https://' . $url;
             }
             $service_time = IdfHelper::getNodeValue($tmpNode, "./gmd:contactInfo/gmd:CI_Contact/gmd:hoursOfService/*[self::gco:CharacterString or self::gmx:Anchor]");
 
@@ -842,7 +842,7 @@ class DetailParserMetadataIdfISO
         $metadata->projectDescription = IdfHelper::getNodeValue($node, $xpathExpression);
 
         $xpathExpression = "./gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:featureTypes/gco:LocalName";
-        $metadata->dataPara = IdfHelper::getNodeValue($node, $xpathExpression);
+        $metadata->dataPara = IdfHelper::getNodeValueList($node, $xpathExpression);
 
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:lineage/gmd:LI_Lineage/gmd:source/gmd:LI_Source/gmd:description/*[self::gco:CharacterString or self::gmx:Anchor]";
         $metadata->dataBase = IdfHelper::getNodeValue($node, $xpathExpression);
