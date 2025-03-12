@@ -237,30 +237,30 @@ class Search
     {
         $items = [];
         foreach ($hits as $source) {
-            $hit = $source->_source;
+
+            $y1 = ElasticsearchHelper::getValue($source, 'y1');
+            $x1 = ElasticsearchHelper::getValue($source, 'x1');
+            $y2 = ElasticsearchHelper::getValue($source, 'y2');
+            $x2 = ElasticsearchHelper::getValue($source, 'x2');
             $item = [];
-            $item['title'] = $this->getValue($hit, 'blp_name') ?? $this->getValue($hit, 'title');
-            $item['lat'] = $this->getValue($hit, 'lat_center');
-            $item['lon'] = $this->getValue($hit, 'lon_center');
-            $item['iplug'] = $this->getValue($hit, 'iPlugId');
-            $item['uuid'] = $this->getValue($hit, 't01_object.obj_id');
-            $y1 = $this->getValue($hit, 'y1');
-            $x1 = $this->getValue($hit, 'x1');
-            $y2 = $this->getValue($hit, 'y2');
-            $x2 = $this->getValue($hit, 'x2');
-            if (in_array('blp', $this->getValue($hit, 'datatype'))) {
+            $item['title'] = ElasticsearchHelper::getValue($source, 'blp_name') ?? ElasticsearchHelper::getValue($source, 'title');
+            $item['lat'] = ElasticsearchHelper::getValue($source, 'lat_center') ?? $y1;
+            $item['lon'] = ElasticsearchHelper::getValue($source, 'lon_center') ?? $x1;
+            $item['iplug'] = ElasticsearchHelper::getValue($source, 'iPlugId');
+            $item['uuid'] = ElasticsearchHelper::getValue($source, 't01_object.obj_id');
+            if (in_array('blp', ElasticsearchHelper::getValueArray($source, 'datatype'))) {
                 $item['isBLP'] = true;
                 $bbox = [];
                 $bbox[] = [$y1, $x1];
                 $bbox[] = [$y2, $x2];
                 $item['bbox'] = $bbox;
                 $item['bpInfos'] = [];
-                $blpUrlFinished = $this->getValue($hit, 'blp_url_finished');
-                $blpUrlProgress = $this->getValue($hit, 'blp_url_in_progress');
-                $fnpUrlFinished = $this->getValue($hit, 'fnp_url_finished');
-                $fnpUrlProgress = $this->getValue($hit, 'fnp_url_in_progress');
-                $bpUrlFinished = $this->getValue($hit, 'bp_url_finished');
-                $bpUrlProgress = $this->getValue($hit, 'bp_url_in_progress');
+                $blpUrlFinished = ElasticsearchHelper::getValue($source, 'blp_url_finished');
+                $blpUrlProgress = ElasticsearchHelper::getValue($source, 'blp_url_in_progress');
+                $fnpUrlFinished = ElasticsearchHelper::getValue($source, 'fnp_url_finished');
+                $fnpUrlProgress = ElasticsearchHelper::getValue($source, 'fnp_url_in_progress');
+                $bpUrlFinished = ElasticsearchHelper::getValue($source, 'bp_url_finished');
+                $bpUrlProgress = ElasticsearchHelper::getValue($source, 'bp_url_in_progress');
 
                 if (!empty($blpUrlProgress)) {
                     $itemInfo = [];
@@ -298,21 +298,21 @@ class Search
                     $itemInfo["tags"] = "v";
                     $item['bpInfos'][] = $itemInfo;
                 }
-                $item['descr'] = $this->getValue($hit, 'blp_description');
+                $item['descr'] = ElasticsearchHelper::getValue($source, 'blp_description');
             } else {
                 $bbox = [];
-                $bbox[] = [reset($y1), reset($x1)];
-                $bbox[] = [reset($y2), reset($x2)];
+                $bbox[] = [$y1, $x1];
+                $bbox[] = [$y2, $x2];
                 $item['bbox'] = $bbox;
-                $item['procedure'] = CodelistHelper::getCodelistEntry(['8001'], $this->getValue($hit, 't01_object.obj_class'), 'de');
-                $categories = $this->getValue($hit, 'uvp_category');
+                $item['procedure'] = CodelistHelper::getCodelistEntry(['8001'], ElasticsearchHelper::getValue($source, 't01_object.obj_class'), 'de');
+                $categories = ElasticsearchHelper::getValueArray($source, 'uvp_category');
                 foreach ($categories as $category) {
                     $tmpArray = [];
                     $tmpArray['id'] = $category;
                     $tmpArray['name'] = $this->grav['language']->translate('SEARCH_RESULT.CATEGORIES_UVP_' . strtoupper($category));
                     $item['categories'][] = $tmpArray;
                 }
-                $steps = $this->getValue($hit, 'uvp_steps');
+                $steps = ElasticsearchHelper::getValueArray($source, 'uvp_steps');
                 foreach ($steps as $step) {
                     $item['steps'][] = $this->grav['language']->translate('SEARCH_DETAIL.STEPS_UVP_' . strtoupper($step));
                 }
@@ -320,14 +320,6 @@ class Search
             $items[] = $item;
         }
         return $items;
-    }
-
-    private function getValue($value, string $key): mixed
-    {
-        if (property_exists($value, $key)) {
-            return $value -> $key;
-        }
-        return null;
     }
 
     public function isSortHitsEnable(): bool
