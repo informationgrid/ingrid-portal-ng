@@ -1,0 +1,56 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block partner_css %}
+    {% do assets.addCss('theme://css/partner/default.css', 98) %}
+    {% do assets.addCss('theme://css/partner/' ~ page.route() ~ '/style.css', 98) %}
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block header %}
+    {% set theme = config.get('system.pages.theme') %}
+    <header>
+        <div class="row">
+            <div class="columns">
+                <div class="logo">
+                    <span>
+                        <img class="hide-for-xsmall-only" src="/user/themes/ingrid/images/partner/big{{ page.route() }}.png" alt="UVP"/>
+                        <span class="show-for-medium-only">{{ page.header.custom_title.header_medium|raw }}</span>
+                        <span class="show-for-large">{{ page.header.custom_title.header_large|raw }}</span>
+                        <img class="show-for-xsmall-only" src="/user/themes/ingrid/images/partner/middle{{ page.route() }}.png" alt="UVP"/>
+                        <span class="hide-for-medium">{{ page.header.custom_title.header_medium_hide|raw }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content_header %}
+{% endblock %}
+
+{% block content %}
+    <div class="teaser-data-projects">
+        <div class="row">
+            <div class="xsmall-24 medium-15 xlarge-17 columns">
+                <h2 class="projects-header">{{ page.header.custom_title.html|raw }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns">
+                {{ page.content|raw }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns">
+                {% for module in page.collection() %}
+                    {{ module.content|raw }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_button_bar %}
+{% endblock %}

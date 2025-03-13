@@ -1,0 +1,67 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+ */
+header {
+  border-image: linear-gradient(to left, #487143, #a1d19d) 0 1 100%;
+  -webkit-border-image: linear-gradient(to left, #487143, #a1d19d) 0 1 100%;
+}
+header .logo > span {
+  color: #222222;
+}
+h2 {
+  color: #222222 !important;
+}
+a, a h2.header {
+  color: #487143 !important;
+}
+a:hover, a h2.header:hover {
+  color: #222222 !important;
+}
+footer .footer {
+  background-color: #e6e6e6;
+}
+footer .footer a {
+  color: #487143 !important;
+}
+footer .footer .copyright p {
+  color: #222222 !important;
+}
+.teaser-data .header:hover, .teaser-data .arrow:hover {
+  color: #222222;
+}
+
+@media print, screen and (min-height: 35em) {
+  html, body { height:100%; }
+  .body {
+    padding-bottom: 7rem !important;
+  }
+  .container {
+    min-height: 100%;
+    position: relative;
+  }
+  footer {
+    position: absolute !important;
+    bottom: 0;
+    width: 100%;
+    margin-top: 48px;
+  }
+}

@@ -8,11 +8,9 @@
             {% include 'partials/header/logo.html.twig' %}
         </div>
         <div class="{{ header_menu_class }} columns nav-tabs">
-            {% block header_navigation %}
             <nav class="main-nav">
                 {% include 'partials/header/navigation.html.twig' %}
             </nav>
-            {% endblock %}
         </div>
         {% if header_menu_dropdown %}
             {% include 'partials/header/menu.html.twig' %}

@@ -1,0 +1,56 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+ */
+header {
+  border-image: linear-gradient(to left, #253276,#253276) 0 1 100%;
+  -webkit-border-image: linear-gradient(to left, #253276, #253276) 0 1 100%;
+}
+header .logo img.hide-for-xsmall-only {
+  width: 1.525em;
+}
+header .logo img.show-for-xsmall-only {
+  width: 1.25em;
+}
+header .logo > span {
+  color: #253276;
+}
+h2 {
+  color: #253276 !important;
+}
+a,a h2.header {
+  color: #253276 !important;
+}
+a:hover, a h2.header:hover {
+  color: #000 !important;
+}
+footer .footer {
+  background: #253276;
+}
+footer .footer a {
+  color: #FFFFFF !important;
+}
+footer .footer .copyright p {
+  color: #FFFFFF !important;
+}
+.teaser-data .header:hover, .teaser-data .arrow:hover {
+  color: #000 !important;
+}
