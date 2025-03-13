@@ -8,7 +8,7 @@ title: UVP
         </a>
         <div class="img">
             <a href="/">
-                <img class="link-img" src="/user/themes/uvp/images/partner-page/bb/images/uvp.jpg" alt="uvp.jpg">
+                <img class="link-img" src="user/themes/uvp/images/partner-page/bb/images/uvp.jpg" alt="uvp.jpg">
             </a>
             <div class="helper text">
                 <span>&copy; MLUL</span>

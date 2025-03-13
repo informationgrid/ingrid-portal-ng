@@ -8,7 +8,7 @@ title: BLP
         </a>
         <div class="img">
             <a href="/freitextsuche?provider=bw&procedure=obj_class_blp&ranking=score">
-                <img class="link-img" src="/user/themes/uvp/images/partner-page/bb/images/blp.jpg" alt="uvp.jpg">
+                <img class="link-img" src="user/themes/uvp/images/partner-page/bb/images/blp.jpg" alt="uvp.jpg">
             </a>
             <div class="helper text">
                 <span>&copy; MIL</span>
