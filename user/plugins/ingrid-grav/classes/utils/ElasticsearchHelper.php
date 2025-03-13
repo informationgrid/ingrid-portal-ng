@@ -123,13 +123,15 @@ class ElasticsearchHelper
             $locations = ElasticsearchHelper::toArray(ElasticsearchHelper::getValue($esHit, "location"));
             $count = 0;
             foreach ($x1s as $x1) {
-                $array[] = [
-                    "title" => $locations[$count] ?? $title,
-                    "westBoundLongitude" => (float) $x1s[$count],
-                    "southBoundLatitude" => (float) $y1s[$count],
-                    "eastBoundLongitude" => (float) $x2s[$count],
-                    "northBoundLatitude" => (float) $y2s[$count],
-                ];
+                if ($x1) {
+                    $array[] = [
+                        "title" => $locations[$count] ?? $title,
+                        "westBoundLongitude" => (float)$x1s[$count],
+                        "southBoundLatitude" => (float)$y1s[$count],
+                        "eastBoundLongitude" => (float)$x2s[$count],
+                        "northBoundLatitude" => (float)$y2s[$count],
+                    ];
+                }
                 $count++;
             }
         }

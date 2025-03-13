@@ -66,7 +66,7 @@
         {% elseif bwastr and map_bbox_bwastr %}
             addLayerBWaStr({{ mapId }}, '{{ bwastr }}', '', '{{ geojson|raw }}', coords);
         {% else %}
-            addLayerBounds({{ mapId }}, coords);
+            addLayerBounds({{ mapId }}, coords, {{ usePopUp ?? false }});
         {% endif %}
 
         {% if not isHitOpen %}

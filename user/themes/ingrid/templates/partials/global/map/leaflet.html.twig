@@ -180,7 +180,7 @@ function addLayerWKT(map, wkt, bboxes) {
   }
 }
 
-function addLayerBounds(map, bboxes) {
+function addLayerBounds(map, bboxes, usePopup) {
   {% if map_bboxInverted %}
     var geojson = [];
     bboxes.forEach(function(bbox) {
@@ -219,7 +219,19 @@ function addLayerBounds(map, bboxes) {
             fillOpacity: {{ map_bboxFillOpacity }},
             weight: {{ map_bboxWeight }} || 1
           });
-          mapLayerBounds.bindTooltip(bbox.title, {direction: 'center'});
+          if (usePopup) {
+              mapLayerBounds.on('click', function (e) {
+                  var popLocation = e.latlng;
+                  var popup = L.popup()
+                      .setLatLng(popLocation)
+                      .setContent('<p>{{ "SEARCH_DETAIL.UVP_MAP_COORDS"|t }}<br />' +
+                          y1Coord + ', ' + x1Coord + '<br/>' +
+                          y2Coord + ', ' + x2Coord + '</p>')
+                      .openOn(map);
+              });
+          } else {
+              mapLayerBounds.bindTooltip(bbox.title, {direction: 'center'});
+          }
           map.addLayer(mapLayerBounds);
         }
       }

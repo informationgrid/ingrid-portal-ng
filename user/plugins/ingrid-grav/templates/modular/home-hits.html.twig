@@ -22,7 +22,7 @@
                     <div class="teaser-data no-padding">
                         <div class="data" >
                             <div class="row">
-                                <div class="xsmall-24 large-13 columns">
+                                <div class="xsmall-24 {% if bboxes %}large-13 {% endif %}columns">
                                     <div class="text-wrapper">
                                         <div class="helper text">
                                             <span>{{ hit.type_name }}</span>
@@ -53,11 +53,13 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="xsmall-24 large-11 columns">
-                                    <div class="map-wrapper">
-                                        {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojson: wkt, isDetail: false, mapId: hitMapId, mapHeight: '100%'} %}
+                                {% if bboxes %}
+                                    <div class="xsmall-24 large-11 columns">
+                                        <div class="map-wrapper">
+                                            {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojson: wkt, isDetail: false, mapId: hitMapId, mapHeight: '100%'} %}
+                                        </div>
                                     </div>
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
