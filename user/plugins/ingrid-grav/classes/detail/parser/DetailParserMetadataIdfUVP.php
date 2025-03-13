@@ -51,8 +51,8 @@ class DetailParserMetadataIdfUVP
         if (!empty($nodes)) {
             foreach ($nodes as $tmpNode) {
                 $type = IdfHelper::getNodeValue($tmpNode, './@type');
-                $dateFrom = IdfHelper::getNodeValue($tmpNode, './datePeriod/from');
-                $dateTo = IdfHelper::getNodeValue($tmpNode, './datePeriod/to');
+                $dateFrom = IdfHelper::getNodeValue($tmpNode, './datePeriod/from | ./date/from');
+                $dateTo = IdfHelper::getNodeValue($tmpNode, './datePeriod/to | ./date/to');
                 $technicalDocs = self::getDocs($tmpNode, './docs[@type="technicalDocs"]/doc');
                 $applicationDocs = self::getDocs($tmpNode, './docs[@type="applicationDocs"]/doc');
                 $reportsRecommendationsDocs = self::getDocs($tmpNode, './docs[@type="reportsRecommendationsDocs"]/doc');

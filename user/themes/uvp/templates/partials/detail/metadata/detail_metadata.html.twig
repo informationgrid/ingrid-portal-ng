@@ -201,7 +201,7 @@
                                                 <span class="ic-ic-check icon"></span>
                                             </h2>
                                         {% endif %}
-                                        {# Zeitraum der Auslegung #}
+                                        {# Datum der Entscheidung / Zeitraum der Auslegung #}
                                         {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t) }}
                                         {# Auslegungsinformationen #}
                                         {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_TECHNICALDOCS")|t, step.technicalDocs, "technicalDocs") }}
