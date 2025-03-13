@@ -47,6 +47,11 @@
                                 {% set queries = queries|merge({
                                     (facetItem.toggle.id) : facetItem.toggle.active ? '' : facetItem.id
                                 }) %}
+                                {% for key, param in queries %}
+                                    {% if key == facetItem.toggle.id %}
+                                        {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                                    {% endif %}
+                                {% endfor %}
                                 {% set break = true %}
                             {% endif %}
                         {% endfor %}
