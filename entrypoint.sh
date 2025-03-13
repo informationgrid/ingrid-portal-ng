@@ -71,14 +71,14 @@ else
 fi
 
 # copy default cms pages
-if [ -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] && [ "$THEME_COPY_PAGES_INIT" = "false" ]; then
-  echo "No theme init pages process."
-else
+if [ ! -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] || [ "$THEME_COPY_PAGES_INIT" = "true" ]; then
   if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages" ]; then
-    echo "Copy theme init pages."
-    cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/* /var/www/"$GRAV_FOLDER"/user/pages/
-  fi
-  touch /var/www/"$GRAV_FOLDER"/user/config/initialized
+      echo "Copy theme init pages."
+      cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/* /var/www/"$GRAV_FOLDER"/user/pages/
+    fi
+    touch /var/www/"$GRAV_FOLDER"/user/config/initialized
+else
+    echo "No theme init pages process."
 fi
 
 INGRID_GRAV_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/ingrid-grav/ingrid-grav.yaml
