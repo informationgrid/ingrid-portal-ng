@@ -8,7 +8,7 @@ title: UVP
             Die Informationen zu UVP-Verfahren stehen in einem länderübergreifenden UVP-Portal zur Verfügung. Sie können Ihre Suche dabei aber auf ein Land eingrenzen, indem Sie unter „Suche“ in der Kategorie „Bundesländer“ das entsprechende Land auswählen.
         </p>
         <p>
-            <a href="/" style="text-decoration: underline;" title="Zum UVP-Portal">
+            <a href="./" style="text-decoration: underline;" title="Zum UVP-Portal">
                 Zum UVP-Portal
             </a>
         </p>
