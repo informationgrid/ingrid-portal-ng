@@ -131,6 +131,10 @@ fi
 
 SCHEDULER_YAML=/var/www/"$GRAV_FOLDER"/user/config/scheduler.yaml
 
+if [ ! -e "$SCHEDULER_YAML" ]; then
+  touch "$SCHEDULER_YAML"
+fi
+
 if [ "$ENABLE_SCHEDULER_CODELIST" ]; then
   yq -i '.status.ingrid-codelist-index = "enabled"' "$SCHEDULER_YAML"
 fi
