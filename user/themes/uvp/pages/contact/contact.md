@@ -19,4 +19,4 @@ Neuenfelder Straße 19
 D-21109 Hamburg
 
 
-Nehmen Sie online Kontakt mit uns auf! Wir werden Ihnen schnellstmöglich per E-Mail antworten. Die eingegebenen Informationen und Daten werden nur zur Bearbeitung Ihrer Anfrage gespeichert und genutzt.>
+Nehmen Sie online Kontakt mit uns auf! Wir werden Ihnen schnellstmöglich per E-Mail antworten. Die eingegebenen Informationen und Daten werden nur zur Bearbeitung Ihrer Anfrage gespeichert und genutzt.
