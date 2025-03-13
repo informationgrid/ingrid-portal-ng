@@ -5,6 +5,7 @@ GRAV_FOLDER=${GRAV_FOLDER:-html}
 MVIS_VERSION=${MVIS_VERSION:-2.0.9}
 ENABLE_MVIS=${ENABLE_MVIS:-true}
 ENABLE_CACHE=${ENABLE_CACHE:-true}
+THEME_COPY_PAGES_INIT=${THEME_COPY_PAGES_INIT:-false}
 
 mkdir -p /var/www/"$GRAV_FOLDER"
 cd /var/www/"$GRAV_FOLDER"
@@ -70,11 +71,11 @@ else
 fi
 
 # copy default cms pages
-if [ -e /var/www/"$GRAV_FOLDER"/user/config/initialized ]; then
-  echo "Init pages has been copied."
+if [ -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] && [ "$THEME_COPY_PAGES_INIT" = "false" ]; then
+  echo "No theme init pages process."
 else
   if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages" ]; then
-    echo "Copy init theme pages."
+    echo "Copy theme init pages."
     cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/* /var/www/"$GRAV_FOLDER"/user/pages/
   fi
   touch /var/www/"$GRAV_FOLDER"/user/config/initialized
