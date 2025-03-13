@@ -137,12 +137,16 @@ if [ ! -e "$SCHEDULER_YAML" ]; then
   touch "$SCHEDULER_YAML"
 fi
 
-if [ "$ENABLE_SCHEDULER_CODELIST" ]; then
+if [ "$ENABLE_SCHEDULER_CODELIST" = "true" ]; then
   yq -i '.status.ingrid-codelist-index = "enabled"' "$SCHEDULER_YAML"
+else
+  yq -i '.status.ingrid-codelist-index = "disabled"' "$SCHEDULER_YAML"
 fi
 
-if [ "$ENABLE_SCHEDULER_RSS" ]; then
+if [ "$ENABLE_SCHEDULER_RSS" = "true"  ]; then
   yq -i '.status.ingrid-rss-index = "enabled"' "$SCHEDULER_YAML"
+else
+  yq -i '.status.ingrid-rss-index = "disabled"' "$SCHEDULER_YAML"
 fi
 
 mkdir -p assets backup cache images logs tmp
