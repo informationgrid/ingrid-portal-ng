@@ -151,7 +151,7 @@ class DetailParserMetadataIdfISO
             $metadata->polygonWkt = IdfHelper::transformGML($polygon, $geo_api, 'wkt');
             $metadata->polygonGeojson = IdfHelper::transformGML($polygon, $geo_api, 'geojson');
         }
-        $metadata->bboxes = self::getBBoxes($node);
+        $metadata->bboxes = self::getBBoxes($node, $metadata->title);
         $metadata->geographicElement = self::getGeographicElements($node, $lang);
         $metadata->areaHeight = self::getAreaHeight($node, $lang);
         $metadata->referenceSystemId = self::getReferences($node);
@@ -206,7 +206,7 @@ class DetailParserMetadataIdfISO
         return $array;
     }
 
-    private static function getBBoxes(\SimpleXMLElement $node): array
+    private static function getBBoxes(\SimpleXMLElement $node, string $title): array
     {
         $array = [];
         $geographicIdentifiers = [];
@@ -222,7 +222,7 @@ class DetailParserMetadataIdfISO
 
             $value = count($geographicIdentifiers) > $count ? $geographicIdentifiers[$count] : "";
             $map = [];
-            $map["title"] = $value;
+            $map["title"] = !empty($value) ?: $title;
 
             $map["westBoundLongitude"] = (float)IdfHelper::getNodeValue($tmpNode, "./gmd:westBoundLongitude/gco:Decimal");
             $map["southBoundLatitude"] = (float)IdfHelper::getNodeValue($tmpNode, "./gmd:southBoundLatitude/gco:Decimal");

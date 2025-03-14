@@ -5,6 +5,7 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.SPACIAL_REFERENCE_TAB"|t)}}
     <div class="row columns">
     {# Karte #}
+        {{ vardump(mapRefs.bboxes) }}
         {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, geojson: mapRefs.polygonGeojson, isDetail: true, mapId: 'map_detail' }%}
     {# Geothesaurus-Raumbezug #}
         {% set header = [

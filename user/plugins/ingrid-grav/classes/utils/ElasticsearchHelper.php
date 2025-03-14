@@ -125,7 +125,7 @@ class ElasticsearchHelper
             foreach ($x1s as $x1) {
                 if ($x1) {
                     $array[] = [
-                        "title" => $locations[$count] ?? $title,
+                        "title" => !empty($locations[$count]) ?: $title,
                         "westBoundLongitude" => (float)$x1s[$count],
                         "southBoundLatitude" => (float)$y1s[$count],
                         "eastBoundLongitude" => (float)$x2s[$count],
