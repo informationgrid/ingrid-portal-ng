@@ -1195,7 +1195,7 @@
             {% if nodeUrl != '' or node.type == "1000"%}
                 <div class="accordion-item-sub">
                     <span class="icon">
-                        <a id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if isFreeAdresse == false %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}" {% endif %}class="ic-ic-plus"></a>
+                        <a id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if isFreeAdresse == false %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}" {% endif %}class="ic-ic-plus" title="{{ nodeTitle|t }}"></a>
                         {% if node.type != "1000" %}
                             <a href="{{ nodeUrl }}" title="{{ nodeTitle }}">
                                 <span>{{ nodeTitle }}</span>
