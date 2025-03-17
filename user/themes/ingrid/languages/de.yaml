@@ -225,7 +225,7 @@ COMMON:
     TIME_TYPE: Aktualität der Daten
     TIME_FROM: ' '
     TIME_TO: '-'
-    TIME_UNTIL: '-'
+    TIME_UNTIL: bis
     TIME_SINCE: seit
     TIME_UNTILNOW: , gegenwärtig aktuell
     TIME_UNTILUNKNOWN: , gegenwärtige Aktualität unklar
