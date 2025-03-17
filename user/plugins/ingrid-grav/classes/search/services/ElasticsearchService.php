@@ -7,7 +7,19 @@ use stdClass;
 class ElasticsearchService
 {
 
-    static function convertToQuery(string $query, $facet_config, int $page, int $hitsNum, array $selectedFacets, array $addToSearch, bool $sortByDate, array $queryFields, string $queryStringOperator, array $requestedFields = [], array $sourceSettings = []): string
+    static function convertToQuery(
+        string $query,
+               $facet_config,
+        int    $page,
+        int    $hitsNum,
+        array  $selectedFacets,
+        array  $addToSearch,
+        bool   $sortByDate,
+        array  $queryFields,
+        string $queryStringOperator,
+        array  $requestedFields = [],
+        array  $sourceSettings = [],
+    ): string
     {
         if (count($addToSearch) > 0) {
             $query .= ' ' . implode(' ', $addToSearch);
@@ -42,7 +54,7 @@ class ElasticsearchService
             if (!empty($sourceSettings['include'])) {
                 $source['include'] = $sourceSettings['include'];
             }
-            if (!empty($sourceSettings['exclude'])){
+            if (!empty($sourceSettings['exclude'])) {
                 $source['exclude'] = $sourceSettings['exclude'];
             }
         } else {
