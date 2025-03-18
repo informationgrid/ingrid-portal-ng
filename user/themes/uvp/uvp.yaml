@@ -2376,6 +2376,9 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: true
+  sns:
+    similar_terms:
+      enabled: true
 provider:
   query: 'datatype:address (t02_address.typ:0 OR t02_address.typ:3)'
   hits_num: 1000

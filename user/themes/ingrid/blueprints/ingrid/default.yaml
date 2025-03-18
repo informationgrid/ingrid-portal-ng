@@ -624,7 +624,7 @@ form:
               validate:
                 type: bool
 
-            hit_search.sns.similar_terms.enable:
+            hit_search.sns.similar_terms.enabled:
               type: toggle
               label: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.LABEL
               help: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.HELP

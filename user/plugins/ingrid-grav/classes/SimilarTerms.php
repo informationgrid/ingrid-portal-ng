@@ -12,6 +12,7 @@ class SimilarTerms
     public string $configApi;
     public string $query;
     public string $lang;
+    public string $theme;
 
     public function __construct(Grav $grav, string $api)
     {
@@ -19,10 +20,16 @@ class SimilarTerms
         $this->configApi = $api;
         $this->lang = $grav['language']->getLanguage();
         $this->query = $this->grav['uri']->query('q') ?? "";
+        $this->theme = $this->grav['config']->get('system.pages.theme');
     }
 
     public function getContent(): array
     {
+        $similarSearchEnable = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.sns.similar_terms.enabled');
+        if (!$similarSearchEnable) {
+            return [];
+        }
+
         $cache = $this->grav['cache'];
         $queries = preg_replace('/[()\[\]\';,.\/{}|:<>?~]/', ' ', $this->query);
         $queries = explode( ' ', $queries);
