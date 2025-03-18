@@ -2378,7 +2378,7 @@ hit_search:
   partner_logo_enabled: true
   sns:
     similar_terms:
-      enabled: true
+      enabled: false
 provider:
   query: 'datatype:address (t02_address.typ:0 OR t02_address.typ:3)'
   hits_num: 1000
