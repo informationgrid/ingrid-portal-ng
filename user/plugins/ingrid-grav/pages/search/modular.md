@@ -16,5 +16,6 @@ content:
     by: default
     custom:
       - _search
+      - _similar
       - _result
 ---

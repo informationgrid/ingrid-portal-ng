@@ -1,22 +1,24 @@
 <?php
 
 namespace Grav\Plugin;
-use Grav\Common\Plugin;
 
-class IdfHelper
+class RdfHelper
 {
 
     public static function registerNamespaces(\SimpleXMLElement $node): void
     {
-        $node->registerXPathNamespace('idf', 'http://www.portalu.de/IDF/1.0');
-        $node->registerXPathNamespace('gco', 'http://www.isotc211.org/2005/gco');
-        $node->registerXPathNamespace('gmd', 'http://www.isotc211.org/2005/gmd');
-        $node->registerXPathNamespace('gml', 'http://www.opengis.net/gml/3.2');
-        $node->registerXPathNamespace('gmx', 'http://www.isotc211.org/2005/gmx');
-        $node->registerXPathNamespace('gts', 'http://www.isotc211.org/2005/gts');
-        $node->registerXPathNamespace('srv', 'http://www.isotc211.org/2005/srv');
-        $node->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
-        $node->registerXPathNamespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance');
+        $node->registerXPathNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
+        $node->registerXPathNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
+        $node->registerXPathNamespace('owl', 'http://www.w3.org/2002/07/owl#');
+        $node->registerXPathNamespace('skos', 'http://www.w3.org/2004/02/skos/core#');
+        $node->registerXPathNamespace('dct', 'http://purl.org/dc/terms/');
+        $node->registerXPathNamespace('foaf', 'http://xmlns.com/foaf/spec/');
+        $node->registerXPathNamespace('void', 'http://rdfs.org/ns/void#');
+        $node->registerXPathNamespace('iqvoc', 'http://try.iqvoc.net/schema#');
+        $node->registerXPathNamespace('skosxl', 'http://www.w3.org/2008/05/skos-xl#');
+        $node->registerXPathNamespace('sns', 'https://sns.uba.de/schema#');
+        $node->registerXPathNamespace('dc', 'http://purl.org/dc/elements/1.1');
+        $node->registerXPathNamespace('schema', 'https://sns.uba.de/umthes/schema#');
     }
 
     public static function getNode(\SimpleXMLElement $node, string $xpath): ?\SimpleXMLElement
@@ -113,36 +115,4 @@ class IdfHelper
         return $array;
     }
 
-    public static function transformGML(\SimpleXMLElement $node, array $api, string $exportFormat): bool|string
-    {
-        $resp = false;
-        $data = $node->asXML();
-
-        $api_url = $api['url'];
-        $api_user = $api['user'];
-        $api_pass = $api['pass'];
-
-        if ($data and !empty($api_url)) {
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/xml',
-            ));
-            curl_setopt($curl, CURLOPT_URL, $api_url . $exportFormat);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-            if (isset($api_user) and isset($api_pass)) {
-                curl_setopt($curl, CURLOPT_USERPWD, $api_user . ":" . $api_pass);
-            }
-
-            $resp = curl_exec ($curl);
-            $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            if ($httpcode !== 200) {
-                $resp = false;
-            }
-            curl_close($curl);
-
-        }
-        return $resp;
-    }
 }

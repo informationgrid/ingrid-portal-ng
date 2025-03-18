@@ -27,7 +27,9 @@
                         {% set key = param[0] %}
                         {% if key is not empty %}
                             {% set value = uri.query(key) %}
-                            {% if key is not sameas('q') and key is not sameas('page') %}
+                            {% if key is not sameas('q') and
+                                key is not sameas('page') and
+                                not(key starts with 'chk') %}
                                 <input type="hidden" name="{{ key }}" value="{{ value }}"/>
                             {% endif %}
                         {% endif %}

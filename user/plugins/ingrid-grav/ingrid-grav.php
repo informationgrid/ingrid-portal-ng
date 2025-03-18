@@ -380,6 +380,7 @@ class InGridGravPlugin extends Plugin
         $this->addPage('/rss', 'rss/news.md');
         $page = $this->addPage('/search', 'search/modular.md');
         $this->addPage('/search/_result', 'search/_result/result.md', $page);
+        $this->addPage('/search/_similar', 'search/_similar/similar.md', $page);
         $this->addPage('/search/_search', 'search/_search/home-search.md', $page);
         $this->addPage('/sitemap', 'sitemap/sitemap.md');
         $this->addPage('/home/_categories', 'home/_categories/home-categories.md', $pages->find('/home'), '/home/_categories');
@@ -594,20 +595,34 @@ class InGridGravPlugin extends Plugin
     public function onTwigSiteVariablesSearch(): void
     {
         if (!$this->isAdmin()) {
-            $search = new Search($this->grav, $this->configApiUrl);
-            $search->getContent();
-            $twig = $this->grav['twig'];
-            $twig->twig_vars['query'] = $search->query;
-            $twig->twig_vars['selected_facets'] = $search->selectedFacets;
-            $twig->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
-            $twig->twig_vars['search_result'] = $search->results;
-            $twig->twig_vars['hitsNum'] = $search->hitsNum;
-            $twig->twig_vars['pagingUrl'] = $search->getPagingUrl($this->grav['uri']);
-            $twig->twig_vars['search_ranking'] = $search->ranking;
-            $twig->twig_vars['csw_url'] = $this->config()['csw']['url'];
-            $twig->twig_vars['rdf_url'] = $this->config()['rdf']['url'];
-            $twig->twig_vars['display_sort_hits'] = $search->isSortHitsEnable();
-
+            $uri = $this->grav['uri'];
+            $action = $uri->query('action');
+            $config = $this->config();
+            switch ($action) {
+                case 'doAddSimilar':
+                    $this->configApiUrl = $config['sns']['similar_terms']['url'];
+                    $similarTerms = new SimilarTerms($this->grav, $this->configApiUrl);
+                    $url = $similarTerms->updateQueryString($uri->query(null, true));
+                    $this->grav->redirect($uri->route() . $url);
+                    break;
+                default:
+                    $search = new Search($this->grav, $this->configApiUrl);
+                    $search->getContent();
+                    $twig = $this->grav['twig'];
+                    $twig->twig_vars['query'] = $search->query;
+                    $twig->twig_vars['selected_facets'] = $search->selectedFacets;
+                    $twig->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
+                    $twig->twig_vars['search_result'] = $search->results;
+                    $twig->twig_vars['hitsNum'] = $search->hitsNum;
+                    $twig->twig_vars['pagingUrl'] = $search->getPagingUrl($this->grav['uri']);
+                    $twig->twig_vars['search_ranking'] = $search->ranking;
+                    $twig->twig_vars['csw_url'] = $this->config()['csw']['url'];
+                    $twig->twig_vars['rdf_url'] = $this->config()['rdf']['url'];
+                    $twig->twig_vars['display_sort_hits'] = $search->isSortHitsEnable();
+                    $similar = new SimilarTerms($this->grav, $config['sns']['similar_terms']['url']);
+                    $twig->twig_vars['similar_terms'] = $similar->getContent();
+                    break;
+            }
         }
     }
 

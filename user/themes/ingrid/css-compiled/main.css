@@ -8509,6 +8509,9 @@ a.data:hover {
 .banner.search .search-wrapper .input-search-field {
   margin: 0;
 }
+.banner.search + div + .search-filtered {
+  margin-top: 0;
+}
 
 /* about */
 .about {

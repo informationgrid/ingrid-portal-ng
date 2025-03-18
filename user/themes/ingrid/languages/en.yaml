@@ -274,6 +274,10 @@ SEARCH_RESULT:
     EXPORT_CSV_HEADER:
     EXPORT_CSV_BUTTON_TILTE:
     EXPORT_CSV_BUTTON_TITLE_TOOLTIP:
+    SEARCH_SIMILAR_LABEL: Ähnliche Begriffe
+    SEARCH_SIMILAR_EMPTY: Kein ähnlicher Begriff verfügbar.
+    SEARCH_SIMILAR_ADD: Zur Suchanfrage hinzufügen
+    SEARCH_SIMILAR_LOADING: Ähnliche Begriffe laden ...
 
 CATEGORIES:
     TITLE: Search in categories
@@ -1207,6 +1211,10 @@ THEME:
             PARTNER_LOGO_ENABLED:
                 LABEL: Partner Wappen anzeigen
                 HELP: Aktivieren Sie die Darstellung der Partner Wappen.
+            SNS:
+                SIMILAR_TERMS:
+                    LABEL: SNS "Ähnliche Begriffe" aktivieren
+                    HELP: Aktivieren Sie die Darstellung der "Ähnliche Begriffe" auf der Suchseite.
         HIT_DETAIL:
             TITLE: Detaildarstellung
             QUERY_STRING_OPERATOR:

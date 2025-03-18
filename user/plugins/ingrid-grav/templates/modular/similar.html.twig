@@ -1,0 +1,63 @@
+{% set sns_similar_terms_enabled = theme_var('hit_search.sns.similar_terms.enabled') %}
+{% if sns_similar_terms_enabled and query and similar_terms|count > 0%}
+    <div class="search similar">
+        <div class="row">
+            <div class="columns">
+                <ul class="accordion nested-group teaser-data-projects" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title" id="similar-accordion-label" aria-controls="similar-accordion" role="tab">
+                            <span class="text">{{ "SEARCH_RESULT.SEARCH_SIMILAR_LABEL"|t }}</span>
+                        </a>
+                        <div id="similar-accordion" class="accordion-content similar-accordion" aria-labelledby="similar-accordion-label" data-tab-content role="tabpanel">
+                            <form action="{{ page.find('search') }}" method="get" name="frmSimilar" id="frmSimilar">
+                                {% for entryKey, entryItems in similar_terms %}
+                                    {% set selectedSimilar = uri.query(null, true)|keys|filter(v => entryItems[v]) %}
+                                    {% set isActive = selectedSimilar|count > 0 %}
+                                    <ul class="accordion nested-group-sub" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
+                                        <li class="accordion-item{% if isActive %} is-active{% endif %}" data-accordion-item>
+                                            {% set itemId = 'similar-terms-' ~ entryKey|hyphenize %}
+                                            {% set accordionId = itemId ~ '-accordion' %}
+                                            {% set labelId = itemId %}
+                                            <a id="{{ labelId }}" href="#" class="accordion-title icon" aria-controls="{{ accordionId }}" role="tab"
+                                                {% if isActive %}aria-expanded="true" aria-selected="true" {% else %}aria-expanded="false" aria-selected="false"{% endif %}>
+                                                <span class="text">{{ entryKey }} ({{ entryItems|count }})</span>
+                                            </a>
+                                            <div id="{{ accordionId }}" class="accordion-content" role="tabpanel" aria-labelledby="{{ labelId }}" data-tab-content
+                                                 {% if isActive %}aria-hidden="false" style="display: block;" {% else %}aria-hidden="true" {% endif %}>
+                                                {% if entryItems|count > 0 %}
+                                                    <div class="form-element boxed">
+                                                        <div class="input-check input-check-no-hover">
+                                                            <div class="control-group">
+                                                                {% for entrySubKey, entrySubItem in entryItems %}
+                                                                    {% set inputId = entrySubKey %}
+                                                                    {% set inputValue = "1" %}
+                                                                    {% set isChecked = uri.query(inputId) == "1" %}
+                                                                    <label class="control control--checkbox field-toggle__label field-toggle__label--boxed" for="{{ inputId }}">
+                                                                        <input id="{{ inputId }}" name="{{ inputId }}" value="{{ inputValue }}" type="checkbox">
+                                                                        <span class="control__indicator"></span>
+                                                                        {{ entrySubItem }}
+                                                                    </label>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% else %}
+                                                    <p>{{ "SEARCH_RESULT.SEARCH_SIMILAR_EMPTY"|t }}</p>
+                                                {% endif %}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                                <div class="columns text-center">
+                                    <button class="button small">{{ "SEARCH_RESULT.SEARCH_SIMILAR_ADD"|t }}</button>
+                                    <input type="hidden" name="q" value="{{ uri.query('q') }}" />
+                                    <input type="hidden" name="action" value="doAddSimilar" />
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}

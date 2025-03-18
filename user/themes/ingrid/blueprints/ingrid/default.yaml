@@ -624,6 +624,17 @@ form:
               validate:
                 type: bool
 
+            hit_search.sns.similar_terms.enable:
+              type: toggle
+              label: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.LABEL
+              help: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.HELP
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
         tab_detail:
           type: tab
           title: THEME.ADMIN.HIT_DETAIL.TITLE

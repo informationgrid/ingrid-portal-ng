@@ -45,6 +45,11 @@ en:
       TITLE: RDF
       URL: Link zum Interface-RDF
       URL_HELP: Trage Sie hier die URL zum Interface-RDF ein.
+    SNS:
+      SIMILAR_TERMS:
+        TITLE: SNS
+        URL: SNS-API - Ähnliche Begriffe
+        URL_HELP: Trage Sie hier die URL zur SNS-API für die "Ähnliche Begriffe" ein.
     RSS:
       TITLE: RSS indexing
       RSS_INDEX_STATUS: RSS indexing
@@ -107,6 +112,11 @@ de:
       TITLE: RDF
       URL: Link zum Interface-RDF
       URL_HELP: Trage Sie hier die URL zum Interface-RDF ein.
+    SNS:
+      SIMILAR_TERMS:
+        TITLE: SNS
+        URL: SNS-API - Ähnliche Begriffe
+        URL_HELP: Trage Sie hier die URL zur SNS-API für die "Ähnliche Begriffe" ein.
     RSS:
       TITLE: RSS - Indexierung
       RSS_INDEX_STATUS: RSS Indexierung

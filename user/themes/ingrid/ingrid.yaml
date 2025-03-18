@@ -429,6 +429,9 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: false
+  sns:
+    similar_terms:
+      enabled: true
 provider:
   query:
   hits_num:

@@ -24,3 +24,6 @@ rss:
     enabled: true
     at: '*/15 * * * *'
     logs: logs/ingrid-rss-index.out
+sns:
+  similar_terms:
+    url: 'https://sns.uba.de/umthes/de/similar.rdf?terms='

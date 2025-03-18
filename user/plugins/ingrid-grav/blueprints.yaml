@@ -184,3 +184,17 @@ form:
               type: text
               label: PLUGIN_INGRID_GRAV.RDF.URL
               help: PLUGIN_INGRID_GRAV.RDF.URL_HELP
+
+        tab_sns:
+          type: tab
+          title: PLUGIN_INGRID_GRAV.SNS.TITLE
+          fields:
+            sns:
+              type: section
+              title: PLUGIN_INGRID_GRAV.SNS.TITLE
+              underline: true
+
+            sns.similar_terms.url:
+              type: text
+              label: PLUGIN_INGRID_GRAV.SNS.URL
+              help: PLUGIN_INGRID_GRAV.SNS.URL_HELP
