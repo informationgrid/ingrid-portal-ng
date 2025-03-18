@@ -31,7 +31,7 @@ class SimilarTerms
         }
 
         $cache = $this->grav['cache'];
-        $queries = preg_replace('/[()\[\]\';,.\/{}|:<>?~]/', ' ', $this->query);
+        $queries = preg_replace('/[()\[\]\'";,.\/{}|:<>?~]/', ' ', $this->query);
         $queries = explode( ' ', $queries);
         $cacheId = md5($this->query);
         $items = $this->getCacheData($cache, $cacheId);
