@@ -90,12 +90,16 @@ class SimilarTerms
         $cache = $this->grav['cache'];
         $cacheId = md5($q);
         $items = $this->getCacheData($cache, $cacheId);
+        if (empty($items)) {
+            $items = $this->getContent();
+        }
         $replaceQueries = [];
         foreach ($items as $key => $item) {
             $replaceString = '';
             foreach ($params as $paramKey => $paramValue) {
                 if (isset($item[$paramKey]) and $paramValue == '1') {
                     $replaceString .= ' OR ' . $item[$paramKey];
+                    unset($params[$paramKey]);
                 }
             }
             if (!empty($replaceString)) {

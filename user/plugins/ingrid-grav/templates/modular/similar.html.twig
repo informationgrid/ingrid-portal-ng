@@ -9,10 +9,9 @@
                             <span class="text">{{ "SEARCH_RESULT.SEARCH_SIMILAR_LABEL"|t }}</span>
                         </a>
                         <div id="similar-accordion" class="accordion-content similar-accordion" aria-labelledby="similar-accordion-label" data-tab-content role="tabpanel">
-                            <form action="{{ page.find('search') }}" method="get" name="frmSimilar" id="frmSimilar">
+                            <form action="{{ page.find('search') }}" method="post" name="frmSimilar" id="frmSimilar">
                                 {% for entryKey, entryItems in similar_terms %}
-                                    {% set selectedSimilar = uri.query(null, true)|keys|filter(v => entryItems[v]) %}
-                                    {% set isActive = selectedSimilar|count > 0 %}
+                                    {% set isActive = loop.index == 1 %}
                                     <ul class="accordion nested-group-sub" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist">
                                         <li class="accordion-item{% if isActive %} is-active{% endif %}" data-accordion-item>
                                             {% set itemId = 'similar-terms-' ~ entryKey|hyphenize %}
@@ -50,7 +49,9 @@
                                 {% endfor %}
                                 <div class="columns text-center">
                                     <button class="button small">{{ "SEARCH_RESULT.SEARCH_SIMILAR_ADD"|t }}</button>
-                                    <input type="hidden" name="q" value="{{ uri.query('q') }}" />
+                                    {% for key, param in uri.query(null, true) %}
+                                        <input type="hidden" name="{{ key }}" value="{{ param }}" />
+                                    {% endfor %}
                                     <input type="hidden" name="action" value="doAddSimilar" />
                                 </div>
                             </form>

@@ -596,13 +596,13 @@ class InGridGravPlugin extends Plugin
     {
         if (!$this->isAdmin()) {
             $uri = $this->grav['uri'];
-            $action = $uri->query('action');
+            $action = $uri->post('action');
             $config = $this->config();
             switch ($action) {
                 case 'doAddSimilar':
                     $this->configApiUrl = $config['sns']['similar_terms']['url'];
                     $similarTerms = new SimilarTerms($this->grav, $this->configApiUrl);
-                    $url = $similarTerms->updateQueryString($uri->query(null, true));
+                    $url = $similarTerms->updateQueryString($uri->post());
                     $this->grav->redirect($uri->route() . $url);
                     break;
                 default:

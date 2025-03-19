@@ -2,7 +2,6 @@
 
 namespace Grav\Plugin;
 
-use GuzzleHttp\Client;
 
 class MimeTypeHelper
 {
@@ -213,6 +212,6 @@ class MimeTypeHelper
             "application/atom+xml" => "atom",
             "application/opensearchdescription+xml" => "opensearch"
         ];
-        return isset($mime_map[$mime]) ? $mime_map[$mime] : false;
+        return $mime_map[$mime] ?? false;
     }
 }
