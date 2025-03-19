@@ -3,7 +3,6 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Grav;
-use GuzzleHttp\Client;
 
 class Provider
 {
