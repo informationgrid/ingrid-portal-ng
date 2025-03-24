@@ -123,6 +123,10 @@ class DetailMetadataISO
     public ?string $dataSourceName;
     public ?array $providers;
     public ?array $additionalFields;
+    public ?string $metadataStandardName;
+    public ?string $metadataStandardVersion;
+    public ?string $metadataCharacterSet;
+    public ?array $hierarchyLevelNames;
 
     public function __construct(string $uuid)
     {

@@ -1,0 +1,50 @@
+form:
+  fields:
+    measure.section:
+      type: section
+      title: THEME.ADMIN.MEASURE.TITLE
+      underline: true
+
+    measure.url:
+      type: text
+      label: THEME.ADMIN.MEASURE.URL.LABEL
+      help: THEME.ADMIN.MEASURE.URL.HELP
+
+    measure.elastic:
+      type: text
+      label: THEME.ADMIN.MEASURE.ELASTIC.LABEL
+      help: THEME.ADMIN.MEASURE.ELASTIC.HELP
+
+    measure.networks.exclude:
+      type: selectize
+      label: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.LABEL
+      help: THEME.ADMIN.MEASURE.NETWORKS.EXCLUDE.HELP
+      selectize:
+        options:
+          - text: "luen"
+            value: "luen"
+          - text: "nlwkn"
+            value: "nlwkn"
+          - text: "odl"
+            value: "odl"
+          - text: "uba"
+            value: "uba"
+      validate:
+        type: commalist
+
+    measure.networks.initial:
+      type: selectize
+      label: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.LABEL
+      help: THEME.ADMIN.MEASURE.NETWORKS.INITIAL.HELP
+      selectize:
+        options:
+          - text: "luen"
+            value: "luen"
+          - text: "nlwkn"
+            value: "nlwkn"
+          - text: "odl"
+            value: "odl"
+          - text: "uba"
+            value: "uba"
+      validate:
+        type: commalist

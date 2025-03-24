@@ -12,10 +12,20 @@ class CodelistHelper
     }
 
 
-    public static function getCodelistEntry(array $codelistIds, string $entryId, string $lang): ?string
+    public static function getCodelistEntry(array|string $codelistIds, string $entryId, string $lang): ?string
     {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
+        if (is_array($codelistIds)) {
+            foreach ($codelistIds as $codelistId) {
+                $codelist = self::getCodelist($codelistId);
+                if ($codelist) {
+                    $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
+                    if ($codelistEntry) {
+                        return self::getNode($codelistEntry, './localisations/' . $lang);
+                    }
+                }
+            }
+        } else {
+            $codelist = self::getCodelist($codelistIds);
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
                 if ($codelistEntry) {
@@ -26,10 +36,20 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryByLocalisation(array $codelistIds, string $entryId, string $lang): ?string
+    public static function getCodelistEntryByLocalisation(array|string $codelistIds, string $entryId, string $lang): ?string
     {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
+        if (is_array($codelistIds)) {
+            foreach ($codelistIds as $codelistId) {
+                $codelist = self::getCodelist($codelistId);
+                if ($codelist) {
+                    $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/*/text() = "' . $entryId . '"]');
+                    if ($codelistEntry) {
+                        return self::getNode($codelistEntry, './localisations/' . $lang);
+                    }
+                }
+            }
+        } else {
+            $codelist = self::getCodelist($codelistIds);
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/*/text() = "' . $entryId . '"]');
                 if ($codelistEntry) {
@@ -41,11 +61,21 @@ class CodelistHelper
     }
 
 
-    public static function getCodelistEntryByIso(array $codelistIds, ?string $entryId, string $lang): ?string
+    public static function getCodelistEntryByIso(array|string $codelistIds, ?string $entryId, string $lang): ?string
     {
         if ($entryId) {
-            foreach ($codelistIds as $codelistId) {
-                $codelist = self::getCodelist($codelistId);
+            if (is_array($codelistIds)) {
+                foreach ($codelistIds as $codelistId) {
+                    $codelist = self::getCodelist($codelistId);
+                    if (!is_null($codelist)) {
+                        $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/iso = "' . $entryId . '"]');
+                        if ($codelistEntry) {
+                            return self::getNode($codelistEntry, './localisations/' . $lang);
+                        }
+                    }
+                }
+            } else {
+                $codelist = self::getCodelist($codelistIds);
                 if (!is_null($codelist)) {
                     $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/iso = "' . $entryId . '"]');
                     if ($codelistEntry) {
@@ -57,10 +87,20 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryData(array $codelistIds, string $entryId): ?string
+    public static function getCodelistEntryData(array|string $codelistIds, string $entryId): ?string
     {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
+        if (is_array($codelistIds)) {
+            foreach ($codelistIds as $codelistId) {
+                $codelist = self::getCodelist($codelistId);
+                if ($codelist) {
+                    $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
+                    if ($codelistEntry) {
+                        return self::getNodeValue($codelistEntry, './data');
+                    }
+                }
+            }
+        } else {
+            $codelist = self::getCodelist($codelistIds);
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./id = "' . $entryId . '"]');
                 if ($codelistEntry) {
@@ -71,12 +111,22 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryByData(array $codelistIds, string $entryId, string $lang): ?string
+    public static function getCodelistEntryByData(array|string $codelistIds, string $entryId, string $lang): ?string
     {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
+        if (is_array($codelistIds)) {
+            foreach ($codelistIds as $codelistId) {
+                $codelist = self::getCodelist($codelistId);
+                if ($codelist) {
+                    $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./data = "' . $entryId . '"]');
+                    if ($codelistEntry) {
+                        return self::getNode($codelistEntry, './localisations/' . $lang);
+                    }
+                }
+            }
+        } else {
+            $codelist = self::getCodelist($codelistIds);
             if ($codelist) {
-                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./data = "'. $entryId .'"]');
+                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./data = "' . $entryId . '"]');
                 if ($codelistEntry) {
                     return self::getNode($codelistEntry, './localisations/' . $lang);
                 }
@@ -85,14 +135,24 @@ class CodelistHelper
         return null;
     }
 
-    public static function getCodelistEntryByIdent(array $codelistIds, string $entryId, string $lang): ?string
+    public static function getCodelistEntryByIdent(array|string $codelistIds, string $entryId, string $lang): ?string
     {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
+        if (is_array($codelistIds)) {
+            foreach ($codelistIds as $codelistId) {
+                $codelist = self::getCodelist($codelistId);
+                if ($codelist) {
+                    $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/ident = "' . $entryId . '"]');
+                    if ($codelistEntry) {
+                        return self::getNode($codelistEntry, './localisations[./ident = "' . $entryId . '"]/name');
+                    }
+                }
+            }
+        } else {
+            $codelist = self::getCodelist($codelistIds);
             if ($codelist) {
-                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/ident = "'. $entryId .'"]');
+                $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/ident = "' . $entryId . '"]');
                 if ($codelistEntry) {
-                    return self::getNode($codelistEntry, './localisations[./ident = "'. $entryId .'"]/name');
+                    return self::getNode($codelistEntry, './localisations[./ident = "' . $entryId . '"]/name');
                 }
             }
         }
@@ -100,8 +160,27 @@ class CodelistHelper
     }
     public static function getCodelistEntryByCompare(array $codelistIds, string $entryId, string $lang, bool $addEqual = true): ?string
     {
-        foreach ($codelistIds as $codelistId) {
-            $codelist = self::getCodelist($codelistId);
+        if (is_array($codelistIds)) {
+            foreach ($codelistIds as $codelistId) {
+                $codelist = self::getCodelist($codelistId);
+                if ($codelist) {
+                    $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/' . $lang . ' = "' . $entryId . '"]');
+                    if ($addEqual) {
+                        if ($codelistEntry) {
+                            $codelistEntryLang = self::getNode($codelistEntry, './localisations/' . $lang);
+                            if (strcasecmp($codelistEntryLang, $entryId) == 0) {
+                                return $codelistEntryLang;
+                            }
+                        }
+                    } else {
+                        if ($codelistEntry == null) {
+                            return $entryId;
+                        }
+                    }
+                }
+            }
+        } else {
+            $codelist = self::getCodelist($codelistIds);
             if ($codelist) {
                 $codelistEntry = self::getNode($codelist, '//de.ingrid.codelists.model.CodeListEntry[./localisations/' . $lang . ' = "' . $entryId . '"]');
                 if ($addEqual) {

@@ -1,0 +1,26 @@
+form:
+  fields:
+    upload.section:
+      type: section
+      title: THEME.ADMIN.UPLOAD.TITLE
+      underline: true
+
+    upload.slideshow:
+      type: file
+      label: THEME.ADMIN.UPLOAD.SLIDESHOW.TITLE
+      destination: 'theme://assets/cms/slideshow/images'
+      multiple: true
+      limit: 0
+      autofocus: false
+      accept:
+        - image/*
+
+    upload.apps:
+      type: file
+      label: THEME.ADMIN.UPLOAD.APPS.TITLE
+      destination: 'theme://assets/cms/apps/images'
+      multiple: true
+      limit: 0
+      autofocus: false
+      accept:
+        - image/*

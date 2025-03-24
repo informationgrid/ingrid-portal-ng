@@ -1,0 +1,42 @@
+form:
+  fields:
+    provider.section:
+      type: section
+      title: THEME.ADMIN.PROVIDER.TITLE
+      underline: true
+
+    provider.query:
+      type: text
+      label: THEME.ADMIN.PROVIDER.QUERY.LABEL
+      help: THEME.ADMIN.PROVIDER.QUERY.HELP
+
+    provider.hits_num:
+      type: range
+      label: THEME.ADMIN.PROVIDER.HITS_NUM.LABEL
+      help: THEME.ADMIN.PROVIDER.HITS_NUM.HELP
+      default: 0
+      validate:
+        type: number
+        min: 0
+        max: 1000
+
+    provider.requested_fields:
+      type: selectize
+      label: THEME.ADMIN.PROVIDER.REQUESTED_FIELDS.LABEL
+      help: THEME.ADMIN.PROVIDER.REQUESTED_FIELDS.HELP
+      validate:
+        type: commalist
+
+    provider.source.include:
+      type: selectize
+      label: THEME.ADMIN.PROVIDER.SOURCE.INCLUDE.LABEL
+      help: THEME.ADMIN.PROVIDER.SOURCE.INCLUDE.HELP
+      validate:
+        type: commalist
+
+    provider.source.exclude:
+      type: selectize
+      label: THEME.ADMIN.PROVIDER.SOURCE.EXCLUDE.LABEL
+      help: THEME.ADMIN.PROVIDER.SOURCE.EXCLUDE.HELP
+      validate:
+        type: commalist

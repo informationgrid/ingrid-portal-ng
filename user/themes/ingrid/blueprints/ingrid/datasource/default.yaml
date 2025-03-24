@@ -1,0 +1,15 @@
+form:
+  fields:
+    datasource.section:
+      type: section
+      title: THEME.ADMIN.DATASOURCE.TITLE
+      underline: true
+
+    datasource.excludes:
+      type: selectize_datasource
+      label: THEME.ADMIN.DATASOURCE.EXCLUDES.LABEL
+      help: THEME.ADMIN.DATASOURCE.EXCLUDES.HELP
+      selectize:
+        options:
+      validate:
+        type: commalist

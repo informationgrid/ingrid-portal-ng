@@ -1,0 +1,45 @@
+form:
+  fields:
+    catalog.section:
+      type: section
+      title: THEME.ADMIN.CATALOG.TITLE
+      underline: true
+
+    catalog.open_nodes_level:
+      type: number
+      label: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.LABEL
+      help: THEME.ADMIN.CATALOG.OPEN_NODES_LEVEL.HELP
+      default: 0
+      validate:
+        min: 0
+        max: 3
+    catalog.sort_by_name:
+      type: toggle
+      label: THEME.ADMIN.CATALOG.SORT_BY_NAME.LABEL
+      help: THEME.ADMIN.CATALOG.SORT_BY_NAME.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    catalog.open_on_new_tab:
+      type: toggle
+      label: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.LABEL
+      help: THEME.ADMIN.CATALOG.OPEN_ON_NEW_TAB.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    catalog.display_partner:
+      type: toggle
+      label: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.LABEL
+      help: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

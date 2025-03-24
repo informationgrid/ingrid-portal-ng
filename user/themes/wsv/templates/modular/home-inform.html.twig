@@ -1,0 +1,11 @@
+<div class="about">
+    <a id="teaser.ingridInform.title"></a>
+    <div class="about-wrapper dark" style="background-image: url('{{ url('theme://images/template/drops-small.svg') }}');">
+        <div class="row">
+            {{ page.content|raw }}
+            {% for module in page.collection() %}
+                {{ module.content|raw }}
+            {% endfor %}
+        </div>
+    </div>
+</div>

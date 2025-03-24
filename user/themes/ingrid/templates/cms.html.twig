@@ -6,6 +6,9 @@
         <div class="search-filtered row content-small">
             <div class="columns">
                 {{ page.content|raw }}
+                {% for module in page.collection() %}
+                    {{ module.content|raw }}
+                {% endfor %}
             </div>
         </div>
     </div>

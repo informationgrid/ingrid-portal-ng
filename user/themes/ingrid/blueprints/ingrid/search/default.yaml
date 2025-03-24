@@ -1,0 +1,160 @@
+form:
+  fields:
+    hit_search.section:
+      type: section
+      title: THEME.ADMIN.HIT_SEARCH.TITLE
+      underline: true
+
+    hit_search.add_to_search:
+      type: selectize
+      label: THEME.ADMIN.HIT_SEARCH.ADD_TO_SEARCH.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.ADD_TO_SEARCH.HELP
+      validate:
+        type: commalist
+
+    hit_search.hits_num:
+      type: range
+      label: THEME.ADMIN.HIT_SEARCH.HITS_NUM.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.HITS_NUM.HELP
+      validate:
+        min: 5
+        max: 100
+
+    hit_search.query_string_operator:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.QUERY_STRING_OPERATOR.HELP
+      highlight: AND
+      options:
+        "AND": AND
+        "OR": OR
+      validate:
+        type: text
+
+    hit_search.query_fields:
+      type: selectize
+      label: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.QUERY_FIELDS.HELP
+      validate:
+        type: commalist
+
+    hit_search.requested_fields:
+      type: selectize
+      label: THEME.ADMIN.HIT_SEARCH.REQUESTED_FIELDS.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.REQUESTED_FIELDS.HELP
+      validate:
+        type: commalist
+
+    hit_search.source.include:
+      type: selectize
+      label: THEME.ADMIN.HIT_SEARCH.SOURCE.INCLUDE.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SOURCE.INCLUDE.HELP
+      validate:
+        type: commalist
+
+    hit_search.source.exclude:
+      type: selectize
+      label: THEME.ADMIN.HIT_SEARCH.SOURCE.EXCLUDE.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SOURCE.EXCLUDE.HELP
+      validate:
+        type: commalist
+
+    hit_search.sort.enabled:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SORT.ENABLED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    hit_search.sort.sortByDate:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SORT.SORTBYDATE.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    hit_search.expandable.enabled:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.EXPANDABLE.ENABLED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    hit_search.summary_replace_newline:
+      type: text
+      label: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SUMMARY_REPLACE_NEWLINE.HELP
+      validate:
+        type: text
+
+    hit_search.summary_lines_limit:
+      type: range
+      label: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SUMMARY_LINES_LIMIT.HELP
+      validate:
+        min: 0
+        max: 10
+
+    hit_search.links_max:
+      type: range
+      label: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.LINKS_MAX.HELP
+      validate:
+        min: 0
+        max: 10
+
+    hit_search.csw_enabled:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.CSW_ENABLED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    hit_search.rdf_enabled:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.RDF_ENABLED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    hit_search.partner_logo_enabled:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.PARTNER_LOGO_ENABLED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    hit_search.sns.similar_terms.enabled:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

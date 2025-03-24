@@ -1,0 +1,58 @@
+<script>
+    function resizeTeaserData(id) {
+        var parent = $(id);
+        var teaserDatas = parent.find( ".teaser-data" );
+        var teaserHeaders = parent.find( ".teaser-data .header" );
+        var height = 0;
+
+        if(teaserHeaders) {
+            var prevHeaderHeight= 0;
+            var headerHeight = 0;
+            for (var i = 0; i < teaserHeaders.length; i++) {
+                var teaserHeader = $(teaserHeaders[i]);
+                teaserHeader.removeAttr("style");
+                if((i + 1) % 2 == 0) {
+                    headerHeight = teaserHeader.height();
+                    if(prevHeaderHeight > headerHeight){
+                        teaserHeader.height(prevHeaderHeight);
+                        $(teaserHeaders[i - 1]).height(prevHeaderHeight);
+                    } else {
+                        teaserHeader.height(headerHeight);
+                        $(teaserHeaders[i - 1]).height(headerHeight);
+                    }
+                } else {
+                    prevHeaderHeight = teaserHeader.height();
+                }
+            }
+        }
+
+        if(teaserDatas) {
+            var prevDataHeight= 0;
+            var dataHeight = 0;
+            for (var i = 0; i < teaserDatas.length; i++) {
+                var teaserData = $(teaserDatas[i]);
+                teaserData.removeAttr("style");
+                if((i + 1) % 2 == 0) {
+                    dataHeight = teaserData.height();
+                    if(prevDataHeight > dataHeight){
+                        teaserData.height(prevDataHeight);
+                        $(teaserDatas[i - 1]).height(prevDataHeight);
+                    } else {
+                        teaserData.height(dataHeight);
+                        $(teaserDatas[i - 1]).height(dataHeight);
+                    }
+                } else {
+                    prevDataHeight = teaserData.height();
+                }
+            }
+        }
+    }
+
+    function resizeTeaser() {
+        resizeTeaserData("#application_teaser");
+        resizeTeaserData("#application_teaser_intranet");
+        resizeTeaserData("#application_teaser_internet");
+    }
+    window.onresize = resizeTeaser;
+    window.onload = resizeTeaser;
+</script>

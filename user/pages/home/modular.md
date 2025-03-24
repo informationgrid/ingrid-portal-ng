@@ -13,11 +13,4 @@ content:
     items: '@self.modular'
     order:
         by: default
-        custom:
-            - _search
-            - _warning
-            - _hits
-            - _categories
-            - _news
-            - _inform
 ---

@@ -1,0 +1,328 @@
+form:
+  fields:
+    ## Tab layout
+    tab_layout:
+      type: tab
+      title: THEME.ADMIN.LAYOUT.TITLE
+      fields:
+        header.section:
+          type: section
+          title: THEME.ADMIN.LAYOUT.HEADER.TITLE
+          underline: true
+
+        header.title_extend:
+          type: text
+          label: Header Titel erweitern
+          help: Erweitern Sie den Header Titel.
+
+        header.logo_enabled:
+          type: toggle
+          label: Header Logo enabled
+          help: Disable or enable logo
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        header.logo:
+          type: file
+          label: Header Logo
+          size: large
+          destination: 'theme://images/logo'
+          multiple: false
+          markdown: true
+          description: Will be used instead of default logo `theme://images/logo/logo.svg`
+          accept:
+            - image/*
+
+        header.logo_class:
+          type: text
+          label: Logo Breite
+          help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+        header.menu_class:
+          type: text
+          label: Menu Breite
+          help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+        header.menu_dropdown:
+          type: toggle
+          label: Dropdown in Menu
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        header.shrink:
+          type: toggle
+          label: Header shrink enabled
+          help: Disable or enable logo
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.section:
+          type: section
+          title: THEME.ADMIN.LAYOUT.FOOTER.TITLE
+          underline: true
+
+        footer.logo_enabled:
+          type: toggle
+          label: Footer Logo enabled
+          help: Disable or enable logo
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.logo:
+          type: file
+          label: Footer Logo
+          size: large
+          destination: 'theme://images/logo'
+          multiple: false
+          markdown: true
+          description: Will be used instead of default logo `theme://images/logo/footer-logo.svg`
+          accept:
+            - image/*
+
+        footer.hr_line:
+          type: toggle
+          label: HR-Linie darstellen
+          help: HR-Linie über dem Footer darstellen.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.copyright.text:
+          type: text
+          label: Copyright
+          help: Trage Sie hier Ihren Copyright ein.
+
+        footer.copyright.show_year:
+          type: toggle
+          label: Copyright Jahr anzeigen
+          help: Zeigt das Jahr im Copyright an.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.copyright.class:
+          type: text
+          label: Copyright Breite
+          help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+        footer.menu_class:
+          type: text
+          label: Menu Breite
+          help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+        footer.share.enabled:
+          type: toggle
+          label: Teilen
+          help: Teilen aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_x:
+          type: toggle
+          label: Teilen auf "Plattform X"
+          help: Teilen auf "Plattform X" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_facebook:
+          type: toggle
+          label: Teilen auf "Facebook"
+          help: Teilen auf "Facebook" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_linkedin:
+          type: toggle
+          label: Teilen auf "LinkedIn"
+          help: Teilen auf "LinkedIn" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_whatsapp:
+          type: toggle
+          label: Teilen auf "WhatsApp"
+          help: Teilen auf "WhatsApp" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_xing:
+          type: toggle
+          label: Teilen auf "XING"
+          help: Teilen auf "XING" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_mail:
+          type: toggle
+          label: Teilen per "E-Mail"
+          help: Teilen per "E-Mail" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.print.enabled:
+          type: toggle
+          label: Seite drucken
+          help: Seite drucken aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.up.enabled:
+          type: toggle
+          label: Seite "nach oben"
+          help: Seite "nach oben" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        menu.section:
+          type: section
+          title: THEME.ADMIN.LAYOUT.MENU.TITLE
+          underline: true
+
+        menu.main_fieldset:
+          type: fieldset
+          title: THEME.ADMIN.LAYOUT.MENU.MAIN_FIELDSET.TITLE
+          help: THEME.ADMIN.LAYOUT.MENU.MAIN_FIELDSET.HELP
+          text: THEME.ADMIN.LAYOUT.MENU.MAIN_FIELDSET.TEXT
+          collapsed: true
+          collapsible: true
+          fields:
+            menu.main:
+              type: list
+              label: THEME.ADMIN.LAYOUT.MENU.MAIN.LABEL
+              style: vertical
+              controls: bottom
+              collapsed: false
+              fields:
+                .ident:
+                  id: key
+                  label: THEME.ADMIN.LAYOUT.MENU.MAIN.IDENT.LABEL
+                .path:
+                  type: pages
+                  label: THEME.ADMIN.LAYOUT.MENU.MAIN.PATH.LABEL
+                  show_modular: false
+                  show_root: false
+                  show_all: false
+                  limit_levels: 2
+                .icon:
+                  type: text
+                  label: THEME.ADMIN.LAYOUT.MENU.MAIN.ICON.LABEL
+
+        menu.site_fieldset:
+          type: fieldset
+          title: THEME.ADMIN.LAYOUT.MENU.SITE_FIELDSET.TITLE
+          help: THEME.ADMIN.LAYOUT.MENU.SITE_FIELDSET.HELP
+          text: THEME.ADMIN.LAYOUT.MENU.SITE_FIELDSET.TEXT
+          collapsed: true
+          collapsible: true
+          fields:
+            menu.site:
+              type: list
+              label: THEME.ADMIN.LAYOUT.MENU.SITE.LABEL
+              style: vertical
+              controls: bottom
+              collapsed: false
+              fields:
+                .ident:
+                  id: key
+                  label: THEME.ADMIN.LAYOUT.MENU.SITE.IDENT.LABEL
+                .path:
+                  type: pages
+                  label: THEME.ADMIN.LAYOUT.MENU.SITE.PATH.LABEL
+                  show_modular: false
+                  show_root: false
+                  show_all: false
+                  limit_levels: 2
+                .highlighted:
+                  type: toggle
+                  label: THEME.ADMIN.LAYOUT.MENU.SITE.HIGHLIGHTED.LABEL
+                  help: THEME.ADMIN.LAYOUT.MENU.SITE.HIGHLIGHTED.HELP
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+
+        menu.footer_fieldset:
+          type: fieldset
+          title: THEME.ADMIN.LAYOUT.MENU.FOOTER_FIELDSET.TITLE
+          help: THEME.ADMIN.LAYOUT.MENU.FOOTER_FIELDSET.HELP
+          text: THEME.ADMIN.LAYOUT.MENU.FOOTER_FIELDSET.TEXT
+          collapsed: true
+          collapsible: true
+          fields:
+            menu.footer:
+              type: list
+              label: THEME.ADMIN.LAYOUT.MENU.FOOTER.LABEL
+              style: vertical
+              controls: bottom
+              collapsed: false
+              fields:
+                .ident:
+                  id: key
+                  label: THEME.ADMIN.LAYOUT.MENU.FOOTER.IDENT.LABEL
+                .path:
+                  type: pages
+                  label: THEME.ADMIN.LAYOUT.MENU.FOOTER.PATH.LABEL
+                  show_modular: false
+                  show_root: false
+                  show_all: false
+                  limit_levels: 2

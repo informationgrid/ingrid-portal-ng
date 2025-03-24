@@ -1,0 +1,135 @@
+form:
+  fields:
+    home.sort_modules_fieldset:
+      type: fieldset
+      title: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TITLE
+      help: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.HELP
+      text: THEME.ADMIN.HOME.SORT_MODULES_FIELDSET.TEXT
+      collapsed: true
+      fields:
+        home.sort_modules:
+          type: list
+          label: THEME.ADMIN.HOME.SORT_MODULES.LABEL
+          style: vertical
+          controls: bottom
+          collapsed: false
+          collapsible: false
+          fields:
+            .ident:
+              id: key
+              label: THEME.ADMIN.HOME.SORT_MODULES.IDENT.LABEL
+            .path:
+              type: pages
+              label: THEME.ADMIN.HOME.SORT_MODULES.PATH.LABEL
+              help: THEME.ADMIN.HOME.SORT_MODULES.PATH.HELP
+              show_modular: true
+              show_root: false
+              show_all: false
+              start_route: /home
+            .hidden:
+              type: checkbox
+              label: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.LABEL
+              help: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.HELP
+              validate:
+                type: bool
+
+    home.categories:
+      type: section
+      title: THEME.ADMIN.HOME.CATEGORIES.TITLE
+      underline: true
+
+    home.categories.rss:
+      type: text
+      label: THEME.ADMIN.HOME.CATEGORIES.RSS.LABEL
+      help: THEME.ADMIN.HOME.CATEGORIES.RSS.HELP
+
+    home.categories.add_to_search:
+      type: selectize
+      label: THEME.ADMIN.HOME.CATEGORIES.ADD_TO_SEARCH.LABEL
+      help: THEME.ADMIN.HOME.CATEGORIES.ADD_TO_SEARCH.HELP
+      validate:
+        type: commalist
+
+    home.hits:
+      type: section
+      title: THEME.ADMIN.HOME.HITS.TITLE
+      underline: true
+
+    home.hits.add_to_search:
+      type: selectize
+      label: THEME.ADMIN.HOME.HITS.ADD_TO_SEARCH.LABEL
+      help: THEME.ADMIN.HOME.HITS.ADD_TO_SEARCH.HELP
+      validate:
+        type: commalist
+
+    home.hits.hits_num:
+      type: range
+      label: THEME.ADMIN.HOME.HITS.HITS_NUM.LABEL
+      help: THEME.ADMIN.HOME.HITS.HITS_NUM.HELP
+      validate:
+        type: number
+        min: 0
+        max: 10
+
+    home.hits.query_string_operator:
+      type: toggle
+      label: THEME.ADMIN.HOME.HITS.QUERY_STRING_OPERATOR.LABEL
+      help: THEME.ADMIN.HOME.HITS.QUERY_STRING_OPERATOR.HELP
+      highlight: AND
+      options:
+        "AND": AND
+        "OR": OR
+      validate:
+        type: text
+
+    home.hits.query_fields:
+      type: selectize
+      label: THEME.ADMIN.HOME.HITS.QUERY_FIELDS.LABEL
+      help: THEME.ADMIN.HOME.HITS.QUERY_FIELDS.HELP
+      validate:
+        type: commalist
+
+    home.hits.requested_fields:
+      type: selectize
+      label: THEME.ADMIN.HOME.HITS.REQUESTED_FIELDS.LABEL
+      help: THEME.ADMIN.HOME.HITS.REQUESTED_FIELDS.HELP
+      validate:
+        type: commalist
+
+    home.hits.source.include:
+      type: selectize
+      label: THEME.ADMIN.HOME.HITS.SOURCE.INCLUDE.LABEL
+      help: THEME.ADMIN.HOME.HITS.SOURCE.INCLUDE.HELP
+      validate:
+        type: commalist
+
+    home.hits.source.exclude:
+      type: selectize
+      label: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.LABEL
+      help: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.HELP
+      validate:
+        type: commalist
+
+    home.hits.sort.sortByDate:
+      type: toggle
+      label: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.LABEL
+      help: THEME.ADMIN.HOME.HITS.SORT.SORTBYDATE.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    home.rss:
+      type: section
+      title: THEME.ADMIN.HOME.RSS.TITLE
+      underline: true
+
+    home.rss.feeds_limit:
+      type: range
+      label: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.LABEL
+      help: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.HELP
+      validate:
+        min: 1
+        max: 10

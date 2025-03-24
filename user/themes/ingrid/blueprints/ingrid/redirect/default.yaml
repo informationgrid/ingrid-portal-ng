@@ -1,0 +1,51 @@
+form:
+  fields:
+    others.section:
+      type: section
+      title: THEME.ADMIN.REDIRECT.TITLE
+      underline: true
+
+    redirect.pages_to_404:
+      type: pages
+      label: THEME.ADMIN.REDIRECT.PAGES_TO_404.LABEL
+      help: THEME.ADMIN.REDIRECT.PAGES_TO_404.HELP
+      validate:
+        type: array
+      show_modular: false
+      show_root: false
+      show_all: false
+      limit_levels: 2
+      multiple: true
+
+    redirect.site_fieldset:
+      type: fieldset
+      title: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.TITLE
+      help: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.HELP
+      text: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.TEXT
+      collapsed: true
+      collapsible: true
+      fields:
+        redirect.pages_to_redirect:
+          type: list
+          label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.LABEL
+          style: vertical
+          controls: bottom
+          collapsed: false
+          fields:
+            .ident:
+              id: key
+              label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.IDENT.LABEL
+            .path:
+              type: pages
+              label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PATH.LABEL
+              show_modular: false
+              show_root: false
+              show_all: false
+              limit_levels: 2
+              validate:
+                required: true
+            .url:
+              type: text
+              label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.URL.LABEL
+              validate:
+                required: true

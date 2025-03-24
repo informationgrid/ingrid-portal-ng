@@ -1,0 +1,10 @@
+form:
+  fields:
+    help.section:
+      type: section
+      title: THEME.ADMIN.HELP.TITLE
+      underline: true
+
+    help.default_hkey:
+      type: text
+      label: THEME.ADMIN.HELP.DEFAULT_HKEY.LABEL

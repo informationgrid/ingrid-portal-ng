@@ -1,0 +1,2 @@
+#slideshow-container  { /*width:200px*/; position:relative; }
+#slideshow-container img { display:block; position:absolute; top:0; left:0; z-index:1; width:150px; border:0px; }

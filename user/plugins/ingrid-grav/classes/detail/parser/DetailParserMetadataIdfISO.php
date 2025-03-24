@@ -47,6 +47,7 @@ class DetailParserMetadataIdfISO
         $metadata->isOpendata = in_array(strtolower('opendata'), array_map('strtolower', $metadata->searchTerms)) ||
             in_array(strtolower('opendataident'), array_map('strtolower', $metadata->searchTerms));
         $metadata->isHVD = count($metadata->hvd) > 0;
+        $metadata->hierarchyLevelNames = IdfHelper::getNodeValueList($node, "./gmd:hierarchyLevelName/*[self::gco:CharacterString or self::gmx:Anchor or .]");
         return $metadata;
     }
 
@@ -60,7 +61,7 @@ class DetailParserMetadataIdfISO
             $descr = IdfHelper::getNodeValue($tmpNode, "./gmd:fileDescription/*[self::gco:CharacterString or self::gmx:Anchor]");
             $map["url"] = $url;
             $map["descr"] = $descr;
-            array_push($array, $map);
+            $array[] = $map;
         }
         return $array;
     }
@@ -845,17 +846,33 @@ class DetailParserMetadataIdfISO
         $xpathExpression = "./gmd:identificationInfo/*/gmd:supplementalInformation/*[self::gco:CharacterString or self::gmx:Anchor]";
         $metadata->dataDescription = IdfHelper::getNodeValue($node, $xpathExpression);
 
-        $metadata->publishId = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:classification/gmd:MD_ClassificationCode/@codeListValue");
-        $metadata->usage = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:resourceSpecificUsage/gmd:MD_Usage/gmd:specificUsage/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $metadata->purpose = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:purpose/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $metadata->legalBasis = IdfHelper::getNodeList($node, "./gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]='Further legal basis']/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]");
-        $metadata->exportCriteria = IdfHelper::getNodeList($node, "./idf:exportCriteria");
-        $metadata->languageCode = LanguageHelper::getNamesFromIso639_2(IdfHelper::getNodeValueList($node, "./gmd:identificationInfo/*/gmd:language/gmd:LanguageCode/@codeListValue"), $lang);
+        $xpathExpression = "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:classification/gmd:MD_ClassificationCode/@codeListValue";
+        $metadata->publishId = IdfHelper::getNodeValue($node, $xpathExpression);
+
+        $xpathExpression = "./gmd:identificationInfo/*/gmd:resourceSpecificUsage/gmd:MD_Usage/gmd:specificUsage/*[self::gco:CharacterString or self::gmx:Anchor]";
+        $metadata->usage = IdfHelper::getNodeValue($node, $xpathExpression);
+
+        $xpathExpression = "./gmd:identificationInfo/*/gmd:purpose/*[self::gco:CharacterString or self::gmx:Anchor]";
+        $metadata->purpose = IdfHelper::getNodeValue($node, $xpathExpression);
+
+        $xpathExpression = "./gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]='Further legal basis']/gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]";
+        $metadata->legalBasis = IdfHelper::getNodeList($node, $xpathExpression);
+
+        $xpathExpression = "./idf:exportCriteria";
+        $metadata->exportCriteria = IdfHelper::getNodeList($node, $xpathExpression);
+
+        $xpathExpression = "./gmd:identificationInfo/*/gmd:language/gmd:LanguageCode/@codeListValue";
+        $metadata->languageCode = LanguageHelper::getNamesFromIso639_2(IdfHelper::getNodeValueList($node, $xpathExpression), $lang);
+
         $metadata->conformity = self::getConformities($node, $lang);
         $metadata->dataformat = self::getDataformats($node);
-        $metadata->geodataLink = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:classification/gmd:MD_ClassificationCode/@codeListValue");
+
+        $xpathExpression = "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:classification/gmd:MD_ClassificationCode/@codeListValue";
+        $metadata->geodataLink = IdfHelper::getNodeValue($node, $xpathExpression);
+
         $metadata->media = self::getMedias($node);
-        $metadata->orderInstructions = IdfHelper::getNodeValue($node, "./gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributionOrderProcess/gmd:MD_StandardOrderProcess/gmd:orderingInstructions/*[self::gco:CharacterString or self::gmx:Anchor]");
+        $xpathExpression = "./gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributionOrderProcess/gmd:MD_StandardOrderProcess/gmd:orderingInstructions/*[self::gco:CharacterString or self::gmx:Anchor]";
+        $metadata->orderInstructions = IdfHelper::getNodeValue($node, $xpathExpression);
     }
 
     private static function getKeywords(\SimpleXMLElement $node, DetailMetadataISO &$metadata, string $lang): void
@@ -871,11 +888,11 @@ class DetailParserMetadataIdfISO
         $keywordsPath = './gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords';
         $keywordsNodes = IdfHelper::getNodeList($node, $keywordsPath);
         foreach ($keywordsNodes as $keywordsNode) {
-            $thesaursName = IdfHelper::getNodeValue($keywordsNode, './gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]');
+            $thesaurusName = IdfHelper::getNodeValue($keywordsNode, './gmd:thesaurusName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]');
             $keywords = IdfHelper::getNodeValueList($keywordsNode, './gmd:keyword/*[self::gco:CharacterString or self::gmx:Anchor]');
             foreach ($keywords as $keyword) {
                 $keyword = iconv('UTF-8', 'UTF-8', $keyword);
-                if (empty($thesaursName)) {
+                if (empty($thesaurusName)) {
                     $tmpValue = CodelistHelper::getCodelistEntryByData(['6400'], $keyword, $lang);
                     if (empty($tmpValue)){
                         $tmpValue = $keyword;
@@ -884,8 +901,8 @@ class DetailParserMetadataIdfISO
                         $searchTerms[] = $tmpValue;
                     }
                 } else {
-                    if (!str_contains(strtolower($thesaursName), 'service')) {
-                        if (str_contains(strtolower($thesaursName), 'concepts')) {
+                    if (!str_contains(strtolower($thesaurusName), 'service')) {
+                        if (str_contains(strtolower($thesaurusName), 'concepts')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['5200'], $keyword, $lang);
                             if (empty($tmpValue)){
                                 $tmpValue = $keyword;
@@ -893,7 +910,7 @@ class DetailParserMetadataIdfISO
                             if (!in_array($tmpValue, $gemetConcepts)) {
                                 $gemetConcepts[] = $tmpValue;
                             }
-                        } else if (str_contains(strtolower($thesaursName), 'priority')) {
+                        } else if (str_contains(strtolower($thesaurusName), 'priority')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['6300'], $keyword, $lang);
                             if (empty($tmpValue)){
                                 $tmpValue = $keyword;
@@ -901,7 +918,7 @@ class DetailParserMetadataIdfISO
                             if (!in_array($tmpValue, $priorityDataset)) {
                                 $priorityDataset[] = $tmpValue;
                             }
-                        } else if (str_contains(strtolower($thesaursName), 'inspire')) {
+                        } else if (str_contains(strtolower($thesaurusName), 'inspire')) {
                             $tmpValue = CodelistHelper::getCodelistEntryByLocalisation(['6100'], $keyword, $lang);
                             if (empty($tmpValue)){
                                 $tmpValue = $keyword;
@@ -909,7 +926,7 @@ class DetailParserMetadataIdfISO
                             if (!in_array($tmpValue, $inspireThemes)) {
                                 $inspireThemes[] = $tmpValue;
                             }
-                        } else if (str_contains(strtolower($thesaursName), 'spatial scope')) {
+                        } else if (str_contains(strtolower($thesaurusName), 'spatial scope')) {
                             $tmpValue = CodelistHelper::getCodelistEntry(['6360'], $keyword, $lang);
                             if (empty($tmpValue)){
                                 $tmpValue = $keyword;
@@ -917,15 +934,15 @@ class DetailParserMetadataIdfISO
                             if (!in_array($tmpValue, $spatialScope)) {
                                 $spatialScope[] = $tmpValue;
                             }
-                        } else if (str_contains(strtolower($thesaursName), 'iacs data')) {
+                        } else if (str_contains(strtolower($thesaurusName), 'iacs data')) {
                             if (!in_array($keyword, $invekos)) {
                                 $invekos[] = $keyword;
                             }
-                        } else if (str_contains(strtolower($thesaursName), 'high-value')) {
+                        } else if (str_contains(strtolower($thesaurusName), 'high-value')) {
                             if (!in_array($keyword, $hvd)) {
                                 $hvd[] = $keyword;
                             }
-                        } else if (str_contains(strtolower($thesaursName), 'umthes')) {
+                        } else if (str_contains(strtolower($thesaurusName), 'umthes')) {
                             if (!in_array($keyword, $searchTerms)) {
                                 $searchTerms[] = $keyword;
                             }
@@ -1352,6 +1369,9 @@ class DetailParserMetadataIdfISO
         $metadata->contactMeta = $contact_meta;
         $metadata->dataSourceName = $dataSourceName;
         $metadata->providers = $providers;
+        $metadata->metadataStandardName = IdfHelper::getNodeValue($node, "./gmd:metadataStandardName/*[self::gco:CharacterString or self::gmx:Anchor or .]");
+        $metadata->metadataStandardVersion = IdfHelper::getNodeValue($node, "./gmd:metadataStandardVersion/*[self::gco:CharacterString or self::gmx:Anchor or .]");
+        $metadata->metadataCharacterSet = IdfHelper::getNodeValue($node, "./gmd:characterSet/gmd:MD_CharacterSetCode/@codeListValue", ["510"], $lang);
     }
 
     private static function getMapUrl(\SimpleXMLElement $node, string $type): ?string

@@ -4,7 +4,7 @@
         <a class="anchor" id="{{ hash_info }}_additional_information"></a>
         {{ hit_macros.render_group_title("SEARCH_DETAIL.ADDITIONAL_INFORMATION"|t) }}
     {# Datensatz/Datenserie #}
-        {% include 'partials/detail/metadata/parts/information/information_additional_dataset_series.html.twig' %}
+        {% include 'partials/detail/metadata/parts/information/information_additional_dataset_series.html.twig' ignore missing %}
     {# Veröffentlichung #}
         {% include 'partials/detail/metadata/parts/information/information_additional_publish_id.html.twig' %}
     {# Eignung/Nutzung #}
@@ -53,7 +53,7 @@
         <a class="anchor" id="{{ hash_info }}_fs_keywords"></a>
         {{ hit_macros.render_group_title("SEARCH_DETAIL.FS_KEYWORDS"|t) }}
     {# Kategorien #}
-        {% include 'partials/detail/metadata/parts/information/information_keywords_category.html.twig' %}
+        {% include 'partials/detail/metadata/parts/information/information_keywords_category.html.twig' ignore missing %}
     {# Verschlagwortung #}
         {{ hit_macros.render_teaser_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspireThemes ?? [])|sortIgnoreCase, true, "search_terms_inspire", 10, paramsMore) }}
         {{ hit_macros.render_teaser_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priorityDataset ?? [])|sortIgnoreCase, true, "search_terms_priority", 10, paramsMore) }}

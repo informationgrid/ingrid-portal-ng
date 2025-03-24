@@ -16,7 +16,7 @@
 {# Sprache Metadatensatz #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Weitere #}
-    {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_others.html.twig' %}
+    {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_others.html.twig' ignore missing %}
 {# Datensatz/Datenserie #}
     {% if class == 1 %}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchyLevel) }}

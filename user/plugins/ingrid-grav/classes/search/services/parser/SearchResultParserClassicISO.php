@@ -1,7 +1,6 @@
 <?php
 
 namespace Grav\Plugin;
-use Grav\Common\Plugin;
 use Grav\Common\Utils;
 
 class SearchResultParserClassicISO
@@ -74,6 +73,11 @@ class SearchResultParserClassicISO
             "summary" => self::getSummary($esHit),
             "datatypes" => $datatypes,
             "partners" => ElasticsearchHelper::getValueArray($esHit, "partner"),
+            "providers" => array_map(function ($provider) use ($lang) {
+                    return CodelistHelper::getCodelistEntryByIdent('111', $provider, $lang);
+                },
+                ElasticsearchHelper::getValueArray($esHit, "provider")),
+            "data_source" => ElasticsearchHelper::getValue($esHit, "dataSourceName"),
             "searchterms" => $searchTerms,
             "map_bboxes" => ElasticsearchHelper::getBBoxes($esHit, $title),
             "t011_obj_serv.type" => ElasticsearchHelper::getValue($esHit, "t011_obj_serv.type"),
@@ -299,7 +303,7 @@ class SearchResultParserClassicISO
                     "title" => !empty($urlReferenceContent[$count]) ? $urlReferenceContent[$count] : $url,
                     "serviceType" => $format == "9900" && count($urlReferenceDatatype) > $count ? $urlReferenceDatatype[$count] : "",
                     "type" => $format == "3600" ? "1" : null,
-                    "typeName" => $format == "3600" ? CodelistHelper::getCodelistEntry(['8000'], "1", 'de') : null,
+                    "typeName" => $format == "3600" ? CodelistHelper::getCodelistEntry('8000', '1', 'de') : null,
                     "kind" => $kind,
                 ];
                 if (count($urlReferenceDatatype) > $count) {
