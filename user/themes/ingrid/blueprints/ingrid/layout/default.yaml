@@ -300,6 +300,17 @@ form:
                     0: PLUGIN_ADMIN.NO
                   validate:
                     type: bool
+                .target_blank:
+                  type: toggle
+                  label: THEME.ADMIN.LAYOUT.MENU.SITE.TARGET_BLANK.LABEL
+                  help: THEME.ADMIN.LAYOUT.MENU.SITE.TARGET_BLANK.HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
 
         menu.footer_fieldset:
           type: fieldset

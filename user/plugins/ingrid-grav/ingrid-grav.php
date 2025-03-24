@@ -337,20 +337,23 @@ class InGridGravPlugin extends Plugin
 
         if (!$page) {
             $page = new Page;
-            $themeFile = new \SplFileInfo($this->grav['locator']->findResource('theme://pages') . '/' . $filename);
-            if (!empty($themeFile)) {
-                $page->init($themeFile);
+            $filePath = $this->grav['locator']->findResource('theme://pages') . '/' . $filename;
+            if (file_exists($filePath)) {
+                $themeFile = new \SplFileInfo($filePath);
+                if (!empty($themeFile)) {
+                    $page->init($themeFile);
 
-                $route = $page->route();
-                $page->rawRoute($url);
-                $page->routeAliases([$url]);
-                if ($parent) {
-                    $page->parent($parent);
-                } else {
-                    $page->parent($pages->root());
+                    $route = $page->route();
+                    $page->rawRoute($url);
+                    $page->routeAliases([$url]);
+                    if ($parent) {
+                        $page->parent($parent);
+                    } else {
+                        $page->parent($pages->root());
+                    }
+                    $pages->addPage($page, $url);
+                    $pages->addPage($page, $route);
                 }
-                $pages->addPage($page, $url);
-                $pages->addPage($page, $route);
             }
         }
         return $page;

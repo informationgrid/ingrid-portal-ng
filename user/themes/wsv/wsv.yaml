@@ -52,6 +52,7 @@ menu:
     -
       path: /help
       highlighted: false
+      target_blank: true
     -
       path: /contact
       highlighted: false
@@ -470,14 +471,15 @@ hit_detail:
 map:
   enabled: true
   url: /ingrid-webmap-client/frontend/prd
+  shrink_header: true
   leaflet:
     enabled: false
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: 'https://tile.geofabrik.de/a9533739a5c445e5937b953c9b1f6c58/{z}/{x}/{y}.png' }
+        wmts: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -523,41 +525,6 @@ datasource:
   excludes:
 rss:
   feeds:
-    - url: 'https://www.saarland.de/mukmav/DE/aktuelles/rss-feeds/_feeds/aktuelle_meldungen_feed.xml'
-      summary: 'Land Saarland - Staatskanzlei des Saarlandes. Dies ist der Aktuelle-Meldungen-RSS-Feed des Saarlandes.'
-      provider: 'Land Saarland - Staatskanzlei des Saarlandes'
-      lang: de
-      category: all
-    - url: 'http://service.mvnet.de/_php/feedcreator/feeds/feed_Regierungsportal_107.xml'
-      summary: 'Ministerium für Klimaschutz, Landwirtschaft, ländliche Räume und Umwelt - Aktuelles.'
-      provider: 'Ministerpräsidentin des Landes Mecklenburg-Vorpommern - Staatskanzlei'
-      lang: de
-      category: all
-    - url: 'https://www.lvermgeo.sachsen-anhalt.de/de/rss-feed-news.html'
-      summary: 'Landesamt für Vermessung und Geoinformation Sachsen-Anhalt (LVermGeo) - News'
-      provider: 'Landesamt für Vermessung und Geoinformation Sachsen-Anhalt (LVermGeo)'
-      lang: de
-      category: all
-    - url: 'https://mluk.brandenburg.de/mluk/de/rss/~pressemitteilungen-des-mlukrss.xml'
-      summary: 'Ministerium für Landwirtschaft, Umwelt und Klimaschutz (MLUK) des Landes Brandenburg. Pressemitteilungen'
-      provider: 'Ministerium für Landwirtschaft, Umwelt und Klimaschutz (MLUK) des Landes Brandenburg'
-      lang: de
-      category: all
-    - url: 'https://umwelt.hessen.de/Presse-Feed/all'
-      summary: 'Hessisches Ministerium für Umwelt, Klimaschutz, Landwirtschaft und Verbraucherschutz - Alle Pressemitteilungen'
-      provider: 'Hessisches Ministerium für Umwelt, Klimaschutz, Landwirtschaft und Verbraucherschutz'
-      lang: de
-      category: all
-    - url: 'https://geoportal.sachsen.de/cps/rss.xsl/rss.xml'
-      summary: 'Freistaat Sachsen. Aktuelle Meldungen des Geoportals'
-      provider: 'Freistaat Sachsen'
-      lang: de
-      category: all
-    - url: 'https://www.sachsen-anhalt.de/bs/pressemitteilungen/rss-feeds/?no_cache=1&type=9988&tx_tsarssinclude_rss%5Buid%5D=210&tx_tsarssinclude_rss%5Baction%5D=feed&tx_tsarssinclude_rss%5Bcontroller%5D=Rss'
-      summary: 'Pressemitteilungen der Landesverwaltung Sachsen-Anhalt sowie nachgeordneter Behörden und Bereiche'
-      provider: 'Landesportal Sachsen-Anhalt - Ministerium für Wissenschaft, Energie, Klimaschutz und Umwelt'
-      lang: de
-      category: all
 upload:
   slideshow:
     user/themes/wsv/assets/cms/slideshow/images/Slideshow_01.jpg:

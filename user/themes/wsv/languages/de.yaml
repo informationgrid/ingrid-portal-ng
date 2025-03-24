@@ -1,13 +1,33 @@
 PAGES:
-  HOME_MENU_TITLE: Startseite von GeoPortal.WSV
-  MAP: GeoViewer.WSV
-  ABOUT: Über MetaVer
-  ABOUT_MENU_TITLE: Hintergrundinformationen zu MetaVer
-  HELP_MENU_TITLE: Erläuterungen zur Nutzung von MetaVer
-  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an MetaVer-Team
-  SITEMAP_MENU_TITLE: Alle Inhalte von MetaVer auf einen Blick
-  SITEMAP_CONTENT: Inhalt
   HEADER_TITLE_MAIN: GeoPortal.WSV
+  HOME: Startseite
+  HOME_MENU_TITLE: Startseite von GeoPortal.WSV
+  HOME_META_TITLE: Startseite
+  HOME_META_DESCRIPTION: GeoPortal.WSV bietet kostenlosen und werbefreien Zugang zu Informationen Institutionen und Organisationen.
+  HOME_META_KEYWORDS: GeoPortal.WSV, Portal, Informationen, Institutionen, Organisationen, Suche, Recherche, werbefrei, kostenlos, Datenkataloge, Datenbanken
+  SEARCH_META_DESCRIPTION: Mit der Freitextsuche von GeoPortal.WSV können Sie nach Informationen, Rechtsvorschriften, Forschungsprojekten und Adressen in den Datenkatalogen suchen
+  SEARCH_META_KEYWORDS: GeoPortal.WSV, Informationen, Informationsangebot, Suche, Recherche, Freitextsuche, freie Suche,  Rechtsvorschriften, Forschung, Projekte, Adressen, Datenkataloge, Datenbanken
+  MAP: GeoViewer.WSV
+  MAP_META_TITLE: Verfügbare Kartendienste vom GeoPortal.WSV
+  MAP_META_DESCRIPTION: Mit dem GeoPortal.WSV Kartenviewer können Sie sich thematische Karten zu den Themen anzeigen lassen und Darstellungsparameter selbst festlegen.
+  MAP_META_KEYWORDS: GeoPortal.WSV, Kartenviewer, Karten, thematische Karten, Interaktion, interaktiv, Themen, Darstellung, Parameter, WMS, Web Map Service, Webdienste, OGC, Informationen, Online Karten, GIS, Web GIS, Metadaten
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von GeoPortal.WSV
+  HELP_META_DESCRIPTION: Die Hilfethemen führen mit Kurzanleitungen an die Suche heran und erläutern die Hauptfunktionen von GeoPortal.WSV
+  HELP_META_KEYWORDS: GeoPortal.WSV, Hilfe, Suche, Suchmöglichkeiten, Erklärung, Beschreibungen, Suchtipps, Tipps, Funktionen, Hauptfunktionen, Hilfethemen, Kurzanleitung
+  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an GeoPortal.WSV
+  CONTACT_META_DESCRIPTION: Kontaktieren Sie GeoPortal.WSV online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.
+  CONTACT_META_KEYWORDS: GeoPortal.WSV, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen
+  SITEMAP_MENU_TITLE: Alle Inhalte von GeoPortal.WSV auf einen Blick
+  SITEMAP_META_DESCRIPTION: Das Inhaltsverzeichnis gibt Ihnen einen schnellen Überblick über alle Bereiche und Funktionen, die in GeoPortal.WSV verfügbar sind.
+  SITEMAP_META_KEYWORDS: GeoPortal.WSV, Inhaltsverzeichnis, Inhaltsübersicht, Sitemap, Servicebereich, Fußbereich, Hauptbereich
+  IMPRINT_META_DESCRIPTION: Im Impressum werden die inhaltlich und technisch Verantwortlichen von GeoPortal.WSV genannt sowie Nutzungsbedingungen und Angaben zum Haftungsausschluss kurz erläutert.
+  IMPRINT_META_KEYWORDS: GeoPortal.WSV, Impressum, Verantwortliche, Herausgeber, Gesamtredaktion, Redaktion, Realisierung, Haftungsausschluss, Disclaimer, Nutzungsbedingungen, Nutzung
+  PRIVACY_META_DESCRIPTION: Hinweise zum Datenschutz und Informationen über die Speicherung von Daten beim Zugriff auf GeoPortal.WSV - Seiten.
+  PRIVACY_META_KEYWORDS: GeoPortal.WSV, Datenschutz, Bestimmungen, Datenschutzbestimmungen, Daten, persönliche Daten, Datenspeicherung
+  ACCESSIBILITY_META_KEYWORDS: GeoPortal.WSV, Barrierefreiheit
+  RSS_META_DESCRIPTION: Pressemeldungen bekommen Sie auf GeoPortal.WSV tagesaktuell als Nachrichtenticker (RSS Dienst) präsentiert
+  RSS_META_KEYWORDS: GeoPortal.WSV, Nachrichtenticker, RSS, Informationen, Mitteilungen, Pressemitteilungen
+  DETAIL_META_KEYWORDS: GeoPortal.WSV, Trefferanzeige, Ergebnis, Suchergebnis, Resultate
   APPLICATION: Anwendungen
   APPLICATION_MENU_TITLE: Anwendungen
   APPLICATION_META_TITLE: Anwendungen

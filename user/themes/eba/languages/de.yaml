@@ -1,63 +1,27 @@
 PAGES:
-  HOME_MENU_TITLE: Startseite von GeoPortal.WSV
-  MAP: GeoViewer.WSV
-  ABOUT: Über MetaVer
-  ABOUT_MENU_TITLE: Hintergrundinformationen zu MetaVer
-  HELP_MENU_TITLE: Erläuterungen zur Nutzung von MetaVer
-  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an MetaVer-Team
-  SITEMAP_MENU_TITLE: Alle Inhalte von MetaVer auf einen Blick
-  SITEMAP_CONTENT: Inhalt
-  HEADER_TITLE_MAIN: GeoPortal.WSV
-
-COMMON:
-  RESULT_SOURCE: Fundort
-
-SITEMAP:
-
-CONTACT:
-  FORM_COMPANY: Dienststelle (optional)
-  FORM_TOPIC: Thema
-  FORM_UPLOAD: 'Datei anhängen (optional):(max. 10 MB)'
-  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team GeoPortal.WSV gesendet. Sie haben eine Bestätigungsmail erhalten.
-  SUCCESS_LINK: Zurück zur Startseite
-  REPORT_EMAIL_SUBJECT: Kontaktformular GeoPortal.WSV
-
-SEARCH:
-  PORTLET_TITLE_1: GeoPortal.WSV
-  PORTLET_TITLE_2: Aktuelle Informationen zur GDI-WSV&nbsp;
-  PORTLET_TITLE_3: Anwendungen und Dienste der WSV
-
-SEARCH_RESULT:
-  INFO_LINKS: Links
-
-SEARCH_DETAIL:
-  BACK: Zurück zu GeoPortal.WSV
-  PORTAL_INSTITUTION: GeoPortal.WSV
-  GEOTHESAURUS_SPACIAL_REFERENCE: Geografisches Begrenzungsrechteck
-  T011_OBJ_GEO_REFERENCESYSTEM_ID: Bezugssystem
-  T011_TOWNSHIP_TOWNSHIP_NO: Geografischer Identifikator
-  T011_OBJ_GEO_HIERARCHY_LEVEL: Typ
-  T011_OBJ_GEO_HIERARCHY_LEVEL_NAME: Kategorien
-  T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY: Thematik
-  T011_OBJ_SERV_TYPE: Service Typ
-  T011_OBJ_SERV_VERSION_VERSION: Service Version
-  SEARCH_TERMS: Beschreibende Schlüsselwörter
-  WSV_DETAIL_OTHER_RESTRICTION: Andere Einschränkungen
-  T01_OBJECT_PUBLISH_ID: Sicherheitsstufung
-  DATA_QUALITY: Qualität
-  T011_OBJ_GEO_SPECIAL_BASE: Aussage zur Herkunft
-  T011_OBJ_GEO_DATA_BASE: Datenquellen (Beschreibung)
-  T011_OBJ_GEO_LITERATUR_BASE: Datenquellen (Beschreibung)
-  T011_OBJ_GEO_SERV_BASE: Datenquellen (Beschreibung)
-  T011_OBJ_GEO_METHOD: Bearbeitungsschritt (Beschreibung)
-  T011_OBJ_SERV_HISTORY: Bearbeitungsschritt (Beschreibung)
-  T011_OBJ_SERV_SCALE: Räumliche Auflösung (Maßstabäquivalent)
-  T01_OBJECT_OBJ_ID: Identifikator des Metadatensatz
-  T01_OBJECT_MOD_TIME: Datumsstempel
-  T01_OBJECT_METADATA_STANDARD_NAME: Name des Metadatenstandards
-  T01_OBJECT_METADATA_STANDARD_VERSION: Version des Metadatenstandards
-  T01_OBJECT_METADATA_CHARACTER_SET: Zeichensatz des Metadatensatz
-  OBJECT_CONFORMITY: Qualitätsbericht
-  OBJECT_CONFORMITY_SPECIFICATION: Spezifikation
-  OBJECT_CONFORMITY_DEGREE_VALUE: Bestanden
-  OBJECT_CONFORMITY_PUBLICATION_DATE: Datum
+  MAP: GeoPortal.EBA
+  HOME_MENU_TITLE: Startseite von GeoPortal.EBA
+  HOME_MENU_EXTERN_TITLE: Startseite von Eisenbahn-Bundesamt
+  HEADER_TITLE_MAIN: GeoPortal.EBA
+  HELP: Hilfe / Nutzungshinweise
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von GeoPortal.EBA - Neues Fenster öffnet sich
+  HELP_META_TITLE: GeoPortal.EBA - Suchtipps und Erläuterungen zu den Hauptfunktionen
+  HELP_META_DESCRIPTION: Die Hilfethemen führen mit Kurzanleitungen an die Suche heran und erläutern die Hauptfunktionen von GeoPortal.EBA
+  HELP_META_KEYWORDS: GeoPortal.EBA, Hilfe, Suche, Suchmöglichkeiten, Erklärung, Beschreibungen, Suchtipps, Tipps, Funktionen, Hauptfunktionen, Hilfethemen, Kurzanleitung
+  DISCLAIMER_MENU_TITLE: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
+  DISCLAIMER_META_TITLE: GeoPortal.EBA - Impressum
+  DISCLAIMER_META_DESCRIPTION: Im Impressum werden die inhaltlich und technisch Verantwortlichen von GeoPortal.EBA genannt sowie Nutzungsbedingungen und Angaben zum Haftungsausschluss kurz erläutert.
+  DISCLAIMER_META_KEYWORDS: GeoPortal.EBA, Impressum, Verantwortliche, Herausgeber, Gesamtredaktion, Redaktion, Realisierung, Haftungsausschluss, Disclaimer, Nutzungsbedingungen, Nutzung
+  PRIVACY_MENU_TITLE: Unsere Verpflichtung zum Umgang mit persönlichen Informationen
+  PRIVACY_META_DESCRIPTION: Hinweise zum Datenschutz und Informationen über die Speicherung von Daten beim Zugriff auf GeoPortal.EBA - Seiten.
+  PRIVACY_META_TITLE: GeoPortal.EBA - Datenschutz
+  PRIVACY_META_KEYWORDS: GeoPortal.EBA, Datenschutz, Bestimmungen, Datenschutzbestimmungen, Daten, persönliche Daten, Datenspeicherung
+  SITEMAP_CONTENT: Sitemap
+  SITEMAP_MENU_TITLE: Alle Inhalte von GeoPortal.EBA auf einen Blick
+  SITEMAP_META_TITLE: GeoPortal.EBA - Inhaltsverzeichnis
+  SITEMAP_META_DESCRIPTION: Das Inhaltsverzeichnis gibt Ihnen einen schnellen Überblick über alle Bereiche und Funktionen, die in GeoPortal.EBA verfügbar sind.
+  SITEMAP_META_KEYWORDS: GeoPortal.EBA, Inhaltsverzeichnis, Inhaltsübersicht, Sitemap, Servicebereich, Fußbereich, Hauptbereich
+  ACCESSIBILITY_MENU_TITLE: Barrierefreiheit
+  ACCESSIBILITY_META_TITLE: GeoPortal.EBA - Barrierefreiheit
+  ACCESSIBILITY_META_DESCRIPTION: Hinweis zur Barrierefreiheit
+  ACCESSIBILITY_META_KEYWORDS: GeoPortal.EBA, Barrierefreiheit

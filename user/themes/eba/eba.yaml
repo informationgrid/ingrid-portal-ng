@@ -8,12 +8,12 @@ header:
   shrink: true
   logo: {  }
 footer:
-  logo_enabled: true
+  logo_enabled: false
   copyright:
     text: 'Eisenbahn-Bundesamt (EBA)'
-    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-5'
     show_year: false
-  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-19'
   hr_line: true
   logo: {  }
   share:
@@ -30,25 +30,14 @@ footer:
     enabled: true
 menu:
   main:
-    -
-      path: /search
-      icon: ic-ic-lupe
-    -
-      path: /map
-      icon: ic-ic-karten
   site:
-    -
-      path: /search
-      highlighted: true
     -
       path: /map
       highlighted: true
     -
       path: /help
       highlighted: false
-    -
-      path: /contact
-      highlighted: false
+      target_blank: true
     -
       path: /sitemap
       highlighted: false
@@ -65,8 +54,6 @@ menu:
     -
       path: /help
     -
-      path: /contact
-    -
       path: /sitemap
     -
       path: /imprint
@@ -76,93 +63,11 @@ menu:
       path: /accessibility
 home:
   sort_modules:
-    -
-      path: /home/_search
-      hidden: false
-    -
-      path: /home/_warning
-      hidden: true
-    -
-      path: /home/_inform
-      hidden: false
-    -
-      path: /home/_categories
-      hidden: false
-    -
-      path: /home/_news
-      hidden: false
   rss:
     feeds_limit: 6
   categories:
     rss: 'type'
-    facet_config: [
-      {
-        "id": "type",
-        "facets": {
-          "www": {
-            "icon": "ic-www",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "www"
-                }
-              }
-            },
-          },
-          "metadata": {
-            "icon": "ic-metadata",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "metadata"
-                }
-              }
-            },
-          },
-          "inspire": {
-            "icon": "ic-inspire",
-            "query": {
-              "filter": {
-                "term": {
-                  "t04_search.searchterm": "inspireidentifiziert"
-                }
-              }
-            },
-          },
-          "opendata": {
-            "icon": "ic-opendata",
-            "query": {
-              "filter": {
-                "bool": {
-                  "should": [
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendata"
-                      }
-                    },
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendataident"
-                      }
-                    }
-                  ]
-                }
-              }
-            },
-          },
-          "maps": {
-            "icon": "ic-map",
-            "query": {
-              "filter": {
-                "wildcard": {
-                  "capabilities_url": "http*"
-                }
-              }
-            },
-          },
-        }
-      }
-    ]
+    facet_config: []
     add_to_search:
       - '-datatype:address'
       - '-isfolder:true'
@@ -174,202 +79,8 @@ home:
     sort:
       sortByDate: true
 hit_search:
-  hits_num: 10
-  facet_config: [
-    {
-      "id": "type",
-      "open": true,
-      "facets": {
-        "inspire": {
-          "query": {
-            "filter": {
-              "term": {
-                "t04_search.searchterm": "inspireidentifiziert"
-              }
-            }
-          },
-        },
-        "opendata": {
-          "query": {
-            "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "opendata"
-                    }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "opendataident"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-        },
-        "hvd": {
-          "query": {
-            "filter": {
-              "term": {
-                "is_hvd": "true"
-              }
-            }
-          },
-        },
-        "adv": {
-          "query": {
-            "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "AdVMIS"
-                    }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "AdV"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-        },
-        "maps": {
-          "query": {
-            "filter": {
-              "wildcard": {
-                "capabilities_url": "http*"
-              }
-            }
-          },
-        },
-        "metadata": {
-          "display_sort_hits_on_selection": true,
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "metadata"
-              }
-            }
-          },
-        },
-        "www": {
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "www"
-              }
-            }
-          },
-        },
-      }
-    },
-    {
-      "id": "metadata_group",
-      "open_by": {
-        "type": "metadata",
-      },
-      "display_sort_hits_on_selection": true,
-      "codelist": "8000",
-      "query": {
-        "terms": {
-          "field": "t01_object.obj_class",
-          "exclude": "1000",
-          "min_doc_count": 0
-        }
-      },
-      "search": "t01_object.obj_class:%d"
-    },
-    {
-      "id": "modtime",
-      "display_depend_on": {
-        "type": "metadata",
-        "metadata_group": "",
-      },
-      "facets": {
-        "last_month": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-1M"
-                }
-              }
-            }
-          }
-        },
-        "last_three_month": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-3M"
-                }
-              }
-            }
-          }
-        },
-        "last_year": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-1y"
-                }
-              }
-            }
-          }
-        },
-        "last_five_years": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-5y"
-                }
-              }
-            }
-          }
-        },
-        "older_five_years": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "lte": "now-5y"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "id": "provider",
-      "codelist": "110",
-      "extend_facet_selection_config": {
-        "field": "provider",
-        "list_limit": 6,
-        "sort": "name"
-      },
-      "sort": "name",
-      "query": {
-        "terms": {
-          "field": "partner",
-          "min_doc_count": 0
-        }
-      },
-      "search": "partner:%s"
-    },
-    {
-      "id": "bbox",
-      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
-    }
-  ]
+  hits_num: 0
+  facet_config: []
   add_to_search:
     - '-datatype:address'
     - '-isfolder:true'
@@ -383,21 +94,6 @@ hit_search:
     - content^0.2
     - content.ngram^0.1
   requested_fields:
-    - t04_search.searchterm
-    - t017_url_ref.url_link
-    - t017_url_ref.content
-    - t017_url_ref.special_ref
-    - t017_url_ref.datatype
-    - object_reference.obj_uuid
-    - object_reference.obj_name
-    - object_reference.obj_class
-    - object_reference.type
-    - object_reference.version
-    - refering.object_reference.obj_uuid
-    - refering.object_reference.obj_name
-    - refering.object_reference.obj_class
-    - refering.object_reference.type
-    - refering.object_reference.version
   source:
       include:
       exclude:
@@ -414,10 +110,10 @@ hit_search:
   links_max: 5
   csw_enabled: true
   rdf_enabled: false
-  partner_logo_enabled: true
+  partner_logo_enabled: false
   sns:
     similar_terms:
-      enabled: true
+      enabled: false
 provider:
   query:
   hits_num:
@@ -461,14 +157,15 @@ hit_detail:
 map:
   enabled: true
   url: /ingrid-webmap-client/frontend/prd
+  shrink_header: true
   leaflet:
     enabled: false
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: 'https://tile.geofabrik.de/a9533739a5c445e5937b953c9b1f6c58/{z}/{x}/{y}.png' }
+        wmts: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -499,10 +196,13 @@ redirect:
     - /about
     - /datasource
     - /provider
+    - /search
+    - /contact
+    - /home
   pages_to_redirect:
     -
       path: /help
-      url: 'https://it-navigator.wsv.res.bund.de/display/geoportalwsvhilfe/GeoPortal.WSV+Hilfe'
+      url: 'https://geoportal.eisenbahn-bundesamt.de/hilfe'
 catalog:
   open_nodes_level: 0
   display_partner: true
@@ -514,41 +214,6 @@ datasource:
   excludes:
 rss:
   feeds:
-    - url: 'https://www.saarland.de/mukmav/DE/aktuelles/rss-feeds/_feeds/aktuelle_meldungen_feed.xml'
-      summary: 'Land Saarland - Staatskanzlei des Saarlandes. Dies ist der Aktuelle-Meldungen-RSS-Feed des Saarlandes.'
-      provider: 'Land Saarland - Staatskanzlei des Saarlandes'
-      lang: de
-      category: all
-    - url: 'http://service.mvnet.de/_php/feedcreator/feeds/feed_Regierungsportal_107.xml'
-      summary: 'Ministerium für Klimaschutz, Landwirtschaft, ländliche Räume und Umwelt - Aktuelles.'
-      provider: 'Ministerpräsidentin des Landes Mecklenburg-Vorpommern - Staatskanzlei'
-      lang: de
-      category: all
-    - url: 'https://www.lvermgeo.sachsen-anhalt.de/de/rss-feed-news.html'
-      summary: 'Landesamt für Vermessung und Geoinformation Sachsen-Anhalt (LVermGeo) - News'
-      provider: 'Landesamt für Vermessung und Geoinformation Sachsen-Anhalt (LVermGeo)'
-      lang: de
-      category: all
-    - url: 'https://mluk.brandenburg.de/mluk/de/rss/~pressemitteilungen-des-mlukrss.xml'
-      summary: 'Ministerium für Landwirtschaft, Umwelt und Klimaschutz (MLUK) des Landes Brandenburg. Pressemitteilungen'
-      provider: 'Ministerium für Landwirtschaft, Umwelt und Klimaschutz (MLUK) des Landes Brandenburg'
-      lang: de
-      category: all
-    - url: 'https://umwelt.hessen.de/Presse-Feed/all'
-      summary: 'Hessisches Ministerium für Umwelt, Klimaschutz, Landwirtschaft und Verbraucherschutz - Alle Pressemitteilungen'
-      provider: 'Hessisches Ministerium für Umwelt, Klimaschutz, Landwirtschaft und Verbraucherschutz'
-      lang: de
-      category: all
-    - url: 'https://geoportal.sachsen.de/cps/rss.xsl/rss.xml'
-      summary: 'Freistaat Sachsen. Aktuelle Meldungen des Geoportals'
-      provider: 'Freistaat Sachsen'
-      lang: de
-      category: all
-    - url: 'https://www.sachsen-anhalt.de/bs/pressemitteilungen/rss-feeds/?no_cache=1&type=9988&tx_tsarssinclude_rss%5Buid%5D=210&tx_tsarssinclude_rss%5Baction%5D=feed&tx_tsarssinclude_rss%5Bcontroller%5D=Rss'
-      summary: 'Pressemitteilungen der Landesverwaltung Sachsen-Anhalt sowie nachgeordneter Behörden und Bereiche'
-      provider: 'Landesportal Sachsen-Anhalt - Ministerium für Wissenschaft, Energie, Klimaschutz und Umwelt'
-      lang: de
-      category: all
 streams:
  schemes:
    theme:
@@ -556,5 +221,4 @@ streams:
      prefixes:
        '':
          - user/themes/eba
-         - user/themes/wsv
          - user/themes/ingrid

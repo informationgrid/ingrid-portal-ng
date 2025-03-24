@@ -63,7 +63,7 @@
                         {% endif %}
                     {% endfor %}
                     {% if page_url is not empty %}
-                        <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t|e }}">
+                        <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t|e }}"{% if menuentry.target_blank %} target="_blank" {% endif %}>
                             <span class="text">{{ page_title|t|e }}</span>
                         </a>
                     {% endif %}
@@ -85,7 +85,7 @@
                         {% endif %}
                     {% endfor %}
                     {% if page_url is not empty %}
-                    <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t|e }}">
+                    <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
                         <span class="text">{{ page_title|t|e }}</span>
                     </a>
                     {% endif %}
@@ -93,21 +93,23 @@
             {% endfor %}
         </div>
         <div class="menu-sub-links">
-            <div class="menu-settings-links">
             {% if grav.language.getLanguages|count > 1 %}
-                <h6>{{ "COMMON.LANGUAGE_TITLE"|t }}</h6>
-                {% for lang in grav.language.getLanguages %}
-                    {% set pageUrl = grav.base_url ~ "/" ~ lang ~ grav.uri.path ~ "?" ~ grav.uri.query %}
-                    <a href="{{ pageUrl }}"
-                        role="button"
-                        {% if grav.language.getLanguage == lang %}class="is-active"{% endif %}
-                        {% if grav.language.getLanguage == lang %}aria-pressed="true"{% else %}aria-pressed="false"{% endif %}
-                        aria-label="{{ lang|upper }}">
-                        {{ lang|upper }}
-                    </a>
-                {% endfor %}
+                <div class="menu-settings-links">
+                {% if grav.language.getLanguages|count > 1 %}
+                    <h6>{{ "COMMON.LANGUAGE_TITLE"|t }}</h6>
+                    {% for lang in grav.language.getLanguages %}
+                        {% set pageUrl = grav.base_url ~ "/" ~ lang ~ grav.uri.path ~ "?" ~ grav.uri.query %}
+                        <a href="{{ pageUrl }}"
+                            role="button"
+                            {% if grav.language.getLanguage == lang %}class="is-active"{% endif %}
+                            {% if grav.language.getLanguage == lang %}aria-pressed="true"{% else %}aria-pressed="false"{% endif %}
+                            aria-label="{{ lang|upper }}">
+                            {{ lang|upper }}
+                        </a>
+                    {% endfor %}
+                {% endif %}
+                </div>
             {% endif %}
-            </div>
         </div>
     </div>
 {% endmacro %}

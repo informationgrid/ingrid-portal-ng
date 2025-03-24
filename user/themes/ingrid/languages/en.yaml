@@ -1071,6 +1071,9 @@ THEME:
                     HIGHLIGHTED:
                         LABEL: Hauptmenü
                         HELP: Markieren Sie diesen Eintrag als ein 'Hauptmenü'.
+                    TARGET_BLANK:
+                        LABEL: Im neuem Tab öffnen
+                        HELP: Seite wird in einem neuem Tab geöffnet.
                 FOOTER_FIELDSET:
                     TITLE: Fußmenü
                     HELP: Definiere dein Fußmenü.
@@ -1288,6 +1291,9 @@ THEME:
             URL:
                 LABEL: Link zur Karte
                 HELP: Trage Sie hier die URL zur Karte.
+            SHRINK_HEADER:
+                LABEL: Portal Header verkleiner
+                HELP: Bei Aktivierung wird der Header verkleinert dargestellt.
             LEAFLET:
                 TITLE: Leaflet
                 ENABLED:
