@@ -24,7 +24,7 @@ Am Ehrenberg 8
 98693 Ilmenau, Thüringen
 Deutschland
 Technische Fragen richten Sie bitte bevorzugt über das [Kontaktformular](/contact "GeoPortal.WSV - Kontakt") an das GDI-Team des ITZBund.
-Tel.: +49 (0)22899 680 - 0
+Tel.: [+49 (0)22899 680 - 0](tel:+49(0)22899680-0)
 Fax: +49 (0)22899 680 - 8333
 Email: [gdi-wsv.support@ba-dlz-it.bund.de](mailto:gdi-wsv.support@ba-dlz-it.bund.de?subject=GeoPortal.WSV)
 
