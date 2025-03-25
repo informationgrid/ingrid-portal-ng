@@ -111,7 +111,7 @@ class SearchResultParserClassicISO
             libxml_use_internal_errors(true);
             $doc->loadHTML($summary, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             foreach (libxml_get_errors() as $error) {
-                Grav::instance()['log']->debug('Error on load HTML: ' . $error);
+                Grav::instance()['log']->debug('Error on load HTML: ' . $error->code . ':' . $error->message);
             }
             libxml_clear_errors();
             $summary = $doc->saveHTML();
