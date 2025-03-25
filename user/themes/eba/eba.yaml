@@ -199,6 +199,7 @@ redirect:
     - /search
     - /contact
     - /home
+    - /detail
   pages_to_redirect:
     -
       path: /help

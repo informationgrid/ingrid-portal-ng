@@ -18,10 +18,10 @@ Eisenbahn-Bundesamt
 
 Heinemannstraße 6
 D-53175 Bonn
-Telefon: [+49 228 9826-0](tel:+49 228 9826-0)
+Telefon: [+49 228 9826-0](tel:+492289826-0)
 Telefax: +49 228 9826–199
 Homepage: [www.eba.bund.de](www.eba.bund.de?target=_blank)
-E-Mail: [poststelle@eba.bund.de">poststelle@eba.bund.de](mailto:poststelle@eba.bund.de)
+E-Mail: [poststelle@eba.bund.de](mailto:poststelle@eba.bund.de)
 
 Präsident: Stefan Dernbach
 
