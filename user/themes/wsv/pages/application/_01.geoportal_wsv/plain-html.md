@@ -9,14 +9,14 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
     </div>
     <div class="row">
         <div class="columns text-center">
-            <h3>Informationen zur Ablösung des GeoKatalog.WSV auf der <a href="/startseite" title="Startseite">Startseite</a> unter AKTUELLE MELDUNGEN.</h3>
+            <h3>Informationen zur Ablösung des GeoKatalog.WSV auf der <a href="startseite" title="Startseite">Startseite</a> unter AKTUELLE MELDUNGEN.</h3>
         </div>
     </div>
     <div class="row">
         <div class="xsmall-24 small-24 medium-12 large-12 xlarge-12 columns">
             <div class="teaser-data search">
                 <div>
-                    <a target="_blank" class="external-link" href="/kartendienste" title="GeoViewer.WSV">
+                    <a target="_blank" class="external-link" href="kartendienste" title="GeoViewer.WSV">
                         <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/geoviewer.png">
                         <h2 class="header">
                             GeoViewer.WSV
@@ -26,7 +26,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
                         <span class="ic-ic-info"></span>
                     </a>
                     <p>Professioneller MapClient des GeoPortal.WSV</p>
-                    <a target="_blank" class="external-link" href="/kartendienste" title="GeoViewer.WSV">
+                    <a target="_blank" class="external-link" href="kartendienste" title="GeoViewer.WSV">
                         <span class="ic-ic-arrow arrow"></span>
                     </a>
                 </div>
@@ -35,7 +35,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
         <div class="xsmall-24 small-24 medium-12 large-12 xlarge-12 columns">
             <div class="teaser-data search">
                 <div>
-                    <a target="_blank" class="external-link" href="/editor/" title="InGrid Metadateneditor">
+                    <a target="_blank" class="external-link" href="editor/" title="InGrid Metadateneditor">
                         <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/ige.png">
                         <h2 class="header">
                             InGrid Metadateneditor
@@ -45,7 +45,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
                         <span class="ic-ic-info"></span>
                     </a>
                     <p>Metadaten zu Geodaten und Geodatendiensten erstellen, pflegen, veröffentlichen.</p>
-                    <a target="_blank" class="external-link" href="/editor/" title="InGrid Metadateneditor">
+                    <a target="_blank" class="external-link" href="editor/" title="InGrid Metadateneditor">
                         <span class="ic-ic-arrow arrow"></span>
                     </a>
                 </div>
