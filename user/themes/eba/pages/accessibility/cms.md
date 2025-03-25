@@ -57,7 +57,7 @@ Menschen mit Behinderungen
 
 Mauerstraße 53
 10117 Berlin
-Telefon: [+49 30 18 527-2805](tel:+49 30 18 527-2805)
+Telefon: [+49 30 18 527-2805](tel:+493018527-2805)
 Fax: +49 30 18 527-2901
 E-Mail: [info@schlichtungsstelle-bgg.de](mailto:info@schlichtungsstelle-bgg.de)
 Internet: [www.schlichtungsstelle-bgg.de](http://www.schlichtungsstelle-bgg.de?target=_blank "Website der Schlichtungsstelle aufrufen (in neuem Tab) ...")

@@ -26,7 +26,7 @@ class SimilarTerms
     public function getContent(): array
     {
         $similarSearchEnable = $this->grav['config']->get('themes.' . $this->theme . '.hit_search.sns.similar_terms.enabled');
-        if (!$similarSearchEnable) {
+        if (!$similarSearchEnable or empty($this->query)) {
             return [];
         }
 
