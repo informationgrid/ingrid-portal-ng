@@ -8,7 +8,7 @@ title: Anwendungen
             <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
                 <div class="teaser">
                     <div class="blue-border"></div>
-                    <a class="teaser-link" href="/kartendienste" title="GeoViewer.WSV">
+                    <a class="teaser-link" href="kartendienste" title="GeoViewer.WSV">
                         <img class="teaser-data-img" alt="Symbol GeoViewer.WSV"
                              src="user/themes/wsv/assets/cms/apps/images/geoviewer.png">
                         <span class="text">GeoViewer.WSV</span>
@@ -18,7 +18,7 @@ title: Anwendungen
             <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
                 <div class="teaser">
                     <div class="blue-border"></div>
-                    <a class="teaser-link" href="/ingrid-portal-mdek-application/login.jsp" target="_blank"
+                    <a class="teaser-link" href="/editor/" target="_blank"
                        title="InGrid Metadateneditor">
                         <img class="teaser-data-img" alt="Symbol InGrid Metadateneditor"
                              src="user/themes/wsv/assets/cms/apps/images/ige.png">
@@ -70,7 +70,7 @@ title: Anwendungen
             <div class="xsmall-24 small-12 medium-8 large-6 xlarge-4 columns">
                 <div class="teaser">
                     <div class="blue-border"></div>
-                    <a class="teaser-link" href="/anwendungen" title="weitere GIS-Tools">
+                    <a class="teaser-link" href="anwendungen" title="weitere GIS-Tools">
                         <span class="ic-ic-chemie" style="font-size:50px"></span>
                         <span class="text">GeoTools.WSV</span>
                     </a>

@@ -15,7 +15,7 @@ title: GeoPortal.WSV
             <div>
                 <noscript>
                     <div id="slideshow-container" style="float:left; height:80px; width:175px; padding: 5px 0 0;">
-                        <img src="/ingrid-portal-apps/cms/html/slideshow/images/Slideshow_01.jpg" alt="images/Slideshow_01.jpg" title="Impressionen GeoPortal.WSV"/>
+                        <img src="user/themes/wsv/assets/cms/slideshow/images/Slideshow_01.jpg" alt="images/Slideshow_01.jpg" title="Impressionen GeoPortal.WSV"/>
                     </div>
                 </noscript>
                 <div id="slideshow-container" class="image-set"
@@ -63,7 +63,7 @@ title: GeoPortal.WSV
             <br>
             <br>
             <span>
-                Anregungen und Fragen zum GeoPortal.WSV nehmen wir gern über das <a href="/kontakt" class="ico_linkintern">
+                Anregungen und Fragen zum GeoPortal.WSV nehmen wir gern über das <a href="kontakt" class="ico_linkintern">
                 <b><u>Kontaktformular</u></b></a> entgegen. Weitere Informationen zu Anwendungen und Diensten der WSV mit Geobezug sind auf der Intranetseite <a href="https://intranet.res.bund.de/Shared/Fachinformationen/WS/Navigation_Inhalt/02_Projekte_Verfahren/Geographische_Information_GIS/GIS_node.html" target="_new">
                 <b><u>GIS-Verfahren</u></b></a> zu finden.
             </span>
