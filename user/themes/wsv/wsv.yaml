@@ -428,15 +428,6 @@ hit_search:
   sns:
     similar_terms:
       enabled: true
-provider:
-  query:
-  hits_num:
-  requested_fields:
-  source:
-    include:
-    exclude:
-      - content
-      - idf
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -496,12 +487,6 @@ map:
       enable: false
       service:
     position: 46.58,5.22,55.40,15.68
-measure:
-  networks:
-    exclude:
-    initial:
-  url:
-  elastic:
 redirect:
   pages_to_404:
     - /api
@@ -514,15 +499,6 @@ redirect:
     -
       path: /help
       url: 'https://it-navigator.wsv.res.bund.de/display/geoportalwsvhilfe/GeoPortal.WSV+Hilfe'
-catalog:
-  open_nodes_level: 0
-  display_partner: true
-  sort_by_name: true
-  open_on_new_tab: true
-help:
-  default_hkey: about-1
-datasource:
-  excludes:
 rss:
   feeds:
 upload:
