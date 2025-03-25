@@ -1,6 +1,7 @@
 <?php
 
 namespace Grav\Plugin;
+use Grav\Common\Grav;
 use Grav\Common\Utils;
 
 class SearchResultParserClassicISO
