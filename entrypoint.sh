@@ -8,6 +8,7 @@ ENABLE_CACHE=${ENABLE_CACHE:-true}
 THEME_COPY_PAGES_INIT=${THEME_COPY_PAGES_INIT:-false}
 ENABLE_SCHEDULER_CODELIST=${ENABLE_SCHEDULER_CODELIST:-true}
 ENABLE_SCHEDULER_RSS=${ENABLE_SCHEDULER_RSS:-true}
+HOMEPAGE=${HOMEPAGE:-/home}
 
 mkdir -p /var/www/"$GRAV_FOLDER"
 cd /var/www/"$GRAV_FOLDER"
@@ -71,6 +72,9 @@ if [ "$ENABLE_CACHE" = "true" ]; then
 else
   yq -i '.cache.enabled = false' "$SYSTEM_YAML"
 fi
+
+# Add home
+yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
 
 # copy default cms pages
 if [ ! -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] || [ "$THEME_COPY_PAGES_INIT" = "true" ]; then
