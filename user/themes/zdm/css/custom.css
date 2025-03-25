@@ -1,0 +1,74 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+ */
+
+#footer h2 {
+  color: #FFF !important;
+}
+input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+  outline: 2px solid transparent !important;
+}
+@media screen and (min-width: 940px) {
+  .copyright {
+    display: block;
+  }
+}
+
+#wrapperDivisions.maps {
+  margin-top: 0px !important;
+}
+#header.maps {
+  position: relative !important;
+}
+
+@media only screen and (min-width: 64em) {
+  #navPrimary>ul {
+    margin-left: auto !important;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  #navPrimary {
+    display: flex !important;
+    align-items: flex-end !important;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  #header.smaller .addlogo p, #header.smaller .logo p, #header .addShrinkLogo, #header.smaller #wrapperBreadcrumbs {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  #header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    -moz-box-shadow: 0 4px 4px -2px #7f7f7f;
+    -webkit-box-shadow: 0 4px 4px -2px #7f7f7f;
+    box-shadow: 0 4px 4px -2px #7f7f7f;
+    display: flex;
+    flex-direction: column;
+  }
+}

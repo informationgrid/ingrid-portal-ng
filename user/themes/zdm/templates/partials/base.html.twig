@@ -1,0 +1,11 @@
+{% set header_title_extend = theme_var('header.title_extend') %}
+
+{% set headerResponse = getHtmlHeaderZDM('ZDM') %}
+{% if headerResponse is not empty %}
+    {{ headerResponse|raw }}
+    {% block body %}
+        {% block content %}{% endblock %}
+    {% endblock %}
+{% endif %}
+</body>
+</html>

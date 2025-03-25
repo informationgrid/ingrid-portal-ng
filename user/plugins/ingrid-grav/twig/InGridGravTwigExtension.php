@@ -21,7 +21,18 @@ class InGridGravTwigExtension extends GravExtension
             new \Twig_SimpleFunction('removeHashLocale', [$this, 'removeHashLocale']),
             new \Twig_SimpleFunction('getMimeByContentType', [$this, 'getMimeByContentType']),
             new \Twig_SimpleFunction('urlDecode', [$this, 'urlDecode']),
+            new \Twig_SimpleFunction('getHtmlHeaderZDM', [$this, 'getHtmlHeaderZDM']),
         ];
+    }
+
+    public function getHtmlHeaderZDM(string $portal): string
+    {
+        $html = "";
+        $url = 'https://www.kuestendaten.de/DE/_seitenrahmen/header?processids=';
+        if (($response = @file_get_contents($url)) !== false) {
+            return $response;
+        }
+        return $html;
     }
 
     public function urlDecode(string $text): string
