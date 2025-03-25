@@ -107,7 +107,12 @@ class SearchResultParserClassicISO
         if (!empty($summary) && str_contains($summary, '<')) {
             $doc = new \DomDocument();
             $summary = \mb_convert_encoding($summary, 'HTML-ENTITIES', 'UTF-8');
+            libxml_use_internal_errors(true);
             $doc->loadHTML($summary, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            foreach (libxml_get_errors() as $error) {
+                Grav::instance()['log']->debug('Error on load HTML: ' . $error);
+            }
+            libxml_clear_errors();
             $summary = $doc->saveHTML();
             while(str_starts_with($summary, '<p>')) {
                 $replace = '';
