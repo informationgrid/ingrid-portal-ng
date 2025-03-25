@@ -61,99 +61,6 @@ menu:
       path: /privacy
     -
       path: /accessibility
-home:
-  sort_modules:
-  rss:
-    feeds_limit: 6
-  categories:
-    rss: 'type'
-    facet_config: []
-    add_to_search:
-      - '-datatype:address'
-      - '-isfolder:true'
-  hits:
-    add_to_search:
-      - '-datatype:address'
-      - '-isfolder:true'
-    hits_num: 0
-    sort:
-      sortByDate: true
-hit_search:
-  hits_num: 0
-  facet_config: []
-  add_to_search:
-    - '-datatype:address'
-    - '-isfolder:true'
-  query_fields:
-    - title^10.0
-    - title.edge_ngram^4.0
-    - title.ngram^2.0
-    - summary
-    - summary.edge_ngram^0.4
-    - summary.ngram^0.2
-    - content^0.2
-    - content.ngram^0.1
-  requested_fields:
-  source:
-      include:
-      exclude:
-        - content
-        - idf
-  query_string_operator: AND
-  sort:
-    enabled: false
-    sortByDate: false
-  expandable:
-    enabled: true
-  summary_replace_newline: ' '
-  summary_lines_limit: 5
-  links_max: 5
-  csw_enabled: true
-  rdf_enabled: false
-  partner_logo_enabled: false
-  sns:
-    similar_terms:
-      enabled: false
-provider:
-  query:
-  hits_num:
-  requested_fields:
-  source:
-    include:
-    exclude:
-      - content
-      - idf
-hit_detail:
-  summary_replace_newline: ' '
-  reference_system_link: 'https://epsg.io/'
-  reference_system_link_replace: 'urn:ogc:def:crs:'
-  csw_enabled: true
-  rdf_enabled: false
-  time_in_description: true
-  address_order:
-    - '3'
-    - '0'
-    - '1'
-    - '2'
-  contact_order:
-    - pointOfContact
-    - distributor
-    - publisher
-    - owner
-    - processor
-    - author
-  requested_fields:
-    - partner
-    - provider
-  source:
-    include:
-      - idf
-      - dataSourceName
-      - iPlugId
-      - title
-    exclude:
-      - content
-  query_string_operator: AND
 map:
   enabled: true
   url: /ingrid-webmap-client/frontend/prd
@@ -182,12 +89,6 @@ map:
       enable: false
       service:
     position: 46.58,5.22,55.40,15.68
-measure:
-  networks:
-    exclude:
-    initial:
-  url:
-  elastic:
 redirect:
   pages_to_404:
     - /api
@@ -204,17 +105,6 @@ redirect:
     -
       path: /help
       url: 'https://geoportal.eisenbahn-bundesamt.de/hilfe'
-catalog:
-  open_nodes_level: 0
-  display_partner: true
-  sort_by_name: true
-  open_on_new_tab: true
-help:
-  default_hkey: about-1
-datasource:
-  excludes:
-rss:
-  feeds:
 streams:
  schemes:
    theme:
