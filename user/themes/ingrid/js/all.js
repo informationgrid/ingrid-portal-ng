@@ -40,7 +40,7 @@
         }
     }
 
-    client.open('GET', '/user/themes/ingrid/images/template/icons.svg');
+    client.open('GET', 'user/themes/ingrid/images/template/icons.svg');
     client.send();
 
 })();
