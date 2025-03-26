@@ -33,7 +33,7 @@
                                 {% set isItemOpen = item.open or (selected_facets[item.id] is not null)%}
                                 {% set itemOpenClass = 'class="accordion-item"' %}
                                 {% set itemOpenAria = 'aria-expanded="false" aria-selected="false"' %}
-                                {% set itemOpenContentStyle = 'style="display:none;"' %}
+                                {% set itemOpenContentStyle = '' %}
                                 {% set itemOpenContentAria = 'aria-hidden="true"' %}
                                 {% set itemOpenBy = item.openBy %}
                                 {% for key, param in itemOpenBy if not isItemOpen %}
@@ -45,19 +45,19 @@
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
-                                {% if isItemOpen %}
+                                {% if isItemOpen or item.id == "bbox" %}
                                     {% set itemOpenClass = 'class="accordion-item is-active"' %}
                                     {% set itemOpenAria = 'aria-expanded="true" aria-selected="true"' %}
                                     {% set itemOpenContentStyle = 'style="display:block;"' %}
                                     {% set itemOpenContentAria = 'aria-hidden="false"' %}
                                 {% endif %}
                                 <li {{ itemOpenClass|raw }} data-accordion-item="">
-                                    <a href="#" class="accordion-title" aria-controls="{{ item.id }}-accordion" role="tab"
-                                       id="{{ item.id }}-accordion-label" {{ itemOpenAria|raw }}>
+                                    <a id="{{ item.id }}-accordion-label" href="#" class="accordion-title" aria-controls="{{ item.id }}-accordion" role="tab"
+                                       {{ itemOpenAria|raw }}>
                                         <span class="text">{{ item.label|t }}</span>
                                     </a>
-                                    <div class="accordion-content" data-tab-content="" role="tabpanel"
-                                         aria-labelledby="{{ item.id }}-accordion-label" id="{{ item.id }}-accordion" {{ itemOpenContentAria|raw }}
+                                    <div id="{{ item.id }}-accordion" class="accordion-content" data-tab-content="" role="tabpanel"
+                                         aria-labelledby="{{ item.id }}-accordion-label" {{ itemOpenContentAria|raw }}
                                         {{ itemOpenContentStyle|raw }}>
                                         <div class="boxes">
                                             {% if item.toggle %}

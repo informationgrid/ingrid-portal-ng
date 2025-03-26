@@ -5,8 +5,10 @@
 {% set map_bg_wms = theme_var('map.leaflet.bg.layer.wms') %}
 {% set map_bg_attribution = theme_var('map.leaflet.bg.layer.attribution') %}
 {% set map_bg_opacity = theme_var('map.leaflet.bg.layer.opacity') %}
+{% set map_geocoder = theme_var('map.leaflet.geocoder.service') %}
+{% set map_position = theme_var('map.leaflet.position') %}
 
-<div id="search-map" style="height: 200px;"></div>
+<div id="search-map" class="map-ingrid" style="height: 200px;outline-style: none;"></div>
 
 <script>
     let bbox = null;
@@ -33,7 +35,10 @@
         '{{ map_bg_wms.name }}',
         '<a href="https://leafletjs.com" title="Leaflet">Leaflet</a> | {{ map_bg_attribution|raw }}',
         {{ map_bg_opacity }},
-        'https://nominatim.openstreetmap.org/search?q={query}&format=json&countrycodes={countries}',
+        '{{ map_geocoder|raw }}',
         triggerNominatimOnInput,
-        bbox);
+        [{{ map_position }}],
+        bbox,
+        'bbox-accordion-label'
+    );
 </script>

@@ -49,6 +49,11 @@ form:
       validate:
         type: bool
 
+    map.leaflet.position:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.POSITION.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.POSITION.HELP
+
     map.leaflet.epsg:
       type: text
       label: THEME.ADMIN.MAP.LEAFLET.EPSG.LABEL

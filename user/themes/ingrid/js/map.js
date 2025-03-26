@@ -105,7 +105,7 @@ function nominatimSearch(e, nominatimUrl, isBoundary) {
     }
 }
 
-function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl, triggerNominatimOnInput, bbox){
+function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl, triggerNominatimOnInput, initBbox, bbox, hide){
     $('#filter-content-group').show();
     $('#spatial-filter-group').show();
     $('#spatial-content-tab').show();
@@ -122,7 +122,8 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
 
     searchMapSmall = L.map('search-map',{
         epsg: epsg
-    }).setView([52, 10], 4);
+    })
+
     searchMapBig = L.map('search-map-big', {
         epsg: epsg
     });
@@ -200,8 +201,24 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
 
     if(bbox){
         L.rectangle(bbox, {color: '#3278B9', weight: 1}).addTo(searchMapSmall);
-        searchMapSmall.fitBounds(bbox,{padding: [5,5]});
+        searchMapSmall.fitBounds(bbox);
+    } else {
+        if (initBbox && initBbox.length > 3) {
+            const bounds = [
+                [initBbox[0], initBbox[1]],
+                [initBbox[2], initBbox[3]]
+            ];
+            searchMapSmall.fitBounds(bounds);
+        } else {
+            searchMapSmall.setView([initBbox[0] ?? 52, initBbox[1] ?? 10], initBbox[2] ?? 4);
+        }
     }
+
+    searchMapSmall.whenReady(function(){
+        setTimeout(() => {
+            $('#' + hide).click();
+        }, 200);
+    })
 
     $('#filter-content-group').hide();
 
@@ -234,7 +251,15 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
         editableLayers.clearLayers()
 
         if(!bbox){
-            searchMapBig.setView([52, 10],5);
+            if (initBbox && initBbox.length > 3) {
+                const bounds = [
+                    [initBbox[0], initBbox[1]],
+                    [initBbox[2], initBbox[3]]
+                ];
+                searchMapBig.fitBounds(bounds);
+            } else {
+                searchMapBig.setView([initBbox[0] ?? 52, initBbox[1] ?? 10], initBbox[2] ?? 5);
+            }
         }
         else {
             L.rectangle(bbox, {color: '#3278B9', weight: 1}).addTo(editableLayers);

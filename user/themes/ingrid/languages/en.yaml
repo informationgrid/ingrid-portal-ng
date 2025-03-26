@@ -1299,6 +1299,9 @@ THEME:
                 ENABLED:
                     LABEL: Leaflet als Karte verwenden
                     HELP: Aktivieren Sie hier die Karte.
+                POSITION:
+                    LABEL: Initiale Kartenausdehnung
+                    HELP: Tragen Sie die initiale Position der Karte ein. Für einen Bereich in der Syntax "lat,lng,lat,lng" und für eine bestimmte Position mit Zoomstufe "lat,lng,zoom" ein.
                 EPSG:
                     LABEL: EPSG der Karte
                     HELP: Trage Sie hier den EPSG der Karte ein

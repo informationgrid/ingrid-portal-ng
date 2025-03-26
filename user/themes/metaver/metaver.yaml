@@ -668,7 +668,7 @@ map:
       clustering: false
     geocoder:
       enable: false
-      service:
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
     position: 46.58,5.22,55.40,15.68
 measure:
   networks:
