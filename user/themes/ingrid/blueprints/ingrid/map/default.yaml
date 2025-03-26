@@ -5,17 +5,6 @@ form:
       title: THEME.ADMIN.MAP.TITLE
       underline: true
 
-    map.enabled:
-      type: toggle
-      label: THEME.ADMIN.MAP.ENABLED.LABEL
-      help: THEME.ADMIN.MAP.ENABLED.HELP
-      highlight: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-
     map.url:
       type: text
       label: THEME.ADMIN.MAP.URL.LABEL
@@ -37,17 +26,6 @@ form:
       type: section
       title: THEME.ADMIN.MAP.LEAFLET.TITLE
       underline: true
-
-    map.leaflet.enabled:
-      type: toggle
-      label: THEME.ADMIN.MAP.LEAFLET.ENABLED.LABEL
-      help: THEME.ADMIN.MAP.LEAFLET.ENABLED.HELP
-      highlight: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
 
     map.leaflet.position:
       type: text

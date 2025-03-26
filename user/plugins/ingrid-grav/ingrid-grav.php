@@ -614,7 +614,6 @@ class InGridGravPlugin extends Plugin
                     $twig = $this->grav['twig'];
                     $twig->twig_vars['query'] = $search->query;
                     $twig->twig_vars['selected_facets'] = $search->selectedFacets;
-                    $twig->twig_vars['facetMapCenter'] = array(51.3, 10, 5);
                     $twig->twig_vars['search_result'] = $search->results;
                     $twig->twig_vars['hitsNum'] = $search->hitsNum;
                     $twig->twig_vars['pagingUrl'] = $search->getPagingUrl($this->grav['uri']);

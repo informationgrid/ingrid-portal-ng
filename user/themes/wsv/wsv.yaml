@@ -460,11 +460,9 @@ hit_detail:
       - content
   query_string_operator: AND
 map:
-  enabled: true
   url: /ingrid-webmap-client/frontend/prd
   shrink_header: true
   leaflet:
-    enabled: false
     epsg: '3857'
     bg:
       layer:

@@ -1285,9 +1285,6 @@ THEME:
                 HELP: Schalten Sie hier die Darstellung des Partners aus.
         MAP:
             TITLE: Karte
-            ENABLED:
-                LABEL: Karte aktivieren
-                HELP: Aktivieren Sie hier die Karte.
             URL:
                 LABEL: Link zur Karte
                 HELP: Trage Sie hier die URL zur Karte.
@@ -1296,9 +1293,6 @@ THEME:
                 HELP: Bei Aktivierung wird der Header verkleinert dargestellt.
             LEAFLET:
                 TITLE: Leaflet
-                ENABLED:
-                    LABEL: Leaflet als Karte verwenden
-                    HELP: Aktivieren Sie hier die Karte.
                 POSITION:
                     LABEL: Initiale Kartenausdehnung
                     HELP: Tragen Sie die initiale Position der Karte ein. Für einen Bereich in der Syntax "lat,lng,lat,lng" und für eine bestimmte Position mit Zoomstufe "lat,lng,zoom" ein.

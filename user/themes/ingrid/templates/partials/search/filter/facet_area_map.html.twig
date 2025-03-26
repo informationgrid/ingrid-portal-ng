@@ -7,6 +7,7 @@
 {% set map_bg_opacity = theme_var('map.leaflet.bg.layer.opacity') %}
 {% set map_geocoder = theme_var('map.leaflet.geocoder.service') %}
 {% set map_position = theme_var('map.leaflet.position') %}
+{% set map_bbox = theme_var('map.leaflet.bbox') %}
 
 <div id="search-map" class="map-ingrid" style="height: 350px;outline-style: none;"></div>
 
@@ -38,7 +39,12 @@
         '{{ map_geocoder|raw }}',
         triggerNominatimOnInput,
         [{{ map_position }}],
-        bbox
+        bbox,
+        {
+            color: '{{ map_bbox.color }}',
+            opacity: '{{ map_bbox.color }}',
+            weight: '{{ map_bbox.weight }}'
+        }
     );
     searchMapSmall.invalidateSize();
 {% if not active %}

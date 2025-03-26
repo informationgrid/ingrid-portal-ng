@@ -105,7 +105,8 @@ function nominatimSearch(e, nominatimUrl, isBoundary) {
     }
 }
 
-function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl, triggerNominatimOnInput, initBbox, bbox){
+function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl,
+                       triggerNominatimOnInput, initBbox, bbox, bboxConfig){
     $('#filter-content-group').show();
     $('#spatial-filter-group').show();
     $('#spatial-content-tab').show();
@@ -120,6 +121,11 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
         document.querySelector("#search-map-overlay").close()
     }
 
+    var bboxConfig = {
+        color: bboxConfig.color ?? '#3278B9',
+        weight: bboxConfig.weight ?? 1,
+        opacity: bboxConfig.opacity ?? 1
+    };
     searchMapSmall = L.map('search-map',{
         epsg: epsg
     })
@@ -200,7 +206,7 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
     L.control.edit({ position: 'topright' }).addTo(searchMapSmall);
 
     if(bbox){
-        L.rectangle(bbox, {color: '#3278B9', weight: 1}).addTo(searchMapSmall);
+        L.rectangle(bbox, bboxConfig).addTo(searchMapSmall);
         searchMapSmall.fitBounds(bbox);
     } else {
         if (initBbox && initBbox.length > 3) {
@@ -256,7 +262,7 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
             }
         }
         else {
-            L.rectangle(bbox, {color: '#3278B9', weight: 1}).addTo(editableLayers);
+            L.rectangle(bbox, bboxConfig).addTo(editableLayers);
             searchMapBig.fitBounds(bbox, {padding: [15, 15]});
         }
     }
