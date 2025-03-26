@@ -124,7 +124,7 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
     var bboxConfig = {
         color: bboxConfig.color ?? '#3278B9',
         weight: bboxConfig.weight ?? 1,
-        opacity: bboxConfig.opacity ?? 1
+        fillOpacity: bboxConfig.opacity ?? 1
     };
     searchMapSmall = L.map('search-map',{
         epsg: epsg
