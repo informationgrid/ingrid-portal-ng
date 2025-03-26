@@ -1,5 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
+{% do assets.addCss('theme://css/measure.css', 98) %}
+
 {% block content %}
     <div class="body" role="main">
         {% set measure_url = theme_var('measure.url') %}
@@ -11,14 +13,6 @@
         {% set measure_networks_initial = theme_var('measure.networks.initial')|join(',') %}
         {% set map_bg_wmts = theme_var('map.leaflet.bg.layer.wmts.url') %}
         {% set map_bg_attribution = theme_var('map.leaflet.bg.layer.attribution') %}
-
-        <style>
-            #iframe_measure { height: 100%; width: 100%; border: 0; }
-            .embed-container { width: 100%; position: absolute; bottom: 0; top: 80px; }
-            @media print, screen and (min-width: 35em) {
-              .embed-container { top: 120px;}
-            }
-        </style>
 
         <div class="embed-container">
             <iframe id="iframe_measure" src="{{ measure_url }}" allowfullscreen></iframe>
