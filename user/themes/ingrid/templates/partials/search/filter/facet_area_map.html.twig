@@ -8,7 +8,7 @@
 {% set map_geocoder = theme_var('map.leaflet.geocoder.service') %}
 {% set map_position = theme_var('map.leaflet.position') %}
 
-<div id="search-map" class="map-ingrid" style="height: 200px;outline-style: none;"></div>
+<div id="search-map" class="map-ingrid" style="height: 350px;outline-style: none;"></div>
 
 <script>
     let bbox = null;
@@ -38,7 +38,11 @@
         '{{ map_geocoder|raw }}',
         triggerNominatimOnInput,
         [{{ map_position }}],
-        bbox,
-        'bbox-accordion-label'
+        bbox
     );
+    searchMapSmall.invalidateSize();
+{% if not active %}
+    $('#{{ id }}').removeClass('is-active');
+    $('#{{ id }}').children('.accordion-content').css('display','none');
+{% endif %}
 </script>

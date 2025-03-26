@@ -51,7 +51,7 @@
                                     {% set itemOpenContentStyle = 'style="display:block;"' %}
                                     {% set itemOpenContentAria = 'aria-hidden="false"' %}
                                 {% endif %}
-                                <li {{ itemOpenClass|raw }} data-accordion-item="">
+                                <li id="{{ item.id }}-accordion-item" {{ itemOpenClass|raw }} data-accordion-item="">
                                     <a id="{{ item.id }}-accordion-label" href="#" class="accordion-title" aria-controls="{{ item.id }}-accordion" role="tab"
                                        {{ itemOpenAria|raw }}>
                                         <span class="text">{{ item.label|t }}</span>
@@ -93,7 +93,10 @@
                                             </div>
                                             {% endif %}
                                             {% if (item.id == "bbox") %}
-                                                {% include 'partials/search/filter/facet_area_map.html.twig' %}
+                                                {% include 'partials/search/filter/facet_area_map.html.twig' with {
+                                                    id: item.id ~ '-accordion-item',
+                                                    active: isItemOpen
+                                                }%}
                                             {% else %}
                                                 {% set activeListLimit = false %}
                                                 {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}

@@ -105,7 +105,7 @@ function nominatimSearch(e, nominatimUrl, isBoundary) {
     }
 }
 
-function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl, triggerNominatimOnInput, initBbox, bbox, hide){
+function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity, nominatimUrl, triggerNominatimOnInput, initBbox, bbox){
     $('#filter-content-group').show();
     $('#spatial-filter-group').show();
     $('#spatial-content-tab').show();
@@ -213,12 +213,6 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
             searchMapSmall.setView([initBbox[0] ?? 52, initBbox[1] ?? 10], initBbox[2] ?? 4);
         }
     }
-
-    searchMapSmall.whenReady(function(){
-        setTimeout(() => {
-            $('#' + hide).click();
-        }, 200);
-    })
 
     $('#filter-content-group').hide();
 
