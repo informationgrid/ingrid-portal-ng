@@ -23,7 +23,7 @@ class LayoutZDM
         $this->footerUrl = $this->grav['config']->get('themes.' . $theme . '.footer.url');
     }
 
-    public function getContentHeader(string $folder, ?string $title): string
+    public function getContentHeader(string $folder, ?string $title = null): string
     {
         $lang = $this->grav['language'];
         $url = $this->headerUrl;
