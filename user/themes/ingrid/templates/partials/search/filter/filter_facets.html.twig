@@ -3,17 +3,14 @@
 
 <form action="{{ page.find('/search').url }}?{{ uri.query }}&q={{ query }}" method="post" name="updateFacets" id="updateFacets">
     <div id="facets">
-        <div class="accordion accordion-filter-group filter" data-accordion="" data-allow-all-closed="true" role="tablist">
-            <div class="accordion-item accordion-item-filter-group" data-accordion-item="">
-                <a href="#" class="accordion-title accordion-title-filter-group hide-for-large" role="tab"
-                   id="facet-content-accordion-label" aria-expanded="false" aria-selected="false"
-                   aria-controls="facet-content-accordion">
+        <div class="accordion accordion-filter-group filter" data-allow-all-closed="true" role="tablist" data-accordion>
+            <div class="accordion-item accordion-item-filter-group" data-accordion-item>
+                <a id="facet-content-accordion-label" href="#" class="accordion-title accordion-title-filter-group hide-for-large"
+                   role="tab" aria-expanded="false" aria-selected="false" aria-controls="facet-content-accordion">
                     <span>Filter</span>
                 </a>
-                <div class="accordion-content filter-wrapper filter-wrapper-shadowless" data-tab-content=""
-                     role="tabpanel"
-                     aria-labelledby="facet-content-accordion-label" id="facet-content-accordion"
-                     tabindex="1">
+                <div id="facet-content-accordion" class="accordion-content filter-wrapper filter-wrapper-shadowless" role="tabpanel"
+                     aria-labelledby="facet-content-accordion-label" tabindex="1" data-tab-content>
                     <div class="boxes">
                         {% for item in search_result.facets %}
                             {% set dependencyItems = item.displayDependOn %}
@@ -28,8 +25,8 @@
                                 {% endif %}
                             {% endfor %}
                             {% if isDependencySelect or (dependencyItems is null) %}
-                            <ul class="accordion filter-group" data-accordion="" data-multi-expand="true"
-                                data-allow-all-closed="true" role="tablist">
+                            <ul class="accordion filter-group" data-multi-expand="true"
+                                data-allow-all-closed="true" role="tablist" data-accordion>
                                 {% set isItemOpen = item.open or (selected_facets[item.id] is not null)%}
                                 {% set itemOpenClass = 'class="accordion-item"' %}
                                 {% set itemOpenAria = 'aria-expanded="false" aria-selected="false"' %}
@@ -51,14 +48,14 @@
                                     {% set itemOpenContentStyle = 'style="display:block;"' %}
                                     {% set itemOpenContentAria = 'aria-hidden="false"' %}
                                 {% endif %}
-                                <li id="{{ item.id }}-accordion-item" {{ itemOpenClass|raw }} data-accordion-item="">
-                                    <a id="{{ item.id }}-accordion-label" href="#" class="accordion-title" aria-controls="{{ item.id }}-accordion" role="tab"
+                                <li id="{{ item.id ~ '-accordion-item' }}" {{ itemOpenClass|raw }} data-accordion>
+                                    <a id="{{ item.id ~ '-accordion-label' }}" class="accordion-title" href="#" aria-controls="{{ item.id }}-accordion" role="tab"
                                        {{ itemOpenAria|raw }}>
                                         <span class="text">{{ item.label|t }}</span>
                                     </a>
-                                    <div id="{{ item.id }}-accordion" class="accordion-content" data-tab-content="" role="tabpanel"
-                                         aria-labelledby="{{ item.id }}-accordion-label" {{ itemOpenContentAria|raw }}
-                                        {{ itemOpenContentStyle|raw }}>
+                                    <div id="{{ item.id }}-accordion" class="accordion-content" role="tabpanel"
+                                        aria-labelledby="{{ item.id }}-accordion-label" {{ itemOpenContentAria|raw }}
+                                        {{ itemOpenContentStyle|raw }} data-tab-content>
                                         <div class="boxes">
                                             {% if item.toggle %}
                                                 {% set actionLink = page.find('/search').url ~ '?' %}
@@ -104,7 +101,7 @@
                                                 {% for bucket in itemsSelected %}
                                                     <div class="form-element boxed">
                                                         {% set facetId = item.id ~ '-' ~ bucket.value %}
-                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ facetId }}">
+                                                        <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                             <div class="input-check">
                                                                 <div class="control-group">
                                                                     <label class="control control--checkbox">
@@ -124,14 +121,14 @@
                                                     {% if item.listLimit and activeListLimit == false %}
                                                         {% if loop.index > item.listLimit %}
                                                             {% set activeListLimit = true %}
-                                                            <div class="accordion " data-accordion="" data-allow-all-closed="true" role="tablist">
-                                                                <div class="accordion-item text-right" data-accordion-item="">
-                                                                    <div class="text-left" data-tab-content="" role="tabpanel" aria-labelledby="type-accordion-label" id="{{ item.id }}_more" aria-hidden="false" style="display: none;">
+                                                            <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
+                                                                <div class="accordion-item text-right" data-accordion-item>
+                                                                    <div id="{{ item.id }}_more" class="text-left" style="display: none;" role="tabpanel" aria-labelledby="type-accordion-label" aria-hidden="false" data-tab-content >
                                                         {% endif %}
                                                     {% endif %}
                                                     <div class="form-element boxed">
                                                         {% set facetId = item.id ~ '-' ~ bucket.value %}
-                                                        <a href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox" id="facet-{{ facetId }}">
+                                                        <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                             <div class="input-check">
                                                                 <div class="control-group">
                                                                     <label class="control control--checkbox">
@@ -146,7 +143,7 @@
                                                 {% endfor %}
                                                 {% if activeListLimit == true %}
                                                             </div>
-                                                            <a href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" id="{{ item.id }}_more-label" aria-expanded="false" aria-selected="false">
+                                                            <a id="{{ item.id }}_more-label" href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" aria-expanded="false" aria-selected="false">
                                                                 <div class="helper plus">
                                                                     <span class="ic-ic-plus"></span>
                                                                     <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_PLUS"|t }}</span>
