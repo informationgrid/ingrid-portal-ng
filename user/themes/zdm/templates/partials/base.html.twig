@@ -6,6 +6,13 @@
     {% block body %}
         {% block content %}{% endblock %}
     {% endblock %}
+    {% if page.header.footer_disabled != true %}
+        {% set footerResponse = getHtmlFooterZDM('ZDM') %}
+        {% block footer %}
+            {{ footerResponse|raw }}
+        {% endblock %}
+    {% else %}
+            </body>
+        </html>
+    {% endif %}
 {% endif %}
-</body>
-</html>

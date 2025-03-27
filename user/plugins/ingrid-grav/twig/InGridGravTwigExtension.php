@@ -22,6 +22,7 @@ class InGridGravTwigExtension extends GravExtension
             new \Twig_SimpleFunction('getMimeByContentType', [$this, 'getMimeByContentType']),
             new \Twig_SimpleFunction('urlDecode', [$this, 'urlDecode']),
             new \Twig_SimpleFunction('getHtmlHeaderZDM', [$this, 'getHtmlHeaderZDM']),
+            new \Twig_SimpleFunction('getHtmlFooterZDM', [$this, 'getHtmlFooterZDM']),
         ];
     }
 
@@ -30,11 +31,24 @@ class InGridGravTwigExtension extends GravExtension
         $html = "";
         $url = 'https://www.kuestendaten.de/DE/_seitenrahmen/header?processids=';
         if (($response = @file_get_contents($url)) !== false) {
+            $response = str_replace('<base href="https://www.kuestendaten.de"/>', '<base href="/">', $response);
+            $ingridHead = ''
+                . '<link rel="stylesheet" href="user/themes/zdm/css/custom.css" type="text/css">';
+            $response = str_replace('  </head>', $ingridHead . '  </head>', $response);
             return $response;
         }
         return $html;
     }
 
+    public function getHtmlFooterZDM(string $portal): string
+    {
+        $html = "";
+        $url = 'https://www.kuestendaten.de/DE/_seitenrahmen/footer?processids=';
+        if (($response = @file_get_contents($url)) !== false) {
+            return $response;
+        }
+        return $html;
+    }
     public function urlDecode(string $text): string
     {
         return urldecode($text);
