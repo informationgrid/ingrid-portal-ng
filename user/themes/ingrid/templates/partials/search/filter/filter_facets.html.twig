@@ -48,7 +48,7 @@
                                     {% set itemOpenContentStyle = 'style="display:block;"' %}
                                     {% set itemOpenContentAria = 'aria-hidden="false"' %}
                                 {% endif %}
-                                <li id="{{ item.id ~ '-accordion-item' }}" {{ itemOpenClass|raw }} data-accordion>
+                                <li id="{{ item.id ~ '-accordion-item' }}" {{ itemOpenClass|raw }} data-accordion-item>
                                     <a id="{{ item.id ~ '-accordion-label' }}" class="accordion-title" href="#" aria-controls="{{ item.id }}-accordion" role="tab"
                                        {{ itemOpenAria|raw }}>
                                         <span class="text">{{ item.label|t }}</span>
