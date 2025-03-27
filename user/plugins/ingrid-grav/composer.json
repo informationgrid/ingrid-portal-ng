@@ -35,6 +35,7 @@
       "classes/Search.php",
       "classes/Provider.php",
       "classes/SimilarTerms.php",
+      "classes/LayoutZDM.php",
       "classes/utils/IdfHelper.php",
       "classes/utils/RdfHelper.php",
       "classes/utils/CodelistHelper.php",

@@ -1,0 +1,29 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+    {% block content %}
+        {% import 'macros/default_macros.html.twig' as default_macros %}
+        <div id="main" class="row">
+            <div id="content" class="large-8 medium-12 small-12 columns">
+            {% if hit %}
+                {% if hit.html %}
+                    {% include 'partials/detail/generic/detail_generic.html.twig' %}
+                {% else %}
+                    <div class="detail" id="detail">
+                        <div class="row search-filtered">
+                            {{ default_macros.render_error_msg("SEARCH_DETAIL.ERROR_NO_DETAILS_AVAILABLE"|t) }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="detail" id="detail">
+                    <div class="row search-filtered">
+                        {{ default_macros.render_error_msg("SEARCH_DETAIL.ERROR_NO_DETAILS_AVAILABLE"|t) }}
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+        </div> {# close requested header content #}
+    {% endblock %}
+{% endblock %}

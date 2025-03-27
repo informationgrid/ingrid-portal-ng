@@ -19,7 +19,6 @@
 {% endblock %}
 
 {% block body %}
-    <div class="body" role="main">
     {% set sortModules  = theme_var(page.folder ~ '.sort_modules') %}
     {% if sortModules %}
         {% for sortModule in sortModules %}
@@ -33,7 +32,6 @@
             {{ module.content|raw }}
         {% endfor %}
     {% endif %}
-    </div>
 {% endblock %}
 
 {% block stylesheets_leaflet %}

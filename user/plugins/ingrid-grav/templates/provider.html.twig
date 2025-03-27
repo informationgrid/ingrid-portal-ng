@@ -1,44 +1,42 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    <div class="body" role="main">
-        <div class="search-filtered row content-small">
-            <div class="columns">
-                <ul class="accordion" data-multi-expand="true" data-allow-all-closed="true" role="tablist" data-accordion>
-                    {% for partnerKey in partners|keys %}
-                        {% set partner = partners[partnerKey] %}
-                        {% set partnerIdent = partner.ident %}
-                        {% set partnerName = partner.name %}
-                        {% set partnerProviders = (partner.providers ?? [])|sort %}
-                        {% if partnerProviders %}
-                        <li class="accordion-item" data-accordion-item>
-                            <a href="#" class="accordion-title" aria-controls="{{ partnerKey }}-accordion" role="tab" id="{{ partnerKey }}-accordion-label" aria-expanded="false" aria-selected="false">
-                                <span class="text">{{ partnerName }}</span>
-                            </a>
-                            <div id="{{ partnerKey }}-accordion" class="accordion-content" role="tabpanel" aria-labelledby="{{ partnerKey }}-accordion-label" aria-hidden="true" data-tab-content>
-                                <div class="link-list">
-                                {% for providerKey in partnerProviders|keys %}
-                                    {% set provider = partnerProviders[providerKey] %}
-                                    {% set providerIdent = provider.ident %}
-                                    {% set providerName = provider.name %}
-                                    {% set providerUrl = provider.url %}
-                                    {% if providerUrl %}
-                                        <a href="{{ providerUrl }}" class="icon external-link" target="_blank">
-                                            <span class="ic-ic-arrow"></span><span class="text">{{ providerName|raw }}</span>
-                                        </a>
-                                    {% else %}
-                                        <a class="icon">
-                                            <span class="text">{{ providerName|raw }}</span>
-                                        </a>
-                                    {% endif %}
-                                {% endfor %}
-                                </div>
+    <div class="search-filtered row content-small">
+        <div class="columns">
+            <ul class="accordion" data-multi-expand="true" data-allow-all-closed="true" role="tablist" data-accordion>
+                {% for partnerKey in partners|keys %}
+                    {% set partner = partners[partnerKey] %}
+                    {% set partnerIdent = partner.ident %}
+                    {% set partnerName = partner.name %}
+                    {% set partnerProviders = (partner.providers ?? [])|sort %}
+                    {% if partnerProviders %}
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title" aria-controls="{{ partnerKey }}-accordion" role="tab" id="{{ partnerKey }}-accordion-label" aria-expanded="false" aria-selected="false">
+                            <span class="text">{{ partnerName }}</span>
+                        </a>
+                        <div id="{{ partnerKey }}-accordion" class="accordion-content" role="tabpanel" aria-labelledby="{{ partnerKey }}-accordion-label" aria-hidden="true" data-tab-content>
+                            <div class="link-list">
+                            {% for providerKey in partnerProviders|keys %}
+                                {% set provider = partnerProviders[providerKey] %}
+                                {% set providerIdent = provider.ident %}
+                                {% set providerName = provider.name %}
+                                {% set providerUrl = provider.url %}
+                                {% if providerUrl %}
+                                    <a href="{{ providerUrl }}" class="icon external-link" target="_blank">
+                                        <span class="ic-ic-arrow"></span><span class="text">{{ providerName|raw }}</span>
+                                    </a>
+                                {% else %}
+                                    <a class="icon">
+                                        <span class="text">{{ providerName|raw }}</span>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
                             </div>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+                        </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

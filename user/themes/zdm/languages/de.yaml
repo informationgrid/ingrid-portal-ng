@@ -1,0 +1,21 @@
+PAGES:
+  HEADER:
+    ZDM:
+  MEASURE:
+    LABEL: Zeitreihen
+  MAP:
+    LABEL: Karte
+THEME:
+  ADMIN:
+    LAYOUT:
+      HEADER:
+        URL:
+          TITLE: Header per Request herunterladen
+          HELP: Header per Request herunterladen
+        BASE_HREF_REMOVE:
+          TITLE: BaseHref vom Header entfernen
+          HELP: BaseHref vom Header entfernen
+      FOOTER:
+        URL:
+          TITLE: Footer per Request herunterladen
+          HELP: Footer per Request herunterladen

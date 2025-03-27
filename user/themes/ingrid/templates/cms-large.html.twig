@@ -2,17 +2,15 @@
 
 {% block content %}
     {% set theme = config.get('system.pages.theme') %}
-    <div class="body" role="main">
-        <div class="search-filtered row">
-            <div class="columns">
-                {{ page.content|raw }}
-                {% for module in page.collection() %}
-                    {{ module.content|raw }}
-                {% endfor %}
-                {% for include_twig in page.header.include_twigs %}
-                    {% include include_twig %}
-                {% endfor %}
-            </div>
+    <div class="search-filtered row">
+        <div class="columns">
+            {{ page.content|raw }}
+            {% for module in page.collection() %}
+                {{ module.content|raw }}
+            {% endfor %}
+            {% for include_twig in page.header.include_twigs %}
+                {% include include_twig %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

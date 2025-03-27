@@ -1,0 +1,37 @@
+form:
+  fields:
+    ## Tab layout
+    tab_layout:
+      type: tab
+      title: THEME.ADMIN.LAYOUT.TITLE
+      fields:
+        header.section:
+          type: section
+          title: THEME.ADMIN.LAYOUT.HEADER.TITLE
+          underline: true
+
+        header.url:
+          type: text
+          label: THEME.ADMIN.LAYOUT.HEADER.URL.TITLE
+          help: THEME.ADMIN.LAYOUT.HEADER.URL.HELP
+
+        header.base_href_remove:
+          type: toggle
+          label: THEME.ADMIN.LAYOUT.HEADER.BASE_HREF_REMOVE.TITLE
+          help: THEME.ADMIN.LAYOUT.HEADER.BASE_HREF_REMOVE.HELP
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.section:
+          type: section
+          title: THEME.ADMIN.LAYOUT.FOOTER.TITLE
+          underline: true
+
+        footer.url:
+          type: text
+          label: THEME.ADMIN.LAYOUT.FOOTER.URL.TITLE
+          help: THEME.ADMIN.LAYOUT.FOOTER.URL.HELP

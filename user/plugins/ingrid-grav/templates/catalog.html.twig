@@ -4,24 +4,22 @@
     {% import 'macros/hit_macros.html.twig' as macros %}
 
     {% set catalogLeafRest = 'rest/getCatalogLeaf' %}
-    <div class="body" role="main">
-        <div class="search-filtered row content-small">
-            <div class="columns catalog">
-                {% for partner in partners %}
-                    {% if displayPartner %}
-                        {{ macros.render_catalog_node(partner, page.find('/detail').url, catalogLeafRest, openOnNewTab) }}
-                    {% else %}
-                        {% for provider in partner.children %}
-                            {{ macros.render_catalog_node(provider, page.find('/detail').url, catalogLeafRest, openOnNewTab) }}
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
-                <form action="{{ page.find('/catalog').url }}" method="post" name="extsearch" id="extsearch">
-                    <button type="submit" class="button btn btn--secondary btn--small" style="width:100%" name="submitReload">
-                        {{ "COMMON.FORM_BUTTON_RELOAD"|t }}
-                    </button>
-                </form>
-            </div>
+    <div class="search-filtered row content-small">
+        <div class="columns catalog">
+            {% for partner in partners %}
+                {% if displayPartner %}
+                    {{ macros.render_catalog_node(partner, page.find('/detail').url, catalogLeafRest, openOnNewTab) }}
+                {% else %}
+                    {% for provider in partner.children %}
+                        {{ macros.render_catalog_node(provider, page.find('/detail').url, catalogLeafRest, openOnNewTab) }}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            <form action="{{ page.find('/catalog').url }}" method="post" name="extsearch" id="extsearch">
+                <button type="submit" class="button btn btn--secondary btn--small" style="width:100%" name="submitReload">
+                    {{ "COMMON.FORM_BUTTON_RELOAD"|t }}
+                </button>
+            </form>
         </div>
     </div>
 

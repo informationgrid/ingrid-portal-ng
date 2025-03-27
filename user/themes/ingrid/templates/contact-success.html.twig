@@ -1,23 +1,21 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-    <div class="body" role="main">
-        <div class="search-filtered row content-small">
-            <div class="columns">
-                {{ content|raw }}
-                {% if form %}
-                    {% include 'partials/form-messages.html.twig' %}
-                    <br />
-                    <p>{{ 'CONTACT.DATA_SUMMARY'|t }}</p>
-                    <br />
-                    {% include "forms/contact/data.html.twig" %}
-                {% endif %}
-                <br>
-                <a href="{{ page.find('/contact').url }}">
-                    <span class="ic-ic-arrow-left"></span>
-                    <span class="text">{{ "CONTACT.SUCCESS_LINK"|t }}</span>
-                </a>
-            </div>
+    <div class="search-filtered row content-small">
+        <div class="columns">
+            {{ content|raw }}
+            {% if form %}
+                {% include 'partials/form-messages.html.twig' %}
+                <br />
+                <p>{{ 'CONTACT.DATA_SUMMARY'|t }}</p>
+                <br />
+                {% include "forms/contact/data.html.twig" %}
+            {% endif %}
+            <br>
+            <a href="{{ page.find('/contact').url }}">
+                <span class="ic-ic-arrow-left"></span>
+                <span class="text">{{ "CONTACT.SUCCESS_LINK"|t }}</span>
+            </a>
         </div>
     </div>
 {% endblock %}

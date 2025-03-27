@@ -26,6 +26,14 @@ form:
       classes: side-tabs
       fields:
         ## Tab detail
+        tab_layout:
+          type: tab
+          title: THEME.ADMIN.LAYOUT.TITLE
+          import@:
+            type: default
+            context: user://themes/zdm/blueprints/ingrid/layout
+
+        ## Tab detail
         tab_detail:
           type: tab
           title: THEME.ADMIN.HIT_DETAIL.TITLE

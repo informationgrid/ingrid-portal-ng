@@ -1,33 +1,9 @@
 enabled: true
 header:
-  title_extend: 'GeoPortal.EBA'
-  logo_enabled: true
-  logo_class: 'xsmall-8 small-7 medium-7 large-7 xlarge-7'
-  menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
-  menu_dropdown: true
-  shrink: true
-  logo: {  }
+  url: 'https://www.kuestendaten.de/{PORTAL}/DE/_seitenrahmen/header?processids='
+  base_href_remove: true
 footer:
-  logo_enabled: false
-  copyright:
-    text: 'Eisenbahn-Bundesamt (EBA)'
-    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-5'
-    show_year: false
-  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-19'
-  hr_line: true
-  logo: {  }
-  share:
-    enabled: false
-    enabled_x: true
-    enabled_facebook: true
-    enabled_linkedin: true
-    enabled_xing: true
-    enabled_whatsapp: true
-    enabled_mail: true
-  print:
-    enabled: false
-  up:
-    enabled: true
+  url: 'https://www.kuestendaten.de/{PORTAL}/DE/_seitenrahmen/footer'
 hit_detail:
   summary_replace_newline: ' '
   reference_system_link: 'https://epsg.io/'
@@ -89,8 +65,9 @@ measure:
   networks:
     exclude:
     initial:
-  url:
-  elastic:
+      - luen
+  url: '/assets/mvis/index.html'
+  elastic: 'https://dev.informationgrid.eu/elastic-measure/'
 redirect:
   pages_to_404:
     - /api

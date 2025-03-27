@@ -72,6 +72,7 @@
             {% include 'partials/header.html.twig' %}
         {% endblock %}
 
+        <div class="body ingrid" role="main">
         {% block body %}
             {% block content_header %}
                 {% if page.header.content_header_disabled is null %}
@@ -94,6 +95,7 @@
             {% endblock %}
             {% block content %}{% endblock %}
         {% endblock %}
+        </div>
 
         {% if page.header.footer_disabled != true %}
             {% block footer %}

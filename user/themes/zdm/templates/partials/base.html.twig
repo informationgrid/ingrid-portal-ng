@@ -1,15 +1,14 @@
-{% set header_title_extend = theme_var('header.title_extend') %}
-
-{% set headerResponse = getHtmlHeaderZDM('ZDM') %}
-{% if headerResponse is not empty %}
-    {{ headerResponse|raw }}
+{% if headerContent is not empty %}
+    {{ headerContent|raw }}
     {% block body %}
-        {% block content %}{% endblock %}
+        </div> {# close requested header content #}
+        <div class="body ingrid" role="main">
+            {% block content %}{% endblock %}
+        </div>
     {% endblock %}
     {% if page.header.footer_disabled != true %}
-        {% set footerResponse = getHtmlFooterZDM('ZDM') %}
         {% block footer %}
-            {{ footerResponse|raw }}
+            {{ footerContent|raw }}
         {% endblock %}
     {% else %}
             </body>

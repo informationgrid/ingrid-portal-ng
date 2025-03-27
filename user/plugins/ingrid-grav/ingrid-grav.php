@@ -222,6 +222,16 @@ class InGridGravPlugin extends Plugin
             }
         }
 
+        $theme = $this->grav['config']->get('system.pages.theme');
+        if ($theme == 'zdm') {
+            $this->getPageContentZDM($page);
+        } else {
+            $this->getPageContent($page);
+        }
+    }
+
+    private function getPageContent(?Page $page): void
+    {
         if ($page) {
             // Get pages content
             switch ($page->folder()) {
@@ -292,6 +302,40 @@ class InGridGravPlugin extends Plugin
         }
     }
 
+    private function getPageContentZDM(?Page $page): void
+    {
+        if ($page) {
+            switch ($page->folder()) {
+                case 'measure':
+                case 'map':
+                if (!$this->isAdmin()) {
+                    $layoutZDM = new LayoutZDM($this->grav);
+                    $this->grav['twig']->twig_vars['headerContent'] = $layoutZDM->getContentHeader($page->folder());
+                }
+                break;
+
+                case 'detail':
+                    if (!$this->isAdmin()) {
+                        $detail = new Detail($this->grav, $this->configApiUrl);
+                        $detail->getContent();
+                        $twig = $this->grav['twig'];
+                        if (isset($detail->hit)) {
+                            $twig->twig_vars['hit'] = $detail->hit;
+                            $twig->twig_vars['page_custom_title'] = $detail->title ?? null;
+                        } else {
+                            $twig->twig_vars['hit'] = [];
+                        }
+                        $layoutZDM = new LayoutZDM($this->grav);
+                        $this->grav['twig']->twig_vars['headerContent'] = $layoutZDM->getContentHeader($page->folder(), $detail->title ?? null);
+                        $this->grav['twig']->twig_vars['footerContent'] = $layoutZDM->getContentFooter($page->folder());
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
     /**
      * Programmatically add a custom page.
      *

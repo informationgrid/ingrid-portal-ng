@@ -2,14 +2,12 @@
 
 {% block content %}
     {% set theme = config.get('system.pages.theme') %}
-    <div class="body" role="main">
-        <div class="search-filtered row content-small">
-            <div class="columns">
-                {{ page.content|raw }}
-                {% for module in page.collection() %}
-                    {{ module.content|raw }}
-                {% endfor %}
-            </div>
+    <div class="search-filtered row content-small">
+        <div class="columns">
+            {{ page.content|raw }}
+            {% for module in page.collection() %}
+                {{ module.content|raw }}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
