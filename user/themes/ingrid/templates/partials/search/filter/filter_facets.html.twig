@@ -48,8 +48,8 @@
                                     {% set itemOpenContentStyle = 'style="display:block;"' %}
                                     {% set itemOpenContentAria = 'aria-hidden="false"' %}
                                 {% endif %}
-                                <li id="{{ item.id ~ '-accordion-item' }}" {{ itemOpenClass|raw }} data-accordion-item>
-                                    <a id="{{ item.id ~ '-accordion-label' }}" class="accordion-title" href="#" aria-controls="{{ item.id }}-accordion" role="tab"
+                                <li {{ itemOpenClass|raw }} data-accordion-item>
+                                    <a id="{{ item.id }}-accordion-label" class="accordion-title" href="#" aria-controls="{{ item.id }}-accordion" role="tab"
                                        {{ itemOpenAria|raw }}>
                                         <span class="text">{{ item.label|t }}</span>
                                     </a>
@@ -91,7 +91,7 @@
                                             {% endif %}
                                             {% if (item.id == "bbox") %}
                                                 {% include 'partials/search/filter/facet_area_map.html.twig' with {
-                                                    id: item.id ~ '-accordion-item',
+                                                    id: item.id ~ '-accordion-label',
                                                     active: isItemOpen
                                                 }%}
                                             {% else %}

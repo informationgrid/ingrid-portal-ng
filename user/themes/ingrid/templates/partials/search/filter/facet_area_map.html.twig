@@ -48,7 +48,10 @@
     );
     searchMapSmall.invalidateSize();
 {% if not active %}
-    $('#{{ id }}').removeClass('is-active');
-    $('#{{ id }}').children('.accordion-content').css('display','none');
+    var parent = $('#{{ id }}').parent();
+    if (parent) {
+        parent.removeClass('is-active');
+        parent.children('.accordion-content').css('display', 'none');
+    }
 {% endif %}
 </script>
