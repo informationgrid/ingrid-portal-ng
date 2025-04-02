@@ -1,5 +1,5 @@
 ---
-title: ## STA MQTT-Broker
+title: STA MQTT-Broker
 ---
 
 <div class="row">
@@ -10,7 +10,7 @@ title: ## STA MQTT-Broker
                     STA MQTT-Broker
                 </h2>
                 <p>
-                    MQTT ist ein Internetprotokoll für die zeitnahe Bereiststellung von Echtzeit- und Sensordaten. MQTT ist Teil der Implementierung der SensorThings API. Mit der Erweiterung SensorThings MQTT können Beobachtungswerte erstellt und an den SensorThings-Dienst übermittelt werden.
+                    MQTT ist ein Internetprotokoll für die zeitnahe Bereitstellung von Echtzeit- und Sensordaten. MQTT ist Teil der Implementierung der SensorThings API. Mit der Erweiterung SensorThings MQTT können Beobachtungswerte erstellt und an den SensorThings-Dienst übermittelt werden.
                 </p>
                 <a class="icon" href="https://iot.hamburg.de" target="_blank" title="MQTT-Broker: iot.hamburg.de">
                     <span class="ic-ic-arrow"></span>
