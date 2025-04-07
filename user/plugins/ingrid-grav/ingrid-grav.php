@@ -405,32 +405,33 @@ class InGridGravPlugin extends Plugin
      * @return void
      * @throws \Exception
      */
-    public function onPagesInitialized(Event $event): void
+    public function onPagesInitialized(): void
     {
-
-        if (!$this->isAdmin()) {
-            /** @var Pages $pages */
-            $pages = $this->grav['pages'];
-            $this->addPage('/catalog', 'catalog/catalog.md');
-            $this->addPage('/map', 'map/map.md');
-            $this->addPage('/datasource', 'datasource/datasource.md');
-            $this->addPage('/detail', 'detail/detail.md');
-            $this->addPage('/help', 'help/help.md');
-            $this->addPage('/measure', 'measure/measure.md');
-            $this->addPage('/provider', 'provider/provider.md');
-            $this->addPage('/rss', 'rss/news.md');
-            $page = $this->addPage('/search', 'search/modular.md');
-            $this->addPage('/search/_result', 'search/_result/result.md', $page);
-            $this->addPage('/search/_similar', 'search/_similar/similar.md', $page);
-            $this->addPage('/search/_search', 'search/_search/home-search.md', $page);
-            $this->addPage('/sitemap', 'sitemap/sitemap.md');
-            $this->addPage('/home/_categories', 'home/_categories/home-categories.md', $pages->find('/home'), '/home/_categories');
-            $this->addPage('/home/_news', 'home/_news/home-news.md', $pages->find('/'), '/home/_news');
-            $this->addPage('/home/_search', 'home/_search/home-search.md', $pages->find('/'), '/home/_search');
-            $this->addPage('/home/_hits', 'home/_hits/home-hits.md', $pages->find('/'), '/home/_hits');
-            $this->addPage('/contact/success', 'contact/success/contact-success.md', $pages->find('/contact'));
-            $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
+        if ($this->isAdmin()) {
+            $this->grav['admin']->enablePages();
         }
+
+        /** @var Pages $pages */
+        $pages = $this->grav['pages'];
+        $this->addPage('/catalog', 'catalog/catalog.md');
+        $this->addPage('/map', 'map/map.md');
+        $this->addPage('/datasource', 'datasource/datasource.md');
+        $this->addPage('/detail', 'detail/detail.md');
+        $this->addPage('/help', 'help/help.md');
+        $this->addPage('/measure', 'measure/measure.md');
+        $this->addPage('/provider', 'provider/provider.md');
+        $this->addPage('/rss', 'rss/news.md');
+        $page = $this->addPage('/search', 'search/modular.md');
+        $this->addPage('/search/_result', 'search/_result/result.md', $page);
+        $this->addPage('/search/_similar', 'search/_similar/similar.md', $page);
+        $this->addPage('/search/_search', 'search/_search/home-search.md', $page);
+        $this->addPage('/sitemap', 'sitemap/sitemap.md');
+        $this->addPage('/home/_categories', 'home/_categories/home-categories.md', $pages->find('/home'), '/home/_categories');
+        $this->addPage('/home/_news', 'home/_news/home-news.md', $pages->find('/'), '/home/_news');
+        $this->addPage('/home/_search', 'home/_search/home-search.md', $pages->find('/'), '/home/_search');
+        $this->addPage('/home/_hits', 'home/_hits/home-hits.md', $pages->find('/'), '/home/_hits');
+        $this->addPage('/contact/success', 'contact/success/contact-success.md', $pages->find('/contact'));
+        $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
     }
 
     /*
