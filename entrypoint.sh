@@ -80,7 +80,7 @@ yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
 if [ ! -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] || [ "$THEME_COPY_PAGES_INIT" = "true" ]; then
   if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages" ]; then
       echo "Copy theme init pages."
-      cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/* /var/www/"$GRAV_FOLDER"/user/pages/
+      cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/init/* /var/www/"$GRAV_FOLDER"/user/pages/
     fi
     touch /var/www/"$GRAV_FOLDER"/user/config/initialized
 else

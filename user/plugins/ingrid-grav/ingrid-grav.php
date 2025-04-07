@@ -35,11 +35,7 @@ class InGridGravPlugin extends Plugin
     public static function getSubscribedEvents(): array
     {
         return [
-            'onPluginsInitialized' => [
-                // Uncomment following line when plugin requires Grav < 1.7
-                // ['autoload', 100000],
-                ['onPluginsInitialized', 0]
-            ],
+            'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onAdminMenu'              => ['onAdminMenu', 0],
             'onAdminTaskExecute'       => ['onAdminTaskExecute', 0],
             'onTwigTemplatePaths'      => ['onTwigTemplatePaths', 0],
@@ -194,7 +190,7 @@ class InGridGravPlugin extends Plugin
         return $event;
     }
 
-    public function onPageInitialized(): void
+    public function onPageInitialized(Event $event): void
     {
         // Check themes config for redirected pages
         $uri = $this->grav['uri'];
@@ -356,7 +352,7 @@ class InGridGravPlugin extends Plugin
             $page = new Page;
             $pluginPage = new \SplFileInfo(__DIR__ . '/pages/' . $filename);
             if (!empty($pluginPage)) {
-                $page->init(new \SplFileInfo(__DIR__ . '/pages/' . $filename));
+                $page->init($pluginPage);
 
                 $route = $page->route();
                 $page->rawRoute($url);
@@ -381,7 +377,7 @@ class InGridGravPlugin extends Plugin
 
         if (!$page) {
             $page = new Page;
-            $filePath = $this->grav['locator']->findResource('theme://pages') . '/' . $filename;
+            $filePath = $this->grav['locator']->findResource('theme://pages/add') . '/' . $filename;
             if (file_exists($filePath)) {
                 $themeFile = new \SplFileInfo($filePath);
                 if (!empty($themeFile)) {
@@ -409,33 +405,32 @@ class InGridGravPlugin extends Plugin
      * @return void
      * @throws \Exception
      */
-    public function onPagesInitialized(): void
+    public function onPagesInitialized(Event $event): void
     {
-        if ($this->isAdmin()) {
-            $this->grav['admin']->enablePages();
-        }
 
-        /** @var Pages $pages */
-        $pages = $this->grav['pages'];
-        $this->addPage('/catalog', 'catalog/catalog.md');
-        $this->addPage('/map', 'map/map.md');
-        $this->addPage('/datasource', 'datasource/datasource.md');
-        $this->addPage('/detail', 'detail/detail.md');
-        $this->addPage('/help', 'help/help.md');
-        $this->addPage('/measure', 'measure/measure.md');
-        $this->addPage('/provider', 'provider/provider.md');
-        $this->addPage('/rss', 'rss/news.md');
-        $page = $this->addPage('/search', 'search/modular.md');
-        $this->addPage('/search/_result', 'search/_result/result.md', $page);
-        $this->addPage('/search/_similar', 'search/_similar/similar.md', $page);
-        $this->addPage('/search/_search', 'search/_search/home-search.md', $page);
-        $this->addPage('/sitemap', 'sitemap/sitemap.md');
-        $this->addPage('/home/_categories', 'home/_categories/home-categories.md', $pages->find('/home'), '/home/_categories');
-        $this->addPage('/home/_news', 'home/_news/home-news.md', $pages->find('/'), '/home/_news');
-        $this->addPage('/home/_search', 'home/_search/home-search.md', $pages->find('/'), '/home/_search');
-        $this->addPage('/home/_hits', 'home/_hits/home-hits.md', $pages->find('/'), '/home/_hits');
-        $this->addPage('/contact/success', 'contact/success/contact-success.md', $pages->find('/contact'));
-        $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
+        if (!$this->isAdmin()) {
+            /** @var Pages $pages */
+            $pages = $this->grav['pages'];
+            $this->addPage('/catalog', 'catalog/catalog.md');
+            $this->addPage('/map', 'map/map.md');
+            $this->addPage('/datasource', 'datasource/datasource.md');
+            $this->addPage('/detail', 'detail/detail.md');
+            $this->addPage('/help', 'help/help.md');
+            $this->addPage('/measure', 'measure/measure.md');
+            $this->addPage('/provider', 'provider/provider.md');
+            $this->addPage('/rss', 'rss/news.md');
+            $page = $this->addPage('/search', 'search/modular.md');
+            $this->addPage('/search/_result', 'search/_result/result.md', $page);
+            $this->addPage('/search/_similar', 'search/_similar/similar.md', $page);
+            $this->addPage('/search/_search', 'search/_search/home-search.md', $page);
+            $this->addPage('/sitemap', 'sitemap/sitemap.md');
+            $this->addPage('/home/_categories', 'home/_categories/home-categories.md', $pages->find('/home'), '/home/_categories');
+            $this->addPage('/home/_news', 'home/_news/home-news.md', $pages->find('/'), '/home/_news');
+            $this->addPage('/home/_search', 'home/_search/home-search.md', $pages->find('/'), '/home/_search');
+            $this->addPage('/home/_hits', 'home/_hits/home-hits.md', $pages->find('/'), '/home/_hits');
+            $this->addPage('/contact/success', 'contact/success/contact-success.md', $pages->find('/contact'));
+            $this->addPageFromTheme('/contact/form', 'contact/form/default.md', $pages->find('/contact'));
+        }
     }
 
     /*
