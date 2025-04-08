@@ -38,8 +38,6 @@ PAGES:
 COMMON:
   RESULT_SOURCE: Fundort
 
-SITEMAP:
-
 CONTACT:
   FORM_COMPANY: Dienststelle (optional)
   FORM_TOPIC: Thema
