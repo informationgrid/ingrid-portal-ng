@@ -8,7 +8,9 @@ ENABLE_CACHE=${ENABLE_CACHE:-true}
 THEME_COPY_PAGES_INIT=${THEME_COPY_PAGES_INIT:-false}
 ENABLE_SCHEDULER_CODELIST=${ENABLE_SCHEDULER_CODELIST:-true}
 ENABLE_SCHEDULER_RSS=${ENABLE_SCHEDULER_RSS:-true}
+MARKDOWN_AUTO_LINE_BREAKS=${MARKDOWN_AUTO_LINE_BREAKS:-true}
 HOMEPAGE=${HOMEPAGE:-/home}
+SITE_DEFAULT_LANG=${SITE_DEFAULT_LANG:-de}
 
 mkdir -p /var/www/"$GRAV_FOLDER"
 cd /var/www/"$GRAV_FOLDER"
@@ -31,6 +33,9 @@ else
                /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 fi
 
+#####################
+# Default admin config
+#####################
 ADMIN_YAML=/var/www/"$GRAV_FOLDER"/user/accounts/admin.yaml
 
 # Add admin user
@@ -43,6 +48,9 @@ if [ ! -f "$ADMIN_YAML" ] && [ -n "$ADMIN_PASSWORD" ]; then
   yq -i '.hashed_password = env(hashed_password)' "$ADMIN_YAML"
 fi
 
+#####################
+# Default system config
+#####################
 SYSTEM_YAML=/var/www/"$GRAV_FOLDER"/user/config/system.yaml
 
 # Add languages
@@ -54,9 +62,11 @@ if [ "$ENABLE_LANG_EN" ]; then
 fi
 
 # Add theme
+THEME="$THEME" \
 yq -i '.pages.theme = env(THEME)' "$SYSTEM_YAML"
 
 # Update system markdown
+MARKDOWN_AUTO_LINE_BREAKS="$MARKDOWN_AUTO_LINE_BREAKS" \
 yq -i '.pages.markdown.auto_line_breaks = env(MARKDOWN_AUTO_LINE_BREAKS)' "$SYSTEM_YAML"
 
 # Update timezone
@@ -67,11 +77,8 @@ else
 fi
 
 # Update cache
-if [ "$ENABLE_CACHE" = "true" ]; then
-  yq -i '.cache.enabled = true' "$SYSTEM_YAML"
-else
-  yq -i '.cache.enabled = false' "$SYSTEM_YAML"
-fi
+ENABLE_CACHE="$ENABLE_CACHE" \
+yq -i 'cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
 
 # Add home
 yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
@@ -87,6 +94,9 @@ else
     echo "No theme init pages process."
 fi
 
+#####################
+# Default ingrid grav plugin config
+#####################
 INGRID_GRAV_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/ingrid-grav/ingrid-grav.yaml
 
 # Update ingrid api
@@ -127,14 +137,17 @@ if [ "$RDF_URL" ]; then
   yq -i '.rdf.url = env(RDF_URL)' "$INGRID_GRAV_YAML"
 fi
 
+#####################
+# Default site config
+#####################
 SITE_YAML=/var/www/"$GRAV_FOLDER"/user/config/site.yaml
 
-if [ "$SITE_DEFAULT_LANG" ]; then
-  yq -i '.default_lang = env(SITE_DEFAULT_LANG)' "$SITE_YAML"
-else
-  yq -i '.default_lang = "de"' "$SITE_YAML"
-fi
+SITE_DEFAULT_LANG="$SITE_DEFAULT_LANG" \
+yq -i '.default_lang = env(SITE_DEFAULT_LANG)' "$SITE_YAML"
 
+#####################
+# Default scheduler config
+#####################
 SCHEDULER_YAML=/var/www/"$GRAV_FOLDER"/user/config/scheduler.yaml
 
 if [ ! -e "$SCHEDULER_YAML" ]; then

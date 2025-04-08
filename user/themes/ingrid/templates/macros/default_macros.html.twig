@@ -17,25 +17,20 @@
 {% macro nav_loop(menu, pages) %}
     {% import _self as macros %}
     {% for menuentry in menu %}
-        {% set page_active = '' %}
-        {% set page_url = '' %}
-        {% set page_title = '' %}
-        {% set page_menu_title = '' %}
-        {% for p in pages.children.visible %}
-            {% if menuentry.path == '/' ~ p.folder %}
-                {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
-                {% set page_url = p.url %}
-                {% set page_title = p.header.custom_title.html %}
-                {% set page_menu_title = p.header.custom_title.menu %}
+        {% set p = pages.find(menuentry.path) %}
+        {% if p and p.visible %}
+            {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+            {% set page_url = p.url %}
+            {% set page_title = p.header.custom_title.html %}
+            {% set page_menu_title = p.header.custom_title.menu %}
+            {% if page_url is not empty %}
+                <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ page_menu_title|t|e }}">
+                    <div class="link-menu-tab">
+                        {% if menuentry.icon %}<span class="{{menuentry.icon}}"></span>{% endif %}
+                        <span class="text">{{ page_title|t|e }}</span>
+                    </div>
+                </a>
             {% endif %}
-        {% endfor %}
-        {% if page_url is not empty %}
-            <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ page_menu_title|t|e }}">
-                <div class="link-menu-tab">
-                    {% if menuentry.icon %}<span class="{{menuentry.icon}}"></span>{% endif %}
-                    <span class="text">{{ page_title|t|e }}</span>
-                </div>
-            </a>
         {% endif %}
     {% endfor %}
 {% endmacro %}
@@ -50,44 +45,34 @@
             <div class="highlighted">
             {% for menuentry in menu %}
                 {% if menuentry.highlighted %}
-                    {% set page_active = '' %}
-                    {% set page_url = '' %}
-                    {% set page_title = '' %}
-                    {% set page_menu_title = '' %}
-                    {% for p in pages.children.visible %}
-                        {% if menuentry.path == '/' ~ p.folder %}
-                            {% set page_active = (p.active or p.activeChild) ? 'is-active' : '' %}
-                            {% set page_url = p.url %}
-                            {% set page_title = p.header.custom_title.html ?? p.title %}
-                            {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+                    {% set p = pages.find(menuentry.path) %}
+                    {% if p and p.visible %}
+                        {% set page_active = (p.active or p.activeChild) ? 'is-active' : '' %}
+                        {% set page_url = p.url %}
+                        {% set page_title = p.header.custom_title.html ?? p.title %}
+                        {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+                        {% if page_url is not empty %}
+                            <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t|e }}"{% if menuentry.target_blank %} target="_blank" {% endif %}>
+                                <span class="text">{{ page_title|t|e }}</span>
+                            </a>
                         {% endif %}
-                    {% endfor %}
-                    {% if page_url is not empty %}
-                        <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t|e }}"{% if menuentry.target_blank %} target="_blank" {% endif %}>
-                            <span class="text">{{ page_title|t|e }}</span>
-                        </a>
                     {% endif %}
                 {% endif %}
             {% endfor %}
             </div>
             {% for menuentry in menu %}
                 {% if not menuentry.highlighted %}
-                    {% set page_active = '' %}
-                    {% set page_url = '' %}
-                    {% set page_title = '' %}
-                    {% set page_menu_title = '' %}
-                    {% for p in pages.children.visible %}
-                        {% if menuentry.path == '/' ~ p.folder %}
-                            {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
-                            {% set page_url = p.url %}
-                            {% set page_title = p.header.custom_title.html ?? p.title  %}
-                            {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+                    {% set p = pages.find(menuentry.path) %}
+                    {% if p and p.visible %}
+                        {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+                        {% set page_url = p.url %}
+                        {% set page_title = p.header.custom_title.html ?? p.title  %}
+                        {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+                        {% if page_url is not empty %}
+                            <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
+                                <span class="text">{{ page_title|t|e }}</span>
+                            </a>
                         {% endif %}
-                    {% endfor %}
-                    {% if page_url is not empty %}
-                    <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
-                        <span class="text">{{ page_title|t|e }}</span>
-                    </a>
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -117,22 +102,17 @@
 {% macro footer_nav_loop(menu, pages) %}
     {% import _self as macros %}
     {% for menuentry in menu %}
-        {% set page_active = '' %}
-        {% set page_url = '' %}
-        {% set page_title = '' %}
-        {% set page_menu_title = '' %}
-        {% for p in pages.children.visible %}
-            {% if menuentry.path == '/' ~ p.folder %}
-                {% set page_active = (p.active or p.activeChild) ? 'active' : '' %}
-                {% set page_url = p.url %}
-                {% set page_title = p.header.custom_title.html ?? p.title %}
-                {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+        {% set p = pages.find(menuentry.path) %}
+        {% if p and p.visible %}
+            {% set page_active = (p.active or p.activeChild) ? 'active' : '' %}
+            {% set page_url = p.url %}
+            {% set page_title = p.header.custom_title.html ?? p.title %}
+            {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+            {% if page_url is not empty %}
+                <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t|e }}">
+                    <span>{{ page_title|t|e }}</span>
+                </a>
             {% endif %}
-        {% endfor %}
-        {% if page_url is not empty %}
-            <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t|e }}">
-                <span>{{ page_title|t|e }}</span>
-            </a>
         {% endif %}
     {% endfor %}
 {% endmacro %}

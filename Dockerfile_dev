@@ -1,13 +1,14 @@
 FROM php:8.3-apache@sha256:41ce934bddbd1b79927187723bbfeab8ec730d1604bbbf5b00ce98cd3c4ac5af
 
 ENV GRAV_VERSION=1.7.48
+ENV YQ_VERSION=v4.45.1
 ENV TZ='Europe/Berlin'
 
 # Update system
 RUN apt-get update
 
 # Install dependencies
-RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip vim libxslt1-dev libxml2 cron
+RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip vim libxslt1-dev libxml2 cron wget
 
 # Configure and install PHP extensions
 RUN docker-php-ext-configure gd --with-jpeg
@@ -24,6 +25,10 @@ RUN pecl install xdebug
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install yq
+RUN wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
+ && chmod +x /usr/local/bin/yq
 
 COPY entrypoint_dev.sh /entrypoint.sh
 COPY develop/99-xdebug.ini /usr/local/etc/php/conf.d/99-xdebug.ini
