@@ -2,27 +2,27 @@ PAGES:
     MENU: Menu
     HOME: Startpage
     HOME_MENU_TITLE: Startseite von InGrid-Portal
-    HOME_META_TITLE: InGrid-Portal - German Environmental Information Portal
+    HOME_META_TITLE: German Environmental Information Portal
     HOME_META_DESCRIPTION: InGrid-Portal, Germany's environmental internet gateway, offers gratis and ad-free access to official environmental information from public authorities and organizations
     HOME_META_KEYWORDS: InGrid-Portal, environmental portal, gateway, environment, authority,  public environmental information, Germany, federation, federal authorities, federal states, state authorities, search, retrieval, ad-free, for free, gratis, public organizations, environmental data catalogues, UDK, data catalogues, database
     SEARCH: Search
     SEARCH_MENU_TITLE: Fulltext search for environmental information
-    SEARCH_META_TITLE: InGrid-Portal - Free text search for official environmental information
+    SEARCH_META_TITLE: Free text search for official environmental information
     SEARCH_META_DESCRIPTION: With the free text search you can retrieve environmental information, relevant legislation, research projects and addresses directly from the data catalogues of official authorities
     SEARCH_META_KEYWORDS: InGrid-Portal, environmental information, search, retrieval, free text search, basic search, simple search, laws, research, projects, addresses, environmental data catalogues, environment, UDK, data catalogues, database
     MAP: Maps
     MAP_MENU_TITLE: Go to interactive thematic maps
-    MAP_META_TITLE: InGrid-Portal - Environmental web map services from regional, federal, and state authorities
+    MAP_META_TITLE: Environmental web map services from regional, federal, and state authorities
     MAP_META_DESCRIPTION: In the InGrid-Portal map viewer you can display thematic maps form the federation, the federal states, and the local authorities and also define display settings
     MAP_META_KEYWORDS: InGrid-Portal, map viewer, maps, thematic maps, interaction, interactive, federation, federal states, local authorities, regional authorities, federal authorities, governmental authorities, environment, environmental topics, display, parameter, Web Map Service, WMS, Web Services, OGC, environmental information, geographic information system, GIS, online maps, web mapping, metadata
     MEASURE: Data
     MEASURE_MENU_TITLE: Search here for environmental monitoring data
-    MEASURE_META_TITLE: InGrid-Portal - Search for environmental monitoring data
+    MEASURE_META_TITLE: Search for environmental monitoring data
     MEASURE_META_DESCRIPTION: Here you can find official environmental monitoring data in websites and information systems from federation and federal states.
     MEASURE_META_KEYWORDS: InGrid-Portal, search, monitoring data, environmental monitoring data, data, federation, federal states, federal government, German laender, laender, website, information systems, environmental data catalogues, UDK, data catalogues, database
     CATALOG: Catalogues
     CATALOG_MENU_TITLE: Go to the list of  connected environmental data catalogues and environmental information
-    CATALOG_META_TITLE: InGrid-Portal - Complete list of searchable environmental data catalogues
+    CATALOG_META_TITLE: Complete list of searchable environmental data catalogues
     CATALOG_META_DESCRIPTION: You can view a full list of connected environmental data catalogues and corresponding metadata
     CATALOG_META_KEYWORDS: InGrid-Portal, list, official environmental data catalogues, metadata, federation, federal states, federal authorities, state authorities, federal government, German laender, laender, search, meta information, UDK, environmental data, public authorities, public authority, environment, information, data catalogues, data bases
     API: API
@@ -33,65 +33,65 @@ PAGES:
     API_META_KEYWORDS: API
     ABOUT: About InGrid
     ABOUT_MENU_TITLE: Features and Portrait of InGrid-Portal
-    ABOUT_META_TITLE: InGrid-Portal - Facts, features, background information
+    ABOUT_META_TITLE: Facts, features, background information
     ABOUT_META_DESCRIPTION: Learn more about InGrid-Portal, e.g. purpose, statutory basis, number of connected data bases and offered features.
     ABOUT_META_KEYWORDS: InGrid-Portal, background information, background, history, information, facts, purpose, objective, statutory basis, environmental information regulations, EIR, environmental data catalogues, UDK, data bases, features, search, Directive 2003/4/EC, EU Directive, EU, technology, environmental news, environmental monitoring data, environmental topics, Coordination Center InGrid-Portal
     PROVIDER: Information Providers
     PROVIDER_MENU_TITLE: Cooperation partners and associated public agencies
     PROVIDER_CONTENT: Information providers
-    PROVIDER_META_TITLE: InGrid-Portal - Associated partners and information provider
+    PROVIDER_META_TITLE: Associated partners and information provider
     PROVIDER_META_DESCRIPTION: Associated environmental authorities from federation, federal states and local authorities providing environmental information via InGrid-Portal - free of cost and free of ads.
     PROVIDER_META_KEYWORDS: InGrid-Portal, information provider, environmental agencies, public authorities, federation, federal states, local authorities, public administration, federal government, German laender, laender,  municipalities, list, information, environment, environmental information, free of cost, free of ads, data bases
     DATASOURCE: Databases
     DATASOURCE_MENU_TITLE: Linked Databases
-    DATASOURCE_META_TITLE: InGrid-Portal - Databases
+    DATASOURCE_META_TITLE: Databases
     DATASOURCE_META_DESCRIPTION: Associated environmental authorities from federation, federal states and local authorities providing environmental information via InGrid-Portal - free of cost and free of ads.
     DATASOURCE_META_KEYWORDS: InGrid-Portal, information provider, environmental agencies, public authorities, federation, federal states, local authorities, public administration, federal government, German laender, laender,  municipalities, list, information, environment, environmental information, free of cost, free of ads, data bases
     HELP: Help
     HELP_MENU_TITLE: Information and help on how to use InGrid-Portal
-    HELP_META_TITLE: InGrid-Portal - Help, search tips and descriptions for the features
+    HELP_META_TITLE: Help, search tips and descriptions for the features
     HELP_META_DESCRIPTION: Use the help menu to get detailed information about search options and a brief instruction to various features
     HELP_META_KEYWORDS: InGrid-Portal, help, search, search options, instruction, explanation, search tips, features, main features, features, help topics, topics, brief instruction
     CONTACT: Contact
     CONTACT_MENU_TITLE: Send any comments, suggestions or questions to our Coordination Center InGrid-Portal
-    CONTACT_META_TITLE: InGrid-Portal - Contact us
+    CONTACT_META_TITLE: Contact us
     CONTACT_META_DESCRIPTION: Contact us using the contact form, writing an e-mail, or by post.
     CONTACT_META_KEYWORDS: InGrid-Portal, contact, contact form, e-mail, regular mail, comments, suggestions, questions, request
     SITEMAP: Site Map
     SITEMAP_MENU_TITLE: Structured overview of the contents of InGrid-Portal website
     SITEMAP_CONTENT: Content
-    SITEMAP_META_TITLE: InGrid-Portal - Sitemap
+    SITEMAP_META_TITLE: Sitemap
     SITEMAP_META_DESCRIPTION: Explore the full range of features and web pages of InGrid-Portal via the sitemap
     SITEMAP_META_KEYWORDS: InGrid-Portal, sitemap, header part, service part, footer part, main part
     IMPRINT: Disclaimer
     IMPRINT_MENU_TITLE: Responsibility, implementation & operation of InGrid-Portal, terms of use, disclaimer
-    IMPRINT_META_TITLE: InGrid-Portal - Imprint
+    IMPRINT_META_TITLE: Imprint
     IMPRINT_META_DESCRIPTION: Find in our imprint details about responsible persons for content, technical issues, and legal aspects in InGrid-Portal.
     IMPRINT_META_KEYWORDS: InGrid-Portal, imprint, disclaimer, editor, editing technical editor, editorial office, realisation, terms of use, use, publisher, overall responsibility, implementation, operation
     PRIVACY: Privacy Policy
     PRIVACY_MENU_TITLE: Our commitment to privacy
-    PRIVACY_META_TITLE: InGrid-Portal -  Privacy policy statement
+    PRIVACY_META_TITLE:  Privacy policy statement
     PRIVACY_META_DESCRIPTION: Privacy policy statement of InGrid-Portal and information about the collection of personal data.
     PRIVACY_META_KEYWORDS: InGrid-Portal, data privacy, protection of data privacy, regulations, privacy policy, access-data, personal data, data collection, data storage
     ACCESSIBILITY: Accessibility
     ACCESSIBILITY_MENU_TITLE: Accessibility
-    ACCESSIBILITY_META_TITLE: InGrid-Portal - Accessibility
+    ACCESSIBILITY_META_TITLE: Accessibility
     ACCESSIBILITY_META_DESCRIPTION: Associated environmental authorities from federation, federal states and local authorities providing environmental information via InGrid-Portal - free of cost and free of ads.
     ACCESSIBILITY_META_KEYWORDS: InGrid-Portal, accessibility
     RSS: RSS
     RSS_MENU_TITLE: RSS
-    RSS_META_TITLE: InGrid-Portal - Latest news from environmental agencies
+    RSS_META_TITLE: Latest news from environmental agencies
     RSS_META_DESCRIPTION: Latest press releases from associated environmental agencies with RSS news feeds
     RSS_META_KEYWORDS: InGrid-Portal, news feeds, RSS, environmental agencies, environment, environmental information, press releases, releases
     DETAIL: Meta data
     DETAIL_MENU_TITLE: Meta data
-    DETAIL_META_TITLE: InGrid-Portal - Search results
+    DETAIL_META_TITLE: Search results
     DETAIL_META_DESCRIPTION: The list of search results contains links to websites, monitoring data, maps or metadata that match your search query.
     DETAIL_META_KEYWORDS: InGrid-Portal, hit list, result, search results, results, websites, monitoring data, maps, metadata
-    EASYLANGUAGE_META_TITLE: InGrid-Portal - Easy language
+    EASYLANGUAGE_META_TITLE: Easy language
     EASYLANGUAGE_META_DESCRIPTION: Information about Easy Language
     EASYLANGUAGE_META_KEYWORDS: Easy language
-    SIGNLANGUAGE_META_TITLE: InGrid-Portal - Sign language
+    SIGNLANGUAGE_META_TITLE: Sign language
     SIGNLANGUAGE_META_DESCRIPTION: Information about Sign Language
     SIGNLANGUAGE_META_KEYWORDS: Sign language
 
