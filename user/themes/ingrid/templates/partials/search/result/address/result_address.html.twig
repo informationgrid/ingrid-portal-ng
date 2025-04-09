@@ -1,7 +1,7 @@
 {# @var hit \Grav\Plugin\SearchResultHit #}
 {% import 'macros/hit_macros.html.twig' as hit_macros %}
 
-{% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid ~ "&type=address" %}
+{% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid ~ "&isAddress=true" %}
 {% set queries = uri.query(null, true) %}
 {% for key, param in queries %}
     {% set detailLink = detailLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}

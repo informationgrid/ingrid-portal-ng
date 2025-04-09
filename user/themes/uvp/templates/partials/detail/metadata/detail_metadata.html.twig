@@ -10,8 +10,9 @@
                 <div class="columns">
                     {% set backLink = page.find('/search').url ~ '?' %}
                     {% set queries = uri.query(null, true) %}
+                    {% set excludeParams = ['docuuid', 'isAddress'] %}
                     {% for key, param in queries %}
-                        {% if key is not sameas('docuuid') %}
+                        {% if key not in excludeParams %}
                             {% set backLink = backLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
                         {% endif %}
                     {% endfor %}

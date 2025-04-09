@@ -279,7 +279,7 @@
           {% set type_name = "COMMON.UDK_ADR_CLASS_NAME_" ~ type %}
           {{ _self.render_address_icon(type, type_name|t , type_name|t) }}
       </div>
-      <a href="?docuuid={{ uuid }}&type=address" class="icon" title="{{ title }}">
+      <a href="?docuuid={{ uuid }}&isAddress=true" class="icon" title="{{ title }}">
           <span class="text">{{ title }}</span>
       </a>
   </div>
@@ -317,7 +317,7 @@
         {% for address in addresses %}
             {% if address.type is not empty and address.type == type %}
                 {% if address.uuid %}
-                    <a class="link-line" href="?docuuid={{ address.uuid }}&type=address" title="{{ address.title }}">{{ address.title }}</a>
+                    <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
                 {% else %}
                     {{ address.title }}
                     <br>
@@ -441,7 +441,7 @@
                                     {% for address in addresses %}
                                         {% if address.type is not empty and address.type == type %}
                                             {% if address.uuid %}
-                                                <a class="link-line" href="?docuuid={{ address.uuid }}&type=address" title="{{ address.title }}">{{ address.title }}</a>
+                                                <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
                                             {% else %}
                                                 {{ address.title }}
                                                 <br>
@@ -1184,7 +1184,7 @@
         {% set nodeUrl = detailPath ~ "?docuuid=" ~ nodeUuid %}
     {% endif %}
     {% if nodeUrl and node.isAddress %}
-        {% set nodeUrl = nodeUrl ~ "&type=address" %}
+        {% set nodeUrl = nodeUrl ~ "&isAddress=true" %}
     {% endif %}
     {% set nodeRequest = catalogLeafPath ~ '?parentId=' ~ nodeUuid ~ '&index=' ~ linkIdent ~ '&level=' ~ nodeLevel ~ '&node=' ~ linkId ~ '&partner=' ~ node.partner %}
     {% set nodeRequestDisable = openNodesLevel > nodeLevel %}

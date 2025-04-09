@@ -24,9 +24,9 @@ class Detail
         $this->grav = $grav;
         $this->configApi = $api;
         $this->lang = $grav['language']->getLanguage();
-        $this->uuid = $this->grav['uri']->query('docuuid') ?: '';
-        $this->type = $this->grav['uri']->query('type') ?: 'metadata';
-        $this->cswUrl = $this->grav['uri']->query('cswUrl') ?: '';
+        $this->uuid = $this->grav['uri']->query('docuuid') ?? '';
+        $this->type = $this->grav['uri']->query('isAddress') ? 'address' : 'metadata';
+        $this->cswUrl = $this->grav['uri']->query('cswUrl') ?? '';
         $this->theme = $this->grav['config']->get('system.pages.theme');
         $this->timezone = $this->grav['config']->get('system.timezone') ?: 'Europe/Berlin';
     }
