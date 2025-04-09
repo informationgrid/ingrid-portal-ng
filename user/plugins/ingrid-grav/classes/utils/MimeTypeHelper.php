@@ -44,7 +44,11 @@ class MimeTypeHelper
                             } else {
                                 $contentType = $headerContentType;
                             }
-                            $mimeTypeExtension = self::getMimetypeExtension(explode(";", $contentType)[0]);
+                            $type = explode(";", $contentType)[0];
+                            if (str_contains($type, '/xml') || str_contains($type, '+xml')){
+                                $type = self::getMimeTypeExtensionByResponse($url) ?? $type;
+                            }
+                            $mimeTypeExtension = self::getMimetypeExtension($type);
                             if ($mimeTypeExtension) {
                                 $extension = $mimeTypeExtension;
                             }
@@ -56,6 +60,30 @@ class MimeTypeHelper
             }
         }
         return $extension ?? "";
+    }
+
+    public static function getMimeTypeExtensionByResponse(string $url): bool|string
+    {
+        if (($response = @file_get_contents($url)) !== false) {
+            $response = strtolower($response);
+            if (str_contains($response, "<csw:capabilities")) {
+                return "csw";
+            } else if(str_contains($response, "wmt_ms_capabilities")
+                || str_contains($response, "wms_capabilities")) {
+                return "wms";
+            } else if(str_contains($response, "wcs_capabilities")
+                || str_contains($response, "wcs:capabilities")
+                || (str_contains($response, "<capabilities") && str_contains($response, "www.opengis.net/wcs/"))) {
+                return "wcs";
+            } else if(str_contains($response, "<capabilities") && str_contains($response, "www.opengis.net/wmts/")) {
+                return "wmts";
+            } else if(str_contains($response, "wfs_capabilities")) {
+                return "wfs";
+            } else if(str_contains($response, "<feed") && str_contains($response, "/atom")) {
+                return "atom";
+            }
+        }
+        return false;
     }
 
     public static function getMimetypeExtension(string $mime): bool|string
