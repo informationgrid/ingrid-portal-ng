@@ -80,7 +80,7 @@ class CapabilitiesHelper
                 $url .= '&SERVICE=' . $service;
             }
             $layersParam = $service . '||' . $url;
-            if ($additional != null) {
+            if ($additional != null && $additional !==  'NOT_FOUND') {
                 $layersParam .= '||' . $additional;
             }
             return urlencode($layersParam);
@@ -92,7 +92,7 @@ class CapabilitiesHelper
                 }
             }
             $layersParam = $defaultService . '||' . $url;
-            if ($additional != null) {
+            if ($additional != null && $additional !==  'NOT_FOUND') {
                 $layersParam .= '||' . $additional;
             }
             return urlencode($layersParam);

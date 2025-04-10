@@ -654,6 +654,39 @@
   {% endif %}
 {% endmacro %}
 
+{% macro render_label_link_map (title, linkTitle, link, type, css, mapUrl) %}
+  {% if link %}
+    <div class="table table--lined">
+        <table>
+            <tr>
+                {% if title %}
+                    <th>{{ title }}</th>
+                {% endif %}
+                <td>
+                    <div class="content--link">
+                        <div {% if type == "download" %}class="download"{% endif %}>
+                            <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
+                                {% if type == "external" %}
+                                  <span class="ic-ic-external"></span>
+                                {% elseif type == "download" %}
+                                  <span class="ic-ic-download"></span>
+                                {% elseif type == "mail" %}
+                                  <span class="ic-ic-mailto"></span>
+                                {% endif %}
+                                <span class="text">{{ linkTitle }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ '?layers=' ~ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                        {{ "COMMON.RESULT_SHOWMAP"|t }}
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+  {% endif %}
+{% endmacro %}
+
 {% macro render_label_link_list (title, entries, type, css) %}
   {% if entries %}
     <div class="table table--lined">

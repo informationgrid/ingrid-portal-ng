@@ -360,7 +360,7 @@ class DetailParserMetadataIdfISO
                 "kind" => "object",
             );
             if ($serviceUrl) {
-                $mapUrl = CapabilitiesHelper::getMapUrl($serviceUrl, $serviceVersion, $serviceType);
+                $mapUrl = CapabilitiesHelper::getMapUrl($serviceUrl, $serviceVersion, $serviceType, self::getIdentifier($node, $objType, $tmpNode));
                 if ($mapUrl) {
                     $item["mapUrl"] = $mapUrl;
                 }
@@ -504,12 +504,18 @@ class DetailParserMetadataIdfISO
                 $tmpNodes = IdfHelper::getNodeList($node, $xpathExpression);
             }
             foreach ($tmpNodes as $tmpNode) {
+                $xpathExpression = "./gmd:identificationInfo/*/srv:serviceType/gco:LocalName";
+                $serviceType = IdfHelper::getNodeValue($node, $xpathExpression);
+                $xpathExpression = "./gmd:identificationInfo/*/srv:serviceTypeVersion/*[self::gco:CharacterString or self::gmx:Anchor]";
+                $serviceTypeVersion = IdfHelper::getNodeValue($node, $xpathExpression);
                 $url = IdfHelper::getNodeValue($tmpNode, "./*/gmd:linkage/gmd:URL");
-                $title = IdfHelper::getNodeValue($tmpNode, "./*/gmd:linkage/gmd:URL");
+                if (!empty($url) && !empty($serviceTypeVersion)) {
+                    $url = CapabilitiesHelper::getCapabilitiesUrl($url, $serviceTypeVersion, $serviceType);
+                }
                 $description = IdfHelper::getNodeValue($tmpNode, "./../srv:operationDescription/*[self::gco:CharacterString or self::gmx:Anchor]");
                 $item = array (
                     "url" => $url,
-                    "title" => $title,
+                    "title" => $url,
                     "description" => $description,
                     "kind" => "access",
                 );
@@ -865,7 +871,7 @@ class DetailParserMetadataIdfISO
         $metadata->languageCode = LanguageHelper::getNamesFromIso639_2(IdfHelper::getNodeValueList($node, $xpathExpression), $lang);
 
         $metadata->conformity = self::getConformities($node, $lang);
-        $metadata->dataformat = self::getDataformats($node);
+        $metadata->dataformat = self::getDataFormats($node);
 
         $xpathExpression = "./gmd:identificationInfo/*/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:classification/gmd:MD_ClassificationCode/@codeListValue";
         $metadata->geodataLink = IdfHelper::getNodeValue($node, $xpathExpression);
@@ -1190,7 +1196,7 @@ class DetailParserMetadataIdfISO
         return $array;
     }
 
-    private static function getDataformats(\SimpleXMLElement $node): array
+    private static function getDataFormats(\SimpleXMLElement $node): array
     {
         $array = [];
         $tmpNodes = IdfHelper::getNodeList($node, "./gmd:distributionInfo/gmd:MD_Distribution/gmd:distributionFormat/gmd:MD_Format") ?? [];
@@ -1379,42 +1385,73 @@ class DetailParserMetadataIdfISO
         $value = null;
         if ($type == '1') {
             $value = IdfHelper::getNodeValue($node, './idf:mapUrl');
-        }
-        if (!$value) {
-            $crossRefNodes = IdfHelper::getNodeList($node, './idf:crossReference');
-            foreach ($crossRefNodes as $crossRefNode) {
-                $mapUrl =  IdfHelper::getNodeValue($crossRefNode, "./idf:mapUrl");
-                if ($mapUrl) {
-                    $value = $mapUrl;
-                } else {
-                    $serviceUrl =  IdfHelper::getNodeValue($crossRefNode, "./idf:serviceUrl");
-                    $serviceType =  IdfHelper::getNodeValue($crossRefNode, "./idf:serviceType");
-                    $serviceVersion =  IdfHelper::getNodeValue($crossRefNode, "./idf:serviceVersion");
-                    if (!empty($serviceUrl)) {
-                        $value = CapabilitiesHelper::getMapUrl($serviceUrl, $serviceVersion, $serviceType);
+            if ($value) {
+               $value = CapabilitiesHelper::getMapUrl($value, null, null, self::getIdentifier($node, $type));
+            }
+            if (!$value) {
+                $crossRefNodes = IdfHelper::getNodeList($node, './idf:crossReference');
+                foreach ($crossRefNodes as $crossRefNode) {
+                    $mapUrl =  IdfHelper::getNodeValue($crossRefNode, "./idf:mapUrl");
+                    if ($mapUrl) {
+                        $value = $mapUrl;
+                    } else {
+                        $serviceUrl =  IdfHelper::getNodeValue($crossRefNode, "./idf:serviceUrl");
+                        $serviceType =  IdfHelper::getNodeValue($crossRefNode, "./idf:serviceType");
+                        $serviceVersion =  IdfHelper::getNodeValue($crossRefNode, "./idf:serviceVersion");
+                        if (!empty($serviceUrl)) {
+                            $value = CapabilitiesHelper::getMapUrl($serviceUrl, $serviceVersion, $serviceType, self::getIdentifier($node, $type));
+                        }
                     }
-                }
-                if ($value) {
-                    break;
                 }
             }
-        }
-        if (!$value) {
-            $transOptionNodes = IdfHelper::getNodeList($node, './gmd:distributionInfo/*/gmd:transferOptions');
-            foreach ($transOptionNodes as $transOptionNode) {
-                $url = IdfHelper::getNodeValue($transOptionNode, './gmd:MD_DigitalTransferOptions/gmd:onLine/*/gmd:linkage/gmd:URL');
-                if ($url) {
-                    $serviceType = IdfHelper::getNodeValue($transOptionNode, "./gmd:MD_DigitalTransferOptions/gmd:onLine/*/gmd:function/gmd:CI_OnLineFunctionCode");
-                    if (($serviceType != null && (strtolower(trim($serviceType)) == 'view' || strtolower(trim($serviceType)) == 'wms') || strtolower(trim($serviceType)) == 'wmts') &&
-                        ((str_contains(strtolower($url), 'request=getcapabilities') && (str_contains(strtolower($url), 'service=wms')) || str_contains(strtolower($url), 'service=wmts')) ||
-                        str_contains(strtolower($url), 'wmtscapabilities.xml'))
-                    ) {
-                        $value = CapabilitiesHelper::getMapUrl($url);
+            if (!$value) {
+                $transOptionNodes = IdfHelper::getNodeList($node, './gmd:distributionInfo/*/gmd:transferOptions');
+                foreach ($transOptionNodes as $transOptionNode) {
+                    $url = IdfHelper::getNodeValue($transOptionNode, './gmd:MD_DigitalTransferOptions/gmd:onLine/*/gmd:linkage/gmd:URL');
+                    if ($url) {
+                        $serviceType = IdfHelper::getNodeValue($transOptionNode, "./gmd:MD_DigitalTransferOptions/gmd:onLine/*/gmd:function/gmd:CI_OnLineFunctionCode");
+                        if (($serviceType != null && (strtolower(trim($serviceType)) == 'view' || strtolower(trim($serviceType)) == 'wms') || strtolower(trim($serviceType)) == 'wmts') &&
+                            ((str_contains(strtolower($url), 'request=getcapabilities') && (str_contains(strtolower($url), 'service=wms')) || str_contains(strtolower($url), 'service=wmts')) ||
+                                str_contains(strtolower($url), 'wmtscapabilities.xml'))
+                        ) {
+                            $value = CapabilitiesHelper::getMapUrl($url, null, $serviceType, self::getIdentifier($node, $type));
+                        }
                     }
                 }
+            }
+        } else if ($type == '3') {
+            $value = IdfHelper::getNodeValue($node, './idf:mapUrl');
+            if (!$value) {
+                $serviceUrl = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/srv:containsOperations/srv:SV_OperationMetadata/srv:operationName/*[self::gco:CharacterString or self::gmx:Anchor][text() = 'GetCapabilities']/../../srv:connectPoint//gmd:URL");
+                $serviceType = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/srv:serviceType/*");
+                $serviceVersion = IdfHelper::getNodeValue($node, "./gmd:identificationInfo/*/srv:serviceTypeVersion/*");
+                $value = CapabilitiesHelper::getMapUrl($serviceUrl, $serviceVersion, $serviceType);
             }
         }
         return $value;
+    }
+
+    private static function getIdentifier(\SimpleXMLElement $node, string $type, \SimpleXMLElement $crossReference = null): string
+    {
+        if ($type === '1') {
+            $xpathExpression = "./gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]";
+            return IdfHelper::getNodeValue($node, $xpathExpression);
+        } else {
+            if ($crossReference) {
+                $origId = IdfHelper::getNodeValue($crossReference, "./@orig-uuid");
+                $uuid = IdfHelper::getNodeValue($crossReference, "./@uuid");
+                $xpathExpression = "./gmd:identificationInfo/*/srv:operatesOn";
+                $nodeList = IdfHelper::getNodeList($node, $xpathExpression);
+                foreach ($nodeList as $tmpNode) {
+                    $uuidRef = IdfHelper::getNodeValue($tmpNode, "./@uuidref");
+                    $href = IdfHelper::getNodeValue($tmpNode, "./@xlink:href");
+                    if ($uuidRef != null && ($uuidRef === $uuid || $uuidRef === $origId)) {
+                        return $href;
+                    }
+                }
+            }
+        }
+        return 'NOT_FOUND';
     }
 
     private static function addToArray(array &$array, string $id, mixed $value): void

@@ -1,4 +1,6 @@
 {# Geodatendienst #}
+{% set map = theme_var('map') %}
+
 <div class="sub-section">
     <a class="anchor" id="{{ hash_info }}_technical_information"></a>
     {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
@@ -31,5 +33,13 @@
     {% if hasAccessConstraint is same as("true") %}
         {% set tmpTitle = "SEARCH_DETAIL.SHOWGETCAPABILITYURLRESTRICTED"|t %}
     {% endif %}
-    {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
+    {% if map.url %}
+        {% if hasAccessConstraint is same as("true") %}
+            {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
+        {% else %}
+            {{ hit_macros.render_label_link_map(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external", "", mapUrl) }}
+        {% endif %}
+    {% else %}
+        {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
+    {% endif %}
 </div>
