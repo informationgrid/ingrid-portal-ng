@@ -117,24 +117,29 @@ if [ "$GEO_API_PASS" ]; then
   yq -i '.geo_api.pass = env(GEO_API_PASS)' "$INGRID_GRAV_YAML"
 fi
 
-if [ "$CODELIST_API" ]; then
-  yq -i '.codelist_api.url = env(CODELIST_API)' "$INGRID_GRAV_YAML"
-fi
-
-if [ "$CODELIST_USER" ]; then
-  yq -i '.codelist_api.user = env(CODELIST_USER)' "$INGRID_GRAV_YAML"
-fi
-
-if [ "$CODELIST_PASS" ]; then
-  yq -i '.codelist_api.pass = env(CODELIST_PASS)' "$INGRID_GRAV_YAML"
-fi
-
 if [ "$CSW_URL" ]; then
   yq -i '.csw.url = env(CSW_URL)' "$INGRID_GRAV_YAML"
 fi
 
 if [ "$RDF_URL" ]; then
   yq -i '.rdf.url = env(RDF_URL)' "$INGRID_GRAV_YAML"
+fi
+
+#####################
+# Default ingrid grav utils plugin config
+#####################
+INGRID_GRAV_UTILS_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/ingrid-grav-utils/ingrid-grav-utils.yaml
+
+if [ "$CODELIST_API" ]; then
+  yq -i '.codelist_api.url = env(CODELIST_API)' "$INGRID_GRAV_UTILS_YAML"
+fi
+
+if [ "$CODELIST_USER" ]; then
+  yq -i '.codelist_api.user = env(CODELIST_USER)' "$INGRID_GRAV_UTILS_YAML"
+fi
+
+if [ "$CODELIST_PASS" ]; then
+  yq -i '.codelist_api.pass = env(CODELIST_PASS)' "$INGRID_GRAV_UTILS_YAML"
 fi
 
 #####################
