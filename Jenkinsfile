@@ -2,8 +2,10 @@ pipeline {
     agent any
     stages {
         stage('Update submodule') {
-            withCredentials([gitUsernamePassword(credentialsId: 'ae3a7670-c4c8-413c-9df2-45373f1723a2', gitToolName: 'git')]) {
-                sh 'git submodule update --init --recursive'
+            steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'ae3a7670-c4c8-413c-9df2-45373f1723a2', gitToolName: 'git')]) {
+                    sh 'git submodule update --init --recursive'
+                }
             }
         }
         stage('Build image') {
