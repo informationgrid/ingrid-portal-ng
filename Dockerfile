@@ -87,9 +87,6 @@ COPY user/pages /usr/share/grav-admin/user/pages
 COPY user/accounts /usr/share/grav-admin/user/accounts
 COPY user/blueprints /usr/share/grav-admin/user/blueprints
 
-RUN git clone --branch ${INGRID_GRAV_PLUGIN_BRANCH} https://github.com/informationgrid/ingrid-grav-plugin.git /usr/share/grav-admin/user/plugins/ingrid-grav
-RUN git clone --branch ${INGRID_GRAV_PLUGIN_UTILS_BRANCH} https://github.com/informationgrid/ingrid-grav-plugin-utils.git /usr/share/grav-admin/user/plugins/ingrid-grav-utils
-
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav && composer update
