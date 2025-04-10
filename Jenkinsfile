@@ -14,7 +14,7 @@ pipeline {
 
                 script {
 
-                    if (BRANCH_NAME == 'main') {
+                    if (BRANCH_NAME == 'develop') {
                         env.VERSION = 'latest'
                     } else {
                         env.VERSION = BRANCH_NAME.replaceAll('/', '-')
