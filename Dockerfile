@@ -72,6 +72,8 @@ RUN groupadd --system foo; \
     \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini";
 
+RUN git submodule init && git submodule update
+
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
     unzip -qq grav-admin.zip -d /usr/share -x "grav-admin/user/themes/*" -x "grav-admin/user/pages/*" && \
