@@ -78,7 +78,7 @@ fi
 
 # Update cache
 ENABLE_CACHE="$ENABLE_CACHE" \
-yq -i 'cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
+yq -i '.cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
 
 # Add home
 yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
