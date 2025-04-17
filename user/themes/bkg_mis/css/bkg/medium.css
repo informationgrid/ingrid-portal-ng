@@ -250,36 +250,36 @@
  }
  .socialmedia ul li.navRSSFeed a {
   background:
-   url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=2)
+   url(../../images/sprite-social.png?__blob=normal&v=2)
    no-repeat 0 -235px
  }
  .socialmedia ul li.navYouTube a {
   background:
-   url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=2)
+   url(../../images/sprite-social.png?__blob=normal&v=2)
    no-repeat 0 -941px
  }
  .socialmedia ul li.navXing a {
   background:
-   url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=2)
+   url(../../images/sprite-social.png?__blob=normal&v=2)
    no-repeat 0 -704px
  }
  .socialmedia ul li.navFacebook a {
   background:
-   url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=2)
+   url(../../images/sprite-social.png?__blob=normal&v=2)
    no-repeat 0 1px
  }
  .socialmedia ul li.navTwitter a {
   background:
-   url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=2)
+   url(../../images/sprite-social.png?__blob=normal&v=2)
    no-repeat 0 -471px
  }
  .socialmedia ul li.navInstagram a {
   background:
-    url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=4) no-repeat 0 -1176px;
+    url(../../images/sprite-social.png?__blob=normal&v=4) no-repeat 0 -1176px;
   }
  .socialmedia ul li.navLinkedIn a {
   background:
-    url(user/themes/bkg_mis/images/sprite-social.png?__blob=normal&v=5) no-repeat 0-1413px;
+    url(../../images/sprite-social.png?__blob=normal&v=5) no-repeat 0-1413px;
  }
  .contactbox dt, .contactbox p {
   padding-left: 20px

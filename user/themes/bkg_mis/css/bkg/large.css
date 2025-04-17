@@ -106,13 +106,13 @@
  }
  #navServiceMeta #navServiceGS a, #navServiceMeta #navServiceGS strong {
   background:
-   url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+   url(../../images/sprite.png?__blob=normal&v=1)
    no-repeat 0 -3050px;
   padding-left: 26px
  }
  #navServiceMeta #navServiceLS a, #navServiceMeta #navServiceLS strong {
   background:
-   url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+   url(../../images/sprite.png?__blob=normal&v=1)
    no-repeat 0 -3702px;
   padding-left: 26px
  }
@@ -142,7 +142,7 @@
  }
  #footer #navFunctions #navFunctionsPrint a {
   background:
-   url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+   url(../../images/sprite.png?__blob=normal&v=1)
    no-repeat 0 -7357px;
   padding-left: 30px
  }

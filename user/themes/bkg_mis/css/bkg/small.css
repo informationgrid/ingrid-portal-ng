@@ -3,9 +3,9 @@
 @font-face {
  font-family: bundessansweb;
  src:
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Regular.eot'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Regular.woff'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Regular.ttf');
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Regular.eot'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Regular.woff'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Regular.ttf');
  font-style: normal;
  font-weight: normal
 }
@@ -13,9 +13,9 @@
 @font-face {
  font-family: bundessansweb;
  src:
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Bold.eot'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Bold.woff'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Bold.ttf');
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Bold.eot'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Bold.woff'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Bold.ttf');
  font-style: normal;
  font-weight: bold
 }
@@ -23,9 +23,9 @@
 @font-face {
  font-family: bundessansweb;
  src:
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-BoldItalic.eot'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-BoldItalic.woff'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-BoldItalic.ttf');
+  url('../../fonts/BundesSansWeb/BundesSansWeb-BoldItalic.eot'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-BoldItalic.woff'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-BoldItalic.ttf');
  font-style: italic;
  font-weight: bold
 }
@@ -33,9 +33,9 @@
 @font-face {
  font-family: bundessansweb;
  src:
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Italic.eot'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Italic.woff'),
-  url('user/themes/bkg_mis/fonts/BundesSansWeb/BundesSansWeb-Italic.ttf');
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Italic.eot'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Italic.woff'),
+  url('../../fonts/BundesSansWeb/BundesSansWeb-Italic.ttf');
  font-style: italic;
  font-weight: normal
 }
@@ -413,7 +413,7 @@ a:hover, a:active, a:focus {
 
 .more a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -6226px;
  padding-left: 10px;
  color: #333;
@@ -423,13 +423,13 @@ a:hover, a:active, a:focus {
 
 .more a:hover, .more a:focus, .more a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -4134px
 }
 
 a.RichTextIntLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -6225px;
  padding-left: 20px;
  text-decoration: underline
@@ -438,7 +438,7 @@ a.RichTextIntLink {
 a.RichTextIntLink:hover, a.RichTextIntLink:focus, a.RichTextIntLink:active
  {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -4133px;
  text-decoration: none
 }
@@ -457,7 +457,7 @@ a.RichTextGlossarLink:hover, a.RichTextGlossarLink:focus, a.RichTextGlossarLink:
 
 a.RichTextWikiLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -2835px;
  padding-left: 20px;
  text-decoration: underline
@@ -466,14 +466,14 @@ a.RichTextWikiLink {
 a.RichTextWikiLink:hover, a.RichTextWikiLink:focus, a.RichTextWikiLink:active
  {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -2626px;
  text-decoration: none
 }
 
 ul.links a, ul.links strong, a.themenLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -6224px;
  padding-left: 15px
 }
@@ -482,7 +482,7 @@ ul.links a:hover, ul.links a:focus, ul.links a:active, ul.links strong:hover,
  ul.links strong:focus, ul.links strong:active, a.themenLink:hover, a.themenLink:focus,
  a.themenLink:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -4132px
 }
 
@@ -505,21 +505,21 @@ ul.links a, ul.links strong {
 
 .error a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -6220px;
  padding-left: 20px
 }
 
 .error a:hover, .error a:focus, .error a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -4128px
 }
 
 .downloadlinks a.downloadLink {
  display: block;
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -1769px;
  padding-left: 25px
 }
@@ -527,13 +527,13 @@ ul.links a, ul.links strong {
 .downloadlinks a.downloadLink:hover, .downloadlinks a.downloadLink:focus,
  .downloadlinks a.downloadLink:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -1769px
 }
 
 a.download, ul.links a.downloadLink, a.Publication {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -2417px;
  padding-left: 20px
 }
@@ -542,7 +542,7 @@ ul.links a.downloadLink:hover, ul.links a.downloadLink:focus, ul.links a.downloa
  a.download:hover, a.download:focus, a.download:active, a.Publication:hover,
  a.Publication:focus, a.Publication:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -1984px
 }
 
@@ -561,7 +561,7 @@ ul.links a.downloadLink:hover, ul.links a.downloadLink:focus, ul.links a.downloa
 
 #supplement .box .links a.downloadLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -2411px;
  padding-left: 20px
 }
@@ -569,13 +569,13 @@ ul.links a.downloadLink:hover, ul.links a.downloadLink:focus, ul.links a.downloa
 #supplement .box .links a.downloadLink:hover, #supplement .box .links a.downloadLink:focus,
  #supplement .box .links a.downloadLink:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -1978px
 }
 
 span .shoppingCartLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -8656px;
  padding-left: 20px
 }
@@ -583,7 +583,7 @@ span .shoppingCartLink {
 span .shoppingCartLink:hover, span .shoppingCartLink:focus, span .shoppingCartLink:active
  {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -8228px
 }
 
@@ -602,7 +602,7 @@ span .shoppingCartLink:hover, span .shoppingCartLink:focus, span .shoppingCartLi
 
 .shoppingCartLink, #supplement .box .links a.shoppingCartLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -8650px;
  padding-left: 20px
 }
@@ -611,14 +611,14 @@ span .shoppingCartLink:hover, span .shoppingCartLink:focus, span .shoppingCartLi
  #supplement .box .links a.shoppingCartLink:hover, #supplement .box .links a.shoppingCartLink:focus,
  #supplement .box .links a.shoppingCartLink:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -8222px
 }
 
 .downloadlinks a.shoppingCartLink {
  display: block;
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -8871px;
  padding-left: 25px
 }
@@ -626,13 +626,13 @@ span .shoppingCartLink:hover, span .shoppingCartLink:focus, span .shoppingCartLi
 .downloadlinks a.shoppingCartLink:hover, .downloadlinks a.shoppingCartLink:focus,
  .downloadlinks a.shoppingCartLink:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -8443px
 }
 
 a.external, .teaser .more a.external {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -2835px;
  padding-left: 13px
 }
@@ -640,7 +640,7 @@ a.external, .teaser .more a.external {
 a.external:hover, a.external:focus, a.external:active, .teaser .more a.external:hover,
  .teaser .more a.external:focus, .teaser .more a.external:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -2626px
 }
 
@@ -659,7 +659,7 @@ a.external:hover, a.external:focus, a.external:active, .teaser .more a.external:
 
 a.RichTextExtLink, a.ExternalLink {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -2835px;
  padding-left: 20px;
  text-decoration: underline
@@ -668,21 +668,21 @@ a.RichTextExtLink, a.ExternalLink {
 a.RichTextExtLink:hover, a.RichTextExtLink:focus, a.RichTextExtLink:active,
  a.ExternalLink:hover, a.ExternalLink:focus, a.ExternalLink:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -2626px;
  text-decoration: none
 }
 
 a.ContactData {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -1340px;
  padding-left: 20px
 }
 
 a.ContactData:hover, a.ContactData:focus, a.ContactData:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -1129px
 }
 
@@ -694,7 +694,7 @@ p.navToTop {
 
 p.navToTop a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -5594px;
  float: right;
  padding-left: 15px
@@ -702,7 +702,7 @@ p.navToTop a {
 
 p.navToTop a:hover, p.navToTop a:focus, p.navToTop a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -5594px
 }
 
@@ -729,7 +729,7 @@ p.navToTop a:hover, p.navToTop a:focus, p.navToTop a:active {
 
 #content .toc li a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 3px -4753px;
  padding-left: 25px;
  text-decoration: none
@@ -738,7 +738,7 @@ p.navToTop a:hover, p.navToTop a:focus, p.navToTop a:active {
 #content .toc li a:hover, #content .toc li a:focus, #content .toc li a:active
  {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 3px -4341px;
  text-decoration: underline
 }
@@ -929,7 +929,7 @@ strong.button {
 
 .video-image .video-icon {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -9726px;
  position: absolute;
  top: 31%;
@@ -982,7 +982,7 @@ strong.button {
 
 .dossier .tableOfDocuments li>a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -208px;
  padding-left: 20px;
  color: #333
@@ -991,14 +991,14 @@ strong.button {
 .dossier .tableOfDocuments li>a:hover, .dossier .tableOfDocuments li>a:focus,
  .dossier .tableOfDocuments li>a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -421px;
  color: #407e40
 }
 
 .dossier .tableOfDocuments li>strong {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 5px;
  padding-left: 20px
 }
@@ -1066,7 +1066,7 @@ strong.button {
 
 #supplement .box .links a, #supplement .box .links strong {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -4127px;
  padding: 5px 5px 5px 20px
 }
@@ -1074,7 +1074,7 @@ strong.button {
 #supplement .box .links a:hover, #supplement .box .links a:focus,
  #supplement .box .links a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -4127px
 }
 
@@ -1096,7 +1096,7 @@ strong.button {
 #supplement .box .toggleFacet .link a:hover, #supplement .box .toggleFacet .link a:focus,
  #supplement .box .toggleFacet .link a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -5379px
 }
 
@@ -1287,13 +1287,13 @@ strong.button {
 #footer #navFunctionsWrapper .navToTop a, #footer #navFunctionsWrapper .navToTop strong
  {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -5585px
 }
 
 #footer #navFunctionsWrapper #navFunctionsRecommend a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 11px -7575px;
  padding-left: 30px
 }
@@ -1301,7 +1301,7 @@ strong.button {
 #footer #navFunctionsWrapper #navFunctionsRecommend strong {
  font-weight: bold;
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 11px -7575px;
  padding-left: 30px
 }
@@ -1368,7 +1368,7 @@ em.searchString {
 
 #sitemap li li a, #sitemap li li strong {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -6223px;
  padding: 1px 0 3px 20px
 }
@@ -1376,7 +1376,7 @@ em.searchString {
 #sitemap li li a:hover, #sitemap li li a:focus, #sitemap li li a:active
  {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -4131px
 }
 
@@ -1956,7 +1956,7 @@ input.reset {
  text-align: left;
  text-decoration: none;
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -6220px;
  padding: 4px 4px 4px 20px;
  display: block
@@ -1965,7 +1965,7 @@ input.reset {
 .live-calendar .calendar-details li a:hover, .live-calendar .calendar-details li a:focus,
  .live-calendar .calendar-details li a:active {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 5px -6220px;
  text-decoration: underline
 }
@@ -2063,7 +2063,7 @@ video, .mejs-container {
 
 #navBreadcrumbs li.first a {
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -3475px;
  text-indent: -9999em;
  width: 25px;
@@ -2080,7 +2080,7 @@ video, .mejs-container {
  line-height: 1;
  display: block;
  background:
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 0 -200px;
  padding: 10px 10px 14px 15px
 }
@@ -2954,7 +2954,7 @@ html.mm-opened #togglenav {
  font-size: 92.86%;
  border: 1px solid #dedede;
  background: #eee
-  url(user/themes/bkg_mis/images/sprite.png?__blob=normal&v=1)
+  url(../../images/sprite.png?__blob=normal&v=1)
   no-repeat 7px -1129px;
  border-top-left-radius: 2px;
  border-top-right-radius: 2px;

@@ -1029,15 +1029,15 @@ header .logo img {
 }
 
 .teaser .teaser-link .ic-opendata:before {
-  content: url("user/themes/bkg_mis/images/opendata.png") !important;
+  content: url("../images/opendata.png") !important;
   margin-left: -23px
 }
 
 .teaser:hover .teaser-link .ic-opendata:before {
-  content: url("user/themes/bkg_mis/images/opendata-hover.png") !important;
+  content: url("../images/opendata-hover.png") !important;
 }
 .ic-ic-opendata:before {
-  content: url("user/themes/bkg_mis/images/opendata-hit.png");
+  content: url("../images/opendata-hit.png");
 }
 
 .search-filtered ol {
