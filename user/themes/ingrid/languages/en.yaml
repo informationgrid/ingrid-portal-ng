@@ -320,6 +320,8 @@ SEARCH_DETAIL:
     DATA_FORMAT: Data Format
     INFO_LIMIT_REFERENCES: '<p style="text-align: center;padding: 10px 0 0 0;"><b>Hint:</b> Only the first 100 references displayed!</p>'
     TECHNICAL_INFORMATION: Technical Informationen
+    TECHNICAL_INFORMATION_3: Technical Informationen
+    TECHNICAL_INFORMATION_6: Technical Informationen
     ADDITIONAL_INFORMATION: Additional Information
     SEARCH_TERMS: Search Terms
     INSPIRE_THEMES: Inspire-Themes
@@ -1084,6 +1086,9 @@ THEME:
                         LABEL: ID
                     PATH:
                         LABEL: Pfad
+                    TARGET_BLANK:
+                        LABEL: Im neuem Tab öffnen
+                        HELP: Seite wird in einem neuem Tab geöffnet.
         REDIRECT:
             TITLE: Redirect
             PAGES_TO_404:

@@ -109,7 +109,7 @@
             {% set page_title = p.header.custom_title.html ?? p.title %}
             {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
             {% if page_url is not empty %}
-                <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t|e }}">
+                <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
                     <span>{{ page_title|t|e }}</span>
                 </a>
             {% endif %}

@@ -1,0 +1,26 @@
+{% set logo = theme_var('header.logo') %}
+{% set header_logo_enabled = theme_var('header.logo_enabled') %}
+
+<div class="row">
+    <div class="columns xsmall-20 small-17 medium-17 large-17 xlarge-10">
+        <div class="logo" role="banner">
+            <a href="https://www.bkg.bund.de/DE/Home/home.html" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" target="_blank">
+            {% if logo %}
+                {% set header_logo_file = (logo|first).name %}
+            {% else %}
+                {% set header_logo_file = 'logo.svg' %}
+            {% endif %}
+                <img src="{{ url('theme://images/logo/' ~ header_logo_file)  }}" alt="{{ site.title }}" />
+            </a>
+        </div>
+    </div>
+    <div class="columns xsmall-4 small-7 medium-7 large-7 xlarge-13">
+        <div class="desktop__title">
+            <a href="{{ home_url }}" title="Startseite von BKG-MIS aufrufen ">
+                <span>
+                    <strong>M</strong>etadaten<br class="hide-for-xlarge"><strong>I</strong>nformations<br class="hide-for-xlarge"><strong>S</strong>ystem
+                </span>
+            </a>
+        </div>
+    </div>
+</div>

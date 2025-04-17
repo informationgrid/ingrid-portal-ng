@@ -337,3 +337,14 @@ form:
                   show_root: false
                   show_all: false
                   limit_levels: 2
+                .target_blank:
+                  type: toggle
+                  label: THEME.ADMIN.LAYOUT.MENU.FOOTER.TARGET_BLANK.LABEL
+                  help: THEME.ADMIN.LAYOUT.MENU.FOOTER.TARGET_BLANK.HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool

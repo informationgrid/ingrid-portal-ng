@@ -320,6 +320,8 @@ SEARCH_DETAIL:
     DATA_FORMAT: Datenformat
     INFO_LIMIT_REFERENCES: '<p style="text-align: center;padding: 10px 0 0 0;"><b>Hinweis:</b> Es werden nur die ersten 100 Verweise angezeigt!</p>'
     TECHNICAL_INFORMATION: Informationen zum Datensatz
+    TECHNICAL_INFORMATION_3: Informationen zum Datensatz
+    TECHNICAL_INFORMATION_6: Informationen zum Datensatz
     ADDITIONAL_INFORMATION: Zusatzinformationen
     SEARCH_TERMS: Suchbegriffe
     INSPIRE_THEMES: INSPIRE-Themen
@@ -413,7 +415,7 @@ SEARCH_DETAIL:
     T011_OBJ_GEO_COVERAGE: Datendefizit
     T011_OBJ_GEO_SPECIAL_BASE: Fachliche Grundlage
     T011_OBJ_GEO_DATA_BASE: Datengrundlage
-    T011_OBJ_GEO_HIERARCHY_LEVEL: Datensatz / Datenserie  
+    T011_OBJ_GEO_HIERARCHY_LEVEL: Datensatz / Datenserie
     T011_OBJ_GEO_VECTOR_TOPOLOGY_LEVEL: Topologieinformation
     T011_OBJ_GEO_POS_ACCURACY_VERTICAL: Höhengenauigkeit
     T011_OBJ_GEO_KEYC_INCL_W_DATASET: 'Schlüsselkatalog: Im Datensatz vorhanden'
@@ -1084,6 +1086,9 @@ THEME:
                         LABEL: ID
                     PATH:
                         LABEL: Pfad
+                    TARGET_BLANK:
+                        LABEL: Im neuem Tab öffnen
+                        HELP: Seite wird in einem neuem Tab geöffnet.
         REDIRECT:
             TITLE: Redirect
             PAGES_TO_404:

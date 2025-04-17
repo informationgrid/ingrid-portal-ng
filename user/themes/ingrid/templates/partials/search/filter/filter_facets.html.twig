@@ -95,66 +95,87 @@
                                                     active: isItemOpen
                                                 }%}
                                             {% else %}
-                                                {% set activeListLimit = false %}
-                                                {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}
-                                                {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
-                                                {% for bucket in itemsSelected %}
-                                                    <div class="form-element boxed">
-                                                        {% set facetId = item.id ~ '-' ~ bucket.value %}
-                                                        <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
-                                                            <div class="input-check">
-                                                                <div class="control-group">
-                                                                    <label class="control control--checkbox">
-                                                                        <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
-                                                                        <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                        <span class="text">{{ bucket.label|t }}</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                                {% if itemsSelected|length > 0 %}
-                                                    <hr class="no-margin border-dotted">
-                                                {% endif %}
-                                                {% for bucket in itemsUnselected %}
-                                                    {% if item.listLimit and activeListLimit == false %}
-                                                        {% if loop.index > item.listLimit %}
-                                                            {% set activeListLimit = true %}
-                                                            <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
-                                                                <div class="accordion-item text-right" data-accordion-item>
-                                                                    <div id="{{ item.id }}_more" class="text-left" style="display: none;" role="tabpanel" aria-labelledby="type-accordion-label" aria-hidden="false" data-tab-content >
-                                                        {% endif %}
-                                                    {% endif %}
-                                                    <div class="form-element boxed">
-                                                        {% set facetId = item.id ~ '-' ~ bucket.value %}
-                                                        <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
-                                                            <div class="input-check">
-                                                                <div class="control-group">
-                                                                    <label class="control control--checkbox">
-                                                                        <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
-                                                                        <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                        <span class="text">{{ bucket.label|t }}</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                {% endfor %}
-                                                {% if activeListLimit == true %}
-                                                            </div>
-                                                            <a id="{{ item.id }}_more-label" href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" aria-expanded="false" aria-selected="false">
-                                                                <div class="helper plus">
-                                                                    <span class="ic-ic-plus"></span>
-                                                                    <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_PLUS"|t }}</span>
-                                                                </div>
-                                                                <div class="helper minus">
-                                                                    <span class="ic-ic-minus"></span>
-                                                                    <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_MINUS"|t }}</span>
+                                                {% if item.selectionSingle %}
+                                                    {% set inputType = 'radio' %}
+                                                    {% for bucket in item.items %}
+                                                        <div class="form-element boxed">
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                            <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                <div class="input-check">
+                                                                    <div class="control-group">
+                                                                        <label class="control control--{{ inputType }}">
+                                                                            <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                            <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                            <span class="text">{{ bucket.label|t }}</span>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </a>
                                                         </div>
-                                                    </div>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% set inputType = 'checkbox' %}
+                                                    {% set activeListLimit = false %}
+                                                    {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}
+                                                    {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
+                                                    {% for bucket in itemsSelected %}
+                                                        <div class="form-element boxed">
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                            <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                <div class="input-check">
+                                                                    <div class="control-group">
+                                                                        <label class="control control--{{ inputType }}">
+                                                                            <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                            <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                            <span class="text">{{ bucket.label|t }}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    {% endfor %}
+                                                    {% if itemsSelected|length > 0 %}
+                                                        <hr class="no-margin border-dotted">
+                                                    {% endif %}
+                                                    {% for bucket in itemsUnselected %}
+                                                        {% if item.listLimit and activeListLimit == false %}
+                                                            {% if loop.index > item.listLimit %}
+                                                                {% set activeListLimit = true %}
+                                                                <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
+                                                                <div class="accordion-item text-right" data-accordion-item>
+                                                                <div id="{{ item.id }}_more" class="text-left" style="display: none;" role="tabpanel" aria-labelledby="type-accordion-label" aria-hidden="false" data-tab-content >
+                                                            {% endif %}
+                                                        {% endif %}
+                                                        <div class="form-element boxed">
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                            <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                <div class="input-check">
+                                                                    <div class="control-group">
+                                                                        <label class="control control--{{ inputType }}">
+                                                                            <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                            <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                            <span class="text">{{ bucket.label|t }}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    {% endfor %}
+                                                    {% if activeListLimit == true %}
+                                                        </div>
+                                                        <a id="{{ item.id }}_more-label" href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" aria-expanded="false" aria-selected="false">
+                                                            <div class="helper plus">
+                                                                <span class="ic-ic-plus"></span>
+                                                                <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_PLUS"|t }}</span>
+                                                            </div>
+                                                            <div class="helper minus">
+                                                                <span class="ic-ic-minus"></span>
+                                                                <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_MINUS"|t }}</span>
+                                                            </div>
+                                                        </a>
+                                                        </div>
+                                                        </div>
+                                                    {% endif %}
                                                 {% endif %}
                                             {% endif %}
                                         </div>

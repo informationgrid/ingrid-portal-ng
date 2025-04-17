@@ -1,0 +1,51 @@
+PAGES:
+    HOME: Startseite
+    HOME_MENU_TITLE: BKG Webseite
+    HOME_META_TITLE: Startseite
+    HOME_META_DESCRIPTION: BKG-MIS bietet kostenlosen und werbefreien Zugang zu Informationen Institutionen und Organisationen.
+    HOME_META_KEYWORDS: BKG-MIS, Portal, Informationen, Institutionen, Organisationen, Suche, Recherche, werbefrei, kostenlos, Datenkataloge, Datenbanken
+    SEARCH_META_DESCRIPTION: Mit der Freitextsuche von BKG-MIS können Sie nach Informationen, Rechtsvorschriften, Forschungsprojekten und Adressen in den Datenkatalogen suchen
+    SEARCH_META_KEYWORDS: BKG-MIS, Informationen, Informationsangebot, Suche, Recherche, Freitextsuche, freie Suche,  Rechtsvorschriften, Forschung, Projekte, Adressen, Datenkataloge, Datenbanken
+    ABOUT: Über BKG-MIS
+    ABOUT_MENU_TITLE: Hintergrundinformationen zu BKG-MIS
+    ABOUT_META_DESCRIPTION: Informationen zu BKG-MIS wie z.B. Zielsetzung, rechtliche Grundlage, Anzahl der angeschlossenen Datenbanken oder angebotene Funktionen zur Recherche können Sie hier einsehen.
+    ABOUT_META_KEYWORDS: BKG-MIS, Hintergrundinformationen, Hintergrund, Informationen, Fakten, Eckdaten, Ziele, Zielsetzung, rechtliche Grundlage, Umweltinformationsgesetz, UIG, Datenbanken, Funktionen, Suche, Recherche, EU-Richtlinie 2003/4/EG, EU-Richtlinie, EU
+    CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an BKG-MIS
+    CONTACT_META_DESCRIPTION: Kontaktieren Sie BKG-MIS online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.
+    CONTACT_META_KEYWORDS: BKG-MIS, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen
+    IMPRINT_META_DESCRIPTION: Im Impressum werden die inhaltlich und technisch Verantwortlichen von BKG-MIS genannt sowie Nutzungsbedingungen und Angaben zum Haftungsausschluss kurz erläutert.
+    IMPRINT_META_KEYWORDS: BKG-MIS, Impressum, Verantwortliche, Herausgeber, Gesamtredaktion, Redaktion, Realisierung, Haftungsausschluss, Disclaimer, Nutzungsbedingungen, Nutzung
+    PRIVACY_META_DESCRIPTION: Hinweise zum Datenschutz und Informationen über die Speicherung von Daten beim Zugriff auf BKG-MIS - Seiten.
+    PRIVACY_META_KEYWORDS: BKG-MIS, Datenschutz, Bestimmungen, Datenschutzbestimmungen, Daten, persönliche Daten, Datenspeicherung
+    ACCESSIBILITY: Erklärung zur Barrierefreiheit
+    ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
+    ACCESSIBILITY_META_KEYWORDS: BKG-MIS, Barrierefreiheit
+    DETAIL_META_KEYWORDS: BKG-MIS, Trefferanzeige, Ergebnis, Suchergebnis, Resultate
+
+CONTACT:
+    SUCCESS: Ihre Anfrage wurde erfolgreich an die BKG-MIS-Redaktion versendet.
+    REPORT_EMAIL_SUBJECT: Nachricht von BKG-MIS
+
+SEARCH:
+    PORTLET_TITLE_1: ' '
+    PORTLET_TITLE_2: Metadaten
+    PORTLET_TITLE_3: zu Geodaten, Webdiensten und Webanwendungen
+
+SEARCH_RESULT:
+    INFO_LINKS: Links
+
+SEARCH_DETAIL:
+    BACK: Zurück zum BKG-MIS-Portal
+    PORTAL_INSTITUTION: BKG-MIS
+    T01_OBJECT_OBJ_ID: Metadatensatz-ID
+    T011_OBJ_GEO_HIERARCHY_LEVEL: Art des Datensatzes
+    T01_OBJECT_TIME_DESCR: Erläuterung zum Pflegeintervall
+    T01_OBJECT_MOD_TIME: Datum
+    TIME_REFERENCE: Zeitbezug
+    TIME_REFERENCE_CONTENT: Zeitbezug der Daten
+    TIME_REFERENCE_RECORD: Zeitbezug
+    TECHNICAL_INFORMATION: Informationen zur Geodatenressource
+    TECHNICAL_INFORMATION_3: Informationen zur Geodatenressource
+    TECHNICAL_INFORMATION_6: Informationen zur Geodatenressource
+    T011_OBJ_GEO_DATASOURCE_UUID: Identifier
+    T011_OBJ_SERV_OPERATION_INVOCATION_NAME: Zugangspunkt der Operation oder des Dienstes

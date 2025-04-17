@@ -129,6 +129,11 @@
                                 {% if infoRefs|length > 0 %}
                                     {% set tmpHash = hash_info ~ "_technical_information" %}
                                     {% set tmpTitle = "SEARCH_DETAIL.TECHNICAL_INFORMATION"|t %}
+                                    {% if class == "3" %}
+                                        {% set tmpTitle = "SEARCH_DETAIL.TECHNICAL_INFORMATION_3"|t %}
+                                    {% elseif class == "6" %}
+                                        {% set tmpTitle = "SEARCH_DETAIL.TECHNICAL_INFORMATION_6"|t %}
+                                    {% endif %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
                                 {% if infoRefs_additional|length > 0 %}
