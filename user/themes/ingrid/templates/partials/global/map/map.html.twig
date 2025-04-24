@@ -52,10 +52,10 @@
             }
         });
         var bgLayer = getOSMLayer('');
-        var {{ mapId }} = addLeafletMapWithId('{{ mapId }}', bgLayer, bounds_{{ mapId }}, null , 10);
         {% if map_bg_wms.url and map_bg_wms.name %}
             bgLayer = getWMSLayer('{{ map_bg_wms.url }}', '{{ map_bg_wms.name }}', '');
         {% endif %}
+        var {{ mapId }} = addLeafletMapWithId('{{ mapId }}', bgLayer, bounds_{{ mapId }}, null , 10);
         {% if isDetail %}
             {{ mapId }}.gestureHandling.enable();
         {% else %}

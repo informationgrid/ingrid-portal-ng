@@ -22,23 +22,9 @@
             </ul>
         </div>
     </div>
-    <div id="social-media-footer">
-        <div class="socialmedia">
-            <h2 class="aural">Service</h2>
-            <ul class="columns hide-for-xsmall-only hide-for-small-only">
-                <li class="navTwitter"><a class="external" href="https://twitter.com/BKG_Bund" title="Externer Link&nbsp;zum Twitter-Account des BKG (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank">Twit&shy;ter</a></li>
-                <li class="navLinkedIn"><a class="external" href="https://www.linkedin.com/company/bkg-bund" title="Externer Link&nbsp;zu unserer Seite auf LinkIn (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank">Lin&shy;ke&shy;dIn</a></li>
-                <li class="navInstagram"><a class="external" href="https://www.instagram.com/bkg.bund" title="Externer Link&nbsp;zum Instagram-Kanal des BKG (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank">Ins&shy;ta&shy;gram</a></li>
-                <li class="navXing"><a class="external" href="https://www.xing.com/companies/bundesamtfürkartographieundgeodäsie" title="Externer Link&nbsp;zum XING-Profil des BKG (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank">Xing</a></li>
-                <li class="navYouTube"><a class="external" href="https://www.youtube.com/user/pressebkg" title="Externer Link&nbsp;zum YouTube-Kanal des BKG (Öffnet&nbsp;neues&nbsp;Fenster)" target="_blank">You&shy;tu&shy;be</a></li>
-                <li class="navRSSFeed"><a href="http://www.bkg.bund.de/DE/Aktuelles/RSS-Feeds/rss-feeds.html" target="_blank">RSS</a></li>
-            </ul>
-        </div>
-    </div>
+    {% include 'partials/footer/socials.html.twig' %}
     <div class="copyright row">
-        <div class="xsmall-24 small-6 medium-3 columns bkg-logo">
-            <img src="user/themes/bkg_mis/images/logo/bkg_logo.png" alt="BKG">
-        </div>
+        {% include 'partials/footer/logo.html.twig' %}
         <div class="legal-links small-18 medium-21 columns">
             <div class="row">
                 <div class="columns hide-for-xsmall-only hide-for-small-only">

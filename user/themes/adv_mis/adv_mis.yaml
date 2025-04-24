@@ -1,6 +1,6 @@
 enabled: true
 header:
-  title_extend: 'BKG-MIS'
+  title_extend: 'AdV-MIS'
   logo_enabled: true
   logo_class: 'xsmall-15 small-15 medium-15 large-14 xlarge-15'
   menu_class: 'xsmall-9 small-7 medium-7 large-7 xlarge-6'
@@ -10,7 +10,7 @@ header:
 footer:
   logo_enabled: true
   copyright:
-    text: '© Bundesamt für Kartographie und Geodäsie'
+    text: '© Arbeitsgemeinschaft der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland'
     class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
@@ -148,7 +148,7 @@ home:
             },
           },
           "opendata_hvd": {
-            "label": "Open Data und HVD",
+            "label": "Open Data / HVD",
             "display_on_empty": true,
             "icon": "ic-opendata",
             "query": {
@@ -201,47 +201,72 @@ hit_search:
     {
       "id": "type",
       "label": "Art der Ressource",
-      "open": true,
       "facets": {
+        "data": {
+          "label": "Daten",
+          "active": true,
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "hierarchylevel": "dataset"
+                    }
+                  },
+                  {
+                    "term": {
+                      "hierarchylevel": "series"
+                    }
+                  },
+                  {
+                    "term": {
+                      "hierarchylevel": "featureType"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "tile": {
+          "label": "Kacheln",
+          "query": {
+            "filter": {
+              "term": {
+                "hierarchylevel": "tile"
+              }
+            }
+          }
+        },
+        "service": {
+          "label": "Dienste",
+          "active": true,
+          "query": {
+            "filter": {
+              "term": {
+                "hierarchylevel": "service"
+              }
+            }
+          }
+        },
         "application": {
-          "codelist": "8000",
-          "codelist_entry_id": "6",
+          "label": "Anwendungen",
+          "active": true,
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "6"
+                "hierarchylevel": "application"
               }
             }
           },
         },
-        "map": {
-          "codelist": "8000",
-          "codelist_entry_id": "1",
-          "query": {
-            "filter": {
-              "term": {
-                "t01_object.obj_class": "1"
-              }
-            }
-          },
-        },
-        "geoservice": {
-          "codelist": "8000",
-          "codelist_entry_id": "3",
-          "query": {
-            "filter": {
-              "term": {
-                "t01_object.obj_class": "3"
-              }
-            }
-          },
-        }
+
       }
     },
     {
       "id": "service_type",
       "label": "Art der Dienste",
-      "open": true,
       "facets": {
         "service_type_view": {
           "label": "Darstellungsdienste",
@@ -422,55 +447,358 @@ hit_search:
       }
     },
     {
-      "id": "inspire",
-      "label": "INSPIRE",
-      "open": true,
-      "selection_single": true,
+      "id": "productgroup",
+      "label": "Produktgruppe",
+      "list_limit": 6,
       "facets": {
-        "inspire_true": {
-          "label": "Ja",
+        "at1": {
+          "label": "Digitale Orthophotos",
+          "display_on_empty": true,
           "query": {
             "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "inspire"
-                    }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "inspireidentifiziert"
-                    }
-                  }
-                ]
+              "term": {
+                "alternatetitle": "Digitale Orthophotos"
               }
             }
           }
         },
-        "inspire_false": {
-          "label": "Nein",
+        "at2": {
+          "label": "Digitale Landschaftsmodelle",
+          "display_on_empty": true,
           "query": {
             "filter": {
-              "bool": {
-                "must_not": [
-                  {
-                    "bool": {
-                      "must": [
-                        {
-                          "term": {
-                            "t04_search.searchterm": "inspire"
-                          }
-                        },
-                        {
-                          "term": {
-                            "t04_search.searchterm": "inspireidentifiziert"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
+              "term": {
+                "alternatetitle": "Digitale Landschaftsmodelle"
+              }
+            }
+          }
+        },
+        "at3": {
+          "label": "Digitale Geländemodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Geländemodelle"
+              }
+            }
+          }
+        },
+        "at4": {
+          "label": "Digitale Oberflächenmodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Oberflächenmodelle"
+              }
+            }
+          }
+        },
+        "at5": {
+          "label": "Digitale Topographische Karten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Topographische Karten"
+              }
+            }
+          }
+        },
+        "at6": {
+          "label": "basemap.de",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "basemap.de"
+              }
+            }
+          }
+        },
+        "at7": {
+          "label": "3D-Gebäudemodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "3D-Gebäudemodelle"
+              }
+            }
+          }
+        },
+        "at8": {
+          "label": "Landbedeckung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Landbedeckung"
+              }
+            }
+          }
+        },
+        "at9": {
+          "label": "Landnutzung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Landnutzung"
+              }
+            }
+          }
+        },
+        "at10": {
+          "label": "Topographische Sonderkarten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Topographische Sonderkarten"
+              }
+            }
+          }
+        },
+        "at11": {
+          "label": "Luftbilder",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Luftbilder"
+              }
+            }
+          }
+        },
+        "at12": {
+          "label": "Sonstige Produkte Geotopographie",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Sonstige Produkte Geotopographie"
+              }
+            }
+          }
+        },
+        "at13": {
+          "label": "ALKIS",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "ALKIS"
+              }
+            }
+          }
+        },
+        "at14": {
+          "label": "Hauskoordinaten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Hauskoordinaten"
+              }
+            }
+          }
+        },
+        "at15": {
+          "label": "Hausumringe",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Hausumringe"
+              }
+            }
+          }
+        },
+        "at16": {
+          "label": "Verwaltungsgrenzen",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Verwaltungsgrenzen"
+              }
+            }
+          }
+        },
+        "at17": {
+          "label": "Bodenrichtwerte",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Bodenrichtwerte"
+              }
+            }
+          }
+        },
+        "at18": {
+          "label": "Festpunkte",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Festpunkte"
+              }
+            }
+          }
+        },
+        "at19": {
+          "label": "INSPIRE Adressen",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Adressen"
+              }
+            }
+          }
+        },
+        "at20": {
+          "label": "INSPIRE Flurstücke/Grundstücke",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Flurstücke/Grundstücke"
+              }
+            }
+          }
+        },
+        "at21": {
+          "label": "INSPIRE Geografische Bezeichnungen",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Geografische Bezeichnungen"
+              }
+            }
+          }
+        },
+        "at22": {
+          "label": "INSPIRE Gewässernetz",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Gewässernetz"
+              }
+            }
+          }
+        },
+        "at23": {
+          "label": "INSPIRE Verkehrsnetze",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Verkehrsnetze"
+              }
+            }
+          }
+        },
+        "at24": {
+          "label": "INSPIRE Verwaltungseinheiten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Verwaltungseinheiten"
+              }
+            }
+          }
+        },
+        "at25": {
+          "label": "INSPIRE Bodenbedeckung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Bodenbedeckung"
+              }
+            }
+          }
+        },
+        "at26": {
+          "label": "INSPIRE Höhe",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Höhe"
+              }
+            }
+          }
+        },
+        "at27": {
+          "label": "INSPIRE Orthofotografie",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Orthofotografie"
+              }
+            }
+          }
+        },
+        "at28": {
+          "label": "INSPIRE Boden",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Boden"
+              }
+            }
+          }
+        },
+        "at29": {
+          "label": "INSPIRE Bodennutzung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Bodennutzung"
+              }
+            }
+          }
+        },
+        "at30": {
+          "label": "INSPIRE Gebäude 2D",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Gebäude 2D"
+              }
+            }
+          }
+        },
+        "at31": {
+          "label": "INSPIRE Gebäude 3D",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Gebäude 3D"
+              }
+            }
+          }
+        },
+        "at32": {
+          "label": "Fachübergreifende Anzeigesysteme",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Fachübergreifende Anzeigesysteme"
               }
             }
           }
@@ -478,9 +806,20 @@ hit_search:
       }
     },
     {
+      "id": "maintain",
+      "label": "Verwaltet von",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "t02_address.identificationinfo_administrative_area_value",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t02_address.identificationinfo_administrative_area_value:%s"
+    },
+    {
       "id": "hvd",
       "label": "Open Data / HVD",
-      "open": true,
       "selection_single": true,
       "facets": {
         "opendata_hvd": {
@@ -544,12 +883,11 @@ hit_search:
       }
     },
     {
-      "id": "adv",
-      "label": "AdV-Produkt",
-      "open": true,
+      "id": "inspire",
+      "label": "INSPIRE",
       "selection_single": true,
       "facets": {
-        "adv_true": {
+        "inspire_true": {
           "label": "Ja",
           "query": {
             "filter": {
@@ -557,12 +895,12 @@ hit_search:
                 "should": [
                   {
                     "term": {
-                      "t04_search.searchterm": "AdVMIS"
+                      "t04_search.searchterm": "inspire"
                     }
                   },
                   {
                     "term": {
-                      "t04_search.searchterm": "AdV"
+                      "t04_search.searchterm": "inspireidentifiziert"
                     }
                   }
                 ]
@@ -570,7 +908,7 @@ hit_search:
             }
           }
         },
-        "adv_false": {
+        "inspire_false": {
           "label": "Nein",
           "query": {
             "filter": {
@@ -581,12 +919,12 @@ hit_search:
                       "must": [
                         {
                           "term": {
-                            "t04_search.searchterm": "AdVMIS"
+                            "t04_search.searchterm": "inspire"
                           }
                         },
                         {
                           "term": {
-                            "t04_search.searchterm": "AdV"
+                            "t04_search.searchterm": "inspireidentifiziert"
                           }
                         }
                       ]
@@ -750,5 +1088,6 @@ streams:
      type: ReadOnlyStream
      prefixes:
        '':
+         - user/themes/adv_mis
          - user/themes/bkg_mis
          - user/themes/ingrid
