@@ -37,7 +37,11 @@
                                         {% if ('FACETS.FACET_PILL.' ~ facetItem.id|upper)|t != 'FACETS.FACET_PILL.' ~ facetItem.id|upper %}
                                             {% set pill_label = ('FACETS.FACET_PILL.' ~ facetItem.id|upper)|t %}
                                         {% endif %}
-                                        {% set label = pill_label ~ ': ' ~ facet.label|t %}
+                                        {% set facet_label = facet.label|t %}
+                                        {% if 'FACETS.' in facet_label%}
+                                            {% set facet_label = facet.value %}
+                                        {% endif %}
+                                        {% set label = pill_label ~ ': ' ~ facet_label|t %}
                                         {% set breakChild = true %}
                                     {% endif %}
                                 {% endfor %}
