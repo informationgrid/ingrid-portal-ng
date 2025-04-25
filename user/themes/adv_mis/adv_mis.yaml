@@ -98,7 +98,7 @@ home:
               }
             },
           },
-          "map": {
+          "data": {
             "codelist": "8000",
             "codelist_entry_id": "1",
             "display_on_empty": true,
@@ -111,7 +111,7 @@ home:
               }
             },
           },
-          "geoservice": {
+          "service": {
             "codelist": "8000",
             "codelist_entry_id": "3",
             "display_on_empty": true,
@@ -128,6 +128,7 @@ home:
             "label": "INSPIRE",
             "display_on_empty": true,
             "icon": "ic-inspire",
+            "parent": "inspire",
             "query": {
               "filter": {
                 "bool": {
@@ -151,6 +152,7 @@ home:
             "label": "Open Data / HVD",
             "display_on_empty": true,
             "icon": "ic-opendata",
+            "parent": "hvd",
             "query": {
               "filter": {
                 "bool": {
@@ -203,7 +205,8 @@ hit_search:
       "label": "Art der Ressource",
       "facets": {
         "data": {
-          "label": "Daten",
+          "codelist": "8000",
+          "codelist_entry_id": "1",
           "active": true,
           "query": {
             "filter": {
@@ -240,7 +243,8 @@ hit_search:
           }
         },
         "service": {
-          "label": "Dienste",
+          "codelist": "8000",
+          "codelist_entry_id": "3",
           "active": true,
           "query": {
             "filter": {
@@ -251,7 +255,8 @@ hit_search:
           }
         },
         "application": {
-          "label": "Anwendungen",
+          "codelist": "8000",
+          "codelist_entry_id": "6",
           "active": true,
           "query": {
             "filter": {
