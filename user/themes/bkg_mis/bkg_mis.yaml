@@ -453,10 +453,10 @@ hit_search:
           "query": {
             "filter": {
               "bool": {
-                "must_not": [
+                "should": [
                   {
                     "bool": {
-                      "must": [
+                      "must_not": [
                         {
                           "term": {
                             "t04_search.searchterm": "inspire"
@@ -519,10 +519,10 @@ hit_search:
           "query": {
             "filter": {
               "bool": {
-                "must_not": [
+                "should": [
                   {
                     "bool": {
-                      "must": [
+                      "must_not": [
                         {
                           "term": {
                             "t04_search.searchterm": "opendata"
@@ -575,10 +575,10 @@ hit_search:
           "query": {
             "filter": {
               "bool": {
-                "must_not": [
+                "should": [
                   {
                     "bool": {
-                      "must": [
+                      "must_not": [
                         {
                           "term": {
                             "t04_search.searchterm": "AdVMIS"

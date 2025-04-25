@@ -1659,9 +1659,9 @@ home:
                 }
               }
             }
-          },
+          }
         }
-      },
+      }
     ]
     add_to_search:
       - '-datatype:address'
