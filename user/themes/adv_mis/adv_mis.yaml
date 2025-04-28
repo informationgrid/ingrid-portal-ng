@@ -84,6 +84,7 @@ home:
     facet_config: [
       {
         "id": "type",
+        "link_to_search": true,
         "facets": {
           "application": {
             "codelist": "8000",
