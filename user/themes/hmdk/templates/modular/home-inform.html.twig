@@ -1,0 +1,11 @@
+<div class="about">
+    <a id="teaser.ingridInform.title"></a>
+    <div class="about-wrapper dark" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
+        <div class="row">
+            {% set theme = config.get('system.pages.theme') %}
+            <div class="xsmall-24 medium-12 large-14 columns">
+                {{ page.content|raw }}
+            </div>
+        </div>
+    </div>
+</div>
