@@ -1,23 +1,23 @@
 enabled: true
 header:
-  title_extend: 'InGrid Portal'
+  title_extend: 'HMDK'
   logo_enabled: true
-  logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
-  menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
+  logo_class: 'xsmall-7 small-7 medium-8 large-7 xlarge-7'
+  menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
   logo: {  }
 footer:
   logo_enabled: true
   copyright:
-    text: 'Niedersächsisches Ministerium für Umwelt, Energie, Bauen und Klimaschutz'
-    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    text: 'Landesbetrieb Geoinformation und Vermessung. Alle Rechte vorbehalten.'
+    class: 'xsmall-24'
     show_year: false
-  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  menu_class: 'xsmall-24'
   hr_line: true
   logo: {  }
   share:
-    enabled: true
+    enabled: false
     enabled_x: true
     enabled_facebook: true
     enabled_linkedin: true
@@ -34,12 +34,6 @@ menu:
       path: /search
       icon: ic-ic-lupe
     -
-      path: /map
-      icon: ic-ic-karten
-    -
-      path: /measure
-      icon: ic-ic-chemie
-    -
       path: /catalog
       icon: ic-ic-datenkataloge
     -
@@ -50,16 +44,7 @@ menu:
       path: /search
       highlighted: true
     -
-      path: /map
-      highlighted: true
-    -
-      path: /measure
-      highlighted: true
-    -
       path: /catalog
-      highlighted: true
-    -
-      path: /api
       highlighted: true
     -
       path: /about
@@ -113,9 +98,6 @@ home:
       path: /home/_categories
       hidden: false
     -
-      path: /home/_news
-      hidden: false
-    -
       path: /home/_inform
       hidden: false
   rss:
@@ -126,16 +108,6 @@ home:
       {
         "id": "type",
         "facets": {
-          "www": {
-            "icon": "ic-www",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "www"
-                }
-              }
-            },
-          },
           "metadata": {
             "icon": "ic-metadata",
             "query": {
@@ -191,10 +163,12 @@ home:
       }
     ]
     add_to_search:
-      - "-isfolder:true"
+      - '-datatype:address'
+      - '-isfolder:true'
   hits:
     add_to_search:
-      - "-isfolder:true"
+      - '-datatype:address'
+      - '-isfolder:true'
     hits_num: 0
     sort:
       sortByDate: true
@@ -203,16 +177,8 @@ hit_search:
   facet_config: [
     {
       "id": "type",
+      "open": true,
       "facets": {
-        "www": {
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "www"
-              }
-            }
-          }
-        },
         "metadata": {
           "display_sort_hits_on_selection": true,
           "query": {
@@ -221,7 +187,7 @@ hit_search:
                 "datatype": "metadata"
               }
             }
-          }
+          },
         },
         "inspire": {
           "query": {
@@ -241,7 +207,7 @@ hit_search:
                 ]
               }
             }
-          }
+          },
         },
         "opendata": {
           "query": {
@@ -261,7 +227,7 @@ hit_search:
                 ]
               }
             }
-          }
+          },
         },
         "hvd": {
           "query": {
@@ -270,7 +236,7 @@ hit_search:
                 "is_hvd": "true"
               }
             }
-          }
+          },
         },
         "maps": {
           "query": {
@@ -280,15 +246,21 @@ hit_search:
               }
             }
           }
+        },
+        "address": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "address"
+              }
+            }
+          }
         }
       }
     },
     {
       "id": "metadata_group",
       "open_by": {
-        "type": "metadata",
-      },
-      "select_other": {
         "type": "metadata",
       },
       "display_sort_hits_on_selection": true,
@@ -374,6 +346,7 @@ hit_search:
         "list_limit": 6,
         "sort": "name"
       },
+      "sort": "name",
       "query": {
         "terms": {
           "field": "partner",
@@ -430,7 +403,7 @@ hit_search:
   links_max: 5
   csw_enabled: true
   rdf_enabled: false
-  partner_logo_enabled: false
+  partner_logo_enabled: true
   sns:
     similar_terms:
       enabled: true
@@ -475,14 +448,14 @@ hit_detail:
       - content
   query_string_operator: AND
 map:
-  url: /ingrid-webmap-client/frontend/prd
+  url:
   leaflet:
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
+        wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web_light/default/WEBMERCATOR/{z}/{y}/{x}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2025)&#44; <a href=\"https://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -503,14 +476,15 @@ measure:
   networks:
     exclude:
     initial:
-      - luen
-  url: '/assets/mvis/index.html'
-  elastic: 'https://dev.informationgrid.eu/elastic-measure/'
+  url:
+  elastic:
 redirect:
   pages_to_404:
+    - /map
+    - /measure
   pages_to_redirect:
 catalog:
-  open_nodes_level: 3
+  open_nodes_level: 0
   display_partner: true
   sort_by_name: true
   open_on_new_tab: true
@@ -520,13 +494,11 @@ datasource:
   excludes:
 rss:
   feeds:
-    - url: 'https://www.umwelt.niedersachsen.de/rss.php'
-      summary: 'Nds. Ministerium für Umwelt, Energie, Bauen und Klimaschutz (Test)'
-      provider: ni_mu
-      lang: de
-      category: all
-    - url: 'https://www.bmuv.de/events.rss'
-      summary: null
-      provider: BMUV
-      lang: de
-      category: all
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+         - user/themes/hmdk
+         - user/themes/ingrid

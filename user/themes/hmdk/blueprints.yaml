@@ -1,8 +1,8 @@
-name: MetaVer
-slug: metaver
+name: HMDK
+slug: hmdk
 type: theme
 version: 0.1.0
-description: MetaVer Theme
+description: HMDK Theme
 icon: microchip
 author:
   name: wemove
@@ -63,14 +63,6 @@ form:
           import@:
             type: default
             context: user://themes/ingrid/blueprints/ingrid/catalog
-
-        ## Tab map
-        tab_map:
-          type: tab
-          title: THEME.ADMIN.MAP.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/ingrid/map
 
         ## Tab help
         tab_help:

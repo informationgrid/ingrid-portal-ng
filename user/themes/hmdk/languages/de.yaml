@@ -1,0 +1,21 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite des HMDK
+  ABOUT: Über den HMDK
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu HMDK
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von HMDK
+  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an HMDK-Team
+  SITEMAP_MENU_TITLE: Alle Inhalte von HMDK auf einen Blick
+  SITEMAP_CONTENT: Inhalt
+
+CONTACT:
+  FORM: Kontaktformular
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team HMDK gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+
+SEARCH:
+  PORTLET_TITLE_1: Ihr zentraler Zugangspunkt
+  PORTLET_TITLE_2: zu den Hamburger Metadaten
+  PORTLET_TITLE_3: ' '
+
+CATEGORIES:
+  TITLE: Stöbern Sie in diesen Kategorien

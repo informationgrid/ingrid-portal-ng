@@ -36,3 +36,6 @@ SEARCH_RESULT:
 SEARCH_DETAIL:
     BACK: Zurück zum AdV-MIS
     PORTAL_INSTITUTION: AdV-MIS
+
+CATEGORIES:
+    TITLE: Recherchieren Sie in diesen Kategorien
