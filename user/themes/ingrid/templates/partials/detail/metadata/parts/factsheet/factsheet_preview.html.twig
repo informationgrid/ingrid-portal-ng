@@ -3,7 +3,7 @@
         <h4 class="text-center">{{ 'SEARCH_DETAIL.PREVIEW'|t }}</h4>
         {% if previews|length == 0 %}
             {% set previews = [{
-                url: url("theme://images") ~ '/maps/image_map_' ~ partners[0] ~ '.png',
+                url: url('theme://images' ~ '/maps/image_map_' ~ partners[0] ~ '.png'),
                 title: 'COMMON.RESULT_SHOWMAP_TOOLTIP_SHORT'|t
             }]
             %}

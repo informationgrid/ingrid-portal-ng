@@ -618,6 +618,8 @@
                     {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
                 {% endif %}
             </p>
+        {% elseif entryToJson.name is not empty %}
+            <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
         {% else %}
             <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
         {% endif %}
@@ -746,6 +748,8 @@
                                 {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
                               {% endif %}
                           </p>
+                        {% elseif entryToJson.name is not empty %}
+                            <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
                         {% else %}
                           <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                         {% endif %}

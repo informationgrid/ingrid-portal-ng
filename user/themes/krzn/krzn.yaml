@@ -155,9 +155,11 @@ home:
       }
     ]
     add_to_search:
+      - "-datatype:address"
       - "-isfolder:true"
   hits:
     add_to_search:
+      - "-datatype:address"
       - "-isfolder:true"
     hits_num: 0
     sort:
@@ -234,6 +236,7 @@ hit_search:
     }
   ]
   add_to_search:
+    - "-datatype:address"
     - '-isfolder:true'
   query_fields:
     - title^10.0
@@ -327,7 +330,7 @@ map:
     bg:
       layer:
         wmts: { url: null }
-        wms: { url: 'https://gdi-niederrhein-geodienste.de/osm/service?VERSION=1.3.0&SERVICE=WMS&REQUEST=GetCapabilities', name: 'osm' }
+        wms: { url: 'https://gdi-niederrhein-geodienste.de/osm/service?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetCapabilities', name: 'osm' }
         attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
         opacity: 1
     bbox:
