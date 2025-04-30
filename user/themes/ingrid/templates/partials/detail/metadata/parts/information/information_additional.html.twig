@@ -34,7 +34,7 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.DATA_FORMAT"|t, header, infoRefs_additional.dataformat) }}
     {# Geodatenlink #}
-        {% include 'partials/detail/metadata/parts/information/information_additional_geodaten_link.html.twig' %}
+        {% include 'partials/detail/metadata/parts/information/information_additional_geodaten_link.html.twig' ignore missing %}
     {# Medien #}
         {% set header = [
             "SEARCH_DETAIL.T0112_MEDIA_OPTION_MEDIUM_NAME"|t,
