@@ -347,7 +347,7 @@ map:
     geocoder:
       enable: false
       service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
-    position: 46.58,5.22,55.40,15.68
+    position: 51.450,6.416,8
 measure:
   networks:
     exclude:
