@@ -148,19 +148,19 @@
       <b>{{ title }}</b>:
     {% endif %}
     {% if "seitX" in time.type and time.t1 %}
-      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}</span>
+      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1|date("d.m.Y") ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}</span>
     {% elseif "seit" in time.type and time.t1 %}
-      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1 ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}</span>
+      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1|date("d.m.Y") ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}</span>
     {% elseif "von" in time.type and time.t1 and time.t2 %}
       {% if time.t1 is same as(time.t2) %}
-        <span>{{ time.t1 }}</span>
+        <span>{{ time.t1|date("d.m.Y") }}</span>
       {% else %}
-        <span>{{ time.t1  ~ " " ~  "COMMON.TIME_UNTIL"|t ~ " " ~ time.t2 }}</span>
+        <span>{{ time.t1|date("d.m.Y")  ~ " " ~  "COMMON.TIME_UNTIL"|t ~ " " ~ time.t2|date("d.m.Y") }}</span>
       {% endif %}
     {% elseif "am" in time.type and time.t0 %}
-      <span>{{ time.t0 }}</span>
+      <span>{{ time.t0|date("d.m.Y") }}</span>
     {% elseif "bis" in time.type and time.t2 %}
-      <span>{{ "COMMON.TIME_UNTIL"|t ~ " " ~  time.t2 }}</span>
+      <span>{{ "COMMON.TIME_UNTIL"|t ~ " " ~  time.t2|date("d.m.Y") }}</span>
     {% endif %}
   </div>
   {% endif %}
@@ -1077,7 +1077,7 @@
           {% if item.type == "text" %}
             <td>{{ item.value }}</td>
           {% elseif item.type == "date" %}
-            <td>{{ item.value|date("d.m.Y", false) }}</td>
+            <td>{{ item.value|date("d.m.Y") }}</td>
           {% elseif item.type == "link" %}
             <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
           {% elseif item.type == "symbol" %}

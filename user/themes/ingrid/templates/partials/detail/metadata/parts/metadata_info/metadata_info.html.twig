@@ -12,7 +12,7 @@
     {% if "T" in metaInfoRefs.modTime %}
         {% set dateFormat = "d.m.Y H:i:s" %}
     {% endif %}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.modTime ? metaInfoRefs.modTime|date(dateFormat, false)|e) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.modTime ? metaInfoRefs.modTime|date(dateFormat)|e) }}
 {# Sprache Metadatensatz #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Weitere #}
