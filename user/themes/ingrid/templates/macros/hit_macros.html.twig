@@ -750,6 +750,9 @@
                           </p>
                         {% elseif entryToJson.name is not empty %}
                             <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
+                            {%  if entryToJson.quelle is not empty %}
+                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                              {% endif %}
                         {% else %}
                           <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                         {% endif %}
