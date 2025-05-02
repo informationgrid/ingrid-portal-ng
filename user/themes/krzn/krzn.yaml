@@ -53,22 +53,28 @@ menu:
     -
       path: /imprint
       highlighted: false
+      target_blank: true
     -
       path: /privacy
       highlighted: false
+      target_blank: true
     -
       path: /accessibility
       highlighted: false
+      target_blank: true
   footer:
     -
       path: /help
       target_blank: true
     -
       path: /imprint
+      target_blank: true
     -
       path: /privacy
+      target_blank: true
     -
       path: /accessibility
+      target_blank: true
 home:
   sort_modules:
     -
@@ -365,6 +371,17 @@ redirect:
     - /contact
     - /sitemap
   pages_to_redirect:
+    -
+      path: /imprint
+      url: 'https://www.krzn.de/impressum'
+      target_blank: true
+    -
+      path: /privacy
+      url: 'https://www.krzn.de/datenschutzerklaerung'
+      target_blank: true
+    -
+      path: /accessibility
+      url: 'https://www.krzn.de/erklaerung-zur-barrierefreiheit'
 catalog:
   open_nodes_level: 3
   display_partner: true

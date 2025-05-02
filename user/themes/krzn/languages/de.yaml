@@ -1,12 +1,8 @@
 PAGES:
-  HOME_MENU_TITLE: Startseite von MetaVer
-  MAP: Karte
-  ABOUT: Über MetaVer
-  ABOUT_MENU_TITLE: Hintergrundinformationen zu MetaVer
-  HELP_MENU_TITLE: Erläuterungen zur Nutzung von MetaVer
-  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an MetaVer-Team
-  SITEMAP_MENU_TITLE: Alle Inhalte von MetaVer auf einen Blick
-  SITEMAP_CONTENT: Inhalt
+  HOME_MENU_TITLE: Startseite zu Geodatenkatalog Niederrhein
+  ABOUT: Über Geodatenkatalog Niederrhein
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu Geodatenkatalog Niederrhein
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von Geodatenkatalog Niederrhein
 
 SEARCH:
   PORTLET_TITLE_1: ' '
