@@ -5,9 +5,9 @@
 {# Systemumgebung #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
 {# Historie #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_HISTORY"|t, infoRefs.processStepDescription) }}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_HISTORY"|t, infoRefs.processStepDescriptions) }}
 {# Basisdaten #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescriptions) }}
 {# Erläuterung zum Fachbezug #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformation) }}
 </div>

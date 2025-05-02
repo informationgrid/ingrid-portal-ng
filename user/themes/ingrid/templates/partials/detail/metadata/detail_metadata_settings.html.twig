@@ -81,8 +81,8 @@
     {% set infoRefs = addKeyValue(infoRefs, "resolutions", hit.resolutions) %}
     {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
     {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
-    {% set infoRefs = addKeyValue(infoRefs, "sourceDescription", hit.sourceDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "processStepDescription", hit.processStepDescription) %}
+    {% set infoRefs = addKeyValue(infoRefs, "sourceDescriptions", hit.sourceDescriptions) %}
+    {% set infoRefs = addKeyValue(infoRefs, "processStepDescriptions", hit.processStepDescriptions) %}
     {% set infoRefs = addKeyValue(infoRefs, "symbolCatalogues", hit.symbolCatalogues) %}
     {% set infoRefs = addKeyValue(infoRefs, "includedWithDataset", hit.includedWithDataset) %}
     {% set infoRefs = addKeyValue(infoRefs, "featureCatalogues", hit.featureCatalogues) %}
@@ -107,9 +107,9 @@
     {% set infoRefs = addKeyValue(infoRefs, "serviceType", hit.serviceType) %}
     {% set infoRefs = addKeyValue(infoRefs, "serviceTypeVersions", hit.serviceTypeVersions) %}
     {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "processStepDescription", hit.processStepDescription) %}
+    {% set infoRefs = addKeyValue(infoRefs, "processStepDescriptions", hit.processStepDescriptions) %}
     {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
-    {% set infoRefs = addKeyValue(infoRefs, "sourceDescription", hit.sourceDescription) %}
+    {% set infoRefs = addKeyValue(infoRefs, "sourceDescriptions", hit.sourceDescriptions) %}
     {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.supplementalInformation) %}
     {% set infoRefs = addKeyValue(infoRefs, "supplementalInformationAbstract", hit.supplementalInformationAbstract) %}
     {% set infoRefs = addKeyValue(infoRefs, "operations", hit.operations) %}
@@ -126,8 +126,8 @@
     {% set infoRefs = addKeyValue(infoRefs, "dataDescription", hit.dataDescription) %}
 {% case '6' %}
     {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "processStepDescription", hit.processStepDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "sourceDescription", hit.sourceDescription) %}
+    {% set infoRefs = addKeyValue(infoRefs, "processStepDescriptions", hit.processStepDescriptions) %}
+    {% set infoRefs = addKeyValue(infoRefs, "sourceDescriptions", hit.sourceDescriptions) %}
     {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.supplementalInformation) %}
 {% endswitch %}
 
