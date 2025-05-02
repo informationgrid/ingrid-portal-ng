@@ -923,7 +923,7 @@
     <div class="document-list">
     {% set break = false %}
     {% for entry in entries if not break %}
-      {% set num = loop.index - 1 %}
+      {% set num = loop.index %}
       <div class="list-item">
         {% if entry.uuid or entry.cswUrl %}
           <div class="image">
@@ -1040,10 +1040,15 @@
                     {{ "COMMON.RESULT_SHOWMAP"|t }}
                 </a>
               {% endif %}
-          </div>
       </div>
-      {% if breakListCounter and num >= breakListCounter -1 %}
+      </div>
+      {% if breakListCounter and num > breakListCounter - 1 %}
         {% set break = true %}
+      {% endif %}
+      {% if break %}
+      <a class="button outline" title="{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}" href="#detail_links">
+        <span>{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}</span>
+      </a>
       {% endif %}
     {% endfor %}
     </div>
