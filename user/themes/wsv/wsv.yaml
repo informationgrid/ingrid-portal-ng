@@ -450,6 +450,7 @@ hit_detail:
   requested_fields:
     - partner
     - provider
+    - t03_catalogue.cat_name
   source:
     include:
       - idf
