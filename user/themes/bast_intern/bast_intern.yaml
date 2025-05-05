@@ -1,6 +1,6 @@
 enabled: true
 header:
-  title_extend: 'BASt'
+  title_extend: 'BASt (Intern)'
   logo_enabled: true
   logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
   menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
@@ -70,9 +70,6 @@ menu:
       path: /help
       highlighted: false
     -
-      path: /contact
-      highlighted: false
-    -
       path: /sitemap
       highlighted: false
     -
@@ -83,17 +80,12 @@ menu:
       highlighted: false
     -
       path: /accessibility
-      highlighted: false
-    -
-      path: /problem
       highlighted: false
   footer:
     -
       path: /help
       target_blank: true
     -
-      path: /contact
-    -
       path: /sitemap
     -
       path: /imprint
@@ -104,9 +96,6 @@ menu:
     -
       path: /accessibility
       target_blank: true
-    -
-      path: /problem
-      highlighted: false
 home:
   sort_modules:
     -
@@ -325,6 +314,17 @@ hit_search:
       }
     },
     {
+      "id": "distributor",
+      "label": "Fachliche Ansprechstelle",
+      "query": {
+        "terms": {
+          "field": "distributor",
+          "min_doc_count": 0
+        }
+      },
+      "search": "distributor:%d"
+    },
+    {
       "id": "modtime",
       "facets": {
         "last_month": {
@@ -528,5 +528,6 @@ streams:
       type: ReadOnlyStream
       prefixes:
         '':
+          - user/themes/bast_intern
           - user/themes/bast
           - user/themes/ingrid
