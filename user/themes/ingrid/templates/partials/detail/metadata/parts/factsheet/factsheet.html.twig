@@ -10,7 +10,7 @@
                 {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE"|t %}
             {% endif %}
             {% set toIndeterminate = "" %}
-            {% if timeRefs.fromType and timeRefs.fromType == "now" %}
+            {% if timeRefs.timeFromType and timeRefs.timeFromType == "now" %}
                 {% set toIndeterminate = "COMMON.TIME_UNTILNOW"|t %}
             {% else %}
                 {% set toIndeterminate = "COMMON.TIME_UNTILUNKNOWN"|t %}
