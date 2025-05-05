@@ -25,9 +25,9 @@ footer:
   logo_enabled: false
   copyright:
     text: 'Bundesanstalt für Straßen- und Verkehrswesen'
-    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-7'
     show_year: true
-  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-17'
   hr_line: true
   logo: {  }
   share:
