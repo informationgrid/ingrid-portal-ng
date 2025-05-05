@@ -14,7 +14,7 @@
             {% for key, param in queries %}
                 {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' ~ uri.query(param)|url_encode %}
             {% endfor %}
-            <a href="{{ actionLink }}" class="button pill">
+            <a id="facet-pill-{{ selected_facet }}" href="{{ actionLink }}" class="button pill">
                 {{ 'FACETS.FACET_LABEL.MAP'|t }}: {{ values }}
                 <span class="ic-ic-cross"></span>
             </a>
@@ -63,12 +63,7 @@
                             {% endif %}
                         {% endfor %}
                         {% if label %}
-                            {% for key, param in queries %}
-                                {% if param %}
-                                    {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
-                                {% endif %}
-                            {% endfor %}
-                            <a href="{{ actionLink }}" id="{{ selected_facet }}" class="button pill">
+                            <a id="facet-pill-{{ selected_facet }}-{{ value }}" href="{{ actionLink }}" class="button pill">
                                 {{ label|t }}
                                 <span class="ic-ic-cross"></span>
                             </a>
