@@ -231,6 +231,22 @@ form:
           validate:
             type: bool
 
+        footer.banner.enabled:
+          type: toggle
+          label: Banner im Footer aktivieren
+          help: Banner im Footer aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.banner.text:
+          type: text
+          label: Banner Text
+          help: Trage Sie hier den Text für den Banner ein.
+
         menu.section:
           type: section
           title: THEME.ADMIN.LAYOUT.MENU.TITLE
