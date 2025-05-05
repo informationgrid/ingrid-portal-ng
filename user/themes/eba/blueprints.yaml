@@ -31,14 +31,14 @@ form:
           title: THEME.ADMIN.LAYOUT.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/layout
+            context: user://themes/ingrid/blueprints/layout
         ## Tab home
         tab_home:
           type: tab
           title: THEME.ADMIN.HOME.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/home
+            context: user://themes/ingrid/blueprints/home
 
         ## Tab map
         tab_map:
@@ -46,7 +46,7 @@ form:
           title: THEME.ADMIN.MAP.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/map
+            context: user://themes/ingrid/blueprints/map
 
         ## Tab redirect
         tab_redirect:
@@ -54,4 +54,4 @@ form:
           title: THEME.ADMIN.REDIRECT.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/redirect
+            context: user://themes/ingrid/blueprints/redirect

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ingrid-portal-help.xsl" ?>
+<help>
+    <chapter>
+        <header>Help for the BASt metadata catalog</header>
+        <section help-key="index">
+            <header>Help topics</header>
+            <content>
+                <ul>
+                    <li>
+                        <a href="?hkey=about-1">About the metadata catalog</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-category-1">Categories</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-1">Search</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=maps-1">Maps</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-catalog-1">Catalogs</a>
+                    </li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>About the metadata catalog</header>
+        <section help-key="about-1">
+            <header>Portrait</header>
+            <content>
+                <p>This metadata catalog is provided by the Federal Highway and Transport Research Institute (BASt).</p>
+                <p>The mission statement of the BASt and further information can be found on the
+                <a href="https://www.bast.de/EN/BASt/e-Leitbild.html">BASt website</a>.</p>
+                <p>Proclaimer: For further information, look into the extended German version or get in touch with opendata@bast.de</p>
+            </content>
+        </section>
+        <section help-key="about-2">
+            <header>Information providers</header>
+            <content>
+                <p>The metadata catalog is used to search for information on existing or
+                planned datasets from the BASt, as well as possible access to
+                external data sources.</p>
+                <p>The content is created and maintained centrally by BASt Open Data Coordination (see imprint).</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Search</header>
+        <section help-key="search-1">
+            <header>Search input</header>
+            <content>
+                <p>To search something, enter one or more terms in the search field and then click the button 
+                <b>SEARCH</b>.</p>
+                <p>The metadata catalog searches all embedded information.
+                The result of your search is displayed in a
+                   <a href="?hkey=search-results-1">search results page</a>.</p>
+                <p>Further restrictions can be specified on the left side.
+                Any number of restrictions can be selected and deselected.
+                The “delete all restrictions” button removes all restrictions.</p>
+            </content>
+        </section>
+    </chapter>
+<!--
+    <chapter>
+        <header>Experteneingabe</header>
+        <section help-key="search-expert-1">
+            <header>Experteneingabe</header>
+            <content>
+                <p>Alle Einstellungen der Such-Oberfläche und
+                    spezielle Einstellungen darüber hinaus lassen sich auch
+                    direkt über den Suchausdruck in die Suche eingeben. Da die
+                    Syntax durch die große Anzahl der Suchmethoden recht
+                    umfangreich ist, ist sie vor allem für Experten geeignet.</p>
+            </content>
+        </section>
+        <section help-key="search-expert-2">
+            <header>Bool’sche Operatoren</header>
+            <content>
+                <p>Die einzelnen Suchbegriffe können über Bool'sche
+                    Operatoren verknüpft werden. Es stehen folgende Operatoren
+                    zur Verfügung:</p>
+                <p>
+                    <b>AND (UND-Verknüpfung)</b>: Alle Worte müssen in dem
+                    Dokument vorhanden sein. Sie ist Standard, wenn kein Operator
+                    angegeben wird. (Hinweis: Anstatt AND kann auch das Symbol
+                    &amp;&amp; verwendet werden)<br></br>Beispiel:
+                    'Wasser Fisch' entspricht 'Wasser AND Fisch' bzw.
+                    'Wasser &amp;&amp; Fisch'</p>
+                <p>
+                    <b>OR (ODER-Verknüpfung)</b>: Eines der Worte muss im
+                    Dokument vorhanden sein. (Hinweis: Anstatt von OR kann auch
+                    das Symbol || verwendet werden)<br></br> Beispiel:
+                    'Wasser OR Fisch' entspricht 'Wasser || Fisch'</p>
+                <p>
+                    <b>NOT (NICHT-Verknüpfung)</b>: Das Wort nach dem NOT darf
+                    nicht im Dokument vorhanden sein. (Hinweis: Anstatt von NOT
+                    kann auch das Symbol ! oder das Symbol - verwendet
+                    werden)<br></br> Beispiel: 'Wasser NOT Fisch'
+                    (gesucht wird nach Wasser aber nicht nach Fisch)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-3">
+            <header>Gruppierung (Klammerung)</header>
+            <content>
+                <p>Die einzelnen durch Bool’sche Operatoren
+                    verknüpften Suchbegriffe können durch Klammerung (runde
+                    Klammern) beliebig gruppiert werden.</p>
+                <p>Beispiel: 'Fisch NOT (Forelle OR Barsch)'
+                    (Es werden alle Dokumente gefunden, die den Begriff
+                    'Fisch' enthalten, aber nicht die
+                    Begriffe 'Forelle' und 'Barsch')</p>
+            </content>
+        </section>
+        <section help-key="search-expert-4">
+            <header>Suche nach Wortgruppen</header>
+            <content>
+                <p>Wird eine Zeichenkette in Anführungszeichen (")
+                    gesetzt, wird nach dem Vorkommen der gesamten Zeichenkette
+                    und nicht nach dem Vorkommen der einzelnen Begriffe gesucht.</p>
+                <p>Beispiel: "der Fisch schwimmt im Wasser"
+                    (Es werden nur Texte gefunden, die exakt diese Zeichenfolge enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-5">
+            <header>Platzhalter</header>
+            <content>
+                <p>Innerhalb eines Suchbegriffs ist es möglich, Platzhalter für
+                    einen (?) oder mehrere (*) beliebige Zeichen einzugeben. Es
+                    werden dann alle Begriffe gefunden, die mit dem Rest des
+                    Suchbegriffs übereinstimmen, wobei für den Platzhalter ein
+                    bzw. mehrere Zeichen auftreten können.</p>
+                <p><b>ACHTUNG</b>: Platzhalter dürfen NICHT am Anfang des Suchwortes stehen.</p>
+                <p>Beispiel: 'Te?t' (Es werden sowohl
+                    Dokumente mit dem Begriff 'Text' als
+                    auch Dokumente mit dem Begriff 'Test' gefunden)</p>
+                <p>Beispiel: 'umwelt*katalog' (Es werden
+                    sowohl Dokumente mit dem Begriff
+                    'Umweltdatenkatalog' als auch Dokumente
+                    mit dem Begriff 'Umweltobjektkatalog' gefunden)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-6">
+            <header>Suche nach Bereichen von Zeichen</header>
+            <content>
+                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden
+                    in eckige [] oder geschweifte {} Klammern gefasst und die untere und obere
+                    Angabe mit dem Operator TO verbunden. Eckige Klammern []
+                    bedeuten, dass der untere und der obere Wert des Bereichs in
+                    die Suche einbezogen werden. Geschweifte Klammern {}
+                    bedeuten, dass der untere und der obere Wert des Bereichs
+                    nicht in die Suche einbezogen werden.</p>
+                <p>Beispiel: '[Aller TO Elbe]' (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
+                    'Aller' und 'Elbe' sind dabei im Suchbereich enthalten.</p>
+                <p>Beispiel: '{Aller TO Elbe}' (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
+                    'Aller' und 'Elbe' sind dabei im Suchbereich nicht enthalten.)</p>
+                <p>Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.</p>
+                <p>Beispiel: 'te[i TO x]t' (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte 'teilt', 'test' oder 'text' enthalten.)</p>
+                <p> Alternativ zu dem Operator TO kann auch ein Bindestrich - verwendet werden </p>
+                <p>Beispiel: 'te[i - x]t' (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte 'teilt', 'test' oder 'text' enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-8">
+            <header>Sonderzeichen</header>
+            <content>
+                <p>Die folgenden Zeichen haben im Suchausdruck eine
+                    spezielle Bedeutung (z.B. in Form von Operatoren):</p>
+                <p>+ - &amp;&amp; || ! ( ) { } [ ] ^ &quot; ~ * ? : \</p>
+                <p>Sollen sie dennoch als einfache Zeichen innerhalb eines
+                    Suchausdrucks verwendet werden, müssen sie über das Zeichen
+                    \ (Backslash) markiert werden.</p>
+                <p>Beispiel: '\(1\+1\)\:2' (Es wird nach dem
+                    Ausdruck '(1+1):2' gesucht)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-15">
+            <header>Angabe des Zeitbezugs</header>
+            <content>
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt
+                werden. </p>
+                <p>Beispiel: 't1:2023-01-01 t2:2024-08-31' (Die Suche wird auf ein
+                ausgewähltes Zeitintervall eingeschränkt.)</p>
+                <p>Folgende Felder stehen für die Einschränkung des Zeitbezugs im BASt-Metadatenkatalog zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Feld</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung des Werts</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>t0 </td>
+                    <td> Das Dokument wurde dem angegebenen Zeitpunkt zugeordnet</td>
+                    </tr>
+                    <tr>
+                    <td>t1  </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
+                    angegebenen Wert beginnt</td>
+                    </tr>
+                    <tr>
+                    <td>t2 </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
+                    angegebenen Wert endet</td>
+                    </tr>
+               </table><br></br>
+               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag)
+               eingegeben werden. </p>
+            </content>
+        </section>
+    </chapter>
+-->
+    <chapter>
+        <header>Search results page</header>
+        <section help-key="search-results-1">
+            <header>Result page</header>
+            <content>
+                <p>After submitting a search query, the search results are displayed.
+                   The search results page is divided into two areas.
+                   On the right you will find the main results list, to the left of this are further
+                   filtering and restriction options.
+                   The main results list is sorted by relevance.
+                   The top entry has the highest relevance for the search query.</p>
+                <p>A search result consists of a title that links to the metadata entry,
+                   a short description and further information such as contact persons,
+                   references and terms of use.
+                   If a digital map is deposited with a catalog entry, you can view the map
+                   directly in the <a href="?hkey=maps-1">map viewer</a> using the <b>open map view</b> button.
+                   The <b>XML</b> button provides the ISO representation of the hit,
+                   provided that it can be submitted in accordance with CSW.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Catalog</header>
+        <section help-key="search-catalog-1">
+            <header>Catalog</header>
+            <content>
+                <p>Search the structure of the BASt metadata catalog.
+                   The structure is hierarchical and can be expanded or collapsed by clicking on "+"/"-".
+                   The information displayed is referred to as <b>Objects</b>.
+                   The relevant contact persons are listed in the <b>Addresses</b>
+                   area as additional information.
+                   Clicking on an object or address displays detailed information.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Maps</header>
+        <section help-key="maps-1">
+            <header>Overview</header>
+             <content>
+                <p>With the map viewer you can view a variety of maps and work on them.</p>
+                <p>Its functionality includes:</p>
+                <ul>
+                    <li>
+                        layer-centered display of maps with direct preview
+                    </li>
+                    <li>
+                        structured offering of maps and adding external maps
+                    </li>
+                    <li>
+                        search for maps directly on embedded maps or in the search area of the BASt metadata catalog
+                    </li>
+                    <li>
+                        drawing and measuring on the map
+                    </li>
+                    <li>
+                        comparison functionality between layers (slider fades in or out)
+                    </li>
+                    <li>
+                        saving and sharing maps e.g. via QR code
+                    </li>
+                    <li>
+                        comprehensive printing functionality
+                    </li>
+                </ul>
+            </content>
+        </section>
+        <section help-key="maps-2">
+            <header>Coordinates display</header>
+            <content>
+                <p>The coordinates of the cursor in the selected coordinate system are displayed directly
+                below the main map.</p>
+                <p>By right-clicking on a point in the map, further information is displayed in an
+                additional window.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Categories</header>
+        <section help-key="search-category-1">
+            <header>Search the portal by categories</header>
+            <content>
+                <p>On the home page, you can search for categories in the lower area.
+                   By selecting a category, all existing hits in the selected category are displayed
+                   as result types on the search results page.</p>
+            </content>
+        </section>
+    </chapter>
+</help>

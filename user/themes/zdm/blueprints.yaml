@@ -39,7 +39,7 @@ form:
           title: THEME.ADMIN.HIT_DETAIL.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/detail
+            context: user://themes/ingrid/blueprints/detail
 
         ## Tab map
         tab_map:
@@ -47,7 +47,7 @@ form:
           title: THEME.ADMIN.MAP.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/map
+            context: user://themes/ingrid/blueprints/map
 
         ## Tab measure
         tab_measure:
@@ -55,7 +55,7 @@ form:
           title: THEME.ADMIN.MEASURE.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/measure
+            context: user://themes/ingrid/blueprints/measure
 
         ## Tab redirect
         tab_redirect:
@@ -63,4 +63,4 @@ form:
           title: THEME.ADMIN.REDIRECT.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/redirect
+            context: user://themes/ingrid/blueprints/redirect

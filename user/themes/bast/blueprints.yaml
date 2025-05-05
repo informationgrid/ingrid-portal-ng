@@ -1,17 +1,17 @@
-name: GeoPortal.WSV
-slug: wsv
+name: BASt
+slug: bast
 type: theme
 version: 0.1.0
-description: GeoPortal.WSV Theme
-icon: microchip
+description: BASt Theme
+icon: rebel
 author:
   name: wemove
-  email: contact@wemove.com
-  url: https://www.wemove.com
-homepage: https://github.com/getgrav/grav-theme-ingrid
-demo: https://demo.getgrav.org/onepage-skeleton
-keywords: ingrid, spectre, theme, core, modern, fast, responsive, html5, css3
-bugs: https://github.com/getgrav/grav-theme-ingrid/issues
+  email: ingrid@wemove.com
+homepage: https://github.com/wemove/grav-theme-ingrid
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/wemove/grav-theme-ingrid/issues
+readme: https://github.com/wemove/grav-theme-ingrid/blob/develop/README.md
 license: MIT
 
 dependencies:
@@ -31,7 +31,8 @@ form:
           title: THEME.ADMIN.LAYOUT.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/layout
+            context: user://themes/bast/blueprints/layout
+
         ## Tab home
         tab_home:
           type: tab
@@ -56,6 +57,14 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/detail
 
+        ## Tab catalog
+        tab_catalog:
+          type: tab
+          title: THEME.ADMIN.CATALOG.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/catalog
+
         ## Tab map
         tab_map:
           type: tab
@@ -64,13 +73,13 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/map
 
-        ## Tab rss
-        tab_rss:
+        ## Tab help
+        tab_help:
           type: tab
-          title: THEME.ADMIN.RSS.TITLE
+          title: THEME.ADMIN.HELP.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/rss
+            context: user://themes/ingrid/blueprints/help
 
         ## Tab redirect
         tab_redirect:
@@ -79,11 +88,3 @@ form:
           import@:
             type: default
             context: user://themes/ingrid/blueprints/redirect
-
-        ## Tab upload
-        tab_upload:
-          type: tab
-          title: THEME.ADMIN.UPLOAD.TITLE
-          import@:
-            type: default
-            context: user://themes/wsv/blueprints/ingrid/upload
