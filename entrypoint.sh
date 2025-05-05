@@ -143,6 +143,15 @@ if [ "$GEO_API_PASS" ]; then
 fi
 
 #####################
+# Active theme config
+#####################
+INGRID_GRAV_THEME_YAML=/var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/"$THEME".yaml
+
+if [ "$ENABLE_FOOTER_BANNER" ]; then
+  yq -i '.footer.banner.enabled = env(ENABLE_FOOTER_BANNER)' "$INGRID_GRAV_THEME_YAML"
+fi
+
+#####################
 # Default site config
 #####################
 SITE_YAML=/var/www/"$GRAV_FOLDER"/user/config/site.yaml

@@ -1,0 +1,6 @@
+{% set footer_banner_enabled = theme_var('footer.banner.enabled') %}
+{% set footer_banner_text = theme_var('footer.banner.text') %}
+
+{% if footer_banner_enabled %}
+<div class="test-instance">footer_banner_text|raw</div>
+{% endif %}

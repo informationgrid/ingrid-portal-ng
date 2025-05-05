@@ -28,6 +28,9 @@ footer:
     enabled: false
   up:
     enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
 menu:
   main:
     -
@@ -393,6 +396,10 @@ hit_search:
     },
     {
       "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    },
+    {
+      "id": "timeref",
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
   ]

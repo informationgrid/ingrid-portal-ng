@@ -42,6 +42,9 @@ footer:
     enabled: false
   up:
     enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
 menu:
   main:
     -
