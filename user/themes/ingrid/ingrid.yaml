@@ -280,6 +280,15 @@ hit_search:
               }
             }
           }
+        },
+        "address": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "address"
+              }
+            }
+          }
         }
       }
     },
