@@ -61,7 +61,7 @@
         {# BAW Auftrag #}
             {% include 'partials/detail/metadata/parts/factsheet/factsheet_aggregate_data_set_name.html.twig' ignore missing %}
         {# Kontakt #}
-            {{ hit_macros.render_contact_facts("", contactRefs, sortAddressTyp) }}
+            {{ hit_macros.render_contact_facts("", contactRefs|sortContacts(sortContactByType), sortAddressTyp) }}
         </div>
         {# Zeige in Karte #}
          {% include 'partials/detail/metadata/parts/factsheet/factsheet_preview.html.twig' %}
