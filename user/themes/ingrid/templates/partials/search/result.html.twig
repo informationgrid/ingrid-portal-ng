@@ -19,6 +19,35 @@
                 <span class="ic-ic-cross"></span>
             </a>
             {% set hasFilterSelection = true %}
+        {% elseif selected_facet == 'timeref' %}
+            {% set actionLink = page.find('/search').url ~ '?' %}
+            {% set queries = uri.query(null, true)|keys|filter(v => v != selected_facet) %}
+            {% for key, param in queries %}
+                {% set actionLink = actionLink ~ '&' ~ param|url_encode ~ '=' ~ uri.query(param)|url_encode %}
+            {% endfor %}
+            {% set timerefQueries =  values|split(',') %}
+            {% set timerefFrom = timerefQueries[0] %}
+            {% set timerefTo =  timerefQueries[1] %}
+            {% if timerefFrom %}
+                {% set timerefFrom =  timerefFrom|slice(0, 4) ~ '-' ~ timerefFrom|slice(4, 2) ~ '-' ~ timerefFrom|slice(6, 2) %}
+            {% endif %}
+            {% if timerefTo %}
+                {% set timerefTo =  timerefTo|slice(0, 4) ~ '-' ~ timerefTo|slice(4, 2) ~ '-' ~ timerefTo|slice(6, 2) %}
+            {% endif %}
+            {% set label = "" %}
+            {% if timerefFrom and timerefTo %}
+                {% set label = timerefFrom ~ 'FACETS.TIMEREF.PILL.UNTIL'|t ~ timerefTo %}
+            {% elseif timerefFrom %}
+                {% set label = 'FACETS.TIMEREF.PILL.FROM'|t ~ timerefFrom %}
+            {% elseif timerefTo %}
+                {% set label = 'FACETS.TIMEREF.PILL.TO'|t ~ timerefTo %}
+            {% endif %}
+            {% if label %}
+                <a id="facet-pill-{{ selected_facet }}" href="{{ actionLink }}" class="button pill">
+                    {{ 'FACETS.FACET_LABEL.TIMEREF'|t }}: {{ label }}
+                    <span class="ic-ic-cross"></span>
+                </a>
+            {% endif %}
         {% else %}
             {% for value in values|split(',') %}
                 {% if value is not empty %}

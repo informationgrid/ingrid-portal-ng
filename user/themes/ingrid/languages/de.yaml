@@ -930,6 +930,7 @@ FACETS:
         BBOX: Auf Karte festlegen
         MODTIME: Aktualität
         MAP: Raumbezug
+        TIMEREF: Zeitbezug
     FACET_PILL:
         TYPE: Ergebnistyp
     MODTIME:
@@ -947,7 +948,14 @@ FACETS:
         ADV: AdV
         ADDRESS: Adressen
         HVD: HVD
-
+    TIMEREF:
+        FROM: Von
+        TO: Bis
+        COMMIT: Auswahl anwenden
+        PILL:
+            FROM: '> '
+            TO: '< '
+            UNTIL: ' - '
 SHARE:
     TITLE: Teilen
     X: X
