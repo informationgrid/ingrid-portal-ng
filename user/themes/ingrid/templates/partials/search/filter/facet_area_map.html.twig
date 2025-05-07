@@ -11,6 +11,9 @@
 
 <div class="boxes">
     <div id="search-map" class="map-ingrid" style="height: 350px;outline-style: none;"></div>
+    <button style="width:100%;" class="button filter_submit" id="facet-map" title="{{ "FACETS.BBOX.COMMIT"|t }}">
+        {{ "FACETS.BBOX.COMMIT"|t }}
+    </button>
 </div>
 
 <script>
@@ -56,4 +59,6 @@
         parent.children('.accordion-content').css('display', 'none');
     }
 {% endif %}
+
+    $('#facet-map').on('click', function(){ applyLocation(searchMapSmall); });
 </script>

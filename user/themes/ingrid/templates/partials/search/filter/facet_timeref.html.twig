@@ -58,9 +58,9 @@
         from.attr('max', this.value);
     });
 
-    $('#facet-timeref').on('click', function(){ apply(); });
+    $('#facet-timeref').on('click', function(){ applyTimeRef(); });
 
-    function apply() {
+    function applyTimeRef() {
         let fromVal = from.val().replaceAll('-','');
         let toVal = to.val().replaceAll('-','');
         const url = new URL(location.href);

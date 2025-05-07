@@ -948,6 +948,8 @@ FACETS:
         ADV: AdV
         ADDRESS: Adressen
         HVD: HVD
+    BBOX:
+        COMMIT: Auswahl anwenden
     TIMEREF:
         FROM: Von
         TO: Bis

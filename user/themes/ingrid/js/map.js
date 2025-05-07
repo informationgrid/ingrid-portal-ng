@@ -4,8 +4,8 @@ let drawControl;
 let editableLayers;
 let nominatim_select = -1;
 
-function applyLocation() {
-    let bounds = searchMapBig.getBounds();
+function applyLocation(map) {
+    let bounds = map.getBounds();
     if (editableLayers.getLayers()[0]) {
         bounds = editableLayers.getLayers()[0].getBounds();
 
@@ -398,7 +398,7 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
         return item['class'] === 'boundary';
     }
 
-    $('#spatial-send').on('click', function(){ applyLocation(); });
+    $('#spatial-send').on('click', function(){ applyLocation(searchMapBig); });
     $('#nominatim-query').on('keydown', function(e) { nominatimSearch(e, nominatimUrl, isBoundary); });
 
     if(triggerNominatimOnInput) {

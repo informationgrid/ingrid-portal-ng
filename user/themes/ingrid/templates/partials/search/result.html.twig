@@ -47,6 +47,7 @@
                     {{ 'FACETS.FACET_LABEL.TIMEREF'|t }}: {{ label }}
                     <span class="ic-ic-cross"></span>
                 </a>
+                {% set hasFilterSelection = true %}
             {% endif %}
         {% else %}
             {% for value in values|split(',') %}
