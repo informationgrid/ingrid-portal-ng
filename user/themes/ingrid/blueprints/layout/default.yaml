@@ -15,6 +15,11 @@ form:
           label: Header Titel erweitern
           help: Erweitern Sie den Header Titel.
 
+        header.logo.section:
+          type: section
+          title: Logo
+          underline: true
+
         header.logo_enabled:
           type: toggle
           label: Header Logo enabled
@@ -37,10 +42,26 @@ form:
           accept:
             - image/*
 
+        header.logo_en:
+          type: file
+          label: Header Logo (EN)
+          size: large
+          destination: 'theme://images/logo'
+          multiple: false
+          markdown: true
+          description: Will be used instead of default logo `theme://images/logo/logo.svg`
+          accept:
+            - image/*
+
         header.logo_class:
           type: text
           label: Logo Breite
           help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+        header.menu.section:
+          type: section
+          title: Header Menü
+          underline: true
 
         header.menu_class:
           type: text
@@ -106,6 +127,11 @@ form:
           validate:
             type: bool
 
+        footer.logo.section:
+          type: section
+          title: Copyright
+          underline: true
+
         footer.copyright.text:
           type: text
           label: Copyright
@@ -127,10 +153,20 @@ form:
           label: Copyright Breite
           help: Trage Sie hier die möglichen Breiten des Copyright ein.
 
+        footer.menu.section:
+          type: section
+          title: Footer Menü
+          underline: true
+
         footer.menu_class:
           type: text
           label: Menu Breite
           help: Trage Sie hier die möglichen Breiten des Copyright ein.
+
+        footer.share.section:
+          type: section
+          title: Teilen
+          underline: true
 
         footer.share.enabled:
           type: toggle
@@ -209,6 +245,11 @@ form:
           validate:
             type: bool
 
+        footer.function.section:
+          type: section
+          title: Funktionen
+          underline: true
+
         footer.print.enabled:
           type: toggle
           label: Seite drucken
@@ -230,6 +271,11 @@ form:
             0: PLUGIN_ADMIN.DISABLED
           validate:
             type: bool
+
+        footer.banner.section:
+          type: section
+          title: Banner
+          underline: true
 
         footer.banner.enabled:
           type: toggle

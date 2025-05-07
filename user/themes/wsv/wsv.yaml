@@ -6,7 +6,13 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
-  logo: {  }
+  logo:
+    user/themes/wsv/images/logo/logo-mobile.png:
+      name: logo-mobile.png
+      full_path: logo-mobile.png
+      type: image/png
+      size: 5898
+      path: user/themes/wsv/images/logo/logo-mobile.png
 footer:
   logo_enabled: true
   copyright:
@@ -15,7 +21,13 @@ footer:
     show_year: false
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo: {  }
+  logo:
+    user/themes/wsv/images/logo/logo_footer_1.png:
+      name: logo_footer_1.png
+      full_path: logo_footer_1.png
+      type: image/png
+      size: 5898
+      path: user/themes/wsv/images/logo/logo_footer_1.png
   share:
     enabled: false
     enabled_x: true

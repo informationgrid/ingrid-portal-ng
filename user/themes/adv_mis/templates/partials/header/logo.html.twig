@@ -1,17 +1,22 @@
-{% set logo = theme_var('header.logo') %}
 {% set header_logo_enabled = theme_var('header.logo_enabled') %}
-
 <div class="row">
     <div class="columns xsmall-20 small-17 medium-17 large-17 xlarge-10">
         <div class="logo" role="banner">
-            <a target="_blank" href="http://www.adv-online.de" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
-           {% if logo %}
-                {% set header_logo_file = (logo|first).name %}
-            {% else %}
-                {% set header_logo_file = 'advmis_logo.png' %}
+            {% if header_logo_enabled %}
+                {% set logo = theme_var('header.logo') %}
+                {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+                {% if logo_lang %}
+                    {% set logo = logo_lang %}
+                {% endif %}
+                <a target="_blank" href="https://www.adv-online.de" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+                    {% if logo %}
+                        {% set header_logo_file = (logo|first).name %}
+                    {% else %}
+                        {% set header_logo_file = 'logo.svg' %}
+                    {% endif %}
+                    <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+                </a>
             {% endif %}
-                <img src="{{ url('theme://images/logo/' ~ header_logo_file)  }}" alt="{{ site.title }}" />
-            </a>
             <div class="desktop__title">
                 <a href="{{ home_url }}" title="Startseite von AdV-MIS aufrufen ">
                     <div class="vertical-line"></div>

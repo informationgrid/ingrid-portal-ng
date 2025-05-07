@@ -21,7 +21,13 @@ footer:
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo: {  }
+  logo:
+    user/themes/krzn/images/logo/footer-logo.svg:
+      name: footer-logo.svg
+      full_path: footer-logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/krzn/images/logo/footer-logo.svg
   share:
     enabled: false
     enabled_x: true
