@@ -12,7 +12,7 @@ header:
       full_path: advmis_logo.png
       type: image/png
       size: 5898
-      path: user/themes/adv_mis/images/logo/advmis_logo.png
+      path: user/themes/adv_mis/images/logo/advmis_logo.pngDonau
 footer:
   logo_enabled: true
   copyright:

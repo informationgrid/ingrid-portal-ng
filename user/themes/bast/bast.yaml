@@ -72,6 +72,7 @@ menu:
     -
       path: /help
       highlighted: false
+      target_blank: true
     -
       path: /contact
       highlighted: false
@@ -81,12 +82,15 @@ menu:
     -
       path: /imprint
       highlighted: false
+      target_blank: true
     -
       path: /privacy
       highlighted: false
+      target_blank: true
     -
       path: /accessibility
       highlighted: false
+      target_blank: true
     -
       path: /problem
       highlighted: false

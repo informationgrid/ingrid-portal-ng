@@ -1,37 +1,35 @@
 enabled: true
 header:
-  title_extend: 'BASt (Intern)'
+  title_extend: 'BAW'
   logo_enabled: true
-  logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
-  menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
+  logo_class: 'xsmall-7 small-7 medium-5 large-5 xlarge-5'
+  menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
   logo:
-    user/themes/bast/images/logo/logo_de.png:
-      name: logo_de.png
-      full_path: logo_de.png
-      type: image/png
-      size: 55181
-      path: user/themes/bast/images/logo/logo_de.png
-  logo_en:
-    user/themes/bast/images/logo/logo_en.png:
-      name: logo_en.png
-      full_path: logo_en.png
-      type: image/png
-      size: 55181
-      path: user/themes/bast/images/logo/logo_en.png
-
+    user/themes/baw_doi/images/logo/logo.svg:
+      name: logo.svg
+      full_path: logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/baw_doi/images/logo/logo.svg
 footer:
-  logo_enabled: false
+  logo_enabled: true
   copyright:
-    text: 'Bundesanstalt für Straßen- und Verkehrswesen'
-    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-7'
-    show_year: true
+    text: ''
+    class: 'xsmall-7 small-7 medium-5 large-5 xlarge-5'
+    show_year: false
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-17'
   hr_line: true
-  logo: {  }
+  logo:
+    user/themes/baw_doi/images/logo/logo-white.svg:
+      name: logo-white.svg
+      full_path: logo-white.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/baw_doi/images/logo/logo-white.svg
   share:
-    enabled: false
+    enabled: true
     enabled_x: true
     enabled_facebook: true
     enabled_linkedin: true
@@ -72,37 +70,34 @@ menu:
     -
       path: /help
       highlighted: false
-      target_blank: true
+    -
+      path: /contact
+      highlighted: false
     -
       path: /sitemap
       highlighted: false
     -
       path: /imprint
       highlighted: false
-      target_blank: true
     -
       path: /privacy
       highlighted: false
-      target_blank: true
     -
       path: /accessibility
       highlighted: false
-      target_blank: true
   footer:
     -
       path: /help
-      target_blank: true
+    -
+      path: /contact
     -
       path: /sitemap
     -
       path: /imprint
-      target_blank: true
     -
       path: /privacy
-      target_blank: true
     -
       path: /accessibility
-      target_blank: true
 home:
   sort_modules:
     -
@@ -128,8 +123,17 @@ home:
       {
         "id": "type",
         "facets": {
+          "www": {
+            "icon": "ic-www",
+            "query": {
+              "filter": {
+                "term": {
+                  "datatype": "www"
+                }
+              }
+            }
+          },
           "metadata": {
-            "display_on_empty": true,
             "icon": "ic-metadata",
             "query": {
               "filter": {
@@ -139,30 +143,7 @@ home:
               }
             }
           },
-          "inspire": {
-            "display_on_empty": true,
-            "icon": "ic-inspire",
-            "query": {
-              "filter": {
-                "bool": {
-                  "should": [
-                    {
-                      "term": {
-                        "t04_search.searchterm": "inspire"
-                      }
-                    },
-                    {
-                      "term": {
-                        "t04_search.searchterm": "inspireidentifiziert"
-                      }
-                    }
-                  ]
-                }
-              }
-            },
-          },
           "opendata": {
-            "display_on_empty": true,
             "icon": "ic-opendata",
             "query": {
               "filter": {
@@ -184,12 +165,104 @@ home:
             }
           },
           "maps": {
-            "display_on_empty": true,
             "icon": "ic-map",
             "query": {
               "filter": {
                 "wildcard": {
                   "capabilities_url": "http*"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "category_wasserstrasse",
+        "facets": {
+          "donau": {
+            "parent": "waterway",
+            "icon_text": "Do",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "donau"
+                }
+              }
+            }
+          },
+          "eider": {
+            "parent": "waterway",
+            "icon_text": "Ei",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "eider"
+                }
+              }
+            }
+          },
+          "elbe": {
+            "parent": "waterway",
+            "icon_text": "El",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "elbe"
+                }
+              }
+            }
+          },
+          "ems": {
+            "parent": "waterway",
+            "icon_text": "Em",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "ems"
+                }
+              }
+            }
+          },
+          "main-donau-kanal": {
+            "parent": "waterway",
+            "icon_text": "MDK",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "main-donau-kanal"
+                }
+              }
+            }
+          },
+          "mittellandkanal": {
+            "parent": "waterway",
+            "icon_text": "MLK",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "mittellandkanal"
+                }
+              }
+            }
+          },
+          "mosel": {
+            "parent": "waterway",
+            "icon_text": "Mo",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "mosel"
+                }
+              }
+            }
+          },
+          "neckar": {
+            "parent": "waterway",
+            "icon_text": "Ne",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "neckar"
                 }
               }
             }
@@ -211,13 +284,59 @@ hit_search:
   hits_num: 10
   facet_config: [
     {
-      "id": "type",
+      "id": "categ",
       "facets": {
-        "metadata": {
+        "project": {
+          "codelist": "8000",
+          "codelist_entry_id": "4",
           "query": {
             "filter": {
               "term": {
-                "datatype": "metadata"
+                "t01_object.obj_class": "4"
+              }
+            }
+          }
+        },
+        "geodata": {
+          "codelist": "8000",
+          "codelist_entry_id": "1",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "1"
+              }
+            }
+          }
+        },
+        "geoservice": {
+          "codelist": "8000",
+          "codelist_entry_id": "3",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "3"
+              }
+            }
+          }
+        },
+        "document": {
+          "codelist": "8000",
+          "codelist_entry_id": "2",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "2"
+              }
+            }
+          }
+        },
+        "database": {
+          "codelist": "8000",
+          "codelist_entry_id": "5",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "5"
               }
             }
           }
@@ -270,6 +389,49 @@ hit_search:
               }
             }
           }
+        }
+      }
+    },
+    {
+      "id": "waterway",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "bwstr-bwastr_name",
+          "min_doc_count": 0
+        }
+      },
+      "search": "bwstr-bwastr_name:%s"
+    },
+    {
+      "id": "type",
+      "facets": {
+        "type_simulation": {
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Simulationsdaten"
+              }
+            }
+          }
+        },
+        "messdaten": {
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Messdaten"
+              }
+            }
+          }
+        },
+        "luftbilder": {
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Luftbilder"
+              }
+            }
+          }
         },
         "maps": {
           "query": {
@@ -283,37 +445,67 @@ hit_search:
       }
     },
     {
-      "id": "metadata_group",
+      "id": "simulation",
       "facets": {
-        "geoset": {
-          "codelist": "8000",
-          "codelist_entry_id": "1",
+        "preprocessing": {
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "1"
+                "simulation_data_type": "Preprocessing"
               }
             }
           }
         },
-        "geoservice": {
-          "codelist": "8000",
-          "codelist_entry_id": "3",
+        "variant": {
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "3"
+                "simulation_data_type": "Variante"
               }
             }
           }
         },
-        "database": {
-          "codelist": "8000",
-          "codelist_entry_id": "5",
+        "scenario": {
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "5"
+                "simulation_data_type": "Szenario"
+              }
+            }
+          }
+        },
+        "simulationsmodel": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Simulationsmodell"
+              }
+            }
+          }
+        },
+        "simulationrun": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Simulationslauf"
+              }
+            }
+          }
+        },
+        "simulationfile": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Simulationsdatei"
+              }
+            }
+          }
+        },
+        "postprocessing": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Postprocessing"
               }
             }
           }
@@ -321,75 +513,15 @@ hit_search:
       }
     },
     {
-      "id": "distributor",
-      "label": "Fachliche Ansprechstelle",
+      "id": "datenformat",
+      "list_limit": 6,
       "query": {
         "terms": {
-          "field": "distributor",
+          "field": "t017_url_ref.datatype",
           "min_doc_count": 0
         }
       },
-      "search": "distributor:%d"
-    },
-    {
-      "id": "modtime",
-      "facets": {
-        "last_month": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-1M"
-                }
-              }
-            }
-          }
-        },
-        "last_three_month": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-3M"
-                }
-              }
-            }
-          }
-        },
-        "last_year": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-1y"
-                }
-              }
-            }
-          }
-        },
-        "last_five_years": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-5y"
-                }
-              }
-            }
-          }
-        },
-        "older_five_years": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "lte": "now-5y"
-                }
-              }
-            }
-          }
-        }
-      }
+      "search": "t017_url_ref.datatype:%s"
     },
     {
       "id": "timeref",
@@ -491,9 +623,9 @@ map:
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: null }
-        wms: { url: 'https://sgx.geodatenzentrum.de/wms_topplus_open?VERSION=1.3.0&SERVICE=WMS&REQUEST=GetCapabilities', name: 'web' }
-        attribution: '&copy; <a target="_blank" href="https://www.bkg.bund.de/">Bundesamt für Kartographie und Geodäsie</a>'
+        wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png' }
+        wms: { url: null, name: null }
+        attribution: '&copy; Bundesamt für Kartographie und Geodäsie (2025)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -522,7 +654,6 @@ redirect:
     - /datasource
     - /provider
     - /rss
-    - /contact
   pages_to_redirect:
 catalog:
   open_nodes_level: 3
@@ -541,6 +672,5 @@ streams:
       type: ReadOnlyStream
       prefixes:
         '':
-          - user/themes/bast_intern
-          - user/themes/bast
+          - user/themes/baw_doi
           - user/themes/ingrid
