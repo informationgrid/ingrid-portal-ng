@@ -543,7 +543,7 @@ hit_search:
             }
           }
         },
-        "simulationsmodel": {
+        "model": {
           "query": {
             "filter": {
               "term": {
@@ -552,7 +552,7 @@ hit_search:
             }
           }
         },
-        "simulationrun": {
+        "run": {
           "query": {
             "filter": {
               "term": {
@@ -561,7 +561,7 @@ hit_search:
             }
           }
         },
-        "simulationfile": {
+        "file": {
           "query": {
             "filter": {
               "term": {

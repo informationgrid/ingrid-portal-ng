@@ -58,8 +58,8 @@ FACETS:
         PREPROCESSING: Preprocessing
         VARIANT: Variante
         SCENARIO: Szenario
-        SIMULATIONSMODEL: Simulationsmodell
-        SIMULATIONRUN: Simulationslauf
-        SIMULATIONFILE: Simulationsdatei
+        MODEL: Simulationsmodell
+        RUN: Simulationslauf
+        FILE: Simulationsdatei
         POSTPROCESSING: Postprocessing
 
