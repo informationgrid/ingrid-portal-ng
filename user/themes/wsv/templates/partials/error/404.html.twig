@@ -12,22 +12,22 @@
                     Falls Sie die Adresse (URL) selbst eingetippt haben, überprüfen Sie bitte die Schreibweise.
                 </li>
                 <li>
-                    Versuchen Sie über die <a href="{{ page.find('/home').url }}">Startseite</a> oder die <a href="{{ page.find('/sitemap').url }}">Inhaltsübersicht</a> die gewünschte Seite zu finden
+                    Versuchen Sie über die <a href="{{ page.find('/home').url }}">{{ "PAGES.HOME"|t }}</a> oder die <a href="{{ page.find('/sitemap').url }}">{{ "PAGES.SITEMAP"|t }}</a> die gewünschte Seite zu finden
                 </li>
                 <li>
                     Stöbern Sie in den verschiedenen Such-Kategorien von MetaVer:
                     <div class="link-list">
                         <a class="icon" href="{{ page.find('/search').url }}">
                             <span class="ic-ic-arrow"></span>
-                            <span class="text">Suche</span>
+                            <span class="text">{{ "PAGES.SEARCH"|t }}</span>
                         </a>
                         <a class="icon" href="{{ page.find('/catalog').url }}">
                             <span class="ic-ic-arrow"></span>
-                            <span class="text">Kataloge</span>
+                            <span class="text">{{ "PAGES.CATALOG"|t }}</span>
                         </a>
                         <a class="icon" href="{{ page.find('/map').url }}">
                             <span class="ic-ic-arrow"></span>
-                            <span class="text">Karte</span>
+                            <span class="text">{{ "PAGES.MAP"|t }}</span>
                         </a>
                     </div>
                 </li>

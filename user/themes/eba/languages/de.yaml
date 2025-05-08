@@ -1,8 +1,10 @@
 PAGES:
-  MAP: GeoPortal.EBA
   HOME_MENU_TITLE: Startseite von GeoPortal.EBA
   HOME_MENU_EXTERN_TITLE: Startseite von Eisenbahn-Bundesamt
   HEADER_TITLE_MAIN: GeoPortal.EBA
+  SEARCH_META_DESCRIPTION: Mit der Freitextsuche von GeoPortal.EBA können Sie nach Informationen, Rechtsvorschriften, Forschungsprojekten und Adressen in den Datenkatalogen suchen
+  SEARCH_META_KEYWORDS: GeoPortal.EBA, Informationen, Informationsangebot, Suche, Recherche, Freitextsuche, freie Suche,  Rechtsvorschriften, Forschung, Projekte, Adressen, Datenkataloge, Datenbanken
+  MAP: GeoViewer.EBA
   HELP: Hilfe / Nutzungshinweise
   HELP_MENU_TITLE: Erläuterungen zur Nutzung von GeoPortal.EBA - Neues Fenster öffnet sich
   HELP_META_TITLE: GeoPortal.EBA - Suchtipps und Erläuterungen zu den Hauptfunktionen
