@@ -1,18 +1,18 @@
 enabled: true
 header:
-  title_extend: 'BAW'
+  title_extend: 'BAW-Datenfinder'
   logo_enabled: true
   logo_class: 'xsmall-7 small-7 medium-5 large-5 xlarge-5'
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
   logo:
-    user/themes/baw_doi/images/logo/logo.svg:
+    user/themes/baw_mis/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg
       type: image/svg+xml
       size: 5898
-      path: user/themes/baw_doi/images/logo/logo.svg
+      path: user/themes/baw_mis/images/logo/logo.svg
 footer:
   logo_enabled: true
   copyright:
@@ -22,12 +22,12 @@ footer:
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-17'
   hr_line: true
   logo:
-    user/themes/baw_doi/images/logo/logo-white.svg:
+    user/themes/baw_mis/images/logo/logo-white.svg:
       name: logo-white.svg
       full_path: logo-white.svg
       type: image/svg+xml
       size: 5898
-      path: user/themes/baw_doi/images/logo/logo-white.svg
+      path: user/themes/baw_mis/images/logo/logo-white.svg
   share:
     enabled: true
     enabled_x: true
@@ -66,6 +66,9 @@ menu:
       highlighted: true
     -
       path: /about
+      highlighted: true
+    -
+      path: /datasource
       highlighted: true
     -
       path: /help
@@ -120,62 +123,6 @@ home:
   categories:
     rss:
     facet_config: [
-      {
-        "id": "type",
-        "facets": {
-          "www": {
-            "icon": "ic-www",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "www"
-                }
-              }
-            }
-          },
-          "metadata": {
-            "icon": "ic-metadata",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "metadata"
-                }
-              }
-            }
-          },
-          "opendata": {
-            "icon": "ic-opendata",
-            "query": {
-              "filter": {
-                "bool": {
-                  "should": [
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendata"
-                      }
-                    },
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendataident"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "maps": {
-            "icon": "ic-map",
-            "query": {
-              "filter": {
-                "wildcard": {
-                  "capabilities_url": "http*"
-                }
-              }
-            }
-          }
-        }
-      },
       {
         "id": "waterway",
         "facets": {
@@ -320,6 +267,67 @@ home:
             }
           }
         }
+      },
+      {
+        "id": "baw_abteilung",
+        "label": "Abteilung",
+        "facets": {
+          "bautechnik": {
+            "label": "Bautechnik",
+            "icon_text": "B",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "b"
+                }
+              }
+            }
+          },
+          "geotechnik": {
+            "label": "Geotechnik",
+            "icon_text": "G",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "g"
+                }
+              }
+            }
+          },
+          "binnenbereich": {
+            "label": "Wasserbau im Binnenbereich",
+            "icon_text": "W",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "w"
+                }
+              }
+            }
+          },
+          "kuestenbereich": {
+            "label": "Wasserbau im Küstenbereich",
+            "icon_text": "K",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "k"
+                }
+              }
+            }
+          },
+          "zentral": {
+            "label": "Zentraler Service",
+            "icon_text": "MLK",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "z"
+                }
+              }
+            }
+          }
+        }
       }
     ]
     add_to_search:
@@ -336,111 +344,55 @@ hit_search:
   hits_num: 10
   facet_config: [
     {
-      "id": "categ",
+      "id": "baw_abteilung",
+      "label": "Abteilung",
       "facets": {
-        "project": {
-          "codelist": "8000",
-          "codelist_entry_id": "4",
+        "bautechnik": {
+          "label": "Bautechnik",
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "4"
+                "baw_abteilung_short": "b"
               }
             }
           }
         },
-        "geodata": {
-          "codelist": "8000",
-          "codelist_entry_id": "1",
+        "geotechnik": {
+          "label": "Geotechnik",
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "1"
+                "baw_abteilung_short": "g"
               }
             }
           }
         },
-        "geoservice": {
-          "codelist": "8000",
-          "codelist_entry_id": "3",
+        "binnenbereich": {
+          "label": "Wasserbau im Binnenbereich",
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "3"
+                "baw_abteilung_short": "w"
               }
             }
           }
         },
-        "document": {
-          "codelist": "8000",
-          "codelist_entry_id": "2",
+        "kuestenbereich": {
+          "label": "Wasserbau im Küstenbereich",
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "2"
+                "baw_abteilung_short": "k"
               }
             }
           }
         },
-        "database": {
-          "codelist": "8000",
-          "codelist_entry_id": "5",
+        "zentral": {
+          "label": "Zentraler Service",
           "query": {
             "filter": {
               "term": {
-                "t01_object.obj_class": "5"
-              }
-            }
-          }
-        },
-        "inspire": {
-          "label": "Inspire",
-          "query": {
-            "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "inspire"
-                    }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "inspireidentifiziert"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-        },
-        "opendata": {
-          "label": "Open Data",
-          "query": {
-            "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "opendata"
-                    }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "opendataident"
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "hvd": {
-          "label": "HVD",
-          "query": {
-            "filter": {
-              "term": {
-                "is_hvd": "true"
+                "baw_abteilung_short": "z"
               }
             }
           }
@@ -459,9 +411,31 @@ hit_search:
       "search": "bwstr-bwastr_name:%s"
     },
     {
-      "id": "type",
+      "id": "baw_datenkategorie",
+      "label": "Datenkategorie",
       "facets": {
-          "type_simulation": {
+        "projekt": {
+          "label": "Projekt/Auftrag",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "4"
+              }
+            }
+          }
+        },
+        "luftbilder": {
+          "label": "Luftbilder",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Luftbilder"
+              }
+            }
+          }
+        },
+        "cat_simulationsdaten": {
+          "label": "Simulationsdaten",
           "query": {
             "filter": {
               "term": {
@@ -471,6 +445,7 @@ hit_search:
           }
         },
         "messdaten": {
+          "label": "Messdaten",
           "query": {
             "filter": {
               "term": {
@@ -479,20 +454,42 @@ hit_search:
             }
           }
         },
-        "luftbilder": {
+        "visualisierung": {
+          "label": "Visualisierung",
           "query": {
             "filter": {
               "term": {
-                "data_category": "Luftbilder"
+                "data_category": "Visualisierung"
               }
             }
           }
         },
-        "maps": {
+        "geodienst": {
+          "label": "Geodienst",
           "query": {
             "filter": {
-              "wildcard": {
-                "capabilities_url": "http*"
+              "term": {
+                "t01_object.obj_class": "3"
+              }
+            }
+          }
+        },
+        "software": {
+          "label": "Software",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "6"
+              }
+            }
+          }
+        },
+        "sonstiges": {
+          "label": "Sonstiges",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Sonstiges"
               }
             }
           }
@@ -568,7 +565,92 @@ hit_search:
       }
     },
     {
+      "id": "verfahren",
+      "label": "Verfahren",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "method",
+          "min_doc_count": 0
+        }
+      },
+      "search": "method:%s"
+    },
+    {
+      "id": "simmodeltype",
+      "label": "Modelldaten",
+      "facets": {
+        "basisdaten": {
+          "label": "Basisdaten",
+          "query": {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "simparamtype": "Randbedingung"
+                  }
+                },
+                {
+                  "term": {
+                    "simparamtype": "Anfangsbedingung"
+                  }
+                },
+                {
+                  "term": {
+                    "simparamtype": "Peilung"
+                  }
+                },
+                {
+                  "term": {
+                    "simparamtype": "Bathymetrie"
+                  }
+                },
+                {
+                  "term": {
+                    "simparamtype": "Kennwort"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "modellergebnisse": {
+          "label": "Modellergebnisse",
+          "query": {
+            "filter": {
+              "term": {
+                "simparamtype": "Ergebnis"
+              }
+            }
+          }
+        },
+        "scenario": {
+          "label": "Fachliche Abbildungen/Grafiken",
+          "query": {
+            "filter": {
+              "term": {
+                "simparamtype": "Grafik"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "simspatialdimension",
+      "label": "Räumliche Dimensionalität",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "simspatialdimension",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t017_url_ref.datatype:%s"
+    },
+    {
       "id": "datenformat",
+      "label": "Datenformat",
       "list_limit": 6,
       "query": {
         "terms": {
@@ -709,7 +791,6 @@ measure:
 redirect:
   pages_to_404:
     - /measure
-    - /datasource
     - /provider
     - /rss
   pages_to_redirect:
@@ -730,5 +811,6 @@ streams:
       type: ReadOnlyStream
       prefixes:
         '':
+          - user/themes/baw_mis
           - user/themes/baw_doi
           - user/themes/ingrid
