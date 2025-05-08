@@ -203,7 +203,11 @@
                                             </h2>
                                         {% endif %}
                                         {# Datum der Entscheidung / Zeitraum der Auslegung #}
-                                        {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t) }}
+                                        {% set dateInfo = ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t %}
+                                        {% if dateInfo == "SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO" %}
+                                            {% set dateInfo = null %}
+                                        {% endif %}
+                                        {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, dateInfo) }}
                                         {# Auslegungsinformationen #}
                                         {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_TECHNICALDOCS")|t, step.technicalDocs, "technicalDocs") }}
                                         {# UVP-Bericht, ggf. Antragsunterlagen #}
