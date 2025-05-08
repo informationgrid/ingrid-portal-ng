@@ -21,9 +21,6 @@ SEARCH:
 SEARCH_RESULT:
     FACET_DELETE_SELECTION: Gesamte Auswahl zurücksetzen
 
-CATEGORIES:
-    TITLE: Recherchieren nach Kategorien
-
 SEARCH_DETAIL:
     T01_OBJECT_POLYGON_WKT: Begrenzungspolygon im WKT Format (in WGS84)
     T011_OBJ_SERV_ENVIRONMENT: Produktionsumgebung
@@ -38,3 +35,31 @@ FACETS:
         WATERWAY: Wasserstraße
         SIMULATION: Simulationsdaten
         DATENFORMAT: Datenformat
+    CATEGORY_WASSERSTRASSE:
+        DONAU: Donau
+        EIDER: Eider
+        EMS: Ems
+        ELBE: Elbe
+        MAIN-DONAU-KANAL: Main-Donau-Kanal
+        MITTELLANDKANAL: Mittellandkanal
+        MOSEL: Mosel
+        NECKAR: Neckar
+        NORD-OSTSEE-KANAL: Nord-Ostsee-Kanal
+        NORDSEE: Nordsee
+        ODER: Oder
+        WESER: Weser
+        OSTSEE: Ostsee
+        RHEIN: Rhein
+    TYPE:
+        TYPE_SIMULATION: Simulationsdaten
+        MESSDATEN: Messdaten
+        LUFTBILDER: Luftbilder
+    SIMULATION:
+        PREPROCESSING: Preprocessing
+        VARIANT: Variante
+        SCENARIO: Szenario
+        SIMULATIONSMODEL: Simulationsmodell
+        SIMULATIONRUN: Simulationslauf
+        SIMULATIONFILE: Simulationsdatei
+        POSTPROCESSING: Postprocessing
+

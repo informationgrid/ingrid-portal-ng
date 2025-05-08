@@ -266,6 +266,72 @@ home:
                 }
               }
             }
+          },
+          "nord-ostsee-kanal": {
+            "parent": "waterway",
+            "icon_text": "NOK",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
+                }
+              }
+            }
+          },
+          "nordsee": {
+            "parent": "waterway",
+            "icon_text": "NSee",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "nordsee"
+                }
+              }
+            }
+          },
+          "oder": {
+            "parent": "waterway",
+            "icon_text": "Od",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "oder"
+                }
+              }
+            }
+          },
+          "ostsee": {
+            "parent": "waterway",
+            "icon_text": "OSee",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "ostsee"
+                }
+              }
+            }
+          },
+          "rhein": {
+            "parent": "waterway",
+            "icon_text": "Rh",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "rhein"
+                }
+              }
+            }
+          },
+          "weser": {
+            "parent": "waterway",
+            "icon_text": "We",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "weser"
+                }
+              }
+            }
           }
         }
       }
@@ -342,6 +408,7 @@ hit_search:
           }
         },
         "inspire": {
+          "label": "Inspire",
           "query": {
             "filter": {
               "bool": {
@@ -362,6 +429,7 @@ hit_search:
           },
         },
         "opendata": {
+          "label": "Open Data",
           "query": {
             "filter": {
               "bool": {
@@ -382,6 +450,7 @@ hit_search:
           }
         },
         "hvd": {
+          "label": "HVD",
           "query": {
             "filter": {
               "term": {
@@ -406,7 +475,7 @@ hit_search:
     {
       "id": "type",
       "facets": {
-        "type_simulation": {
+          "type_simulation": {
           "query": {
             "filter": {
               "term": {
@@ -526,10 +595,13 @@ hit_search:
     {
       "id": "timeref",
       "filter": "{\"range\": {\"t01_object.time_from\": {\"gte\": \"%s0*\", \"lte\": \"%s9*\"}}}"
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
   ]
   add_to_search:
-    - "-datatype:address"
     - '-isfolder:true'
   query_fields:
     - title^10.0
