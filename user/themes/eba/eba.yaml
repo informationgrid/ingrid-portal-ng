@@ -39,7 +39,18 @@ footer:
     text: 'PORTAL-NG'
 menu:
   main:
+    - path: /search
+      icon: ic-ic-lupe
+    -
+      path: /map
+      icon: ic-ic-karten
   site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /map
+      highlighted: true
     -
       path: /map
       highlighted: true
@@ -70,6 +81,283 @@ menu:
       path: /privacy
     -
       path: /accessibility
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "open": true,
+      "facets": {
+        "inspire": {
+          "query": {
+            "filter": {
+              "term": {
+                "t04_search.searchterm": "inspireidentifiziert"
+              }
+            }
+          },
+        },
+        "opendata": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+        },
+        "hvd": {
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": "true"
+              }
+            }
+          },
+        },
+        "adv": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "AdVMIS"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "AdV"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+        },
+        "maps": {
+          "query": {
+            "filter": {
+              "wildcard": {
+                "capabilities_url": "http*"
+              }
+            }
+          },
+        },
+        "metadata": {
+          "display_sort_hits_on_selection": true,
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
+            }
+          },
+        },
+        "www": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "www"
+              }
+            }
+          },
+        },
+      }
+    },
+    {
+      "id": "metadata_group",
+      "open_by": {
+        "type": "metadata",
+      },
+      "display_sort_hits_on_selection": true,
+      "codelist": "8000",
+      "query": {
+        "terms": {
+          "field": "t01_object.obj_class",
+          "exclude": "1000",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t01_object.obj_class:%d"
+    },
+    {
+      "id": "modtime",
+      "display_depend_on": {
+        "type": "metadata",
+        "metadata_group": "",
+      },
+      "facets": {
+        "last_month": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1M"
+                }
+              }
+            }
+          }
+        },
+        "last_three_month": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-3M"
+                }
+              }
+            }
+          }
+        },
+        "last_year": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1y"
+                }
+              }
+            }
+          }
+        },
+        "last_five_years": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-5y"
+                }
+              }
+            }
+          }
+        },
+        "older_five_years": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "lte": "now-5y"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "provider",
+      "codelist": "110",
+      "extend_facet_selection_config": {
+        "field": "provider",
+        "list_limit": 6,
+        "sort": "name"
+      },
+      "sort": "name",
+      "query": {
+        "terms": {
+          "field": "partner",
+          "min_doc_count": 0
+        }
+      },
+      "search": "partner:%s"
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    }
+  ]
+  add_to_search:
+    - '-datatype:address'
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: ' '
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: true
+  sns:
+    similar_terms:
+      enabled: true
+hit_detail:
+  summary_replace_newline: ' '
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: true
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
 map:
   url: /ingrid-webmap-client/frontend/prd
   shrink_header: true
@@ -104,10 +392,8 @@ redirect:
     - /about
     - /datasource
     - /provider
-    - /search
     - /contact
     - /home
-    - /detail
   pages_to_redirect:
     -
       path: /help
