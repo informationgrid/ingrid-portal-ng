@@ -52,9 +52,6 @@ menu:
       path: /map
       highlighted: true
     -
-      path: /map
-      highlighted: true
-    -
       path: /help
       highlighted: false
       target_blank: true
