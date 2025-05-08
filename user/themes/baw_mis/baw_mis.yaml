@@ -583,34 +583,36 @@ hit_search:
         "basisdaten": {
           "label": "Basisdaten",
           "query": {
-            "bool": {
-              "should": [
-                {
-                  "term": {
-                    "simparamtype": "Randbedingung"
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "simparamtype": "Randbedingung"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Anfangsbedingung"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Peilung"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Bathymetrie"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Kennwort"
+                    }
                   }
-                },
-                {
-                  "term": {
-                    "simparamtype": "Anfangsbedingung"
-                  }
-                },
-                {
-                  "term": {
-                    "simparamtype": "Peilung"
-                  }
-                },
-                {
-                  "term": {
-                    "simparamtype": "Bathymetrie"
-                  }
-                },
-                {
-                  "term": {
-                    "simparamtype": "Kennwort"
-                  }
-                }
-              ]
+                ]
+              }
             }
           }
         },
