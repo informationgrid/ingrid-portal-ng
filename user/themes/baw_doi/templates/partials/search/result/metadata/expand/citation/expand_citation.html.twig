@@ -1,0 +1,12 @@
+{# Zitat für diesen Datensatz #}
+
+{% if citation %}
+    <div class="sub-section sub-section-unlined">
+        {{ hit_macros.render_fact_title('Zitat für diesen Datensatz') }}
+        <div class="document-list">
+            <div class="list-item">
+                <p>{{ citation|raw }}</p>
+            </div>
+        </div>
+    </div>
+{% endif %}

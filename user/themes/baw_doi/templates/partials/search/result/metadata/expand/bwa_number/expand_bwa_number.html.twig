@@ -1,0 +1,6 @@
+{# Auftragsnummer #}
+
+{% if bawauftragsnummer %}
+    {{ hit_macros.render_fact_title('Auftragsnummer') }}
+    <p>{{ bawauftragsnummer }}</p>
+{% endif %}

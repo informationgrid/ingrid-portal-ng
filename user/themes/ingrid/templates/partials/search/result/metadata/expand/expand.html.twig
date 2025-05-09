@@ -31,6 +31,13 @@
 {% set hitOpenId = 'hit_open_' ~ counter %}
 {% set moreIdLinks = counter ~ "_more_links" %}
 
+{% set bwastr_name = hit.bwastr_name %}
+{% set bawauftragsnummer = hit.bawauftragsnummer %}
+{% set bawauftragstitel = hit.bawauftragstitel %}
+{% set citation = hit.citation %}
+
+{% set moreIdLinks = counter ~ "_more_links" %}
+
 
 {% if downloads|length > 0
     or references|length > 0
@@ -41,6 +48,10 @@
     or wkt
     or mapUrl
     or mapUrlClient
+    or bwastr_name
+    or bawauftragsnummer
+    or bawauftragstitel
+    or doi_id
 %}
     {% include 'partials/search/result/metadata/expand/expand_view.html.twig' %}
 {% endif %}
