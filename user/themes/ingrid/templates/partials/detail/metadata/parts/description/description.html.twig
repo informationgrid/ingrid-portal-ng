@@ -11,7 +11,7 @@
         {% endfor %}
     {# Beschreibung #}
         {% if summary %}
-            {{ hit_macros.render_text_only(summary|replace({'\n': summary_replace_newline})|raw)}}
+            {{ hit_macros.render_text_only(summary|replace({'\n': summary_replace_newline})|raw, true)}}
         {% endif %}
     {# Zeitbezug #}
         {% if isTimeInDescription %}
