@@ -1055,6 +1055,52 @@
   {% endif %}
 {% endmacro %}
 
+{% macro render_label_document_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table table--lined">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            {% if title %}
+                                {{ title }}
+                            {% endif %}
+                        </th>
+                        <td>
+                            <div class="document-list">
+                            {% for entry in entries %}
+                                <div class="list-item">
+                                    <div>
+                                        {% if entry.url %}
+                                            <a target="_blank" href="{{ entry.url }}" class="icon" title="{{ entry.title }}">
+                                                <span class="text">{{ entry.title }}</span>
+                                            </a>
+                                        {% endif %}
+                                        {% if entry.description %}
+                                            <p>{{ entry.description }}</p>
+                                        {% endif %}
+                                        {% if entry.date %}
+                                            <div class="info--right">
+                                                <small>
+                                                    {% if entry.dateType %}
+                                                        {{ entry.dateType }}:
+                                                    {% endif %}
+                                                    {{ entry.date|date('d.m.Y') }}
+                                                </small>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
 {% macro render_table (title, header, entries, increaseColumns, additionalRows, setCenter) %}
   {% if entries and entries|length > 0 %}
     <div class="table">
