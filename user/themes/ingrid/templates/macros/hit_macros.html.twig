@@ -1055,7 +1055,7 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_label_document_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
+{% macro render_label_document_list (title, entries, page) %}
     {% if entries and entries|length > 0 %}
         <div class="table table--lined">
             <table>
@@ -1072,7 +1072,7 @@
                                 <div class="list-item">
                                     <div>
                                         {% if entry.url %}
-                                            <a target="_blank" href="{{ entry.url }}" class="icon" title="{{ entry.title }}">
+                                            <a target="_blank" href="{{ entry.url }}" class="icon" title="{{ entry.url }}">
                                                 <span class="text">{{ entry.title }}</span>
                                             </a>
                                         {% endif %}
