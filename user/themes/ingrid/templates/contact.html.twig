@@ -1,0 +1,21 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% set theme = config.get('system.pages.theme') %}
+    <div class="search-filtered row content-small">
+        <div class="columns">
+            {{ page.content|raw }}
+            {% set form = forms( {route:'/contact/form'} ) %}
+            {% if form %}
+                {% if page.content %}
+                    <div class="search-filtered">
+                {% endif %}
+                    <h2>{{ "CONTACT.FORM"|t }}</h2>
+                    {% include 'forms/contact.html.twig' with { form: form } %}
+                {% if page.content %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
