@@ -1,0 +1,9 @@
+{# Digital Object Identifier (DOI) #}
+
+{% if doi %}
+    {% set header = [
+        "SEARCH_DETAIL.DOI_ID"|t,
+        "SEARCH_DETAIL.DOI_TYPE"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.DOI"|t, header, doi, [0]) }}
+{% endif %}

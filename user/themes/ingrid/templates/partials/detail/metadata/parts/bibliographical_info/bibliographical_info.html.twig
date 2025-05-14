@@ -1,0 +1,16 @@
+{# Bibliografische Angaben #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_bibliographical_info }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.BIBLIOGRAPHICAL_INFO"|t)}}
+    <div class="row columns">
+        {# Literaturverweise #}
+        {% include 'partials/detail/metadata/parts/bibliographical_info/bibliographical_info_bibliography.html.twig' ignore missing %}
+
+        {# Zitat für diesen Datensatz #}
+        {% include 'partials/detail/metadata/parts/bibliographical_info/bibliographical_info_citation.html.twig' ignore missing %}
+
+        {# Digital Object Identifier (DOI) #}
+        {% include 'partials/detail/metadata/parts/bibliographical_info/bibliographical_info_doi.html.twig' %}
+    </div>
+</div>

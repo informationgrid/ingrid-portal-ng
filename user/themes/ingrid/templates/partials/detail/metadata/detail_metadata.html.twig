@@ -23,7 +23,7 @@
     {% set hasDataquality = (dataQualityRefs|length > 0) %}
     {% set hasAdditionalFields = (additionalFields|length > 0) %}
     {% set hasMetadataInfo = (metaInfoRefs|length > 0) %}
-    {% set hasBibliographicalInfo = false %}
+    {% set hasBibliographicalInfo = (bibliographies|length > 0 or doi or citations|length > 0) %}
 
     {# labels #}
     {% set hash_overview = "detail_overview" %}

@@ -1345,3 +1345,52 @@
     </div>
 {% endmacro %}
 
+{% macro render_citation (title, values, page) %}
+    <div class="sub-section sub-section-unlined">
+        {{ _self.render_group_title(title) }}
+        <div class="document-list">
+            {% set value = values %}
+            <div class="list-item">
+                {% if value.uuid %}
+                    <a class="external-link" href="?docuuid={{ value.uuid }}" target="_blank" title="{{ value.title }}">{{ value.title }}</a>
+                {% endif %}
+                {% if value.author_person is not empty %}
+                    <b>
+                    {% set output = "" %}
+                    {% for person in value.author_person %}
+                        {% set names = person|split(',') %}
+                        {% for name in names %}
+                            {% if output is not empty and loop.index0 <= 1 %}
+                                {% set output = output ~ ", " %}
+                            {% endif %}
+                            {% if loop.index0 == 0%}
+                                {% set output = output ~ name|trim %}
+                            {% elseif loop.index0 == 1 %}
+                                {% set output = output ~ name|trim|slice(0, 1) ~ '.' %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    {{ output }}
+                    </b>
+                {% elseif value.author_org %}
+                    <b>{{ value.author_org }}</b>
+                {% endif %}
+                {% if value.year %}
+                    <b>({{ value.year|date('Y') }}):</b>
+                {% endif %}
+                {% if value.title %}
+                    <i>{{ value.title }}</i>
+                {% endif %}
+                {% if value.doi_type %}
+                    [{{ value.doi_type }}].
+                {% endif %}
+                {% if value.publisher %}
+                    {{ value.publisher }}
+                {% endif %}
+                {% if value.doi %}
+                    <a class="external-link" href="{{ value.doi }}" target="_blank" title="{{ value.doi }}">{{ value.doi }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
