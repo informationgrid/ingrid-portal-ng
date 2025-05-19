@@ -1056,7 +1056,16 @@
 {% endmacro %}
 
 {% macro render_label_document_list (title, entries, page) %}
-    {% if entries and entries|length > 0 %}
+    {% set isList = true %}
+    {% if entries|length == 1 %}
+        {% set urls = entries|filter(entry => entry.url) %}
+        {% if urls is empty %}
+            {% set isList = false %}
+        {% endif %}
+    {% endif %}
+    {% if isList == false %}
+        {{ _self.render_label_text_row(title, entries[0].description) }}
+    {% else %}
         <div class="table table--lined">
             <table>
                 <tbody>
