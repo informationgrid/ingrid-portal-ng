@@ -1,5 +1,5 @@
 name: ZDM
-slug: wsv
+slug: itzbund_zdm
 type: theme
 version: 0.1.0
 description: ZDM Theme
@@ -31,7 +31,7 @@ form:
           title: THEME.ADMIN.LAYOUT.TITLE
           import@:
             type: default
-            context: user://themes/zdm/blueprints/ingrid/layout
+            context: user://themes/itzbund_zdm/blueprints/ingrid/layout
 
         ## Tab detail
         tab_detail:

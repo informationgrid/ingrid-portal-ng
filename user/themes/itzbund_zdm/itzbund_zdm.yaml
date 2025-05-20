@@ -86,5 +86,5 @@ streams:
      type: ReadOnlyStream
      prefixes:
        '':
-         - user/themes/zdm
+         - user/themes/itzbund_zdm
          - user/themes/ingrid
