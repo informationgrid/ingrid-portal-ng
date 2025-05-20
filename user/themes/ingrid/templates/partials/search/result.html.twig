@@ -50,12 +50,12 @@
                 {% set hasFilterSelection = true %}
             {% endif %}
         {% else %}
-            {% for value in values|split(',') %}
+            {% for value in values|split(FILTER_SEPARATOR) %}
                 {% if value is not empty %}
                     {% set actionLink = page.find('/search').url ~ '?' %}
                     {% set queries = uri.query(null, true) %}
                     {% set queries = queries|merge({
-                        (selected_facet) : values|split(',')|filter(v => v != value)|join(',')
+                        (selected_facet) : values|split(FILTER_SEPARATOR)|filter(v => v != value)|join(FILTER_SEPARATOR)
                     }) %}
                     {% if search_result.facets %}
                         {% set label = '' %}
