@@ -7,12 +7,12 @@ header:
   menu_dropdown: true
   shrink: true
   logo:
-    user/themes/adv_mis/images/logo/advmis_logo.png:
+    user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
       name: advmis_logo.png
       full_path: advmis_logo.png
       type: image/png
       size: 5898
-      path: user/themes/adv_mis/images/logo/advmis_logo.png
+      path: user/themes/bkg_adv_mis/images/logo/advmis_logo.png
 footer:
   logo_enabled: true
   copyright:
@@ -22,12 +22,12 @@ footer:
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
   logo:
-    user/themes/adv_mis/images/logo/advmis_logo.png:
+    user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
       name: advmis_logo.png
       full_path: advmis_logo.png
       type: image/png
       size: 5898
-      path: user/themes/adv_mis/images/logo/advmis_logo.png
+      path: user/themes/bkg_adv_mis/images/logo/advmis_logo.png
   share:
     enabled: false
     enabled_x: true
@@ -1110,6 +1110,6 @@ streams:
      type: ReadOnlyStream
      prefixes:
        '':
-         - user/themes/adv_mis
+         - user/themes/bkg_adv_mis
          - user/themes/bkg_mis
          - user/themes/ingrid
