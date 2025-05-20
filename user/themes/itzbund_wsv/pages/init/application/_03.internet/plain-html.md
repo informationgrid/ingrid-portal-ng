@@ -12,7 +12,7 @@ title: WEITERE ANWENDUNGEN INTERNET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://www.gdws.wsv.bund.de/BWaStr-Locator" title="BWaStr Locator">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/locator.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/locator.png">
                         <h2 class="header">
                             BWaStr Locator
                         </h2>
@@ -31,7 +31,7 @@ title: WEITERE ANWENDUNGEN INTERNET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://www.elwis.de/DE/Karte/" title="ELWIS-Karte">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/elwiskarte.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/elwiskarte.png">
                         <h2 class="header">
                             ELWIS-Karte
                         </h2>
@@ -50,7 +50,7 @@ title: WEITERE ANWENDUNGEN INTERNET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://www.kuestendaten.de/DE/dienste/karte" title="Portal Küstendaten.de">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/zdm.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/zdm.png">
                         <h2 class="header">
                             Portal Küstendaten.de
                         </h2>
@@ -69,7 +69,7 @@ title: WEITERE ANWENDUNGEN INTERNET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://via.bund.de/wsv/gst/map/" title="GST-WSV Karte">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/gstwsvkarte.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/gstwsvkarte.png">
                         <h2 class="header">
                             GST-WSV Karte
                         </h2>
@@ -88,7 +88,7 @@ title: WEITERE ANWENDUNGEN INTERNET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://via.bund.de/wsv/desktop/map/" title="WSV-Kartendienste im Internet">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/routenplaner.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/routenplaner.png">
                         <h2 class="header">
                             WSV-Kartendienste im Internet
                         </h2>

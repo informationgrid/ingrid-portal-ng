@@ -1,5 +1,5 @@
 name: GeoPortal.WSV
-slug: wsv
+slug: itzbund_wsv
 type: theme
 version: 0.1.0
 description: GeoPortal.WSV Theme
@@ -86,4 +86,4 @@ form:
           title: THEME.ADMIN.UPLOAD.TITLE
           import@:
             type: default
-            context: user://themes/wsv/blueprints/ingrid/upload
+            context: user://themes/itzbund_wsv/blueprints/ingrid/upload

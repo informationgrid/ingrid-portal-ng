@@ -17,7 +17,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="kartendienste" title="GeoViewer.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/geoviewer.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/geoviewer.png">
                         <h2 class="header">
                             GeoViewer.WSV
                         </h2>
@@ -36,7 +36,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="/editor/" title="InGrid Metadateneditor">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/ige.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/ige.png">
                         <h2 class="header">
                             InGrid Metadateneditor
                         </h2>
@@ -55,7 +55,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://it-navigator.wsv.res.bund.de/display/geoportalwsvhilfe/Desktop-GIS" title="DesktopGIS.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/desktopgis.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/desktopgis.png">
                         <h2 class="header">
                             DesktopGIS.WSV
                         </h2>
@@ -74,7 +74,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://via-test.itz.res.bund.de/wsv/visualist2/app" title="VisuaList.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/visualist.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/visualist.png">
                         <h2 class="header">
                             VisuaList.WSV
                         </h2>
@@ -93,7 +93,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://gntrans.itz.res.bund.de/" title="GNTrans.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/gntrans.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/gntrans.png">
                         <h2 class="header">
                             GNTrans.WSV
                         </h2>
@@ -112,7 +112,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="http://baumags.wsv.res.bund.de/" title="BauMaGs.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/baumags.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/baumags.png">
                         <h2 class="header">
                             BauMaGs.WSV
                         </h2>
@@ -131,7 +131,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://geobas.itz.res.bund.de/" title="GeoBas.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/geobas.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/geobas.png">
                         <h2 class="header">
                             GeoBas.WSV
                         </h2>
@@ -150,7 +150,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://szdb.wsv.res.bund.de/" title="SZ-DB.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/szdb.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/szdb.png">
                         <h2 class="header">
                             SZ-DB.WSV
                         </h2>
@@ -169,7 +169,7 @@ title: ANWENDUNGEN IM GEOPORTAL.WSV
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://via.res.bund.de/wsv/3darchiv/app" title="3D-Archiv.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/3darchiv.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/3darchiv.png">
                         <h2 class="header">
                             3D-Archiv.WSV
                         </h2>

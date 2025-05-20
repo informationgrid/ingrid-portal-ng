@@ -12,7 +12,7 @@ title: WEITERE ANWENDUNGEN INTRANET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://austausch.wsv.res.bund.de/" title="Austauschserver.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/austauschserver.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/austauschserver.png">
                         <h2 class="header">
                             Austauschserver.WSV
                         </h2>
@@ -31,7 +31,7 @@ title: WEITERE ANWENDUNGEN INTRANET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://via.res.bund.de/wsv/wind/app" title="WInD">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/wind.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/wind.png">
                         <h2 class="header">
                             WInD
                         </h2>
@@ -50,7 +50,7 @@ title: WEITERE ANWENDUNGEN INTRANET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://via.res.bund.de/wsv/wind/registry" title="WSV-Register">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/wsvregister.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/wsvregister.png">
                         <h2 class="header">
                             WSV-Register
                         </h2>
@@ -69,7 +69,7 @@ title: WEITERE ANWENDUNGEN INTRANET
             <div class="teaser-data search">
                 <div>
                     <a target="_blank" class="external-link" href="https://geoportal.wsv.res.bund.de/speedtest/" title="Speedtest.WSV">
-                        <img class="teaser-data-img" alt="" src="user/themes/wsv/assets/cms/apps/images/speedtest.png">
+                        <img class="teaser-data-img" alt="" src="user/themes/itzbund_wsv/assets/cms/apps/images/speedtest.png">
                         <h2 class="header">
                             Speedtest.WSV
                         </h2>

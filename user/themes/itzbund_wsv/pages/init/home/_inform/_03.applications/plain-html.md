@@ -10,7 +10,7 @@ title: Anwendungen
                     <div class="blue-border"></div>
                     <a class="teaser-link" href="kartendienste" title="GeoViewer.WSV">
                         <img class="teaser-data-img" alt="Symbol GeoViewer.WSV"
-                             src="user/themes/wsv/assets/cms/apps/images/geoviewer.png">
+                             src="user/themes/itzbund_wsv/assets/cms/apps/images/geoviewer.png">
                         <span class="text">GeoViewer.WSV</span>
                     </a>
                 </div>
@@ -21,7 +21,7 @@ title: Anwendungen
                     <a class="teaser-link" href="/editor/" target="_blank"
                        title="InGrid Metadateneditor">
                         <img class="teaser-data-img" alt="Symbol InGrid Metadateneditor"
-                             src="user/themes/wsv/assets/cms/apps/images/ige.png">
+                             src="user/themes/itzbund_wsv/assets/cms/apps/images/ige.png">
                         <span class="text">InGrid Metadateneditor</span>
                     </a>
                 </div>
@@ -32,7 +32,7 @@ title: Anwendungen
                     <a class="teaser-link" href="https://via.res.bund.de/wsv/visualist/app" target="_blank"
                        title="VisuaList.WSV">
                         <img class="teaser-data-img" alt="Symbol VisuaList.WSV"
-                             src="user/themes/wsv/assets/cms/apps/images/visualist.png">
+                             src="user/themes/itzbund_wsv/assets/cms/apps/images/visualist.png">
                         <span class="text">VisuaList.WSV</span>
                     </a>
                 </div>
@@ -43,7 +43,7 @@ title: Anwendungen
                     <a class="teaser-link" href="https://www.gdws.wsv.bund.de/BWaStr-Locator" target="_blank"
                        title="BWaStr Locator">
                         <img class="teaser-data-img" alt="Symbol Bundeswasserstraßen Locator"
-                             src="user/themes/wsv/assets/cms/apps/images/locator.png">
+                             src="user/themes/itzbund_wsv/assets/cms/apps/images/locator.png">
                         <span class="text">BWaStr Locator</span>
                     </a>
                 </div>
@@ -53,7 +53,7 @@ title: Anwendungen
                     <div class="blue-border"></div>
                     <a class="teaser-link" href="https://via.res.bund.de/wsv/wind/app" target="_blank"
                        title="WInD Objektkataster der WSV">
-                        <img class="teaser-data-img" alt="Symbol WInD" src="user/themes/wsv/assets/cms/apps/images/wind.png">
+                        <img class="teaser-data-img" alt="Symbol WInD" src="user/themes/itzbund_wsv/assets/cms/apps/images/wind.png">
                         <span class="text">WInD</span>
                     </a>
                 </div>
@@ -62,7 +62,7 @@ title: Anwendungen
                 <div class="teaser">
                     <div class="blue-border"></div>
                     <a class="teaser-link" href="https://wisit.itz.res.bund.de" target="_blank" title="ArcGIS Appfarm">
-                        <img class="teaser-data-img" alt="Symbol ArcGIS" src="user/themes/wsv/assets/cms/apps/images/desktopgis.png">
+                        <img class="teaser-data-img" alt="Symbol ArcGIS" src="user/themes/itzbund_wsv/assets/cms/apps/images/desktopgis.png">
                         <span class="text">ArcGIS Appfarm</span>
                     </a>
                 </div>
