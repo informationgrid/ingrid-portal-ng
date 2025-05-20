@@ -7,12 +7,12 @@ header:
   menu_dropdown: true
   shrink: true
   logo:
-    user/themes/eba/images/logo/logo.svg:
+    user/themes/itzbund_eba/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg
       type: image/svg+xml
       size: 5898
-      path: user/themes/eba/images/logo/logo.svg
+      path: user/themes/itzbund_eba/images/logo/logo.svg
 footer:
   logo_enabled: false
   copyright:
@@ -401,5 +401,5 @@ streams:
      type: ReadOnlyStream
      prefixes:
        '':
-         - user/themes/eba
+         - user/themes/itzbund_eba
          - user/themes/ingrid
