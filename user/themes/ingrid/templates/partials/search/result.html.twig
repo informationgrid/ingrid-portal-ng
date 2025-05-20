@@ -93,7 +93,7 @@
                             {% endif %}
                         {% endfor %}
                         {% if label %}
-                            <a id="facet-pill-{{ selected_facet }}-{{ value }}" href="{{ actionLink }}" class="button pill">
+                            <a id="facet-pill-{{ selected_facet }}-{{ value|underscorize }}" href="{{ actionLink }}" class="button pill">
                                 {{ label|t }}
                                 <span class="ic-ic-cross"></span>
                             </a>

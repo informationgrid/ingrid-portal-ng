@@ -101,7 +101,7 @@
                                                 {% set inputType = 'radio' %}
                                                 {% for bucket in item.items %}
                                                     <div class="form-element boxed">
-                                                        {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                        {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
                                                         <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                             <div class="input-check">
                                                                 <div class="control-group">
@@ -123,7 +123,7 @@
                                                 {% for bucket in itemsSelected %}
                                                     {% if bucket.value %}
                                                         <div class="form-element boxed">
-                                                            {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
                                                             <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                                 <div class="input-check">
                                                                     <div class="control-group">
@@ -156,7 +156,7 @@
                                                             {% endif %}
                                                         {% endif %}
                                                         <div class="form-element boxed">
-                                                            {% set facetId = item.id ~ '-' ~ bucket.value %}
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
                                                             <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
                                                                 <div class="input-check">
                                                                     <div class="control-group">
