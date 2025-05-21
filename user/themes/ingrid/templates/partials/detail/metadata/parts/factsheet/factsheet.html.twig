@@ -58,8 +58,6 @@
             {% include 'partials/detail/metadata/parts/factsheet/factsheet_license.html.twig' %}
         {# Zugriffsbeschränkungen #}
             {% include 'partials/detail/metadata/parts/factsheet/factsheet_restriction.html.twig' ignore missing %}
-        {# BAW Auftrag #}
-            {% include 'partials/detail/metadata/parts/factsheet/factsheet_aggregate_data_set_name.html.twig' ignore missing %}
         {# Kontakt #}
             {{ hit_macros.render_contact_facts("", contactRefs|sortContacts(sortContactByType), sortAddressTyp) }}
         </div>
