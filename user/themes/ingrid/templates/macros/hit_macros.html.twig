@@ -559,7 +559,7 @@
 {% macro render_label_text (title, text) %}
   {% if text %}
     {% if title %}
-        <h4>{{ title }}</h4>
+        <h4>{{ title|raw }}</h4>
     {% endif %}
     <p>{{ text }}</p>
   {% endif %}
@@ -571,7 +571,7 @@
         <table>
             <tr>
                 {% if title %}
-                    <th>{{ title }}</th>
+                    <th>{{ title|raw }}</th>
                 {% endif %}
                 <td>
                     {% if expandable %}
@@ -1114,7 +1114,7 @@
   {% if entries and entries|length > 0 %}
     <div class="table">
       {% if title %}
-        <h5>{{ title }}</h5>
+        <h5>{{ title|raw }}</h5>
       {% endif %}
       <table>
       {% if header and header|length > 0 %}
@@ -1168,7 +1168,7 @@
   {% if entries and entries|length > 0 %}
     <div class="table table--lined--list">
       {% if title %}
-        <h5>{{ title }}</h5>
+        <h5>{{ title|raw }}</h5>
       {% endif %}
       <table>
       {% for head in header %}

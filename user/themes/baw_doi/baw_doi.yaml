@@ -649,7 +649,7 @@ hit_detail:
   reference_system_link_replace: 'urn:ogc:def:crs:'
   csw_enabled: true
   rdf_enabled: false
-  time_in_description: true
+  time_in_description: false
   address_order:
     - '3'
     - '0'

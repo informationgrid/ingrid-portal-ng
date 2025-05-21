@@ -24,6 +24,11 @@
                         </a>
                         {% if isTimeInDescription %}
                             {% include 'partials/detail/metadata/parts/navigation/navigation_time_description.html.twig' %}
+                        {% else %}
+                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_description }}-accordion-label" id="{{ hash_description }}-accordion">
+                                <div class="boxes">
+                                </div>
+                            </div>
                         {% endif %}
                     </li>
                 {% endif %}

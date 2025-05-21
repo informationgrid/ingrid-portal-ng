@@ -12,6 +12,51 @@ SEARCH:
     PORTLET_TITLE_1: BAW-DATENREPOSITORY
     PORTLET_TITLE_2: KOMPETENZ FÜR DIE WASSERSTRASSEN
     PORTLET_TITLE_3: ' '
+SEARCH_DETAIL:
+    MEASUREMENT:
+        INFOMETHOD: Verfahren
+        SPATIALORIENTATION: Räumlichkeit
+        MINDISCHARGE: Abfluss Q min [m&#0179;/s]
+        MAXDISCHARGE: Abfluss Q max [m&#0179;/s]
+        MEASUREMENTFREQUENCY: Frequenz der Messung [s]
+        DATAQUALITYDESCRIPTION: Beschreibung der Datenqualität
+        MEASUREMENTDEPTH:
+            TITLE: Messtiefe
+            DEPTH: Messtiefe
+            UOM: Maßeinheit
+            VERTICALCRS: Höhenbezugssystem
+        MEANWATERLEVEL:
+            TITLE: Gemittelter Wasserstand, auf den sich die Messwerte beziehen
+            WATERLEVEL: Wasserstand
+            UOM: Maßeinheit
+        GAUGEDATUM:
+            TITLE: Pegelnullpunkt
+            DATUM: Pegelnullpunkt
+            UOM: Maßeinheit
+            VERTICALCRS: Höhenbezugssystem
+            DESCRIPTION: Beschreibung
+        MEASUREMENTDEVICE:
+            TITLE: Messgerät
+            NAME: Gerätename
+            ID: Geräte-ID
+            MODEL: Gerätemodell
+            DESCRIPTION: Beschreibung
+        MEASUREDQUANTITIES:
+            TITLE: Zielparameter und -Größen
+            NAME: Name
+            TYPE: Art
+            UOM: Maßeinheit
+            CALCULATIONFORMULA: Formel/Funktion
+
+    GEOMETRICS:
+        CONTEXT:
+            TITLE: Geometrie-Kontext
+            TYPE: Typ
+            NAME: Name
+            DESCRIPTION: Beschreibung
+            FEATURE:
+                CODE: Code
+                DESCRIPTION: Beschreibung
 
 FACETS:
     FACET_LABEL:

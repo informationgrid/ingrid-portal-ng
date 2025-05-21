@@ -1,0 +1,60 @@
+{# Messdaten #}
+{# Verfahren #}
+{{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.MEASUREMENT.INFOMETHOD"|t, infoRefs.measurementMethod) }}
+
+{# Räumlichkeit #}
+{{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.SPATIALORIENTATION"|t, infoRefs.measurementSpatialOrientation) }}
+
+{# Abfluss Q min #}
+{{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.MINDISCHARGE"|t, infoRefs.measurementMinDischarge) }}
+
+{# Abfluss Q max #}
+{{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.MAXDISCHARGE"|t, infoRefs.measurementMaxDischarge) }}
+
+{# Frequenz der Messung #}
+{{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTFREQUENCY"|t, infoRefs.measurementMeasurementFrequency) }}
+
+{# Beschreibung der Datenqualität #}
+{{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.DATAQUALITYDESCRIPTION"|t, infoRefs.measurementDataQualityDescription) }}
+
+{# Messtiefe #}
+{% set header = [
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.DEPTH"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.UOM"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.VERTICALCRS"|t
+] %}
+{{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.TITLE"|t, header, infoRefs.measurementMeasurementDepth) }}
+
+{# Gemittelter Wasserstand, auf den sich die Messwerte beziehen #}
+{% set header = [
+    "SEARCH_DETAIL.MEASUREMENT.MEANWATERLEVEL.WATERLEVEL"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEANWATERLEVEL.UOM"|t
+] %}
+{{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEANWATERLEVEL.TITLE"|t, header, infoRefs.measurementMeanWaterLevel) }}
+
+{# Pegelnullpunkt #}
+{% set header = [
+    "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.DATUM"|t,
+    "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.UOM"|t,
+    "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.VERTICALCRS"|t,
+    "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.DESCRIPTION"|t
+] %}
+{{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.TITLE"|t, header, infoRefs.measurementGaugeDatum) }}
+
+{# Messgerät #}
+{% set header = [
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.NAME"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.ID"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.MODEL"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.DESCRIPTION"|t
+] %}
+{{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.TITLE"|t, header, infoRefs.measurementMeasurementDevice) }}
+
+{# Zielparameter und -Größen #}
+{% set header = [
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.NAME"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.TYPE"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.UOM"|t,
+    "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.CALCULATIONFORMULA"|t
+] %}
+{{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.TITLE"|t, header, infoRefs.measurementMeasuredQuantities) }}
