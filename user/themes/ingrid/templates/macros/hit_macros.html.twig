@@ -21,26 +21,26 @@
 {% endmacro %}
 
 {% macro render_address_icon (class, title, altTitle) %}
-   {% if class == 0 %}
-      {# Institution #}
-      <span class="ic-ic-intituition"
+    {% if class == 0 %}
+        {# Institution #}
+        <span class="ic-ic-intituition"
     {% elseif class == 1 %}
-      {# Einheit #}
-      <span class="ic-ic-einheit"
+        {# Einheit #}
+        <span class="ic-ic-einheit"
     {% elseif class == 2 %}
-      {# Person #}
-      <span class="ic-ic-people"
+        {# Person #}
+        <span class="ic-ic-people"
     {% elseif class == 3 %}
-      {# Freie Adresse #}
-      <span class="ic-ic-mailto"
+        {# Freie Adresse #}
+        <span class="ic-ic-mailto"
     {% else %}
-      <span
+        <span
     {% endif %}
 
     {% if altTitle %}
-      title="{{ altTitle }}"
+        title="{{ altTitle }}"
     {% elseif title %}
-      title="{{ title }}"
+        title="{{ title }}"
     {% endif %}
     ></span>
     <span class="text">{{ title }}</span>
@@ -64,66 +64,66 @@
 
 {% macro render_metadata_icon (class, title, altTitle) %}
     {% if class == 0 %}
-      {# Fachaufgabe #}
-      <span class="ic-ic-zulassungsverfahren"
+        {# Fachaufgabe #}
+        <span class="ic-ic-zulassungsverfahren"
     {% elseif class == 1 %}
-      {# Geodatensatz #}
-      <span class="ic-ic-karte"
+        {# Geodatensatz #}
+        <span class="ic-ic-karte"
     {% elseif class == 2 %}
-      {# Literatur #}
-      <span class="ic-ic-katalog"
+        {# Literatur #}
+        <span class="ic-ic-katalog"
     {% elseif class == 3 %}
-      {# Geodatendienst #}
-      <span class="ic-ic-dienste"
+        {# Geodatendienst #}
+        <span class="ic-ic-dienste"
     {% elseif class == 4 %}
-      {# Projekt #}
-      <span class="ic-ic-projekt"
+        {# Projekt #}
+        <span class="ic-ic-projekt"
     {% elseif class == 5 %}
-      {# Datensammlung #}
-      <span class="ic-ic-metadaten"
+        {# Datensammlung #}
+        <span class="ic-ic-metadaten"
     {% elseif class == 6 %}
-      {# Informationssystem #}
-      <span class="ic-ic-chemie"
+        {# Informationssystem #}
+        <span class="ic-ic-chemie"
     {% else %}
-      <span
+        <span
     {% endif %}
 
     {% if altTitle %}
-      title="{{ altTitle }}"
+        title="{{ altTitle }}"
     {% elseif title %}
-      title="{{ title|t }}"
+        title="{{ title|t }}"
     {% endif %}
     ></span>
     {% if title %}
-      <span class="text">{{ title|t }}</span>
+        <span class="text">{{ title|t }}</span>
     {% endif %}
 {% endmacro %}
 
 {% macro render_hit_searchterm (isInspire, isOpendata, isSecure, isHVD) %}
-  {% if isInspire or isOpendata or isSecure %}
-    <div class="icon--info">
-    {% if isSecure %}
-      <div class="helper icon info">
-          <span class="ic-ic-lock-closed" title="{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}"></span>
-          <span class="text">{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}</span>
-      </div>
+    {% if isInspire or isOpendata or isSecure %}
+        <div class="icon--info">
+        {% if isSecure %}
+            <div class="helper icon info">
+                <span class="ic-ic-lock-closed" title="{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}"></span>
+                <span class="text">{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}</span>
+            </div>
+        {% endif %}
+        {% if isInspire %}
+            <div class="helper icon info">
+                <span class="ic-ic-inspire" title="INSPIRE"></span>
+                <span class="text">INSPIRE</span>
+            </div>
+        {% endif %}
+        {% if isOpendata %}
+            <div class="helper icon info">
+                <span class="ic-ic-opendata" title="Open Data{% if isHVD %} / HVD{% endif %}"></span>
+                <span class="text">
+                    Open Data{% if isHVD %} / HVD{% endif %}
+                </span>
+            </div>
+        {% endif %}
+        </div>
     {% endif %}
-    {% if isInspire %}
-      <div class="helper icon info">
-          <span class="ic-ic-inspire" title="INSPIRE"></span>
-          <span class="text">INSPIRE</span>
-      </div>
-    {% endif %}
-    {% if isOpendata %}
-      <div class="helper icon info">
-          <span class="ic-ic-opendata" title="Open Data{% if isHVD %} / HVD{% endif %}"></span>
-          <span class="text">
-            Open Data{% if isHVD %} / HVD{% endif %}
-            </span>
-      </div>
-    {% endif %}
-    </div>
-  {% endif %}
 {% endmacro %}
 
 {% macro render_hit_logo (partners) %}
@@ -142,273 +142,272 @@
 
 
 {% macro render_hit_time (title, time) %}
-  {% if time and time.type and (time.t0 or time.t1 or time.t2) %}
-  <div class="helper date">
-    {% if title %}
-      <b>{{ title }}</b>:
+    {% if time and time.type and (time.t0 or time.t1 or time.t2) %}
+        <div class="helper date">
+        {% if title %}
+            <b>{{ title }}</b>:
+        {% endif %}
+        {% if "seitX" in time.type and time.t1 %}
+            <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1|date("d.m.Y") ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}</span>
+        {% elseif "seit" in time.type and time.t1 %}
+            <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1|date("d.m.Y") ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}</span>
+        {% elseif "von" in time.type and time.t1 and time.t2 %}
+            {% if time.t1 is same as(time.t2) %}
+                <span>{{ time.t1|date("d.m.Y") }}</span>
+            {% else %}
+                <span>{{ time.t1|date("d.m.Y")  ~ " " ~  "COMMON.TIME_UNTIL"|t ~ " " ~ time.t2|date("d.m.Y") }}</span>
+            {% endif %}
+        {% elseif "am" in time.type and time.t0 %}
+            <span>{{ time.t0|date("d.m.Y") }}</span>
+        {% elseif "bis" in time.type and time.t2 %}
+            <span>{{ "COMMON.TIME_UNTIL"|t ~ " " ~  time.t2|date("d.m.Y") }}</span>
+        {% endif %}
+        </div>
     {% endif %}
-    {% if "seitX" in time.type and time.t1 %}
-      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1|date("d.m.Y") ~ " " ~ "COMMON.TIME_UNTILNOW"|t }}</span>
-    {% elseif "seit" in time.type and time.t1 %}
-      <span>{{ "COMMON.TIME_SINCE"|t ~ " " ~ time.t1|date("d.m.Y") ~ " " ~ "COMMON.TIME_UNTILUNKNOWN"|t }}</span>
-    {% elseif "von" in time.type and time.t1 and time.t2 %}
-      {% if time.t1 is same as(time.t2) %}
-        <span>{{ time.t1|date("d.m.Y") }}</span>
-      {% else %}
-        <span>{{ time.t1|date("d.m.Y")  ~ " " ~  "COMMON.TIME_UNTIL"|t ~ " " ~ time.t2|date("d.m.Y") }}</span>
-      {% endif %}
-    {% elseif "am" in time.type and time.t0 %}
-      <span>{{ time.t0|date("d.m.Y") }}</span>
-    {% elseif "bis" in time.type and time.t2 %}
-      <span>{{ "COMMON.TIME_UNTIL"|t ~ " " ~  time.t2|date("d.m.Y") }}</span>
-    {% endif %}
-  </div>
-  {% endif %}
 {% endmacro %}
 
 {% macro render_fact_title (title, num, class) %}
-  <h4 {% if class %}class="{{ class }}"{% endif %}>
-    {{ title }}
-    {% if num %}
-      <span>({{ num }})</span>
-    {% endif %}
-  </h4>
+    <h4 {% if class %}class="{{ class }}"{% endif %}>
+        {{ title }}
+        {% if num %}
+            <span>({{ num }})</span>
+        {% endif %}
+    </h4>
 {% endmacro %}
 
 {% macro render_object_links (title, items, partners) %}
-  {% if title %}
-    <h4>{{ title }} ({{ items|length }})</h4>
-  {% endif %}
-  {% if items %}
-    <div class="document-list">
-      {% for item in items %}
-        <div class="list-item">
-          {{ _self.render_metadata_link(item, partners) }}
+    {% if title %}
+        <h4>{{ title }} ({{ items|length }})</h4>
+    {% endif %}
+    {% if items %}
+        <div class="document-list">
+            {% for item in items %}
+                <div class="list-item">
+                    {{ _self.render_metadata_link(item, partners) }}
+                </div>
+            {% endfor %}
         </div>
-      {% endfor %}
-    </div>
-  {% endif %}
+    {% endif %}
 {% endmacro %}
 
 {% macro render_address_links (title, items) %}
-  {% if title %}
-    <h4>{{ title }} ({{ items|length }})</h4>
-  {% endif %}
-  {% if items %}
-    <div class="document-list">
-      {% for item in items %}
-        <div class="list-item">
-          {{ _self.render_address_link(item) }}
+    {% if title %}
+        <h4>{{ title }} ({{ items|length }})</h4>
+    {% endif %}
+    {% if items %}
+        <div class="document-list">
+            {% for item in items %}
+                <div class="list-item">
+                    {{ _self.render_address_link(item) }}
+                </div>
+            {% endfor %}
         </div>
-      {% endfor %}
-    </div>
-  {% endif %}
+    {% endif %}
 {% endmacro %}
 
 {% macro render_metadata_link (item, partners) %}
-  {% set uuid = item.uuid %}
-  {% set type = item.type %}
-  {% set type_name = item.type_name %}
-  {% set title = item.title %}
-  {% set description = item.description %}
-  {% set attachedToField = item.attachedToField %}
-  {% set entryId = item.entryId %}
-  {% set serviceType = item.serviceType %}
-  {% set serviceUrl = item.serviceUrl %}
-  {% set previews = item.previews %}
+    {% set uuid = item.uuid %}
+    {% set type = item.type %}
+    {% set type_name = item.type_name %}
+    {% set title = item.title %}
+    {% set description = item.description %}
+    {% set attachedToField = item.attachedToField %}
+    {% set entryId = item.entryId %}
+    {% set serviceType = item.serviceType %}
+    {% set serviceUrl = item.serviceUrl %}
+    {% set previews = item.previews %}
 
 {# Titel #}
     <div class="image">
-      <div class="helper icon">
-        {{ _self.render_metadata_icon(type, type_name, type_name) }}
-      </div>
-      <a href="?docuuid={{ uuid }}" class="icon" title="{{ title }}">
-        <span class="text">{{ title }}</span>
-      </a>
-{# Vorschau #}
-  {% if previews|length > 1 %}
-    <div class="preview">
-      <div class="swiper-container swiper-container-background">
-        <div class="swiper-wrapper">
-        {% for preview in previews %}
-          <div class="swiper-slide">
-            <p class="caption">
-              <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
-                <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
-                <noscript>
-                  <img class="preview_image" src="{{ preview }}" title="{{ title }}" alt="img">
-                </noscript>
-              </a>
-            </p>
-          </div>
-        {% endfor %}
+        <div class="helper icon">
+            {{ _self.render_metadata_icon(type, type_name, type_name) }}
         </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  {% elseif previews|length == 1 %}
-    <div class="preview">
-      {% for preview in previews %}
-        <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
-            <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
-            <noscript>
-              <img class="preview_image" src="{{ preview }}" title="{{ title }}" alt="img">
-            </noscript>
+        <a href="?docuuid={{ uuid }}" class="icon" title="{{ title }}">
+            <span class="text">{{ title }}</span>
         </a>
-      {% endfor %}
-    </div>
-  {% endif %}
+{# Vorschau #}
+    {% if previews|length > 1 %}
+        <div class="preview">
+            <div class="swiper-container swiper-container-background">
+                <div class="swiper-wrapper">
+                {% for preview in previews %}
+                    <div class="swiper-slide">
+                        <p class="caption">
+                            <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
+                                <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                                <noscript>
+                                  <img class="preview_image" src="{{ preview }}" title="{{ title }}" alt="img">
+                                </noscript>
+                            </a>
+                        </p>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    {% elseif previews|length == 1 %}
+        <div class="preview">
+            {% for preview in previews %}
+                <a target="_blank" class="external-link" href="{{ preview }}" title="{{ title }}" rel="noopener noreferrer">
+                    <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                    <noscript>
+                        <img class="preview_image" src="{{ preview }}" title="{{ title }}" alt="img">
+                    </noscript>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
 {# Beschreibung #}
-  {% if description %}
-    <div class="description">
-      <small class="description">{{ convertUrlInText(description)|raw }}</small>
+    {% if description %}
+        <div class="description">
+            <small class="description">{{ convertUrlInText(description)|raw }}</small>
+        </div>
+    {% endif %}
     </div>
-  {% endif %}
-  </div>
 {% endmacro %}
 
 {% macro render_address_link (item) %}
-  {% set uuid = item.uuid %}
-  {% set type = item.type %}
-  {% set title = item.title %}
-  {% set description = item.description %}
+    {% set uuid = item.uuid %}
+    {% set type = item.type %}
+    {% set title = item.title %}
+    {% set description = item.description %}
 
-  {# Titel #}
-  <div class="no-image">
-      <div class="helper icon">
-          {% set type_name = "COMMON.UDK_ADR_CLASS_NAME_" ~ type %}
-          {{ _self.render_address_icon(type, type_name|t , type_name|t) }}
-      </div>
-      <a href="?docuuid={{ uuid }}&isAddress=true" class="icon" title="{{ title }}">
-          <span class="text">{{ title }}</span>
-      </a>
-  </div>
+{# Titel #}
+    <div class="no-image">
+        <div class="helper icon">
+            {% set type_name = "COMMON.UDK_ADR_CLASS_NAME_" ~ type %}
+            {{ _self.render_address_icon(type, type_name|t , type_name|t) }}
+        </div>
+        <a href="?docuuid={{ uuid }}&isAddress=true" class="icon" title="{{ title }}">
+            <span class="text">{{ title }}</span>
+        </a>
+    </div>
 {% endmacro %}
 
 {% macro render_contact_facts (title, items, sortAddressTyp, isAddress) %}
-  {% set break = false %}
-  {% for item in items if not break %}
-    {% set role = item.role %}
-    {% set role_name = item.role_name %}
-    {% set addresses = item.addresses %}
-    {% set streets = item.streets %}
-    {% set postcode = item.postcode %}
-    {% set city = item.city %}
-    {% set country = item.country %}
-    {% set mail = item.mail %}
-    {% set phone = item.phone %}
-    {% set facsimile = item.facsimile %}
-    {% set url = item.url %}
-    {% set service_time = item.service_time %}
+    {% set break = false %}
+    {% for item in items if not break %}
+        {% set role = item.role %}
+        {% set role_name = item.role_name %}
+        {% set addresses = item.addresses %}
+        {% set streets = item.streets %}
+        {% set postcode = item.postcode %}
+        {% set city = item.city %}
+        {% set country = item.country %}
+        {% set mail = item.mail %}
+        {% set phone = item.phone %}
+        {% set facsimile = item.facsimile %}
+        {% set url = item.url %}
+        {% set service_time = item.service_time %}
 
-
-    {# Titel #}
-    {% if title %}
-      {{ _self.render_fact_title(title) }}
-    {% elseif role_name %}
-      {{ _self.render_fact_title(role_name) }}
-    {% elseif role %}
-      {{ _self.render_fact_title(role) }}
-    {% endif %}
-    <p>
-    {# Adressen #}
-    {% set types = sortAddressTyp %}
-    {% for type in types %}
-        {% for address in addresses %}
-            {% if address.type is not empty and address.type == type %}
-                {% if address.uuid %}
-                    <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
-                {% else %}
-                    {{ address.title }}
-                    <br>
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-    {% for address in addresses %}
-        {% if address.type is empty %}
-            {{ address.organisationName }}
-            <br>
-            {{ address.positionName }}
-            <br>
-            {{ address.individualName }}
-            <br>
+{# Titel #}
+        {% if title %}
+            {{ _self.render_fact_title(title) }}
+        {% elseif role_name %}
+            {{ _self.render_fact_title(role_name) }}
+        {% elseif role %}
+            {{ _self.render_fact_title(role) }}
         {% endif %}
-    {% endfor %}
-    </p>
-    {% if isAddress %}
         <p>
-        {# Street #}
-        {% if streets %}
-            {% for street in streets %}
-                {% set numStreet = loop.index %}
-                {{ street }}
-                {% if numStreet < streets|length %}
-                  <br>
+{# Adressen #}
+        {% set types = sortAddressTyp %}
+        {% for type in types %}
+            {% for address in addresses %}
+                {% if address.type is not empty and address.type == type %}
+                    {% if address.uuid %}
+                        <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
+                    {% else %}
+                        {{ address.title }}
+                        <br>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
-            <br>
-        {% endif %}
-        {# Postcode #}
-        {% if postcode %}
-            {{ postcode }}
-        {% endif %}
-        {# City #}
-        {% if city %}
-            {{ city }}
-            <br>
-        {% endif %}
-        {# Country #}
-        {% if country %}
-            {{ country }}
-        {% endif %}
+        {% endfor %}
+        {% for address in addresses %}
+            {% if address.type is empty %}
+                {{ address.organisationName }}
+                <br>
+                {{ address.positionName }}
+                <br>
+                {{ address.individualName }}
+                <br>
+            {% endif %}
+        {% endfor %}
         </p>
-    {% endif %}
-    {# E-Mail #}
-    {% if mail %}
-    <div>
-        <a class="icon" href="mailto:{{ mail }}" title="{{ mail }}">
-            <span class="ic-ic-mailto"></span>
-            <span class="text">{{ mail }}</span>
-        </a>
-    </div>
-    {% endif %}
-    {# Telefon #}
-    {% if phone %}
-    <div>
-        <a class="icon" href="tel:{{ phone }}" title="{{ phone }}">
-            <span class="ic-ic-phone"></span>
-            <span class="text">{{ phone }}</span>
-        </a>
-    </div>
-    {% endif %}
-    {# Fax #}
-    {% if facsimile %}
-    <div>
-        <a class="icon" href="fax:{{ facsimile }}" title="{{ facsimile }}">
-            <span class="ic-ic-fax"></span>
-            <span class="text">{{ facsimile }}</span>
-        </a>
-    </div>
-    {% endif %}
-    {# URL #}
-    {% if url %}
-    <div>
-        <a target="_blank" class="icon external-link" href="{{ url }}" title="{{ url }}">
-            <span class="ic-ic-external"></span>
-            <span class="text">{{ url }}</span>
-        </a>
-    </div>
-    {% endif %}
-    {# Servicezeiten #}
-    {% if service_time %}
-    <div>
-        {{ "SEARCH_DETAIL.T02_ADDRESS_HOURS_OF_SERVICE"|t }}
-        {{ service_time|raw }}
-    </div>
-    {% endif %}
-    {% set break = true %}
-  {% endfor %}
+        {% if isAddress %}
+        <p>
+{# Street #}
+            {% if streets %}
+                {% for street in streets %}
+                    {% set numStreet = loop.index %}
+                    {{ street }}
+                    {% if numStreet < streets|length %}
+                      <br>
+                    {% endif %}
+                {% endfor %}
+                <br>
+            {% endif %}
+{# Postcode #}
+            {% if postcode %}
+                {{ postcode }}
+            {% endif %}
+{# City #}
+            {% if city %}
+                {{ city }}
+                <br>
+            {% endif %}
+{# Country #}
+            {% if country %}
+                {{ country }}
+            {% endif %}
+        </p>
+        {% endif %}
+{# E-Mail #}
+        {% if mail %}
+            <div>
+                <a class="icon" href="mailto:{{ mail }}" title="{{ mail }}">
+                    <span class="ic-ic-mailto"></span>
+                    <span class="text">{{ mail }}</span>
+                </a>
+            </div>
+        {% endif %}
+{# Telefon #}
+        {% if phone %}
+            <div>
+                <a class="icon" href="tel:{{ phone }}" title="{{ phone }}">
+                    <span class="ic-ic-phone"></span>
+                    <span class="text">{{ phone }}</span>
+                </a>
+            </div>
+        {% endif %}
+{# Fax #}
+        {% if facsimile %}
+            <div>
+                <a class="icon" href="fax:{{ facsimile }}" title="{{ facsimile }}">
+                    <span class="ic-ic-fax"></span>
+                    <span class="text">{{ facsimile }}</span>
+                </a>
+            </div>
+        {% endif %}
+{# URL #}
+        {% if url %}
+            <div>
+                <a target="_blank" class="icon external-link" href="{{ url }}" title="{{ url }}">
+                    <span class="ic-ic-external"></span>
+                    <span class="text">{{ url }}</span>
+                </a>
+            </div>
+        {% endif %}
+{# Servicezeiten #}
+        {% if service_time %}
+            <div>
+                {{ "SEARCH_DETAIL.T02_ADDRESS_HOURS_OF_SERVICE"|t }}
+                {{ service_time|raw }}
+            </div>
+        {% endif %}
+        {% set break = true %}
+    {% endfor %}
 {% endmacro %}
 
 {% macro render_contact (items, sortAddressTyp, hash) %}
@@ -557,766 +556,768 @@
 {% endmacro %}
 
 {% macro render_label_text (title, text) %}
-  {% if text %}
-    {% if title %}
-        <h4>{{ title|raw }}</h4>
+    {% if text %}
+        {% if title %}
+            <h4>{{ title|raw }}</h4>
+        {% endif %}
+         <p>{{ text }}</p>
     {% endif %}
-    <p>{{ text }}</p>
-  {% endif %}
 {% endmacro %}
 
 {% macro render_label_text_row (title, text, css, expandable) %}
-  {% if text %}
-    <div class="table table--lined">
-        <table>
-            <tr>
-                {% if title %}
-                    <th>{{ title|raw }}</th>
-                {% endif %}
-                <td>
-                    {% if expandable %}
-                        <div class="js-expand-box js-expand-text js-non-expand-text">
-                            <div class="js-expand-text-content">
-                    {% endif %}
-                    <p {% if css %}class="{{ css }}"{% endif %}>{{ convertUrlInText(removeHashLocale(text))|raw }}</p>
-                    {% if expandable %}
-                            </div>
-                            <div class="desc-fade"></div>
-                        </div>
-                        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
-                            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
-                        </button>
-                        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
-                            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
-                        </button>
-                    {% endif %}
-                </td>
-            </tr>
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_list (title, entries, listPreset, css, json) %}
-  {% if entries and entries|length > 0 %}
-    {% if title %}
-        <h4>{{ title }}</h4>
-    {% endif %}
-    <div class="text-list">
-    {% for entry in entries %}
-        {% set entryToJson = entry|json_decode() %}
-        {% if entryToJson.url is not empty %}
-            <p class="list-item">
-                {% if listPreset %}
-                  <span>{{ listPreset }}</span>
-                {% endif %}
-                <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
-                    <span class="ic-ic-external"></span>
-                    <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
-                </a>
-                {%  if entryToJson.quelle %}
-                    {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
-                {% endif %}
-            </p>
-        {% elseif entryToJson.name is not empty %}
-            <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
-        {% else %}
-            <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
-        {% endif %}
-    {% endfor %}
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_link (title, linkTitle, link, type, css) %}
-  {% if link %}
-    <div class="table table--lined">
-        <table>
-            <tr>
-                {% if title %}
-                    <th>{{ title }}</th>
-                {% endif %}
-                <td>
-                    <div {% if type == "download" %}class="download"{% endif %}>
-                        <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
-                            {% if type == "external" %}
-                              <span class="ic-ic-external"></span>
-                            {% elseif type == "download" %}
-                              <span class="ic-ic-download"></span>
-                            {% elseif type == "mail" %}
-                              <span class="ic-ic-mailto"></span>
-                            {% endif %}
-                            <span class="text">{{ linkTitle }}</span>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_link_map (title, linkTitle, link, type, css, mapUrl) %}
-  {% if link %}
-    <div class="table table--lined">
-        <table>
-            <tr>
-                {% if title %}
-                    <th>{{ title }}</th>
-                {% endif %}
-                <td>
-                    <div class="content--link">
-                        <div {% if type == "download" %}class="download"{% endif %}>
-                            <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
-                                {% if type == "external" %}
-                                  <span class="ic-ic-external"></span>
-                                {% elseif type == "download" %}
-                                  <span class="ic-ic-download"></span>
-                                {% elseif type == "mail" %}
-                                  <span class="ic-ic-mailto"></span>
-                                {% endif %}
-                                <span class="text">{{ linkTitle }}</span>
-                            </a>
-                        </div>
-                    </div>
-                    <a target="_blank" class="button outline pill" href="{{ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                        {{ "COMMON.RESULT_SHOWMAP"|t }}
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_link_list (title, entries, type, css) %}
-  {% if entries %}
-    <div class="table table--lined">
-        <table>
-            <tr>
-                {% if title %}
-                    <th>{{ title }}</th>
-                {% endif %}
-                <td>
-                    {% for entry in entries %}
-                    <div>
-                        <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ entry }}" title="{{ entry }}" rel="noopener noreferrer">
-                            {% if type == "external" %}
-                              <span class="ic-ic-external"></span>
-                            {% elseif type == "download" %}
-                              <span class="ic-ic-download"></span>
-                            {% elseif type == "mail" %}
-                              <span class="ic-ic-mailto"></span>
-                            {% endif %}
-                            <span class="text">{{ entry }}</span>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </td>
-            </tr>
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_text_list_row (title, entries, listPreset, css, expandable, entryPerRow) %}
-  {% if entries and entries|length > 0 %}
-    <div class="table table--lined">
-        <table>
-            {% if entryPerRow %}
-                {% for entry in entries %}
-                <tr>
-                    {% if title %}
-                        <th>
-                        {% if loop.index0 == 0 %}
-                            {{ title|raw }}
-                        {% endif %}
-                        </th>
-                    {% endif %}
-                    <td>
-                    {% if expandable %}
-                    <div class="js-expand-box js-expand-text js-non-expand-text {{ css }}">
-                        <div class="js-expand-text-content">
-                    {% endif %}
-                    <div class="text-list">
-                    {% if listPreset %}
-                      <span>{{ listPreset }}</span>
-                    {% endif %}
-                        {% set entryToJson = entry|json_decode() %}
-                        {% if entryToJson.url is not empty %}
-                          <p class="list-item">
-                              <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
-                                  <span class="ic-ic-external"></span>
-                                  <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
-                              </a>
-                              {%  if entryToJson.quelle %}
-                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
-                              {% endif %}
-                          </p>
-                        {% elseif entryToJson.name is not empty %}
-                            <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
-                            {%  if entryToJson.quelle is not empty %}
-                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
-                              {% endif %}
-                        {% else %}
-                          <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
-                        {% endif %}
-                    </div>
-                    {% if expandable %}
-                            </div>
-                            <div class="desc-fade"></div>
-                        </div>
-                        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
-                            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
-                        </button>
-                        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
-                            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
-                        </button>
-                    {% endif %}
-                </td>
-                {% endfor %}
-            {% else %}
-            <tr>
-            {% if title %}
-                <th>{{ title|raw }}</th>
-            {% endif %}
-                <td>
-                    {% if expandable %}
-                    <div class="js-expand-box js-expand-text js-non-expand-text">
-                        <div class="js-expand-text-content">
-                    {% endif %}
-                    <div class="text-list">
-                    {% if listPreset %}
-                      <span>{{ listPreset }}</span>
-                    {% endif %}
-                    {% for entry in entries %}
-                        {% set entryToJson = entry|json_decode() %}
-                        {% if entryToJson.url is not empty %}
-                          <p class="list-item">
-                              <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
-                                  <span class="ic-ic-external"></span>
-                                  <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
-                              </a>
-                              {%  if entryToJson.quelle %}
-                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
-                              {% endif %}
-                          </p>
-                        {% elseif entryToJson.name is not empty %}
-                            <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
-                            {%  if entryToJson.quelle is not empty %}
-                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
-                              {% endif %}
-                        {% else %}
-                          <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
-                    {% if expandable %}
-                            </div>
-                            <div class="desc-fade"></div>
-                        </div>
-                        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
-                            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
-                        </button>
-                        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
-                            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
-                        </button>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endif %}
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_link_list_row (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
-  {% if entries and entries|length > 0 %}
-    <div class="table table--lined">
-        <table>
-            <tr>
-            {% if title %}
-                <th>{{ title }}</th>
-            {% endif %}
-                <td>
-                    <div class="text-list">
-                    {% if isExpandable %}
-
-                        {% set listExpanded = false %}
-                        {% set isMoreId = false %}
-                        {% if expandableId in paramsMore %}
-                            {% set isMoreId = true %}
-                        {% endif %}
-                        {% for entry in entries %}
-                            {% if loop.index > expandableLimit and not listExpanded %}
-                                {% set listExpanded = true %}
-                                <button type="button"
-                                    id="{{ expandableId }}"
-                                    class="js-expander js-open-expand-text button outline {{ expandableId }}{% if isMoreId %} is-hidden{% endif %}"
-                                    title="{{ 'SEARCH_DETAIL.INFO_MORE'|t }}">
-                                    {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
-                                </button>
-                                <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
-                            {% endif %}
-                            {% if entry.url %}
-                                <div>
-                                    <a target="_blank" class="icon external-link" href="{{ entry.url }}" title="{{ entry.title }}" rel="noopener noreferrer">
-                                        <span class="ic-ic-external"></span>
-                                        <span class="text">{{ entry.title }}</span>
-                                    </a>
-                                </div>
-                            {% else %}
-                                    <div>
-                                        <span>{{ entry.title }}</span>
-                                    </div>
-                            {% endif %}
-                        {% endfor %}
-                        {% if listExpanded %}
-                            {% set listExpanded = false %}
-                            </span>
-                            <button type="button"
-                                style="display:block"
-                                class="js-open-expand-text button outline js-expander-close {{ expandableId }} {% if not isMoreId %} is-hidden {% endif %}"
-                                title="{{ 'SEARCH_DETAIL.INFO_LESS'|t }}">
-                                {{ 'SEARCH_DETAIL.INFO_LESS'|t }}
-                            </button>
-                        {% endif %}
-
-                    {% else %}
-                        {% for entry in entries %}
-                            {% if url %}
-                                <div>
-                                    {% set replaceUrl = entry|replace({(replaceKey): url, (replaceValue): ''}) %}
-                                    {% set replaceText = entry|replace({(replaceValue): ''}) %}
-                                    <a target="_blank" class="icon external-link" href="{{ replaceUrl }}" title="{{ replaceText }}" rel="noopener noreferrer">
-                                      <span class="ic-ic-external"></span>
-                                      <span class="text">{{ replaceText }}</span>
-                                  </a>
-                                </div>
-                            {% else %}
-                                {% set replaceText = entry|replace({(replaceValue): ''}) %}
-                                <p class="list-item">{{ replaceText }}</p>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
-  {% if entries and entries|length > 0 %}
-    <div class="table list">
-        <table>
-            <tr>
-            {% if title %}
-                <td>{{ title }}</td>
-            {% endif %}
-                <td>
-                    {% if isExpandable %}
-                        {% set listExpanded = false %}
-                        {% set isMoreId = false %}
-                        {% if expandableId in paramsMore %}
-                            {% set isMoreId = true %}
-                        {% endif %}
-                        {% for entry in entries %}
-                            {% if loop.index > expandableLimit and not listExpanded %}
-                                {% set listExpanded = true %}
-                                <button type="button"
-                                    id="{{ expandableId }}"
-                                    class="js-expander js-open-expand-text button outline {{ expandableId }}{% if isMoreId %} is-hidden{% endif %}"
-                                    title="{{ 'SEARCH_DETAIL.INFO_MORE'|t }}">
-                                    {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
-                                </button>
-                                <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
-                            {% endif %}
-                            <span class="list_entry">{{ entry }}</span>
-                        {% endfor %}
-                        {% if listExpanded %}
-                            {% set listExpanded = false %}
-                            </span>
-                            <button type="button"
-                                style="display:block"
-                                class="js-open-expand-text button outline js-expander-close {{ expandableId }} {% if not isMoreId %} is-hidden {% endif %}"
-                                title="{{ 'SEARCH_DETAIL.INFO_LESS'|t }}">
-                                {{ 'SEARCH_DETAIL.INFO_LESS'|t }}
-                            </button>
-                        {% endif %}
-                    {% else %}
-                        {% for entry in entries %}
-                            <span class="list_entry">{{ entry }}</span>
-                        {% endfor %}
-                    {% endif %}
-                </td>
-            </tr>
-        </table>
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_link_image_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
-  {% if entries and entries|length > 0 %}
-    {% set isDownload = false %}
-    {% set isExternal = false %}
-
-    {% if type == "external" %}
-        {% set isExternal = true %}
-    {% elseif type == "download" %}
-        {% set isDownload = true %}
-    {% endif %}
-
-    {% if title %}
-      <h4>
-        {{ title }}
-        <span>({{ entries|length }})</span>
-      </h4>
-    {% endif %}
-    <div class="document-list">
-    {% set break = false %}
-    {% for entry in entries if not break %}
-      {% set num = loop.index %}
-      <div class="list-item">
-        {% if entry.uuid or entry.cswUrl %}
-          <div class="image">
-        {% else %}
-          <div {%if isDownload %}class="download"{% endif %}>
-        {% endif %}
-        <div class="info--right">
-            {% if entry.applicationProfile %}
-                {% set infoText = "COMMON.SERVICE_TYPE_" ~ entry.applicationProfile|upper %}
-                {% if infoText|t == infoText %}
-                    <span>{{ getMimeByContentType(entry.applicationProfile)|upper }}</span>
-                {% else %}
-                    <span>{{ infoText|t }}</span>
-                {% endif %}
-            {% endif %}
-            {% if entry.serviceType %}
-                <span>{{ entry.serviceType }}</span>
-            {% endif %}
-        </div>
-              {% set link = "" %}
-              {% if entry.uuid %}
-                {% set link = "?docuuid=" ~ entry.uuid %}
-              {% elseif entry.url %}
-                {% set link = entry.url %}
-              {% elseif entry.cswUrl %}
-                {% set link = "?cswUrl=" ~ entry.cswUrl|url_encode %}
-              {% endif %}
-              {% if entry.type is not empty and isFacts is not sameas(true) %}
-              <div class="helper icon">
-                {{ _self.render_metadata_icon(entry.type, entry.type_name, entry.type_name) }}
-              </div>
-              {% endif %}
-              {% if link %}
-                <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title }}">
-                  {% if isExternal %}
-                      <span class="ic-ic-external"></span>
-                  {% elseif isDownload %}
-                      <span class="ic-ic-download"></span>
-                  {% endif %}
-                  {% if entry.type and isFacts is sameas(true) %}
-                      {{ _self.render_metadata_icon(entry.type, null, entry.type_name) }}
-                  {% endif %}
-                  <span class="text">{{ entry.title }}</span>
-                </a>
-              {% else %}
-                <p>{{ entry.title }}<p>
-              {% endif %}
-              {% if entry.attachedToField %}
-                  <small>{{ convertUrlInText(entry.attachedToField)|raw }}</small>
-              {% endif %}
-              {% if isFacts is not sameas(true) and entry.previews and entry.previews|length > 0 %}
-                {% if entry.previews|length > 1 %}
-                  <div class="preview">
-                      <div class="swiper-container swiper-container-background">
-                          <div class="swiper-wrapper">
-                          {% for preview in entry.previews %}
-                              <div class="swiper-slide">
-                                  <p class="caption">
-                                      <a target="_blank" class="external-link" href="{{ preview }}" title="{{ entry.title }}" rel="noopener noreferrer">
-                                          <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ entry.title }}" title="{{ entry.title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
-                                          <noscript>
-                                              <img class="preview_image" src="{{ preview }}" title="{{ entry.title }}" alt="img">
-                                          </noscript>
-                                      </a>
-                                  </p>
-                              </div>
-                          {% endfor %}
-                          </div>
-                          <div class="swiper-pagination"></div>
-                      </div>
-                      <script>
-                        var mySwiper = new Swiper ('.swiper-container', {
-                            grabCursor: true,
-                            pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true
-                            },
-                            navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev'
-                            },
-                            scrollbar: {
-                            el: '.swiper-scrollbar'
-                            },
-                        });
-                      </script>
-                  </div>
-                {% else %}
-                  <div class="preview">
-                        {% set tmpUrl = entry.previews[0] %}
-                        <a target="_blank" class="external-link" href="{{ tmpUrl }}" title="{{ entry.title }}" rel="noopener noreferrer">
-                            <img class="preview_image"{% if 'http:' in  tmpUrl %} src="./" data-src={% else %} src={% endif %}"{{ tmpUrl }}" title="{{ entry.title }}" title="{{ entry.title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
-                            <noscript>
-                                <img class="preview_image" src="{{ tmpUrl }}" title="{{ entry.title }}" alt="img">
-                            </noscript>
-                        </a>
-                    </div>
-                {% endif %}
-              {% endif %}
-              {% if entry.description %}
-                <div class="description">
-                  <small class="description">{{ convertUrlInText(entry.description)|raw }}</small>
-                </div>
-              {% endif %}
-              {% if entry.linkInfo %}
-                <small class="text">{{ entry.linkInfo }}</small>
-              {% endif %}
-              {% if entry.extMapUrl %}
-                <a target="_blank" class="button outline pill" href="{{ entry.extMapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                    {{ "COMMON.RESULT_SHOWMAP"|t }}
-                </a>
-              {% elseif entry.mapUrl %}
-                <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ '?layers=' ~ entry.mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                    {{ "COMMON.RESULT_SHOWMAP"|t }}
-                </a>
-              {% endif %}
-      </div>
-      </div>
-      {% if breakListCounter and num > breakListCounter - 1 %}
-        {% set break = true %}
-      {% endif %}
-      {% if break %}
-      <a class="button outline" title="{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}" href="#detail_links">
-        <span>{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}</span>
-      </a>
-      {% endif %}
-    {% endfor %}
-    </div>
-  {% endif %}
-{% endmacro %}
-
-{% macro render_label_document_list (title, entries, page) %}
-    {% set isList = true %}
-    {% if entries|length == 1 %}
-        {% set urls = entries|filter(entry => entry.url) %}
-        {% if urls is empty %}
-            {% set isList = false %}
-        {% endif %}
-    {% endif %}
-    {% if isList == false %}
-        {{ _self.render_label_text_row(title, entries[0].description) }}
-    {% else %}
+    {% if text %}
         <div class="table table--lined">
             <table>
-                <tbody>
-                    <tr>
-                        <th>
-                            {% if title %}
-                                {{ title }}
-                            {% endif %}
-                        </th>
-                        <td>
-                            <div class="document-list">
-                            {% for entry in entries %}
-                                <div class="list-item">
-                                    <div>
-                                        {% if entry.url %}
-                                            <a target="_blank" href="{{ entry.url }}" class="icon" title="{{ entry.url }}">
-                                                <span class="text">{{ entry.title }}</span>
-                                            </a>
-                                        {% endif %}
-                                        {% if entry.description %}
-                                            <p>{{ entry.description }}</p>
-                                        {% endif %}
-                                        {% if entry.date %}
-                                            <div class="info--right">
-                                                <small>
-                                                    {% if entry.dateType %}
-                                                        {{ entry.dateType }}:
-                                                    {% endif %}
-                                                    {{ entry.date|date('d.m.Y') }}
-                                                </small>
-                                            </div>
-                                        {% endif %}
-                                    </div>
+                <tr>
+                    {% if title %}
+                        <th>{{ title|raw }}</th>
+                    {% endif %}
+                    <td>
+                        {% if expandable %}
+                            <div class="js-expand-box js-expand-text js-non-expand-text">
+                                <div class="js-expand-text-content">
+                        {% endif %}
+                        <p {% if css %}class="{{ css }}"{% endif %}>{{ convertUrlInText(removeHashLocale(text))|raw }}</p>
+                        {% if expandable %}
                                 </div>
-                            {% endfor %}
+                                <div class="desc-fade"></div>
                             </div>
-                        </td>
-                    </tr>
-                </tbody>
+                            <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                                {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+                            </button>
+                            <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                                {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
             </table>
         </div>
     {% endif %}
 {% endmacro %}
 
-{% macro render_table (title, header, entries, increaseColumns, additionalRows, setCenter) %}
-  {% if entries and entries|length > 0 %}
-    <div class="table">
-      {% if title %}
-        <h5>{{ title|raw }}</h5>
-      {% endif %}
-      <table>
-      {% if header and header|length > 0 %}
-        <thead>
-          <tr>
-          {% for head in header %}
-            {% set num = loop.index - 1 %}
-            {% set isIncreaseColumn = false %}
-            {% if increaseColumns %}
-                {% if num in increaseColumns %}
-                    {% set isIncreaseColumn = true %}
-                {% endif %}
-            {% endif %}
-            <th {% if isIncreaseColumn %}class="column--increase"{% endif %} {% if setCenter %}style="text-align:center;"{% endif %}>{{ head }}</th>
-          {% endfor %}
-          </tr>
-        </thead>
-      {% endif %}
-      {% for items in entries %}
-        <tr>
-        {% for item in items %}
-          {% set num = loop.index - 1 %}
-          {% if item.type == "text" %}
-            <td>{{ item.value }}</td>
-          {% elseif item.type == "date" %}
-            <td>{{ item.value|date("d.m.Y") }}</td>
-          {% elseif item.type == "link" %}
-            <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
-          {% elseif item.type == "symbol" %}
-            <td class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
-            {% if item.value == "true" %}
-              <span class="ic-ic-check" title="{{ item.title }}"></span>
-            {% elseif item.value == "false" %}
-               <span class="ic-ic-cross" title="{{ item.title }}"></span>
+{% macro render_label_list (title, entries, listPreset, css, json) %}
+    {% if entries and entries|length > 0 %}
+        {% if title %}
+            <h4>{{ title }}</h4>
+        {% endif %}
+        <div class="text-list">
+        {% for entry in entries %}
+            {% set entryToJson = entry|json_decode() %}
+            {% if entryToJson.url is not empty %}
+                <p class="list-item">
+                    {% if listPreset %}
+                        <span>{{ listPreset }}</span>
+                    {% endif %}
+                    <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                        <span class="ic-ic-external"></span>
+                        <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
+                    </a>
+                    {%  if entryToJson.quelle %}
+                        {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                    {% endif %}
+                </p>
+            {% elseif entryToJson.name is not empty %}
+                <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
             {% else %}
-             <span class="ic-ic-minus" title="{{ item.title }}"></span>
+                <p class="list-item">{{ convertUrlInText(entry)|raw }}</p>
             {% endif %}
-            </td>
-          {% else %}
-           <td></td>
-          {% endif %}
         {% endfor %}
-          </tr>
-      {% endfor %}
-      </table>
-    </div>
-  {% endif %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_link (title, linkTitle, link, type, css) %}
+    {% if link %}
+        <div class="table table--lined">
+            <table>
+                <tr>
+                    {% if title %}
+                        <th>{{ title }}</th>
+                    {% endif %}
+                    <td>
+                        <div {% if type == "download" %}class="download"{% endif %}>
+                            <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
+                                {% if type == "external" %}
+                                    <span class="ic-ic-external"></span>
+                                {% elseif type == "download" %}
+                                    <span class="ic-ic-download"></span>
+                                {% elseif type == "mail" %}
+                                    <span class="ic-ic-mailto"></span>
+                                {% endif %}
+                                <span class="text">{{ linkTitle }}</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_link_map (title, linkTitle, link, type, css, mapUrl) %}
+    {% if link %}
+        <div class="table table--lined">
+            <table>
+                <tr>
+                    {% if title %}
+                        <th>{{ title }}</th>
+                    {% endif %}
+                    <td>
+                        <div class="content--link">
+                            <div {% if type == "download" %}class="download"{% endif %}>
+                                <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ link }}" title="{{ linkTitle }}" rel="noopener noreferrer">
+                                    {% if type == "external" %}
+                                      <span class="ic-ic-external"></span>
+                                    {% elseif type == "download" %}
+                                      <span class="ic-ic-download"></span>
+                                    {% elseif type == "mail" %}
+                                      <span class="ic-ic-mailto"></span>
+                                    {% endif %}
+                                    <span class="text">{{ linkTitle }}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a target="_blank" class="button outline pill" href="{{ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                            {{ "COMMON.RESULT_SHOWMAP"|t }}
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_link_list (title, entries, type, css) %}
+    {% if entries %}
+        <div class="table table--lined">
+            <table>
+                <tr>
+                    {% if title %}
+                        <th>{{ title }}</th>
+                    {% endif %}
+                    <td>
+                        {% for entry in entries %}
+                        <div>
+                            <a target="_blank" class="icon external-link" href="{% if type == "mail" %}mailto:{% endif %}{{ entry }}" title="{{ entry }}" rel="noopener noreferrer">
+                                {% if type == "external" %}
+                                    <span class="ic-ic-external"></span>
+                                {% elseif type == "download" %}
+                                    <span class="ic-ic-download"></span>
+                                {% elseif type == "mail" %}
+                                    <span class="ic-ic-mailto"></span>
+                                {% endif %}
+                                <span class="text">{{ entry }}</span>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_text_list_row (title, entries, listPreset, css, expandable, entryPerRow) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table table--lined">
+            <table>
+                {% if entryPerRow %}
+                    {% for entry in entries %}
+                    <tr>
+                        {% if title %}
+                            <th>
+                            {% if loop.index0 == 0 %}
+                                {{ title|raw }}
+                            {% endif %}
+                            </th>
+                        {% endif %}
+                        <td>
+                        {% if expandable %}
+                        <div class="js-expand-box js-expand-text js-non-expand-text {{ css }}">
+                            <div class="js-expand-text-content">
+                        {% endif %}
+                        <div class="text-list">
+                        {% if listPreset %}
+                          <span>{{ listPreset }}</span>
+                        {% endif %}
+                            {% set entryToJson = entry|json_decode() %}
+                            {% if entryToJson.url is not empty %}
+                                <p class="list-item">
+                                    <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                                        <span class="ic-ic-external"></span>
+                                        <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
+                                    </a>
+                                    {%  if entryToJson.quelle %}
+                                        {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                                    {% endif %}
+                              </p>
+                            {% elseif entryToJson.name is not empty %}
+                                <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
+                                    {% if entryToJson.quelle is not empty %}
+                                        {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                                    {% endif %}
+                            {% else %}
+                                <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
+                            {% endif %}
+                        </div>
+                        {% if expandable %}
+                                </div>
+                                <div class="desc-fade"></div>
+                            </div>
+                            <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                                {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+                            </button>
+                            <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                                {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+                            </button>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                {% if title %}
+                    <th>{{ title|raw }}</th>
+                {% endif %}
+                    <td>
+                        {% if expandable %}
+                        <div class="js-expand-box js-expand-text js-non-expand-text">
+                            <div class="js-expand-text-content">
+                        {% endif %}
+                        <div class="text-list">
+                        {% if listPreset %}
+                            <span>{{ listPreset }}</span>
+                        {% endif %}
+                        {% for entry in entries %}
+                            {% set entryToJson = entry|json_decode() %}
+                            {% if entryToJson.url is not empty %}
+                                <p class="list-item">
+                                    <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                                        <span class="ic-ic-external"></span>
+                                        <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
+                                    </a>
+                                    {%  if entryToJson.quelle %}
+                                        {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                                    {% endif %}
+                                </p>
+                            {% elseif entryToJson.name is not empty %}
+                                <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
+                                {%  if entryToJson.quelle is not empty %}
+                                    {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                                  {% endif %}
+                            {% else %}
+                              <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                        {% if expandable %}
+                                </div>
+                                <div class="desc-fade"></div>
+                            </div>
+                            <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                                {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+                            </button>
+                            <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                                {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_link_list_row (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table table--lined">
+            <table>
+                <tr>
+                {% if title %}
+                    <th>{{ title }}</th>
+                {% endif %}
+                    <td>
+                        <div class="text-list">
+                        {% if isExpandable %}
+
+                            {% set listExpanded = false %}
+                            {% set isMoreId = false %}
+                            {% if expandableId in paramsMore %}
+                                {% set isMoreId = true %}
+                            {% endif %}
+                            {% for entry in entries %}
+                                {% if loop.index > expandableLimit and not listExpanded %}
+                                    {% set listExpanded = true %}
+                                    <button type="button"
+                                        id="{{ expandableId }}"
+                                        class="js-expander js-open-expand-text button outline {{ expandableId }}{% if isMoreId %} is-hidden{% endif %}"
+                                        title="{{ 'SEARCH_DETAIL.INFO_MORE'|t }}">
+                                        {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
+                                    </button>
+                                    <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
+                                {% endif %}
+                                {% if entry.url %}
+                                    <div>
+                                        <a target="_blank" class="icon external-link" href="{{ entry.url }}" title="{{ entry.title }}" rel="noopener noreferrer">
+                                            <span class="ic-ic-external"></span>
+                                            <span class="text">{{ entry.title }}</span>
+                                        </a>
+                                    </div>
+                                {% else %}
+                                        <div>
+                                            <span>{{ entry.title }}</span>
+                                        </div>
+                                {% endif %}
+                            {% endfor %}
+                            {% if listExpanded %}
+                                {% set listExpanded = false %}
+                                </span>
+                                <button type="button"
+                                    style="display:block"
+                                    class="js-open-expand-text button outline js-expander-close {{ expandableId }} {% if not isMoreId %} is-hidden {% endif %}"
+                                    title="{{ 'SEARCH_DETAIL.INFO_LESS'|t }}">
+                                    {{ 'SEARCH_DETAIL.INFO_LESS'|t }}
+                                </button>
+                            {% endif %}
+
+                        {% else %}
+                            {% for entry in entries %}
+                                {% if url %}
+                                    <div>
+                                        {% set replaceUrl = entry|replace({(replaceKey): url, (replaceValue): ''}) %}
+                                        {% set replaceText = entry|replace({(replaceValue): ''}) %}
+                                        <a target="_blank" class="icon external-link" href="{{ replaceUrl }}" title="{{ replaceText }}" rel="noopener noreferrer">
+                                          <span class="ic-ic-external"></span>
+                                          <span class="text">{{ replaceText }}</span>
+                                      </a>
+                                    </div>
+                                {% else %}
+                                    {% set replaceText = entry|replace({(replaceValue): ''}) %}
+                                    <p class="list-item">{{ replaceText }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table list">
+            <table>
+                <tr>
+                {% if title %}
+                    <td>{{ title }}</td>
+                {% endif %}
+                    <td>
+                        {% if isExpandable %}
+                            {% set listExpanded = false %}
+                            {% set isMoreId = false %}
+                            {% if expandableId in paramsMore %}
+                                {% set isMoreId = true %}
+                            {% endif %}
+                            {% for entry in entries %}
+                                {% if loop.index > expandableLimit and not listExpanded %}
+                                    {% set listExpanded = true %}
+                                    <button type="button"
+                                        id="{{ expandableId }}"
+                                        class="js-expander js-open-expand-text button outline {{ expandableId }}{% if isMoreId %} is-hidden{% endif %}"
+                                        title="{{ 'SEARCH_DETAIL.INFO_MORE'|t }}">
+                                        {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
+                                    </button>
+                                    <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
+                                {% endif %}
+                                <span class="list_entry">{{ entry }}</span>
+                            {% endfor %}
+                            {% if listExpanded %}
+                                {% set listExpanded = false %}
+                                </span>
+                                <button type="button"
+                                    style="display:block"
+                                    class="js-open-expand-text button outline js-expander-close {{ expandableId }} {% if not isMoreId %} is-hidden {% endif %}"
+                                    title="{{ 'SEARCH_DETAIL.INFO_LESS'|t }}">
+                                    {{ 'SEARCH_DETAIL.INFO_LESS'|t }}
+                                </button>
+                            {% endif %}
+                        {% else %}
+                            {% for entry in entries %}
+                                <span class="list_entry">{{ entry }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_link_image_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
+    {% if entries and entries|length > 0 %}
+        {% set isDownload = false %}
+        {% set isExternal = false %}
+
+        {% if type == "external" %}
+            {% set isExternal = true %}
+        {% elseif type == "download" %}
+            {% set isDownload = true %}
+        {% endif %}
+
+        {% if title %}
+            <h4>
+                {{ title }}
+                <span>({{ entries|length }})</span>
+            </h4>
+        {% endif %}
+        <div class="document-list">
+        {% set break = false %}
+        {% for entry in entries if not break %}
+            {% set num = loop.index %}
+            <div class="list-item">
+                {% if entry.uuid or entry.cswUrl %}
+                    <div class="image">
+                {% else %}
+                    <div {%if isDownload %}class="download"{% endif %}>
+                {% endif %}
+                <div class="info--right">
+                {% if entry.applicationProfile %}
+                    {% set infoText = "COMMON.SERVICE_TYPE_" ~ entry.applicationProfile|upper %}
+                    {% if infoText|t == infoText %}
+                        <span>{{ getMimeByContentType(entry.applicationProfile)|upper }}</span>
+                    {% else %}
+                        <span>{{ infoText|t }}</span>
+                    {% endif %}
+                {% endif %}
+                {% if entry.serviceType %}
+                    <span>{{ entry.serviceType }}</span>
+                {% endif %}
+                </div>
+                {% set link = "" %}
+                {% if entry.uuid %}
+                    {% set link = "?docuuid=" ~ entry.uuid %}
+                {% elseif entry.url %}
+                    {% set link = entry.url %}
+                {% elseif entry.cswUrl %}
+                    {% set link = "?cswUrl=" ~ entry.cswUrl|url_encode %}
+                {% endif %}
+                {% if entry.type is not empty and isFacts is not sameas(true) %}
+                    <div class="helper icon">
+                    {{ _self.render_metadata_icon(entry.type, entry.type_name, entry.type_name) }}
+                    </div>
+                {% endif %}
+                {% if link %}
+                    <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title }}">
+                        {% if isExternal %}
+                            <span class="ic-ic-external"></span>
+                        {% elseif isDownload %}
+                            <span class="ic-ic-download"></span>
+                        {% endif %}
+                        {% if entry.type and isFacts is sameas(true) %}
+                            {{ _self.render_metadata_icon(entry.type, null, entry.type_name) }}
+                        {% endif %}
+                        <span class="text">{{ entry.title }}</span>
+                    </a>
+                {% else %}
+                    <p>{{ entry.title }}<p>
+                {% endif %}
+                {% if entry.attachedToField %}
+                    <small>{{ convertUrlInText(entry.attachedToField)|raw }}</small>
+                {% endif %}
+                {% if isFacts is not sameas(true) and entry.previews and entry.previews|length > 0 %}
+                    {% if entry.previews|length > 1 %}
+                        <div class="preview">
+                            <div class="swiper-container swiper-container-background">
+                                <div class="swiper-wrapper">
+                                {% for preview in entry.previews %}
+                                    <div class="swiper-slide">
+                                        <p class="caption">
+                                            <a target="_blank" class="external-link" href="{{ preview }}" title="{{ entry.title }}" rel="noopener noreferrer">
+                                                <img class="preview_image"{% if 'http:' in  preview %} src="./" data-src={% else %} src={% endif %}"{{ preview }}" title="{{ entry.title }}" title="{{ entry.title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                                                <noscript>
+                                                    <img class="preview_image" src="{{ preview }}" title="{{ entry.title }}" alt="img">
+                                                </noscript>
+                                            </a>
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <script>
+                                var mySwiper = new Swiper ('.swiper-container', {
+                                    grabCursor: true,
+                                    pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true
+                                    },
+                                    navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev'
+                                    },
+                                    scrollbar: {
+                                    el: '.swiper-scrollbar'
+                                    },
+                                });
+                            </script>
+                        </div>
+                    {% else %}
+                        <div class="preview">
+                            {% set tmpUrl = entry.previews[0] %}
+                            <a target="_blank" class="external-link" href="{{ tmpUrl }}" title="{{ entry.title }}" rel="noopener noreferrer">
+                                <img class="preview_image"{% if 'http:' in  tmpUrl %} src="./" data-src={% else %} src={% endif %}"{{ tmpUrl }}" title="{{ entry.title }}" title="{{ entry.title }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                                <noscript>
+                                    <img class="preview_image" src="{{ tmpUrl }}" title="{{ entry.title }}" alt="img">
+                                </noscript>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if entry.description %}
+                    <div class="description">
+                        <small class="description">{{ convertUrlInText(entry.description)|raw }}</small>
+                    </div>
+                {% endif %}
+                {% if entry.linkInfo %}
+                    <small class="text">{{ entry.linkInfo }}</small>
+                {% endif %}
+                {% if entry.extMapUrl %}
+                    <a target="_blank" class="button outline pill" href="{{ entry.extMapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                        {{ "COMMON.RESULT_SHOWMAP"|t }}
+                    </a>
+                {% elseif entry.mapUrl %}
+                    <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ '?layers=' ~ entry.mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                        {{ "COMMON.RESULT_SHOWMAP"|t }}
+                    </a>
+                {% endif %}
+                </div>
+            </div>
+            {% if breakListCounter and num > breakListCounter - 1 %}
+                {% set break = true %}
+            {% endif %}
+            {% if break %}
+                <a class="button outline" title="{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}" href="#detail_links">
+                    <span>{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}</span>
+                </a>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_document_list (title, entries, page) %}
+    {% if entries and entries|length > 0 %}
+        {% set isList = true %}
+        {% if entries|length == 1 %}
+            {% set urls = entries|filter(entry => entry.url) %}
+            {% if urls is empty %}
+                {% set isList = false %}
+            {% endif %}
+        {% endif %}
+        {% if isList == false %}
+            {{ _self.render_label_text_row(title, entries[0].description) }}
+        {% else %}
+            <div class="table table--lined">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>
+                                {% if title %}
+                                    {{ title }}
+                                {% endif %}
+                            </th>
+                            <td>
+                                <div class="document-list">
+                                {% for entry in entries %}
+                                    <div class="list-item">
+                                        <div>
+                                            {% if entry.url %}
+                                                <a target="_blank" href="{{ entry.url }}" class="icon" title="{{ entry.url }}">
+                                                    <span class="text">{{ entry.title }}</span>
+                                                </a>
+                                            {% endif %}
+                                            {% if entry.description %}
+                                                <p>{{ entry.description }}</p>
+                                            {% endif %}
+                                            {% if entry.date %}
+                                                <div class="info--right">
+                                                    <small>
+                                                        {% if entry.dateType %}
+                                                            {{ entry.dateType }}:
+                                                        {% endif %}
+                                                        {{ entry.date|date('d.m.Y') }}
+                                                    </small>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_table (title, header, entries, increaseColumns, additionalRows, setCenter) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table">
+            {% if title %}
+                <h5>{{ title|raw }}</h5>
+            {% endif %}
+            <table>
+            {% if header and header|length > 0 %}
+                <thead>
+                    <tr>
+                    {% for head in header %}
+                        {% set num = loop.index - 1 %}
+                        {% set isIncreaseColumn = false %}
+                        {% if increaseColumns %}
+                            {% if num in increaseColumns %}
+                                {% set isIncreaseColumn = true %}
+                            {% endif %}
+                        {% endif %}
+                        <th {% if isIncreaseColumn %}class="column--increase"{% endif %} {% if setCenter %}style="text-align:center;"{% endif %}>{{ head }}</th>
+                    {% endfor %}
+                    </tr>
+                </thead>
+            {% endif %}
+            {% for items in entries %}
+                <tr>
+                {% for item in items %}
+                    {% set num = loop.index - 1 %}
+                    {% if item.type == "text" %}
+                        <td>{{ item.value }}</td>
+                    {% elseif item.type == "date" %}
+                        <td>{{ item.value|date("d.m.Y") }}</td>
+                    {% elseif item.type == "link" %}
+                        <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
+                    {% elseif item.type == "symbol" %}
+                        <td class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
+                        {% if item.value == "true" %}
+                            <span class="ic-ic-check" title="{{ item.title }}"></span>
+                        {% elseif item.value == "false" %}
+                            <span class="ic-ic-cross" title="{{ item.title }}"></span>
+                        {% else %}
+                            <span class="ic-ic-minus" title="{{ item.title }}"></span>
+                        {% endif %}
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    {% endif %}
 {% endmacro %}
 
 {% macro render_table_list (title, header, entries) %}
-  {% if entries and entries|length > 0 %}
-    <div class="table table--lined--list">
-      {% if title %}
-        <h5>{{ title|raw }}</h5>
-      {% endif %}
-      <table>
-      {% for head in header %}
-        {% set num = loop.index - 1 %}
-        {% set items = entries[num] %}
-        {% if items and items|length > 0 %}
-        <tr>
-          <th>{{ head }}</th>
-          <td>
-          {% for item in items %}
-            <p>{{ item }}</p>
-          {% endfor %}
-          </td>
-        </tr>
-        {% endif %}
-      {% endfor %}
-      </table>
-    </div>
-  {% endif %}
+    {% if entries and entries|length > 0 %}
+        <div class="table table--lined--list">
+            {% if title %}
+                <h5>{{ title|raw }}</h5>
+            {% endif %}
+            <table>
+            {% for head in header %}
+                {% set num = loop.index - 1 %}
+                {% set items = entries[num] %}
+                {% if items and items|length > 0 %}
+                <tr>
+                    <th>{{ head }}</th>
+                    <td>
+                    {% for item in items %}
+                        <p>{{ item }}</p>
+                    {% endfor %}
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+        </div>
+    {% endif %}
 {% endmacro %}
 
 {% macro render_multi_images (entries, partners) %}
-  {% if entries and entries|length > 0 %}
-    {% set canSwipe = false %}
-    {% if entries|length > 1 %}
-      {% set canSwipe = true %}
-    {% endif %}
-
-    {% if canSwipe %}
-    <div class="swiper-container swiper-container-background">
-      <div class="swiper-wrapper">
-    {% else %}
-    <div class="swiper-container-background">
-    {% endif %}
-    {% if canSwipe %}
-      {% for entry in entries %}
-        <div class="swiper-slide">
-          <p class="caption">
-            <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" rel="noopener noreferrer">
-              <img class="preview_image"{% if 'http:' in  entry.url %} src="./" data-src={% else %} src={% endif %}"{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
-              <noscript>
-                <img class="preview_image" src="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img">
-              </noscript>
-            </a>
-          </p>
-          {% if entry.descr %}
-          <p class="caption">{{ entry.descr }}</p>
-          {% endif %}
-        </div>
-      {% endfor %}
-    {% else %}
-      {% set entry = entries[0] %}
-      {% if entry %}
-      <div class="swiper-slide">
-        <p class="caption">
-          <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" rel="noopener noreferrer">
-            <img class="preview_image"{% if 'http:' in  entry.url %} src="./" data-src={% else %} src={% endif %}"{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
-            <noscript>
-              <img class="preview_image" src="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img">
-            </noscript>
-          </a>
-        </p>
-        {% if entry.descr %}
-          <p class="caption">{{ entry.descr }}</p>
+    {% if entries and entries|length > 0 %}
+        {% set canSwipe = false %}
+        {% if entries|length > 1 %}
+            {% set canSwipe = true %}
         {% endif %}
-      </div>
-      {% endif %}
+
+        {% if canSwipe %}
+            <div class="swiper-container swiper-container-background">
+                <div class="swiper-wrapper">
+        {% else %}
+            <div class="swiper-container-background">
+        {% endif %}
+        {% if canSwipe %}
+            {% for entry in entries %}
+                <div class="swiper-slide">
+                    <p class="caption">
+                        <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" rel="noopener noreferrer">
+                            <img class="preview_image"{% if 'http:' in  entry.url %} src="./" data-src={% else %} src={% endif %}"{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                            <noscript>
+                                <img class="preview_image" src="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img">
+                            </noscript>
+                        </a>
+                    </p>
+                    {% if entry.descr %}
+                        <p class="caption">{{ entry.descr }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            {% set entry = entries[0] %}
+            {% if entry %}
+                <div class="swiper-slide">
+                    <p class="caption">
+                        <a target="_blank" class="external-link" href="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" rel="noopener noreferrer">
+                            <img class="preview_image"{% if 'http:' in  entry.url %} src="./" data-src={% else %} src={% endif %}"{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                            <noscript>
+                                <img class="preview_image" src="{{ entry.url }}" title="{{ entry.descr ?? entry.title ?? entry.url }}" alt="img">
+                            </noscript>
+                        </a>
+                    </p>
+                    {% if entry.descr %}
+                       <p class="caption">{{ entry.descr }}</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+        {% if canSwipe %}
+            </div>
+            {% if entries|length > 1 %}
+                <div class="swiper-pagination"></div>
+            {% endif %}
+            </div>
+            <script>
+                var mySwiper = new Swiper ('.swiper-container', {
+                    grabCursor: true,
+                    pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                    },
+                    navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                    },
+                    scrollbar: {
+                    el: '.swiper-scrollbar'
+                    },
+                });
+            </script>
+        {% else %}
+            </div>
+        {% endif %}
     {% endif %}
-    {% if canSwipe %}
-        </div>
-      {% if entries|length > 1 %}
-        <div class="swiper-pagination"></div>
-      {% endif %}
-      </div>
-      <script>
-        var mySwiper = new Swiper ('.swiper-container', {
-            grabCursor: true,
-            pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-            },
-            navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-            },
-            scrollbar: {
-            el: '.swiper-scrollbar'
-            },
-        });
-      </script>
-    {% else %}
-      </div>
-    {% endif %}
-  {% endif %}
 {% endmacro %}
 
 {% macro render_catalog_node (node, detailPath, catalogLeafPath, openOnNewTab) %}
