@@ -1,0 +1,9 @@
+{% if false %}
+    {% for geojson in geojsons %}
+        addLayerWKT(tmpMap, '{{ geojson|raw }}');
+    {% endfor %}
+{% elseif bwastrs and map_enable_bwastr %}
+    addLayerBWaStr(tmpMap, {{ bwastrs|json_encode|raw }}, 'rest/getBwastrs', coords);
+{% elseif coords %}
+    addLayerBounds(tmpMap, coords, {{ usePopUp ?? false }});
+{% endif %}

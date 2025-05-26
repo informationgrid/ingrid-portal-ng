@@ -1347,9 +1347,6 @@ THEME:
                     WKT:
                         LABEL: WKT darstellen
                         HELP: WKT darstellen
-                    BWASTR:
-                        LABEL: BWaStr darstellen
-                        HELP: BWaStr darstellen
                     SPINLOADER:
                         LABEL: Spin-Loader aktivieren
                         HELP: Spin-Loader aktivieren

@@ -1,0 +1,42 @@
+form:
+  fields:
+    ## Tab bwastr
+    tab_bwastr:
+      type: tab
+      title: THEME.ADMIN.BWASTR.TITLE
+      fields:
+        bwastr.section:
+          type: section
+          title: THEME.ADMIN.BWASTR.TITLE
+          underline: true
+
+        bwastr.enable:
+          type: toggle
+          label: THEME.ADMIN.BWASTR.ENABLE.LABEL
+          help: THEME.ADMIN.BWASTR.ENABLE.HELP
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        bwastr.info:
+          type: text
+          label: THEME.ADMIN.BWASTR.INFO.LABEL
+          help: THEME.ADMIN.BWASTR.INFO.HELP
+
+        bwastr.geok:
+          type: text
+          label: THEME.ADMIN.BWASTR.GEOK.LABEL
+          help: THEME.ADMIN.BWASTR.GEOK.HELP
+
+        bwastr.epsg:
+          type: text
+          label: THEME.ADMIN.BWASTR.EPSG.LABEL
+          help: THEME.ADMIN.BWASTR.EPSG.HELP
+
+        bwastr.get_data_lower:
+          type: number
+          label: THEME.ADMIN.BWASTR.LIMIT.LABEL
+          help: THEME.ADMIN.BWASTR.LIMIT.HELP

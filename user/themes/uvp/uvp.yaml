@@ -2445,7 +2445,6 @@ map:
       inverted: false
     enable:
       wkt: true
-      bwastr: true
       spinloader: true
       clustering: true
     geocoder:

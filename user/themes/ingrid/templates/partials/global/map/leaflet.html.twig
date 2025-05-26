@@ -80,18 +80,16 @@
             },
             _homeClick: function (e) {
                 L.DomEvent.stop(e);
-                if (bounds) {
-                    var features = [];
-                    map.eachLayer(function (layer) {
-                        if (layer && layer.getBounds) {
-                            features.push(layer);
-                        }
-                    })
-                    if (features.length > 0) {
-                        bounds = L.featureGroup(features).getBounds();
+                var features = [];
+                map.eachLayer(function (layer) {
+                    if (layer && layer.getBounds) {
+                        features.push(layer);
                     }
-                    map.fitBounds(bounds);
+                })
+                if (features.length > 0) {
+                    bounds = L.featureGroup(features).getBounds();
                 }
+                map.fitBounds(bounds);
             }
         });
         map.addControl(new HomeControl({}));
@@ -114,74 +112,64 @@
         map.keyboard.disable();
     }
 
-function addLayerBWaStr(map, ids, restUrlBWaStr, wkt, bboxes) {
-  var promises = [];
-  ids.forEach(function(id){
-    var request =  $.ajax({
-      url: restUrlBWaStr + '?id=' + id[0] + '&von=' + id[1] + '&bis=' + id[2],
-      dataType: 'json',
-      success: function (data) {
-        return data;
-      }
+function addLayerBWaStr(map, bwastrs, restUrlBWaStr, bboxes) {
+    var promises = [];
+    bwastrs.forEach(function(bwastr){
+        var request =  $.ajax({
+            url: restUrlBWaStr + '?id=' + bwastr.id + '&von=' + bwastr.from + '&bis=' + bwastr.to,
+            dataType: 'json',
+            success: function (data) {
+                return data;
+            }
+        });
+        promises.push(request);
     });
-    promises.push( request);
-  });
-  if(promises.length > 0) {
-    map.spin(true);
-    Promise.all(promises).then((values) => {
-      var features = [];
-      values.forEach(function(data){
-        var geometry = data.geometry;
-        if (geometry) {
-          var geojsonObject = {
-            'type': 'FeatureCollection',
-            'features': [{
-              'type': 'Feature',
-              'geometry': {
-                'type': geometry.type,
-                'coordinates': geometry.coordinates
-              }
-            }]
-          };
-          var featureLayer = L.geoJson(geojsonObject, {});
-          featureLayer.bindTooltip('<b>' + data.bwastr_name + ' (' + data.bwastrid + ')</b><br>' + data.strecken_name, {direction: 'center'});
-          features.push(featureLayer);
-        }
-      });
-      if(features.length > 0) {
-        var featureGroup = L.featureGroup(features).addTo(map);
-        map.fitBounds(featureGroup.getBounds());
-        map.spin(false);
-      } else {
-        if(wkt) {
-          addLayerWKT(map, wkt, bboxes);
-        } else if (bboxes) {
-          addLayerBounds(map, bboxes);
-        }
-        map.spin(false);
-      }
-    });
-  } else {
-    if(wkt) {
-      addLayerWKT(map, wkt, bboxes);
-    } else if (bboxes) {
-      addLayerBounds(map, bboxes);
+    if(promises.length > 0) {
+        map.spin(true);
+        Promise.all(promises).then((values) => {
+            var features = [];
+            values.forEach(function(data){
+                var geometry = data.geometry;
+                if (geometry) {
+                    var geojsonObject = {
+                        'type': 'FeatureCollection',
+                        'features': [{
+                            'type': 'Feature',
+                            'geometry': {
+                                'type': geometry.type,
+                                'coordinates': geometry.coordinates
+                            }
+                        }]
+                    };
+                    var featureLayer = L.geoJson(geojsonObject, {});
+                    featureLayer.bindTooltip('<b>' + data.bwastr_name + ' (' + data.bwastrid + ')</b><br>' + data.strecken_name, {direction: 'center'});
+                    features.push(featureLayer);
+
+                }
+            });
+            if(features.length > 0) {
+                var featureGroup = L.featureGroup(features).addTo(map);
+                map.fitBounds(featureGroup.getBounds());
+                map.spin(false);
+            } else {
+                if (bboxes) {
+                    addLayerBounds(map, bboxes, false);
+                }
+                map.spin(false);
+            }
+        });
     }
-  }
 }
 
-function addLayerWKT(map, wkt, bboxes) {
-  var features = L.geoJSON(JSON.parse(wkt));
-  if(features) {
-      features.addTo(map);
-      map.fitBounds(features.getBounds());
-  } else {
-      addLayerBounds(map, bboxes);
-  }
+function addLayerWKT(map, wkt) {
+    var features = L.geoJSON(JSON.parse(wkt));
+    if(features) {
+        map.addLayer(features);
+    }
 }
 
 function addLayerBounds(map, bboxes, usePopup) {
-  {% if map_bboxInverted %}
+{% if map_bboxInverted %}
     var geojson = [];
     bboxes.forEach(function(bbox) {
       var y1Coord = bbox.southBoundLatitude;
@@ -196,46 +184,48 @@ function addLayerBounds(map, bboxes, usePopup) {
         }
       }
     });
-    L.geoJson(geojson, {
-      invert: true,
-      color: '{{ map_bboxColor }}',
-      fillOpacity: {{ map_bboxFillOpacity }},
-      weight: {{ map_bboxWeight }} || 1
-    }).addTo(map);
-  {% else %}
+    const options = {
+        invert: true,
+        color: '{{ map_bboxColor }}',
+        fillOpacity: {{ map_bboxFillOpacity }},
+        weight: {{ map_bboxWeight }} || 1
+    };
+    L.geoJson(geojson, options).addTo(map);
+{% else %}
     bboxes.forEach(function(bbox) {
-      var y1Coord = bbox.southBoundLatitude;
-      var x1Coord = bbox.westBoundLongitude;
-      var y2Coord = bbox.northBoundLatitude;
-      var x2Coord = bbox.eastBoundLongitude;
-      if(y1Coord !== 0 && x1Coord !== 0 && y2Coord !== 0 && x2Coord !== 0) {
-        if(x1Coord === x2Coord && y1Coord === y2Coord) {
-          var marker = L.marker([y1Coord, x1Coord]);
-          marker.bindTooltip(bbox.title, {direction: 'center'});
-          map.addLayer(marker);
-        } else {
-          var mapLayerBounds = L.rectangle([[y1Coord, x1Coord], [y2Coord, x2Coord]], {
-            color: '{{ map_bboxColor }}',
-            fillOpacity: {{ map_bboxFillOpacity }},
-            weight: {{ map_bboxWeight }} || 1
-          });
-          if (usePopup) {
-              mapLayerBounds.on('click', function (e) {
-                  var popLocation = e.latlng;
-                  var popup = L.popup()
-                      .setLatLng(popLocation)
-                      .setContent('<p>{{ "SEARCH_DETAIL.UVP_MAP_COORDS"|t }}<br />' +
-                          y1Coord + ', ' + x1Coord + '<br/>' +
-                          y2Coord + ', ' + x2Coord + '</p>')
-                      .openOn(map);
-              });
-          } else {
-              mapLayerBounds.bindTooltip(bbox.title, {direction: 'center'});
-          }
-          map.addLayer(mapLayerBounds);
+        var y1Coord = bbox.southBoundLatitude;
+        var x1Coord = bbox.westBoundLongitude;
+        var y2Coord = bbox.northBoundLatitude;
+        var x2Coord = bbox.eastBoundLongitude;
+        if(y1Coord !== 0 && x1Coord !== 0 && y2Coord !== 0 && x2Coord !== 0) {
+            if(x1Coord === x2Coord && y1Coord === y2Coord) {
+                var marker = L.marker([y1Coord, x1Coord]);
+                marker.bindTooltip(bbox.title, {direction: 'center'});
+                map.addLayer(marker);
+            } else {
+                const options = {
+                    color: '{{ map_bboxColor }}',
+                    fillOpacity: {{ map_bboxFillOpacity }},
+                    weight: {{ map_bboxWeight }} || 1
+                };
+                var mapLayerBounds = L.rectangle([[y1Coord, x1Coord], [y2Coord, x2Coord]], options);
+                if (usePopup) {
+                    mapLayerBounds.on('click', function (e) {
+                        var popLocation = e.latlng;
+                        var popup = L.popup()
+                            .setLatLng(popLocation)
+                            .setContent('<p>{{ "SEARCH_DETAIL.UVP_MAP_COORDS"|t }}<br />' +
+                                y1Coord + ', ' + x1Coord + '<br/>' +
+                                y2Coord + ', ' + x2Coord + '</p>')
+                            .openOn(map);
+                    });
+                } else {
+                    mapLayerBounds.bindTooltip(bbox.title, {direction: 'center'});
+                }
+                map.addLayer(mapLayerBounds);
+            }
         }
-      }
     });
-  {% endif %}
+{% endif %}
 }
 </script>

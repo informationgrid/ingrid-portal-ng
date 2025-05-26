@@ -692,9 +692,8 @@ map:
       inverted: false
     enable:
       wkt: true
-      bwastr: true
       geocoder: false
-      spinloader: false
+      spinloader: true
       clustering: false
     geocoder:
       enable: false
@@ -724,6 +723,12 @@ datasource:
   excludes:
 rss:
   feeds:
+bwastr:
+  enable: true
+  info: https://via.bund.de/wsv/bwastr-locator/rest/bwastrinfo/query?limit=1&searchfield=bwastrid&searchterm=
+  geok: https://via.bund.de/wsv/bwastr-locator/rest/geokodierung/query
+  epsg: 4326
+  get_data_lower: 7000
 streams:
   schemes:
     theme:

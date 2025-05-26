@@ -78,14 +78,14 @@
                                     {% set tmpTitle = "SEARCH_DETAIL.WWW_REFERENCES"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
-                                {% if subordinatedLinkRefs|length > 0 %}
+                                {% if linkSubordinatedRefs|length > 0 %}
                                     {% set tmpHash = hash_links ~ "_subordinated_references" %}
-                                    {% set tmpTitle = "SEARCH_DETAIL.SUBORDINATED_ADDRESSES"|t %}
+                                    {% set tmpTitle = "SEARCH_DETAIL.SUBORDINATED_REFERENCES"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
-                                {% if superiorLinkRefs|length > 0 %}
+                                {% if linkSuperiorRefs|length > 0 %}
                                     {% set tmpHash = hash_links ~ "_superior_references" %}
-                                    {% set tmpTitle = "SEARCH_DETAIL.SUPERIOR_ADDRESS"|t %}
+                                    {% set tmpTitle = "SEARCH_DETAIL.SUPERIOR_REFERENCES"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
                             </div>

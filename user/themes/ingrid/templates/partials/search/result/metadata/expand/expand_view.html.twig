@@ -210,18 +210,18 @@
                     {% endfor %}
                 {% endif %}
 {# Karte #}
-                {% if bboxes|length > 0 or wkt %}
-                    {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
+                {% if bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0 %}
+                    {% if previews|length > 0 and (bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0) %}
                             <div class="swiper-slide">
                     {% endif %}
                     {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
-                    {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojson: wkt, isDetail: false, mapId: hitMapId, usePopUp: false } %}
-                    {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
+                    {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojsons: wkts, bwastrs: bwastrs, isDetail: false, mapId: hitMapId, usePopUp: false } %}
+                    {% if previews|length > 0 and (bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0) %}
                             </div>
                     {% endif %}
                 {% endif %}
 
-                {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
+                {% if previews|length > 0 and (bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0) %}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>

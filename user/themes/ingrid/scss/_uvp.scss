@@ -2788,7 +2788,8 @@ meter[value="5"]::-moz-meter-bar { background: green; }
   position: relative;
 }
 
-.js-expand-text.is-expand {
+.js-expand-text.is-expand,
+.js-expand-text-small.is-expand {
   max-height: none;
 
   .js-expand-text-content:before {
@@ -2840,8 +2841,14 @@ meter[value="5"]::-moz-meter-bar { background: green; }
   background: linear-gradient(rgba(255, 255, 255, 0) 115px, $white);
   pointer-events: none;
 }
-
-.js-expand-text.js-non-expand-text .js-expand-text-content:before {
+.js-expand-text-small {
+  max-height: 80px;
+}
+.js-expand-text-small .js-expand-text-content:before {
+  background: linear-gradient(rgba(255, 255, 255, 0) 50px, #fff)
+}
+.js-expand-text.js-non-expand-text .js-expand-text-content:before,
+.js-expand-text-small.js-non-expand-text .js-expand-text-content:before{
   background: none;
 }
 

@@ -73,6 +73,14 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/map
 
+        ## Tab bwastr
+        tab_bwastr:
+          type: tab
+          title: THEME.ADMIN.BWASTR.TITLE
+          import@:
+            type: default
+            context: user://themes/baw_doi/blueprints/bwastr
+
         ## Tab help
         tab_help:
           type: tab

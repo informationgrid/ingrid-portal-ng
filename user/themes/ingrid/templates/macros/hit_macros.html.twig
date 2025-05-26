@@ -719,13 +719,66 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_label_text_list_row (title, entries, listPreset, css, expandable) %}
+{% macro render_label_text_list_row (title, entries, listPreset, css, expandable, entryPerRow) %}
   {% if entries and entries|length > 0 %}
     <div class="table table--lined">
         <table>
+            {% if entryPerRow %}
+                {% for entry in entries %}
+                <tr>
+                    {% if title %}
+                        <th>
+                        {% if loop.index0 == 0 %}
+                            {{ title|raw }}
+                        {% endif %}
+                        </th>
+                    {% endif %}
+                    <td>
+                    {% if expandable %}
+                    <div class="js-expand-box js-expand-text js-non-expand-text {{ css }}">
+                        <div class="js-expand-text-content">
+                    {% endif %}
+                    <div class="text-list">
+                    {% if listPreset %}
+                      <span>{{ listPreset }}</span>
+                    {% endif %}
+                        {% set entryToJson = entry|json_decode() %}
+                        {% if entryToJson.url is not empty %}
+                          <p class="list-item">
+                              <a class="icon external-link" target="_blank" href="{{ entryToJson.url }}" title="{{ entryToJson.name }}">
+                                  <span class="ic-ic-external"></span>
+                                  <span class="text">{{ removeHashLocale(entryToJson.name) }}</span>
+                              </a>
+                              {%  if entryToJson.quelle %}
+                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                              {% endif %}
+                          </p>
+                        {% elseif entryToJson.name is not empty %}
+                            <p class="list-item">{{ removeHashLocale(entryToJson.name) }}</p>
+                            {%  if entryToJson.quelle is not empty %}
+                                {{ "SEARCH_DETAIL.CONSTRAINTS_USE_COSTRAINTS_SOURCE"|t ~ " " ~ removeHashLocale(entryToJson.quelle) }}
+                              {% endif %}
+                        {% else %}
+                          <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
+                        {% endif %}
+                    </div>
+                    {% if expandable %}
+                            </div>
+                            <div class="desc-fade"></div>
+                        </div>
+                        <button type="button" class="js-open-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_MORE"|t }}">
+                            {{ "SEARCH_DETAIL.INFO_MORE"|t }}
+                        </button>
+                        <button type="button" class="js-close-expand-text button outline is-hidden" title="{{ "SEARCH_DETAIL.INFO_LESS"|t }}">
+                            {{ "SEARCH_DETAIL.INFO_LESS"|t }}
+                        </button>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            {% else %}
             <tr>
             {% if title %}
-                <th>{{ title }}</th>
+                <th>{{ title|raw }}</th>
             {% endif %}
                 <td>
                     {% if expandable %}
@@ -771,6 +824,7 @@
                     {% endif %}
                 </td>
             </tr>
+            {% endif %}
         </table>
     </div>
   {% endif %}

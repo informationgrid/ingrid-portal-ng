@@ -91,4 +91,22 @@ FACETS:
         RUN: Simulationslauf
         FILE: Simulationsdatei
         POSTPROCESSING: Postprocessing
-
+THEME:
+    ADMIN:
+        BWASTR:
+            TITLE: BWaStr
+            ENABLE:
+                LABEL: BWaStr darstellen
+                HELP: BWaStr darstellen
+            INFO:
+                LABEL: BWaStr Info URL
+                HELP: BWaStr Info URL
+            GEOK:
+                LABEL: BWaStr Geokodierung URL
+                HELP: BWaStr Geokodierung URL
+            EPSG:
+                LABEL: BWaStr Projektionssysstem
+                HELP: BWaStr Projektionssysstem
+            LIMIT:
+                LABEL: BWaStr Limit
+                HELP: BWaStr Limit

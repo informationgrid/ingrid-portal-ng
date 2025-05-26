@@ -47,8 +47,9 @@
 {% set mapRefs = addKeyValue(mapRefs, "regionKey", hit.regionKey) %}
 {% set mapRefs = addKeyValue(mapRefs, "areaHeight", hit.areaHeight) %}
 {% set mapRefs = addKeyValue(mapRefs, "locDescr", hit.locDescr) %}
-{% set mapRefs = addKeyValue(mapRefs, "polygonWkt", hit.polygonWkt) %}
-{% set mapRefs = addKeyValue(mapRefs, "polygonGeojson", hit.polygonGeojson) %}
+{% set mapRefs = addKeyValue(mapRefs, "polygonWkts", hit.polygonWkts) %}
+{% set mapRefs = addKeyValue(mapRefs, "polygonGeojsons", hit.polygonGeojsons) %}
+{% set mapRefs = addKeyValue(mapRefs, "bwastrs", hit.bwastrs) %}
 {% set mapRefs = addKeyValue(mapRefs, "referenceSystemId", hit.referenceSystemId) %}
 
 {# Verweise und Downloads #}
