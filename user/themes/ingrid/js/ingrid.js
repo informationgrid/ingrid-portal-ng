@@ -507,11 +507,11 @@ function loadDefaultMapImage(elem, partner, theme) {
         src = src.trim();
         if(src.indexOf('http:') > -1) {
           var http = new XMLHttpRequest();
-          http.open('GET', src, true);
+          http.open('GET', 'rest/getUrlHttpImage?url=' + encodeURIComponent(src), true);
           http.onreadystatechange = function() {
             if (this.readyState === this.DONE) {
               if (this.status === 200) {
-                if(this.response && this.response !== src){
+                if (this.response && this.response !== elem.src){
                   elem.src = this.response;
                 }
                 elem.removeAttribute('data-src');
