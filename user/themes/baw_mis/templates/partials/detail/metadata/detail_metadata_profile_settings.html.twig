@@ -1,0 +1,53 @@
+{# Raumbezug #}
+{% set mapRefs = addKeyValue(mapRefs, "bwastrs", hit.bwastrs) %}
+
+{# Bibliografische Angaben #}
+{% set bibliographies = hit.bibliographies %}
+{% set doi = hit.doi %}
+
+{# Nutzung #}
+{% set useRefs = addKeyValue(useRefs, "useRights", hit.useRights) %}
+{% set useRefs = addKeyValue(useRefs, "sourceCodeRights", hit.sourceCodeRights) %}
+
+{# Fachinformationen #}
+{% switch class %}
+    {% case '6' %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataFormat", hit.dataFormat) %}
+        {% set infoRefs = addKeyValue(infoRefs, "procedure", hit.procedure) %}
+        {% set infoRefs = addKeyValue(infoRefs, "modellTypes", hit.modellTypes) %}
+        {% set infoRefs = addKeyValue(infoRefs, "spatialDimensionality", hit.spatialDimensionality) %}
+        {% set infoRefs = addKeyValue(infoRefs, "timestepSize", hit.timestepSize) %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataQualities", hit.dataQualities) %}
+        {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
+        {% set infoRefs = addKeyValue(infoRefs, "einsatzzweck", hit.einsatzzweck) %}
+        {% set infoRefs = addKeyValue(infoRefs, "ergaenzungsModul", hit.ergaenzungsModul) %}
+        {% set infoRefs = addKeyValue(infoRefs, "ergaenzteSoftware", hit.ergaenzteSoftware) %}
+        {% set infoRefs = addKeyValue(infoRefs, "programmiersprache", hit.programmiersprache) %}
+        {% set infoRefs = addKeyValue(infoRefs, "entwicklungsumgebung", hit.entwicklungsumgebung) %}
+        {% set infoRefs = addKeyValue(infoRefs, "bibliotheken", hit.bibliotheken) %}
+        {% set infoRefs = addKeyValue(infoRefs, "installationsMethode", hit.installationsMethode) %}
+        {% set infoRefs = addKeyValue(infoRefs, "nutzerkreis", hit.nutzerkreis) %}
+        {% set infoRefs = addKeyValue(infoRefs, "produktiverEinsatz", hit.produktiverEinsatz) %}
+        {% set infoRefs = addKeyValue(infoRefs, "betriebssystem", hit.betriebssystem) %}
+        {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsnummer", hit.erstellungsvertragsnummer) %}
+        {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsdatum", hit.erstellungsvertragsdatum) %}
+        {% set infoRefs = addKeyValue(infoRefs, "supportvertragsnummer", hit.supportvertragsnummer) %}
+        {% set infoRefs = addKeyValue(infoRefs, "supportvertragsdatum", hit.supportvertragsdatum) %}
+        {% set infoRefs = addKeyValue(infoRefs, "supportvertragsinfo", hit.supportvertragsinfo) %}
+        {% set infoRefs = addKeyValue(infoRefs, "installationsortlokal", hit.installationsortlokal) %}
+        {% set infoRefs = addKeyValue(infoRefs, "installationsorthlr", hit.installationsorthlr) %}
+        {% set infoRefs = addKeyValue(infoRefs, "installationsorthlrName", hit.installationsorthlrName) %}
+        {% set infoRefs = addKeyValue(infoRefs, "installationsortserver", hit.installationsortserver) %}
+        {% set infoRefs = addKeyValue(infoRefs, "installationsortservername", hit.installationsortservername) %}
+
+    {% default %}
+        {% set infoRefs = addKeyValue(infoRefs, "timestepSize", hit.timestepSize) %}
+        {% set infoRefs = addKeyValue(infoRefs, "modelTypes", hit.modelTypes) %}
+        {% set infoRefs = addKeyValue(infoRefs, "procedure", hit.procedure) %}
+        {% set infoRefs = addKeyValue(infoRefs, "spatialDimensionality", hit.spatialDimensionality) %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataQualities", hit.dataQualities) %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataFormat", hit.dataFormat) %}
+
+{% endswitch %}
+
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

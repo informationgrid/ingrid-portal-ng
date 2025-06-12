@@ -1,0 +1,9 @@
+{# Raumbezug #}
+{% set mapRefs = addKeyValue(mapRefs, "bwastrs", hit.bwastrs) %}
+
+{# Bibliografische Angaben #}
+{% set bibliographies = hit.bibliographies %}
+{% set doi = hit.doi %}
+{% set citations = hit.citations %}
+
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

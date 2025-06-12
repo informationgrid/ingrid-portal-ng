@@ -1,37 +1,15 @@
 {# Software #}
 
 {# BAW-Rechte an den Quellen #}
-#set($tableHead = [])
-#set($tableBody = [])
-#if($TOOL.nodeExist("${xPathSoftwareQuellCodeRechte}/baw"))
-#set($add = $tableHead.add("BAW-Rechte an den Quellen"))
-#set($add = $tableBody.add([$TOOL.getValueFromXPath("${xPathSoftwareQuellCodeRechte}/baw", ".")]))
-#end
-#if($TOOL.nodeExist("${xPathSoftwareQuellCodeRechte}/anmerkungen"))
-#set($add = $tableHead.add("Anmerkungen"))
-#set($add = $tableBody.add($TOOL.getListOfValuesFromXPath("${xPathSoftwareQuellCodeRechte}/anmerkungen", ".")))
-#end
-#if($tableHead.size() > 0)
-#set($tmp = {})
-#set($put = $tmp.put("head", $tableHead))
-#set($put = $tmp.put("body", $tableBody))
-#renderTableAsList("" $tmp)
-#end
+{% set titles = [
+    "BAW-Rechte an den Quellen",
+    "Anmerkungen",
+] %}
+{{ hit_macros.render_titles_entries_group(titles, useRefs.useRights) }}
 
 {# Rechte bei Nutzung der SW durch Dritte #}
-#set($tableHead = [])
-#set($tableBody = [])
-#if($TOOL.nodeExist("${xPathSoftwareNutzungsRechte}/dritte"))
-#set($add = $tableHead.add("Rechte bei Nutzung der SW durch Dritte"))
-#set($add = $tableBody.add([$TOOL.getValueFromXPath("${xPathSoftwareNutzungsRechte}/dritte", ".")]))
-#end
-#if($TOOL.nodeExist("${xPathSoftwareNutzungsRechte}/anmerkungen"))
-#set($add = $tableHead.add("Anmerkungen"))
-#set($add = $tableBody.add($TOOL.getListOfValuesFromXPath("${xPathSoftwareNutzungsRechte}/anmerkungen", ".")))
-#end
-#if($tableHead.size() > 0)
-#set($tmp = {})
-#set($put = $tmp.put("head", $tableHead))
-#set($put = $tmp.put("body", $tableBody))
-#renderTableAsList("" $tmp)
-#end
+{% set titles = [
+    "Rechte bei Nutzung der SW durch Dritte",
+    "Anmerkungen",
+] %}
+{{ hit_macros.render_titles_entries_group(titles, useRefs.sourceCodeRights) }}

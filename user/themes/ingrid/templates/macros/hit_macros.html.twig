@@ -1569,7 +1569,15 @@
 
 {% macro render_table_entry_value (item) %}
     {% if item.type == "text" %}
-        <td>{{ item.value }}</td>
+        {% if item.value %}
+            <td>{{ item.value }}</td>
+        {% elseif item.values %}
+            <td>
+            {% for value in item.values %}
+                <p>{{ value }}</p>
+            {% endfor %}
+            </td>
+        {% endif %}
     {% elseif item.type == "date" %}
         <td>{{ item.value|date("d.m.Y") }}</td>
     {% elseif item.type == "link" %}
