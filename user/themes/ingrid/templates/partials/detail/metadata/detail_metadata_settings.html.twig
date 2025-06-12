@@ -197,20 +197,7 @@
 {% set dataQualityRefs = addKeyValue(dataQualityRefs, "quantitativeAttributeAccuracy", hit.quantitativeAttributeAccuracy) %}
 {% set dataQualityRefs = addKeyValue(dataQualityRefs, "relativeInternalPositionalAccuracy", hit.relativeInternalPositionalAccuracy) %}
 
-{# Bibliografische Angaben #}
-{% set bibliographies = hit.bibliographies %}
-{% set doi = hit.doi %}
-{% set citations = hit.citations %}
-
-
 {# Zusatzfelder #}
 {% set additionalFields = hit.additionalFields %}
 
-{% block detail_leaflet %}
-{% endblock %}
-
-{% block detail_content %}
-{% endblock %}
-
-{% block detail_datatypes %}
-{% endblock %}
+{% include 'partials/detail/metadata/detail_metadata_profile_settings.html.twig' %}

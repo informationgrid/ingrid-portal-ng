@@ -906,6 +906,38 @@
     {% endif %}
 {% endmacro %}
 
+
+{% macro render_titles_entries_group (titles, entries) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table table--lined--list">
+            <table>
+                {% for entry in entries %}
+                    {% if entry.value or entry.values %}
+                        <tr>
+                            <th>
+                            {% if titles[loop.index0] %}
+                                {{ titles[loop.index0] }}
+                            </th>
+                            {% endif %}
+                            <td>
+                                <p class="list-item">
+                                    {% if entry.value %}
+                                        {{ _self.render_entry_value(entry.type, entry.value) }}
+                                    {% elseif entry.values %}
+                                        {% for value in entry.values %}
+                                            {{ _self.render_entry_value(entry.type, value) }}
+                                        {% endfor %}
+                                    {% endif %}
+                                </p>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
 {% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
     {% if entries and entries|length > 0 %}
         <div class="table list">
@@ -1192,25 +1224,7 @@
                 <tr>
                 {% for item in items %}
                     {% set num = loop.index - 1 %}
-                    {% if item.type == "text" %}
-                        <td>{{ item.value }}</td>
-                    {% elseif item.type == "date" %}
-                        <td>{{ item.value|date("d.m.Y") }}</td>
-                    {% elseif item.type == "link" %}
-                        <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
-                    {% elseif item.type == "symbol" %}
-                        <td class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
-                        {% if item.value == "true" %}
-                            <span class="ic-ic-check" title="{{ item.title }}"></span>
-                        {% elseif item.value == "false" %}
-                            <span class="ic-ic-cross" title="{{ item.title }}"></span>
-                        {% else %}
-                            <span class="ic-ic-minus" title="{{ item.title }}"></span>
-                        {% endif %}
-                        </td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
+                    {{ _self.render_table_entry_value(item) }}
                 {% endfor %}
                 </tr>
             {% endfor %}
@@ -1218,6 +1232,54 @@
         </div>
     {% endif %}
 {% endmacro %}
+
+
+{% macro render_table_info (title, header, entries, increaseColumns, titleInfo) %}
+    {% if entries.rows and entries.rows|length > 0 %}
+        <div class="table">
+            {% if title %}
+                <h5>{{ title|raw }}</h5>
+            {% endif %}
+            <table>
+            {% if header and header|length > 0 %}
+                <thead>
+                    <tr>
+                    {% for head in header %}
+                        {% set num = loop.index - 1 %}
+                        {% set isIncreaseColumn = false %}
+                        {% if increaseColumns %}
+                            {% if num in increaseColumns %}
+                                {% set isIncreaseColumn = true %}
+                            {% endif %}
+                        {% endif %}
+                        <th {% if isIncreaseColumn %}class="column--increase"{% endif %} {% if setCenter %}style="text-align:center;"{% endif %}>{{ head }}</th>
+                    {% endfor %}
+                    </tr>
+                </thead>
+            {% endif %}
+            {% for items in entries.rows %}
+                <tr>
+                {% for item in items %}
+                    {% set num = loop.index - 1 %}
+                    {{ _self.render_table_entry_value(item) }}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for info in entries.infos %}
+               <tr>
+                    <th>
+                        {% if loop.index0 == 0 %}
+                            {{ titleInfo }}
+                        {% endif %}
+                    </th>
+                    <td colspan="{{ (header|length - 1) }}">{{ info }}</td>
+               </tr>
+            {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
 
 {% macro render_table_list (title, header, entries) %}
     {% if entries and entries|length > 0 %}
@@ -1236,6 +1298,40 @@
                     {% for item in items %}
                         <p>{{ item }}</p>
                     {% endfor %}
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_table_group (title, header, entries, displayEmptyValues) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table table--lined--list">
+            {% if title %}
+                <h5>{{ title|raw }}</h5>
+            {% endif %}
+            <table>
+            {% for head in header %}
+                {% set num = loop.index - 1 %}
+                {% set item = entries[num] %}
+                {% if item.value or item.values or displayEmptyValues %}
+                <tr>
+                    <th>{{ head }}</th>
+                    <td>
+                        {% if item.value %}
+                            {{ _self.render_entry_value(item.type, item.value) }}</p>
+                        {% elseif item.values %}
+                            {% for value in item.values %}
+                                <p>{{ _self.render_entry_value(item.type, value) }}</p>
+                            {% endfor %}
+                        {% else %}
+                            {% if displayEmptyValues %}
+                                -
+                            {% endif %}
+                        {% endif %}
                     </td>
                 </tr>
                 {% endif %}
@@ -1457,4 +1553,38 @@
             </div>
         </div>
     </div>
+{% endmacro %}
+
+{% macro render_entry_value (type, value) %}
+    {% if type == 'link' %}
+        <a href="{{ value }}" title="{{ value }}" target="_blank">{{ value }}</a>
+    {% elseif type == "date" %}
+        {{ value|date("d.m.Y") }}
+    {% elseif type == 'bool' %}
+        {{ ("COMMON.GENERAL_" ~ value|upper)|t }}
+    {% else %}
+        {{ convertUrlInText(value)|raw }}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_table_entry_value (item) %}
+    {% if item.type == "text" %}
+        <td>{{ item.value }}</td>
+    {% elseif item.type == "date" %}
+        <td>{{ item.value|date("d.m.Y") }}</td>
+    {% elseif item.type == "link" %}
+        <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
+    {% elseif item.type == "symbol" %}
+        <td class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
+        {% if item.value == "true" %}
+            <span class="ic-ic-check" title="{{ ("COMMON.GENERAL_" ~ item.value|upper)|t }}"></span>
+        {% elseif item.value == "false" %}
+            <span class="ic-ic-cross" title="{{ ("COMMON.GENERAL_" ~ item.value|upper)|t }}"></span>
+        {% else %}
+            <span class="ic-ic-minus" title="{{ ("COMMON.GENERAL_" ~ item.value|upper)|t }}"></span>
+        {% endif %}
+        </td>
+    {% else %}
+        <td></td>
+    {% endif %}
 {% endmacro %}

@@ -98,6 +98,8 @@ PAGES:
 COMMON:
     GENERAL_YES: Yes
     GENERAL_NO: No
+    GENERAL_TRUE: Yes
+    GENERAL_FALSE: No
     ALT_ICON_INTERN: Internal Link
     ALT_ICON_EXTERN: External Link
     ALT_ICON_ACTIVE: Active Link
