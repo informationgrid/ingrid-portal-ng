@@ -683,8 +683,8 @@ map:
       layer:
         wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt für Kartographie und Geodäsie (2025)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
-        opacity: 1
+        attribution: '&copy; Bundesamt für Kartographie und Geodäsie (2025)&#44; <a href=\"https://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        opacity: 0.5
     bbox:
       color: '#3278B9'
       opacity: 0.2
