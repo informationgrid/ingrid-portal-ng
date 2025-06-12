@@ -6,6 +6,6 @@
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "metadataStandardName", hit.metadataStandardName) %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "metadataStandardVersion", hit.metadataStandardVersion) %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "metadataCharacterSet", hit.metadataCharacterSet) %}
-{% set metaInfoRefs = removeKey(metaInfoRefs, "hierarchyLevel", hit.hierarchyLevel) %}
+{% set metaInfoRefs = removeKey(metaInfoRefs, "hierarchyLevel") %}
 
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}
