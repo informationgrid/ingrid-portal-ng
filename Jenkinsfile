@@ -29,5 +29,60 @@ pipeline {
                 }
             }
         }
+        stage('Build RPM') {
+            steps {
+                echo 'Starting to build RPM package'
+
+                script {
+                    // Set RPM version based on git information
+                    def gitCommitShort = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    def gitTimestamp = sh(script: 'git log -1 --format=%cd --date=format:%Y%m%d%H%M%S', returnStdout: true).trim()
+
+                    // Use the same version logic as for Docker image but add git information for RPM
+                    if (BRANCH_NAME == 'develop') {
+                        env.RPM_VERSION = "1.0.0"
+                        env.RPM_RELEASE = "dev.${gitTimestamp}.${gitCommitShort}"
+                    } else if (BRANCH_NAME ==~ /^release\/.*/) {
+                        // Extract version from release branch (e.g., release/1.2.3 -> 1.2.3)
+                        env.RPM_VERSION = BRANCH_NAME.replaceAll('release/', '')
+                        env.RPM_RELEASE = "1"
+                    } else {
+                        env.RPM_VERSION = "1.0.0"
+                        env.RPM_RELEASE = "${BRANCH_NAME.replaceAll('/', '-')}.${gitTimestamp}.${gitCommitShort}"
+                    }
+
+                    // Process the spec file template
+                    def specTemplate = readFile 'ingrid-portal-ng.spec.template'
+                    def buildDate = sh(script: 'date "+%a %b %d %Y"', returnStdout: true).trim()
+
+                    // Replace placeholders with actual values
+                    def processedSpec = specTemplate
+                        .replaceAll('@RPM_VERSION@', env.RPM_VERSION)
+                        .replaceAll('@RPM_RELEASE@', env.RPM_RELEASE)
+                        .replaceAll('@BUILD_DATE@', buildDate)
+
+                    // Write the processed spec file
+                    writeFile file: 'ingrid-portal-ng.spec', text: processedSpec
+
+                    // Build RPM using rpmbuild in a Docker container
+                    sh """
+                        docker run --rm -v \$(pwd):/src:z rockylinux/rockylinux:9 /bin/bash -c '
+                            yum install -y rpm-build
+                            mkdir -p /root/rpmbuild/{SPECS,SOURCES,RPMS,SRPMS,BUILD,BUILDROOT}
+                            cp /src/ingrid-portal-ng.spec /root/rpmbuild/SPECS/
+                            cd /src
+                            rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec
+                            cp /root/rpmbuild/RPMS/noarch/ingrid-portal-ng-*.rpm /src/
+                        '
+                    """
+
+                    // Archive the RPM
+                    archiveArtifacts artifacts: 'ingrid-portal-ng-*.rpm', fingerprint: true
+
+                    // Clean up
+                    sh 'rm -f ingrid-portal-ng.spec'
+                }
+            }
+        }
     }
 }
