@@ -1569,9 +1569,9 @@
 
 {% macro render_table_entry_value (item) %}
     {% if item.type == "text" %}
-        {% if item.value %}
+        {% if item.value is not null %}
             <td>{{ item.value }}</td>
-        {% elseif item.values %}
+        {% elseif item.values is not null %}
             <td>
             {% for value in item.values %}
                 <p>{{ value }}</p>
