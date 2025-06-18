@@ -2353,7 +2353,8 @@ footer {
         margin-top: 16px;
       }
     }
-    .accordion-content.map {
+    .accordion-content.map,
+    .accordion-content.bbox {
       margin: 16px 0;
 
       .form-element { padding-bottom: 16px; }

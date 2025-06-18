@@ -9100,17 +9100,22 @@ footer .footer-top-link:hover {
 .filter-group .accordion-item .accordion-content .input-search {
   margin-top: 16px;
 }
-.filter-group .accordion-item .accordion-content.map {
+.filter-group .accordion-item .accordion-content.map,
+.filter-group .accordion-item .accordion-content.bbox {
   margin: 16px 0;
 }
-.filter-group .accordion-item .accordion-content.map .form-element {
+.filter-group .accordion-item .accordion-content.map .form-element,
+.filter-group .accordion-item .accordion-content.bbox .form-element {
   padding-bottom: 16px;
 }
-.filter-group .accordion-item .accordion-content.map #map-id-3, .filter-group .accordion-item .accordion-content.map #map-id-4 {
+.filter-group .accordion-item .accordion-content.map #map-id-3, .filter-group .accordion-item .accordion-content.map #map-id-4,
+.filter-group .accordion-item .accordion-content.bbox #map-id-3,
+.filter-group .accordion-item .accordion-content.bbox #map-id-4 {
   height: 430px;
   margin-bottom: 24px;
 }
-.filter-group .accordion-item .accordion-content.map .subtext {
+.filter-group .accordion-item .accordion-content.map .subtext,
+.filter-group .accordion-item .accordion-content.bbox .subtext {
   font-size: 14px;
   line-height: 1.2;
   color: #3A566D;

@@ -122,6 +122,9 @@
                                                 {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
                                                 {% for bucket in itemsSelected %}
                                                     {% if bucket.value %}
+                                                        {% if bucket.displayLineAbove %}
+                                                            <hr class="no-margin border-dotted">
+                                                        {% endif %}
                                                         <div class="form-element boxed">
                                                             {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
                                                             <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
@@ -154,6 +157,9 @@
                                                                 <div class="accordion-item text-right" data-accordion-item>
                                                                 <div id="{{ item.id }}_more" class="text-left" style="display: none;" role="tabpanel" aria-labelledby="type-accordion-label" aria-hidden="false" data-tab-content >
                                                             {% endif %}
+                                                        {% endif %}
+                                                        {% if bucket.displayLineAbove %}
+                                                            <hr class="no-margin border-dotted">
                                                         {% endif %}
                                                         <div class="form-element boxed">
                                                             {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}

@@ -70,7 +70,7 @@
         </div>
         <div class="row no-padding">
             <div class="columns form">
-                {% include 'partials/global/map/map.html.twig' with { coords: hit.bbox, isDetail: true, mapId: 'map', mapHeight: '400px', usePopUp: true} %}
+                {% include 'partials/global/map/map.html.twig' with { coords: hit.bbox, displayControls: true, mapId: 'map', mapHeight: '400px', usePopUp: true} %}
             </div>
         </div>
     </div>

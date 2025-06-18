@@ -5,7 +5,7 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.SPACIAL_REFERENCE_TAB"|t)}}
     <div class="row columns">
     {# Karte #}
-        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, geojsons: mapRefs.polygonGeojsons, bwastrs: mapRefs.bwastrs, isDetail: true, mapId: 'map_detail', usePopUp: false } %}
+        {% include 'partials/global/map/map.html.twig' with { coords: mapRefs.bboxes, geojsons: mapRefs.polygonGeojsons, bwastrs: mapRefs.bwastrs, displayControls: true, mapId: 'map_detail', usePopUp: false } %}
     {# Geothesaurus-Raumbezug #}
         {% set header = [
             "",

@@ -1,4 +1,11 @@
-{% set getMarkerApi = "rest/getMapMarkers" %}
+{% if isSearch %}
+    {% set getMarkerApi = "rest/getSearchMarkers?" ~ uri.query %}
+    {% set facetKey = "procedure" %}
+{% else %}
+    {% set getMarkerApi = "rest/getMapMarkers?" %}
+    {% set facetKey = "legend" %}
+
+{% endif %}
 
 <script>
     function showMarker(m) {
@@ -55,6 +62,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-10' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerZV_big = null;
+
     var mapMarkerZV_time = L.markerClusterGroup({
         id: 'mapMarkerZV_time',
         iconCreateFunction: function (cluster) {
@@ -73,6 +82,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-10' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerZV_time_big = null;
+
     // "Ausländische Verfahren" markers
     var mapMarkerAV = L.markerClusterGroup({
         id: 'mapMarkerAV',
@@ -92,6 +103,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-11' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerAV_big = null;
+
     var mapMarkerAV_time = L.markerClusterGroup({
         id: 'mapMarkerAV_time',
         iconCreateFunction: function (cluster) {
@@ -110,6 +123,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-11' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerAV_time_big = null;
+
     // "Raumordnungsverfahren" markers
     var mapMarkerRO = L.markerClusterGroup({
         id: 'mapMarkerRO',
@@ -129,6 +144,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-13' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerRO_big = null;
+
     var mapMarkerRO_time = L.markerClusterGroup({
         id: 'mapMarkerRO_time',
         iconCreateFunction: function (cluster) {
@@ -147,6 +164,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-13' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerRO_time_big = null;
+
     // "Linienbestimmungen" markers
     var mapMarkerLI = L.markerClusterGroup({
         id: 'mapMarkerLI',
@@ -166,6 +185,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-14' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerLI_big = null;
+
     var mapMarkerLI_time = L.markerClusterGroup({
         id: 'mapMarkerLI_time',
         iconCreateFunction: function (cluster) {
@@ -184,6 +205,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-14' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerLI_time_big = null;
+
     // "Negative Vorprüfungen" markers
     var mapMarkerNV = L.markerClusterGroup({
         id: 'mapMarkerNV',
@@ -203,6 +226,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-12' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerNV_big = null;
+
     var mapMarkerNV_time = L.markerClusterGroup({
         id: 'mapMarkerNV_time',
         iconCreateFunction: function (cluster) {
@@ -221,6 +246,8 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-12' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkerNV_time_big = null;
+
     // "Bebauungsplänen" markers
     var mapMarkersDevPlan = L.markerClusterGroup({
         id: 'mapMarkersDevPlan',
@@ -240,6 +267,7 @@
             return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster marker-cluster-dev-plan' + c, iconSize: new L.Point(40, 40) });
         }
     });
+    var mapMarkersDevPlan_big = null;
 
     var mapFilter = $('.map-filter ul li div');
     var overlayers = {};
@@ -265,39 +293,42 @@
         }
         if(legendCounter){
             legendCounter[0].items.forEach(function (item) {
-                if (item.value === "obj_class_zv"){
-                    createLegendEntry(map, mapFilter, [mapMarkerZV_time, mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', '', '#if($restUrlMarker_time)$restUrlMarker_time#end');
-                } else if(item.value === "obj_class_nv"){
-                    createLegendEntry(map, mapFilter, [mapMarkerNV_time, mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', '', '#if($restUrlMarker4_time)$restUrlMarker4_time#end');
-                } else if(item.value === "obj_class_ro"){
-                    createLegendEntry(map, mapFilter, [mapMarkerRO_time, mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', '', '#if($restUrlMarker2_time)$restUrlMarker2_time#end');
-                } else if(item.value === "obj_class_li"){
-                    createLegendEntry(map, mapFilter, [mapMarkerLI_time, mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', '', '#if($restUrlMarker5_time)$restUrlMarker5_time#end');
-                } else if(item.value === "obj_class_av"){
-                    createLegendEntry(map, mapFilter, [mapMarkerAV_time, mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', '', '#if($restUrlMarker3_time)$restUrlMarker3_time#end');
-                } else if(item.value === "obj_class_blp"){
-                    createLegendEntry(map, mapFilter, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp');
+                if (item.docCount > 0) {
+                    if (item.value === "obj_class_zv") {
+                        createLegendEntry(map, mapFilter, [mapMarkerZV_time, mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', '', '#if($restUrlMarker_time)$restUrlMarker_time#end');
+                    } else if (item.value === "obj_class_nv") {
+                        createLegendEntry(map, mapFilter, [mapMarkerNV_time, mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', '', '#if($restUrlMarker4_time)$restUrlMarker4_time#end');
+                    } else if (item.value === "obj_class_ro") {
+                        createLegendEntry(map, mapFilter, [mapMarkerRO_time, mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', '', '#if($restUrlMarker2_time)$restUrlMarker2_time#end');
+                    } else if (item.value === "obj_class_li") {
+                        createLegendEntry(map, mapFilter, [mapMarkerLI_time, mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', '', '#if($restUrlMarker5_time)$restUrlMarker5_time#end');
+                    } else if (item.value === "obj_class_av") {
+                        createLegendEntry(map, mapFilter, [mapMarkerAV_time, mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', '', '#if($restUrlMarker3_time)$restUrlMarker3_time#end');
+                    } else if (item.value === "obj_class_blp") {
+                        createLegendEntry(map, mapFilter, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp');
+                    }
                 }
-
             });
         }
     }
 
     if(mapFilterXs && mapFilterXs.length > 0) {
         if(legendCounter){
-            legendCounter.items.forEach(function (item) {
-                if (item.value === "obj_class_zv"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
-                } else if(item.value === "obj_class_nv"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
-                } else if(item.value === "obj_class_ro"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
-                } else if(item.value === "obj_class_li"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', 'style="padding:0px"');
-                } else if(item.value === "obj_class_av"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
-                } else if(item.value === "obj_class_blp"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
+            legendCounter[0].items.forEach(function (item) {
+                if (item.docCount > 0) {
+                    if (item.value === "obj_class_zv") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_nv") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_ro") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_li") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_av") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_blp") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
+                    }
                 }
             });
         }
@@ -306,19 +337,21 @@
     var mapFilterXs = $('.map-filter-xs');
     if(mapFilterXs && mapFilterXs.length > 0) {
         if(legendCounter){
-            legendCounter.items.forEach(function (item) {
-                if(item.value === "obj_class_zv"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
-                } else if(item.value === "obj_class_nv"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
-                } else if(item.value === "obj_class_ro"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
-                } else if(item.value === "obj_class_li"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', 'style="padding:0px"');
-                } else if(item.value === "obj_class_av"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
-                } else if(item.value === "obj_class_blp"){
-                    createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
+            legendCounter[0].items.forEach(function (item) {
+                if (item.docCount > 0) {
+                    if (item.value === "obj_class_zv") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerZV], 'blue', 'mapMarkerZV', 'Zulassungsverfahren', 'zv', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_nv") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerNV], 'orange', 'mapMarkerNV', 'Negative Vorpr&#252;fungen', 'nv', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_ro") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerRO], 'red', 'mapMarkerRO', 'Raumordnungsverfahren', 'ro', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_li") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerLI], 'purple', 'mapMarkerLI', 'Linienbestimmungen', 'li', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_av") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkerAV], 'black', 'mapMarkerAV', 'Ausl&#228;ndische Vorhaben', 'av', 'style="padding:0px"');
+                    } else if (item.value === "obj_class_blp") {
+                        createLegendEntry(map, mapFilterXs, [mapMarkersDevPlan], 'green', 'mapMarkersDevPlan', 'Bauleitplanung', 'blp', 'style="padding:0px"');
+                    }
                 }
             });
         }
@@ -351,6 +384,10 @@
         }
         if (mapParamLayers.indexOf('blp') > -1) {
             if (mapMarkersDevPlan) {
+                if (mapAdditional) {
+                    mapMarkersDevPlan_big = cloneLayer(mapMarkersDevPlan);
+                    mapAdditional.addLayer(mapMarkersDevPlan_big);
+                }
                 map.addLayer(mapMarkersDevPlan);
                 $('#mapMarkersDevPlan').prop('checked', true);
                 $('#mapMarkersDevPlan').next().addClass('checked');
@@ -365,9 +402,17 @@
                 $('#mapMarkerZV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerZV_time');
                 if (checkboxTime.is(':checked')) {
+                    if (mapAdditional) {
+                        mapMarkerZV_time_big = cloneLayer(mapMarkerZV_time);
+                        mapAdditional.addLayer(mapMarkerZV_time_big);
+                    }
                     map.addLayer(mapMarkerZV_time);
                     checkboxTime.closest('.control-group').removeClass('is-hidden');
                 } else {
+                    if (mapAdditional) {
+                        mapMarkerZV_big = cloneLayer(mapMarkerZV);
+                        mapAdditional.addLayer(mapMarkerZV_big);
+                    }
                     map.addLayer(mapMarkerZV);
                 }
                 if (mapParamLayers.indexOf('zv') === -1) {
@@ -381,9 +426,17 @@
                 $('#mapMarkerAV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerAV_time');
                 if (checkboxTime.is(':checked')) {
+                    if (mapAdditional) {
+                        mapMarkerAV_time_big = cloneLayer(mapMarkerAV_time);
+                        mapAdditional.addLayer(mapMarkerAV_time_big);
+                    }
                     map.addLayer(mapMarkerAV_time);
                     checkboxTime.closest('.control-group').removeClass('is-hidden');
                 } else {
+                    if (mapAdditional) {
+                        mapMarkerAV_big = cloneLayer(mapMarkerAV);
+                        mapAdditional.addLayer(mapMarkerAV_big);
+                    }
                     map.addLayer(mapMarkerAV);
                 }
                 if (mapParamLayers.indexOf('av') === -1) {
@@ -397,9 +450,17 @@
                 $('#mapMarkerRO').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerRO_time');
                 if (checkboxTime.is(':checked')) {
+                    if (mapAdditional) {
+                        mapMarkerRO_time_big = cloneLayer(mapMarkerRO_time);
+                        mapAdditional.addLayer(mapMarkerRO_time_big);
+                    }
                     map.addLayer(mapMarkerRO_time);
                     checkboxTime.closest('.control-group').removeClass('is-hidden');
                 } else {
+                    if (mapAdditional) {
+                        mapMarkerRO_big = cloneLayer(mapMarkerRO);
+                        mapAdditional.addLayer(mapMarkerRO_big);
+                    }
                     map.addLayer(mapMarkerRO);
                 }
                 if (mapParamLayers.indexOf('ro') === -1) {
@@ -413,9 +474,17 @@
                 $('#mapMarkerLI').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerLI_time');
                 if (checkboxTime.is(':checked')) {
+                    if (mapAdditional) {
+                        mapMarkerLI_time_big = cloneLayer(mapMarkerLI_time);
+                        mapAdditional.addLayer(mapMarkerLI_time_big);
+                    }
                     map.addLayer(mapMarkerLI_time);
                     checkboxTime.closest('.control-group').removeClass('is-hidden');
                 } else {
+                    if (mapAdditional) {
+                        mapMarkerLI_big = cloneLayer(mapMarkerLI);
+                        mapAdditional.addLayer(mapMarkerLI_big);
+                    }
                     map.addLayer(mapMarkerLI);
                 }
                 if (mapParamLayers.indexOf('li') === -1) {
@@ -429,9 +498,17 @@
                 $('#mapMarkerNV').next().addClass('checked');
                 var checkboxTime = $('#mapMarkerNV_time');
                 if (checkboxTime.is(':checked')) {
+                    if (mapAdditional) {
+                        mapMarkerNV_time_big = cloneLayer(mapMarkerNV_time);
+                        mapAdditional.addLayer(mapMarkerNV_time_big);
+                    }
                     map.addLayer(mapMarkerNV_time);
                     checkboxTime.closest('.control-group').removeClass('is-hidden');
                 } else {
+                    if (mapAdditional) {
+                        mapMarkerNV_big = cloneLayer(mapMarkerNV);
+                        mapAdditional.addLayer(mapMarkerNV_big);
+                    }
                     map.addLayer(mapMarkerNV);
                 }
                 if (mapParamLayers.indexOf('nv') === -1) {
@@ -501,77 +578,77 @@
                     map.spin(true);
                     var marker = mapMarkersDevPlan;
                     var markerColor = 'green';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_blp' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_blp')|raw }}", 1, marker, markerColor, map, mapMarkersDevPlan_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerZV') {
                 if (mapMarkerZV.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerZV;
                     var markerColor = 'blue';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_zv' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_zv')|raw }}", 1, marker, markerColor, map, mapMarkerZV_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerZV_time') {
                 if (mapMarkerZV_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerZV_time;
                     var markerColor = 'blue';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_zv_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_zv_time')|raw }}", 1, marker, markerColor, map, mapMarkerZV_time_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerRO') {
                 if (mapMarkerRO.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerRO;
                     var markerColor = 'red';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_ro' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_ro')|raw }}", 1, marker, markerColor, map, mapMarkerRO_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerRO_time') {
                 if (mapMarkerRO_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerRO_time;
                     var markerColor = 'red';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_ro_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_ro_time')|raw }}", 1, marker, markerColor, map, mapMarkerRO_time_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerLI') {
                 if (mapMarkerLI.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerLI;
                     var markerColor = 'purple';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_li' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_li')|raw }}", 1, marker, markerColor, map, mapMarkerLI_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerLI_time') {
                 if (mapMarkerLI_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerLI_time;
                     var markerColor = 'purple';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_li_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_li_time')|raw }}", 1, marker, markerColor, map, mapMarkerLI_time_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerAV') {
                 if (mapMarkerAV.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerAV;
                     var markerColor = 'black';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_av' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_av')|raw }}", 1, marker, markerColor, map, mapMarkerAV_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerAV_time') {
                 if (mapMarkerAV_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerAV_time;
                     var markerColor = 'black';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_av_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_av_time')|raw }}", 1, marker, markerColor, map, mapMarkerAV_time_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerNV') {
                 if (mapMarkerNV.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerNV;
                     var markerColor = 'orange';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_nv' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_nv')|raw }}", 1, marker, markerColor, map, mapMarkerNV_big);
                 }
             } else if (e.layer.options.id === 'mapMarkerNV_time') {
                 if (mapMarkerNV_time.getLayers().length === 0) {
                     map.spin(true);
                     var marker = mapMarkerNV_time;
                     var markerColor = 'orange';
-                    loadMarkers("{{ getMarkerApi ~ '?legend=obj_class_nv_time' }}", 1, marker, markerColor, map);
+                    loadMarkers("{{ (getMarkerApi ~ '&' ~ facetKey ~ '=obj_class_nv_time')|raw }}", 1, marker, markerColor, map, mapMarkerNV_time_big);
                 }
             }
         }
@@ -581,7 +658,7 @@
         var icon;
         if(smallIcons){
             icon = L.icon({
-                iconUrl: '/decorations/layout/ingrid/images/pins/icon_pin_small_' + iconColor + '.png',
+                iconUrl: '/user/themes/ingrid/images/pins/icon_pin_small_' + iconColor + '.png',
                 iconSize: [6, 6],
                 iconAnchor: [3, 3]
             });
@@ -800,16 +877,19 @@
         }
     }
 
-    function loadMarkers(url, page, marker, markerColor, map) {
+    function loadMarkers(url, page, marker, markerColor, map, markerBig) {
         jQuery.get(url + "&page=" + page)
         .done(function(data, textStatus, jqxhr) {
             json = JSON.parse(data);
             json.forEach(function(item){
                 createMarker(marker, item, markerColor);
+                if (markerBig) {
+                    createMarker(markerBig, item, markerColor);
+                }
             });
             if(json.length !== 0) {
                 page += 1;
-                loadMarkers(url, page, marker, markerColor, map);
+                loadMarkers(url, page, marker, markerColor, map, markerBig);
             } else {
                 map.spin(false);
             }

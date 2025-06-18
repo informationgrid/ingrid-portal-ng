@@ -16,7 +16,7 @@
             bgLayer = getWMSLayer('{{ map_bg_wms.url }}', '{{ map_bg_wms.name }}', '');
         {% endif %}
         var tmpMap = addLeafletMapWithId('{{ mapId }}', bgLayer, null, null , 10);
-        {% if isDetail %}
+        {% if displayControls %}
             tmpMap.gestureHandling.enable();
         {% else %}
             disableLeafletMapTouchControl(tmpMap);
@@ -38,7 +38,7 @@
             bounds = L.featureGroup(features).getBounds();
             tmpMap.fitBounds(bounds);
         }
-        {% if isDetail %}
+        {% if displayControls %}
             addLeafletHomeControl(tmpMap, 'Zoom auf initialen Kartenausschnitt', 'topleft', 'ic-ic-center', tmpMap.getBounds(), '', '23px');
         {% endif %}
     </script>

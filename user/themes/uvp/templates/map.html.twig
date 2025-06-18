@@ -46,8 +46,9 @@
     {% include 'partials/global/map/leaflet.html.twig' %}
 
     <script>
-        var osm = getOSMLayer('<br>{{ "COMMON.MAP_INFO"|t }}');
+        var osm = getOSMLayer();
         var map = addLeafletMap([osm]);
+        var mapAdditional = null;
         var enablePopUp = true;
         var smallIcons = false;
     </script>
