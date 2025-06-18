@@ -6,9 +6,10 @@ let nominatim_select = -1;
 
 function applyLocation(map) {
     let bounds = map.getBounds();
-    if (editableLayers.getLayers()[0]) {
-        bounds = editableLayers.getLayers()[0].getBounds();
-
+    if (map !== searchMapSmall) {
+        if (editableLayers.getLayers()[0]) {
+            bounds = editableLayers.getLayers()[0].getBounds();
+        }
     }
     let north = bounds.getNorth().toString();
     north = north.substring(0, north.indexOf('.') + 4);

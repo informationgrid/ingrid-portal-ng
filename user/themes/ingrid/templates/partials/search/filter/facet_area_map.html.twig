@@ -55,10 +55,14 @@
         }
     {% endif %}
 
-        $('#facet-map').on('click', function(){ applyLocation(searchMapSmall); });
     </script>
     {% include 'partials/search/filter/facet_area_map_filter.html.twig' ignore missing %}
     <button style="width:100%;" class="button filter_submit" id="facet-map" title="{{ "FACETS.BBOX.COMMIT"|t }}">
         {{ "FACETS.BBOX.COMMIT"|t }}
     </button>
+    <script>
+        $('#facet-map').on('click', function(){
+            applyLocation(searchMapSmall);
+        });
+    </script>
 </div>
