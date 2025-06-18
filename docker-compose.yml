@@ -27,7 +27,7 @@ services:
     volumes:
       - ./ingrid-portal-ng.spec:/root/rpmbuild/SPECS/ingrid-portal-ng.spec
       - ./output-rpm:/root/rpmbuild/RPMS
-      - .:/src
+      - ./user:/src_user
     command: rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec
 
   linux:

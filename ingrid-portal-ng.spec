@@ -39,7 +39,7 @@ rsync -a \
   --include='/plugins/ingrid-*/' \
   --include='/plugins/ingrid-*/**' \
   --exclude='/plugins/**' \
-  /src/user/ %{buildroot}/var/www/%{context_path}/user/
+  /src_user/ %{buildroot}/var/www/%{context_path}/user/
 yq -i '.languages.supported = ["de"]' %{system_yaml}
 yq -i '.languages.default_lang = "de"' %{system_yaml}
 yq -i '.languages.include_default_lang = "false"' %{system_yaml}

@@ -72,7 +72,7 @@ pipeline {
                     try {
                         // Kopieren Sie das gesamte Projektverzeichnis in das /src-Verzeichnis des Containers.
                         // Der '.' am Ende des Quellpfads stellt sicher, dass der Inhalt des aktuellen Verzeichnisses kopiert wird.
-                        sh "docker cp user ${containerId}:/src/user"
+                        sh "docker cp user ${containerId}:/src_user"
                         // Kopieren Sie die generierte Spec-Datei an den erwarteten Ort im Container.
                         sh "docker cp ingrid-portal-ng.spec ${containerId}:/root/rpmbuild/SPECS/ingrid-portal-ng.spec"
 
@@ -84,11 +84,11 @@ pipeline {
                             docker exec ${containerId} bash -c "rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec"
                         """
                         // Kopieren Sie die gebauten RPMs aus dem Container zurück in den aktuellen Arbeitsbereich.
-                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch/ingrid-portal-ng-*.rpm ."
+                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch/ingrid-portal-ng-0.1.0-dev.noarch.rpm ."
 
                     } finally {
                         // Bereinigen Sie den Container, auch wenn der Build fehlschlägt.
-                        sh "docker rm ${containerId}"
+                        sh "docker rm -f ${containerId}"
                     }
 
                     // Archive the RPM
