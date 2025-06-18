@@ -23,20 +23,12 @@ services:
       - ./system:/var/www/html/system
 
   rpm:
-    image: rockylinux/rockylinux:9
+    image: docker-registry.wemove.com/ingrid-rpmbuilder-php8
     volumes:
       - ./ingrid-portal-ng.spec:/root/rpmbuild/SPECS/ingrid-portal-ng.spec
       - ./output-rpm:/root/rpmbuild/RPMS
       - .:/src
-    command: >
-      bash -c "dnf install -y rpm-build wget rsync https://rpms.remirepo.net/enterprise/remi-release-9.rpm &&
-      dnf config-manager --set-enabled remi &&
-      dnf module enable php:remi-8.3 -y &&
-      dnf install -y php &&
-      wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq &&
-      chmod +x /usr/local/bin/yq &&
-      mkdir -p /root/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS} &&
-      rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec"
+    command: rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec
 
   linux:
     image: ubuntu

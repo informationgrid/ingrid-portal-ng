@@ -56,31 +56,46 @@ pipeline {
                     def buildDate = sh(script: 'date "+%a %b %d %Y"', returnStdout: true).trim()
 
                     // Replace placeholders with actual values
-                    def processedSpec = specTemplate
-                        .replaceAll('@RPM_VERSION@', env.RPM_VERSION)
-                        .replaceAll('@RPM_RELEASE@', env.RPM_RELEASE)
-                        .replaceAll('@BUILD_DATE@', buildDate)
-
-                    // Write the processed spec file
-                    writeFile file: 'ingrid-portal-ng.spec', text: processedSpec
+//                    def processedSpec = specTemplate
+//                        .replaceAll('@RPM_VERSION@', env.RPM_VERSION)
+//                        .replaceAll('@RPM_RELEASE@', env.RPM_RELEASE)
+//                        .replaceAll('@BUILD_DATE@', buildDate)
+//
+//                    // Write the processed spec file
+//                    writeFile file: 'ingrid-portal-ng.spec', text: processedSpec
 
                     // Build RPM using rpmbuild in a Docker container
-                    sh """
-                        docker run --rm -v \$(pwd):/src:z rockylinux/rockylinux:9 /bin/bash -c '
-                            yum install -y rpm-build
-                            mkdir -p /root/rpmbuild/{SPECS,SOURCES,RPMS,SRPMS,BUILD,BUILDROOT}
-                            cp /src/ingrid-portal-ng.spec /root/rpmbuild/SPECS/
-                            cd /src
-                            rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec
-                            cp /root/rpmbuild/RPMS/noarch/ingrid-portal-ng-*.rpm /src/
-                        '
-                    """
+                    // Verwenden Sie docker cp für die Dateiübertragung anstelle der direkten Volume-Zuweisung.
+                    // Dies vermeidet Probleme mit Pfaden in Docker-in-Docker-Setups.
+                    def containerId = sh(script: "docker create --entrypoint=\"\" docker-registry.wemove.com/ingrid-rpmbuilder-php8 tail -f /dev/null", returnStdout: true).trim()
+
+                    try {
+                        // Kopieren Sie das gesamte Projektverzeichnis in das /src-Verzeichnis des Containers.
+                        // Der '.' am Ende des Quellpfads stellt sicher, dass der Inhalt des aktuellen Verzeichnisses kopiert wird.
+                        sh "docker cp user ${containerId}:/src/user"
+                        // Kopieren Sie die generierte Spec-Datei an den erwarteten Ort im Container.
+                        sh "docker cp ingrid-portal-ng.spec ${containerId}:/root/rpmbuild/SPECS/ingrid-portal-ng.spec"
+
+                        // Starten Sie den Container
+                        sh "docker start ${containerId}"
+
+                        // Starten Sie den Container und führen Sie rpmbuild aus.
+                        sh """
+                            docker exec ${containerId} bash -c "rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec"
+                        """
+                        // Kopieren Sie die gebauten RPMs aus dem Container zurück in den aktuellen Arbeitsbereich.
+                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch/ingrid-portal-ng-*.rpm ."
+
+                    } finally {
+                        // Bereinigen Sie den Container, auch wenn der Build fehlschlägt.
+                        sh "docker rm ${containerId}"
+                    }
 
                     // Archive the RPM
                     archiveArtifacts artifacts: 'ingrid-portal-ng-*.rpm', fingerprint: true
 
                     // Clean up
-                    sh 'rm -f ingrid-portal-ng.spec'
+                    // sh 'rm -f ingrid-portal-ng.spec'
                 }
             }
         }
