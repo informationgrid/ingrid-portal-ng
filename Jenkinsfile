@@ -99,5 +99,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy RPM') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    sh 'curl --user $USERNAME:$PASSWORD --upload-file ./*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid/'
+                }
+            }
+        }
     }
 }
