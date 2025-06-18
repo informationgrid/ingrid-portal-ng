@@ -44,11 +44,9 @@ InGrid Portal Next Generation - A modern portal based on Grav CMS.
 %build
 # Download Grav CMS if not already included
 GRAV_VERSION=1.7.48
-if [ ! -d grav-admin ]; then
-    curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION}
-    unzip -qq grav-admin.zip
-    rm grav-admin.zip
-fi
+curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION}
+unzip -qq grav-admin.zip -d /var/www -x "grav-admin/user/themes/*" -x "grav-admin/user/pages/*"
+rm grav-admin.zip
 
 %install
 # Create directory structure

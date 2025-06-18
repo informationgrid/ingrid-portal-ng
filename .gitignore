@@ -24,3 +24,4 @@
 /develop/config/plugins/
 /develop/config/system.yaml
 /system
+**/vendor

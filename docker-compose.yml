@@ -21,3 +21,38 @@ services:
       - ./logs:/var/www/html/logs
       - ./develop/config:/var/www/html/user/localhost/config
       - ./system:/var/www/html/system
+
+  rpm:
+    image: rockylinux/rockylinux:9
+    volumes:
+      - ./ingrid-portal-ng.spec:/root/rpmbuild/SPECS/ingrid-portal-ng.spec
+      - ./output-rpm:/root/rpmbuild/RPMS
+      - .:/src
+    command: >
+      bash -c "dnf install -y rpm-build wget rsync https://rpms.remirepo.net/enterprise/remi-release-9.rpm &&
+      dnf config-manager --set-enabled remi &&
+      dnf module enable php:remi-8.3 -y &&
+      dnf install -y php &&
+      wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq &&
+      chmod +x /usr/local/bin/yq &&
+      mkdir -p /root/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS} &&
+      rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec"
+
+  linux:
+    image: ubuntu
+    volumes:
+      - ./output-rpm:/install-rpm
+      - ./develop/proxy-rpm.conf:/install-rpm/000-default.conf
+      - ./develop/admin.yaml:/install-rpm/admin.yaml
+    ports:
+      - "8888:80"
+    command: >
+      bash -c "apt update && apt install apache2 rpm vim-tiny php libapache2-mod-php php8.3-fpm php-cli php-curl php-json php-gd php-mbstring php-xml php-dom php-zip -y &&
+      a2enmod proxy proxy_fcgi rewrite &&
+      a2enconf php8.3-fpm &&
+      cp /install-rpm/000-default.conf /etc/apache2/sites-enabled/ &&
+      service apache2 start && 
+      service php8.3-fpm start &&
+      rpm -i install-rpm/noarch/ingrid-portal-ng-0.1.0-dev.noarch.rpm &&
+      cp /install-rpm/admin.yaml /var/www/ingrid-portal-ng/user/accounts/ &&
+      tail -f /dev/null"
