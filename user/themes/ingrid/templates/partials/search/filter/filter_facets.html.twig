@@ -121,7 +121,7 @@
                                                 {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}
                                                 {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
                                                 {% for bucket in itemsSelected %}
-                                                    {% if bucket.value is not null or bucket.value is empty %}
+                                                    {% if bucket.value is not null or bucket.value is not empty %}
                                                         {% if bucket.displayLineAbove %}
                                                             <hr class="no-margin border-dotted">
                                                         {% endif %}
