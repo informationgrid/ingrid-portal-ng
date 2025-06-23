@@ -667,7 +667,7 @@ map:
       layer:
         wmts: { url: 'https://tile.geofabrik.de/a9533739a5c445e5937b953c9b1f6c58/{z}/{x}/{y}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
         opacity: 1
     bbox:
       color: '#3278B9'
