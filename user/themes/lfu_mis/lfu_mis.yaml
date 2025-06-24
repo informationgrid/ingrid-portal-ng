@@ -1,0 +1,651 @@
+enabled: true
+header:
+  title_extend: 'LfU-MIS'
+  logo_enabled: true
+  logo_class: 'xsmall-7 small-7 medium-5 large-5 xlarge-5'
+  menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
+  menu_dropdown: false
+  shrink: true
+  logo:
+    user/themes/lfu_mis/images/logo/logo.svg:
+      name: logo.svg
+      full_path: logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/lfu_mis/images/logo/logo.svg
+footer:
+  logo_enabled: true
+  copyright:
+    text:
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    show_year: true
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  hr_line: true
+  logo:
+  share:
+    enabled: false
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: false
+  up:
+    enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
+menu:
+  main:
+    -
+      path: /search
+      icon: ic-ic-lupe
+    -
+      path: /map
+      icon: ic-ic-karten
+    -
+      path: /catalog
+      icon: ic-ic-datenkataloge
+  site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /map
+      highlighted: true
+    -
+      path: /catalog
+      highlighted: true
+    -
+      path: /help
+      highlighted: false
+    -
+      path: /contact
+      highlighted: false
+    -
+      path: /imprint
+      highlighted: false
+    -
+      path: /accessibility
+      highlighted: false
+  footer:
+    -
+      path: /home
+    -
+      path: /help
+    -
+      path: /contact
+    -
+      path: /imprint
+      target_blank: true
+    -
+      path: /accessibility
+home:
+  sort_modules:
+    -
+      path: /home/_search
+      hidden: false
+    -
+      path: /home/_warning
+      hidden: true
+    -
+      path: /home/_categories
+      hidden: false
+    -
+      path: /home/_inform
+      hidden: false
+    -
+      path: /home/_news
+      hidden: true
+  rss:
+    feeds_limit: 6
+  categories:
+    rss:
+    facet_config: [
+      {
+        "id": "type",
+        "facets": {
+          "metadata": {
+            "icon": "ic-metadata",
+            "query": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "datatype": "metadata"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten Dritter"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Geobasisdaten"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "inspire": {
+            "icon": "ic-inspire",
+            "query": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspireidentifiziert"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten Dritter"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Geobasisdaten"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "opendata": {
+            "icon": "ic-opendata",
+            "query": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "term": {
+                              "t04_search.searchterm": "opendata"
+                            }
+                          },
+                          {
+                            "term": {
+                              "t04_search.searchterm": "opendataident"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten Dritter"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Geobasisdaten"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "maps": {
+            "icon": "ic-map",
+            "query": {
+              "filter": {
+                "bool": {
+                  "must": [
+                    {
+                      "wildcard": {
+                        "capabilities_url": "http*"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "should": [
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Fachdaten Dritter"
+                            }
+                          },
+                          {
+                            "term": {
+                              "object_node.tree_path.name": "Geobasisdaten"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
+  hits:
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
+    hits_num: 0
+    sort:
+      sortByDate: true
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "open": true,
+      "facets": {
+        "inspire": {
+          "query": {
+            "filter": {
+              "term": {
+                "t04_search.searchterm": "inspireidentifiziert"
+              }
+            }
+          }
+        },
+        "opendata": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "hvd": {
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": "true"
+              }
+            }
+          }
+        },
+        "adv": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "AdVMIS"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "AdV"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "maps": {
+          "query": {
+            "filter": {
+              "wildcard": {
+                "capabilities_url": "http*"
+              }
+            }
+          }
+        },
+        "metadata": {
+          "display_sort_hits_on_selection": true,
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "metadata_group",
+      "open_by": {
+        "type": "metadata",
+      },
+      "display_sort_hits_on_selection": true,
+      "codelist": "8000",
+      "query": {
+        "terms": {
+          "field": "t01_object.obj_class",
+          "exclude": "1000",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t01_object.obj_class:%d"
+    },
+    {
+      "id": "folder_group",
+      "label": "Ordner",
+      "facets": {
+        "fachdaten": {
+          "label": "Fachdaten",
+          "active": true,
+          "query": {
+            "filter": {
+              "term": {
+                "object_node.tree_path.name": "Fachdaten"
+              }
+            }
+          }
+        },
+        "fachdaten_dritter": {
+          "label": "Fachdaten Dritter",
+          "active": true,
+          "query": {
+            "filter": {
+              "term": {
+                "object_node.tree_path.name": "Fachdaten Dritter"
+              }
+            }
+          }
+        },
+        "geobasisdaten": {
+          "label": "Geobasisdaten",
+          "active": true,
+          "query": {
+            "filter": {
+              "term": {
+                "object_node.tree_path.name": "Geobasisdaten"
+              }
+            }
+          }
+        },
+        "wwa_aschaffenburg": {
+          "label": "WWA Aschaffenburg",
+          "query": {
+            "filter": {
+              "term": {
+                "object_node.tree_path.name": "WWA Aschaffenburg"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "modtime",
+      "display_depend_on": {
+        "type": "metadata",
+        "metadata_group": "",
+      },
+      "facets": {
+        "last_month": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1M"
+                }
+              }
+            }
+          }
+        },
+        "last_three_month": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-3M"
+                }
+              }
+            }
+          }
+        },
+        "last_year": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1y"
+                }
+              }
+            }
+          }
+        },
+        "last_five_years": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-5y"
+                }
+              }
+            }
+          }
+        },
+        "older_five_years": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "lte": "now-5y"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    }
+  ]
+  add_to_search:
+    - '-datatype:address'
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: '<br>'
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: false
+  sns:
+    similar_terms:
+      enabled: true
+provider:
+  query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+hit_detail:
+  summary_replace_newline: '<br>'
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: true
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
+map:
+  url: /ingrid-webmap-client/frontend/prd
+  leaflet:
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
+        wms: { url: null, name: null }
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+        opacity: 1
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+    enable:
+      wkt: true
+      geocoder: false
+      spinloader: false
+      clustering: false
+    geocoder:
+      enable: false
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
+    position: 46.58,5.22,55.40,15.68
+measure:
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
+redirect:
+  pages_to_404:
+    - /api
+    - /measure
+    - /about
+    - /datasource
+    - /provider
+    - /privacy
+    - /sitemap
+  pages_to_redirect:
+    - path: /imprint
+      url: 'https://intranet.lfu.bybn.de/impressum/index.htm'
+catalog:
+  open_nodes_level: 3
+  display_partner: true
+  sort_by_name: true
+  open_on_new_tab: true
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+         - user/themes/lfu_mis
+         - user/themes/ingrid

@@ -1,0 +1,61 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+*/
+
+.catalog {
+  span.icon span {
+    color: var(--link-color);
+  }
+
+  .accordion-title {
+    font-weight: 700;
+    font-family: var(--main-font);
+    color: var(--color-grey-darker);
+    transition: all 250ms;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  & > .accordion > .accordion-item > .accordion-content > .accordion > .accordion-item > .accordion-title {
+    background: var(--color-grey);
+    border: none;
+
+    &:hover, &:focus-visible {
+      color: white;
+      background: var(--color-grey-darker);
+    }
+  }
+
+  /* Hide main catalog title */
+  > .accordion > .accordion-item > .accordion-title[role="tab"] {
+    display: none;
+  }
+
+  /* Hide address */
+  > .accordion > .accordion-item > .accordion-content[role="tabpanel"] > .accordion[role="tablist"] > .accordion-item > .accordion-content[role="tabpanel"] > .accordion:not(:first-of-type) {
+    display: none;
+  }
+}
+
+

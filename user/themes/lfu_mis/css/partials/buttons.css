@@ -1,0 +1,92 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+*/
+
+.button.disabled,
+.button.disabled:hover,
+.button.disabled:focus,
+.button[disabled],
+.button[disabled]:hover,
+.button[disabled]:focus {
+  background: var(--color-sky-darker);
+}
+
+.button.outline {
+  color: var(--color-grey-darker);
+  border: 2px solid var(--color-grey-darker);
+
+  &:hover, &:focus-visible {
+    color: white;
+    background: var(--color-grey-darker);
+  }
+}
+
+.button.round {
+  border-radius: 0;
+  color: white;
+  background: var(--color-grey-darker);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover, &:focus, &:focus-visible {
+    color: white;
+    background: var(--color-grey-darker);
+  }
+
+  &.social {
+    width: 50px;
+    height: 50px;
+    border: 3px solid;
+  }
+
+  .ic-ic-angle-up {
+    margin: 0;
+    font-size: 30px;
+    position: unset;
+  }
+}
+
+.button.pill {
+  color: white;
+  background: var(--color-grey-darker);
+  border: none;
+  padding: 12px 16px;
+
+  &:hover, &:focus-visible, &:focus {
+    color: white;
+
+    span {
+      color: white;
+    }
+  }
+
+  &[type="reset"] {
+    color: var(--color-grey-darker);
+    background: var(--color-grey);
+
+    &:hover, &:focus-visible, &:focus {
+      background: var(--color-grey-darker);
+    }
+  }
+}

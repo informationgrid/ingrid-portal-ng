@@ -1,0 +1,491 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+*/
+
+@import "partials/fonts.css";
+@import "partials/variables.css";
+@import "partials/buttons.css";
+@import "partials/icons.css";
+@import "partials/tables.css";
+@import "partials/side_menu.css";
+@import "partials/search_page.css";
+@import "partials/catalog_page.css";
+@import "partials/accordion_menu.css";
+
+/* Make footer stick to the bottom */
+:root {
+  height: 100%;
+
+  body {
+    height: inherit;
+  }
+
+  body > .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body > .container > .body {
+    flex: 1;
+  }
+}
+
+body {
+  color: var(--text-color-darker);
+}
+
+a, a.icon {
+  color: var(--link-color);
+
+  &:hover, &:focus-visible {
+    color: var(--link-hover-color);
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: var(--text-color-darker);
+  font-weight: bold;
+  font-family: var(--main-font);
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.category .text-center h2 {
+  text-transform: unset;
+}
+
+header {
+  border-image: unset;
+  border-bottom: solid 4px var(--color-orange);
+
+  .row > .columns {
+    flex: unset;
+    max-width: unset;
+  }
+
+  .row > .columns:first-of-type {
+    flex: 1;
+  }
+
+  .nav-tabs {
+    text-align: left;
+  }
+
+  .logo {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo a {
+    padding-right: .5rem;
+    position: unset;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    img {
+      width: auto;
+      height: 70px;
+    }
+  }
+}
+
+.shrink {
+  .logo a {
+    span {
+      font-size: 16px;
+    }
+
+    img {
+      height: 56px;
+    }
+  }
+}
+
+.menu-tab-row {
+  display: flex;
+
+  .menu-tab {
+    width: auto;
+    min-width: 120px;
+    padding: 0 12px;
+
+    font-family: var(--main-font);
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover .link-menu-tab {
+      color: var(--color-grey-darker);
+    }
+
+    .link-menu-tab {
+      color: var(--text-color);
+
+      top: unset;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      [class^="ic-"], [class*=" ic-"] {
+        position: unset;
+      }
+    }
+  }
+}
+
+.dark p, .dark h1, .dark h2, .dark abbr, .dark a {
+  color: var(--text-color-darker);
+}
+
+.large-20 {
+  max-width: 90%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.banner.home, .banner, .about, .banner.search {
+  padding-top: 0;
+  background: var(--color-grey);
+}
+
+.banner.home h1 {
+  font-size: 2.5rem;
+  line-height: 1.35;
+  text-transform: none;
+  font-weight: bold;
+}
+
+.banner.home h1.green {
+  color: var(--text-color-darker);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.banner.home .home-wrapper .indent span {
+  color: var(--text-color-darker);
+}
+
+.button {
+  font-weight: bold;
+  border-radius: unset;
+  text-transform: unset;
+  color: var(--color-grey-darker);
+  background: var(--color-grey);
+
+  &:hover, &:focus-visible {
+    background: var(--color-grey-darker);
+  }
+}
+
+.button.large {
+  padding: 0 30px;
+  color: white;
+  background: var(--color-grey-darker);
+  font-family: var(--main-font);
+}
+
+.tabs-panel.midnight {
+  padding: 40px 0;
+  background: white;
+}
+
+.teaser {
+  transition: all 150ms;
+  border-radius: 0;
+  box-shadow: unset;
+  border: 2px solid var(--color-grey);
+
+  &:hover, &:focus-visible {
+    border: 2px solid var(--color-grey-darker);
+
+    .teaser-link .teaser-number {
+      color: white;
+      background: var(--color-grey-darker);
+    }
+  }
+
+  .blue-border {
+    display: none;
+  }
+
+  .teaser-link {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+
+    [class^="ic-"] {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: unset;
+      font-size: 70px;
+
+      &:before {
+        z-index: 1;
+        color: var(--color-grey-darker);
+      }
+
+      &:after {
+        content: none;
+      }
+    }
+
+    .text {
+      color: var(--color-grey-darker);
+      margin-bottom: 20px;
+    }
+
+    .teaser-number {
+      font-size: 18px;
+      width: 100%;
+      line-height: 1;
+      padding: 10px;
+      margin: 0;
+      border-radius: 0;
+      position: unset;
+      color: var(--text-color);
+      background: var(--color-grey);
+    }
+
+    &:hover {
+      border-radius: 0;
+      box-shadow: unset;
+    }
+  }
+}
+
+.input-search {
+  .input-search-field {
+    text-indent: 0;
+    height: 60px;
+    font-size: 20px;
+    padding: 0 145px 0 15px;
+    border-radius: unset;
+    border: solid 2px var(--color-grey-darker);
+  }
+
+  .button.large {
+    display: block !important;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+  }
+
+  .button.round {
+    display: none;
+    border: none;
+    border-radius: 0;
+    top: 2px;
+    bottom: 2px;
+    right: 2px;
+    height: auto;
+    width: 56px;
+    background: var(--color-grey-darker);
+
+    [class^="ic-"] {
+      margin: 0;
+      position: unset;
+      font-size: 22px;
+    }
+
+    &:hover, &:focus-visible {
+      background: var(--color-sky);
+    }
+  }
+}
+
+footer {
+  hr {
+    display: none;
+  }
+
+  .footer {
+    padding: 4px 0;
+    background: var(--color-grey-darker);
+
+    .footer-menu-entries {
+      text-align: center;
+
+      a {
+        font-size: 14px;
+        font-weight: 500;
+        font-family: var(--main-font);
+      }
+    }
+  }
+
+  .row {
+    .columns {
+      flex: 1;
+      max-width: unset;
+    }
+
+    .columns:first-of-type {
+      display: none;
+    }
+  }
+
+  a.icon {
+    color: white;
+    font-size: 20px;
+    text-transform: none;
+
+    &:hover, &:focus-visible {
+      color: white;
+    }
+  }
+
+  .footer-top-link {
+    transition: all 250ms;
+    background: var(--color-sky-darker);
+    font-family: var(--main-font);
+    font-weight: bold;
+
+    &:hover, &:focus-visible {
+      color: white;
+      background: var(--color-sky);
+      text-decoration: unset;
+    }
+  }
+}
+
+.row.alert .success {
+  color: #526e7f;
+  border: 1px solid #526e7f;
+}
+
+.popup .headline {
+  background: var(--color-grey-darker);
+
+  .button.round {
+    border: none;
+
+    &:hover .ic-ic-cross {
+      color: white;
+
+    }
+  }
+}
+
+@media print, screen and (max-width: 60em) {
+  header {
+    .logo a img {
+      height: 70px;
+    }
+
+    .menu-tab-row .menu-tab {
+      min-width: unset;
+
+      .link-menu-tab {
+        [class^="ic-"], [class*=" ic-"] {
+          font-size: 38px;
+        }
+
+        .text {
+          display: none;
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .banner.home h1 {
+    font-size: 1.8rem;
+  }
+
+  .banner.home h1.green {
+    font-size: 1.3rem;
+  }
+}
+
+@media print, screen and (max-width: 40em) {
+  header .logo a img {
+    height: 60px;
+  }
+}
+
+/* medium phone screen */
+@media print, screen and (max-width: 35em) {
+  header {
+    .menu-tab-row .menu-tab .link-menu-tab {
+      top: unset;
+      padding: unset;
+    }
+  }
+
+  .input-search {
+    .button.large {
+      display: none !important;
+    }
+
+    .button.round {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media print, screen and (min-width: 48em) {
+  header .row .columns.nav-tabs {
+    padding: 0;
+  }
+
+  .banner.home .home-wrapper h1 .ic-ic-asterisc {
+    font-size: 0.8rem;
+  }
+
+  .banner.home .home-wrapper .indent span {
+    font-size: 0.8rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+    margin-bottom: 36px;
+  }
+}
+
+.banner.subpage .align-center {
+  padding: 0 1.5rem;
+  justify-content: unset;
+}
+
+.row.content-small {
+  padding: 0 1.5rem;
+  max-width: 1296px;
+}
