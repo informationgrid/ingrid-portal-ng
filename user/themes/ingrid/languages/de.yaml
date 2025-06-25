@@ -146,7 +146,7 @@ COMMON:
     RESULT_SHOWMAP: Kartenansicht öffnen
     RESULT_SHOWCOORD: Zeige Punktkoordinaten
     RESULT_SHOWCOORD_UNKNOWN: Unbekannt
-    RESULT_HASACCESSCONTRAINTS: Zugang geschützt
+    RESULT_HASACCESSCONSTRAINTS: Zugang geschützt
     RESULT_EMPTY: Suchergebnis ist leer
     RESULT_GROUP_HEADER: Gruppierte Ergebnisse für
     RESULT_GROUP_SHOWALL: Zeige alle Ergebnisse für

@@ -99,13 +99,13 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_hit_searchterm (isInspire, isOpendata, isSecure, isHVD) %}
-    {% if isInspire or isOpendata or isSecure %}
+{% macro render_hit_searchterm (isInspire, isOpendata, isSecure, isHVD, folderNames) %}
+    {% if isInspire or isOpendata or isSecure or folderNames is not empty %}
         <div class="icon--info">
         {% if isSecure %}
             <div class="helper icon info">
-                <span class="ic-ic-lock-closed" title="{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}"></span>
-                <span class="text">{{ "COMMON.RESULT_HASACCESSCONTRAINTS"|t }}</span>
+                <span class="ic-ic-lock-closed" title="{{ "COMMON.RESULT_HASACCESSCONSTRAINTS"|t }}"></span>
+                <span class="text">{{ "COMMON.RESULT_HASACCESSCONSTRAINTS"|t }}</span>
             </div>
         {% endif %}
         {% if isInspire %}
@@ -120,6 +120,12 @@
                 <span class="text">
                     Open Data{% if isHVD %} / HVD{% endif %}
                 </span>
+            </div>
+        {% endif %}
+        {% if folderNames is not empty %}
+            <div class="helper icon info">
+                <span class="ic-ic-folder" title="{{ folderNames[0] }}"></span>
+                <span class="text">{{ folderNames[0] }}</span>
             </div>
         {% endif %}
         </div>

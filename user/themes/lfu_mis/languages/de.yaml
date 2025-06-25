@@ -16,3 +16,7 @@ SEARCH:
   PORTLET_TITLE_1: LfU-MIS
   PORTLET_TITLE_2: zur Erfassung, Verwaltung, Recherche und Anzeige von Metadaten&nbsp;
   PORTLET_TITLE_3: über Geodaten und Geodatendienste
+
+SEARCH_DETAIL:
+  GEO_DATALINK: URI des Datenbestandes
+  INTERNAL_NOTES: Interne Bemerkungen
