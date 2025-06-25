@@ -21,7 +21,7 @@
 {# Fachliche Grundlage #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatements) }}
 {# Basisdaten #}
-    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescriptions) }}
+    {{ hit_macros.render_label_document_list("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescriptions) }}
 {# Erläuterung zum Fachbezug #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformation) }}
 {# Erläuterung zum Fachbezug (*) #}
