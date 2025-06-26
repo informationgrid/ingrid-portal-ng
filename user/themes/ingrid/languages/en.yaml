@@ -48,6 +48,7 @@ PAGES:
     DATASOURCE_META_DESCRIPTION: Associated environmental authorities from federation, federal states and local authorities providing environmental information via InGrid-Portal - free of cost and free of ads.
     DATASOURCE_META_KEYWORDS: InGrid-Portal, information provider, environmental agencies, public authorities, federation, federal states, local authorities, public administration, federal government, German laender, laender,  municipalities, list, information, environment, environmental information, free of cost, free of ads, data bases
     HELP: Help
+    HELP_CONTENT: Help
     HELP_MENU_TITLE: Information and help on how to use InGrid-Portal
     HELP_META_TITLE: Help, search tips and descriptions for the features
     HELP_META_DESCRIPTION: Use the help menu to get detailed information about search options and a brief instruction to various features

@@ -345,9 +345,7 @@
                 <br>
             {% endif %}
         {% endfor %}
-        </p>
         {% if isAddress %}
-        <p>
 {# Street #}
             {% if streets %}
                 {% for street in streets %}
@@ -372,7 +370,6 @@
             {% if country %}
                 {{ country }}
             {% endif %}
-        </p>
         {% endif %}
 {# E-Mail #}
         {% if mail %}
@@ -418,6 +415,7 @@
             </div>
         {% endif %}
         {% set break = true %}
+        </p>
     {% endfor %}
 {% endmacro %}
 

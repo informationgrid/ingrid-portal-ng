@@ -1,17 +1,28 @@
 PAGES:
     HOME_MENU_TITLE: Startseite zu BAW
-    ABOUT: Über Datenrepository-BAW
+    HOME_META_TITLE: Bundesanstalt für Wasserbau
+    ABOUT: Über BAW-Datenrepository
     ABOUT_MENU_TITLE: Hintergrundinformationen zu BAW
+    HELP_CONTENT: Hilfe zu BAW
     HELP_MENU_TITLE: Erläuterungen zur Nutzung von BAW
     CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an BAW
     CONTACT_META_TITLE: Kontaktieren Sie uns
     CONTACT_META_DESCRIPTION: Kontaktieren Sie BAW online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.
     CONTACT_META_KEYWORDS: BAW, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen
     SITEMAP: Inhalt
+
+CONTACT:
+    SUCCESS: Ihre Anfrage wurde erfolgreich an die BAW-Redaktion versendet.
+    REPORT_EMAIL_SUBJECT: Kontaktformular BAW-Datenrepository
+
 SEARCH:
     PORTLET_TITLE_1: BAW-DATENREPOSITORY
     PORTLET_TITLE_2: KOMPETENZ FÜR DIE WASSERSTRASSEN
     PORTLET_TITLE_3: ' '
+
+SEARCH_RESULT:
+    INFO_LINKS: Verweise und Downloads
+
 SEARCH_DETAIL:
     MEASUREMENT:
         INFOMETHOD: Verfahren
@@ -60,6 +71,7 @@ SEARCH_DETAIL:
 
 FACETS:
     FACET_LABEL:
+        TYPE: Kategorie
         CATEG: Kategorie
         WATERWAY: Wasserstraße
         SIMULATION: Simulationsdaten
@@ -80,6 +92,7 @@ FACETS:
         OSTSEE: Ostsee
         RHEIN: Rhein
     TYPE:
+        METADATA: Datenkataloge
         TYPE_SIMULATION: Simulationsdaten
         MESSDATEN: Messdaten
         LUFTBILDER: Luftbilder
