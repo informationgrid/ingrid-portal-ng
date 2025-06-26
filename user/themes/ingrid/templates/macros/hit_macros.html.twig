@@ -1172,13 +1172,18 @@
                                 {% for entry in entries %}
                                     <div class="list-item">
                                         <div>
-                                            {% if entry.url %}
+                                            {% if entry.uuid %}
+                                                {% set url = page.find('/detail').url ~ '?docuuid=' ~ entry.uuid %}
+                                                <a href="{{ url }}" class="icon" title="{{ entry.title }}">
+                                                    <span class="text">{{ entry.title }}</span>
+                                                </a>
+                                            {% elseif entry.url %}
                                                 <a target="_blank" href="{{ entry.url }}" class="icon" title="{{ entry.url }}">
                                                     <span class="text">{{ entry.title }}</span>
                                                 </a>
                                             {% endif %}
                                             {% if entry.description %}
-                                                <p>{{ entry.description }}</p>
+                                                <p>{{ convertUrlInText(entry.description)|raw }}</p>
                                             {% endif %}
                                             {% if entry.date %}
                                                 <div class="info--right">
