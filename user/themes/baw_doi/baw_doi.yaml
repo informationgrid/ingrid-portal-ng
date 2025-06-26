@@ -655,6 +655,7 @@ hit_detail:
     - '0'
     - '1'
     - '2'
+  address_unlink: true
   contact_order:
     - pointOfContact
     - distributor

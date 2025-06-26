@@ -96,6 +96,17 @@ form:
       validate:
         type: commalist
 
+    hit_detail.address_unlink:
+      type: toggle
+      label: THEME.ADMIN.HIT_DETAIL.ADDRESS_UNLINK.LABEL
+      help: THEME.ADMIN.HIT_DETAIL.ADDRESS_UNLINK.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
     hit_detail.contact_order:
       type: selectize
       label: THEME.ADMIN.HIT_DETAIL.CONTACT_ORDER.LABEL

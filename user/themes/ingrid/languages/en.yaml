@@ -1276,6 +1276,9 @@ THEME:
                     1: Einheit
                     2: Person
                     3: Freie Adresse
+            ADDRESS_UNLINK:
+                LABEL: Adressen-Verlinkungen als Text
+                HELP: Bei Aktivierung wird bei den Kontakt die Adressen-Verlinkungen als Text dargestellt.
             CONTACT_ORDER:
                 LABEL: Sortierung Kontaktliste
                 HELP: Sortiert die Kontakte nach der festgelegten Reihenfolge

@@ -4,6 +4,7 @@
 
 {# theme_var #}
 {% set sortAddressTyp = theme_var('hit_detail.address_order') %}
+{% set addressUnlink = theme_var('hit_detail.address_unlink') %}
 
 {# var #}
 {% set hit = hit %}
@@ -122,7 +123,7 @@
             <div class="teaser-data search row is-active">
                 <div class="xsmall-24 small-24 columns">
             {# Adressen #}
-                {{ hit_macros.render_contact_facts("SEARCH_DETAIL.CONTACT"|t, contactRefs, sortAddressTyp, true) }}
+                {{ hit_macros.render_contact_facts("SEARCH_DETAIL.CONTACT"|t, contactRefs, sortAddressTyp, true, addressUnlink) }}
                 </div>
             </div>
         </div>

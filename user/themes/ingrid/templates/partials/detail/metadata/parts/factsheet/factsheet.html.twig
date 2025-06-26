@@ -59,7 +59,7 @@
         {# Zugriffsbeschränkungen #}
             {% include 'partials/detail/metadata/parts/factsheet/factsheet_restriction.html.twig' ignore missing %}
         {# Kontakt #}
-            {{ hit_macros.render_contact_facts("", contactRefs|sortContacts(sortContactByType), sortAddressTyp) }}
+            {{ hit_macros.render_contact_facts("", contactRefs|sortContacts(sortContactByType), sortAddressTyp, false, addressUnlink) }}
         </div>
         {# Zeige in Karte #}
         {% include 'partials/detail/metadata/parts/factsheet/factsheet_preview.html.twig' %}

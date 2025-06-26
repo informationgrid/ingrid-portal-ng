@@ -291,7 +291,7 @@
     </div>
 {% endmacro %}
 
-{% macro render_contact_facts (title, items, sortAddressTyp, isAddress) %}
+{% macro render_contact_facts (title, items, sortAddressTyp, isAddress, addressUnlink) %}
     {% set break = false %}
     {% for item in items if not break %}
         {% set role = item.role %}
@@ -322,7 +322,12 @@
             {% for address in addresses %}
                 {% if address.type is not empty and address.type == type %}
                     {% if address.uuid %}
-                        <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
+                        {% if addressUnlink %}
+                            {{ address.title }}
+                            <br>
+                        {% else %}
+                            <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
+                        {% endif %}
                     {% else %}
                         {{ address.title }}
                         <br>
@@ -416,7 +421,7 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro render_contact (items, sortAddressTyp, hash) %}
+{% macro render_contact (items, sortAddressTyp, addressUnlink, hash) %}
     {% for item in items %}
         {% set num = loop.index - 1 %}
         {% set role = item.role %}
@@ -446,7 +451,12 @@
                                     {% for address in addresses %}
                                         {% if address.type is not empty and address.type == type %}
                                             {% if address.uuid %}
-                                                <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
+                                                {% if addressUnlink %}
+                                                    {{ address.title }}
+                                                    <br>
+                                                {% else %}
+                                                    <a class="link-line" href="?docuuid={{ address.uuid }}&isAddress=true" title="{{ address.title }}">{{ address.title }}</a>
+                                                {% endif %}
                                             {% else %}
                                                 {{ address.title }}
                                                 <br>
