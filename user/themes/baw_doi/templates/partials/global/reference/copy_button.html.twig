@@ -62,7 +62,7 @@
             copyBtn += '</span>';
             $(copyBtn).insertBefore(parent);
             {# Add info button to title #}
-            var infoBtn = $('<a href="#" class="js-popup copy" data-content="{{ "COMMON.LINK_COPY_HELP"|t }} style="float:right;"><span class="ic-ic-info"></span></a>');
+            var infoBtn = $('<a href="#" class="js-popup copy" data-content="{{ "COMMON.LINK_COPY_HELP"|t }}" style="float:right;"><span class="ic-ic-info"></span></a>');
             var header = parent.closest('.sub-section').children('h4');
             if (header) {
                 if (header.children('a.copy').length == 0) {
