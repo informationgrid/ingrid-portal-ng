@@ -223,7 +223,7 @@ COMMON:
     PLACE_SOUTH: Süd
     PLACE_WEST: West
     LINK_COPY: Link in die Zwischenablage kopieren
-    LINK_COPY_HELP: Um eine verlinkte Datei direkt im Dateiexplorer zu öffnen, können Sie über die Icons <img src=&quot;/decorations/layout/ingrid/images/template/windows.png&quot; width=&quot;25&quot;> (Windows) <img src=&quot;/decorations/layout/ingrid/images/template/linux.png&quot; width=&quot;25&quot;> (Linux) den Dateipfad zu der Datei im Langfristspeicher in die Zwischenablage kopieren. Um die Datei über den Browser herunterzuladen, klicken Sie einfach den Link.
+    LINK_COPY_HELP: Um eine verlinkte Datei direkt im Dateiexplorer zu öffnen, können Sie über die Icons <img src="%s" width="25"> (Windows) <img src="%s" width="25"> (Linux) den Dateipfad zu der Datei im Langfristspeicher in die Zwischenablage kopieren. Um die Datei über den Browser herunterzuladen, klicken Sie einfach den Link.
     LINK_COPY_SUCCESS: Link kopiert!
     TIME_TYPE: Aktualität der Daten
     TIME_FROM: ' '

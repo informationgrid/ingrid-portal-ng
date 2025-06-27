@@ -223,7 +223,7 @@ COMMON:
     PLACE_SOUTH: South
     PLACE_WEST: West
     LINK_COPY: Copy to clipboard
-    LINK_COPY_HELP: Use the <b>Copy to clipboard</b>-Button (<img src=&quot;/decorations/layout/ingrid/images/template/windows.png&quot; width=&quot;25&quot;> (Windows) <img src=&quot;/decorations/layout/ingrid/images/template/linux.png&quot; width=&quot;25&quot;> (Linux)) and open file with the file explorer.
+    LINK_COPY_HELP: Use the <b>Copy to clipboard</b>-Button (<img src="%s" width="25"> (Windows) <img src="%s" width="25"> (Linux)) and open file with the file explorer.
     LINK_COPY_SUCCESS: Copied!
     TIME_TYPE: Temporal reference of content
     TIME_FROM: ' '
