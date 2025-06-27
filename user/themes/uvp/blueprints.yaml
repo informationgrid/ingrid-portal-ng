@@ -56,14 +56,6 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/detail
 
-        ## Tab catalog
-        tab_catalog:
-          type: tab
-          title: THEME.ADMIN.CATALOG.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/catalog
-
         ## Tab map
         tab_map:
           type: tab
@@ -72,26 +64,10 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/map
 
-        ## Tab measure
-        tab_measure:
-          type: tab
-          title: THEME.ADMIN.MEASURE.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/measure
-
         ## Tab help
         tab_help:
           type: tab
           title: THEME.ADMIN.HELP.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/help
-
-        ## Tab datasource
-        tab_datasource:
-          type: tab
-          title: THEME.ADMIN.DATASOURCE.TITLE
           import@:
             type: default
             context: user://themes/ingrid/blueprints/help
@@ -103,14 +79,6 @@ form:
           import@:
             type: default
             context: user://themes/ingrid/blueprints/provider
-
-        ## Tab rss
-        tab_rss:
-          type: tab
-          title: THEME.ADMIN.RSS.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/rss
 
         ## Tab redirect
         tab_redirect:

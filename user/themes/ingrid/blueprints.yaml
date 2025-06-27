@@ -95,7 +95,7 @@ form:
           title: THEME.ADMIN.DATASOURCE.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/help
+            context: user://themes/ingrid/blueprints/datasource
 
         ## Tab provider
         tab_provider:
