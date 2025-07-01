@@ -2328,6 +2328,7 @@ hit_search:
           }
         },
         "last_five_years": {
+          "hidden_by" : "toggle_procedure",
           "query": {
             "filter": {
               "range": {
@@ -2339,6 +2340,7 @@ hit_search:
           }
         },
         "older_five_years": {
+          "hidden_by" : "toggle_procedure",
           "query": {
             "filter": {
               "range": {
