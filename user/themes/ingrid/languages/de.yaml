@@ -1,94 +1,94 @@
 PAGES:
     MENU: Menü
     HOME: Startseite
-    HOME_MENU_TITLE: Startseite von InGrid-Portal
+    HOME_MENU_TITLE: 'Startseite von %s'
     HOME_META_TITLE: Indexieren, Recherchieren, Visualisieren, Teilen
-    HOME_META_DESCRIPTION: InGrid-Portal bietet kostenlosen und werbefreien Zugang zu Informationen Institutionen und Organisationen.
-    HOME_META_KEYWORDS: InGrid-Portal, Portal, Informationen, Institutionen, Organisationen, Suche, Recherche, werbefrei, kostenlos, Datenkataloge, Datenbanken
+    HOME_META_DESCRIPTION: '%s bietet kostenlosen und werbefreien Zugang zu Informationen, Institutionen und Organisationen.'
+    HOME_META_KEYWORDS: '%s, Portal, Informationen, Institutionen, Organisationen, Suche, Recherche, werbefrei, kostenlos, Datenkataloge, Datenbanken'
     SEARCH: Suche
     SEARCH_MENU_TITLE: Freitextsuche nach Informationen
     SEARCH_META_TITLE: Freitextsuche nach Informationen
-    SEARCH_META_DESCRIPTION: Mit der Freitextsuche von InGrid-Portal können Sie nach Informationen, Rechtsvorschriften, Forschungsprojekten und Adressen in den Datenkatalogen suchen
-    SEARCH_META_KEYWORDS: InGrid-Portal, Informationen, Informationsangebot, Suche, Recherche, Freitextsuche, freie Suche,  Rechtsvorschriften, Forschung, Projekte, Adressen, Datenkataloge, Datenbanken
+    SEARCH_META_DESCRIPTION: 'Mit der Freitextsuche von %s können Sie nach Informationen, Rechtsvorschriften, Forschungsprojekten und Adressen in den Datenkatalogen suchen'
+    SEARCH_META_KEYWORDS: '%s, Informationen, Informationsangebot, Suche, Recherche, Freitextsuche, freie Suche,  Rechtsvorschriften, Forschung, Projekte, Adressen, Datenkataloge, Datenbanken'
     MAP: Karten
     MAP_MENU_TITLE: Interaktive thematische Karten
     MAP_META_TITLE: Verfügbare Kartendienste
-    MAP_META_DESCRIPTION: Mit dem InGrid-Portal Kartenviewer können Sie sich thematische Karten zu den Themen anzeigen lassen und Darstellungsparameter selbst festlegen.
-    MAP_META_KEYWORDS: InGrid-Portal, Kartenviewer, Karten, thematische Karten, Interaktion, interaktiv, Themen, Darstellung, Parameter, WMS, Web Map Service, Webdienste, OGC, Informationen, Online Karten, GIS, Web GIS, Metadaten
+    MAP_META_DESCRIPTION: 'Mit dem %s Kartenviewer können Sie sich thematische Karten zu den Themen anzeigen lassen und Darstellungsparameter selbst festlegen.'
+    MAP_META_KEYWORDS: '%s, Kartenviewer, Karten, thematische Karten, Interaktion, interaktiv, Themen, Darstellung, Parameter, WMS, Web Map Service, Webdienste, OGC, Informationen, Online Karten, GIS, Web GIS, Metadaten'
     MEASURE: Messwerte
     MEASURE_MENU_TITLE: Suche nach Messdaten
     MEASURE_META_TITLE: Suche nach Messwerten
     MEASURE_META_DESCRIPTION: In der Rubrik Messwerte können Sie nach Messdaten recherchieren. Das Angebot umfasst sowohl den Zugang zu Webseiten als auch zu Informationssystemen.
-    MEASURE_META_KEYWORDS: InGrid-Portal, Suche, Messwerte, Messdaten Daten, Recherche, Webseiten, Informationssysteme, Datenkataloge, Datenbanken
+    MEASURE_META_KEYWORDS: '%s, Suche, Messwerte, Messdaten Daten, Recherche, Webseiten, Informationssysteme, Datenkataloge, Datenbanken'
     CATALOG: Kataloge
     CATALOG_MENU_TITLE: Eingebundene Datenkataloge und Metadaten
     CATALOG_META_TITLE: Liste recherchierbarer Datenkataloge
     CATALOG_META_DESCRIPTION: Sie können sich die Liste aller eingebundenen Datenkataloge sowie zugehörige Metadaten anzeigen lassen.
-    CATALOG_META_KEYWORDS: InGrid-Portal, Liste, Metadaten, Recherche, Suche, Metainformationen, Daten, öffentliche Verwaltung, Datenobjekte, Informationen, Datenkataloge, Datenbanken
+    CATALOG_META_KEYWORDS: '%s, Liste, Metadaten, Recherche, Suche, Metainformationen, Daten, öffentliche Verwaltung, Datenobjekte, Informationen, Datenkataloge, Datenbanken'
     API: API
     API_MENU_TITLE: API Übersicht
     API_CONTENT: API Übersicht
     API_META_TITLE: API
     API_META_DESCRIPTION: API
     API_META_KEYWORDS: API
-    ABOUT: Über InGrid
-    ABOUT_MENU_TITLE: Hintergrundinformationen zu InGrid-Portal
+    ABOUT: 'Über %s'
+    ABOUT_MENU_TITLE: 'Hintergrundinformationen zu %s'
     ABOUT_META_TITLE: Fakten, Funktionen, Hintergründe
-    ABOUT_META_DESCRIPTION: Informationen zu InGrid-Portal wie z.B. Zielsetzung, rechtliche Grundlage, Anzahl der angeschlossenen Datenbanken oder angebotene Funktionen zur Recherche können Sie hier einsehen.
-    ABOUT_META_KEYWORDS: InGrid-Portal, Hintergrundinformationen, Hintergrund, Informationen, Fakten, Eckdaten, Ziele, Zielsetzung, rechtliche Grundlage, Umweltinformationsgesetz, UIG, Datenbanken, Funktionen, Suche, Recherche, EU-Richtlinie 2003/4/EG, EU-Richtlinie, EU
+    ABOUT_META_DESCRIPTION: 'Informationen zu %s wie z.B. Zielsetzung, rechtliche Grundlage, Anzahl der angeschlossenen Datenbanken oder angebotene Funktionen zur Recherche können Sie hier einsehen.'
+    ABOUT_META_KEYWORDS: '%s, Hintergrundinformationen, Hintergrund, Informationen, Fakten, Eckdaten, Ziele, Zielsetzung, rechtliche Grundlage, Umweltinformationsgesetz, UIG, Datenbanken, Funktionen, Suche, Recherche, EU-Richtlinie 2003/4/EG, EU-Richtlinie, EU'
     PROVIDER: Informationsanbieter
     PROVIDER_MENU_TITLE: Kooperationspartner und Informationsanbieter
     PROVIDER_CONTENT: Informationsanbieter
     PROVIDER_META_TITLE: Liste aller Informationsanbieter
-    PROVIDER_META_DESCRIPTION: Verwaltung und die relevante Informationen kostenlos und werbefrei über InGrid-Portal zugänglich machen, finden Sie hier aufgelistet.
-    PROVIDER_META_KEYWORDS: InGrid-Portal, Informationsanbieter, Verwaltungen, öffentliche Verwaltung, Liste, Informationen, kostenlos, werbefrei, Datenbanken
+    PROVIDER_META_DESCRIPTION: 'Verwaltung und die relevante Informationen kostenlos und werbefrei über %s zugänglich machen, finden Sie hier aufgelistet.'
+    PROVIDER_META_KEYWORDS: '%s, Informationsanbieter, Verwaltungen, öffentliche Verwaltung, Liste, Informationen, kostenlos, werbefrei, Datenbanken'
     DATASOURCE: Datenquellen
     DATASOURCE_MENU_TITLE: Angeschlossene Datenbanken
     DATASOURCE_META_TITLE: Liste aller angeschlossenen Datenbanken
-    DATASOURCE_META_DESCRIPTION: Verwaltung und die relevante Informationen kostenlos und werbefrei über InGrid-Portal zugänglich machen, finden Sie hier aufgelistet.
-    DATASOURCE_META_KEYWORDS: InGrid-Portal, Informationsanbieter, Verwaltung, Liste, Informationen, kostenlos, werbefrei, Datenbanken
+    DATASOURCE_META_DESCRIPTION: 'Verwaltung und die relevante Informationen kostenlos und werbefrei über %s zugänglich machen, finden Sie hier aufgelistet.'
+    DATASOURCE_META_KEYWORDS: '%s, Informationsanbieter, Verwaltung, Liste, Informationen, kostenlos, werbefrei, Datenbanken'
     HELP: Hilfe
     HELP_CONTENT: Hilfe
-    HELP_MENU_TITLE: Erläuterungen zur Nutzung von InGrid-Portal
+    HELP_MENU_TITLE: 'Erläuterungen zur Nutzung von %s'
     HELP_META_TITLE: Suchtipps und Erläuterungen zu den Hauptfunktionen
-    HELP_META_DESCRIPTION: Die Hilfethemen führen mit Kurzanleitungen an die Suche heran und erläutern die Hauptfunktionen von InGrid-Portal
-    HELP_META_KEYWORDS: InGrid-Portal, Hilfe, Suche, Suchmöglichkeiten, Erklärung, Beschreibungen, Suchtipps, Tipps, Funktionen, Hauptfunktionen, Hilfethemen, Kurzanleitung
+    HELP_META_DESCRIPTION: 'Die Hilfethemen führen mit Kurzanleitungen an die Suche heran und erläutern die Hauptfunktionen von %s'
+    HELP_META_KEYWORDS: '%s, Hilfe, Suche, Suchmöglichkeiten, Erklärung, Beschreibungen, Suchtipps, Tipps, Funktionen, Hauptfunktionen, Hilfethemen, Kurzanleitung'
     CONTACT: Kontakt
-    CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an InGrid-Portal
+    CONTACT_MENU_TITLE: 'Ihre Nachricht, Fragen oder Anregungen direkt an %s'
     CONTACT_META_TITLE: Kontaktieren Sie uns
-    CONTACT_META_DESCRIPTION: Kontaktieren Sie InGrid-Portal online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.
-    CONTACT_META_KEYWORDS: InGrid-Portal, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen
+    CONTACT_META_DESCRIPTION: 'Kontaktieren Sie %s online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.'
+    CONTACT_META_KEYWORDS: '%s, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen'
     SITEMAP: Sitemap
-    SITEMAP_MENU_TITLE: Alle Inhalte von InGrid-Portal auf einen Blick
+    SITEMAP_MENU_TITLE: 'Alle Inhalte von %s auf einen Blick'
     SITEMAP_CONTENT: Inhaltsübersicht
     SITEMAP_META_TITLE: Inhaltsverzeichnis
-    SITEMAP_META_DESCRIPTION: Das Inhaltsverzeichnis gibt Ihnen einen schnellen Überblick über alle Bereiche und Funktionen, die in InGrid-Portal verfügbar sind.
-    SITEMAP_META_KEYWORDS: InGrid-Portal, Inhaltsverzeichnis, Inhaltsübersicht, Sitemap, Servicebereich, Fußbereich, Hauptbereich
+    SITEMAP_META_DESCRIPTION: 'Das Inhaltsverzeichnis gibt Ihnen einen schnellen Überblick über alle Bereiche und Funktionen, die in %s verfügbar sind.'
+    SITEMAP_META_KEYWORDS: '%s, Inhaltsverzeichnis, Inhaltsübersicht, Sitemap, Servicebereich, Fußbereich, Hauptbereich'
     IMPRINT: Impressum
     IMPRINT_MENU_TITLE: Inhaltlich und technisch Verantwortliche, Nutzungsbedingungen, Haftungsausschluss
     IMPRINT_META_TITLE: Impressum
-    IMPRINT_META_DESCRIPTION: Im Impressum werden die inhaltlich und technisch Verantwortlichen von InGrid-Portal genannt sowie Nutzungsbedingungen und Angaben zum Haftungsausschluss kurz erläutert.
-    IMPRINT_META_KEYWORDS: InGrid-Portal, Impressum, Verantwortliche, Herausgeber, Gesamtredaktion, Redaktion, Realisierung, Haftungsausschluss, Disclaimer, Nutzungsbedingungen, Nutzung
+    IMPRINT_META_DESCRIPTION: 'Im Impressum werden die inhaltlich und technisch Verantwortlichen von %s genannt sowie Nutzungsbedingungen und Angaben zum Haftungsausschluss kurz erläutert.'
+    IMPRINT_META_KEYWORDS: '%s, Impressum, Verantwortliche, Herausgeber, Gesamtredaktion, Redaktion, Realisierung, Haftungsausschluss, Disclaimer, Nutzungsbedingungen, Nutzung'
     PRIVACY: Datenschutz
     PRIVACY_MENU_TITLE: Unsere Verpflichtung zum Umgang mit persönlichen Informationen
     PRIVACY_META_TITLE: Datenschutzbestimmungen
-    PRIVACY_META_DESCRIPTION: Hinweise zum Datenschutz und Informationen über die Speicherung von Daten beim Zugriff auf InGrid-Portal - Seiten.
-    PRIVACY_META_KEYWORDS: InGrid-Portal, Datenschutz, Bestimmungen, Datenschutzbestimmungen, Daten, persönliche Daten, Datenspeicherung
+    PRIVACY_META_DESCRIPTION: 'Hinweise zum Datenschutz und Informationen über die Speicherung von Daten beim Zugriff auf %s - Seiten.'
+    PRIVACY_META_KEYWORDS: '%s, Datenschutz, Bestimmungen, Datenschutzbestimmungen, Daten, persönliche Daten, Datenspeicherung'
     ACCESSIBILITY: Barrierefreiheit
     ACCESSIBILITY_MENU_TITLE: Barrierefreiheit
     ACCESSIBILITY_META_TITLE: Barrierefreiheit
     ACCESSIBILITY_META_DESCRIPTION: Hinweis zur Barrierefreiheit
-    ACCESSIBILITY_META_KEYWORDS: InGrid-Portal, Barrierefreiheit
+    ACCESSIBILITY_META_KEYWORDS: '%s, Barrierefreiheit'
     RSS: Aktuelles
     RSS_MENU_TITLE: RSS
     RSS_META_TITLE: Aktuelle Mitteilungen
-    RSS_META_DESCRIPTION: Pressemeldungen bekommen Sie auf InGrid-Portal tagesaktuell als Nachrichtenticker (RSS Dienst) präsentiert
-    RSS_META_KEYWORDS: InGrid-Portal, Nachrichtenticker, RSS, Informationen, Mitteilungen, Pressemitteilungen
+    RSS_META_DESCRIPTION: 'Pressemeldungen bekommen Sie auf %s tagesaktuell als Nachrichtenticker (RSS Dienst) präsentiert'
+    RSS_META_KEYWORDS: '%s, Nachrichtenticker, RSS, Informationen, Mitteilungen, Pressemitteilungen'
     DETAIL: Metadaten
     DETAIL_MENU_TITLE: Metadaten
     DETAIL_META_TITLE: Detailansicht des Ergebnisses
     DETAIL_META_DESCRIPTION: Die Trefferliste enthält alle Ergebnisse, die mit Ihrer Suchanfrage übereinstimmen. Dazu zählen Verweise auf Webseiten, Messdaten, Karten oder Metadaten.
-    DETAIL_META_KEYWORDS: InGrid-Portal, Trefferanzeige, Ergebnis, Suchergebnis, Resultate
+    DETAIL_META_KEYWORDS: '%s, Trefferanzeige, Ergebnis, Suchergebnis, Resultate'
     EASYLANGUAGE_META_TITLE: Leichte Sprache
     EASYLANGUAGE_META_DESCRIPTION: Hinweise zur leichten Sprache
     EASYLANGUAGE_META_KEYWORDS: Leichte Sprache
@@ -345,7 +345,6 @@ SEARCH_DETAIL:
     TIME_MEASUREMENT: Zeitliche Genauigkeit
     IPLUG_NAME_POSTFIX_UDK_ADDRESS: (Adressen)
     IPLUG_NAME_POSTFIX_UDK_OBJECT: (Objekte)
-    BACK: Zurück zu InGrid-Portal
     BACK_TO_RESULTS: Alle Suchergebnisse
     CONTACT: Kontakt
     USAGE: Nutzung
@@ -815,7 +814,6 @@ SEARCH_DETAIL:
     DATA_QUALITY_TABLE126_TITLE: Genauigkeit nicht-quantitativer Attribute
     DATA_QUALITY_TABLE127_TITLE: Genauigkeit quantitativer Attribute
     DATA_QUALITY_TABLE128_TITLE: Relative Positionsgenauigkeit
-    PORTAL_INSTITUTION: InGrid-Portal
     CONSTRAINTS_USE_LINK: '%s<a class="icon external-link" target="_blank" href="%s"><span class="ic-ic-external"></span><span class= "text">%s</span></a>%s'
     CONSTRAINTS_USE_LINK_NONAME: '%s<a class="icon external-link" target="_blank" href="%s"><span class="ic-ic-external"></span><span class="text">%s</span></a>'
     DOI: Digital Object Identifier (DOI)
@@ -905,10 +903,10 @@ CONTACT:
     ERROR_EMAILNOTVALID: Die eingegebene E-Mail-Adresse ist nicht gültig
     ERROR_UPLOAD: Der von Ihnen ausgewählten Anhang überschreitet die maximale Größe
     ERROR_NOSUBJECT: Bitte trage Sie Ihr Anliegen ein.
-    REPORT_EMAIL_SUBJECT: Nachricht von InGrid-Portal-NG
+    REPORT_EMAIL_SUBJECT: Nachricht von InGrid
     REPORT_EMAIL_TECHNICAL: Technische Frage
     SUCCESS_TITLE: Vielen Dank für Ihre Nachricht!
-    SUCCESS: Ihre Anfrage wurde erfolgreich an die InGrid-Portal-Redaktion versendet.
+    SUCCESS: Ihre Anfrage wurde erfolgreich an die InGrid-Redaktion versendet.
     SUCCESS_LINK: Zurück zur Kontakt-Seite
     INTRO_PRAEEMAIL_TOOLTIP: Ihre Nachricht, Fragen oder Anregungen direkt an wemove digital solutions GmbH
     DATA_SUMMARY: 'Hier die Zusammenfassung dessen, was du geschrieben hast:'

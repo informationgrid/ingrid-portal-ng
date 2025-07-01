@@ -1,10 +1,10 @@
 {% set copyright = theme_var('footer.copyright.text') %}
 
 {% if page.header.meta.description %}
-    <meta name="description" content="{{ page.header.meta.description|t|raw }}" />
+    <meta name="description" content="{{ page.header.meta.description|t(header_title_extend)|raw }}" />
 {% endif %}
 {% if page.header.meta.keywords %}
-    <meta name="keywords" lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}" content="{{ page.header.meta.keywords|t|raw }}" />
+    <meta name="keywords" lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}" content="{{ page.header.meta.keywords|t(header_title_extend)|raw }}" />
 {% endif %}
 <meta name="author" content="{{ copyright|raw }}" />
 <meta name="copyright" content="{{ copyright|raw }}" />

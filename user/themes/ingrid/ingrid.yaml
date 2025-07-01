@@ -1,6 +1,6 @@
 enabled: true
 header:
-  title_extend: 'InGrid Portal'
+  title_extend: 'InGrid-Portal'
   logo_enabled: true
   logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
   menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'

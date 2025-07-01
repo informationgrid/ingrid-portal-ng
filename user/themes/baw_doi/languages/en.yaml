@@ -1,21 +1,19 @@
 PAGES:
-    HOME_MENU_TITLE: 'Startseite zu %s'
+    HOME_MENU_TITLE: Home
     HOME_META_TITLE: Bundesanstalt für Wasserbau
-    ABOUT: Über BAW-Datenrepository
-    HELP_CONTENT: Hilfe zu BAW
-    SITEMAP: Inhalt
+    ABOUT: About BAW-Datenrepository
+    HELP_CONTENT: BAW Help Center
 
 CONTACT:
-    SUCCESS: Ihre Anfrage wurde erfolgreich an die BAW-Redaktion versendet.
-    REPORT_EMAIL_SUBJECT: Kontaktformular BAW-Datenrepository
+    REPORT_EMAIL_SUBJECT: Message from %s-Datenrepository
 
 SEARCH:
     PORTLET_TITLE_1: BAW-DATENREPOSITORY
-    PORTLET_TITLE_2: KOMPETENZ FÜR DIE WASSERSTRASSEN
+    PORTLET_TITLE_2: COMPETENCE FOR WATERWAYS
     PORTLET_TITLE_3: ' '
 
 SEARCH_RESULT:
-    INFO_LINKS: Links
+    INFO_LINKS: Verweise und Downloads
 
 SEARCH_DETAIL:
     MEASUREMENT:
