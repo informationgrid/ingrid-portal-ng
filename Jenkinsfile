@@ -70,13 +70,15 @@ pipeline {
                     sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
                     sh "sed -i 's/^Release:.*/Release: ${env.TAG_NAME ? '1' : 'dev'}/' rpm/ingrid-portal.spec"
 
-                    def containerId = sh(script: "docker run -d -e RPM_SIGN_PASSPHRASE=\$RPM_SIGN_PASSPHRASE --entrypoint=\"\" docker-registry.wemove.com/ingrid-rpmbuilder-jdk21-improved tail -f /dev/null", returnStdout: true).trim()
+                    def containerId = sh(script: "docker run -d -e RPM_SIGN_PASSPHRASE=\$RPM_SIGN_PASSPHRASE --entrypoint=\"\" docker-registry.wemove.com/ingrid-rpmbuilder-php8 tail -f /dev/null", returnStdout: true).trim()
 
                     try {
 
                         sh """
                             docker cp user ${containerId}:/src_user &&
                             docker cp rpm/ingrid-portal.spec ${containerId}:/root/rpmbuild/SPECS/ingrid-portal.spec &&
+                            docker cp \$RPM_PUBLIC_KEY ${containerId}:/public.key &&
+                            docker cp \$RPM_PRIVATE_KEY ${containerId}:/private.key &&
                             docker exec ${containerId} bash -c "
                                 rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
                                 gpg --batch --import public.key &&
@@ -141,8 +143,10 @@ def determineVersion() {
 
 def shouldBuildDevOrRelease() {
     echo "buildingTag(): ${buildingTag()}"
+    echo "TAG_NAME: ${env.TAG_NAME}"
     echo "currentBuild.number: ${currentBuild.number}"
 
     // If no tag is being built OR it is the first build of a tag
-    return !buildingTag() || (buildingTag() && currentBuild.number == 1)
+    boolean isTag = env.TAG_NAME != null && env.TAG_NAME.trim() != ''
+    return !isTag || (isTag && currentBuild.number == 1)
 }
