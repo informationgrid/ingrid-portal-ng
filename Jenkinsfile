@@ -87,13 +87,13 @@ pipeline {
                                 "
                         """
 
-                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch ./build/rpms"
+                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch ./rpms"
 
                     } finally {
                         sh "docker rm -f ${containerId}"
                     }
 
-                    archiveArtifacts artifacts: 'build/rpms/ingrid-portal-ng-*.rpm', fingerprint: true
+                    archiveArtifacts artifacts: 'rpms/ingrid-portal-ng-*.rpm', fingerprint: true
                 }
             }
         }
@@ -105,7 +105,7 @@ pipeline {
                     def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
                     withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh '''
-                            curl -f --user $USERNAME:$PASSWORD --upload-file build/rpms/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                            curl -f --user $USERNAME:$PASSWORD --upload-file rpms/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                         '''
                     }
                 }
