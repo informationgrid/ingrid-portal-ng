@@ -24,11 +24,10 @@ pipeline {
                 echo 'Starting to build docker image'
 
                 script {
-
-                    if (BRANCH_NAME == 'develop') {
-                        env.VERSION = 'latest'
-                    } else if () {
+                    if (env.TAG_NAME) {
                         env.VERSION = env.TAG_NAME
+                    } else if (BRANCH_NAME == 'develop') {
+                        env.VERSION = 'latest'
                     } else {
                         env.VERSION = BRANCH_NAME.replaceAll('/', '-')
                     }
@@ -100,11 +99,13 @@ pipeline {
         stage('Deploy RPM') {
             when { expression { return shouldBuildDevOrRelease() } }
             steps {
-                def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
-                withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh '''
-                        curl -f --user $USERNAME:$PASSWORD --upload-file build/rpms/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
-                    '''
+                script {
+                    def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
+                    withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh '''
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/rpms/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                        '''
+                    }
                 }
             }
         }
@@ -139,6 +140,9 @@ def determineVersion() {
 }
 
 def shouldBuildDevOrRelease() {
+    echo "buildingTag(): ${buildingTag()}"
+    echo "currentBuild.number: ${currentBuild.number}"
+
     // If no tag is being built OR it is the first build of a tag
     return !buildingTag() || (buildingTag() && currentBuild.number == 1)
 }
