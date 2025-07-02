@@ -1,14 +1,25 @@
 pipeline {
     agent any
+    triggers{ cron( getCronParams() ) }
+
+    environment {
+        RPM_PUBLIC_KEY  = credentials('ingrid-rpm-public')
+        RPM_PRIVATE_KEY = credentials('ingrid-rpm-private')
+        RPM_SIGN_PASSPHRASE = credentials('ingrid-rpm-passphrase')
+    }
+
     stages {
         stage('Update submodule') {
+            when { expression { return shouldBuildDevOrRelease() } }
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: 'ae3a7670-c4c8-413c-9df2-45373f1723a2', gitToolName: 'git')]) {
                     sh 'git submodule update --init --remote --recursive'
                 }
             }
         }
+
         stage('Build image') {
+            when { expression { return shouldBuildDevOrRelease() } }
             steps {
                 echo 'Starting to build docker image'
 
@@ -16,6 +27,8 @@ pipeline {
 
                     if (BRANCH_NAME == 'develop') {
                         env.VERSION = 'latest'
+                    } else if () {
+                        env.VERSION = env.TAG_NAME
                     } else {
                         env.VERSION = BRANCH_NAME.replaceAll('/', '-')
                     }
@@ -29,83 +42,103 @@ pipeline {
                 }
             }
         }
+
+        stage ('Base-Image Update') {
+            when {
+                allOf {
+                    buildingTag()
+                    expression { return currentBuild.number > 1 }
+                }
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://docker-registry.wemove.com', 'docker-registry-wemove') {
+                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal-ng:${env.TAG_NAME}", "--pull .")
+
+                        /* Push the container to the custom Registry */
+                        customImage.push()
+                    }
+                }
+            }
+        }
+
         stage('Build RPM') {
+            when { expression { return shouldBuildDevOrRelease() } }
             steps {
                 echo 'Starting to build RPM package'
 
                 script {
-                    // Set RPM version based on git information
-                    def gitCommitShort = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-                    def gitTimestamp = sh(script: 'git log -1 --format=%cd --date=format:%Y%m%d%H%M%S', returnStdout: true).trim()
+                    sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
+                    sh "sed -i 's/^Release:.*/Release: ${env.TAG_NAME ? '1' : 'dev'}/' rpm/ingrid-portal.spec"
 
-                    // Use the same version logic as for Docker image but add git information for RPM
-                    if (BRANCH_NAME == 'develop') {
-                        env.RPM_VERSION = "1.0.0"
-                        env.RPM_RELEASE = "dev.${gitTimestamp}.${gitCommitShort}"
-                    } else if (BRANCH_NAME ==~ /^release\/.*/) {
-                        // Extract version from release branch (e.g., release/1.2.3 -> 1.2.3)
-                        env.RPM_VERSION = BRANCH_NAME.replaceAll('release/', '')
-                        env.RPM_RELEASE = "1"
-                    } else {
-                        env.RPM_VERSION = "1.0.0"
-                        env.RPM_RELEASE = "${BRANCH_NAME.replaceAll('/', '-')}.${gitTimestamp}.${gitCommitShort}"
-                    }
-
-                    // Process the spec file template
-                    def specTemplate = readFile 'ingrid-portal-ng.spec.template'
-                    def buildDate = sh(script: 'date "+%a %b %d %Y"', returnStdout: true).trim()
-
-                    // Replace placeholders with actual values
-//                    def processedSpec = specTemplate
-//                        .replaceAll('@RPM_VERSION@', env.RPM_VERSION)
-//                        .replaceAll('@RPM_RELEASE@', env.RPM_RELEASE)
-//                        .replaceAll('@BUILD_DATE@', buildDate)
-//
-//                    // Write the processed spec file
-//                    writeFile file: 'ingrid-portal-ng.spec', text: processedSpec
-
-                    // Build RPM using rpmbuild in a Docker container
-                    // Verwenden Sie docker cp für die Dateiübertragung anstelle der direkten Volume-Zuweisung.
-                    // Dies vermeidet Probleme mit Pfaden in Docker-in-Docker-Setups.
-                    def containerId = sh(script: "docker create --entrypoint=\"\" docker-registry.wemove.com/ingrid-rpmbuilder-php8 tail -f /dev/null", returnStdout: true).trim()
+                    def containerId = sh(script: "docker run -d -e RPM_SIGN_PASSPHRASE=\$RPM_SIGN_PASSPHRASE --entrypoint=\"\" docker-registry.wemove.com/ingrid-rpmbuilder-jdk21-improved tail -f /dev/null", returnStdout: true).trim()
 
                     try {
-                        // Kopieren Sie das gesamte Projektverzeichnis in das /src-Verzeichnis des Containers.
-                        // Der '.' am Ende des Quellpfads stellt sicher, dass der Inhalt des aktuellen Verzeichnisses kopiert wird.
-                        sh "docker cp user ${containerId}:/src_user"
-                        // Kopieren Sie die generierte Spec-Datei an den erwarteten Ort im Container.
-                        sh "docker cp ingrid-portal-ng.spec ${containerId}:/root/rpmbuild/SPECS/ingrid-portal-ng.spec"
 
-                        // Starten Sie den Container
-                        sh "docker start ${containerId}"
-
-                        // Starten Sie den Container und führen Sie rpmbuild aus.
                         sh """
-                            docker exec ${containerId} bash -c "rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec"
+                            docker cp user ${containerId}:/src_user &&
+                            docker cp rpm/ingrid-portal.spec ${containerId}:/root/rpmbuild/SPECS/ingrid-portal.spec &&
+                            docker exec ${containerId} bash -c "
+                                rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
+                                gpg --batch --import public.key &&
+                                gpg --batch --import private.key &&
+                                expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm
+                                "
                         """
-                        // Kopieren Sie die gebauten RPMs aus dem Container zurück in den aktuellen Arbeitsbereich.
-                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch/ingrid-portal-ng-0.1.0-dev.noarch.rpm ."
+
+                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch ./build/rpms"
 
                     } finally {
-                        // Bereinigen Sie den Container, auch wenn der Build fehlschlägt.
                         sh "docker rm -f ${containerId}"
                     }
 
-                    // Archive the RPM
-                    archiveArtifacts artifacts: 'ingrid-portal-ng-*.rpm', fingerprint: true
-
-                    // Clean up
-                    // sh 'rm -f ingrid-portal-ng.spec'
+                    archiveArtifacts artifacts: 'build/rpms/ingrid-portal-ng-*.rpm', fingerprint: true
                 }
             }
         }
 
         stage('Deploy RPM') {
+            when { expression { return shouldBuildDevOrRelease() } }
             steps {
+                def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
                 withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh 'curl --user $USERNAME:$PASSWORD --upload-file ./*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid/'
+                    sh '''
+                        curl -f --user $USERNAME:$PASSWORD --upload-file build/rpms/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                    '''
                 }
             }
         }
     }
+}
+
+def getCronParams() {
+    String tagTimestamp = env.TAG_TIMESTAMP
+    long diffInDays = 0
+    if (tagTimestamp != null) {
+        long diff = "${currentBuild.startTimeInMillis}".toLong() - "${tagTimestamp}".toLong()
+        diffInDays = diff / (1000 * 60 * 60 * 24)
+        echo "Days since release: ${diffInDays}"
+    }
+
+    def versionMatcher = /\d\.\d\.\d(.\d)?/
+    if( env.TAG_NAME ==~ versionMatcher && diffInDays < 180) {
+        // every Sunday between midnight and 6am
+        return 'H H(0-6) * * 0'
+    }
+    else {
+        return ''
+    }
+}
+
+def determineVersion() {
+    if (env.TAG_NAME) {
+        return env.TAG_NAME
+    } else {
+        return env.BRANCH_NAME.replaceAll('/', '_')
+    }
+}
+
+def shouldBuildDevOrRelease() {
+    // If no tag is being built OR it is the first build of a tag
+    return !buildingTag() || (buildingTag() && currentBuild.number == 1)
 }

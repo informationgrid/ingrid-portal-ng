@@ -1,7 +1,7 @@
 %undefine __brp_mangle_shebangs
 
 Name:           ingrid-portal-ng
-Version:        0.1.0
+Version:        0.0.0
 Release:        dev
 Summary:        InGrid Portal Next Generation
 Group:          Applications/Internet
