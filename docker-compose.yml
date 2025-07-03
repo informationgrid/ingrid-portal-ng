@@ -25,10 +25,10 @@ services:
   rpm:
     image: docker-registry.wemove.com/ingrid-rpmbuilder-php8
     volumes:
-      - ./ingrid-portal-ng.spec:/root/rpmbuild/SPECS/ingrid-portal-ng.spec
+      - ./ingrid-portal.spec:/root/rpmbuild/SPECS/ingrid-portal.spec
       - ./output-rpm:/root/rpmbuild/RPMS
       - ./user:/src_user
-    command: rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal-ng.spec
+    command: rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec
 
   linux:
     image: ubuntu
@@ -45,6 +45,6 @@ services:
       cp /install-rpm/000-default.conf /etc/apache2/sites-enabled/ &&
       service apache2 start && 
       service php8.3-fpm start &&
-      rpm -i install-rpm/noarch/ingrid-portal-ng-0.1.0-dev.noarch.rpm &&
-      cp /install-rpm/admin.yaml /var/www/ingrid-portal-ng/user/accounts/ &&
+      rpm -i install-rpm/noarch/ingrid-portal-0.1.0-dev.noarch.rpm &&
+      cp /install-rpm/admin.yaml /var/www/ingrid-portal/user/accounts/ &&
       tail -f /dev/null"

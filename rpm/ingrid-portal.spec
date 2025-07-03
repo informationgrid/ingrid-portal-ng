@@ -1,6 +1,6 @@
 %undefine __brp_mangle_shebangs
 
-Name:           ingrid-portal-ng
+Name:           ingrid-portal
 Version:        0.0.0
 Release:        dev
 Summary:        InGrid Portal Next Generation
@@ -9,8 +9,8 @@ License:        Proprietary
 URL:            https://www.wemove.com/
 BuildArch:      noarch
 AutoReqProv: no
-%define system_yaml %{buildroot}/var/www/ingrid-portal-ng/user/config/system.yaml
-%define context_path ingrid-portal-ng
+%define system_yaml %{buildroot}/var/www/ingrid-portal/user/config/system.yaml
+%define context_path ingrid-portal
 
 %description
 InGrid Portal Next Generation
