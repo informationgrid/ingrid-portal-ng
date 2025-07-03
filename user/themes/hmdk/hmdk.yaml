@@ -464,6 +464,7 @@ hit_detail:
     exclude:
       - content
   query_string_operator: AND
+  display_use_constraints_json: true
 map:
   url:
   leaflet:

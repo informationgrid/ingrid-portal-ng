@@ -814,7 +814,6 @@ SEARCH_DETAIL:
     DATA_QUALITY_TABLE126_TITLE: Non Quantitative Attribute Accuracy
     DATA_QUALITY_TABLE127_TITLE: Quantitative Attribute Accuracy
     DATA_QUALITY_TABLE128_TITLE: Relative Internal Positional Accuracy
-    PORTAL_INSTITUTION: '%s'
     CONSTRAINTS_USE_LINK: '%s<a class="icon external-link" target="_blank" href="%s"><span class="ic-ic-external"></span><span class="text">%s</span></a>%s'
     CONSTRAINTS_USE_LINK_NONAME: '%s<a class="icon external-link" target="_blank" href="%s"><span class="ic-ic-external"></span><span class="text">%s</span></a>'
     DOI: Digital Object Identifier (DOI)
@@ -1240,6 +1239,9 @@ THEME:
             QUERY_STRING_OPERATOR:
                 LABEL: Query String Operator
                 HELP: Query String Operator
+            DISPLAY_USE_CONSTRAINTS_JSON:
+                LABEL: Nutzungsbedingungen im JSON-Format anzeigen
+                HELP: Nutzungsbedingungen im JSON-Format können angezeigt bzw. ausgeblendet werden.
             REQUESTED_FIELDS:
                 LABEL: Felder anfragen
                 HELP: Felder anfragen
