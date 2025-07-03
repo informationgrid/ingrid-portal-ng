@@ -67,6 +67,9 @@ pipeline {
                 echo 'Starting to build RPM package'
 
                 script {
+                    // remove build dir containing previous RPM
+                    sh 'if [ -d build ]; then rm -rf build; fi'
+
                     sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
                     sh "sed -i 's/^Release:.*/Release: ${env.TAG_NAME ? '1' : 'dev'}/' rpm/ingrid-portal.spec"
 
@@ -87,13 +90,13 @@ pipeline {
                                 "
                         """
 
-                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch ./rpms"
+                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch ./build"
 
                     } finally {
                         sh "docker rm -f ${containerId}"
                     }
 
-                    archiveArtifacts artifacts: 'rpms/ingrid-portal-*.rpm', fingerprint: true
+                    archiveArtifacts artifacts: 'build/ingrid-portal-*.rpm', fingerprint: true
                 }
             }
         }
@@ -105,7 +108,7 @@ pipeline {
                     def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
                     withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh '''
-                            curl -f --user $USERNAME:$PASSWORD --upload-file rpms/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                         '''
                     }
                 }
@@ -142,10 +145,6 @@ def determineVersion() {
 }
 
 def shouldBuildDevOrRelease() {
-    echo "buildingTag(): ${buildingTag()}"
-    echo "TAG_NAME: ${env.TAG_NAME}"
-    echo "currentBuild.number: ${currentBuild.number}"
-
     // If no tag is being built OR it is the first build of a tag
     boolean isTag = env.TAG_NAME != null && env.TAG_NAME.trim() != ''
     return !isTag || (isTag && currentBuild.number == 1)
