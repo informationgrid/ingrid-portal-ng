@@ -21,3 +21,30 @@ services:
       - ./logs:/var/www/html/logs
       - ./develop/config:/var/www/html/user/localhost/config
       - ./system:/var/www/html/system
+
+  rpm:
+    image: docker-registry.wemove.com/ingrid-rpmbuilder-php8
+    volumes:
+      - ./ingrid-portal.spec:/root/rpmbuild/SPECS/ingrid-portal.spec
+      - ./output-rpm:/root/rpmbuild/RPMS
+      - ./user:/src_user
+    command: rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec
+
+  linux:
+    image: ubuntu
+    volumes:
+      - ./output-rpm:/install-rpm
+      - ./develop/proxy-rpm.conf:/install-rpm/000-default.conf
+      - ./develop/admin.yaml:/install-rpm/admin.yaml
+    ports:
+      - "8888:80"
+    command: >
+      bash -c "apt update && apt install apache2 rpm vim-tiny php libapache2-mod-php php8.3-fpm php-cli php-curl php-json php-gd php-mbstring php-xml php-dom php-zip -y &&
+      a2enmod proxy proxy_fcgi rewrite &&
+      a2enconf php8.3-fpm &&
+      cp /install-rpm/000-default.conf /etc/apache2/sites-enabled/ &&
+      service apache2 start && 
+      service php8.3-fpm start &&
+      rpm -i install-rpm/noarch/ingrid-portal-0.1.0-dev.noarch.rpm &&
+      cp /install-rpm/admin.yaml /var/www/ingrid-portal/user/accounts/ &&
+      tail -f /dev/null"
