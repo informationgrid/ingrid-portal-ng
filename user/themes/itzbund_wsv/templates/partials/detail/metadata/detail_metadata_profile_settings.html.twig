@@ -1,0 +1,11 @@
+{# Fachinformationen #}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "hierarchyLevel", hit.hierarchyLevel) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "hierarchyLevelNames", hit.hierarchyLevelNames) %}
+
+{# Metadaten Informationen #}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "metadataStandardName", hit.metadataStandardName) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "metadataStandardVersion", hit.metadataStandardVersion) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "metadataCharacterSet", hit.metadataCharacterSet) %}
+{% set metaInfoRefs = removeKey(metaInfoRefs, "hierarchyLevel") %}
+
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

@@ -1,0 +1,547 @@
+enabled: true
+header:
+  title_extend: 'BASt (Intern)'
+  logo_enabled: true
+  logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
+  menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
+  menu_dropdown: true
+  shrink: true
+  logo:
+    user/themes/bast/images/logo/logo_de.png:
+      name: logo_de.png
+      full_path: logo_de.png
+      type: image/png
+      size: 55181
+      path: user/themes/bast/images/logo/logo_de.png
+  logo_en:
+    user/themes/bast/images/logo/logo_en.png:
+      name: logo_en.png
+      full_path: logo_en.png
+      type: image/png
+      size: 55181
+      path: user/themes/bast/images/logo/logo_en.png
+
+footer:
+  logo_enabled: false
+  copyright:
+    text: 'Bundesanstalt für Straßen- und Verkehrswesen'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-7'
+    show_year: true
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-17'
+  hr_line: true
+  logo: {  }
+  share:
+    enabled: false
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: false
+  up:
+    enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
+menu:
+  main:
+    -
+      path: /search
+      icon: ic-ic-lupe
+    -
+      path: /map
+      icon: ic-ic-karten
+    -
+      path: /catalog
+      icon: ic-ic-datenkataloge
+  site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /map
+      highlighted: true
+    -
+      path: /catalog
+      highlighted: true
+    -
+      path: /about
+      highlighted: true
+    -
+      path: /help
+      highlighted: false
+      target_blank: true
+    -
+      path: /sitemap
+      highlighted: false
+    -
+      path: /imprint
+      highlighted: false
+      target_blank: true
+    -
+      path: /privacy
+      highlighted: false
+      target_blank: true
+    -
+      path: /accessibility
+      highlighted: false
+      target_blank: true
+  footer:
+    -
+      path: /help
+      target_blank: true
+    -
+      path: /sitemap
+    -
+      path: /imprint
+      target_blank: true
+    -
+      path: /privacy
+      target_blank: true
+    -
+      path: /accessibility
+      target_blank: true
+home:
+  sort_modules:
+    -
+      path: /home/_search
+      hidden: false
+    -
+      path: /home/_warning
+      hidden: true
+    -
+      path: /home/_categories
+      hidden: false
+    -
+      path: /home/_news
+      hidden: true
+    -
+      path: /home/_inform
+      hidden: true
+  rss:
+    feeds_limit: 6
+  categories:
+    rss:
+    facet_config: [
+      {
+        "id": "type",
+        "facets": {
+          "metadata": {
+            "display_on_empty": true,
+            "icon": "ic-metadata",
+            "query": {
+              "filter": {
+                "term": {
+                  "datatype": "metadata"
+                }
+              }
+            }
+          },
+          "inspire": {
+            "display_on_empty": true,
+            "icon": "ic-inspire",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspire"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspireidentifiziert"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+          },
+          "opendata": {
+            "display_on_empty": true,
+            "icon": "ic-opendata",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendata"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendataident"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "maps": {
+            "display_on_empty": true,
+            "icon": "ic-map",
+            "query": {
+              "filter": {
+                "wildcard": {
+                  "capabilities_url": "http*"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+    add_to_search:
+      - "-datatype:address"
+      - "-isfolder:true"
+  hits:
+    add_to_search:
+      - "-datatype:address"
+      - "-isfolder:true"
+    hits_num: 0
+    sort:
+      sortByDate: true
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "facets": {
+        "metadata": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
+            }
+          }
+        },
+        "inspire": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspire"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspireidentifiziert"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+        },
+        "opendata": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "hvd": {
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": "true"
+              }
+            }
+          }
+        },
+        "maps": {
+          "query": {
+            "filter": {
+              "wildcard": {
+                "capabilities_url": "http*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "metadata_group",
+      "facets": {
+        "geoset": {
+          "codelist": "8000",
+          "codelist_entry_id": "1",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "1"
+              }
+            }
+          }
+        },
+        "geoservice": {
+          "codelist": "8000",
+          "codelist_entry_id": "3",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "3"
+              }
+            }
+          }
+        },
+        "database": {
+          "codelist": "8000",
+          "codelist_entry_id": "5",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "5"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "distributor",
+      "label": "Fachliche Ansprechstelle",
+      "query": {
+        "terms": {
+          "field": "distributor",
+          "min_doc_count": 0
+        }
+      },
+      "search": "distributor:%d"
+    },
+    {
+      "id": "modtime",
+      "facets": {
+        "last_month": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1M"
+                }
+              }
+            }
+          }
+        },
+        "last_three_month": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-3M"
+                }
+              }
+            }
+          }
+        },
+        "last_year": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-1y"
+                }
+              }
+            }
+          }
+        },
+        "last_five_years": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "gte": "now-5y"
+                }
+              }
+            }
+          }
+        },
+        "older_five_years": {
+          "query": {
+            "filter": {
+              "range": {
+                "modified": {
+                  "lte": "now-5y"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "timeref",
+      "filter": "{\"range\": {\"t01_object.time_from\": {\"gte\": \"%s0*\", \"lte\": \"%s9*\"}}}"
+    }
+  ]
+  add_to_search:
+    - "-datatype:address"
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: ' '
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: false
+  sns:
+    similar_terms:
+      enabled: true
+provider:
+  query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+hit_detail:
+  summary_replace_newline: ' '
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: true
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  address_unlink: false
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
+  display_use_constraints_json: true
+map:
+  url:
+  leaflet:
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: null }
+        wms: { url: 'https://sgx.geodatenzentrum.de/wms_topplus_open?VERSION=1.3.0&SERVICE=WMS&REQUEST=GetCapabilities', name: 'web' }
+        attribution: '&copy; <a target="_blank" href="https://www.bkg.bund.de/">Bundesamt für Kartographie und Geodäsie</a>'
+        opacity: 1
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+    enable:
+      wkt: true
+      geocoder: false
+      spinloader: false
+      clustering: false
+    geocoder:
+      enable: false
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
+    position: 46.58,5.22,55.40,15.68
+measure:
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
+redirect:
+  pages_to_404:
+    - /measure
+    - /datasource
+    - /provider
+    - /rss
+    - /contact
+  pages_to_redirect:
+catalog:
+  open_nodes_level: 3
+  display_partner: false
+  sort_by_name: true
+  open_on_new_tab: true
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+streams:
+  schemes:
+    theme:
+      type: ReadOnlyStream
+      prefixes:
+        '':
+          - user/themes/bast_intern
+          - user/themes/bast
+          - user/themes/ingrid

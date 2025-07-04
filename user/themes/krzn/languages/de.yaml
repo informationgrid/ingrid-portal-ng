@@ -1,0 +1,20 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite zu Geodatenkatalog Niederrhein
+  ABOUT: Über Geodatenkatalog Niederrhein
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu Geodatenkatalog Niederrhein
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von Geodatenkatalog Niederrhein
+
+SEARCH:
+  PORTLET_TITLE_1: ' '
+  PORTLET_TITLE_2: Metadaten
+  PORTLET_TITLE_3: 'zu Geodaten, Webdiensten und Geofachportalen<br>der Städte Bottrop und Krefeld sowie<br>der Kreise Kleve, Viersen und Wesel'
+
+SEARCH_DETAIL:
+  T01_OBJECT_POLYGON_WKT: Begrenzungspolygon im WKT Format (in WGS84)
+  T011_OBJ_SERV_ENVIRONMENT: Produktionsumgebung
+  TECHNICAL_INFORMATION_3: Informationen zum Dienst
+  TECHNICAL_INFORMATION_6: Informationen zur Anwendung
+
+FACETS:
+  FACET_LABEL:
+    BBOX: In Kartenausschnitt suchen

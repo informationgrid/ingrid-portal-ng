@@ -1,0 +1,102 @@
+{# clipboard #}
+{% do assets.addJs('theme://js/clipboard/clipboard.min.js') %}
+
+<script>
+    var all = $('.list-item a.icon').map(function() {
+        var os = getOS();
+        var addButton = false;
+        var hrefWin = '';
+        var hrefLin = '';
+        var domainWin = '';
+        var domainLin = '';
+        var clipboardTextWin = '';
+        var clipboardTextLin = '';
+        var replaceString = '';
+
+        if (this.href.indexOf('https://dl.datenfinder.baw.de/KA/') > -1
+            || this.href.indexOf('https://dl.datenfinder.baw.de/LFS/KA/') > -1) {
+            {# windows #}
+            domainWin = '\\\\lfs-ka.all.baw.de\\Ablage';
+            replaceString = domainWin + '\\KA\\';
+            hrefWin = this.href.replaceAll('https://dl.datenfinder.baw.de/KA/', replaceString);
+            hrefWin = this.href.replaceAll('https://dl.datenfinder.baw.de/LFS/KA/', replaceString);
+            hrefWin = hrefWin.replaceAll('/', '\\');
+            clipboardTextWin += domainWin;
+            clipboardTextWin += this.pathname.replaceAll('/', '\\');
+            {# linux #}
+            domainLin = 'smb://lfs-ka.all.baw.de/Ablage';
+            replaceString = domainLin + '/KA/'
+            hrefLin = this.href.replaceAll('https://dl.datenfinder.baw.de/KA/', replaceString);
+            hrefLin = this.href.replaceAll('https://dl.datenfinder.baw.de/LFS/KA/', replaceString);
+            clipboardTextLin += domainLin;
+            clipboardTextLin += this.pathname;
+        }
+        if (this.href.indexOf('https://dl.datenfinder.baw.de/HH/') > -1
+            || this.href.indexOf('https://dl.datenfinder.baw.de/LFS/HH/') > -1) {
+            {# windows #}
+            domainWin = '\\\\lfs-hh.all.baw.de\\Ablage';
+            replaceString = domainWin + '\\HH\\'
+            hrefWin = this.href.replaceAll('https://dl.datenfinder.baw.de/HH/', replaceString);
+            hrefWin = this.href.replaceAll('https://dl.datenfinder.baw.de/LFS/HH/', replaceString);
+            hrefWin = hrefWin.replaceAll('/', '\\');
+            clipboardTextWin += domainWin;
+            clipboardTextWin += this.pathname.replaceAll('/', '\\');
+            {# linux #}
+            domainLin = '/net/lfs-hh/Ablage';
+            replaceString = domainLin + '/HH/';
+            hrefLin = this.href.replaceAll('https://dl.datenfinder.baw.de/HH/', replaceString);
+            hrefLin = this.href.replaceAll('https://dl.datenfinder.baw.de/LFS/HH/', replaceString);
+            clipboardTextLin += domainLin;
+            clipboardTextLin += this.pathname;
+        }
+        if ((hrefWin.length > 0 && hrefLin.length > 0) &&
+            ((this.href !== hrefWin && this.href !== hrefLin) || this.href.indexOf('file:') == 0)) {
+            addButton = true;
+        }
+        if (addButton) {
+            var parent = $(this);
+            {# Add copy button #}
+            var copyBtn = '<span style="float:left;padding: 0 5px 0 0;">';
+            copyBtn += '<button class="btn copy" data-clipboard-text="' + (clipboardTextWin || this.href) + '" title="{{ "COMMON.LINK_COPY"|t }}"><img src="{{ url('theme://images/template/windows.png') }}" width="25"></button>';
+            copyBtn += '<button class="btn copy" data-clipboard-text="' + (clipboardTextLin || this.href) + '" title="{{ "COMMON.LINK_COPY"|t }}"><img src="{{ url('theme://images/template/linux.png') }}" width="25"></button>';
+            copyBtn += '</span>';
+            $(copyBtn).insertBefore(parent);
+            {# Add info button to title #}
+            var infoBtn = $('<a href="#" class="js-popup copy" data-content="{{ "COMMON.LINK_COPY_HELP"|t(url('theme://images/template/windows.png'), url('theme://images/template/linux.png')) }}" style="float:right;"><span class="ic-ic-info"></span></a>');
+            var header = parent.closest('.sub-section').children('h4');
+            if (header) {
+                if (header.children('a.copy').length == 0) {
+                    header.append(infoBtn);
+                }
+            }
+        }
+    }).get();
+
+    var btns = document.querySelectorAll('.btn.copy');
+
+    var clipboard = new ClipboardJS(btns);
+    clipboard.on('success', function (e) {
+        showTooltip(e.trigger,'{{ "COMMON.LINK_COPY_SUCCESS"|t }}')
+    });
+    clipboard.on('error', function (e) {
+        console.log('Action:', e.action);
+    });
+
+    for(var i=0;i<btns.length;i++){
+        btns[i].addEventListener('mouseleave',clearTooltip);
+        btns[i].addEventListener('blur',clearTooltip);
+    }
+
+    for(var i=0;i<btns.length;i++){
+        btns[i].addEventListener('mouseleave',clearTooltip);
+        btns[i].addEventListener('blur',clearTooltip);
+    }
+    function clearTooltip(e){
+        e.currentTarget.setAttribute('class','btn');
+        e.currentTarget.removeAttribute('aria-label');
+    }
+    function showTooltip(elem,msg){
+        elem.setAttribute('class','btn tooltipped tooltipped-s');
+        elem.setAttribute('aria-label',msg);
+    }
+</script>

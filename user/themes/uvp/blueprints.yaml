@@ -31,14 +31,14 @@ form:
           title: THEME.ADMIN.LAYOUT.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/layout
+            context: user://themes/ingrid/blueprints/layout
         ## Tab home
         tab_home:
           type: tab
           title: THEME.ADMIN.HOME.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/home
+            context: user://themes/ingrid/blueprints/home
 
         ## Tab search
         tab_search:
@@ -46,7 +46,7 @@ form:
           title: THEME.ADMIN.SEARCH.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/search
+            context: user://themes/ingrid/blueprints/search
 
         ## Tab detail
         tab_detail:
@@ -54,15 +54,7 @@ form:
           title: THEME.ADMIN.HIT_DETAIL.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/detail
-
-        ## Tab catalog
-        tab_catalog:
-          type: tab
-          title: THEME.ADMIN.CATALOG.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/ingrid/catalog
+            context: user://themes/ingrid/blueprints/detail
 
         ## Tab map
         tab_map:
@@ -70,15 +62,7 @@ form:
           title: THEME.ADMIN.MAP.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/map
-
-        ## Tab measure
-        tab_measure:
-          type: tab
-          title: THEME.ADMIN.MEASURE.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/ingrid/measure
+            context: user://themes/ingrid/blueprints/map
 
         ## Tab help
         tab_help:
@@ -86,15 +70,7 @@ form:
           title: THEME.ADMIN.HELP.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/help
-
-        ## Tab datasource
-        tab_datasource:
-          type: tab
-          title: THEME.ADMIN.DATASOURCE.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/ingrid/help
+            context: user://themes/ingrid/blueprints/help
 
         ## Tab provider
         tab_provider:
@@ -102,15 +78,7 @@ form:
           title: THEME.ADMIN.PROVIDER.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/provider
-
-        ## Tab rss
-        tab_rss:
-          type: tab
-          title: THEME.ADMIN.RSS.TITLE
-          import@:
-            type: default
-            context: user://themes/ingrid/blueprints/ingrid/rss
+            context: user://themes/ingrid/blueprints/provider
 
         ## Tab redirect
         tab_redirect:
@@ -118,4 +86,4 @@ form:
           title: THEME.ADMIN.REDIRECT.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/ingrid/redirect
+            context: user://themes/ingrid/blueprints/redirect

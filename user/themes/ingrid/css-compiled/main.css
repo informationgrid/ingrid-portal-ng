@@ -249,6 +249,14 @@
   content: "\e94d";
 }
 
+.ic-ic-folder:before {
+  content: "\e974";
+}
+
+.ic-ic-folder-open:before {
+  content: "\e975";
+}
+
 .ic-ic-forst:before, .ic-ic-UVPG-17:before {
   content: "\e94e";
 }
@@ -9100,17 +9108,22 @@ footer .footer-top-link:hover {
 .filter-group .accordion-item .accordion-content .input-search {
   margin-top: 16px;
 }
-.filter-group .accordion-item .accordion-content.map {
+.filter-group .accordion-item .accordion-content.map,
+.filter-group .accordion-item .accordion-content.bbox {
   margin: 16px 0;
 }
-.filter-group .accordion-item .accordion-content.map .form-element {
+.filter-group .accordion-item .accordion-content.map .form-element,
+.filter-group .accordion-item .accordion-content.bbox .form-element {
   padding-bottom: 16px;
 }
-.filter-group .accordion-item .accordion-content.map #map-id-3, .filter-group .accordion-item .accordion-content.map #map-id-4 {
+.filter-group .accordion-item .accordion-content.map #map-id-3, .filter-group .accordion-item .accordion-content.map #map-id-4,
+.filter-group .accordion-item .accordion-content.bbox #map-id-3,
+.filter-group .accordion-item .accordion-content.bbox #map-id-4 {
   height: 430px;
   margin-bottom: 24px;
 }
-.filter-group .accordion-item .accordion-content.map .subtext {
+.filter-group .accordion-item .accordion-content.map .subtext,
+.filter-group .accordion-item .accordion-content.bbox .subtext {
   font-size: 14px;
   line-height: 1.2;
   color: #3A566D;
@@ -9537,10 +9550,12 @@ meter[value="5"]::-moz-meter-bar {
   position: relative;
 }
 
-.js-expand-text.is-expand {
+.js-expand-text.is-expand,
+.js-expand-text-small.is-expand {
   max-height: none;
 }
-.js-expand-text.is-expand .js-expand-text-content:before {
+.js-expand-text.is-expand .js-expand-text-content:before,
+.js-expand-text-small.is-expand .js-expand-text-content:before {
   background: transparent;
 }
 
@@ -9591,7 +9606,16 @@ meter[value="5"]::-moz-meter-bar {
   pointer-events: none;
 }
 
-.js-expand-text.js-non-expand-text .js-expand-text-content:before {
+.js-expand-text-small {
+  max-height: 80px;
+}
+
+.js-expand-text-small .js-expand-text-content:before {
+  background: linear-gradient(rgba(255, 255, 255, 0) 50px, #fff);
+}
+
+.js-expand-text.js-non-expand-text .js-expand-text-content:before,
+.js-expand-text-small.js-non-expand-text .js-expand-text-content:before {
   background: none;
 }
 

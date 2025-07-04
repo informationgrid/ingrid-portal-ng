@@ -4,6 +4,7 @@
 
 {# theme_var #}
 {% set sortAddressTyp = theme_var('hit_detail.address_order') %}
+{% set addressUnlink = theme_var('hit_detail.address_unlink') %}
 
 {# var #}
 {% set hit = hit %}
@@ -70,7 +71,7 @@
                             <a href="#{{ hash_overview }}" class="accordion-title js-anchor-target" aria-controls="{{ hash_overview }}-accordion" role="tab" id="{{ hash_overview }}-accordion-label">
                                 <span class="text">{{ label_overview }}</span>
                             </a>
-                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-labelledby="{{ hash_overview }}-accordion-label" aria-hidden="true" id="${hashDetail0}-accordion">
+                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-labelledby="{{ hash_overview }}-accordion-label" aria-hidden="true" id="{{ hash_overview }}-accordion">
                                 <div class="boxes">
                                 </div>
                             </div>
@@ -122,7 +123,7 @@
             <div class="teaser-data search row is-active">
                 <div class="xsmall-24 small-24 columns">
             {# Adressen #}
-                {{ hit_macros.render_contact_facts("SEARCH_DETAIL.CONTACT"|t, contactRefs, sortAddressTyp, true) }}
+                {{ hit_macros.render_contact_facts("SEARCH_DETAIL.CONTACT"|t, contactRefs, sortAddressTyp, true, addressUnlink) }}
                 </div>
             </div>
         </div>

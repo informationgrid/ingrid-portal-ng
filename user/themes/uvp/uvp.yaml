@@ -6,7 +6,13 @@ header:
   menu_class: 'xsmall-16 small-15 medium-9 large-7 xlarge-6'
   menu_dropdown: true
   shrink: false
-  logo: {  }
+  logo:
+    user/themes/uvp/images/logo/logo.svg:
+      name: logo.svg
+      full_path: logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/uvp/images/logo/logo.svg
 footer:
   logo_enabled: false
   copyright:
@@ -28,6 +34,9 @@ footer:
     enabled: false
   up:
     enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
 menu:
   main:
     -
@@ -1659,9 +1668,9 @@ home:
                 }
               }
             }
-          },
+          }
         }
-      },
+      }
     ]
     add_to_search:
       - '-datatype:address'
@@ -1917,6 +1926,7 @@ hit_search:
         "obj_class_blp": {
           "label": "Bauleitplanung",
           "extend_href": "&procedure=obj_class_blp&ranking=score",
+          "display_line_above": true,
           "query": {
             "filter": {
               "term": {
@@ -2318,6 +2328,7 @@ hit_search:
           }
         },
         "last_five_years": {
+          "hidden_by" : "toggle_procedure",
           "query": {
             "filter": {
               "range": {
@@ -2329,6 +2340,7 @@ hit_search:
           }
         },
         "older_five_years": {
+          "hidden_by" : "toggle_procedure",
           "query": {
             "filter": {
               "range": {
@@ -2406,6 +2418,7 @@ hit_detail:
     - '0'
     - '1'
     - '2'
+  address_unlink: false
   contact_order:
     - pointOfContact
     - distributor
@@ -2419,6 +2432,7 @@ hit_detail:
     exclude:
       - content
   query_string_operator: AND
+  display_use_constraints_json: true
 map:
   url: /ingrid-webmap-client/frontend/prd
   leaflet:
@@ -2427,7 +2441,7 @@ map:
       layer:
         wmts: { url: 'https://tile.geofabrik.de/a9533739a5c445e5937b953c9b1f6c58/{z}/{x}/{y}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        attribution: '&copy; <a target="_blank" class="external-link" href="https://openstreetmap.org">OpenStreetMap</a> contributors <br> Die Hintergrundkarte dient der Orientierung. Kein Bezug zu den Verfahrensdaten.'
         opacity: 1
     bbox:
       color: '#26942f'
@@ -2436,7 +2450,6 @@ map:
       inverted: false
     enable:
       wkt: true
-      bwastr: true
       spinloader: true
       clustering: true
     geocoder:

@@ -1,0 +1,93 @@
+{% if class != "6" %}
+    <div class="sub-section">
+        <a class="anchor" id="{{ hash_info }}_technical_information"></a>
+        {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
+{# Datenformat #}
+        {% set header = [
+            "Format",
+            "Version"
+        ] %}
+        {{ hit_macros.render_table("Datenformat", header, infoRefs.dataFormat) }}
+{# Verfahren #}
+        {{ hit_macros.render_label_text_row("Verfahren", infoRefs.procedure) }}
+{# Modellart #}
+        {{ hit_macros.render_label_text_list_row("Modellart"|t, infoRefs.modelTypes) }}
+{# Räumliche Dimensionalität #}
+        {{ hit_macros.render_label_text_row("Räumliche Dimensionalität", infoRefs.spatialDimensionality) }}
+{# Zeitschrittgröße #}
+        {{ hit_macros.render_label_text_row("Zeitschrittgröße &lsqb;s&rsqb;", infoRefs.timestepSize) }}
+{# Parameter und Zustandsgrößen #}
+        {% set header = [
+            "Rolle",
+            "Name",
+            "Einheit",
+            "Wert"
+        ] %}
+        {{ hit_macros.render_table("Parameter und Zustandsgrößen", header, infoRefs.dataQualities) }}
+{# Messdaten #}
+        {% include 'partials/detail/metadata/parts/information/information_type_1_measurement.html.twig' ignore missing %}
+{# Fachliche Grundlage #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
+    </div>
+{% elseif class == "6" %}
+    <div class="sub-section">
+        <a class="anchor" id="${hashDetail5}_technical_information"></a>
+        {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION_6"|t) }}
+{# Einsatzzweck #}
+        {{ hit_macros.render_label_text_row("Einsatzzweck"|t, infoRefs.einsatzzweck) }}
+{# Nutzerkreis #}
+        {% set header = [
+            "",
+            "BAW",
+            "WSV",
+            "Extern"
+        ] %}
+        {{ hit_macros.render_table_info("Nutzerkreis", header, infoRefs.nutzerkreis, [], 'Anmerkungen') }}
+{# Produktiver Einsatz #}
+        {% set header = [
+            "",
+            "WSV-Auftrag",
+            "FuE",
+            "Andere"
+        ] %}
+        {{ hit_macros.render_table_info("Produktiver Einsatz", header, infoRefs.produktiverEinsatz, [], 'Anmerkungen') }}
+{# Ergänzungsmodul zu Marktsoftware #}
+        {{ hit_macros.render_label_text_row("Ergänzungsmodul zu Marktsoftware"|t, infoRefs.ergaenzungsModul) }}
+        {{ hit_macros.render_label_text_row("Name der Marktsoftware"|t, infoRefs.ergaenzteSoftware) }}
+{# Betriebssystem #}
+        {% set header = [
+            "",
+            "Windows",
+            "Linux"
+        ] %}
+        {{ hit_macros.render_table_info("Betriebssystem", header, infoRefs.betriebssystem, [], 'Anmerkungen') }}
+{# Programmiersprache #}
+        {{ hit_macros.render_label_text_list_row("Programmiersprache"|t, infoRefs.programmiersprache) }}
+{# Entwicklungsumgebung #}
+        {{ hit_macros.render_label_text_list_row("Entwicklungsumgebung"|t, infoRefs.entwicklungsumgebung) }}
+{# Bibliotheken #}
+        {{ hit_macros.render_label_text_list_row("Bibliotheken"|t, infoRefs.bibliotheken) }}
+{# Erstellungsvertrag #}
+        {{ hit_macros.render_table_group(
+            "Erstellungsvertrag",
+            ['Vertragsnr','Datum'],
+            [infoRefs.erstellungsvertragsnummer, infoRefs.erstellungsvertragsdatum],
+            true
+        ) }}
+{# Supportvertrag #}
+        {{ hit_macros.render_table_group(
+            "Supportvertrag",
+            ['Vertragsnr','Datum','Anmerkungen'],
+            [infoRefs.supportvertragsnummer, infoRefs.supportvertragsdatum, infoRefs.supportvertragsInfo],
+            true
+        ) }}
+{# Installationsort #}
+        {{ hit_macros.render_table_group(
+            "Installationsort",
+            ['Lokal','HLR','Name des HLRs','Server','Servername'],
+            [infoRefs.installationsortlokal, infoRefs.installationsorthlr, infoRefs.installationsorthlrName, infoRefs.installationsortserver, infoRefs.installationsortservername]
+        ) }}
+{# Installation über #}
+        {{ hit_macros.render_label_text_row("Installation über"|t, infoRefs.installationsMethode) }}
+    </div>
+{% endif %}

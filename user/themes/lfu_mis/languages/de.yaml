@@ -1,0 +1,22 @@
+PAGES:
+  HOME: Startseite LfU-MIS
+  HOME_MENU_TITLE: Startseite LfU-MIS
+  MAP: Karten
+  CATALOG: Themenübersicht
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von LfU-MIS
+  ACCESSIBILITY: Erklärung zur Barrierefreiheit
+
+CONTACT:
+  FORM: Kontakt online
+  FORM_COMPANY: Welches Bundesland betrifft Ihre Anfrage? (optional)
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team MetaVer gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+
+SEARCH:
+  PORTLET_TITLE_1: LfU-MIS
+  PORTLET_TITLE_2: zur Erfassung, Verwaltung, Recherche und Anzeige von Metadaten&nbsp;
+  PORTLET_TITLE_3: über Geodaten und Geodatendienste
+
+SEARCH_DETAIL:
+  GEO_DATALINK: URI des Datenbestandes
+  INTERNAL_NOTES: Interne Bemerkungen

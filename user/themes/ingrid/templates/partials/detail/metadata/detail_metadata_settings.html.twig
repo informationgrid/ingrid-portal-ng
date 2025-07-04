@@ -4,6 +4,7 @@
 {% set isTimeInDescription = theme_var('hit_detail.time_in_description') %}
 {% set sortAddressTyp = theme_var('hit_detail.address_order') %}
 {% set sortContactByType = theme_var('hit_detail.contact_order') %}
+{% set addressUnlink = theme_var('hit_detail.address_unlink') %}
 
 {# var #}
 {% set hit = hit %}
@@ -47,8 +48,9 @@
 {% set mapRefs = addKeyValue(mapRefs, "regionKey", hit.regionKey) %}
 {% set mapRefs = addKeyValue(mapRefs, "areaHeight", hit.areaHeight) %}
 {% set mapRefs = addKeyValue(mapRefs, "locDescr", hit.locDescr) %}
-{% set mapRefs = addKeyValue(mapRefs, "polygonWkt", hit.polygonWkt) %}
-{% set mapRefs = addKeyValue(mapRefs, "polygonGeojson", hit.polygonGeojson) %}
+{% set mapRefs = addKeyValue(mapRefs, "polygonWkts", hit.polygonWkts) %}
+{% set mapRefs = addKeyValue(mapRefs, "polygonGeojsons", hit.polygonGeojsons) %}
+{% set mapRefs = addKeyValue(mapRefs, "bwastrs", hit.bwastrs) %}
 {% set mapRefs = addKeyValue(mapRefs, "referenceSystemId", hit.referenceSystemId) %}
 
 {# Verweise und Downloads #}
@@ -74,61 +76,73 @@
 {# Fachinformationen #}
 {% set infoRefs = {} %}
 {% switch class %}
-{% case '1' %}
-    {% set infoRefs = addKeyValue(infoRefs, "identifierCode", hit.identifierCode) %}
-    {% set infoRefs = addKeyValue(infoRefs, "spatialRepresentations", hit.spatialRepresentations) %}
-    {% set infoRefs = addKeyValue(infoRefs, "vectors", hit.vectors) %}
-    {% set infoRefs = addKeyValue(infoRefs, "resolutions", hit.resolutions) %}
-    {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
-    {% set infoRefs = addKeyValue(infoRefs, "sourceDescription", hit.sourceDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "processStepDescription", hit.processStepDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "symbolCatalogues", hit.symbolCatalogues) %}
-    {% set infoRefs = addKeyValue(infoRefs, "includedWithDataset", hit.includedWithDataset) %}
-    {% set infoRefs = addKeyValue(infoRefs, "featureCatalogues", hit.featureCatalogues) %}
-    {% set infoRefs = addKeyValue(infoRefs, "featureTypes", hit.featureTypes) %}
-{% case '2' %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturAutor", hit.literaturAutor) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturLoc", hit.literaturLoc) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturPublisher", hit.literaturPublisher) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturPublishLoc", hit.literaturPublishLoc) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturPublishing", hit.literaturPublishing) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturPublishIn", hit.literaturPublishIn) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturPublishYear", hit.literaturPublishYear) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturVolume", hit.literaturVolume) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturSide", hit.literaturSide) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturIsbn", hit.literaturIsbn) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturTyp", hit.literaturTyp) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturBase", hit.literaturBase) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturDocInfo", hit.literaturDocInfo) %}
-    {% set infoRefs = addKeyValue(infoRefs, "literaturDescription", hit.literaturDescription) %}
-{% case '3' %}
-    {% set infoRefs = addKeyValue(infoRefs, "classifications", hit.classifications) %}
-    {% set infoRefs = addKeyValue(infoRefs, "serviceType", hit.serviceType) %}
-    {% set infoRefs = addKeyValue(infoRefs, "serviceTypeVersions", hit.serviceTypeVersions) %}
-    {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "processStepDescription", hit.processStepDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
-    {% set infoRefs = addKeyValue(infoRefs, "sourceDescription", hit.sourceDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.supplementalInformation) %}
-    {% set infoRefs = addKeyValue(infoRefs, "supplementalInformationAbstract", hit.supplementalInformationAbstract) %}
-    {% set infoRefs = addKeyValue(infoRefs, "operations", hit.operations) %}
-    {% set infoRefs = addKeyValue(infoRefs, "operationConnectPoint", hit.operationConnectPoint) %}
-{% case '4' %}
-    {% set infoRefs = addKeyValue(infoRefs, "projectLeader", hit.projectLeader) %}
-    {% set infoRefs = addKeyValue(infoRefs, "projectMember", hit.projectMember) %}
-    {% set infoRefs = addKeyValue(infoRefs, "projectDescription", hit.projectDescription) %}
-{% case '5' %}
-    {% set infoRefs = addKeyValue(infoRefs, "includedWithDataset", hit.includedWithDataset) %}
-    {% set infoRefs = addKeyValue(infoRefs, "featureCatalogues", hit.featureCatalogues) %}
-    {% set infoRefs = addKeyValue(infoRefs, "dataPara", hit.dataPara) %}
-    {% set infoRefs = addKeyValue(infoRefs, "dataBase", hit.dataBase) %}
-    {% set infoRefs = addKeyValue(infoRefs, "dataDescription", hit.dataDescription) %}
-{% case '6' %}
-    {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "processStepDescription", hit.processStepDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "sourceDescription", hit.sourceDescription) %}
-    {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.supplementalInformation) %}
+    {% case '1' %}
+        {% set infoRefs = addKeyValue(infoRefs, "identifierCode", hit.identifierCode) %}
+        {% set infoRefs = addKeyValue(infoRefs, "spatialRepresentations", hit.spatialRepresentations) %}
+        {% set infoRefs = addKeyValue(infoRefs, "vectors", hit.vectors) %}
+        {% set infoRefs = addKeyValue(infoRefs, "resolutions", hit.resolutions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
+        {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
+        {% set infoRefs = addKeyValue(infoRefs, "sourceDescriptions", hit.sourceDescriptions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "processStepDescriptions", hit.processStepDescriptions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "symbolCatalogues", hit.symbolCatalogues) %}
+        {% set infoRefs = addKeyValue(infoRefs, "includedWithDataset", hit.includedWithDataset) %}
+        {% set infoRefs = addKeyValue(infoRefs, "featureCatalogues", hit.featureCatalogues) %}
+        {% set infoRefs = addKeyValue(infoRefs, "featureTypes", hit.featureTypes) %}
+        {# Messdaten #}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMethod", hit.measurementMethod) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMinDischarge", hit.measurementMinDischarge) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
+        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
+    {% case '2' %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturAutor", hit.literaturAutor) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturLoc", hit.literaturLoc) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturPublisher", hit.literaturPublisher) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturPublishLoc", hit.literaturPublishLoc) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturPublishing", hit.literaturPublishing) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturPublishIn", hit.literaturPublishIn) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturPublishYear", hit.literaturPublishYear) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturVolume", hit.literaturVolume) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturSide", hit.literaturSide) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturIsbn", hit.literaturIsbn) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturTyp", hit.literaturTyp) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturBases", hit.literaturBases) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturDocInfo", hit.literaturDocInfo) %}
+        {% set infoRefs = addKeyValue(infoRefs, "literaturDescription", hit.literaturDescription) %}
+    {% case '3' %}
+        {% set infoRefs = addKeyValue(infoRefs, "classifications", hit.classifications) %}
+        {% set infoRefs = addKeyValue(infoRefs, "serviceType", hit.serviceType) %}
+        {% set infoRefs = addKeyValue(infoRefs, "serviceTypeVersions", hit.serviceTypeVersions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
+        {% set infoRefs = addKeyValue(infoRefs, "processStepDescriptions", hit.processStepDescriptions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "lineageStatement", hit.lineageStatement) %}
+        {% set infoRefs = addKeyValue(infoRefs, "sourceDescriptions", hit.sourceDescriptions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.supplementalInformation) %}
+        {% set infoRefs = addKeyValue(infoRefs, "supplementalInformationAbstract", hit.supplementalInformationAbstract) %}
+        {% set infoRefs = addKeyValue(infoRefs, "operations", hit.operations) %}
+        {% set infoRefs = addKeyValue(infoRefs, "operationConnectPoint", hit.operationConnectPoint) %}
+    {% case '4' %}
+        {% set infoRefs = addKeyValue(infoRefs, "projectLeader", hit.projectLeader) %}
+        {% set infoRefs = addKeyValue(infoRefs, "projectMember", hit.projectMember) %}
+        {% set infoRefs = addKeyValue(infoRefs, "projectDescription", hit.projectDescription) %}
+    {% case '5' %}
+        {% set infoRefs = addKeyValue(infoRefs, "includedWithDataset", hit.includedWithDataset) %}
+        {% set infoRefs = addKeyValue(infoRefs, "featureCatalogues", hit.featureCatalogues) %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataPara", hit.dataPara) %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataBase", hit.dataBase) %}
+        {% set infoRefs = addKeyValue(infoRefs, "dataDescription", hit.dataDescription) %}
+    {% case '6' %}
+        {% set infoRefs = addKeyValue(infoRefs, "environmentDescription", hit.environmentDescription) %}
+        {% set infoRefs = addKeyValue(infoRefs, "processStepDescriptions", hit.processStepDescriptions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "sourceDescriptions", hit.sourceDescriptions) %}
+        {% set infoRefs = addKeyValue(infoRefs, "supplementalInformation", hit.supplementalInformation) %}
 {% endswitch %}
 
 {% set infoRefs_additional = {} %}
@@ -140,7 +154,7 @@
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "languageCode", hit.languageCode) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "conformity", hit.conformity) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "dataformat", hit.dataformat) %}
-{% set infoRefs_additional = addKeyValue(infoRefs_additional, "geodatalink", hit.geodatalink) %}
+{% set infoRefs_additional = addKeyValue(infoRefs_additional, "geodataLink", hit.geodataLink) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "media", hit.media) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "orderInstructions", hit.orderInstructions) %}
 
@@ -187,11 +201,4 @@
 {# Zusatzfelder #}
 {% set additionalFields = hit.additionalFields %}
 
-{% block detail_leaflet %}
-{% endblock %}
-
-{% block detail_content %}
-{% endblock %}
-
-{% block detail_datatypes %}
-{% endblock %}
+{% include 'partials/detail/metadata/detail_metadata_profile_settings.html.twig' %}

@@ -13,7 +13,7 @@
 {% set others = links|filterLinks("other") %}
 {% set previews = hit.additional_html_1 %}
 {% set bboxes = hit.map_bboxes %}
-{% set wkt = hit.wkt %}
+{% set wkts = hit.wkts %}
 {% set license = hit.license %}
 {% set mapUrl = hit.mapUrl %}
 {% set mapUrlClient = hit.mapUrlClient %}
@@ -31,6 +31,14 @@
 {% set hitOpenId = 'hit_open_' ~ counter %}
 {% set moreIdLinks = counter ~ "_more_links" %}
 
+{% set bwastr_name = hit.bwastr_name %}
+{% set bwastrs = hit.bwastrs %}
+{% set bawauftragsnummer = hit.bawauftragsnummer %}
+{% set bawauftragstitel = hit.bawauftragstitel %}
+{% set citation = hit.citation %}
+
+{% set moreIdLinks = counter ~ "_more_links" %}
+
 
 {% if downloads|length > 0
     or references|length > 0
@@ -38,9 +46,15 @@
     or others|length > 0
     or previews|length > 0
     or bboxes|length > 0
-    or wkt
+    or wkts
     or mapUrl
     or mapUrlClient
+    or bwastr_name
+    or bawauftragsnummer
+    or bawauftragstitel
+    or doi_id
+    or bwastrs
+
 %}
     {% include 'partials/search/result/metadata/expand/expand_view.html.twig' %}
 {% endif %}

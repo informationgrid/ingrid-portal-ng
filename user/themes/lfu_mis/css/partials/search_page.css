@@ -1,0 +1,221 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+*/
+
+.search.similar {
+  .nested-group {
+    border-radius: 0 !important;
+
+    .accordion-item {
+      &.is-active {
+        box-shadow: none;
+      }
+
+      &:hover {
+        box-shadow: none;
+      }
+
+      &:last-child > :last-child {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .similar-accordion {
+    padding: 0 24px 24px;
+  }
+
+  .accordion-title {
+    border-radius: 0 !important;
+  }
+
+  .accordion-title:not(.icon) {
+    color: var(--link-color);
+    background: var(--color-grey);
+  }
+}
+
+#filter {
+  .filter {
+    top: 120px;
+  }
+
+  .paging.caption {
+    background: white;
+  }
+
+  .accordion.accordion-filter-group {
+    background: var(--color-grey-darker);
+
+    .accordion-title.accordion-title-filter-group {
+      background: var(--color-grey-darker);
+
+    }
+  }
+
+  #facet-content-accordion-label {
+    color: white !important;
+    border-bottom: none !important;
+
+    &:after {
+      color: white;
+    }
+  }
+
+  .accordion-item a.accordion-title {
+    font-weight: 700;
+    color: var(--color-grey-darker);
+    font-family: var(--main-font);
+
+    &:after {
+      color: var(--link-color);
+    }
+
+    &:hover, &:focus-visible, &:focus {
+      color: var(--link-hover-color);
+      border-bottom: 1px solid var(--link-hover-color) !important;
+      box-shadow: none;
+    }
+  }
+}
+
+.control input:checked ~ .control__indicator, .control--checkbox .control__indicator:after {
+  border-color: var(--link-color);
+}
+
+#results .teaser-data.search {
+  border-radius: 0;
+  transition: border 250ms;
+  box-shadow: none;
+  border: 2px solid var(--color-grey);
+
+  &:hover, &:focus-within {
+    box-shadow: none;
+    border: 2px solid var(--color-grey-darker);
+  }
+
+  a {
+    text-decoration: none;
+
+    .arrow {
+      color: var(--color-grey-darker);
+    }
+
+    &:hover, &:focus-visible {
+      color: var(--link-hover-color);
+
+      .arrow {
+        color: var(--color-grey-darker);
+      }
+    }
+  }
+
+  .helper {
+    color: var(--color-grey-darker);
+  }
+
+  .helper.date, p {
+    color: var(--text-color-darker);
+  }
+
+  .header {
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: var(--main-font);
+    color: var(--text-color-darker);
+  }
+
+  .js-expander-content .button {
+    border: none;
+    font-family: var(--main-font);
+    color: white;
+    background: var(--link-color);
+
+    &:hover, &:focus-visible {
+      background: var(--link-hover-color);
+    }
+  }
+}
+
+#results .teaser-data.is-active {
+  .arrow {
+    color: var(--link-color);
+  }
+}
+
+.swiper-pagination-bullet {
+  background: var(--link-color) !important;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+  border-radius: 0;
+  border: 1px solid var(--link-color);
+  box-shadow: none;
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple,
+ul.select2-results__options {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.select2-container--default .select2-selection--single::after {
+  color: var(--link-color);
+}
+
+.js-expander-toggle-all {
+  height: 36px;
+  align-self: center;
+
+  display: flex;
+  margin-top: 0 !important;
+
+  a.icon {
+    border: 1px solid var(--link-color);
+    width: 50px;
+    padding: 0 !important;
+    border-radius: 0 !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 250ms;
+
+    &.is-active {
+      color: white;
+      background: var(--color-grey-darker);
+    }
+
+    &:hover {
+      color: white;
+      background: var(--color-grey-darker);
+    }
+  }
+}
+
+@media print, screen and (max-width: 35em) {
+  #filter .filter {
+    top: 80px
+  }
+}

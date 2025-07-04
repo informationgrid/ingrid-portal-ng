@@ -18,9 +18,9 @@
             {% set toIndeterminate = "COMMON.TIME_UNTILUNKNOWN"|t %}
         {% endif %}
         {% if timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt %}
-            {% set timeAt = timeRefs.timeAt ? timeRefs.timeAt|date("d.m.Y", false) : "" %}
-            {% set timeBegin = timeRefs.timeBegin ? timeRefs.timeBegin|date("d.m.Y", false) : "" %}
-            {% set timeEnd = timeRefs.timeEnd ? timeRefs.timeEnd|date("d.m.Y", false) : "" %}
+            {% set timeAt = timeRefs.timeAt ? timeRefs.timeAt|date("d.m.Y") : "" %}
+            {% set timeBegin = timeRefs.timeBegin ? timeRefs.timeBegin|date("d.m.Y") : "" %}
+            {% set timeEnd = timeRefs.timeEnd ? timeRefs.timeEnd|date("d.m.Y") : "" %}
             {% if timeAt %}
                 {{ hit_macros.render_label_text_row(tmpTitle, "COMMON.TIME_AT"|t ~ " " ~ timeAt) }}
             {% elseif timeBegin == timeEnd %}
@@ -34,7 +34,7 @@
             {% endif %}
         {% endif %}
     {# Zeitliche Genauigkeit #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.TIME_MEASUREMENT"|t, timeRefs.timeMeasureValue ~ timeRefs.timeMeasureUnit) }}
+        {% include 'partials/detail/metadata/parts/time/time_measurement.html.twig' ignore missing %}
     {# Status #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_STATUS"|t, timeRefs.timeStatus, "text-capitalize") }}
     {# Periodizität #}

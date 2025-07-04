@@ -1,15 +1,15 @@
-{% if previews|length > 0 or (mapUrl and not hasAccessConstraint) %}
+{% if previews|length > 0 or (mapUrl and hasAccessConstraint is not same as("true")) %}
     <div class="xsmall-24 small-24 medium-10 columns">
         <h4 class="text-center">{{ 'SEARCH_DETAIL.PREVIEW'|t }}</h4>
         {% if previews|length == 0 %}
             {% set previews = [{
-                url: url("theme://images") ~ '/maps/image_map_' ~ partners[0] ~ '.png',
+                url: url('theme://images' ~ '/maps/image_map_' ~ partners[0] ~ '.png'),
                 title: 'COMMON.RESULT_SHOWMAP_TOOLTIP_SHORT'|t
             }]
             %}
         {% endif %}
         {{ hit_macros.render_multi_images(previews, partners) }}
-        {% if mapUrl and not hasAccessConstraint %}
+        {% if mapUrl and hasAccessConstraint is not same as("true") %}
         <p class="caption">
             <a target="_blank" class="button small" href="{{ mapUrl starts with 'http'? mapUrl : (page.find('/map').url ~ '?layers=' ~ mapUrl) }}" title="{{ 'COMMON.RESULT_SHOWMAP_TOOLTIP_SHORT'|t }}">
                 {{ 'COMMON.RESULT_SHOWMAP_TOOLTIP_SHORT'|t }}

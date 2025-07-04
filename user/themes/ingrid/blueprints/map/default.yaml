@@ -1,0 +1,147 @@
+form:
+  fields:
+    map.section:
+      type: section
+      title: THEME.ADMIN.MAP.TITLE
+      underline: true
+
+    map.url:
+      type: text
+      label: THEME.ADMIN.MAP.URL.LABEL
+      help: THEME.ADMIN.MAP.URL.HELP
+
+    map.shrink_header:
+      type: toggle
+      label: THEME.ADMIN.MAP.SHRINK_HEADER.LABEL
+      help: THEME.ADMIN.MAP.SHRINK_HEADER.HELP
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    map.leaflet.section:
+      type: section
+      title: THEME.ADMIN.MAP.LEAFLET.TITLE
+      underline: true
+
+    map.leaflet.position:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.POSITION.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.POSITION.HELP
+
+    map.leaflet.epsg:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.EPSG.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.EPSG.HELP
+
+    map.leaflet.bg.layer.wmts.url:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMTS.URL.HELP
+
+    map.leaflet.bg.layer.wms.url:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.URL.HELP
+
+    map.leaflet.bg.layer.wms.name:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.WMS.NAME.HELP
+
+    map.leaflet.bg.layer.attribution:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.ATTRIBUTION.HELP
+
+    map.leaflet.bg.layer.opacity:
+      type: range
+      label: THEME.ADMIN.MAP.LEAFLET.BG.LAYER.OPACITY.LABEL
+      validate:
+        min: 0
+        max: 1
+        step: 0.1
+
+    map.leaflet.bbox.color:
+      type: colorpicker
+      label: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.BBOX.COLOR.HELP
+
+    map.leaflet.bbox.opacity:
+      type: range
+      label: THEME.ADMIN.MAP.LEAFLET.BBOX.OPACITY.LABEL
+      validate:
+        min: 0
+        max: 1
+        step: 0.1
+
+    map.leaflet.bbox.weight:
+      type: range
+      label: THEME.ADMIN.MAP.LEAFLET.BBOX.WEIGHT.LABEL
+      validate:
+        min: 1
+        max: 5
+        step: 1
+
+    map.leaflet.bbox.inverted:
+      type: toggle
+      label: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.BBOX.INVERTED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    map.leaflet.enable.wkt:
+      type: toggle
+      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.WKT.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    map.leaflet.enable.spinloader:
+      type: toggle
+      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.SPINLOADER.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    map.leaflet.enable.clustering:
+      type: toggle
+      label: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.ENABLE.CLUSTERING.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    map.leaflet.geocoder.enable:
+      type: toggle
+      label: THEME.ADMIN.MAP.LEAFLET.GEOCODER.ENABLE.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.GEOCODER.ENABLE.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
+    map.leaflet.geocoder.service:
+      type: text
+      label: THEME.ADMIN.MAP.LEAFLET.GEOCODER.SERVICE.LABEL
+      help: THEME.ADMIN.MAP.LEAFLET.GEOCODER.SERVICE.HELP

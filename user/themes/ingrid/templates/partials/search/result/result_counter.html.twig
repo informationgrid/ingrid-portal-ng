@@ -33,7 +33,7 @@
     </span>
     <div class="sort">
         <div class="form-element" style="display:inline;">
-            <form action="{{ page.find('/search').url }}?{{ uri.query }}" method="get" name="sortForm" id="sortForm" style="display:inline;">
+            <form action="{{ page.find('/search').url }}" method="get" name="sortForm" id="sortForm" style="display:inline;">
                 {% for params in uri.query()|split('&') %}
                     {% set param = params|split('=') %}
                     {% set key = param[0] %}

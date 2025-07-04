@@ -4,11 +4,12 @@ let drawControl;
 let editableLayers;
 let nominatim_select = -1;
 
-function applyLocation() {
-    let bounds = searchMapBig.getBounds();
-    if (editableLayers.getLayers()[0]) {
-        bounds = editableLayers.getLayers()[0].getBounds();
-
+function applyLocation(map) {
+    let bounds = map.getBounds();
+    if (map !== searchMapSmall) {
+        if (editableLayers.getLayers()[0]) {
+            bounds = editableLayers.getLayers()[0].getBounds();
+        }
     }
     let north = bounds.getNorth().toString();
     north = north.substring(0, north.indexOf('.') + 4);
@@ -136,8 +137,8 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
 
     var bgLayerSmall = null;
     if (wmsUrl && wmsName) {
-        bgLayerSmall = L.tileLayer(wmsUrl, {
-            layer: wmsName,
+        bgLayerSmall = L.tileLayer.wms(wmsUrl, {
+            layers: wmsName,
             maxZoom: 14,
             attribution: attribution,
             opacity: opacity,
@@ -398,7 +399,7 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
         return item['class'] === 'boundary';
     }
 
-    $('#spatial-send').on('click', function(){ applyLocation(); });
+    $('#spatial-send').on('click', function(){ applyLocation(searchMapBig); });
     $('#nominatim-query').on('keydown', function(e) { nominatimSearch(e, nominatimUrl, isBoundary); });
 
     if(triggerNominatimOnInput) {

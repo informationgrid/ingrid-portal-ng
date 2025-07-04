@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ingrid-portal-help.xsl" ?>
+<help>
+        <chapter>
+        <header>Über den Geodatenkatalog</header>
+        <section help-key="about-1">
+            <content>
+                <p>Der Geodatenkatalog Niederrhein ebnet mithilfe moderner Software den Weg für eine einfache Übersicht und ggf. den Zugriff auf Geodaten. Mehr Details dazu finden Sie <a href="/hintergrundinformationen">hier</a>.</p>
+                <p>Die Hilfeseiten sollen dazu dienen, dass Sie sich in den Suchfunktionen und Suchergebnissen des Geodatenkatalogs schnell und einfach zurechtfinden.</p>
+            </content>
+        </section>
+	</chapter>
+	<chapter>
+        <header>Suche</header>
+        <section help-key="search-1">
+            <header>Sucheingabe</header>
+            <content>
+                <p>Suchen ist ganz einfach. Geben Sie in das Suchfeld einen oder 
+                   mehrere Begriffe ein und klicken Sie anschließend auf die 
+                   Schaltfläche <b><i>Suche</i></b>.</p>
+                <p>Die Webseite durchsucht daraufhin den angebundenen Katalog. Die 
+                   Ergebnisse Ihrer Suchanfrage werden in einer 
+                   <a href="?hkey=search-results-1">Suchergebnisseite</a> 
+                   wiedergegeben.</p>
+            </content>
+        </section>
+        <section help-key="search-2">
+            <header>Erweiterte Suchsyntax</header>
+            <content>
+                <p>Alle Einstellungen der Such-Oberfläche und spezielle Einstellungen darüber 
+				   hinaus lassen sich auch direkt über den Suchausdruck in die Suche eingeben. 
+				   Da die Syntax durch die große Anzahl der Suchmethoden recht umfangreich ist, 
+				   ist sie vor allem für Experten geeignet.</p>
+				<p><b><u>Bool’sche Operatoren</u></b>
+					Die einzelnen Suchbegriffe können über Bool’sche Operatoren verknüpft werden. 
+					Es stehen folgende Operatoren zur Verfügung:<br />
+				<b>AND (UND-Verknüpfung):</b> 
+					Alle Worte müssen im Datensatz vorhanden sein. Sie ist Standard, wenn kein 
+					Operator angegeben wird. (Hinweis: Anstatt AND kann auch das Symbol &amp;&amp; verwendet werden)<br /> 
+					Beispiel: ‚Wasser Fisch’ entspricht  ‚Wasser AND Fisch’ bzw. ‚Wasser &amp;&amp; Fisch’<br />
+				<b>OR (ODER-Verknüpfung):</b> 
+					Eines der Worte muss im Datensatz vorhanden sein. (Hinweis: Anstatt von OR kann auch das 
+					Symbol || verwendet werden) <br />
+					Beispiel: ‚Wasser OR Fisch’ entspricht ‚Wasser || Fisch’<br />
+				<b>NOT (NICHT-Verknüpfung):</b> 
+					Das Wort nach dem NOT darf nicht im Datensatz vorhanden sein. (Hinweis: Anstatt von 
+					NOT kann auch das Symbol ! oder das Symbol - verwendet werden)<br />
+					Beispiel: ‚Wasser NOT Fisch’ bzw. ‚Wasser ! Fisch’ bzw. ‚Wasser - Fisch’ (gesucht wird nach Wasser aber nicht nach Fisch)</p>  
+				<p><b><u>Gruppierung (Klammerung)</u></b>
+					Die einzelnen durch Bool’sche Operatoren verknüpften Suchbegriffe können durch Klammerung 
+					(runde Klammern) beliebig gruppiert werden.
+					Beispiel: ‚Fisch NOT (Forelle OR Barsch)’ (Es werden alle Datensätze gefunden, die den Begriff 
+					‚Fisch’ enthalten, aber nicht die Begriffe ‚Forelle’ und ‚Barsch’)</p>
+				<p><b><u>Suche nach Wortgruppen</u></b>
+					Wird eine Zeichenkette in Anführungszeichen („) gesetzt, wird nach dem Vorkommen der gesamten 
+					Zeichenkette und nicht nach dem Vorkommen der einzelnen Begriffe gesucht.
+					Beispiel: „der Fisch schwimmt im Wasser“ (Es werden nur Texte gefunden, die exakt diese Zeichenfolge enthalten.)</p>
+				<p><b><u>Platzhalter</u></b>
+					Innerhalb eines Suchbegriffs ist es möglich, Platzhalter für einen (?) oder mehrere (*) 
+					beliebige Zeichen einzugeben. Es werden dann alle Begriffe gefunden, die mit dem Rest des Suchbegriffs 
+					übereinstimmen, wobei für den Platzhalter ein bzw. mehrere Zeichen auftreten können. <b>ACHTUNG:</b> Platzhalter dürfen NICHT am Anfang des Suchwortes stehen.
+					Beispiel: ‚Te?t’ (Es werden sowohl Datensätze mit dem Begriff ‚Text’ als auch Datensätze mit dem Begriff  ‚Test’ gefunden)
+					Beispiel: ‚umwelt*katalog’ (Es werden sowohl Datensätze mit dem Begriff ‚Umweltdatenkatalog’ als auch Datensätze mit dem Begriff  ‚Umweltobjektkatalog’ gefunden)</p>
+				<p><b><u>Suche nach Bereichen von Zeichen</u></b>
+					Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden in eckige [] oder geschweifte {} Klammern gefasst und 
+					die untere und obere Angabe mit dem Operator TO verbunden. Eckige Klammern [] bedeuten, dass der untere und der obere Wert des Bereichs in die Suche
+					einbezogen werden. Geschweifte Klammern {} bedeuten, dass der untere und der obere Wert des Bereichs nicht in die Suche einbezogen werden.
+					Beispiel: ‚[Aller TO Elbe]’ (Es wird nach Datensätzen gesucht, die Worte enthalten, 
+					die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich enthalten.
+					Beispiel: ‚{Aller TO Elbe}’ (Es wird nach Datensätzen gesucht, die Worte enthalten, 
+					die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich nicht enthalten.)
+					Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.
+					Beispiel: ‚te[i TO x]t’ (Es wird nach Datensätzen gesucht, die z.B. die Worte ‚teilt’, ‚test’ oder ‚text’ enthalten.)
+					Alternativ zu dem Operator TO kann auch ein Bindestrich - verwendet werden
+					Beispiel: ‚te[i - x]t’ (Es wird nach Datensätzen gesucht, die z.B. die Worte ‚teilt’, ‚test’ oder ‚text’ enthalten.)</p>	
+				<p><b><u>Ähnlichkeitssuche</u></b>
+					Über die Ähnlichkeitssuche (Fuzzy-Search) werden auch Datensätze gefunden, in denen Begriffe mit ähnlicher Schreibweise gefunden werden. 
+					Die Ähnlichkeitssuche wird über das Anhängen einer Tilde (~) an den Suchbegriff ausgelöst.
+					Beispiel: ‚Korn~’ (Es werden z.B. auch Datensätze mit dem Begriff ‚Horn’ gefunden)</p>
+				<p><b><u>Sonderzeichen</u></b>	
+					Die folgenden Zeichen haben im Suchausdruck eine spezielle Bedeutung (z.B. in Form von Operatoren):
+					+ - &amp;&amp; || ! ( ) { } [ ] ^ " ~ * ? : \</p>
+            </content>
+        </section>
+        <section help-key="search-3">
+            <header>Suche via Kategorie</header>
+            <content>
+                <p>Alternativ können sie auch über die Kategorien suchen. Folgende Kategorien stehen hierbei zur Auswahl:
+				•	Geoanwendung
+				•	Geodatensatz
+				•	Geodatendienst</p>
+            </content>
+        </section>               
+    </chapter>
+    <chapter>
+        <header>Suchergebnisseite</header>
+        <section help-key="search-results-1">
+            <header>Ergebnisseite</header>
+            <content>
+                <p>Nach dem Absenden einer Suchanfrage werden die Suchergebnisse angezeigt. 
+				   Die Suchergebnisseite ist in zwei Bereiche gegliedert. Rechts finden Sie die 
+				   Hauptergebnisliste, links davon die nach Kategorien sortierten 
+				   Ergebnisse. In der Hauptergebnisliste und in den Kategorien sind 
+				   Geodatensätze, Geodatendienste und/oder
+				   Geoanwendungen enthalten, die nach Relevanz gewichtet und sortiert sind. Der 
+				   oberste Eintrag weist hierbei die höchste Relevanz für die Suchanfrage auf.</p>
+                <p>Die Suchergebnisse werden in Kurzbeschreibungen (Ergebnistyp, Titel, Beschreibung) 
+				   angezeigt. Die Information der Kurzbeschreibung kann durch den Klick auf <i><b>Mehr Infos</b></i>
+				   um folgende Punkte erweitert werden (ggf. weitere Verlinkungen, Nutzungsbedingungen 
+				   sowie ein Vorschaubild oder die Darstellung der räumlichen Ausdehnung). 
+				   Hinter dem Titel ist der Link zum Katalogeintrag hinterlegt, hier können die <u>kompletten</u>
+				   Informationen zu dem Metadatensatz angezeigt werden.</p>
+				<p>Wenn bei einem Katalogeintrag eine digitale Karte hinterlegt ist, können Sie sich 
+				   über die Schaltfläche <i><b>Kartenansicht öffnen</b></i> die Karte direkt im 
+				   Geoportal Niederrhein ansehen. Die Schaltfläche <i><b>XML-Darstellung</b></i> liefert die ISO Darstellung 
+				   des Treffers, soweit dieser CSW konform abgegeben werden kann.</p>   
+            </content>
+        </section>
+        <section help-key="search-results-2">
+            <header>Sucheinschränkung durch Kategorien</header>
+            <content>
+                <p>In der linken Spalte der Ergebnisseite werden die Suchergebnisse nach Kategorien sortiert. 
+				   Die Ziffer in  der Klammer gibt an, wie viele Ergebnisse pro Kategorie gefunden wurden.</p>
+                <p>Durch einen Klick auf eine Kategorie wird das Suchergebnis in der Hauptergebnisliste entsprechend 
+				   verfeinert. Erscheinen Checkboxen bei der Auswahl einer Kategorie, so werden die Ergebnisse 
+				   aller angeklickten Unterkategorien in der Hauptergebnisliste wiedergegeben. Über die Schaltfläche <i><b>Mehr</b></i> 
+				   können Sie sich ggf. weitere Unterkategorien anzeigen lassen.</p>                         
+            </content>
+        </section>
+        <section help-key="search-results-3">
+            <header>Räumliche Einschränkungen</header>
+            <content>
+                <p>Sie können Ihr Suchergebnis räumlich einschränken, indem Sie entweder den Raum durch ein Suchrechteck in 
+				   einer Karte oder durch die Angabe eines Ortsnamens einschränken.</p>
+                <p>Anders als bei vielen anderen Suchmaschinen, erfolgt die räumliche Einschränkung also nicht über eine einfache Volltextsuche, 
+				   sondern über die gezielte Suche nach Raumbezügen, die den Suchergebnissen zugeordnet wurden.</p>
+				<p><b><u>Nach Ort suchen</u></b></p>
+				<p>Sie können Ihr Suchergebnis über Eingabe eines Ortsnamens und anderen geographischen Bezeichnungen einschränken. 
+				   Dabei werden Ihnen passende Einträge aus dem Geo-Thesaurus-Umwelt angeboten. 
+                   Klicken Sie hierfür auf die Schaltfläche <i><u>Nach Ort suchen</u></i>, geben Sie eine geographische Bezeichnung (z.B. einen Ortsnamen) 
+				   ein und klicken Sie anschließend auf <i><u>suchen</u></i>. Aktivieren Sie nun die passende Checkbox und klicken Sie auf <i><u>Auswahl anwenden</u></i> 
+				   um die räumliche Einschränkung für die Suchergebnisse zu übernehmen.</p>
+				<p><b><u>Auf Karte festlegen</u></b></p>   
+				<p>Hier können Sie ein Suchgebiet auf einer Karte festlegen, indem Sie mit Shift + gedrückter linker Maustaste ein Rechteck auf der Karte aufziehen. Klicken 
+				   Sie auf die Schaltfläche <i><u>Auswahl anwenden</u></i>, um die räumliche Einschränkung für die Suchergebnisse zu übernehmen.</p>
+            </content>
+        </section>
+    </chapter>
+</help>

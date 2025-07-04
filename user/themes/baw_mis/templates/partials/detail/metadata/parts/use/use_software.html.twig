@@ -1,0 +1,15 @@
+{# Software #}
+
+{# BAW-Rechte an den Quellen #}
+{% set titles = [
+    "BAW-Rechte an den Quellen",
+    "Anmerkungen",
+] %}
+{{ hit_macros.render_titles_entries_group(titles, useRefs.useRights) }}
+
+{# Rechte bei Nutzung der SW durch Dritte #}
+{% set titles = [
+    "Rechte bei Nutzung der SW durch Dritte",
+    "Anmerkungen",
+] %}
+{{ hit_macros.render_titles_entries_group(titles, useRefs.sourceCodeRights) }}

@@ -1,0 +1,101 @@
+/*
+ * **************************************************-
+ * InGrid Portal Base
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+ */
+/* PRINT */
+
+.body {
+  padding-bottom: 0;
+}
+
+.popup {
+  display: none;
+}
+
+.popup.is-open {
+  display: block;
+}
+
+.teaser-data, .footer, .unbreak {
+  page-break-inside: avoid;
+  break-inside: avoid
+}
+
+.select2 {
+  width: 100%!important;
+}
+
+footer {
+  position: relative;
+}
+
+/* DETAIL */
+.detail .row, .detail .timeline .timeline-text {
+  display: block;
+}
+
+.detail .ic-ic-timeline-bullet {
+  display:none;
+}
+
+/* SEARCH */
+@-moz-document url-prefix() {
+  .search-filtered .row {
+    display: block;
+  }
+}
+
+/* CATEGORY*/
+
+.category .tabs-panel .row {
+  display: block;
+}
+
+.category .tabs-content {
+  background: transparent;
+}
+
+.category .tabs-panel .row .columns {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.category .teaser .blue-border {
+  display: none;
+}
+
+.category .teaser .teaser-link {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.category .teaser .teaser-link .teaser-number {
+  display: inline;
+}
+
+.category .teaser .teaser-link span:first-child {
+  display: none;
+}
+
+.category .teaser {
+  height: 10px;
+  box-shadow: 0 0 0 0;
+}

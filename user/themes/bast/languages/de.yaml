@@ -1,0 +1,33 @@
+PAGES:
+    HOME_MENU_TITLE: Startseite zu BASt
+    ABOUT: Über den BASt Metadatenkatalog
+    ABOUT_MENU_TITLE: Hintergrundinformationen zu Geodatenkatalog Niederrhein
+    HELP_MENU_TITLE: Erläuterungen zur Nutzung von Geodatenkatalog Niederrhein
+    PROBLEM: Barriere melden
+    PROBLEM_MENU_TITLE: 'Ihre Nachricht, Fragen oder Anregungen direkt an %s'
+    PROBLEM_META_TITLE: Kontaktieren Sie uns
+    PROBLEM_META_DESCRIPTION: 'Kontaktieren Sie %s online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.'
+    PROBLEM_META_KEYWORDS: '%s, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen'
+    SITEMAP: Inhalt
+
+SEARCH:
+    PORTLET_TITLE_1: Metadatenkatalog der BASt
+    PORTLET_TITLE_2: Rechercheportal für Datensätze
+    PORTLET_TITLE_3: ' '
+
+SEARCH_RESULT:
+    FACET_DELETE_SELECTION: Gesamte Auswahl zurücksetzen
+
+CATEGORIES:
+    TITLE: Recherchieren nach Kategorien
+
+SEARCH_DETAIL:
+    T01_OBJECT_POLYGON_WKT: Begrenzungspolygon im WKT Format (in WGS84)
+    T011_OBJ_SERV_ENVIRONMENT: Produktionsumgebung
+    TECHNICAL_INFORMATION_3: Informationen zum Dienst
+    TECHNICAL_INFORMATION_6: Informationen zur Anwendung
+    T011_OBJ_DATA_DESCRIPTION: Bemerkungen
+
+FACETS:
+    FACET_LABEL:
+        BBOX: In Kartenausschnitt suchen

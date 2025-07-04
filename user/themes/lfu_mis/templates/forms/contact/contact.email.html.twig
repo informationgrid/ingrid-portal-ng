@@ -1,0 +1,3 @@
+{{ form.value.user_message }}<br />
+<br />
+[METAVER {% if form.value.user_technical %}{{ "CONTACT.REPORT_EMAIL_TECHNICAL"|t }}{% else %}{{ form.value.user_company|upper }}{% endif %}]

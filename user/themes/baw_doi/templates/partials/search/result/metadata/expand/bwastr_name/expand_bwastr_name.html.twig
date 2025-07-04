@@ -1,0 +1,5 @@
+{# Ortslage #}
+{% if bwastr_name %}
+    {{ hit_macros.render_fact_title('Ortslage') }}
+    <p>{{ bwastr_name|sort|join(', ') }}</p>
+{% endif %}

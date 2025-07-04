@@ -179,17 +179,25 @@
             {% include 'partials/search/result/metadata/expand/categories/expand_categories.html.twig' ignore missing %}
 {# XML Darstellung #}
             <div class="teaser-links">
-                {% include 'partials/search/result/metadata/expand/xml/expand_csw_xml.html.twig' ignore missing %}
+                {% if "wfs" not in datatypes
+                    and "www" not in datatypes
+                    and "address" not in datatypes
+                %}
+                    {% include 'partials/search/result/metadata/expand/xml/expand_csw_xml.html.twig' ignore missing %}
+                {% endif %}
             </div>
         </div>
 {# Vorschau / Karte #}
         <div class="columns">
-            {% if "wfs" in hit.datatypes %}
+            {% if "wfs" in datatypes %}
                 {% if previews|length > 0 %}
                     <div class="swiper-container-background">
                         {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
                         {{ previews[0].url|raw }}
                     </div>
+                {% elseif bboxes|length > 0 %}
+                    {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
+                    {% include 'partials/global/map/map.html.twig' with { coords: bboxes, displayControls: false, mapId: hitMapId, usePopUp: false } %}
                 {% endif %}
             {% else %}
                 {% if previews|length > 0 and bboxes|length > 0 %}
@@ -210,18 +218,18 @@
                     {% endfor %}
                 {% endif %}
 {# Karte #}
-                {% if bboxes|length > 0 or wkt %}
-                    {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
+                {% if bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0 %}
+                    {% if previews|length > 0 and (bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0) %}
                             <div class="swiper-slide">
                     {% endif %}
                     {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_AREA"|t, null, 'text-center') }}
-                    {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojson: wkt, isDetail: false, mapId: hitMapId }%}
-                    {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
+                    {% include 'partials/global/map/map.html.twig' with { coords: bboxes, geojsons: wkts, bwastrs: bwastrs, displayControls: false, mapId: hitMapId, usePopUp: false } %}
+                    {% if previews|length > 0 and (bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0) %}
                             </div>
                     {% endif %}
                 {% endif %}
 
-                {% if previews|length > 0 and (bboxes|length > 0 or wkt) %}
+                {% if previews|length > 0 and (bboxes|length > 0 or wkts|length > 0 or bwastrs|length > 0) %}
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>

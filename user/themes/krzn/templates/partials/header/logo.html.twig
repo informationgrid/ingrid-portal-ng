@@ -1,0 +1,38 @@
+{% set header_logo_enabled = theme_var('header.logo_enabled') %}
+
+<div class="row">
+    <div class="columns xsmall-4 small-4 medium-4 large-4 xlarge-4">
+        {% if header_logo_enabled %}
+            {% set logo = theme_var('header.logo') %}
+            {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+            {% if logo_lang %}
+                {% set logo = logo_lang %}
+            {% endif %}
+            <div class="logo" role="banner">
+                <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+                {% if logo %}
+                    {% set header_logo_file = (logo|first).name %}
+                {% else %}
+                    {% set header_logo_file = 'logo.svg' %}
+                {% endif %}
+                    <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="columns xsmall-10 small-10 medium-20 large-20 xlarge-18">
+        <div class="desktop__title">
+            {% if page.url == home_url %}
+                <span>
+                    <strong>G</strong>eodatenkatalog <strong>N</strong>iederrhein
+                </span>
+            {% else %}
+                <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+                    <span>
+                        <strong>G</strong>eodatenkatalog <strong>N</strong>iederrhein
+                   </span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

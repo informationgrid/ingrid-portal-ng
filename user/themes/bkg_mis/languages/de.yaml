@@ -1,0 +1,28 @@
+PAGES:
+    HOME: Startseite
+    HOME_MENU_TITLE: BKG Webseite
+    HOME_META_TITLE: Startseite
+    ACCESSIBILITY: Erklärung zur Barrierefreiheit
+    ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
+
+SEARCH:
+    PORTLET_TITLE_1: ' '
+    PORTLET_TITLE_2: Metadaten
+    PORTLET_TITLE_3: zu Geodaten, Webdiensten und Webanwendungen
+
+SEARCH_RESULT:
+    INFO_LINKS: Links
+
+SEARCH_DETAIL:
+    T01_OBJECT_OBJ_ID: Metadatensatz-ID
+    T011_OBJ_GEO_HIERARCHY_LEVEL: Art des Datensatzes
+    T01_OBJECT_TIME_DESCR: Erläuterung zum Pflegeintervall
+    T01_OBJECT_MOD_TIME: Datum
+    TIME_REFERENCE: Zeitbezug
+    TIME_REFERENCE_CONTENT: Zeitbezug der Daten
+    TIME_REFERENCE_RECORD: Zeitbezug
+    TECHNICAL_INFORMATION: Informationen zur Geodatenressource
+    TECHNICAL_INFORMATION_3: Informationen zur Geodatenressource
+    TECHNICAL_INFORMATION_6: Informationen zur Geodatenressource
+    T011_OBJ_GEO_DATASOURCE_UUID: Identifier
+    T011_OBJ_SERV_OPERATION_INVOCATION_NAME: Zugangspunkt der Operation oder des Dienstes

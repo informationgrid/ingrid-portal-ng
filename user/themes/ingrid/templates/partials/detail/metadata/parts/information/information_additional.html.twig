@@ -16,7 +16,7 @@
     {# XML-Export-Kriterium #}
         {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T014_INFO_IMPART_NAME"|t, infoRefs_additional.exportCriteria) }}
     {# Sprache des Datensatzes #}
-        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.languageCode) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.languageCode ? infoRefs_additional.languageCode|sort ) }}
     {# Konformität #}
         {% set header = [
             "SEARCH_DETAIL.OBJECT_CONFORMITY_SPECIFICATION"|t,
@@ -34,7 +34,7 @@
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.DATA_FORMAT"|t, header, infoRefs_additional.dataformat) }}
     {# Geodatenlink #}
-        {% include 'partials/detail/metadata/parts/information/information_additional_geodaten_link.html.twig' %}
+        {% include 'partials/detail/metadata/parts/information/information_additional_geodaten_link.html.twig' ignore missing %}
     {# Medien #}
         {% set header = [
             "SEARCH_DETAIL.T0112_MEDIA_OPTION_MEDIUM_NAME"|t,

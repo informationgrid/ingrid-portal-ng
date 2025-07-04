@@ -3,7 +3,7 @@
 
 <div class="sub-section">
     <a class="anchor" id="{{ hash_info }}_technical_information"></a>
-    {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION_3"|t) }}
 {# Identifikator #}
     {% include 'partials/detail/metadata/parts/information/information_type_3_identificator.html.twig' ignore missing %}
 {# Digitale Repräsentation #}
@@ -17,11 +17,11 @@
 {# Systemumgebung #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_ENVIRONMENT"|t, infoRefs.environmentDescription) }}
 {# Historie #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_HISTORY"|t, infoRefs.processStepDescription) }}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_HISTORY"|t, infoRefs.processStepDescriptions) }}
 {# Fachliche Grundlage #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatements) }}
 {# Basisdaten #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
+    {{ hit_macros.render_label_document_list("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescriptions) }}
 {# Erläuterung zum Fachbezug #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_DESCRIPTION"|t, infoRefs.supplementalInformation) }}
 {# Erläuterung zum Fachbezug (*) #}
@@ -33,12 +33,8 @@
     {% if hasAccessConstraint is same as("true") %}
         {% set tmpTitle = "SEARCH_DETAIL.SHOWGETCAPABILITYURLRESTRICTED"|t %}
     {% endif %}
-    {% if map.url %}
-        {% if hasAccessConstraint is same as("true") %}
-            {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
-        {% else %}
-            {{ hit_macros.render_label_link_map(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external", "", mapUrl) }}
-        {% endif %}
+    {% if map.url and mapUrl and hasAccessConstraint is not same as("true") %}
+        {{ hit_macros.render_label_link_map(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external", "", page.find('/map').url ~ '?layers=' ~ mapUrl) }}
     {% else %}
         {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
     {% endif %}

@@ -29,7 +29,7 @@
                         {{ hit.title }}
                     </h1>
                     <div class="helper text date">
-                        <span>{{ "SEARCH_DETAIL.UVP_TIME"|t }} {{ hit.date|date("d.m.Y", timezone) }}</span>
+                        <span>{{ "SEARCH_DETAIL.UVP_TIME"|t }} {{ hit.date|date("d.m.Y") }}</span>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="row no-padding">
             <div class="columns form">
-                {% include 'partials/global/map/map.html.twig' with { coords: hit.bbox, isDetail: true, mapId: 'map', mapHeight: '400px', usePopUp: true} %}
+                {% include 'partials/global/map/map.html.twig' with { coords: hit.bbox, displayControls: true, mapId: 'map', mapHeight: '400px', usePopUp: true} %}
             </div>
         </div>
     </div>
@@ -203,7 +203,11 @@
                                             </h2>
                                         {% endif %}
                                         {# Datum der Entscheidung / Zeitraum der Auslegung #}
-                                        {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t) }}
+                                        {% set dateInfo = ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t %}
+                                        {% if dateInfo == "SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO" %}
+                                            {% set dateInfo = null %}
+                                        {% endif %}
+                                        {{ _self.render_date(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE")|t, step.dateFrom, step.dateTo, dateInfo) }}
                                         {# Auslegungsinformationen #}
                                         {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_TECHNICALDOCS")|t, step.technicalDocs, "technicalDocs") }}
                                         {# UVP-Bericht, ggf. Antragsunterlagen #}
@@ -265,10 +269,10 @@
         </h4>
         <p>
             {%  if from %}
-                {{ from|date("d.m.Y", timezone) }}
+                {{ from|date("d.m.Y") }}
             {% endif %}
             {%  if to %}
-                - {{ to|date("d.m.Y", timezone) }}
+                - {{ to|date("d.m.Y") }}
             {% endif %}
         </p>
     {% endif %}

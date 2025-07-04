@@ -9,49 +9,60 @@
 {% set map_position = theme_var('map.leaflet.position') %}
 {% set map_bbox = theme_var('map.leaflet.bbox') %}
 
-<div id="search-map" class="map-ingrid" style="height: 350px;outline-style: none;"></div>
-
-<script>
-    let bbox = null;
-    const url = new URL(location.href);
-    let bboxParameter = url.searchParams.get("bbox");
-    if (bboxParameter) {
-        const splittedBbox = bboxParameter.split(",");
-        if (splittedBbox.length === 4) {
-            bbox = [[splittedBbox[1], splittedBbox[0]], [splittedBbox[3], splittedBbox[2]]]
+<div class="boxes">
+    <div id="search-map" class="map-ingrid" style="height: 350px;outline-style: none;"></div>
+    <script>
+        let bbox = null;
+        const url = new URL(location.href);
+        let bboxParameter = url.searchParams.get("bbox");
+        if (bboxParameter) {
+            const splittedBbox = bboxParameter.split(",");
+            if (splittedBbox.length === 4) {
+                bbox = [[splittedBbox[1], splittedBbox[0]], [splittedBbox[3], splittedBbox[2]]]
+            }
         }
-    }
 
-    const triggerNominatimOnInput = true;
+        const triggerNominatimOnInput = true;
 
-    var epsg = L.CRS.EPSG3857;
-    if ('{{ map_epsg }}'.length > 0) {
-        epsg = L.CRS.EPSG{{ map_epsg }};
-    }
-
-    initSearchMap(
-        epsg,
-        '{{ map_bg_wmts }}',
-        '{{ map_bg_wms.url }}',
-        '{{ map_bg_wms.name }}',
-        '<a href="https://leafletjs.com" title="Leaflet">Leaflet</a> | {{ map_bg_attribution|raw }}',
-        {{ map_bg_opacity }},
-        '{{ map_geocoder|raw }}',
-        triggerNominatimOnInput,
-        [{{ map_position }}],
-        bbox,
-        {
-            color: '{{ map_bbox.color }}',
-            opacity: '{{ map_bbox.opacity }}',
-            weight: '{{ map_bbox.weight }}'
+        var epsg = L.CRS.EPSG3857;
+        if ('{{ map_epsg }}'.length > 0) {
+            epsg = L.CRS.EPSG{{ map_epsg }};
         }
-    );
-    searchMapSmall.invalidateSize();
-{% if not active %}
-    var parent = $('#{{ id }}').parent();
-    if (parent) {
-        parent.removeClass('is-active');
-        parent.children('.accordion-content').css('display', 'none');
-    }
-{% endif %}
-</script>
+
+        initSearchMap(
+            epsg,
+            '{{ map_bg_wmts }}',
+            '{{ map_bg_wms.url }}',
+            '{{ map_bg_wms.name }}',
+            '<a href="https://leafletjs.com" title="Leaflet">Leaflet</a> | {{ map_bg_attribution|raw }}',
+            {{ map_bg_opacity }},
+            '{{ map_geocoder|raw }}',
+            triggerNominatimOnInput,
+            [{{ map_position }}],
+            bbox,
+            {
+                color: '{{ map_bbox.color }}',
+                opacity: '{{ map_bbox.opacity }}',
+                weight: '{{ map_bbox.weight }}'
+            }
+        );
+        searchMapSmall.invalidateSize();
+    {% if not active %}
+        var parent = $('#{{ id }}').parent();
+        if (parent) {
+            parent.removeClass('is-active');
+            parent.children('.accordion-content').css('display', 'none');
+        }
+    {% endif %}
+
+    </script>
+    {% include 'partials/search/filter/facet_area_map_filter.html.twig' ignore missing %}
+    <button style="width:100%;" class="button filter_submit" id="facet-map" title="{{ "FACETS.BBOX.COMMIT"|t }}">
+        {{ "FACETS.BBOX.COMMIT"|t }}
+    </button>
+    <script>
+        $('#facet-map').on('click', function(){
+            applyLocation(searchMapSmall);
+        });
+    </script>
+</div>

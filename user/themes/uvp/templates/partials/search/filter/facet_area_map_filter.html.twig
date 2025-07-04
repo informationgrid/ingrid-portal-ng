@@ -1,0 +1,17 @@
+<div class="map-filter-xs"></div>
+<p class="subtext">{{ "COMMON.MAP_INFO"|t }}</p>
+
+{% set map = theme_var('map') %}
+{% set checkedCategoryBLP = map.leaflet.legend.enable.blp ? "true" : "false" %}
+{% set checkedCategoryZV = map.leaflet.legend.enable.zv ? "true" : "false" %}
+{% set checkedCategoryAV = map.leaflet.legend.enable.av ? "true" : "false" %}
+{% set checkedCategoryNV = map.leaflet.legend.enable.nv ? "true" : "false" %}
+{% set checkedCategoryRO = map.leaflet.legend.enable.ro ? "true" : "false" %}
+{% set checkedCategoryLI = map.leaflet.legend.enable.li ? "true" : "false" %}
+<script>
+    var map = searchMapSmall;
+    var mapAdditional = searchMapBig;
+    var enablePopUp = false;
+    var smallIcons = true;
+</script>
+{% include 'partials/leaflet/marker.html.twig' with { isSearch: true } %}

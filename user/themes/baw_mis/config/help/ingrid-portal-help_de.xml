@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ingrid-portal-help.xsl" ?>
+<help>
+    <chapter>
+        <header>Hilfe zu InGrid-Portal</header>
+        <section help-key="index">
+            <header>Hilfethemen</header>
+            <content>
+                <ul>
+                    <li>
+                        <a href="?hkey=search-1">Suche</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=maps-1">Karte</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=about-1">Über BAW-Datenfinder</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-category-1">Kategorien</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=myingrid-1">Anmeldung</a>
+                    </li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Über BAW-Datenfinder</header>
+        <section help-key="about-1">
+            <header>Porträt</header>
+            <content>
+                <p>Dieser Bereich dient der Darstellung des Portals oder des Portal-Betreibers.</p>
+                <p>Die Inhalte können als Administrator dynamisch im Portal gepflegt werden (<b>Inhalt > ingrid.about</b>).</p>
+            </content>
+        </section>
+        <section help-key="about-2">
+            <header>Informationsanbieter</header>
+            <content>
+                <p>Hier werden alle im System eingepflegten Partner und die Ihnen zugeordneten Informationsanbieter angezeigt.</p>
+                <p>Als Administrator können diese im Bereich <b>Partner</b> und <b>Anbieter</b> gepflegt werden.</p>
+            </content>
+        </section>
+        <section help-key="about-3">
+            <header>Datenquellen</header>
+            <content>
+                <p>Hier werden alle angeschlossenen iPlugs angezeigt.</p>
+                <p>Der angezeigte Name wird im iPlug gepflegt und sollte Rückschlüsse auf Art und Inhalt der Daten geben.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Suche</header>
+        <section help-key="search-1">
+            <header>Sucheingabe</header>
+            <content>
+                <p>Suchen ist ganz einfach. Geben Sie in das Suchfeld einen oder 
+                   mehrere Begriffe ein und klicken Sie anschließend auf die 
+                   Schaltfläche <b>Suche</b>.</p>
+                <p>Das Portal durchsucht alle
+                   eingebundenen Informationen. Die 
+                   Ergebnisse Ihrer Suchanfrage werden in einer 
+                   <a href="?hkey=search-results-1">Suchergebnisseite</a> 
+                   wiedergegeben.</p>
+            </content>
+        </section>
+        <section help-key="search-2">
+            <header>Suche via Kategorien</header>
+            <content>
+                <p>Alternativ können Sie mit den Kategorien auf der linken Seite suchen.
+                   Beim Betreten der <b>Suche</b> werden schon automatisch alle Ergebnisse kategorisiert.
+                   Diese können Sie dann per Klick auf die Kategorien sich anzeigen lassen und weiter verfeinern.</p>
+            </content>
+        </section>
+        <section help-key="search-4">
+            <header>Auf Karte festlegen</header>
+            <content>
+                <p>Die räumliche Einschränkung der InGrid-Portal-Suche ist auch über die Auswahl eines Kartenausschnitts 
+                   möglich.</p>
+                <p>Wählen Sie ein Gebiet aus, indem Sie mit Shift + gedrückter 
+                   linker Maustaste ein Rechteck auf der Karte aufziehen.
+                   Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
+                   werden die Koordinaten der Suche hinzugefügt.</p>
+            </content>
+        </section>                
+        <section help-key="search-5">
+            <header>Suche verfeinern</header>
+            <content>
+                <p>Neben der einfachen Suche können Sie Ihre Suche weiter
+                    verfeinern. Lesen Sie hierzu folgende Themen:</p>
+                <ul>
+                    <li>
+                        <a href="?hkey=search-expert-1">Experteneingabe</a>
+                    </li>
+                    </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Experteneingabe</header>
+        <section help-key="search-expert-1">
+            <header>Experteneingabe</header>
+            <content>
+                <p>Alle Einstellungen der Such-Oberfläche und  
+                    spezielle Einstellungen darüber hinaus lassen sich auch
+                    direkt über den Suchausdruck in die Suche eingeben. Da die
+                    Syntax durch die große Anzahl der Suchmethoden recht
+                    umfangreich ist, ist sie vor allem für Experten geeignet.</p>
+            </content>
+        </section>
+        <section help-key="search-expert-2">
+            <header>Bool’sche Operatoren</header>
+            <content>
+                <p>Die einzelnen Suchbegriffe können über Bool’sche
+                    Operatoren verknüpft werden. Es stehen folgende Operatoren
+                    zur Verfügung:</p>
+                <p>
+                    <b>AND (UND-Verknüpfung)</b>: Alle Worte müssen in dem
+                    Dokument vorhanden sein. Sie ist Standard, wenn kein Operator
+                    angegeben wird. (Hinweis: Anstatt AND kann auch das Symbol
+                    &amp;&amp; verwendet werden)<br></br>Beispiel:
+                    ‚Wasser Fisch’ entspricht
+                     ‚Wasser AND Fisch’ bzw.
+                    ‚Wasser &amp;&amp; Fisch’</p>
+                <p>
+                    <b>OR (ODER-Verknüpfung)</b>: Eines der Worte muss im
+                    Dokument vorhanden sein. (Hinweis: Anstatt von OR kann auch
+                    das Symbol || verwendet werden)<br></br> Beispiel:
+                    ‚Wasser OR Fisch’ entspricht
+                    ‚Wasser || Fisch’</p>
+                <p>
+                    <b>NOT (NICHT-Verknüpfung)</b>: Das Wort nach dem NOT darf
+                    nicht im Dokument vorhanden sein. (Hinweis: Anstatt von NOT
+                    kann auch das Symbol ! oder das Symbol - verwendet
+                    werden)<br></br> Beispiel: ‚Wasser NOT
+                    Fisch’ (gesucht wird nach Wasser aber nicht nach Fisch)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-3">
+            <header>Gruppierung (Klammerung)</header>
+            <content>
+                <p>Die einzelnen durch Bool’sche Operatoren
+                    verknüpften Suchbegriffe können durch Klammerung (runde
+                    Klammern) beliebig gruppiert werden.</p>
+                <p>Beispiel: ‚Fisch NOT (Forelle OR Barsch)’
+                    (Es werden alle Dokumente gefunden, die den Begriff
+                    ‚Fisch’ enthalten, aber nicht die
+                    Begriffe ‚Forelle’ und ‚Barsch’)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-4">
+            <header>Suche nach Wortgruppen</header>
+            <content>
+                <p>Wird eine Zeichenkette in Anführungszeichen („)
+                    gesetzt, wird nach dem Vorkommen der gesamten Zeichenkette
+                    und nicht nach dem Vorkommen der einzelnen Begriffe gesucht.</p>
+                <p>Beispiel: „der Fisch schwimmt im Wasser“
+                    (Es werden nur Texte gefunden, die exakt diese Zeichenfolge enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-5">
+            <header>Platzhalter</header>
+            <content>
+                <p>Innerhalb eines Suchbegriffs ist es möglich, Platzhalter für
+                    einen (?) oder mehrere (*) beliebige Zeichen einzugeben. Es
+                    werden dann alle Begriffe gefunden, die mit dem Rest des
+                    Suchbegriffs übereinstimmen, wobei für den Platzhalter ein
+                    bzw. mehrere Zeichen auftreten können.</p>
+                <p><b>ACHTUNG</b>: Platzhalter dürfen NICHT am Anfang des Suchwortes stehen.</p>
+                <p>Beispiel: ‚Te?t’ (Es werden sowohl
+                    Dokumente mit dem Begriff ‚Text’ als
+                    auch Dokumente mit dem Begriff  ‚Test’ gefunden)</p>
+                <p>Beispiel: ‚umwelt*katalog’ (Es werden
+                    sowohl Dokumente mit dem Begriff
+                    ‚Umweltdatenkatalog’ als auch Dokumente
+                    mit dem Begriff  ‚Umweltobjektkatalog’ gefunden)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-6">
+            <header>Suche nach Bereichen von Zeichen</header>
+            <content>
+                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden  
+                    in eckige [] oder geschweifte {} Klammern gefasst und die untere und obere
+                    Angabe mit dem Operator TO verbunden. Eckige Klammern []
+                    bedeuten, dass der untere und der obere Wert des Bereichs in
+                    die Suche einbezogen werden. Geschweifte Klammern {}
+                    bedeuten, dass der untere und der obere Wert des Bereichs
+                    nicht in die Suche einbezogen werden.</p>
+                <p>Beispiel: ‚[Aller TO Elbe]’ (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich enthalten.</p>
+                <p>Beispiel: ‚{Aller TO Elbe}’ (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich nicht enthalten.)</p>
+                <p>Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.</p>
+                <p>Beispiel: ‚te[i TO x]t’ (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte ‚teilt’, ‚test’ oder ‚text’ enthalten.)</p>
+                <p> Alternativ zu dem Operator TO kann auch ein Bindestrich - verwendet werden </p>
+                <p>Beispiel: ‚te[i - x]t’ (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte ‚teilt’, ‚test’ oder ‚text’ enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-7">
+            <header>Ähnlichkeitssuche</header>
+            <content>
+                <p>Über die Ähnlichkeitssuche (Fuzzy-Search) werden auch
+                    Dokumente gefunden, in denen Begriffe mit ähnlicher
+                    Schreibweise gefunden werden. Die Ähnlichkeitssuche wird
+                    über das Anhängen einer Tilde (~) an den Suchbegriff ausgelöst.</p>
+                <p>Beispiel: ‚Korn~’ (Es werden z.B. auch
+                    Dokumente mit dem Begriff ‚Horn’ gefunden)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-8">
+            <header>Sonderzeichen</header>
+            <content>
+                <p>Die folgenden Zeichen haben im Suchausdruck eine
+                    spezielle Bedeutung (z.B. in Form von Operatoren):</p>
+                <p>+ - &amp;&amp; || ! ( ) { } [ ] ^ &quot; ~ * ? : \</p>
+                <p>Sollen sie dennoch als einfache Zeichen innerhalb eines
+                    Suchausdrucks verwendet werden, müssen sie über das Zeichen
+                    \ (Backslash) markiert werden.</p>
+                <p>Beispiel: ‚\(1\+1\)\:2’ (Es wird nach dem
+                    Ausdruck ‚(1+1):2’ gesucht)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-14">
+            <header>Angabe des Raumbezugs</header>
+            <content>
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Raumbezug zugeordnet sind, eingeschränkt 
+                werden.
+                Der Raumbezug kann über Koordinaten angegeben werden.</p>
+                <p>Beispiel: 'x1:7.52 y1:50.18 x2:10.17 y2:52.73' (Die Suche wird auf ein 
+                ausgewähltes Rechteck eingeschränkt.)</p>
+                <p>Folgende Felder stehen für die Einschränkung des Raumbezugs in InGrid-Portal zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Feld</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung des Werts</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>x1  </td>  
+                    <td> links</td>
+                    </tr>
+                    <tr>
+                    <td>x2 </td>  
+                    <td> rechts</td>
+                    </tr>
+                    <tr>
+                    <td>y1 </td>  
+                    <td> oben</td>
+                    </tr>
+                    <tr>
+                    <td>y2 </td>  
+                    <td> unten</td>
+                    </tr>
+               </table> <br></br>
+               <p> Die Koordinaten müssen als Gradzahlen (WGS 84) eingegeben werden. </p>
+            </content>
+        </section>
+        <section help-key="search-expert-15">
+            <header>Angabe des Zeitbezugs</header>
+            <content>
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt 
+                werden. </p>
+                <p>Beispiel: 't1:2006-01-01 t2:2008-12-31' (Die Suche wird auf ein 
+                ausgewähltes Zeitintervall eingeschränkt.)</p>
+                <p>Folgende Felder stehen für die Einschränkung des Zeitbezugs in InGrid-Portal zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Feld</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung des Werts</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>t0 </td>  
+                    <td> Das Dokument wurde dem angegebenen Zeitpunkt zugeordnet</td>
+                    </tr>
+                    <tr>
+                    <td>t1  </td>  
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    angegebenen Wert beginnt</td>
+                    </tr>
+                    <tr>
+                    <td>t2 </td>  
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    angegebenen Wert endet</td>
+                    </tr>
+               </table><br></br>
+               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag) 
+               eingegeben werden. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Suchergebnisseite</header>
+        <section help-key="search-results-1">
+            <header>Ergebnisseite</header>
+            <content>
+                <p>Nach dem Absenden einer Suchanfrage werden die Suchergebnisse
+                   angezeigt. Die Suchergebnisseite ist in zwei Bereiche 
+                   gegliedert. Rechts finden Sie die Hauptergebnisliste, links  
+                   davon die nach  
+                   <a href="?hkey=search-results-2">Kategorien</a> sortierten 
+                   Ergebnisse. 
+                   In der Hauptergebnisliste und in den Kategorien sind 
+                   Webseiten, Metadaten und/oder Fachinformationen enthalten, 
+                   die nach Relevanz gewichtet und sortiert sind. Der oberste 
+                   Eintrag weist hierbei die höchste Relevanz für die 
+                   Suchanfrage auf.</p>
+                <p>Ein Suchergebnis besteht aus einem Titel, der auf die 
+                   Webseite bzw. den Katalog- oder Datenbankeintrag verlinkt, 
+                   eine Kurzbeschreibung und ggf. weiteren Angaben. Die Schaltfläche <b>XML</b> liefert die ISO
+                   Darstellung des Treffers, soweit dieser CSW konform abgegeben werden kann.
+                </p>
+            </content>
+        </section>
+        <section help-key="search-results-2">
+            <header>Kategorien</header>
+            <content>
+                <p>In der linken Spalte der Ergebnisseite werden die 
+                   Suchergebnisse nach Kategorien sortiert. In Klammern wird 
+                   hierbei angegeben, wie viele Ergebnisse pro Kategorie 
+                   gefunden wurden. </p>
+                <p>Durch einen Klick auf eine Kategorie wird das Suchergebnis 
+                   in der Hauptergebnisliste entsprechend eingepasst. Erscheinen 
+                   Checkboxen bei der Auswahl einer Kategorie, so werden die 
+                   Ergebnisse aller angeklickten Unterkategorien in der 
+                   Hauptergebnisliste wiedergegeben. Über die Schaltfläche 
+                   <b>Mehr</b> können Sie sich weitere Unterkategorien anzeigen 
+                   lassen. </p>
+                <p>Wenn Sie Ihre Suchanfrage präzisieren möchten, können Sie 
+                   auch mehrere Kategorien auswählen.</p>
+                <p>Um die vorgenommenen Einschränkung wieder aufzugeben, 
+                   klicken Sie nochmals auf die gewählte Kategorie bzw. auf die 
+                   grauen Schalfläche(n), die oben in der Ergebnisliste die aktuellen Einschränkungen anzeigen.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Karte</header>
+        <section help-key="maps-1">
+            <header>Übersicht</header>
+             <content>
+                <p>Mit dem Kartenviewer können Sie sich eine Visualisierung der angeschlossen Daten auf einer Karte ansehen und auf diesen operieren.</p>
+            </content>
+        </section>
+        <section help-key="maps-3">
+            <header>Navigation und Orientierung</header>
+            <content>
+            </content>
+            <section help-key="maps-3-1">
+                <header>Ändern des Kartenmassstabs</header>
+                <content>
+                    <p>Mit jedem Klick auf das "+" oder "-" wird der angezeigte Massstab vergrössert oder verkleinert.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-2">
+                <header>Zoom auf Ausschnitt</header>
+                <content>
+                    <p>Zoom auf Rechteck / Ausschnitt wird über SHIFT Taste und gleichzeitiges Aufziehen eines Rechteckes mit gedrückter linker Maustaste aktiviert.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-3">
+                <header>Verschieben</header>
+                <content>
+                    <p>Das Verschieben kann wie folgt benutzt werden: klicken und gedrückt halten, um die Karte zu verschieben.</p>
+                </content>
+            </section>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Kategorien</header>
+        <section help-key="search-category-1">
+            <header>Durchstöbern Sie das Portal nach Kategorien</header>
+            <content>
+                <p>Durch die Auswahl einer Kategorie, werden Ihnen alle vorhandenen Treffer der ausgewählten Kategorie im Portal angezeigt.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Anmeldung</header>
+        <section help-key="myingrid-1">
+            <header>Anmeldung</header>
+            <content>
+                <p>Über die Anmeldung erhalten Sie Zugang zum InGrid Editor innerhalb des Portals, sofern Sie als IGE Benutzer eingerichtet sind</p>
+                <p>Der Systemadministrator kann verschiedenste Aspekte des Portals administrieren, wie z.B. die Quelle der Nachrichten unter Aktuelles oder Portal Inhalte pflegen.</p>
+                <p>Haben Sie bereits einen Benutzernamen und ein Passwort, so
+                    geben Sie beides hier ein und klicken auf <b>Anmelden</b>.</p>
+            </content>
+            <section help-key="myingrid-2">
+                <header>Neuer Benutzer</header>
+                <content>
+                    <p>Haben Sie noch keinen Benutzernamen und Passwort, so
+                        klicken Sie auf <b>Neuer
+                        Benutzer</b>. Damit werden Sie zu dem Formular
+                        <b>Anmeldung</b> durchgeschaltet.</p>
+                    <p>Bitte füllen Sie das Formular aus. Die Angaben mit
+                        Sternchen * sind Pflichtangaben, die ausgefüllt werden
+                        müssen. Alle anderen Angaben sind freiwillig.</p>
+                </content>
+            </section>
+            <section help-key="myingrid-3">
+                <header>Passwort vergessen?</header>
+                <content>
+                    <p>Wenn Sie Ihr Passwort vergessen haben, klicken Sie auf
+                        den Link <b>Passwort vergessen?</b>. Sie
+                        werden dann zu dem entsprechenden Formular geführt, in
+                        dem Sie Ihre E-Mail-Adresse eingeben können. Nach dem
+                        Absenden bekommen Sie umgehend Ihren Benutzernamen und
+                        Ihr Passwort zugesandt.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="myingrid-4">
+            <header>Nutzerprofil bearbeiten</header>
+            <content>
+                <p>Dieser Link führt Sie zu dem Formular mit Ihren bisherigen
+                    Angaben. Haben sich Ihre Daten geändert, so können Sie diese
+                    Änderungen jetzt nachtragen.</p>
+                <p>Die Angaben mit Sternchen * sind Pflichtangaben, die
+                    ausgefüllt werden müssen. Alle anderen Angaben sind freiwillig.</p>
+            </content>
+        </section>
+        <section help-key="myingrid-5">
+            <header>Logout</header>
+            <content>
+                <p>Über das Logout verlassen Sie den personalisierten Bereich
+                    und kommen zurück auf die Startseite von InGrid-Portal mit seinen Standard-Voreinstellungen.</p>
+            </content>
+        </section>
+    </chapter>
+</help>

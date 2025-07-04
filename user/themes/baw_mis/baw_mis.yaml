@@ -1,0 +1,825 @@
+enabled: true
+header:
+  title_extend: 'BAW-Datenfinder'
+  logo_enabled: true
+  logo_class: 'xsmall-7 small-7 medium-5 large-5 xlarge-5'
+  menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
+  menu_dropdown: true
+  shrink: true
+  logo:
+    user/themes/baw_mis/images/logo/logo.svg:
+      name: logo.svg
+      full_path: logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/baw_mis/images/logo/logo.svg
+footer:
+  logo_enabled: true
+  copyright:
+    text: ''
+    class: 'xsmall-7 small-7 medium-5 large-5 xlarge-5'
+    show_year: false
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-17'
+  hr_line: true
+  logo:
+    user/themes/baw_mis/images/logo/logo-white.svg:
+      name: logo-white.svg
+      full_path: logo-white.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/baw_mis/images/logo/logo-white.svg
+  share:
+    enabled: true
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: false
+  up:
+    enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
+menu:
+  main:
+    -
+      path: /search
+      icon: ic-ic-lupe
+    -
+      path: /map
+      icon: ic-ic-karten
+    -
+      path: /catalog
+      icon: ic-ic-datenkataloge
+  site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /map
+      highlighted: true
+    -
+      path: /catalog
+      highlighted: true
+    -
+      path: /about
+      highlighted: true
+    -
+      path: /datasource
+      highlighted: true
+    -
+      path: /help
+      highlighted: false
+    -
+      path: /contact
+      highlighted: false
+    -
+      path: /sitemap
+      highlighted: false
+    -
+      path: /imprint
+      highlighted: false
+    -
+      path: /privacy
+      highlighted: false
+    -
+      path: /accessibility
+      highlighted: false
+  footer:
+    -
+      path: /help
+    -
+      path: /contact
+    -
+      path: /sitemap
+    -
+      path: /imprint
+    -
+      path: /privacy
+    -
+      path: /accessibility
+home:
+  sort_modules:
+    -
+      path: /home/_search
+      hidden: false
+    -
+      path: /home/_warning
+      hidden: true
+    -
+      path: /home/_categories
+      hidden: false
+    -
+      path: /home/_news
+      hidden: true
+    -
+      path: /home/_inform
+      hidden: true
+  rss:
+    feeds_limit: 6
+  categories:
+    rss:
+    facet_config: [
+      {
+        "id": "waterway",
+        "facets": {
+          "donau": {
+            "icon_text": "Do",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "donau"
+                }
+              }
+            }
+          },
+          "eider": {
+            "icon_text": "Ei",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "eider"
+                }
+              }
+            }
+          },
+          "elbe": {
+            "icon_text": "El",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "elbe"
+                }
+              }
+            }
+          },
+          "ems": {
+            "icon_text": "Em",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "ems"
+                }
+              }
+            }
+          },
+          "main-donau-kanal": {
+            "icon_text": "MDK",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "main-donau-kanal"
+                }
+              }
+            }
+          },
+          "mittellandkanal": {
+            "icon_text": "MLK",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "mittellandkanal"
+                }
+              }
+            }
+          },
+          "mosel": {
+            "icon_text": "Mo",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "mosel"
+                }
+              }
+            }
+          },
+          "neckar": {
+            "icon_text": "Ne",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "neckar"
+                }
+              }
+            }
+          },
+          "nord-ostsee-kanal": {
+            "icon_text": "NOK",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
+                }
+              }
+            }
+          },
+          "nordsee": {
+            "icon_text": "NSee",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "nordsee"
+                }
+              }
+            }
+          },
+          "oder": {
+            "icon_text": "Od",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "oder"
+                }
+              }
+            }
+          },
+          "ostsee": {
+            "icon_text": "OSee",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "ostsee"
+                }
+              }
+            }
+          },
+          "rhein": {
+            "icon_text": "Rh",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "rhein"
+                }
+              }
+            }
+          },
+          "weser": {
+            "icon_text": "We",
+            "query": {
+              "filter": {
+                "term": {
+                  "bwstr-bwastr_name.phrase": "weser"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "baw_abteilung",
+        "label": "Abteilung",
+        "facets": {
+          "bautechnik": {
+            "label": "Bautechnik",
+            "icon_text": "B",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "b"
+                }
+              }
+            }
+          },
+          "geotechnik": {
+            "label": "Geotechnik",
+            "icon_text": "G",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "g"
+                }
+              }
+            }
+          },
+          "binnenbereich": {
+            "label": "Wasserbau im Binnenbereich",
+            "icon_text": "W",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "w"
+                }
+              }
+            }
+          },
+          "kuestenbereich": {
+            "label": "Wasserbau im Küstenbereich",
+            "icon_text": "K",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "k"
+                }
+              }
+            }
+          },
+          "zentral": {
+            "label": "Zentraler Service",
+            "icon_text": "MLK",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "z"
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+    add_to_search:
+      - "-datatype:address"
+      - "-isfolder:true"
+  hits:
+    add_to_search:
+      - "-datatype:address"
+      - "-isfolder:true"
+    hits_num: 0
+    sort:
+      sortByDate: true
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "baw_abteilung",
+      "label": "Abteilung",
+      "facets": {
+        "bautechnik": {
+          "label": "Bautechnik",
+          "query": {
+            "filter": {
+              "term": {
+                "baw_abteilung_short": "b"
+              }
+            }
+          }
+        },
+        "geotechnik": {
+          "label": "Geotechnik",
+          "query": {
+            "filter": {
+              "term": {
+                "baw_abteilung_short": "g"
+              }
+            }
+          }
+        },
+        "binnenbereich": {
+          "label": "Wasserbau im Binnenbereich",
+          "query": {
+            "filter": {
+              "term": {
+                "baw_abteilung_short": "w"
+              }
+            }
+          }
+        },
+        "kuestenbereich": {
+          "label": "Wasserbau im Küstenbereich",
+          "query": {
+            "filter": {
+              "term": {
+                "baw_abteilung_short": "k"
+              }
+            }
+          }
+        },
+        "zentral": {
+          "label": "Zentraler Service",
+          "query": {
+            "filter": {
+              "term": {
+                "baw_abteilung_short": "z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "waterway",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "bwstr-bwastr_name",
+          "min_doc_count": 0
+        }
+      },
+      "search": "bwstr-bwastr_name:%s"
+    },
+    {
+      "id": "baw_datenkategorie",
+      "label": "Datenkategorie",
+      "facets": {
+        "projekt": {
+          "label": "Projekt/Auftrag",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "4"
+              }
+            }
+          }
+        },
+        "luftbilder": {
+          "label": "Luftbilder",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Luftbilder"
+              }
+            }
+          }
+        },
+        "cat_simulationsdaten": {
+          "label": "Simulationsdaten",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Simulationsdaten"
+              }
+            }
+          }
+        },
+        "messdaten": {
+          "label": "Messdaten",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Messdaten"
+              }
+            }
+          }
+        },
+        "visualisierung": {
+          "label": "Visualisierung",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Visualisierung"
+              }
+            }
+          }
+        },
+        "geodienst": {
+          "label": "Geodienst",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "3"
+              }
+            }
+          }
+        },
+        "software": {
+          "label": "Software",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "6"
+              }
+            }
+          }
+        },
+        "sonstiges": {
+          "label": "Sonstiges",
+          "query": {
+            "filter": {
+              "term": {
+                "data_category": "Sonstiges"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "simulation",
+      "facets": {
+        "preprocessing": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Preprocessing"
+              }
+            }
+          }
+        },
+        "variant": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Variante"
+              }
+            }
+          }
+        },
+        "scenario": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Szenario"
+              }
+            }
+          }
+        },
+        "model": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Simulationsmodell"
+              }
+            }
+          }
+        },
+        "run": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Simulationslauf"
+              }
+            }
+          }
+        },
+        "file": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Simulationsdatei"
+              }
+            }
+          }
+        },
+        "postprocessing": {
+          "query": {
+            "filter": {
+              "term": {
+                "simulation_data_type": "Postprocessing"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "verfahren",
+      "label": "Verfahren",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "method",
+          "min_doc_count": 0
+        }
+      },
+      "search": "method:%s"
+    },
+    {
+      "id": "simmodeltype",
+      "label": "Modelldaten",
+      "facets": {
+        "basisdaten": {
+          "label": "Basisdaten",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "simparamtype": "Randbedingung"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Anfangsbedingung"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Peilung"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Bathymetrie"
+                    }
+                  },
+                  {
+                    "term": {
+                      "simparamtype": "Kennwort"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "modellergebnisse": {
+          "label": "Modellergebnisse",
+          "query": {
+            "filter": {
+              "term": {
+                "simparamtype": "Ergebnis"
+              }
+            }
+          }
+        },
+        "scenario": {
+          "label": "Fachliche Abbildungen/Grafiken",
+          "query": {
+            "filter": {
+              "term": {
+                "simparamtype": "Grafik"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "simspatialdimension",
+      "label": "Räumliche Dimensionalität",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "simspatialdimension",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t017_url_ref.datatype:%s"
+    },
+    {
+      "id": "datenformat",
+      "label": "Datenformat",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "t017_url_ref.datatype",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t017_url_ref.datatype:%s"
+    },
+    {
+      "id": "timeref",
+      "filter": "{\"range\": {\"t01_object.time_from\": {\"gte\": \"%s0*\", \"lte\": \"%s9*\"}}}"
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    }
+  ]
+  add_to_search:
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: '<br>'
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: false
+  sns:
+    similar_terms:
+      enabled: true
+provider:
+  query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+hit_detail:
+  summary_replace_newline: '<br>'
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: false
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  address_unlink: true
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
+  display_use_constraints_json: true
+map:
+  url:
+  leaflet:
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png' }
+        wms: { url: null, name: null }
+        attribution: '&copy; Bundesamt für Kartographie und Geodäsie (2025)&#44; <a href=\"https://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        opacity: 0.5
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+    enable:
+      wkt: true
+      geocoder: false
+      spinloader: true
+      clustering: false
+    geocoder:
+      enable: false
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
+    position: 46.58,5.22,55.40,15.68
+measure:
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
+redirect:
+  pages_to_404:
+    - /measure
+    - /provider
+    - /rss
+  pages_to_redirect:
+catalog:
+  open_nodes_level: 3
+  display_partner: false
+  sort_by_name: true
+  open_on_new_tab: true
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+bwastr:
+  enable: true
+  info: https://via.bund.de/wsv/bwastr-locator/rest/bwastrinfo/query?limit=1&searchfield=bwastrid&searchterm=
+  geok: https://via.bund.de/wsv/bwastr-locator/rest/geokodierung/query
+  epsg: 4326
+  get_data_lower: 7000
+streams:
+  schemes:
+    theme:
+      type: ReadOnlyStream
+      prefixes:
+        '':
+          - user/themes/baw_mis
+          - user/themes/baw_doi
+          - user/themes/ingrid

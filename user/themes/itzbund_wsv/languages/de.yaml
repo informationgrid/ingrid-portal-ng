@@ -1,0 +1,72 @@
+PAGES:
+  HEADER_TITLE_MAIN: GeoPortal.WSV
+  HOME: Startseite
+  HOME_META_TITLE: Startseite
+  MAP: GeoViewer.WSV
+  MAP_META_TITLE: 'Verfügbare Kartendienste vom %s'
+  APPLICATION: Anwendungen
+  APPLICATION_MENU_TITLE: Anwendungen
+  APPLICATION_META_TITLE: Anwendungen
+  APPLICATION_META_DESCRIPTION: Anwendungen im GeoPortal.WSV
+  APPLICATION_META_KEYWORDS: Anwendungen
+  HOME_SHORTCUTS_TITLE: Schnellsuche
+
+COMMON:
+  RESULT_SOURCE: Fundort
+
+CONTACT:
+  FORM_COMPANY: Dienststelle (optional)
+  FORM_TOPIC: Thema
+  FORM_UPLOAD: 'Datei anhängen (optional):(max. 10 MB)'
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team GeoPortal.WSV gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+  REPORT_EMAIL_SUBJECT: Kontaktformular GeoPortal.WSV
+
+SEARCH:
+  PORTLET_TITLE_1: GeoPortal.WSV
+  PORTLET_TITLE_2: Aktuelle Informationen zur GDI-WSV&nbsp;
+  PORTLET_TITLE_3: Anwendungen und Dienste der WSV
+
+SEARCH_RESULT:
+  INFO_LINKS: Links
+
+SEARCH_DETAIL:
+  BACK: Zurück zu GeoPortal.WSV
+  PORTAL_INSTITUTION: GeoPortal.WSV
+  GEOTHESAURUS_SPACIAL_REFERENCE: Geografisches Begrenzungsrechteck
+  T011_OBJ_GEO_REFERENCESYSTEM_ID: Bezugssystem
+  T011_TOWNSHIP_TOWNSHIP_NO: Geografischer Identifikator
+  T011_OBJ_GEO_HIERARCHY_LEVEL: Typ
+  T011_OBJ_GEO_HIERARCHY_LEVEL_NAME: Kategorien
+  T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY: Thematik
+  T011_OBJ_SERV_TYPE: Service Typ
+  T011_OBJ_SERV_VERSION_VERSION: Service Version
+  SEARCH_TERMS: Beschreibende Schlüsselwörter
+  WSV_DETAIL_OTHER_RESTRICTION: Andere Einschränkungen
+  T01_OBJECT_PUBLISH_ID: Sicherheitsstufung
+  DATA_QUALITY: Qualität
+  T011_OBJ_GEO_SPECIAL_BASE: Aussage zur Herkunft
+  T011_OBJ_GEO_DATA_BASE: Datenquellen (Beschreibung)
+  T011_OBJ_GEO_LITERATUR_BASE: Datenquellen (Beschreibung)
+  T011_OBJ_GEO_SERV_BASE: Datenquellen (Beschreibung)
+  T011_OBJ_GEO_METHOD: Bearbeitungsschritt (Beschreibung)
+  T011_OBJ_SERV_HISTORY: Bearbeitungsschritt (Beschreibung)
+  T011_OBJ_SERV_SCALE: Räumliche Auflösung (Maßstabäquivalent)
+  T01_OBJECT_OBJ_ID: Identifikator des Metadatensatz
+  T01_OBJECT_MOD_TIME: Datumsstempel
+  T01_OBJECT_METADATA_STANDARD_NAME: Name des Metadatenstandards
+  T01_OBJECT_METADATA_STANDARD_VERSION: Version des Metadatenstandards
+  T01_OBJECT_METADATA_CHARACTER_SET: Zeichensatz des Metadatensatz
+  OBJECT_CONFORMITY: Qualitätsbericht
+  OBJECT_CONFORMITY_SPECIFICATION: Spezifikation
+  OBJECT_CONFORMITY_DEGREE_VALUE: Bestanden
+  OBJECT_CONFORMITY_PUBLICATION_DATE: Datum
+
+THEME:
+  ADMIN:
+    UPLOAD:
+      TITLE: Upload
+      SLIDESHOW:
+        TITLE: Slideshow
+      APPS:
+        TITLE: Anwendungen

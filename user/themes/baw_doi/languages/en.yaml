@@ -1,0 +1,117 @@
+PAGES:
+    HOME_MENU_TITLE: Home
+    HOME_META_TITLE: Bundesanstalt für Wasserbau
+    ABOUT: About BAW-Datenrepository
+    HELP_CONTENT: BAW Help Center
+
+CONTACT:
+    REPORT_EMAIL_SUBJECT: Message from %s-Datenrepository
+
+SEARCH:
+    PORTLET_TITLE_1: BAW-DATENREPOSITORY
+    PORTLET_TITLE_2: COMPETENCE FOR WATERWAYS
+    PORTLET_TITLE_3: ' '
+
+SEARCH_RESULT:
+    INFO_LINKS: Verweise und Downloads
+
+SEARCH_DETAIL:
+    MEASUREMENT:
+        INFOMETHOD: Verfahren
+        SPATIALORIENTATION: Räumlichkeit
+        MINDISCHARGE: Abfluss Q min [m&#0179;/s]
+        MAXDISCHARGE: Abfluss Q max [m&#0179;/s]
+        MEASUREMENTFREQUENCY: Frequenz der Messung [s]
+        DATAQUALITYDESCRIPTION: Beschreibung der Datenqualität
+        MEASUREMENTDEPTH:
+            TITLE: Messtiefe
+            DEPTH: Messtiefe
+            UOM: Maßeinheit
+            VERTICALCRS: Höhenbezugssystem
+        MEANWATERLEVEL:
+            TITLE: Gemittelter Wasserstand, auf den sich die Messwerte beziehen
+            WATERLEVEL: Wasserstand
+            UOM: Maßeinheit
+        GAUGEDATUM:
+            TITLE: Pegelnullpunkt
+            DATUM: Pegelnullpunkt
+            UOM: Maßeinheit
+            VERTICALCRS: Höhenbezugssystem
+            DESCRIPTION: Beschreibung
+        MEASUREMENTDEVICE:
+            TITLE: Messgerät
+            NAME: Gerätename
+            ID: Geräte-ID
+            MODEL: Gerätemodell
+            DESCRIPTION: Beschreibung
+        MEASUREDQUANTITIES:
+            TITLE: Zielparameter und -Größen
+            NAME: Name
+            TYPE: Art
+            UOM: Maßeinheit
+            CALCULATIONFORMULA: Formel/Funktion
+
+    GEOMETRICS:
+        CONTEXT:
+            TITLE: Geometrie-Kontext
+            TYPE: Typ
+            NAME: Name
+            DESCRIPTION: Beschreibung
+            FEATURE:
+                CODE: Code
+                DESCRIPTION: Beschreibung
+
+FACETS:
+    FACET_LABEL:
+        TYPE: Kategorie
+        CATEG: Kategorie
+        WATERWAY: Wasserstraße
+        SIMULATION: Simulationsdaten
+        DATENFORMAT: Datenformat
+    WATERWAY:
+        DONAU: Donau
+        EIDER: Eider
+        EMS: Ems
+        ELBE: Elbe
+        MAIN-DONAU-KANAL: Main-Donau-Kanal
+        MITTELLANDKANAL: Mittellandkanal
+        MOSEL: Mosel
+        NECKAR: Neckar
+        NORD-OSTSEE-KANAL: Nord-Ostsee-Kanal
+        NORDSEE: Nordsee
+        ODER: Oder
+        WESER: Weser
+        OSTSEE: Ostsee
+        RHEIN: Rhein
+    TYPE:
+        METADATA: Datenkataloge
+        TYPE_SIMULATION: Simulationsdaten
+        MESSDATEN: Messdaten
+        LUFTBILDER: Luftbilder
+    SIMULATION:
+        PREPROCESSING: Preprocessing
+        VARIANT: Variante
+        SCENARIO: Szenario
+        MODEL: Simulationsmodell
+        RUN: Simulationslauf
+        FILE: Simulationsdatei
+        POSTPROCESSING: Postprocessing
+THEME:
+    ADMIN:
+        BWASTR:
+            TITLE: BWaStr
+            ENABLE:
+                LABEL: BWaStr darstellen
+                HELP: BWaStr darstellen
+            INFO:
+                LABEL: BWaStr Info URL
+                HELP: BWaStr Info URL
+            GEOK:
+                LABEL: BWaStr Geokodierung URL
+                HELP: BWaStr Geokodierung URL
+            EPSG:
+                LABEL: BWaStr Projektionssystem
+                HELP: BWaStr Projektionssystem
+            LIMIT:
+                LABEL: BWaStr Limit
+                HELP: BWaStr Limit

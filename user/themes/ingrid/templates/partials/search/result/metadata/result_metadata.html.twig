@@ -23,7 +23,7 @@
         {% if hit.type is not empty %}
             {% include 'partials/search/result/metadata/parts/metadata_type.html.twig' with {hit:hit} %}
         {% endif %}
-        {{ hit_macros.render_hit_searchterm(hit.isInspire, hit.isOpendata, hit.hasAccessContraint, hit.isHVD) }}
+        {% include 'partials/search/result/metadata/parts/metadata_search_terms.html.twig' with {hit:hit} %}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>
         </a>

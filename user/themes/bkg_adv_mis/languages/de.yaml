@@ -1,0 +1,20 @@
+PAGES:
+    HOME: Startseite
+    HOME_MENU_TITLE: AdV Webseite
+    HOME_META_TITLE: Startseite
+    ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
+
+CONTACT:
+    SUCCESS: Ihre Anfrage wurde erfolgreich an die AdV-MIS-Redaktion versendet.
+    REPORT_EMAIL_SUBJECT: Nachricht von AdV-MIS
+
+SEARCH:
+    PORTLET_TITLE_1: ' '
+    PORTLET_TITLE_2: Metadaten
+    PORTLET_TITLE_3: zu Geodaten, Diensten und Anwendungen
+
+SEARCH_RESULT:
+    INFO_LINKS: Links
+
+CATEGORIES:
+    TITLE: Recherchieren Sie in diesen Kategorien

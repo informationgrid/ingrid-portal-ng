@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ingrid-portal-help.xsl" ?>
+<help>
+    <chapter>
+        <header>Hilfe zum BASt-Metadatenkatalog</header>
+        <section help-key="index">
+            <header>Hilfethemen</header>
+            <content>
+                <ul>
+                    <li>
+                        <a href="?hkey=about-1">Über den BASt-Metadatenkatalog</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-category-1">Kategorien</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-1">Suche</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=maps-1">Karten</a>
+                    </li>
+                    <li>
+                        <a href="?hkey=search-catalog-1">Kataloge</a>
+                    </li>
+                </ul>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Über den BASt-Metadatenkatalog</header>
+        <section help-key="about-1">
+            <header>Porträt</header>
+            <content>
+                <p>Dieser Metadatenkatalog wird durch die die Bundesanstalt für Straßen- und Verkehrswesen (BASt) bereitgestellt.</p>
+                <p>Das Leitbild der BASt und weitere Informationen finden Sie auf der <a href="https://www.bast.de/DE/BASt/Leitbild.html">BASt-Homepage</a>.</p>
+            </content>
+        </section>
+        <section help-key="about-2">
+            <header>Informationsanbieter</header>
+            <content>
+                <p>Der BASt-Metadatenkatalog dient der Recherche nach Informationen zu in der BASt vorliegenden oder geplanten Daten sowie möglichen Zugangswegen zu externen Datenquellen.</p>
+                <p>Die Erstellung und Pflege der Inhalte erfolgt zentral über die Open Data Koordination der BASt (siehe Impressum).</p>
+            </content>
+        </section>
+        <section help-key="about-4">
+            <header>InGrid - Die Software hinter dem BASt-Metdatenkatalog</header>
+            <content>
+                <p>Die InGrid-Softwarekomponenten werden im Rahmen des Projekts "InGrid - Pflege und Weiterentwicklung der InGrid-Softwarekomponenten zum Betrieb 
+                von Internetportalen und Metadatenkatalogen" (VKoopUIS-Projekt Nr. 50) unter dem Dach der "Verwaltungskooperation Umweltinformationssysteme" (VKoopUIS) 
+                weiter entwickelt. Nähere Informationen erhalten Sie auf der <a href="http://www.ingrid-oss.eu/">Projekt-Webseite</a>.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Suche</header>
+        <section help-key="search-1">
+            <header>Sucheingabe</header>
+            <content>
+                <p>Um nach etwas zu suchen, geben Sie in das Suchfeld einen oder 
+                   mehrere Begriffe ein und klicken Sie anschließend auf die 
+                   Schaltfläche <b>Suche</b>.</p>
+                <p>Der BASt-Metadatenkatalog durchsucht alle eingebundenen Informationen. Die 
+                   Ergebnisse Ihrer Suchanfrage werden in einer 
+                   <a href="?hkey=search-results-1">Suchergebnisseite</a> 
+                   wiedergegeben.</p>
+                <br></br>
+                <p>Über die Suche können Sie einen oder mehrere Suchbegriffe eingeben. 
+                Gefunden werden diejenigen Seiten, die alle Suchbegriffe enthalten.
+                Mit Hilfe der Facetten "Aktualität" und "Zeitbezug" können Sie Ihre Suchanfrage weiter durch gewisse Einschränkungen spezifizieren. 
+                Hinter den Einschränkungen sehen Sie in Klammern direkt die Anzahl der jeweiligen Treffer zu Ihrer Suchanfrage. 
+                Bei Klick auf eine Einschränkungen wird die Suchergebnisliste auf die jeweilige Auswahl eingeschränkt. 
+                Um die Einschränkung aufzuheben, klicken Sie auf "Gesamte Auswahl zurücksetzen" oder auf den 
+                gewünschten Eintrag in der Liste der grau hinterlegten, aktiven Einschränkungen oberhalb der Ergebnisliste. 
+                Sie können beliebig viele Einschränkungen aus- und wieder abwählen.</p>
+            </content>
+        </section>
+        <section help-key="search-2">
+            <header>Suche via Ergebnistypen</header>
+            <content>
+                <p>Alternativ können Sie mit den Ergebnistypen auf der linken Seite suchen.
+                   Beim Betreten der <b>Suche</b> werden schon automatisch alle Ergebnisse kategorisiert.
+                   Diese können Sie sich dann per Klick auf die Ergebnistypen anzeigen lassen und weiter verfeinern.</p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Experteneingabe</header>
+        <section help-key="search-expert-1">
+            <header>Experteneingabe</header>
+            <content>
+                <p>Alle Einstellungen der Such-Oberfläche und  
+                    spezielle Einstellungen darüber hinaus lassen sich auch
+                    direkt über den Suchausdruck in die Suche eingeben. Da die
+                    Syntax durch die große Anzahl der Suchmethoden recht
+                    umfangreich ist, ist sie vor allem für Experten geeignet.</p>
+            </content>
+        </section>
+        <section help-key="search-expert-2">
+            <header>Bool’sche Operatoren</header>
+            <content>
+                <p>Die einzelnen Suchbegriffe können über Bool'sche
+                    Operatoren verknüpft werden. Es stehen folgende Operatoren
+                    zur Verfügung:</p>
+                <p>
+                    <b>AND (UND-Verknüpfung)</b>: Alle Worte müssen in dem
+                    Dokument vorhanden sein. Sie ist Standard, wenn kein Operator
+                    angegeben wird. (Hinweis: Anstatt AND kann auch das Symbol
+                    &amp;&amp; verwendet werden)<br></br>Beispiel:
+                    'Wasser Fisch' entspricht 'Wasser AND Fisch' bzw.
+                    'Wasser &amp;&amp; Fisch'</p>
+                <p>
+                    <b>OR (ODER-Verknüpfung)</b>: Eines der Worte muss im
+                    Dokument vorhanden sein. (Hinweis: Anstatt von OR kann auch
+                    das Symbol || verwendet werden)<br></br> Beispiel:
+                    'Wasser OR Fisch' entspricht 'Wasser || Fisch'</p>
+                <p>
+                    <b>NOT (NICHT-Verknüpfung)</b>: Das Wort nach dem NOT darf
+                    nicht im Dokument vorhanden sein. (Hinweis: Anstatt von NOT
+                    kann auch das Symbol ! oder das Symbol - verwendet
+                    werden)<br></br> Beispiel: 'Wasser NOT Fisch' 
+                    (gesucht wird nach Wasser aber nicht nach Fisch)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-3">
+            <header>Gruppierung (Klammerung)</header>
+            <content>
+                <p>Die einzelnen durch Bool’sche Operatoren
+                    verknüpften Suchbegriffe können durch Klammerung (runde
+                    Klammern) beliebig gruppiert werden.</p>
+                <p>Beispiel: 'Fisch NOT (Forelle OR Barsch)'
+                    (Es werden alle Dokumente gefunden, die den Begriff
+                    'Fisch' enthalten, aber nicht die
+                    Begriffe 'Forelle' und 'Barsch')</p>
+            </content>
+        </section>
+        <section help-key="search-expert-4">
+            <header>Suche nach Wortgruppen</header>
+            <content>
+                <p>Wird eine Zeichenkette in Anführungszeichen (")
+                    gesetzt, wird nach dem Vorkommen der gesamten Zeichenkette
+                    und nicht nach dem Vorkommen der einzelnen Begriffe gesucht.</p>
+                <p>Beispiel: "der Fisch schwimmt im Wasser"
+                    (Es werden nur Texte gefunden, die exakt diese Zeichenfolge enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-5">
+            <header>Platzhalter</header>
+            <content>
+                <p>Innerhalb eines Suchbegriffs ist es möglich, Platzhalter für
+                    einen (?) oder mehrere (*) beliebige Zeichen einzugeben. Es
+                    werden dann alle Begriffe gefunden, die mit dem Rest des
+                    Suchbegriffs übereinstimmen, wobei für den Platzhalter ein
+                    bzw. mehrere Zeichen auftreten können.</p>
+                <p><b>ACHTUNG</b>: Platzhalter dürfen NICHT am Anfang des Suchwortes stehen.</p>
+                <p>Beispiel: 'Te?t' (Es werden sowohl
+                    Dokumente mit dem Begriff 'Text' als
+                    auch Dokumente mit dem Begriff 'Test' gefunden)</p>
+                <p>Beispiel: 'umwelt*katalog' (Es werden
+                    sowohl Dokumente mit dem Begriff
+                    'Umweltdatenkatalog' als auch Dokumente
+                    mit dem Begriff 'Umweltobjektkatalog' gefunden)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-6">
+            <header>Suche nach Bereichen von Zeichen</header>
+            <content>
+                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden  
+                    in eckige [] oder geschweifte {} Klammern gefasst und die untere und obere
+                    Angabe mit dem Operator TO verbunden. Eckige Klammern []
+                    bedeuten, dass der untere und der obere Wert des Bereichs in
+                    die Suche einbezogen werden. Geschweifte Klammern {}
+                    bedeuten, dass der untere und der obere Wert des Bereichs
+                    nicht in die Suche einbezogen werden.</p>
+                <p>Beispiel: '[Aller TO Elbe]' (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    'Aller' und 'Elbe' sind dabei im Suchbereich enthalten.</p>
+                <p>Beispiel: '{Aller TO Elbe}' (Es wird nach Dokumenten gesucht, die
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    'Aller' und 'Elbe' sind dabei im Suchbereich nicht enthalten.)</p>
+                <p>Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.</p>
+                <p>Beispiel: 'te[i TO x]t' (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte 'teilt', 'test' oder 'text' enthalten.)</p>
+                <p> Alternativ zu dem Operator TO kann auch ein Bindestrich - verwendet werden </p>
+                <p>Beispiel: 'te[i - x]t' (Es wird nach Dokumenten gesucht, die
+                    z.B. die Worte 'teilt', 'test' oder 'text' enthalten.)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-8">
+            <header>Sonderzeichen</header>
+            <content>
+                <p>Die folgenden Zeichen haben im Suchausdruck eine
+                    spezielle Bedeutung (z.B. in Form von Operatoren):</p>
+                <p>+ - &amp;&amp; || ! ( ) { } [ ] ^ &quot; ~ * ? : \</p>
+                <p>Sollen sie dennoch als einfache Zeichen innerhalb eines
+                    Suchausdrucks verwendet werden, müssen sie über das Zeichen
+                    \ (Backslash) markiert werden.</p>
+                <p>Beispiel: '\(1\+1\)\:2' (Es wird nach dem
+                    Ausdruck '(1+1):2' gesucht)</p>
+            </content>
+        </section>
+        <section help-key="search-expert-15">
+            <header>Angabe des Zeitbezugs</header>
+            <content>
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt 
+                werden. </p>
+                <p>Beispiel: 't1:2023-01-01 t2:2024-08-31' (Die Suche wird auf ein 
+                ausgewähltes Zeitintervall eingeschränkt.)</p>
+                <p>Folgende Felder stehen für die Einschränkung des Zeitbezugs im BASt-Metadatenkatalog zur Verfügung:</p>
+                <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
+                    <tr>
+                        <td>
+                            <b>Feld</b>
+                        </td>
+                        <td>
+                            <b>Beschreibung des Werts</b>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td>t0 </td>  
+                    <td> Das Dokument wurde dem angegebenen Zeitpunkt zugeordnet</td>
+                    </tr>
+                    <tr>
+                    <td>t1  </td>  
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    angegebenen Wert beginnt</td>
+                    </tr>
+                    <tr>
+                    <td>t2 </td>  
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    angegebenen Wert endet</td>
+                    </tr>
+               </table><br></br>
+               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag) 
+               eingegeben werden. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Suchergebnisseite</header>
+        <section help-key="search-results-1">
+            <header>Ergebnisseite</header>
+            <content>
+                <p>Nach dem Absenden einer Suchanfrage werden die Suchergebnisse
+                   angezeigt. Die Suchergebnisseite ist in zwei Bereiche gegliedert. 
+                   Rechts finden Sie die Hauptergebnisliste, links davon weitere Filter- bzw. Einschränkungsmöglichkeiten (sog. Facetten). 
+                   In der Hauptergebnisliste ist nach Relevanz gewichtet und sortiert. Der oberste Eintrag weist hierbei die 
+                   höchste Relevanz für die Suchanfrage auf.</p>
+                <p>Ein Suchergebnis besteht aus einem Titel, der auf den Metadateneintrag verlinkt, 
+                   einer Kurzbeschreibung und weiteren Angaben, wie bspw. Ansprechpartner, Verweisen und Nutzungsbedingungen. 
+                   Wenn bei einigem Katalogeintrag eine digitale Karte hinterlegt ist, können Sie sich über die Schaltfläche 
+                   <b>Kartenansicht öffnen</b> die Karte direkt im <a href="?hkey=maps-1">Kartenviewer</a> ansehen. 
+                   Die Schaltfläche <b>XML</b> liefert die ISO-Darstellung des Treffers, soweit dieser CSW-konform abgegeben werden kann.
+                </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Kataloge</header>
+        <section help-key="search-catalog-1">
+            <header>Kataloge</header>
+            <content>
+                <p>Recherchieren Sie in der Struktur des BASt-Metadatenkatalogs. Die Struktur ist hierarchisch aufgebaut 
+                   und kann mit einem Klick auf "+"/"-" auf-/zugeklappt 
+                   werden. Die dargestellten Informationen werden als 
+                   <b>Objekte</b> bezeichnet. Als zusätzliche Information sind 
+                   im Bereich <b>Adressen</b> die jeweiligen 
+                   Ansprechpartner aufgeführt. Durch einen Klick auf ein Objekt
+                   oder eine Adresse werden detaillierte Informationen 
+                   angezeigt. </p>
+            </content>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Karten</header>
+        <section help-key="maps-1">
+            <header>Übersicht</header>
+             <content>
+                <p>Mit dem Kartenviewer können Sie sich eine Vielzahl 
+                   Karten ansehen und auf diesen arbeiten.</p>
+                <p>Seine Funktionalität umfasst u.a.:</p>
+                <ul>
+                    <li>
+                        layerzentrierte Darstellung von Karten mit direkter Vorschau
+                    </li>
+                    <li>
+                        strukturiertes Angebot an Karten und Hinzufügen externer Karten 
+                    </li>
+                    <li>
+                        Suche nach Karten direkt auf eingebundenen Karten oder im Suchraum des BASt-Metadatenkatalogs
+                    </li>
+                    <li>
+                        Zeichnen und Messen auf der Karte
+                    </li>                    
+                    <li>
+                        Vergleichsfunktionalität zwischen Layern (Slider blendet ein/aus)
+                    </li>                    
+                    <li>
+                        Abspeichern und Teilen von Karten u.a. via QR Code 
+                    </li>
+                    <li>
+                        umfassende Druck-Funktionalität 
+                    </li>
+                </ul>                                       
+            </content>
+        </section>
+        <section help-key="maps-2">
+            <header>Koordinatenanzeige</header>
+            <content>
+                <p>Die Koordinaten des Cursors im gewählten Koordinatensystem werden direkt unter der Hauptkarte angezeigt.</p>
+                <p>Mittels rechtem Mausklick auf einen Punkt in der Karte werden weitere Information in einem Zusatzfenster angezeigt.</p>
+            </content>
+        </section>
+        <section help-key="maps-3">
+            <header>Navigation und Orientierung</header>
+            <content>
+            </content>
+            <section help-key="maps-3-1">
+                <header>Ändern des Kartenmaßstabs</header>
+                <content>
+                    <p>Mit jedem Klick auf das "+" oder "-" wird der angezeigte Maßstab vergrössert oder verkleinert.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-2">
+                <header>Zoom auf Ausschnitt</header>
+                <content>
+                    <p>Zoom auf Rechteck / Ausschnitt wird über SHIFT-Taste und gleichzeitiges Aufziehen eines Rechteckes mit gedrückter linker Maustaste aktiviert.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-3">
+                <header>Verschiebewerkzeug (Panning)</header>
+                <content>
+                    <p>Das Verschiebewerkzeug (Panning) kann wie folgt benutzt werden: klicken und gedrückt halten, um die Karte zu verschieben.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-4">
+                <header>Zentrieren auf Koordinaten</header>
+                <content>
+                    <p>Um die Karte auf einen Punkt zu zentrieren, müssen lediglich die Koordinaten des Punktes in das Suchfeld im oberen Teil der Karte eingegeben und die ENTER-Taste gedrückt werden.</p>
+                    <p>Im Defaultkoordinatensystem z.B. "50.95267°N 7.14753°E"</p>
+                </content>
+            </section>
+            <section help-key="maps-3-5">
+                <header>Suchen eines Orts, PLZ oder Gewässers</header>
+                <content>
+                    <p>Das Suchfeld im oberen Teil der Karte ermöglicht den sofortigen Zugriff auf Städte- und Ortsnamen, Postleitzahlen, 
+                       Geographische Bezeichnungen oder Gewässer oder Straßen.</p>
+                    <p>Einfach den Namen eingeben und aus der Auswahlliste auswählen, um die Karte entsprechend zu zentrieren.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-6">
+                <header>Zurück in die Startansicht</header>
+                <content>
+                    <p>Um wieder die initiale Kartenansicht herzustellen klicken Sie bitte auf die Schaltfläche mit dem Pfeilkreuz rechts oben in der Karte.
+                       Die Ansicht wechselt zu ganz Deutschland.</p>
+                </content>
+            </section>
+            <section help-key="maps-3-7">
+                <header>Geolokalisierung</header>
+                <content>
+                    <p>Die Schaltfläche mit dem Punkt rechts oben in der Karte erlaubt es, Ihre Position mittels GPS zu bestimmen.
+                        Mit einem ersten Klick, wird diese rot angezeigt und Ihre Position erscheint als roter Punkt auf der Karte.</p>
+                    <p>Der Pfeil oberhalb des roten Punktes zeigt die Richtung an, in welche Sie schauen.
+                        Wenn Sie Ihr Gerät bewegen, dreht sich der Pfeil.</p>
+                    <p>Klicken Sie erneut auf die Schaltfläche "Geolokalisierung" wird die Karte entsprechend der Richtung des Gerätes orientiert.
+                        Nordrichtung wird durch das Symbol in der oberen rechten Bildschirmecke angezeigt.
+                        Um den "Geolokalisierung" Modus zu verlassen klicken Sie erneut auf die Schaltfläche.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="maps-4">
+            <header>Auswahl und Anzeigen von Karten</header>
+            <content>
+            </content>
+            <section help-key="maps-4-1">
+                <header>Suche nach Karten (Volltextsuche)</header>
+                <content>
+                    <p>Mit der "Suche" im oberen Teil der Karte können Sie Suchbegriffe eingeben (z.B. "Bundesfernstraßen") und nach Beschreibungen aller eingebundenen elektronischen Geodaten suchen.
+                        Wenn Sie ein Resultat auswählen, wird es direkt im Kartenviewer dargestellt.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-3">
+                <header>Ändern des Kartenhintergrundes</header>
+                <content>
+                    <p>Mit Klick auf "Hintergrund" rechts unten in der Karte können Sie zwischen verschiedenen Optionen wählen, z.B. gibt es die Hintergrundkarte in Farbe, Grau oder ganz ohne Hintergrund.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-4">
+                <header>Ändern der Transparenz einer Karte</header>
+                <content>
+                    <p>Klicken Sie auf das Zahnrad Symbol der Karte im Bereich "Dargestellte Karten".
+                        Die Transparenz der ausgewählten Karte kann durch das verschieben des horizontalen Reglers individuell angepasst werden.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-6">
+                <header>Entfernen einer Karte</header>
+                <content>
+                    <p>Eine Karte im Bereich "Dargestellte Karten" kann durck Klick auf die "Schließen" Schaltfläche ganz links aus der Liste und Kartenansicht entfernt werden.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-7">
+                <header>Anzeigen von Legende und Zusatzinformationen</header>
+                <content>
+                    <p>Klicken Sie auf das Informations-Symbol der Karte im Bereich "Dargestellte Karten".
+                        Es wird die Legende und weitere Informationen zur Karte in einem eigenen Fenster angezeigt.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-8">
+                <header>Detailinformationen von Kartenelement</header>
+                <content>
+                    <p>Sofern vorhanden, können bei Vektordatensätze (Punkt, Linien, Polygon) die Attribute der einzelnen Kartenelemente durch einen einfachen Mausklick abgerufen werden.
+                        Die Informationen werden in  einem eigenen Fenster "Objekt-Information" angezeigt.
+                        Bei mehreren übereinanderligenden Karten werden alle unter der Maus liegenden Kartenelemente im Fenster angezeigt.</p>
+                </content>
+            </section>
+            <section help-key="maps-4-10">
+                <header>Drucken</header>
+                <content>
+                    <p>Die Kartenansicht und die für deren Verständnis nötigen Elemente (Maßstab etc.) kann als pdf-Datei ausgegeben werden.
+                        Diese Datei kann dann gespeichert oder ausgedruckt werden.</p>
+                    <p>Die Funktion "Drucken" lässt ein Dialogfenster erscheinen, wo die Parameter für die Erzeugung der pdf-Datei gewählt werden können.
+                        Diese Parameter sind der Kartenmasstab und A4/A3 Orientierung.
+                        Der Druckbereich der Karte wird hervorgehoben und kann mit der Maus verschoben werden.
+                        Die Legende kann über Aktivierung der Checkbox mit ausgegeben werden.</p>
+                </content>
+            </section>
+        </section>
+        <section help-key="maps-6">
+            <header>Zeichnen und Messen</header>
+            <content>
+            </content>
+            <section help-key="maps-6-1">
+                <header>Hinzufügen eines Symbols</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Symbol" aus.
+                        Ein Mausklick auf die gewünschte Position in der Karte setzt das Symbol an den gewünschten Ort.</p>
+                    <p>Einmal platziert kann das Symbol geändert werden (Größe und Symbol-Typ) und eine Beschreibung im Fenster unten links hinzugefügt werden (HTML oder Text).
+                        Diese Beschreibung wird für die Nutzer der Zeichnung per Klick auf das Symbol sichtbar gemacht.</p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Gelöscht wird über die Option „Mehr“.
+                        Sie können mehrere Symbole löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-2">
+                <header>Hinzufügen von Text</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Text" aus.
+                        Ein Mausklick auf die gewünschte Position in der Karte setzt den Text an den gewünschten Ort.</p>
+                    <p>Einmal platziert, können Text und Farbe via Fenster unten links geändert werden.</p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Gelöscht wird über die Option „Mehr“.
+                        Sie können mehrere Texte löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-3">
+                <header>Hinzufügen einer Linie / Polygon</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Linie" aus.
+                        Um zu beginnen mit der linken Maustaste einmal klicken, um einen Richtungswechsel der Linie vorzunehmen wieder klicken.
+                        Mit einem Doppelklick kann die Linienzeichnung beendet werden.
+                        Liegt der Endpunkt auf dem Anfangspunkt so zeichnen Sie ein Polygon.</p>
+                    <p>Neue Punkte können zur Linie/Fläche hinzugefügt werden:
+                        Klicken Sie auf ein Segment, positionieren Sie den neuen Punkt mit Mausklick und verschieben Sie ihn.</p>
+                    <p>Das untere linke Fenster ermöglicht:
+                        <ul>
+                            <li>Linie/Fläche: Farbe Linie/Polygon ändern und eine Beschreibung (Text oder HTML) hinzuzufügen.
+                                    Diese Beschreibung wird für die Nutzer der Zeichnung per Klick auf die Linie/Fläche sichtbar gemacht.</li>
+                            <li>Distanz /Fläche : Angaben zu Distanz, Fläche, Azimut</li>
+                        </ul>
+                    </p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Durch Klick auf einen Punkt löschen Sie diesen.
+                        Löschen der gesamten Linie/Fläche wird über die Option "Mehr" gehandhabt.
+                        Sie können mehrere Linien/Flächen löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+            <section help-key="maps-6-4">
+                <header>Messen</header>
+                <content>
+                    <p>Im Menüpunkt "Zeichnen/Messen auf der Karte" wählen Sie "Messen" aus.
+                        Ein erster Mausklick in die Karte definiert den Ausgangspunkt der Messung, weiter Klicks fügen Segmente hinzu oder definieren eine Fläche.
+                        Ein Doppelklick beendet die Messung oder klicken Sie auf den Ausgangspunkt, um die Fläche zu schließen.</p>
+                    <p>Die Messergebnisse Distanz /Fläche werden automatisch angezeigt.</p>
+                    <p>Sie können jedes Element durch Mausklick ändern.
+                        Gelöscht wird über die Option "Mehr".
+                        Sie können mehrere Elemente löschen, indem Sie sie vorher mit Mausklick und gleichzeitigem drücken der SHIFT-Taste auswählen.</p>
+                </content>
+            </section>
+        </section>
+    </chapter>
+    <chapter>
+        <header>Kategorien</header>
+        <section help-key="search-category-1">
+            <header>Recherchieren Sie im Portal nach Kategorien</header>
+            <content>
+                <p>Auf der Startseite kann im unteren Bereich nach den Kategorien recherchiert werden. 
+                Durch die Auswahl einer Kategorie werden Ihnen alle vorhandenen Treffer der ausgewählten 
+                Kategorie als Ergebnistypen auf der Suchergebnisseite angezeigt.</p>
+            </content>
+        </section>
+    </chapter>
+</help>

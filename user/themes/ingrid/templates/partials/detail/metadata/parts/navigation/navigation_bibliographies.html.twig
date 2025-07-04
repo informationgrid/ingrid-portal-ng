@@ -1,5 +1,6 @@
 {# Bibliografische Angaben #}
-{% if bibliographies|length > 0 or doiIdType or citations|length > 0 %}
+
+{% if hasBibliographicalInfo %}
     <li class="accordion-item" data-accordion-item>
         <a href="#{{ hash_bibliographical_info }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_bibliographical_info }}-accordion-label">
             <span class="text">{{ "SEARCH_DETAIL.BIBLIOGRAPHICAL_INFO"|t }}</span>

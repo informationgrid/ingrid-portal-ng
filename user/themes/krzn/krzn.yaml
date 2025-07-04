@@ -1,0 +1,414 @@
+enabled: true
+header:
+  title_extend: 'Geodatenkatalog Niederrhein'
+  logo_enabled: true
+  logo_class: 'xsmall-19 small-19 medium-19 large-17 xlarge-18'
+  menu_class: 'xsmall-3 small-3 medium-3 large-3 xlarge-3'
+  menu_dropdown: true
+  shrink: true
+  logo:
+    user/themes/krzn/images/logo/logo.png:
+      name: logo.png
+      full_path: logo.png
+      type: image/png
+      size: 55181
+      path: user/themes/krzn/images/logo/logo.png
+footer:
+  logo_enabled: true
+  copyright:
+    text: 'Zweckverband Kommunales Rechenzentrum Niederrhein'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    show_year: true
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  hr_line: true
+  logo:
+    user/themes/krzn/images/logo/footer-logo.svg:
+      name: footer-logo.svg
+      full_path: footer-logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/krzn/images/logo/footer-logo.svg
+  share:
+    enabled: false
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: true
+  up:
+    enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
+menu:
+  main:
+    -
+      path: /search
+      icon: ic-ic-lupe
+  site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /about
+      highlighted: true
+    -
+      path: /help
+      highlighted: false
+      target_blank: true
+    -
+      path: /imprint
+      highlighted: false
+      target_blank: true
+    -
+      path: /privacy
+      highlighted: false
+      target_blank: true
+    -
+      path: /accessibility
+      highlighted: false
+      target_blank: true
+  footer:
+    -
+      path: /help
+      target_blank: true
+    -
+      path: /imprint
+      target_blank: true
+    -
+      path: /privacy
+      target_blank: true
+    -
+      path: /accessibility
+      target_blank: true
+home:
+  sort_modules:
+    -
+      path: /home/_search
+      hidden: false
+    -
+      path: /home/_warning
+      hidden: true
+    -
+      path: /home/_categories
+      hidden: false
+    -
+      path: /home/_news
+      hidden: true
+    -
+      path: /home/_inform
+      hidden: true
+  rss:
+    feeds_limit: 6
+  categories:
+    rss:
+    facet_config: [
+      {
+        "id": "type",
+        "facets": {
+          "application": {
+            "icon": "ic-chemie",
+            "codelist": "8000",
+            "codelist_entry_id": "6",
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": "6"
+                }
+              }
+            }
+          },
+          "map": {
+            "icon": "ic-map",
+            "codelist": "8000",
+            "codelist_entry_id": "1",
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": "1"
+                }
+              }
+            }
+          },
+          "geoservice": {
+            "icon": "ic-dienste",
+            "codelist": "8000",
+            "codelist_entry_id": "3",
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": "3"
+                }
+              }
+            }
+          },
+          "opendata": {
+            "icon": "ic-opendata",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendata"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendataident"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+    add_to_search:
+      - "-datatype:address"
+      - "-isfolder:true"
+  hits:
+    add_to_search:
+      - "-datatype:address"
+      - "-isfolder:true"
+    hits_num: 0
+    sort:
+      sortByDate: true
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "open": true,
+      "facets": {
+        "application": {
+          "icon": "ic-chemie",
+          "codelist": "8000",
+          "codelist_entry_id": "6",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "6"
+              }
+            }
+          }
+        },
+        "map": {
+          "icon": "ic-map",
+          "codelist": "8000",
+          "codelist_entry_id": "1",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "1"
+              }
+            }
+          }
+        },
+        "geoservice": {
+          "icon": "ic-dienste",
+          "codelist": "8000",
+          "codelist_entry_id": "3",
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": "3"
+              }
+            }
+          }
+        },
+        "opendata": {
+          "icon": "ic-opendata",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bbox",
+      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    }
+  ]
+  add_to_search:
+    - "-datatype:address"
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
+  query_string_operator: AND
+  sort:
+    enabled: true
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: ' '
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: false
+  sns:
+    similar_terms:
+      enabled: true
+provider:
+  query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+hit_detail:
+  summary_replace_newline: ' '
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: true
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  address_unlink: false
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
+  display_use_constraints_json: true
+map:
+  url:
+  leaflet:
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: null }
+        wms: { url: 'https://gdi-niederrhein-geodienste.de/osm/service?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetCapabilities', name: 'osm' }
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+        opacity: 1
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+    enable:
+      wkt: true
+      geocoder: false
+      spinloader: false
+      clustering: false
+    geocoder:
+      enable: false
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
+    position: 51.450,6.416,8
+measure:
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
+redirect:
+  pages_to_404:
+    - /measure
+    - /map
+    - /datasource
+    - /provider
+    - /rss
+    - /catalog
+    - /contact
+    - /sitemap
+  pages_to_redirect:
+    -
+      path: /imprint
+      url: 'https://www.krzn.de/impressum'
+      target_blank: true
+    -
+      path: /privacy
+      url: 'https://www.krzn.de/datenschutzerklaerung'
+      target_blank: true
+    -
+      path: /accessibility
+      url: 'https://www.krzn.de/erklaerung-zur-barrierefreiheit'
+catalog:
+  open_nodes_level: 3
+  display_partner: true
+  sort_by_name: true
+  open_on_new_tab: true
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+streams:
+  schemes:
+    theme:
+      type: ReadOnlyStream
+      prefixes:
+        '':
+          - user/themes/krzn
+          - user/themes/ingrid

@@ -34,9 +34,9 @@
 {# Fachliche Grundlage #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
 {# Datengrundlage #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_SERV_BASE"|t, infoRefs.sourceDescription) }}
+    {{ hit_macros.render_label_document_list("SEARCH_DETAIL.T011_OBJ_GEO_DATA_BASE"|t, infoRefs.sourceDescriptions, page) }}
 {# Herstellungsprozess #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_METHOD"|t, infoRefs.processStepDescription) }}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_GEO_METHOD"|t, infoRefs.processStepDescriptions) }}
 {# Symbolkatalog #}
     {% set header = [
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_SYMBOL_CAT"|t,

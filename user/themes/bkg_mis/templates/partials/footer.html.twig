@@ -1,0 +1,65 @@
+{% import 'macros/default_macros.html.twig' as macros %}
+
+{% set footer_copyright_class = theme_var('footer.copyright.class') %}
+{% set footer_menu_class = theme_var('footer.menu_class') %}
+{% set footer_hr_line = theme_var('footer.hr_line') %}
+{% set menu_footer = theme_var('menu.footer') %}
+
+{% include 'partials/footer/banner.html.twig' ignore missing %}
+<footer id="footer">
+    <div class="footer-buttons-bar show-for-medium hide-for-print">
+        {% include 'partials/footer/up.html.twig' %}
+    </div>
+    <div id="navFunctionsWrapper" class="row">
+        <div class="medium-7 columns">
+            <h2>Diese Seite</h2>
+            <ul id="navFunctions">
+                <li id="navFunctionsPrint">
+                    <a onclick="window.print()" title="Seite drucken (öffnet Dialog)">drucken</a>
+                </li>
+                <li id="navFunctionsRecommend">
+                    <a href="mailto:?body={{ uri|url_encode }}" class="" aria-haspopup="true" aria-owns="share" title="Mehr anzeigen">empfehlen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% include 'partials/footer/socials.html.twig' %}
+    <div class="copyright row">
+        {% include 'partials/footer/logo.html.twig' %}
+        <div class="legal-links small-18 medium-21 columns">
+            <div class="row">
+                <div class="columns hide-for-xsmall-only hide-for-small-only">
+                    {{ _self.footer_nav_loop(menu_footer, pages) }}
+                </div>
+            </div>
+            <div class="row">
+                {% set copyright_text = theme_var('footer.copyright.text') %}
+                {% set copyright_show_year = theme_var('footer.copyright.show_year') %}
+                <div class="columns">
+                    <p class=" copyright_text">{{ copyright_text }}{% if copyright_show_year %} - {{ "now"|date("Y") }}{% endif %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% macro footer_nav_loop(menu, pages) %}
+    <ul class="footer-menu-entries" role="navigation" aria-label="Navigation Footer">
+    {% for menuentry in menu %}
+        {% set p = pages.find(menuentry.path) %}
+        {% if p and p.visible %}
+            {% set page_active = (p.active or p.activeChild) ? 'active' : '' %}
+            {% set page_url = p.url %}
+            {% set page_title = p.header.custom_title.html ?? p.title %}
+            {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+            {% if page_url is not empty %}
+                <li>
+                    <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t|e }}" {% if menuentry.target_blank %} target="_blank"{% endif %}>
+                        <span>{{ page_title|t|e }}</span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endmacro %}

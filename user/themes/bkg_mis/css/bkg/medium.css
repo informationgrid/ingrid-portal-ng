@@ -1,0 +1,591 @@
+@media only screen and (min-width:37.563em) {
+ html {
+  font-family: medium
+ }
+ .picture.banner {
+  max-width: 290px
+ }
+ .picture.normal {
+  max-width: 610px
+ }
+ .picture.thumbnail.portrait {
+  max-width: 64px
+ }
+ .picture.banner.portrait {
+  max-width: 134px
+ }
+ .picture.normal.portrait {
+  max-width: 274px
+ }
+ .picture.poster.portrait {
+  max-width: 900px
+ }
+ .picture.links {
+  margin: 6px 20px 18px 0;
+  float: left
+ }
+ .picture.rechts {
+  margin: 6px 0 18px 20px;
+  float: right
+ }
+ .docData .label {
+  clear: left;
+  width: 6em;
+  float: left;
+  padding-right: 20px
+ }
+ .docData .value {
+  float: left
+ }
+ .docData.interview .label, .docData.pressrelease .label {
+  width: 8em
+ }
+ .docData.callForBids .label, .docData.joboffer .label, .docData.event .label,
+  .docData.guestbookEntry .label {
+  width: 9em
+ }
+ .docData.orgunit .label, .docData.services1 .label {
+  width: 12em
+ }
+ .docData.services .label {
+  width: 9em
+ }
+ .docData.services .value {
+  width: 27em
+ }
+ .docData.services2 .label {
+  width: 13em
+ }
+ .docData.services2 .value {
+  width: 27em
+ }
+ .docData.services3 .label {
+  width: 15em
+ }
+ .docData.services3 .value {
+  width: 25em
+ }
+ .responsiveTable {
+  overflow-x: auto;
+  margin-bottom: 0
+ }
+ .responsiveTable table {
+  width: 100%
+ }
+ #header p {
+  margin: 20px 0
+ }
+ #wrapperInnerBreadcrumb {
+  margin: 0 auto;
+  min-height: 13.9em;
+  position: relative;
+  width: 98em
+ }
+ #search.large-3 {
+  width: auto
+ }
+ #content {
+  padding-top: 30px
+ }
+ .teaser h2 {
+  margin-bottom: 10px
+ }
+ .teaser .picture-element {
+  width: 36.4%
+ }
+ .teaser p {
+  display: block
+ }
+ .linklist:first-child {
+  padding-top: 0
+ }
+ .linklist>div {
+  border-bottom: 0
+ }
+ .linklist li {
+  border-bottom: 1px solid #7aa478
+ }
+ .linklist li>a {
+  padding: 10px 20px
+ }
+ .linklist h2 {
+  color: white;
+  border-bottom: 2px solid #7aa478;
+  padding: 20px 20px 10px
+ }
+ .startseite .linklist {
+  background: #407e40
+ }
+ .startseite .linklist li {
+  border-bottom: 1px solid #7aa478
+ }
+ .startseite .linklist li>a {
+  color: white;
+  background:
+   url(/SiteGlobals/Frontend/Images/icons/sprite-right.png?__blob=normal&v=3)
+   no-repeat 95% -2716px
+ }
+ .startseite .linklist>div {
+  border-bottom: 0
+ }
+ .startseite .linklist.icon {
+  background: white
+ }
+ .startseite .linklist.icon li {
+  border-bottom: 1px solid #dedede
+ }
+ .startseite .linklist.icon li a {
+  padding: 10px 20px;
+  display: block;
+  background:
+   url(/SiteGlobals/Frontend/Images/icons/sprite-right.png?__blob=normal&v=3)
+   no-repeat 95% -1664px;
+  color: #333
+ }
+ .startseite .linklist.icon li a:hover, .startseite .linklist.icon li a:focus,
+  .startseite .linklist.icon li a:active {
+  color: #407e40
+ }
+ .startseite .linklist.icon li:last-child {
+  border-bottom: 0
+ }
+ .startseite .linklist.icon h2 {
+  background:
+   url(/SiteGlobals/Frontend/Images/icons/sprite-list.png?__blob=normal&v=1)
+   no-repeat 50% -776px;
+  padding: 120px 0 10px 0;
+  text-align: center;
+  color: #333
+ }
+ .startseite .linklist.icon h2.produkte {
+  background-position: 50% -1314px
+ }
+ .startseite .linklist.icon h2.downloads {
+  background-position: 50% -238px
+ }
+ .startseite .linklist.icon h2.entwicklung {
+  background-position: 50% -1852px
+ }
+}
+
+@media only screen and (min-width:37.563em) and (max-width:63.9375em) {
+ .wrapperLinklist {
+  background-color: #eee
+ }
+ .wrapperLinklist .linklist {
+  background-color: #eee
+ }
+ .wrapperLinklist .linklist h2 {
+  color: #333
+ }
+ .wrapperLinklist .linklist li {
+  border-bottom: 1px solid #dedede
+ }
+ .wrapperLinklist .linklist li a {
+  color: #333;
+  background:
+   url(/SiteGlobals/Frontend/Images/icons/sprite-right.png?__blob=normal&v=3)
+   no-repeat 95% -1664px
+ }
+ .wrapperLinklist .linklist li a:hover, .wrapperLinklist .linklist li a:focus,
+  .wrapperLinklist .linklist li a:active {
+  color: #407e40
+ }
+}
+
+@media only screen and (min-width:37.563em) {
+ .logoleiste {
+  padding-bottom: 3em;
+  padding-top: 3em
+ }
+ .logoleiste a {
+  display: block
+ }
+ .logoleiste a:focus {
+  border-bottom: 2px solid #333
+ }
+ .layout2slot {
+  border-top: 0
+ }
+ .topicWrapper .linklist h2 {
+  padding: 20px 20px 10px
+ }
+ .topicWrapper h2 {
+  padding: 20px 0 10px
+ }
+ #supplement .banner, #supplement .boxWrapper, #supplement .box {
+  width: 100%;
+  max-width: 314px
+ }
+ #supplement .solrSortLinks, #supplement .solrSortLinks .box, #supplement .facets,
+  #supplement .facets .box {
+  max-width: 100%
+ }
+ #social-media-footer {
+  background-color: #0077b6;
+  margin-bottom: 2em
+ }
+ .socialmedia {
+  overflow: hidden;
+  height: 48px
+ }
+ .socialmedia ul {
+  margin: 0 auto
+ }
+ .socialmedia ul li {
+  float: left;
+  margin-top: 5px;
+  width: 20%;
+  border: 0;
+  background-image: none
+ }
+ .socialmedia ul li a, .socialmedia ul li strong {
+  font-size: 11px;
+  color: white;
+  padding-left: 45px !important;
+  text-transform: uppercase
+ }
+ .socialmedia ul li:first-child a {
+  margin-left: 0
+ }
+ .socialmedia ul li.navRSSFeed a {
+  background:
+   url(../../images/sprite-social.png?__blob=normal&v=2)
+   no-repeat 0 -235px
+ }
+ .socialmedia ul li.navYouTube a {
+  background:
+   url(../../images/sprite-social.png?__blob=normal&v=2)
+   no-repeat 0 -941px
+ }
+ .socialmedia ul li.navXing a {
+  background:
+   url(../../images/sprite-social.png?__blob=normal&v=2)
+   no-repeat 0 -704px
+ }
+ .socialmedia ul li.navFacebook a {
+  background:
+   url(../../images/sprite-social.png?__blob=normal&v=2)
+   no-repeat 0 1px
+ }
+ .socialmedia ul li.navTwitter a {
+  background:
+   url(../../images/sprite-social.png?__blob=normal&v=2)
+   no-repeat 0 -471px
+ }
+ .socialmedia ul li.navInstagram a {
+  background:
+    url(../../images/sprite-social.png?__blob=normal&v=4) no-repeat 0 -1176px;
+  }
+ .socialmedia ul li.navLinkedIn a {
+  background:
+    url(../../images/sprite-social.png?__blob=normal&v=5) no-repeat 0-1413px;
+ }
+ .contactbox dt, .contactbox p {
+  padding-left: 20px
+ }
+ .contactbox p {
+  padding: 10px 20px
+ }
+ #footer .copyright li {
+  float: left;
+  margin-right: 6px;
+  text-transform: uppercase;
+  font-weight: 700
+ }
+ #footer .copyright li a {
+  padding-left: 0;
+  font-size: 12px;
+  margin-right: 10px;
+  color: #333
+ }
+ #navFunctionsWrapper {
+  margin: 1em auto 1em
+ }
+ .searchresult h2 {
+  padding-right: 60px
+ }
+ #content .navIndex ul {
+  width: auto;
+  display: table;
+  margin: 0 auto
+ }
+ #content .navIndex li {
+  width: auto;
+  margin-right: 10px
+ }
+ #content .navIndex a.page, #content .navIndex strong, #content .navIndex span.page
+  {
+  display: block;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -o-border-radius: 3px 3px 3px 3px;
+  -khtml-border-radius: 3px 3px 3px 3px
+ }
+ .js-on .teaser-switcher .navigation {
+  top: 0;
+  width: 100%;
+  height: 180px
+ }
+ .js-on .teaser-switcher .navigation button {
+  top: 0;
+  width: 30px;
+  height: 100%
+ }
+ .js-on .teaser-switcher .navigation button:focus {
+  outline: 0
+ }
+ .topics .imageContainer {
+  float: left;
+  width: 320px;
+  position: relative
+ }
+ .topics .textContainer {
+  float: left;
+  padding: 0 30px 30px;
+  width: 50%;
+  max-width: 400px
+ }
+ .topics .all {
+  margin-left: 350px
+ }
+ .topics .all .button {
+  width: 80%
+ }
+ .teaser-switcher img {
+  margin-bottom: 0
+ }
+ .StndGallery {
+  max-width: 610px;
+  margin: 0 auto 20px
+ }
+ .StndGallery .galleryBox {
+  background: white
+ }
+ .StndGallery .galleryBox .navigation {
+  top: 45%;
+  height: 30px
+ }
+ .StndGallery .galleryBox.galleryBox-embedded {
+  max-width: 480px;
+  margin: 0 auto
+ }
+ .StndGallery .galleryBox.galleryBox-embedded .navigation {
+  top: 0;
+  height: 100%
+ }
+ .StndGallery .galleryBox.galleryBox-embedded .navigation .prev {
+  left: -60px
+ }
+ .StndGallery .galleryBox.galleryBox-embedded .navigation .next {
+  right: -60px
+ }
+ #stage {
+  clear: both;
+  position: relative;
+  background: #eee
+ }
+ #stage .imageContainer {
+  float: left;
+  width: 50%;
+  position: relative
+ }
+ #stage .textContainer {
+  float: left;
+  padding: 25px 25px 7em;
+  width: 50%
+ }
+ #stage .textContainer h3 {
+  color: #407e40;
+  margin: 0
+ }
+ #stage .textContainer h3 a {
+  color: #407e40
+ }
+ #stage .pagination {
+  position: absolute;
+  bottom: 10px;
+  margin-bottom: 0;
+  left: 50%;
+  width: auto
+ }
+ #stage .pagination ul {
+  margin-left: 20px
+ }
+ #stage .pagination li {
+  font-size: 200%
+ }
+ .js-on #stage .slick-dots {
+  position: absolute;
+  bottom: 20px;
+  margin-bottom: 0;
+  left: 50%;
+  text-align: left;
+  margin-left: 25px;
+  width: auto;
+  height: 34px
+ }
+ .js-on #stage .slick-dots li {
+  width: 34px;
+  height: 34px
+ }
+ .js-on #stage .slick-dots li button {
+  font-size: 133.33%;
+  font-weight: bold;
+  color: #407e40;
+  background-color: transparent;
+  height: auto;
+  width: auto;
+  text-indent: 0;
+  border: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -khtml-border-radius: 0;
+  clear: left;
+  display: block;
+  padding: 4px 12px 10px;
+  line-height: 1
+ }
+ .js-on #stage .slick-dots li button:hover, .js-on #stage .slick-dots li button:focus,
+  .js-on #stage .slick-dots li button:active {
+  color: #407e40;
+  background: white;
+  opacity: 1
+ }
+ .js-on #stage .slick-dots li button:focus {
+  outline: 0
+ }
+ .js-on #stage .slick-dots li button:before {
+  font-size: 100%;
+  content: "";
+  color: white
+ }
+ .js-on #stage .slick-dots li.slick-active button {
+  color: #407e40;
+  background-color: white;
+  cursor: inherit
+ }
+ .js-on #stage .navigation {
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  right: 25px;
+  width: auto
+ }
+ .js-on #stage .navigation button {
+  color: #333;
+  text-align: center;
+  width: 34px;
+  height: 34px;
+  top: 0;
+  position: static;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -khtml-border-radius: 0
+ }
+ .js-on #stage .navigation button.prev, .js-on #stage .navigation button.next
+  {
+  display: none !important
+ }
+ .js-on #stage .navigation button.pause, .js-on #stage .navigation button.play
+  {
+  display: inline
+ }
+ .js-on #stage .navigation button strong {
+  left: auto;
+  line-height: 1.2;
+  overflow: visible;
+  position: static;
+  width: auto
+ }
+ .js-on #stage .navigation button img {
+  width: 33px;
+  height: 33px
+ }
+ .js-on #stage .navigation button.playbutton-playing:focus img, .js-on #stage .navigation button.playbutton-paused:focus img
+  {
+  outline-style: dotted;
+  outline-color: white;
+  outline-width: 1px
+ }
+ #share .wrapper-share {
+  min-height: 16.5em
+ }
+ #share .social_share_privacy_area .facebook, #share .social_share_privacy_area .twitter,
+  #share .social_share_privacy_area .gplus, #share .social_share_privacy_area .twitter,
+  #share .social_share_privacy_area .gplus {
+  width: auto;
+  padding-right: 20px !important
+ }
+ #share .social_share_privacy_area li.help_info.twitter .info, #share .social_share_privacy_area li.help_info.facebook .info,
+  #share .social_share_privacy_area li.help_info.gplus .info {
+  left: 0
+ }
+ .bkgMap {
+  display: block;
+  width: 500px;
+  height: 500px;
+  max-width: 100%;
+  border: 1px solid #dedede;
+  margin: 20px 0
+ }
+ .bkgMap img {
+  max-width: none
+ }
+ .bkgMap div.olControlZoom a {
+  background: #407e40
+ }
+ .bkgMap div.olControlZoom a:hover, .bkgMap div.olControlZoom a:focus,
+  .bkgMap div.olControlZoom a:active {
+  background: rgba(0, 0, 0, 0.6)
+ }
+ .gref>.box {
+  display: -webkit-flex;
+  flex: 1;
+  display: flex;
+  display: -webkit-flex;
+  padding: 10px
+ }
+ .SpalteMapLinks {
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-order: 1;
+  order: 1;
+  flex-basis: 25%;
+  -webkit-flex-basis: 25%
+ }
+ .SpalteMapRechts {
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-order: 3;
+  order: 3;
+  flex-basis: 25%;
+  -webkit-flex-basis: 25%
+ }
+ .SpalteMapMitte {
+  text-align: center;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-order: 2;
+  order: 2;
+  flex-basis: 100%;
+  -webkit-flex-basis: 100%
+ }
+ .gref .docData .label {
+  width: 12em
+ }
+}

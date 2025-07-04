@@ -1,0 +1,1116 @@
+enabled: true
+header:
+  title_extend: 'AdV-MIS'
+  logo_enabled: true
+  logo_class: 'xsmall-15 small-15 medium-15 large-14 xlarge-15'
+  menu_class: 'xsmall-9 small-7 medium-7 large-7 xlarge-6'
+  menu_dropdown: true
+  shrink: true
+  logo:
+    user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
+      name: advmis_logo.png
+      full_path: advmis_logo.png
+      type: image/png
+      size: 5898
+      path: user/themes/bkg_adv_mis/images/logo/advmis_logo.png
+footer:
+  logo_enabled: true
+  copyright:
+    text: '© Arbeitsgemeinschaft der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    show_year: true
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  hr_line: true
+  logo:
+    user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
+      name: advmis_logo.png
+      full_path: advmis_logo.png
+      type: image/png
+      size: 5898
+      path: user/themes/bkg_adv_mis/images/logo/advmis_logo.png
+  share:
+    enabled: false
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: false
+  up:
+    enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
+menu:
+  main:
+    -
+      path: /search
+      icon: ic-ic-lupe
+    -
+      path: /about
+      icon: ic-ic-info
+  site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /about
+      highlighted: true
+    -
+      path: /contact
+      highlighted: false
+    -
+      path: /imprint
+      highlighted: false
+    -
+      path: /privacy
+      highlighted: false
+      target_blank: true
+    -
+      path: /accessibility
+      highlighted: false
+  footer:
+    -
+      path: /contact
+    -
+      path: /imprint
+    -
+      path: /privacy
+      target_blank: true
+    -
+      path: /accessibility
+home:
+  sort_modules:
+    -
+      path: /home/_search
+      hidden: false
+    -
+      path: /home/_warning
+      hidden: true
+    -
+      path: /home/_categories
+      hidden: false
+  rss:
+    feeds_limit: 0
+  categories:
+    rss:
+    facet_config: [
+      {
+        "id": "type",
+        "link_to_search": true,
+        "facets": {
+          "application": {
+            "codelist": "8000",
+            "codelist_entry_id": "6",
+            "display_on_empty": true,
+            "icon": "ic-chemie",
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": "6"
+                }
+              }
+            },
+          },
+          "data": {
+            "codelist": "8000",
+            "codelist_entry_id": "1",
+            "display_on_empty": true,
+            "icon": "ic-map",
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": "1"
+                }
+              }
+            },
+          },
+          "service": {
+            "codelist": "8000",
+            "codelist_entry_id": "3",
+            "display_on_empty": true,
+            "icon": "ic-ic-dienste",
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": "3"
+                }
+              }
+            },
+          },
+          "inspire_true": {
+            "label": "INSPIRE",
+            "display_on_empty": true,
+            "icon": "ic-inspire",
+            "parent": "inspire",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspire"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspireidentifiziert"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+          },
+          "opendata_hvd": {
+            "label": "Open Data / HVD",
+            "display_on_empty": true,
+            "icon": "ic-opendata",
+            "parent": "hvd",
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendata"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendataident"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "adv_true": {
+            "label": "AdV-Produkt",
+            "display_on_empty": true,
+            "icon": "images/adv.jpg",
+            "query": {
+              "filter": {
+                "term": {
+                  "t04_search.searchterm": "advmis"
+                }
+              }
+            },
+          }
+        }
+      },
+    ]
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
+  hits:
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
+    hits_num: 0
+    sort:
+      sortByDate: true
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "label": "Art der Ressource",
+      "facets": {
+        "data": {
+          "codelist": "8000",
+          "codelist_entry_id": "1",
+          "active": true,
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "hierarchylevel": "dataset"
+                    }
+                  },
+                  {
+                    "term": {
+                      "hierarchylevel": "series"
+                    }
+                  },
+                  {
+                    "term": {
+                      "hierarchylevel": "featureType"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "tile": {
+          "label": "Kacheln",
+          "query": {
+            "filter": {
+              "term": {
+                "hierarchylevel": "tile"
+              }
+            }
+          }
+        },
+        "service": {
+          "codelist": "8000",
+          "codelist_entry_id": "3",
+          "active": true,
+          "query": {
+            "filter": {
+              "term": {
+                "hierarchylevel": "service"
+              }
+            }
+          }
+        },
+        "application": {
+          "codelist": "8000",
+          "codelist_entry_id": "6",
+          "active": true,
+          "query": {
+            "filter": {
+              "term": {
+                "hierarchylevel": "application"
+              }
+            }
+          },
+        },
+
+      }
+    },
+    {
+      "id": "service_type",
+      "label": "Art der Dienste",
+      "facets": {
+        "service_type_view": {
+          "label": "Darstellungsdienste",
+          "query": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "3"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "view"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wms"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wmts"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "map"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+        },
+        "service_type_download": {
+          "label": "Downloaddienste",
+          "query": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "3"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "download"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "feature"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wcs"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wfs"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "atom"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "ogcapifeature"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "api feature"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "service_type_others": {
+          "label": "Sonstige Dienste",
+          "query": {
+            "filter": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "t01_object.obj_class": "3"
+                    }
+                  },
+                  {
+                    "bool": {
+                      "must_not": [
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "view"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wms"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wmts"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "map"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "download"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "feature"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wcs"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "wfs"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "atom"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "ogcapifeature"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t011_obj_serv.type": "api feature"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "productgroup",
+      "label": "Produktgruppe",
+      "list_limit": 6,
+      "facets": {
+        "at1": {
+          "label": "Digitale Orthophotos",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Orthophotos"
+              }
+            }
+          }
+        },
+        "at2": {
+          "label": "Digitale Landschaftsmodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Landschaftsmodelle"
+              }
+            }
+          }
+        },
+        "at3": {
+          "label": "Digitale Geländemodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Geländemodelle"
+              }
+            }
+          }
+        },
+        "at4": {
+          "label": "Digitale Oberflächenmodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Oberflächenmodelle"
+              }
+            }
+          }
+        },
+        "at5": {
+          "label": "Digitale Topographische Karten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Digitale Topographische Karten"
+              }
+            }
+          }
+        },
+        "at6": {
+          "label": "basemap.de",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "basemap.de"
+              }
+            }
+          }
+        },
+        "at7": {
+          "label": "3D-Gebäudemodelle",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "3D-Gebäudemodelle"
+              }
+            }
+          }
+        },
+        "at8": {
+          "label": "Landbedeckung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Landbedeckung"
+              }
+            }
+          }
+        },
+        "at9": {
+          "label": "Landnutzung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Landnutzung"
+              }
+            }
+          }
+        },
+        "at10": {
+          "label": "Topographische Sonderkarten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Topographische Sonderkarten"
+              }
+            }
+          }
+        },
+        "at11": {
+          "label": "Luftbilder",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Luftbilder"
+              }
+            }
+          }
+        },
+        "at12": {
+          "label": "Sonstige Produkte Geotopographie",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Sonstige Produkte Geotopographie"
+              }
+            }
+          }
+        },
+        "at13": {
+          "label": "ALKIS",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "ALKIS"
+              }
+            }
+          }
+        },
+        "at14": {
+          "label": "Hauskoordinaten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Hauskoordinaten"
+              }
+            }
+          }
+        },
+        "at15": {
+          "label": "Hausumringe",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Hausumringe"
+              }
+            }
+          }
+        },
+        "at16": {
+          "label": "Verwaltungsgrenzen",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Verwaltungsgrenzen"
+              }
+            }
+          }
+        },
+        "at17": {
+          "label": "Bodenrichtwerte",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Bodenrichtwerte"
+              }
+            }
+          }
+        },
+        "at18": {
+          "label": "Festpunkte",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Festpunkte"
+              }
+            }
+          }
+        },
+        "at19": {
+          "label": "INSPIRE Adressen",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Adressen"
+              }
+            }
+          }
+        },
+        "at20": {
+          "label": "INSPIRE Flurstücke/Grundstücke",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Flurstücke/Grundstücke"
+              }
+            }
+          }
+        },
+        "at21": {
+          "label": "INSPIRE Geografische Bezeichnungen",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Geografische Bezeichnungen"
+              }
+            }
+          }
+        },
+        "at22": {
+          "label": "INSPIRE Gewässernetz",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Gewässernetz"
+              }
+            }
+          }
+        },
+        "at23": {
+          "label": "INSPIRE Verkehrsnetze",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Verkehrsnetze"
+              }
+            }
+          }
+        },
+        "at24": {
+          "label": "INSPIRE Verwaltungseinheiten",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Verwaltungseinheiten"
+              }
+            }
+          }
+        },
+        "at25": {
+          "label": "INSPIRE Bodenbedeckung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Bodenbedeckung"
+              }
+            }
+          }
+        },
+        "at26": {
+          "label": "INSPIRE Höhe",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Höhe"
+              }
+            }
+          }
+        },
+        "at27": {
+          "label": "INSPIRE Orthofotografie",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Orthofotografie"
+              }
+            }
+          }
+        },
+        "at28": {
+          "label": "INSPIRE Boden",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Boden"
+              }
+            }
+          }
+        },
+        "at29": {
+          "label": "INSPIRE Bodennutzung",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Bodennutzung"
+              }
+            }
+          }
+        },
+        "at30": {
+          "label": "INSPIRE Gebäude 2D",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Gebäude 2D"
+              }
+            }
+          }
+        },
+        "at31": {
+          "label": "INSPIRE Gebäude 3D",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "INSPIRE Gebäude 3D"
+              }
+            }
+          }
+        },
+        "at32": {
+          "label": "Fachübergreifende Anzeigesysteme",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "alternatetitle": "Fachübergreifende Anzeigesysteme"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "maintain",
+      "label": "Verwaltet von",
+      "list_limit": 6,
+      "query": {
+        "terms": {
+          "field": "t02_address.identificationinfo_administrative_area_value",
+          "min_doc_count": 0
+        }
+      },
+      "search": "t02_address.identificationinfo_administrative_area_value:%s"
+    },
+    {
+      "id": "hvd",
+      "label": "Open Data / HVD",
+      "selection_single": true,
+      "facets": {
+        "opendata_hvd": {
+          "label": "HVD",
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": "true"
+              }
+            }
+          }
+        },
+        "opendata_true": {
+          "label": "Open Data",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "opendata_false": {
+          "label": "Nein",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "bool": {
+                      "must_not": [
+                        {
+                          "term": {
+                            "t04_search.searchterm": "opendata"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t04_search.searchterm": "opendataident"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "inspire",
+      "label": "INSPIRE",
+      "selection_single": true,
+      "facets": {
+        "inspire_true": {
+          "label": "Ja",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspire"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspireidentifiziert"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "inspire_false": {
+          "label": "Nein",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "bool": {
+                      "must_not": [
+                        {
+                          "term": {
+                            "t04_search.searchterm": "inspire"
+                          }
+                        },
+                        {
+                          "term": {
+                            "t04_search.searchterm": "inspireidentifiziert"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+  add_to_search:
+    - '-datatype:address'
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: ' '
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: false
+  sns:
+    similar_terms:
+      enabled: false
+provider:
+  query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+hit_detail:
+  summary_replace_newline: ' '
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: true
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  address_unlink: false
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
+  display_use_constraints_json: true
+map:
+  url:
+  leaflet:
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: null }
+        wms: { url: 'https://sgx.geodatenzentrum.de/wms_topplus_open?VERSION=1.3.0&SERVICE=WMS&REQUEST=GetCapabilities', name: 'web' }
+        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        opacity: 1
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+    enable:
+      wkt: true
+      geocoder: false
+      spinloader: false
+      clustering: false
+    geocoder:
+      enable: false
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
+    position: 46.58,5.22,55.40,15.68
+measure:
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
+redirect:
+  pages_to_404:
+    - /api
+    - /measure
+    - /map
+    - /catalog
+    - /datasource
+    - /provider
+    - /help
+    - /sitemap
+  pages_to_redirect:
+    -
+      path: /privacy
+      url: 'https://www.bkg.bund.de/DE/Service/Datenschutz/datenschutz.html'
+catalog:
+  open_nodes_level: 0
+  display_partner: true
+  sort_by_name: true
+  open_on_new_tab: true
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+         - user/themes/bkg_adv_mis
+         - user/themes/bkg_mis
+         - user/themes/ingrid

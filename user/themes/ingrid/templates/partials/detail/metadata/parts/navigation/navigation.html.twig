@@ -24,6 +24,11 @@
                         </a>
                         {% if isTimeInDescription %}
                             {% include 'partials/detail/metadata/parts/navigation/navigation_time_description.html.twig' %}
+                        {% else %}
+                            <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_description }}-accordion-label" id="{{ hash_description }}-accordion">
+                                <div class="boxes">
+                                </div>
+                            </div>
                         {% endif %}
                     </li>
                 {% endif %}
@@ -73,14 +78,14 @@
                                     {% set tmpTitle = "SEARCH_DETAIL.WWW_REFERENCES"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
-                                {% if subordinatedLinkRefs|length > 0 %}
+                                {% if linkSubordinatedRefs|length > 0 %}
                                     {% set tmpHash = hash_links ~ "_subordinated_references" %}
-                                    {% set tmpTitle = "SEARCH_DETAIL.SUBORDINATED_ADDRESSES"|t %}
+                                    {% set tmpTitle = "SEARCH_DETAIL.SUBORDINATED_REFERENCES"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
-                                {% if superiorLinkRefs|length > 0 %}
+                                {% if linkSuperiorRefs|length > 0 %}
                                     {% set tmpHash = hash_links ~ "_superior_references" %}
-                                    {% set tmpTitle = "SEARCH_DETAIL.SUPERIOR_ADDRESS"|t %}
+                                    {% set tmpTitle = "SEARCH_DETAIL.SUPERIOR_REFERENCES"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
                             </div>
@@ -129,6 +134,11 @@
                                 {% if infoRefs|length > 0 %}
                                     {% set tmpHash = hash_info ~ "_technical_information" %}
                                     {% set tmpTitle = "SEARCH_DETAIL.TECHNICAL_INFORMATION"|t %}
+                                    {% if class == "3" %}
+                                        {% set tmpTitle = "SEARCH_DETAIL.TECHNICAL_INFORMATION_3"|t %}
+                                    {% elseif class == "6" %}
+                                        {% set tmpTitle = "SEARCH_DETAIL.TECHNICAL_INFORMATION_6"|t %}
+                                    {% endif %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
                                 {% if infoRefs_additional|length > 0 %}

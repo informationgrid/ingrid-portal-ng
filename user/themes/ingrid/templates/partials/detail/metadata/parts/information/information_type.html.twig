@@ -1,20 +1,22 @@
 {# Informationen zum Datensatz #}
-{% if class == "1" %}
-    {# Geodatensatz #}
-    {% include 'partials/detail/metadata/parts/information/information_type_1.html.twig' %}
-{% elseif class == "2" %}
-    {# Literatur #}
-    {% include 'partials/detail/metadata/parts/information/information_type_2.html.twig' %}
-{% elseif class == "3" %}
-    {# Geodatendienst #}
-    {% include 'partials/detail/metadata/parts/information/information_type_3.html.twig' %}
-{% elseif class == "4" %}
-    {# Projekt #}
-    {% include 'partials/detail/metadata/parts/information/information_type_4.html.twig' %}
-{% elseif class == "5" %}
-    {# Datensammlung #}
-    {% include 'partials/detail/metadata/parts/information/information_type_5.html.twig' %}
-{% elseif class == "6" %}
-    {# Informationsystem #}
-    {% include 'partials/detail/metadata/parts/information/information_type_6.html.twig' %}
+{% if infoRefs|length > 0 %}
+    {% if class == "1" %}
+        {# Geodatensatz #}
+        {% include 'partials/detail/metadata/parts/information/information_type_1.html.twig' %}
+    {% elseif class == "2" %}
+        {# Literatur #}
+        {% include 'partials/detail/metadata/parts/information/information_type_2.html.twig' %}
+    {% elseif class == "3" %}
+        {# Geodatendienst #}
+        {% include 'partials/detail/metadata/parts/information/information_type_3.html.twig' %}
+    {% elseif class == "4" %}
+        {# Projekt #}
+        {% include 'partials/detail/metadata/parts/information/information_type_4.html.twig' %}
+    {% elseif class == "5" %}
+        {# Datensammlung #}
+        {% include 'partials/detail/metadata/parts/information/information_type_5.html.twig' %}
+    {% elseif class == "6" %}
+        {# Informationsystem #}
+        {% include 'partials/detail/metadata/parts/information/information_type_6.html.twig' %}
+    {% endif %}
 {% endif %}

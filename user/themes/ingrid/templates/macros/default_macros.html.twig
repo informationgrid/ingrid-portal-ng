@@ -16,6 +16,7 @@
 
 {% macro nav_loop(menu, pages) %}
     {% import _self as macros %}
+    {% set header_title_extend = theme_var('header.title_extend') %}
     {% for menuentry in menu %}
         {% set p = pages.find(menuentry.path) %}
         {% if p and p.visible %}
@@ -24,10 +25,10 @@
             {% set page_title = p.header.custom_title.html %}
             {% set page_menu_title = p.header.custom_title.menu %}
             {% if page_url is not empty %}
-                <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ page_menu_title|t|e }}">
+                <a class="menu-tab {{ page_active }}" href="{{ page_url|e }}" title="{{ page_menu_title|t(header_title_extend)|e }}">
                     <div class="link-menu-tab">
                         {% if menuentry.icon %}<span class="{{menuentry.icon}}"></span>{% endif %}
-                        <span class="text">{{ page_title|t|e }}</span>
+                        <span class="text">{{ page_title|t(header_title_extend)|e }}</span>
                     </div>
                 </a>
             {% endif %}
@@ -37,6 +38,7 @@
 
 {% macro nav_menu_loop(menu, pages) %}
     {% import _self as macros %}
+    {% set header_title_extend = theme_var('header.title_extend') %}
     <div class="header-menu" style="display: none;" role="navigation" aria-label="Navigation Menu">
         <div class="header-menu-close">
             <button type="button" class="button ">{{ "PAGES.MENU"|t }}<span class="ic-ic-cross"></span></button>
@@ -52,8 +54,8 @@
                         {% set page_title = p.header.custom_title.html ?? p.title %}
                         {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
                         {% if page_url is not empty %}
-                            <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t|e }}"{% if menuentry.target_blank %} target="_blank" {% endif %}>
-                                <span class="text">{{ page_title|t|e }}</span>
+                            <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t(header_title_extend)|e }}"{% if menuentry.target_blank %} target="_blank" {% endif %}>
+                                <span class="text">{{ page_title|t(header_title_extend)|e }}</span>
                             </a>
                         {% endif %}
                     {% endif %}
@@ -69,8 +71,8 @@
                         {% set page_title = p.header.custom_title.html ?? p.title  %}
                         {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
                         {% if page_url is not empty %}
-                            <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
-                                <span class="text">{{ page_title|t|e }}</span>
+                            <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t(header_title_extend)|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
+                                <span class="text">{{ page_title|t(header_title_extend)|e }}</span>
                             </a>
                         {% endif %}
                     {% endif %}
@@ -101,6 +103,7 @@
 
 {% macro footer_nav_loop(menu, pages) %}
     {% import _self as macros %}
+    {% set header_title_extend = theme_var('header.title_extend') %}
     {% for menuentry in menu %}
         {% set p = pages.find(menuentry.path) %}
         {% if p and p.visible %}
@@ -109,8 +112,8 @@
             {% set page_title = p.header.custom_title.html ?? p.title %}
             {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
             {% if page_url is not empty %}
-                <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t|e }}">
-                    <span>{{ page_title|t|e }}</span>
+                <a class="icon" href="{{ page_url }}" class="{{ active_page }}" title="{{ page_menu_title|t(header_title_extend)|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
+                    <span>{{ page_title|t(header_title_extend)|e }}</span>
                 </a>
             {% endif %}
         {% endif %}

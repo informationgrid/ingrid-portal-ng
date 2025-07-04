@@ -1,12 +1,18 @@
 enabled: true
 header:
-  title_extend: 'InGrid Portal'
+  title_extend: 'InGrid-Portal'
   logo_enabled: true
   logo_class: 'xsmall-7 small-7 medium-7 large-7 xlarge-7'
   menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
   menu_dropdown: true
   shrink: true
-  logo: {  }
+  logo:
+    user/themes/ingrid/images/logo/logo.svg:
+      name: logo.svg
+      full_path: logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/ingrid/images/logo/logo.svg
 footer:
   logo_enabled: true
   copyright:
@@ -15,7 +21,13 @@ footer:
     show_year: false
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo: {  }
+  logo:
+    user/themes/ingrid/images/logo/footer-logo.svg:
+      name: footer-logo.svg
+      full_path: footer-logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/ingrid/images/logo/footer-logo.svg
   share:
     enabled: true
     enabled_x: true
@@ -28,6 +40,9 @@ footer:
     enabled: false
   up:
     enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
 menu:
   main:
     -
@@ -211,7 +226,7 @@ hit_search:
                 "datatype": "www"
               }
             }
-          },
+          }
         },
         "metadata": {
           "display_sort_hits_on_selection": true,
@@ -221,16 +236,27 @@ hit_search:
                 "datatype": "metadata"
               }
             }
-          },
+          }
         },
         "inspire": {
           "query": {
             "filter": {
-              "term": {
-                "t04_search.searchterm": "inspireidentifiziert"
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspire"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspireidentifiziert"
+                    }
+                  }
+                ]
               }
             }
-          },
+          }
         },
         "opendata": {
           "query": {
@@ -250,7 +276,7 @@ hit_search:
                 ]
               }
             }
-          },
+          }
         },
         "hvd": {
           "query": {
@@ -259,7 +285,7 @@ hit_search:
                 "is_hvd": "true"
               }
             }
-          },
+          }
         },
         "maps": {
           "query": {
@@ -268,7 +294,7 @@ hit_search:
                 "capabilities_url": "http*"
               }
             }
-          },
+          }
         },
         "address": {
           "query": {
@@ -277,8 +303,8 @@ hit_search:
                 "datatype": "address"
               }
             }
-          },
-        },
+          }
+        }
       }
     },
     {
@@ -383,6 +409,14 @@ hit_search:
     {
       "id": "bbox",
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+    },
+    {
+      "id": "timeref",
+      "display_depend_on": {
+        "type": "metadata",
+        "metadata_group": "",
+      },
+      "filter": "{\"range\": {\"t01_object.time_from\": {\"gte\": \"%s0*\", \"lte\": \"%s9*\"}}}"
     }
   ]
   add_to_search:
@@ -453,6 +487,7 @@ hit_detail:
     - '0'
     - '1'
     - '2'
+  address_unlink: false
   contact_order:
     - pointOfContact
     - distributor
@@ -463,6 +498,7 @@ hit_detail:
   requested_fields:
     - partner
     - provider
+    - t03_catalogue.cat_name
   source:
     include:
       - idf
@@ -472,6 +508,7 @@ hit_detail:
     exclude:
       - content
   query_string_operator: AND
+  display_use_constraints_json: true
 map:
   url: /ingrid-webmap-client/frontend/prd
   leaflet:
@@ -489,7 +526,6 @@ map:
       inverted: false
     enable:
       wkt: true
-      bwastr: true
       geocoder: false
       spinloader: false
       clustering: false

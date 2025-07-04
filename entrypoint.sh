@@ -78,7 +78,7 @@ fi
 
 # Update cache
 ENABLE_CACHE="$ENABLE_CACHE" \
-yq -i 'cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
+yq -i '.cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
 
 # Add home
 yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
@@ -104,19 +104,6 @@ if [ "$INGRID_API" ]; then
   yq -i '.ingrid_api.url = env(INGRID_API)' "$INGRID_GRAV_YAML"
 fi
 
-# Update geo api
-if [ "$GEO_API_URL" ]; then
-  yq -i '.geo_api.url = env(GEO_API_URL)' "$INGRID_GRAV_YAML"
-fi
-
-if [ "$GEO_API_USER" ]; then
-  yq -i '.geo_api.user = env(GEO_API_USER)' "$INGRID_GRAV_YAML"
-fi
-
-if [ "$GEO_API_PASS" ]; then
-  yq -i '.geo_api.pass = env(GEO_API_PASS)' "$INGRID_GRAV_YAML"
-fi
-
 if [ "$CSW_URL" ]; then
   yq -i '.csw.url = env(CSW_URL)' "$INGRID_GRAV_YAML"
 fi
@@ -140,6 +127,28 @@ fi
 
 if [ "$CODELIST_PASS" ]; then
   yq -i '.codelist_api.pass = env(CODELIST_PASS)' "$INGRID_GRAV_UTILS_YAML"
+fi
+
+# Update geo api
+if [ "$GEO_API_URL" ]; then
+  yq -i '.geo_api.url = env(GEO_API_URL)' "$INGRID_GRAV_UTILS_YAML"
+fi
+
+if [ "$GEO_API_USER" ]; then
+  yq -i '.geo_api.user = env(GEO_API_USER)' "$INGRID_GRAV_UTILS_YAML"
+fi
+
+if [ "$GEO_API_PASS" ]; then
+  yq -i '.geo_api.pass = env(GEO_API_PASS)' "$INGRID_GRAV_UTILS_YAML"
+fi
+
+#####################
+# Active theme config
+#####################
+INGRID_GRAV_THEME_YAML=/var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/"$THEME".yaml
+
+if [ "$ENABLE_FOOTER_BANNER" ]; then
+  yq -i '.footer.banner.enabled = env(ENABLE_FOOTER_BANNER)' "$INGRID_GRAV_THEME_YAML"
 fi
 
 #####################

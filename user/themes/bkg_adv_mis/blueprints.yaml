@@ -1,0 +1,65 @@
+name: AdV-MIS
+slug: bkg_adv_mis
+type: theme
+version: 0.1.0
+description: AdV-MIS Theme
+icon: rebel
+author:
+  name: wemove
+  email: ingrid@wemove.com
+homepage: https://github.com/wemove/grav-theme-ingrid
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/wemove/grav-theme-ingrid/issues
+readme: https://github.com/wemove/grav-theme-ingrid/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    tabs_general:
+      type: tabs
+      active: 1
+      classes: side-tabs
+      fields:
+        ## Tab layout
+        tab_layout:
+          type: tab
+          title: THEME.ADMIN.LAYOUT.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/layout
+        ## Tab home
+        tab_home:
+          type: tab
+          title: THEME.ADMIN.HOME.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/home
+
+        ## Tab search
+        tab_search:
+          type: tab
+          title: THEME.ADMIN.SEARCH.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/search
+
+        ## Tab detail
+        tab_detail:
+          type: tab
+          title: THEME.ADMIN.HIT_DETAIL.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/detail
+
+        ## Tab redirect
+        tab_redirect:
+          type: tab
+          title: THEME.ADMIN.REDIRECT.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/redirect

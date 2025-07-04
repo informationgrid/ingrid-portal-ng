@@ -1,0 +1,72 @@
+{% set timerefQuery = uri.query("timeref") %}
+{% set timerefQueries =  timerefQuery|split(',') %}
+{% set timerefFrom = timerefQueries[0] %}
+{% set timerefTo =  timerefQueries[1] %}
+
+{% if timerefFrom %}
+    {% set timerefFrom =  timerefFrom|slice(0, 4) ~ '-' ~ timerefFrom|slice(4, 2) ~ '-' ~ timerefFrom|slice(6, 2) %}
+{% endif %}
+
+{% if timerefTo %}
+    {% set timerefTo =  timerefTo|slice(0, 4) ~ '-' ~ timerefTo|slice(4, 2) ~ '-' ~ timerefTo|slice(6, 2) %}
+{% endif %}
+
+<div class="boxes">
+    <div class="boxed">
+        <div class="row collapse">
+            <div class="xsmall-6 small-6 medium-6 large-6 xlarge-6 columns">
+                <label for="from">{{ "FACETS.TIMEREF.FROM"|t }}:</label>
+            </div>
+            <div class="xsmall-18 small-18 medium-18 large-18 xlarge-18 columns">
+                <input class="datepicker picker__input" type="date" id="timeref_from" name="timeref_from" placeholder="{{ "FACETS.TIMEREF.FROM"|t }}"
+                {% if timerefFrom %}
+                    value="{{ timerefFrom }}"
+                {% endif %}
+                {% if timerefTo %}
+                    max="{{ timerefTo }}"
+                {% endif %}
+                >
+            </div>
+            <div class="xsmall-6 small-6 medium-6 large-6 xlarge-6 columns">
+                <label for="to">{{ "FACETS.TIMEREF.TO"|t }}:</label>
+            </div>
+            <div class="xsmall-18 small-18 medium-18 large-18 xlarge-18 columns">
+                <input class="datepicker picker__input" type="date" id="timeref_to" name="timeref_to" placeholder="{{ "FACETS.TIMEREF.TO"|t }}"
+                {% if timerefTo %}
+                   value="{{ timerefTo }}"
+                {% endif %}
+                {% if timerefFrom %}
+                   min="{{ timerefFrom }}"
+                {% endif %}
+                >
+            </div>
+        </div>
+    </div>
+</div>
+<button style="width:100%;" class="button filter_submit" id="facet-timeref" title="{{ "FACETS.TIMEREF.COMMIT"|t }}">
+    {{ "FACETS.TIMEREF.COMMIT"|t }}
+</button>
+
+<script>
+    var from = $('#timeref_from');
+    var to = $('#timeref_to');
+
+    from.change(function(){
+        to.attr('min', this.value);
+    });
+    to.change(function(){
+        from.attr('max', this.value);
+    });
+
+    $('#facet-timeref').on('click', function(){ applyTimeRef(); });
+
+    function applyTimeRef() {
+        let fromVal = from.val().replaceAll('-','');
+        let toVal = to.val().replaceAll('-','');
+        const url = new URL(location.href);
+        if (fromVal || toVal) {
+            url.searchParams.set("timeref", fromVal + ',' + toVal);
+        }
+        location.href = url.toString();
+    }
+</script>

@@ -6,7 +6,13 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
-  logo: {  }
+  logo:
+    user/themes/metaver/images/logo/logo.svg:
+      name: logo.svg
+      full_path: logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/metaver/images/logo/logo.svg
 footer:
   logo_enabled: true
   copyright:
@@ -15,7 +21,13 @@ footer:
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo: {  }
+  logo:
+    user/themes/metaver/images/logo/footer-logo.svg:
+      name: footer-logo.svg
+      full_path: footer-logo.svg
+      type: image/svg+xml
+      size: 5898
+      path: user/themes/metaver/images/logo/footer-logo.svg
   share:
     enabled: true
     enabled_x: true
@@ -28,6 +40,9 @@ footer:
     enabled: false
   up:
     enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
 menu:
   main:
     -
@@ -594,7 +609,7 @@ hit_search:
     sortByDate: false
   expandable:
     enabled: true
-  summary_replace_newline: ' '
+  summary_replace_newline: '<br>'
   summary_lines_limit: 5
   links_max: 5
   csw_enabled: true
@@ -613,7 +628,7 @@ provider:
       - content
       - idf
 hit_detail:
-  summary_replace_newline: ' '
+  summary_replace_newline: '<br>'
   reference_system_link: 'https://epsg.io/'
   reference_system_link_replace: 'urn:ogc:def:crs:'
   csw_enabled: true
@@ -624,6 +639,7 @@ hit_detail:
     - '0'
     - '1'
     - '2'
+  address_unlink: false
   contact_order:
     - pointOfContact
     - distributor
@@ -634,6 +650,7 @@ hit_detail:
   requested_fields:
     - partner
     - provider
+    - t03_catalogue.cat_name
   source:
     include:
       - idf
@@ -643,6 +660,7 @@ hit_detail:
     exclude:
       - content
   query_string_operator: AND
+  display_use_constraints_json: true
 map:
   url: /ingrid-webmap-client/frontend/prd
   leaflet:
@@ -651,7 +669,7 @@ map:
       layer:
         wmts: { url: 'https://tile.geofabrik.de/a9533739a5c445e5937b953c9b1f6c58/{z}/{x}/{y}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2024)&#44; <a href=\"http://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -660,7 +678,6 @@ map:
       inverted: false
     enable:
       wkt: true
-      bwastr: true
       geocoder: false
       spinloader: false
       clustering: false

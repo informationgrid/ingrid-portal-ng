@@ -1,0 +1,27 @@
+{% set header_logo_enabled = theme_var('header.logo_enabled') %}
+{% if header_logo_enabled %}
+    <div class="row">
+        <div class="columns xsmall-15 small-15 medium-13 large-13 xlarge-13">
+            <div class="logo" role="banner">
+                {% if header_logo_enabled %}
+                    {% set logo = theme_var('header.logo') %}
+                    {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+                    {% if logo_lang %}
+                        {% set logo = logo_lang %}
+                    {% endif %}
+                    <a class="header__widget header__logo" href="https://www.eba.bund.de/" title="{{ "PAGES.HOME_MENU_EXTERN_TITLE"|t }}" target="_blank">
+                        {% if logo %}
+                            {% set header_logo_file = (logo|first).name %}
+                        {% else %}
+                            {% set header_logo_file = 'logo.svg' %}
+                        {% endif %}
+                        <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+                    </a>
+                {% endif %}
+                <div class="desktop__title">
+                    <a href="{{ page.find("/map").url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">{{ "PAGES.HEADER_TITLE_MAIN"|t }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
