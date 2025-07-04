@@ -805,6 +805,78 @@ home:
               }
             }
           },
+          "bb": {
+            "icon": "images/partner/svg/bb.svg",
+            "display_on_empty": true,
+            "codelist": "110",
+            "facets": {
+              "blp": {
+                "label": "Bauleitplanung",
+                "extend_href": "&procedure=obj_class_blp&ranking=score",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "bb"
+                          }
+                        },
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "objects": {
+                "label": "UVP-Vorhaben",
+                "query": {
+                  "filter": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "partner": "bb"
+                          }
+                        },
+                        {
+                          "bool": {
+                            "should": [
+                              {
+                                "range": {
+                                  "modified": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              },
+                              {
+                                "range": {
+                                  "decision_date": {
+                                    "gte": "now-1y"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "must_not": [
+                        {
+                          "term": {
+                            "procedure": "dev_plan"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
           "hb": {
             "icon": "images/partner/svg/hb.svg",
             "display_on_empty": true,
@@ -2167,6 +2239,16 @@ hit_search:
               }
             }
           },
+        },
+        "bb": {
+          "codelist": "110",
+          "query": {
+            "filter": {
+              "term": {
+                "partner": "bb"
+              }
+            }
+          }
         },
         "hb": {
           "codelist": "110",
