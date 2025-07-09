@@ -7,8 +7,8 @@
     {# Informationen zum Datensatz #}
         {% include 'partials/detail/metadata/parts/information/information_type.html.twig' %}
     {# Zusatzinformationen #}
-        {% if infoRefs_additional|length > 0 %}
-            {% include 'partials/detail/metadata/parts/information/information_additional.html.twig' %}
-        {% endif %}
+        {% include 'partials/detail/metadata/parts/information/information_additional.html.twig' %}
+    {# Schlagworte #}
+        {% include 'partials/detail/metadata/parts/information/information_keywords.html.twig' %}
     </div>
 </div>

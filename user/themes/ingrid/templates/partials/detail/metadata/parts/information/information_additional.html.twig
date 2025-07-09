@@ -46,27 +46,3 @@
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_ORDERING_INSTRUCTIONS"|t, infoRefs_additional.orderInstructions) }}
     </div>
 {% endif %}
-
-{# Schlagworte #}
-{% if infoRefs_keyword and infoRefs_keyword|length > 0 %}
-    <div class="sub-section">
-        <a class="anchor" id="{{ hash_info }}_fs_keywords"></a>
-        {{ hit_macros.render_group_title("SEARCH_DETAIL.FS_KEYWORDS"|t) }}
-    {# Kategorien #}
-        {% include 'partials/detail/metadata/parts/information/information_keywords_category.html.twig' ignore missing %}
-    {# Verschlagwortung #}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.INSPIRE_THEMES"|t, (infoRefs_keyword.inspireThemes ?? [])|sortIgnoreCase, true, "search_terms_inspire", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.PRIORITY_DATASET"|t, (infoRefs_keyword.priorityDataset ?? [])|sortIgnoreCase, true, "search_terms_priority", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.SPATIAL_SCOPE"|t, (infoRefs_keyword.spatialScope ?? [])|sortIgnoreCase, true, "search_terms_spatial", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.GEMET_CONCEPTS"|t, (infoRefs_keyword.gemetConcepts ?? [])|sortIgnoreCase, true, "search_terms_gemet", 10, paramsMore) }}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.ADV_GROUP"|t, (infoRefs_keyword.advGroup ?? [])|sortIgnoreCase, true, "search_terms_inspire_invekos", 10, paramsMore) }}
-    {# INSPIRE-InVeKoS #}
-        {% include 'partials/detail/metadata/parts/information/information_keywords_invekos.html.twig' %}
-    {# ISO-Themenkategorien #}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.T011_OBJ_GEO_TOPIC_CAT_TOPIC_CATEGORY"|t, infoRefs_keyword.topicCategory) }}
-    {# HVD #}
-        {{ hit_macros.render_teaser_list("SEARCH_DETAIL.HVD_GROUP"|t, infoRefs_keyword.hvd) }}
-    {# Suchbegriffe #}
-        {% include 'partials/detail/metadata/parts/information/information_keywords_search_terms.html.twig' %}
-    </div>
-{% endif %}
