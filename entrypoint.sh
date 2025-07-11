@@ -154,9 +154,13 @@ fi
 #####################
 # Default admin config
 #####################
-THEME_CONFIG_YAML=/var/www/"$GRAV_FOLDER"/user/config/themes/"$THEME".yaml
+THEMES_CONFIG_FOLDER=/var/www/"$GRAV_FOLDER"/user/config/themes/
+THEME_CONFIG_YAML="$THEMES_CONFIG_FOLDER"/"$THEME".yaml
 
-if [ ! -f "THEME_CONFIG_YAML" ]; then
+if [ ! -f "$THEME_CONFIG_YAML" ]; then
+  if [ ! -d "$THEMES_CONFIG_FOLDER" ]; then
+    mkdir "$THEMES_CONFIG_FOLDER"
+  fi
   cp /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/"$THEME".yaml "$THEME_CONFIG_YAML"
 fi
 
