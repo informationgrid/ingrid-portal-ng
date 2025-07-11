@@ -152,6 +152,15 @@ if [ "$ENABLE_FOOTER_BANNER" ]; then
 fi
 
 #####################
+# Default admin config
+#####################
+THEME_CONFIG_YAML=/var/www/"$GRAV_FOLDER"/user/config/themes/"$THEME".yaml
+
+if [ ! -f "THEME_CONFIG_YAML" ]; then
+  cp /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/"$THEME".yaml "$THEME_CONFIG_YAML"
+fi
+
+#####################
 # Default site config
 #####################
 SITE_YAML=/var/www/"$GRAV_FOLDER"/user/config/site.yaml
