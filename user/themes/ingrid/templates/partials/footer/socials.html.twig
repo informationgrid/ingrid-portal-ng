@@ -1,40 +1,41 @@
 {% set share = theme_var('footer.share') %}
 
 {% if share.enabled %}
-<div class="social-buttons">
-    {% if share.enabled_x %}
-    <a href="https://x.com/intent/post?url={{ uri|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.X"|t }}">
-        <span class="ic-ic-twitter"></span><span class="text"></span>
-    </a>
-    {% endif %}
-    {% if share.enabled_facebook %}
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ uri|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.FACEBOOK"|t }}">
-        <span class="ic-ic-facebook"></span><span class="text"></span>
-    </a>
-    {% endif %}
-    {% if share.enabled_linkedin %}
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ uri|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.LINKEDIN"|t }}">
-        <span class="ic-ic-linkedin"></span><span class="text"></span>
-    </a>
-    {% endif %}
-    {% if share.enabled_whatsapp %}
-    <a href="whatsapp://send?text={{ uri|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.WHATSAPP"|t }}">
-        <span class="ic-ic-whatsapp"></span><span class="text"></span>
-    </a>
-    {% endif %}
-    {% if share.enabled_xing %}
-    <a href="https://www.xing.com/social_plugins/share?url={{ uri|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.XING"|t }}">
-        <span class="ic-ic-xing"></span><span class="text"></span>
-    </a>
-    {% endif %}
-    {% if share.enabled_mail %}
-    <a href="mailto:?body={{ uri|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MAIL"|t }}">
-        <span class="ic-ic-mailto"></span><span class="text"></span>
-    </a>
-    {% endif %}
-    <button id="share-buttons" class="button round social share" title="{{ "SHARE.TITLE"|t }}">
-        <span class="ic-ic-share"></span>
-        <span class="text"></span>
-    </button>
-</div>
+    {% set page_site = uri.base ~ uri.uri %}
+    <div class="social-buttons">
+        {% if share.enabled_x %}
+        <a href="https://x.com/intent/post?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.X"|t }}">
+            <span class="ic-ic-twitter"></span><span class="text"></span>
+        </a>
+        {% endif %}
+        {% if share.enabled_facebook %}
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.FACEBOOK"|t }}">
+            <span class="ic-ic-facebook"></span><span class="text"></span>
+        </a>
+        {% endif %}
+        {% if share.enabled_linkedin %}
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.LINKEDIN"|t }}">
+            <span class="ic-ic-linkedin"></span><span class="text"></span>
+        </a>
+        {% endif %}
+        {% if share.enabled_whatsapp %}
+        <a href="whatsapp://send?text={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.WHATSAPP"|t }}">
+            <span class="ic-ic-whatsapp"></span><span class="text"></span>
+        </a>
+        {% endif %}
+        {% if share.enabled_xing %}
+        <a href="https://www.xing.com/social_plugins/share?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.XING"|t }}">
+            <span class="ic-ic-xing"></span><span class="text"></span>
+        </a>
+        {% endif %}
+        {% if share.enabled_mail %}
+        <a href="mailto:?body={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MAIL"|t }}">
+            <span class="ic-ic-mailto"></span><span class="text"></span>
+        </a>
+        {% endif %}
+        <button id="share-buttons" class="button round social share" title="{{ "SHARE.TITLE"|t }}">
+            <span class="ic-ic-share"></span>
+            <span class="text"></span>
+        </button>
+    </div>
 {% endif %}
