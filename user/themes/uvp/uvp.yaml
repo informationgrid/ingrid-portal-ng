@@ -113,7 +113,7 @@ home:
                   "uvp_category": "UVPG-1"
                 }
               }
-            },
+            }
           },
           "baustoffe": {
             "label": "Steine und Erden, Glas, Keramik, Baustoffe",
@@ -125,7 +125,7 @@ home:
                   "uvp_category": "UVPG-2"
                 }
               }
-            },
+            }
           },
           "verarbeitung": {
             "label": "Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung",
@@ -137,7 +137,7 @@ home:
                   "uvp_category": "UVPG-3"
                 }
               }
-            },
+            }
           },
           "chemie": {
             "label": "Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung",
@@ -149,7 +149,7 @@ home:
                   "uvp_category": "UVPG-4"
                 }
               }
-            },
+            }
           },
           "kunststoff": {
             "label": "Oberflächenbehandlung von Kunststoffen",
@@ -161,7 +161,7 @@ home:
                   "uvp_category": "UVPG-5"
                 }
               }
-            },
+            }
           },
           "holzzellstoff": {
             "label": "Holz, Zellstoff",
@@ -173,7 +173,7 @@ home:
                   "uvp_category": "UVPG-6"
                 }
               }
-            },
+            }
           },
           "erzeugnisse": {
             "label": "Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse",
@@ -185,7 +185,7 @@ home:
                   "uvp_category": "UVPG-7"
                 }
               }
-            },
+            }
           },
           "verwertungbeseitigungabfaellen": {
             "label": "Verwertung und Beseitigung von Abfällen und sonstigen Stoffen",
@@ -197,7 +197,7 @@ home:
                   "uvp_category": "UVPG-8"
                 }
               }
-            },
+            }
           },
           "lagerungstoffengemischen": {
             "label": "Lagerung von Stoffen und Gemischen",
@@ -209,7 +209,7 @@ home:
                   "uvp_category": "UVPG-9"
                 }
               }
-            },
+            }
           },
           "industrieanlagen": {
             "label": "Sonstige Industrieanlagen",
@@ -221,7 +221,7 @@ home:
                   "uvp_category": "UVPG-10"
                 }
               }
-            },
+            }
           },
           "kernenergie": {
             "label": "Kernenergie",
@@ -233,7 +233,7 @@ home:
                   "uvp_category": "UVPG-11"
                 }
               }
-            },
+            }
           },
           "abfalldeponien": {
             "label": "Abfalldeponien",
@@ -245,7 +245,7 @@ home:
                   "uvp_category": "UVPG-12"
                 }
               }
-            },
+            }
           },
           "wasservorhaben": {
             "label": "Wasserwirtschaftliche Vorhaben",
@@ -257,7 +257,7 @@ home:
                   "uvp_category": "UVPG-13"
                 }
               }
-            },
+            }
           },
           "verkehrsvorhaben": {
             "label": "Verkehrsvorhaben",
@@ -269,7 +269,7 @@ home:
                   "uvp_category": "UVPG-14"
                 }
               }
-            },
+            }
           },
           "bergbaukohlendioxid": {
             "label": "Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid",
@@ -281,7 +281,7 @@ home:
                   "uvp_category": "UVPG-15"
                 }
               }
-            },
+            }
           },
           "flurbereinigung": {
             "label": "Flurbereinigung",
@@ -293,7 +293,7 @@ home:
                   "uvp_category": "UVPG-16"
                 }
               }
-            },
+            }
           },
           "forstlandvorhaben": {
             "label": "Forstliche und landwirtschaftliche Vorhaben",
@@ -305,7 +305,7 @@ home:
                   "uvp_category": "UVPG-17"
                 }
               }
-            },
+            }
           },
           "bauvorhaben": {
             "label": "Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan",
@@ -317,7 +317,7 @@ home:
                   "uvp_category": "UVPG-18"
                 }
               }
-            },
+            }
           },
           "anlagen": {
             "label": "Leitungsanlagen und vergleichbare Anlagen",
@@ -329,7 +329,7 @@ home:
                   "uvp_category": "UVPG-19"
                 }
               }
-            },
+            }
           }
         }
       },
@@ -2023,7 +2023,7 @@ hit_search:
                 "uvp_category": "UVPG-1"
               }
             }
-          },
+          }
         },
         "baustoffe": {
           "label": "Steine und Erden, Glas, Keramik, Baustoffe",
@@ -2033,7 +2033,7 @@ hit_search:
                 "uvp_category": "UVPG-2"
               }
             }
-          },
+          }
         },
         "verarbeitung": {
           "label": "Stahl, Eisen und sonstige Metalle einschließlich Verarbeitung",
@@ -2043,7 +2043,7 @@ hit_search:
                 "uvp_category": "UVPG-3"
               }
             }
-          },
+          }
         },
         "chemie": {
           "label": "Chemische Erzeugnisse, Arzneimittel, Mineralölraffination und Weiterverarbeitung",
@@ -2053,7 +2053,7 @@ hit_search:
                 "uvp_category": "UVPG-4"
               }
             }
-          },
+          }
         },
         "kunststoff": {
           "label": "Oberflächenbehandlung von Kunststoffen",
@@ -2063,7 +2063,7 @@ hit_search:
                 "uvp_category": "UVPG-5"
               }
             }
-          },
+          }
         },
         "holzzellstoff": {
           "label": "Holz, Zellstoff",
@@ -2073,7 +2073,7 @@ hit_search:
                 "uvp_category": "UVPG-6"
               }
             }
-          },
+          }
         },
         "erzeugnisse": {
           "label": "Nahrungs-, Genuss- und Futtermittel, landwirtschaftliche Erzeugnisse",
@@ -2083,7 +2083,7 @@ hit_search:
                 "uvp_category": "UVPG-7"
               }
             }
-          },
+          }
         },
         "verwertungbeseitigungabfaellen": {
           "label": "Verwertung und Beseitigung von Abfällen und sonstigen Stoffen",
@@ -2093,7 +2093,7 @@ hit_search:
                 "uvp_category": "UVPG-8"
               }
             }
-          },
+          }
         },
         "lagerungstoffengemischen": {
           "label": "Lagerung von Stoffen und Gemischen",
@@ -2103,7 +2103,7 @@ hit_search:
                 "uvp_category": "UVPG-9"
               }
             }
-          },
+          }
         },
         "industrieanlagen": {
           "label": "Sonstige Industrieanlagen",
@@ -2113,7 +2113,7 @@ hit_search:
                 "uvp_category": "UVPG-10"
               }
             }
-          },
+          }
         },
         "kernenergie": {
           "label": "Kernenergie",
@@ -2123,7 +2123,7 @@ hit_search:
                 "uvp_category": "UVPG-11"
               }
             }
-          },
+          }
         },
         "abfalldeponien": {
           "label": "Abfalldeponien",
@@ -2133,7 +2133,7 @@ hit_search:
                 "uvp_category": "UVPG-12"
               }
             }
-          },
+          }
         },
         "wasservorhaben": {
           "label": "Wasserwirtschaftliche Vorhaben",
@@ -2143,7 +2143,7 @@ hit_search:
                 "uvp_category": "UVPG-13"
               }
             }
-          },
+          }
         },
         "verkehrsvorhaben": {
           "label": "Verkehrsvorhaben",
@@ -2153,7 +2153,7 @@ hit_search:
                 "uvp_category": "UVPG-14"
               }
             }
-          },
+          }
         },
         "bergbaukohlendioxid": {
           "label": "Bergbau- und Abbauvorhaben, dauerhafte Speicherung von Kohlendioxid",
@@ -2163,7 +2163,7 @@ hit_search:
                 "uvp_category": "UVPG-15"
               }
             }
-          },
+          }
         },
         "flurbereinigung": {
           "label": "Flurbereinigung",
@@ -2173,7 +2173,7 @@ hit_search:
                 "uvp_category": "UVPG-16"
               }
             }
-          },
+          }
         },
         "forstlandvorhaben": {
           "label": "Forstliche und landwirtschaftliche Vorhaben",
@@ -2183,7 +2183,7 @@ hit_search:
                 "uvp_category": "UVPG-17"
               }
             }
-          },
+          }
         },
         "bauvorhaben": {
           "label": "Bauvorhaben, Fremdenverkehr, Freizeit, ohne Bebauungsplan",
@@ -2193,7 +2193,7 @@ hit_search:
                 "uvp_category": "UVPG-18"
               }
             }
-          },
+          }
         },
         "anlagen": {
           "label": "Leitungsanlagen und vergleichbare Anlagen",
@@ -2203,7 +2203,7 @@ hit_search:
                 "uvp_category": "UVPG-19"
               }
             }
-          },
+          }
         }
       }
     },
@@ -2218,7 +2218,7 @@ hit_search:
                 "partner": "bw"
               }
             }
-          },
+          }
         },
         "by": {
           "codelist": "110",
@@ -2228,7 +2228,7 @@ hit_search:
                 "partner": "by"
               }
             }
-          },
+          }
         },
         "be": {
           "codelist": "110",
@@ -2238,7 +2238,7 @@ hit_search:
                 "partner": "be"
               }
             }
-          },
+          }
         },
         "bb": {
           "codelist": "110",
@@ -2258,7 +2258,7 @@ hit_search:
                 "partner": "hb"
               }
             }
-          },
+          }
         },
         "hh": {
           "codelist": "110",
@@ -2268,7 +2268,7 @@ hit_search:
                 "partner": "hh"
               }
             }
-          },
+          }
         },
         "he": {
           "codelist": "110",
@@ -2288,7 +2288,7 @@ hit_search:
                 "partner": "mv"
               }
             }
-          },
+          }
         },
         "ni": {
           "codelist": "110",
@@ -2298,7 +2298,7 @@ hit_search:
                 "partner": "ni"
               }
             }
-          },
+          }
         },
         "nw": {
           "codelist": "110",
@@ -2308,7 +2308,7 @@ hit_search:
                 "partner": "nw"
               }
             }
-          },
+          }
         },
         "rp": {
           "codelist": "110",
@@ -2318,7 +2318,7 @@ hit_search:
                 "partner": "rp"
               }
             }
-          },
+          }
         },
         "sl": {
           "codelist": "110",
@@ -2328,7 +2328,7 @@ hit_search:
                 "partner": "sl"
               }
             }
-          },
+          }
         },
         "sn": {
           "codelist": "110",
@@ -2338,7 +2338,7 @@ hit_search:
                 "partner": "sn"
               }
             }
-          },
+          }
         },
         "st": {
           "codelist": "110",
@@ -2348,7 +2348,7 @@ hit_search:
                 "partner": "st"
               }
             }
-          },
+          }
         },
         "sh": {
           "codelist": "110",
@@ -2358,7 +2358,7 @@ hit_search:
                 "partner": "sh"
               }
             }
-          },
+          }
         },
         "th": {
           "codelist": "110",
@@ -2368,8 +2368,8 @@ hit_search:
                 "partner": "th"
               }
             }
-          },
-        },
+          }
+        }
       }
     },
     {
@@ -2557,7 +2557,7 @@ map:
                     "t01_object.obj_class": "10"
                   }
                 }
-              },
+              }
             },
             "obj_class_zv_time": {
               "query": {
@@ -2601,7 +2601,7 @@ map:
                     "t01_object.obj_class": "11"
                   }
                 }
-              },
+              }
             },
             "obj_class_av_time": {
               "query": {
@@ -2645,7 +2645,7 @@ map:
                     "t01_object.obj_class": "12"
                   }
                 }
-              },
+              }
             },
             "obj_class_nv_time": {
               "query": {
@@ -2689,7 +2689,7 @@ map:
                     "t01_object.obj_class": "13"
                   }
                 }
-              },
+              }
             },
             "obj_class_ro_time": {
               "query": {
@@ -2733,9 +2733,8 @@ map:
                     "t01_object.obj_class": "14"
                   }
                 }
-              },
+              }
             },
-            ,
             "obj_class_li_time": {
               "query": {
                 "filter": {
