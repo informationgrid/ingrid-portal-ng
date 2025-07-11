@@ -30,7 +30,7 @@ COMMON:
 SEARCH:
   PORTLET_TITLE_1: Informationen über
   PORTLET_TITLE_2: UVP-pflichtige<br>Vorhaben finden&nbsp;
-  PORTLET_TITLE_3: 'z.B. Verfahrensstände, Termine, Unterlagen, Berichte & Empfehlungen, Entscheidungen'
+  PORTLET_TITLE_3: 'z.B. Verfahrensstände, Termine, Unterlagen, Berichte & <br> Empfehlungen, Entscheidungen'
 
 SEARCH_RESULT:
   CATEGORIES_UVP_UVPG-1: Wärmeerzeugung, Bergbau und Energie
