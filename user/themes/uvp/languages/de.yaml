@@ -1,12 +1,17 @@
 PAGES:
   HOME_MENU_TITLE: Startseite von UVP aufrufen
+  HOME_META_TITLE: Umweltverträglichkeitsprüfungen (UVP) in den Bundesländern
+  SEARCH_META_TITLE: Finden Sie UVP-Vorhaben
   MAP: Karte
+  MAP_META_TITLE: UVP-Vorhaben in der Karte
   ABOUT: Über uns
   ABOUT_MENU_TITLE: Hintergrundinformationen zu UVP
+  ABOUT_META_TITLE: Informationen zum Portal und verfahrensführende Behörden
   HELP_MENU_TITLE: Erläuterungen zur Nutzung von UVP
   CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an UVP-Team
   PROVIDER: Behörden
   PROVIDER_CONTENT: Verfahrensführende Behörden
+  PROVIDER_META_TITLE: Liste aller Verfahrensführende Behörden
   PARTNER: Umweltverträglichkeitsprüfungen (UVP) in den Bundesländer
   PARTNER_META_TITLE: Umweltverträglichkeitsprüfungen (UVP) in den Bundesländer
   PARTNER_META_DESCRIPTION: Das UVP-Portal der Bundesländer bietet Zugang zu Umweltverträglichkeitsprüfungen von Verfahrensführenden Stellen auf Länderebene.
