@@ -23,14 +23,16 @@ if [ -d "/var/www/$GRAV_FOLDER/user/config" ]; then
              --exclude /tmp/ \
              --exclude /user/config/ \
              --exclude /user/accounts/admin.yaml \
+             --exclude /user/pages \
              /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 else
   rsync -rlD --delete \
-               --exclude /backup/ \
-               --exclude /logs/ \
-               --exclude /tmp/ \
-               --exclude /user/accounts/admin.yaml \
-               /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
+             --exclude /backup/ \
+             --exclude /logs/ \
+             --exclude /tmp/ \
+             --exclude /user/accounts/admin.yaml \
+             --exclude /user/pages \
+             /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 fi
 
 #####################
@@ -85,7 +87,12 @@ yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
 
 # copy default cms pages
 if [ ! -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] || [ "$THEME_COPY_PAGES_INIT" = "true" ]; then
-  if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages" ]; then
+
+  if [ ! -d "/var/www/$GRAV_FOLDER/user/pages/" ]; then
+    cp -rf /usr/share/grav-admin/user/pages/ /var/www/"$GRAV_FOLDER"/user/pages/
+  fi
+
+  if [ -d "/var/www/$GRAV_FOLDER/user/themes/$THEME/pages/" ]; then
       echo "Copy theme init pages."
       cp -rf /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/pages/init/* /var/www/"$GRAV_FOLDER"/user/pages/
     fi
