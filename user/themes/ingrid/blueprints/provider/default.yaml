@@ -18,7 +18,7 @@ form:
       validate:
         type: number
         min: 0
-        max: 1000
+        max: 2000
 
     provider.requested_fields:
       type: selectize

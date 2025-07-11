@@ -2475,7 +2475,7 @@ hit_search:
       enabled: false
 provider:
   query: 'datatype:address (t02_address.typ:0 OR t02_address.typ:3)'
-  hits_num: 2000
+  hits_num: 1000
   requested_fields:
     - t021_communication.commtype_key
     - t021_communication.comm_value
