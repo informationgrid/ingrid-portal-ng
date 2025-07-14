@@ -6,6 +6,7 @@ pipeline {
         RPM_PUBLIC_KEY  = credentials('ingrid-rpm-public')
         RPM_PRIVATE_KEY = credentials('ingrid-rpm-private')
         RPM_SIGN_PASSPHRASE = credentials('ingrid-rpm-passphrase')
+        SYFT_VERSION = 'latest'
     }
 
     stages {
@@ -24,6 +25,9 @@ pipeline {
                 echo 'Starting to build docker image'
 
                 script {
+                    // remove build dir containing previous RPM
+                    sh 'if [ -d build ]; then rm -rf build; fi'
+
                     if (env.TAG_NAME) {
                         env.VERSION = env.TAG_NAME
                     } else if (BRANCH_NAME == 'main') {
@@ -67,9 +71,6 @@ pipeline {
                 echo 'Starting to build RPM package'
 
                 script {
-                    // remove build dir containing previous RPM
-                    sh 'if [ -d build ]; then rm -rf build; fi'
-
                     sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
                     sh "sed -i 's/^Release:.*/Release: ${env.TAG_NAME ? '1' : 'dev'}/' rpm/ingrid-portal.spec"
 
@@ -101,7 +102,25 @@ pipeline {
             }
         }
 
-        stage('Deploy RPM') {
+        stage('Build SBOM') {
+            when { expression { return shouldBuildDevOrRelease() } }
+            steps {
+                echo 'Generating Software Bill of Materials (SBOM)'
+
+                script {
+                    def imageToScan = "docker-registry.wemove.com/ingrid-portal:${env.VERSION}"
+                    def sbomFilename = "ingrid-portal-${determineVersion()}-sbom.json"
+
+                    sh """
+                        docker run --rm --pull=always --volumes-from jenkins anchore/syft:latest ${imageToScan} --output cyclonedx-json=${WORKSPACE}/build/${sbomFilename}
+                    """
+                    // Archive the SBOM file as an artifact
+                    archiveArtifacts artifacts: "build/${sbomFilename}", fingerprint: true
+                }
+            }
+        }
+
+        stage('Deploy RPM & SBOM') {
             when { expression { return shouldBuildDevOrRelease() } }
             steps {
                 script {
@@ -109,6 +128,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh '''
                             curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                         '''
                     }
                 }
