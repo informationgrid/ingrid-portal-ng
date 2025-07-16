@@ -12,6 +12,14 @@
             {{ hit_macros.render_label_link_image_list(tmpTitle, linkAccessRefs, "external", page) }}
         </div>
         {% endif %}
+    {# Link zur Verordnung #}
+        {% if linkRegulationRefs and linkRegulationRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.REGULATION_URL"|t %}
+            <a class="anchor" id="{{ hash_links }}_regulation_url"></a>
+            {{ hit_macros.render_label_link_image_list(tmpTitle, linkRegulationRefs, "external", page) }}
+        </div>
+        {% endif %}
     {# Downloads #}
         {% if linkDownloadRefs and linkDownloadRefs|length > 0 %}
         <div class="sub-section sub-section-unlined">

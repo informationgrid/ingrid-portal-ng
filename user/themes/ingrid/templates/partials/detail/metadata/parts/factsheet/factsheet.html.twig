@@ -31,12 +31,19 @@
                     {{ hit_macros.render_label_text(tmpTitle, "COMMON.TIME_FROM"|t ~ " " ~ timeBegin ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeEnd) }}
                 {% endif %}
             {% endif %}
-        {# URL des Zugangs #}
+            {# URL des Zugangs #}
             {% if linkAccessRefs and linkAccessRefs|length > 0 %}
-            <div class="sub-section sub-section-unlined">
-                {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
-                {{ hit_macros.render_label_link_image_list(tmpTitle, linkAccessRefs, "external", page, false, 2) }}
-            </div>
+                <div class="sub-section sub-section-unlined">
+                    {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
+                    {{ hit_macros.render_label_link_image_list(tmpTitle, linkAccessRefs, "external", page, false, 2) }}
+                </div>
+            {% endif %}
+            {# Link zur Verordnung #}
+            {% if linkRegulationRefs and linkRegulationRefs|length > 0 %}
+                <div class="sub-section sub-section-unlined">
+                    {% set tmpTitle = "SEARCH_DETAIL.REGULATION_URL"|t %}
+                    {{ hit_macros.render_label_link_image_list(tmpTitle, linkRegulationRefs, "external", page, false, 2) }}
+                </div>
             {% endif %}
         {# Downloads #}
             {% if linkDownloadRefs and linkDownloadRefs|length > 0 %}

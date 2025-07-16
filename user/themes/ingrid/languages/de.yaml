@@ -267,6 +267,7 @@ SEARCH_RESULT:
     INFO_LINKS: Verweise und Downloads
     INFO_DOWNLOADS: Downloads
     INFO_ACCESS_URL: URL des Zugangs
+    INFO_REGULATION_URL: Link zur Verordnung
     VIEW: Ansicht
     VIEW_COLLAPSE: Alles einklappen
     VIEW_EXPAND: Alles aufklappen
@@ -309,6 +310,7 @@ SEARCH_DETAIL:
     DOWNLOADS: Downloads
     WWW_REFERENCES: Weitere Verweise
     ACCESS_URL: URL des Zugangs
+    REGULATION_URL: Link zur Verordnung
     ADDRESSES: Adressen
     ADDRESS: Adresse
     SUPERIOR_ADDRESS: Übergeordnete Adresse

@@ -1,0 +1,17 @@
+{% if downloads|length > 0
+    or references|length > 0
+    or access|length > 0
+    or others|length > 0
+    or previews|length > 0
+    or bboxes|length > 0
+    or wkts
+    or mapUrl
+    or mapUrlClient
+    or bwastr_name
+    or bawauftragsnummer
+    or bawauftragstitel
+    or doi_id
+    or bwastrs
+%}
+    {% include 'partials/search/result/metadata/expand/expand_view.html.twig' %}
+{% endif %}

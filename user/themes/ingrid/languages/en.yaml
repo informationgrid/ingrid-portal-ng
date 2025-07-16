@@ -267,6 +267,7 @@ SEARCH_RESULT:
     INFO_LINKS: Links
     INFO_DOWNLOADS: Downloads
     INFO_ACCESS_URL: Access URL
+    INFO_REGULATION_URL: Regulation URL
     VIEW: View
     VIEW_COLLAPSE: Collapse all
     VIEW_EXPAND: Expand all
@@ -309,6 +310,7 @@ SEARCH_DETAIL:
     DOWNLOADS: Downloads
     WWW_REFERENCES: Web-Links
     ACCESS_URL: Access URL
+    REGULATION_URL: Regulation URL
     ADDRESSES: Addresses
     ADDRESS: Address
     SUPERIOR_ADDRESS: Parent Address
