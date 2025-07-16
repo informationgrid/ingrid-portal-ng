@@ -63,6 +63,11 @@
                                     {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
+                                {% if linkRegulationRefs|length > 0 %}
+                                    {% set tmpHash = hash_links ~ "_regulation_url" %}
+                                    {% set tmpTitle = "SEARCH_DETAIL.REGULATION_URL"|t %}
+                                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                                {% endif %}
                                 {% if linkDownloadRefs|length > 0 %}
                                     {% set tmpHash = hash_links ~ "_downloads" %}
                                     {% set tmpTitle = "SEARCH_DETAIL.DOWNLOADS"|t %}
