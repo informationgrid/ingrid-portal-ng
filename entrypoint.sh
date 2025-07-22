@@ -11,6 +11,39 @@ ENABLE_SCHEDULER_RSS=${ENABLE_SCHEDULER_RSS:-true}
 MARKDOWN_AUTO_LINE_BREAKS=${MARKDOWN_AUTO_LINE_BREAKS:-true}
 HOMEPAGE=${HOMEPAGE:-/home}
 SITE_DEFAULT_LANG=${SITE_DEFAULT_LANG:-de}
+SERVICE_WAIT_TIMEOUT=${SERVICE_WAIT_TIMEOUT:-60}
+SERVICE_WAIT_INTERVAL=${SERVICE_WAIT_INTERVAL:-5}
+
+# Function to wait for a service to be ready
+wait_for_codelist_repo() {
+  if [ -z "$CODELIST_API" ]; then
+    echo "No service to wait for, continuing..."
+    return 0
+  fi
+  # Initialize timeout counter
+  elapsed=0
+
+  # Loop until service is available or timeout is reached
+  while [ $elapsed -lt "$SERVICE_WAIT_TIMEOUT" ]; do
+      # For HTTP services
+    if wget -q --spider --timeout=1 --tries=1 $CODELIST_API --user $CODELIST_USER --password $CODELIST_PASS >/dev/null 2>&1; then
+      echo "Service at $CODELIST_API is ready! (HTTP connection successful)"
+      return 0
+    fi
+
+    sleep "$SERVICE_WAIT_INTERVAL"
+    elapsed=$((elapsed + SERVICE_WAIT_INTERVAL))
+    echo "Still waiting for service at $CODELIST_API... ($elapsed/$SERVICE_WAIT_TIMEOUT seconds elapsed)"
+  done
+
+  echo "Timeout reached while waiting for service at $CODELIST_API"
+  return 1
+}
+
+# Wait for the service to be ready before continuing
+if ! wait_for_codelist_repo; then
+  echo "Critical service is not available, exiting..."
+fi
 
 mkdir -p /var/www/"$GRAV_FOLDER"
 cd /var/www/"$GRAV_FOLDER"
