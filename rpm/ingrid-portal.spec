@@ -18,8 +18,6 @@ InGrid Portal Next Generation
 %prep
 GRAV_VERSION=1.7.48
 curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION}
-#unzip -qq grav-admin.zip -d /tmp -x "grav-admin/user/themes/*" -x "grav-admin/user/pages/*"
-#rm grav-admin.zip
 
 %build
 # nothing to do
@@ -39,7 +37,7 @@ rsync -a \
   --include='/plugins/ingrid-*/' \
   --include='/plugins/ingrid-*/**' \
   --exclude='/plugins/**' \
-  /src_user/ %{buildroot}/var/www/%{context_path}/user/
+  ${WORKSPACE}/user/ %{buildroot}/var/www/%{context_path}/user/
 yq -i '.languages.supported = ["de"]' %{system_yaml}
 yq -i '.languages.default_lang = "de"' %{system_yaml}
 yq -i '.languages.include_default_lang = "false"' %{system_yaml}

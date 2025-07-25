@@ -20,7 +20,7 @@ pipeline {
         }
 
         stage('Build image') {
-            when { expression { return shouldBuildDevOrRelease() } }
+            when { expression { return shouldBuildDevOrRelease() && shouldBuildDockerImage() } }
             steps {
                 echo 'Starting to build docker image'
 
@@ -50,7 +50,7 @@ pipeline {
             when {
                 allOf {
                     buildingTag()
-                    expression { return currentBuild.number > 1 }
+                    expression { return currentBuild.number > 1 && shouldBuildDockerImage() }
                 }
             }
             steps {
@@ -67,35 +67,29 @@ pipeline {
 
         stage('Build RPM') {
             when { expression { return shouldBuildDevOrRelease() } }
+            agent {
+                docker {
+                    image 'docker-registry.wemove.com/ingrid-rpmbuilder-php8'
+                    reuseNode true
+                }
+            }
             steps {
                 echo 'Starting to build RPM package'
 
                 script {
                     sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
-                    sh "sed -i 's/^Release:.*/Release: ${env.TAG_NAME ? '1' : 'dev'}/' rpm/ingrid-portal.spec"
+                    sh "sed -i 's/^Release:.*/Release: ${determineRpmReleasePart()}/' rpm/ingrid-portal.spec"
 
-                    def containerId = sh(script: "docker run -d -e RPM_SIGN_PASSPHRASE=\$RPM_SIGN_PASSPHRASE --entrypoint=\"\" docker-registry.wemove.com/ingrid-rpmbuilder-php8 tail -f /dev/null", returnStdout: true).trim()
+                    sh """
+                        cp ${WORKSPACE}/rpm/ingrid-portal.spec /root/rpmbuild/SPECS/ingrid-portal.spec &&
+                        rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
+                        gpg --batch --import $RPM_PUBLIC_KEY &&
+                        gpg --batch --import $RPM_PRIVATE_KEY &&
+                        expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm
+                    """
 
-                    try {
-
-                        sh """
-                            docker cp user ${containerId}:/src_user &&
-                            docker cp rpm/ingrid-portal.spec ${containerId}:/root/rpmbuild/SPECS/ingrid-portal.spec &&
-                            docker cp \$RPM_PUBLIC_KEY ${containerId}:/public.key &&
-                            docker cp \$RPM_PRIVATE_KEY ${containerId}:/private.key &&
-                            docker exec ${containerId} bash -c "
-                                rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
-                                gpg --batch --import public.key &&
-                                gpg --batch --import private.key &&
-                                expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm
-                                "
-                        """
-
-                        sh "docker cp ${containerId}:/root/rpmbuild/RPMS/noarch ./build"
-
-                    } finally {
-                        sh "docker rm -f ${containerId}"
-                    }
+                    sh "mkdir -p ./build"
+                    sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/"
 
                     archiveArtifacts artifacts: 'build/ingrid-portal-*.rpm', fingerprint: true
                 }
@@ -158,9 +152,24 @@ def getCronParams() {
 
 def determineVersion() {
     if (env.TAG_NAME) {
+        if (env.TAG_NAME.startsWith("RPM-")) { // e.g. RPM-8.0.0-0.1SNAPSHOT
+            def lastDashIndex = env.TAG_NAME.lastIndexOf("-")
+            return env.TAG_NAME.substring(4, lastDashIndex)
+        }
         return env.TAG_NAME
     } else {
         return env.BRANCH_NAME.replaceAll('/', '_')
+    }
+}
+
+def determineRpmReleasePart() {
+    if (env.TAG_NAME) {
+        if (env.TAG_NAME.startsWith("RPM-")) {
+            return env.TAG_NAME.substring(env.TAG_NAME.lastIndexOf("-") + 1)
+        }
+        return '1'
+    } else {
+        return 'dev'
     }
 }
 
@@ -168,4 +177,10 @@ def shouldBuildDevOrRelease() {
     // If no tag is being built OR it is the first build of a tag
     boolean isTag = env.TAG_NAME != null && env.TAG_NAME.trim() != ''
     return !isTag || (isTag && currentBuild.number == 1)
+}
+
+def shouldBuildDockerImage() {
+    if (env.TAG_NAME && env.TAG_NAME.startsWith("RPM-")) {
+        return false
+    } else return true
 }
