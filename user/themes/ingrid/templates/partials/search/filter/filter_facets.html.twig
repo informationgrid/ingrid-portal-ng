@@ -17,7 +17,7 @@
                         {% for key, param in dependencyItems if not isDependencySelect %}
                             {% if selected_facets[key] is not null %}
                                 {% if param %}
-                                    {% set isDependencySelect = param in selected_facets[key]|split(',') %}
+                                    {% set isDependencySelect = param in selected_facets[key]|split(FACET_ENTRIES_SEPARATOR) %}
                                 {% else %}
                                     {% set isDependencySelect = selected_facets[key] ? true : false %}
                                 {% endif %}
@@ -26,7 +26,7 @@
                         {% if isDependencySelect or (dependencyItems is null) %}
                         <ul class="accordion filter-group" data-multi-expand="true"
                             data-allow-all-closed="true" role="tablist" data-accordion>
-                            {% set isItemOpen = item.open or (selected_facets[item.id] is not null)%}
+                            {% set isItemOpen = item.open or (selected_facets[item.id] is not null) %}
                             {% set itemOpenClass = 'class="accordion-item"' %}
                             {% set itemOpenAria = 'aria-expanded="false" aria-selected="false"' %}
                             {% set itemOpenContentStyle = '' %}
@@ -35,7 +35,7 @@
                             {% for key, param in itemOpenBy if not isItemOpen %}
                                 {% if selected_facets[key] is not null %}
                                     {% if param %}
-                                        {% set isItemOpen = param in selected_facets[key]|split(',') %}
+                                        {% set isItemOpen = param in selected_facets[key]|split(FACET_ENTRIES_SEPARATOR) %}
                                     {% else %}
                                         {% set isItemOpen = selected_facets[key] ? true : false %}
                                     {% endif %}
@@ -97,6 +97,7 @@
                                         {% include 'partials/search/filter/facet_timeref.html.twig' %}
                                     {% else %}
                                         <div class="boxes">
+                                            {% set itemsSelectedFacets = selected_facets[item.id]|split(FACET_ENTRIES_SEPARATOR) %}
                                             {% if item.selectionSingle %}
                                                 {% set inputType = 'radio' %}
                                                 {% for bucket in item.items %}
@@ -111,7 +112,7 @@
                                                                 <div class="input-check">
                                                                     <div class="control-group">
                                                                         <label class="control control--{{ inputType }}">
-                                                                            <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                            <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
                                                                             <span class="nr-results">({{ bucket.docCount }})</span>
                                                                             <span class="text">{{ bucket.label|t }}</span>
                                                                         </label>
@@ -124,8 +125,8 @@
                                             {% else %}
                                                 {% set inputType = 'checkbox' %}
                                                 {% set activeListLimit = false %}
-                                                {% set itemsSelected = item.items|filter(f => f.value in selected_facets[item.id]) %}
-                                                {% set itemsUnselected = item.items|filter(f => f.value not in selected_facets[item.id]) %}
+                                                {% set itemsSelected = item.items|filter(f => f.value in itemsSelectedFacets) %}
+                                                {% set itemsUnselected = item.items|filter(f => f.value not in itemsSelectedFacets) %}
                                                 {% for bucket in itemsSelected %}
                                                     {% set displayFacet = true %}
                                                     {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
@@ -142,10 +143,10 @@
                                                                     <div class="input-check">
                                                                         <div class="control-group">
                                                                             <label class="control control--{{ inputType }}">
-                                                                                <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                                <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
                                                                                 <span class="nr-results">({{ bucket.docCount }})</span>
                                                                                 {% set facet_label = bucket.label|t %}
-                                                                                {% if 'FACETS.' in facet_label%}
+                                                                                {% if 'FACETS.' in facet_label %}
                                                                                     {% set facet_label = bucket.value %}
                                                                                 {% endif %}
                                                                                 <span class="text">{{ facet_label }}</span>
@@ -184,7 +185,7 @@
                                                                     <div class="input-check">
                                                                         <div class="control-group">
                                                                             <label class="control control--{{ inputType }}">
-                                                                                <span class="control__indicator {% if bucket.value in selected_facets[item.id] %} checked {% endif %}"></span>
+                                                                                <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
                                                                                 <span class="nr-results">({{ bucket.docCount }})</span>
                                                                                 {% set facet_label = bucket.label|t %}
                                                                                 {% if 'FACETS.' in facet_label%}
