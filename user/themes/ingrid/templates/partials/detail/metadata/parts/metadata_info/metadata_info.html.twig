@@ -30,7 +30,7 @@
         {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdf_url ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
-    {{ hit_macros.render_label_link_list(metaInfoRefs.contactMeta.role ~ " (" ~ "SEARCH_DETAIL.POINTOFCONTACT_METADATA"|t ~ ")", metaInfoRefs.contactMeta.mail, "mail" ) }}
+    {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_metadatum.html.twig' ignore missing %}
 {# Metadatenquellen #}
     {% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
     <div class="table table--lined">
