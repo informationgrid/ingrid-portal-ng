@@ -83,7 +83,8 @@ forms:
       - email:
           from: "{{ config.plugins.email.from }}"
           to:
-            - "{{ config.plugins.email.from }}"
+            - "{{ config.plugins.email.to }}"
+            - "{{ form.value.user_email }}"
           reply_to:
             - "{{ form.value.user_email }}"
           subject: CONTACT.REPORT_EMAIL_SUBJECT
