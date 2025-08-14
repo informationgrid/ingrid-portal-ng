@@ -1,0 +1,87 @@
+/*-
+ * **************************************************-
+ * InGrid Portal Apps
+ * ==================================================
+ * Copyright (C) 2014 - 2025 wemove digital solutions GmbH
+ * ==================================================
+ * Licensed under the EUPL, Version 1.2 or – as soon they will be
+ * approved by the European Commission - subsequent versions of the
+ * EUPL (the "Licence");
+ * 
+ * You may not use this work except in compliance with the Licence.
+ * You may obtain a copy of the Licence at:
+ * 
+ * https://joinup.ec.europa.eu/software/page/eupl
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the Licence is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the Licence for the specific language governing permissions and
+ * limitations under the Licence.
+ * **************************************************#
+ */
+.sidebar {
+  top: 0 !important;
+  left: 0 !important;
+}
+.sidebar .sidebar-tabs {
+  background-color: #871d33 !important;
+}
+.sidebar.collapsed {
+  top: 10px !important;
+  left: 10px !important;
+}
+.sidebar-tabs > li.active .fa {
+  color: #871d33 !important;
+}
+.sidebar-tabs > li:hover .fa {
+  color: #871d33 !important;
+}
+.irs-bar {
+  background-color: #871d33;
+}
+.main-title {
+  border-radius: 20px 20px 0 0;
+  background: #871d33 !important;
+}
+.btn-default {
+  transition: background-color 0.2s ease-out;
+}
+.btn-default:hover {
+  background-color: #f5f5f5;
+}
+.btn.btn-default {
+  border-radius: 25px
+}
+.btn.active {
+  background-color: #871d33;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 20px;
+}
+.chosen-container .chosen-single {
+  border-radius: 5px;
+  background: none;
+}
+.chosen-container-active.chosen-with-drop .chosen-single {
+  background: none;
+}
+.chosen-container .chosen-results li.highlighted {
+  background-color: #871d33;
+  background-image: none;
+}
+.btn-sm.back {
+  font-size: 14px;
+  border-radius: 0 0 10px 0;
+  background-color: #871d33 !important;
+  transition: background-color 0.2s ease-out;
+}
+.btn-sm.back:hover {
+  background-color: #962039 !important;
+}
+.btn-xs, .btn-group-xs > .btn {
+  font-size: 13px;
+}
+.fa {
+  color: #871d33;
+}
