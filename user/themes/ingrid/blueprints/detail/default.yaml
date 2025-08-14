@@ -65,6 +65,17 @@ form:
       label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.LABEL
       help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.HELP
 
+    hit_detail.link_sort_asc:
+      type: toggle
+      label: THEME.ADMIN.HIT_DETAIL.LINK_SORT_ASC.LABEL
+      help: THEME.ADMIN.HIT_DETAIL.LINK_SORT_ASC.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: text
+
     hit_detail.csw_enabled:
       type: toggle
       label: THEME.ADMIN.HIT_DETAIL.CSW_ENABLED.LABEL

@@ -38,6 +38,7 @@ hit_detail:
       - content
   query_string_operator: AND
   display_use_constraints_json: true
+  link_sort_asc: true
 map:
   url: /ingrid-webmap-client/frontend/prd
   shrink_header: true

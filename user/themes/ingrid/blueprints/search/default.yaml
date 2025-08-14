@@ -148,6 +148,17 @@ form:
       validate:
         type: bool
 
+    hit_search.link_sort_asc:
+      type: toggle
+      label: THEME.ADMIN.HIT_SEARCH.LINK_SORT_ASC.LABEL
+      help: THEME.ADMIN.HIT_SEARCH.LINK_SORT_ASC.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: text
+
     hit_search.sns.similar_terms.enabled:
       type: toggle
       label: THEME.ADMIN.HIT_SEARCH.SNS.SIMILAR_TERMS.LABEL

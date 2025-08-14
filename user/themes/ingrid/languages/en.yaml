@@ -1232,6 +1232,9 @@ THEME:
             PARTNER_LOGO_ENABLED:
                 LABEL: Partner Wappen anzeigen
                 HELP: Aktivieren Sie die Darstellung der Partner Wappen.
+            LINK_SORT_ASC:
+                LABEL: Links alphabetisch sortieren
+                HELP: Bei Aktivierung dieser Option werden Links alphabetisch sortiert.
             SNS:
                 SIMILAR_TERMS:
                     LABEL: SNS "Ähnliche Begriffe" aktivieren
@@ -1263,6 +1266,9 @@ THEME:
             REFERENCE_SYSTEM_LINK_REPLACE:
                 LABEL: Reference-Systemen ersetzen
                 HELP: Ersetzen des Teilstring bei den Reference-Systemen.
+            LINK_SORT_ASC:
+                LABEL: Links alphabetisch sortieren
+                HELP: Bei Aktivierung dieser Option werden Links alphabetisch sortiert.
             CSW_ENABLED:
                 LABEL: ISO-Darstellung anzeigen
                 HELP: Darstellung des Links zur ISO-Darstellung.

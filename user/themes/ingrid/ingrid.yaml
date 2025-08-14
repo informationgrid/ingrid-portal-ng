@@ -463,6 +463,7 @@ hit_search:
   csw_enabled: true
   rdf_enabled: false
   partner_logo_enabled: false
+  link_sort_asc: true
   sns:
     similar_terms:
       enabled: true
@@ -509,6 +510,7 @@ hit_detail:
       - content
   query_string_operator: AND
   display_use_constraints_json: true
+  link_sort_asc: true
 map:
   url: /ingrid-webmap-client/frontend/prd
   leaflet:
