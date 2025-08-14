@@ -142,8 +142,16 @@ hit_search:
   facet_config: [
     {
       "id": "type",
-      "open": true,
       "facets": {
+        "www": {
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "www"
+              }
+            }
+          }
+        },
         "metadata": {
           "display_sort_hits_on_selection": true,
           "query": {
@@ -152,7 +160,7 @@ hit_search:
                 "datatype": "metadata"
               }
             }
-          },
+          }
         },
         "inspire": {
           "query": {
@@ -172,7 +180,7 @@ hit_search:
                 ]
               }
             }
-          },
+          }
         },
         "opendata": {
           "query": {
@@ -192,7 +200,7 @@ hit_search:
                 ]
               }
             }
-          },
+          }
         },
         "hvd": {
           "query": {
@@ -201,7 +209,7 @@ hit_search:
                 "is_hvd": "true"
               }
             }
-          },
+          }
         },
         "maps": {
           "query": {
@@ -211,21 +219,15 @@ hit_search:
               }
             }
           }
-        },
-        "address": {
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "address"
-              }
-            }
-          }
         }
       }
     },
     {
       "id": "metadata_group",
       "open_by": {
+        "type": "metadata",
+      },
+      "select_other": {
         "type": "metadata",
       },
       "display_sort_hits_on_selection": true,
@@ -311,7 +313,6 @@ hit_search:
         "list_limit": 6,
         "sort": "name"
       },
-      "sort": "name",
       "query": {
         "terms": {
           "field": "partner",
@@ -327,6 +328,7 @@ hit_search:
   ]
   add_to_search:
     - '-isfolder:true'
+    - '-datatype:address'
   query_fields:
     - title^10.0
     - title.edge_ngram^4.0
@@ -418,14 +420,14 @@ hit_detail:
   display_use_constraints_json: true
   link_sort_asc: true
 map:
-  url:
+  url: /ingrid-webmap-client/frontend/prd
   leaflet:
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web_light/default/WEBMERCATOR/{z}/{y}/{x}.png' }
-        wms: { url: null, name: null }
-        attribution: '&copy; Bundesamt f&#252;r Kartographie und Geod&#228;sie (2025)&#44; <a href=\"https://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
+        wmts: { url: null }
+        wms: { url: 'https://geo4.service24.rlp.de/wms/uekrlp.fcgi?VERSION=1.3.0&SERVICE=WMS&REQUEST=GetCapabilities', name: 'rp_uekrlp' }
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -444,9 +446,12 @@ map:
 measure:
   networks:
     exclude:
+      - luen
+      - nlwkn
     initial:
-  url:
-  elastic:
+      - odl
+  url: '/assets/mvis/index.html'
+  elastic: 'https://numis.niedersachsen.de/elastic-measure-7/'
 redirect:
   pages_to_404:
     - /datasource
