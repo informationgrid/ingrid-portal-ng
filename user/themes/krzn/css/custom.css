@@ -1488,12 +1488,6 @@ thead {
 }
 
 @media print, screen and (min-width: 64em) {
-  .search-filtered .accordion.accordion-filter-group .accordion-content.filter-wrapper {
-    display: block !important;
-    padding: 0px;
-    max-height: 80vh;
-  }
-
   .shrink .desktop__title {
     top: 0;
   }
