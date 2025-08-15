@@ -443,7 +443,7 @@ map:
     geocoder:
       enable: false
       service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
-    position: 46.58,5.22,55.40,15.68
+    position: 49.97,7.3,7
 measure:
   networks:
     exclude:

@@ -225,8 +225,8 @@ function initSearchMap(epsg, tileLayerUrl, wmsUrl, wmsName, attribution, opacity
 
     var bgLayerBig = null;
     if (wmsUrl && wmsName) {
-        bgLayerBig = L.tileLayer(wmsUrl, {
-            layer: wmsName,
+        bgLayerBig = L.tileLayer.wms(wmsUrl, {
+            layers: wmsName,
             maxZoom: 14,
             attribution: attribution,
             opacity: opacity,
