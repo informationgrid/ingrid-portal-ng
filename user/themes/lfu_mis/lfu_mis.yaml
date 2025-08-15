@@ -536,6 +536,7 @@ hit_search:
   sort:
     enabled: false
     sortByDate: false
+    emptyQuerySortByDate: false
   expandable:
     enabled: true
   summary_replace_newline: '<br>'

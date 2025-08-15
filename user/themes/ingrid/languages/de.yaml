@@ -1210,6 +1210,9 @@ THEME:
                 SORTBYDATE:
                     LABEL: Suchergebnisse nach Datum sortiert (modtime)
                     HELP: Treffer sortiert nach Datum
+                EMPTYQUERYSORTBYDATE:
+                    LABEL: Suchergebnisse ohne Suchbegriff nach Datum sortiert (modtime)
+                    HELP: Treffer sortiert nach Datum
             EXPANDABLE:
                 ENABLED:
                     LABEL: Suchergebnisse aufklappbar

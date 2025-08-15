@@ -2461,7 +2461,8 @@ hit_search:
   query_string_operator: AND
   sort:
     enabled: true
-    sortByDate: true
+    sortByDate: false
+    emptyQuerySortByDate: true
   expandable:
     enabled: false
   summary_replace_newline: ' '
