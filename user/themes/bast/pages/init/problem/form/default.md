@@ -6,22 +6,13 @@ forms:
   contact-form:
     fields:
       - name: message
-        label: message
-        autofocus: off
-        autocomplete: off
-        type: hidden
+        type: honeypot
 
       - name: name
-        label: name
-        autofocus: off
-        autocomplete: off
-        type: hidden
+        type: honeypot
 
       - name: email
-        label: email
-        autofocus: off
-        autocomplete: off
-        type: hidden
+        type: honeypot
 
       - name: user_message
         label: CONTACT.FORM_MESSAGE
