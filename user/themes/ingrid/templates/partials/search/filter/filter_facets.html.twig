@@ -97,7 +97,10 @@
                                         {% include 'partials/search/filter/facet_timeref.html.twig' %}
                                     {% else %}
                                         <div class="boxes">
-                                            {% set itemsSelectedFacets = selected_facets[item.id]|split(FACET_ENTRIES_SEPARATOR) %}
+                                            {% set itemsSelectedFacets = [] %}
+                                            {% if selected_facets is not empty %}
+                                                {% set itemsSelectedFacets = selected_facets[item.id]|split(FACET_ENTRIES_SEPARATOR) %}
+                                            {% endif %}
                                             {% if item.selectionSingle %}
                                                 {% set inputType = 'radio' %}
                                                 {% for bucket in item.items %}
@@ -137,24 +140,26 @@
                                                             {% if bucket.displayLineAbove %}
                                                                 <hr class="no-margin border-dotted">
                                                             {% endif %}
-                                                            <div class="form-element boxed">
-                                                                {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
-                                                                <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
-                                                                    <div class="input-check">
-                                                                        <div class="control-group">
-                                                                            <label class="control control--{{ inputType }}">
-                                                                                <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
-                                                                                <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                                {% set facet_label = bucket.label|t %}
-                                                                                {% if 'FACETS.' in facet_label %}
-                                                                                    {% set facet_label = bucket.value %}
-                                                                                {% endif %}
-                                                                                <span class="text">{{ facet_label }}</span>
-                                                                            </label>
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
+                                                            {% set facet_label = bucket.label|t %}
+                                                            {% if 'FACETS.' in facet_label %}
+                                                                {% set facet_label = bucket.value %}
+                                                            {% endif %}
+                                                            {% if facet_label %}
+                                                                <div class="form-element boxed">
+                                                                    <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                        <div class="input-check">
+                                                                            <div class="control-group">
+                                                                                <label class="control control--{{ inputType }}">
+                                                                                    <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
+                                                                                    <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                                    <span class="text">{{ facet_label }}</span>
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                                    </a>
+                                                                </div>
+                                                            {% endif %}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor %}
@@ -179,24 +184,26 @@
                                                             {% if bucket.displayLineAbove %}
                                                                 <hr class="no-margin border-dotted">
                                                             {% endif %}
-                                                            <div class="form-element boxed">
-                                                                {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
-                                                                <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
-                                                                    <div class="input-check">
-                                                                        <div class="control-group">
-                                                                            <label class="control control--{{ inputType }}">
-                                                                                <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
-                                                                                <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                                {% set facet_label = bucket.label|t %}
-                                                                                {% if 'FACETS.' in facet_label%}
-                                                                                    {% set facet_label = bucket.value %}
-                                                                                {% endif %}
-                                                                                <span class="text">{{ facet_label }}</span>
-                                                                            </label>
+                                                            {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
+                                                            {% set facet_label = bucket.label|t %}
+                                                            {% if 'FACETS.' in facet_label%}
+                                                                {% set facet_label = bucket.value %}
+                                                            {% endif %}
+                                                            {% if facet_label %}
+                                                                <div class="form-element boxed">
+                                                                    <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                        <div class="input-check">
+                                                                            <div class="control-group">
+                                                                                <label class="control control--{{ inputType }}">
+                                                                                    <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
+                                                                                    <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                                    <span class="text">{{ facet_label }}</span>
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
+                                                                    </a>
+                                                                </div>
+                                                            {% endif %}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor %}

@@ -309,19 +309,15 @@ hit_search:
     },
     {
       "id": "provider",
-      "codelist": "110",
-      "extend_facet_selection_config": {
-        "field": "provider",
-        "list_limit": 6,
-        "sort": "name"
-      },
+      "codelist": "111",
+      "list_limit": 6,
       "query": {
         "terms": {
-          "field": "partner",
+          "field": "provider",
           "min_doc_count": 0
         }
       },
-      "search": "partner:%s"
+      "search": "provider:%s"
     },
     {
       "id": "bbox",
