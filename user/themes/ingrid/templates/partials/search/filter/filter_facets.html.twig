@@ -130,6 +130,7 @@
                                                 {% set activeListLimit = false %}
                                                 {% set itemsSelected = item.items|filter(f => f.value in itemsSelectedFacets) %}
                                                 {% set itemsUnselected = item.items|filter(f => f.value not in itemsSelectedFacets) %}
+                                                {% set ignoreItems = 0 %}
                                                 {% for bucket in itemsSelected %}
                                                     {% set displayFacet = true %}
                                                     {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
@@ -174,7 +175,7 @@
                                                     {% if displayFacet %}
                                                         {% if bucket.value is not null or bucket.value is not empty %}
                                                             {% if item.listLimit and activeListLimit == false %}
-                                                                {% if loop.index > item.listLimit %}
+                                                                {% if loop.index > item.listLimit + ignoreItems %}
                                                                     {% set activeListLimit = true %}
                                                                     <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
                                                                     <div class="accordion-item text-right" data-accordion-item>
@@ -203,6 +204,8 @@
                                                                         </div>
                                                                     </a>
                                                                 </div>
+                                                            {% else %}
+                                                                {% set ignoreItems = ignoreItems + 1 %}
                                                             {% endif %}
                                                         {% endif %}
                                                     {% endif %}
