@@ -55,6 +55,11 @@ form:
       title: THEME.ADMIN.HOME.HITS.TITLE
       underline: true
 
+    home.hits.query:
+      type: text
+      label: THEME.ADMIN.HOME.HITS.QUERY.LABEL
+      help: THEME.ADMIN.HOME.HITS.QUERY.HELP
+
     home.hits.add_to_search:
       type: selectize
       label: THEME.ADMIN.HOME.HITS.ADD_TO_SEARCH.LABEL
@@ -109,6 +114,17 @@ form:
       help: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.HELP
       validate:
         type: commalist
+
+    home.hits.sort.emptyQuerySortByDate:
+      type: toggle
+      label: THEME.ADMIN.HOME.HITS.SORT.EMPTYQUERYSORTBYDATE.LABEL
+      help: THEME.ADMIN.HOME.HITS.SORT.EMPTYQUERYSORTBYDATE.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
 
     home.hits.sort.sortByDate:
       type: toggle

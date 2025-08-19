@@ -1748,6 +1748,7 @@ home:
       - '-datatype:address'
       - '-isfolder:true'
   hits:
+    query: ''
     add_to_search:
       - '-datatype:address'
       - '-datatype:www'
@@ -1763,6 +1764,7 @@ home:
     hits_num: 2
     sort:
       sortByDate: true
+      emptyQuerySortByDate: true
 hit_search:
   hits_num: 10
   facet_config: [

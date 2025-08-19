@@ -1146,6 +1146,9 @@ THEME:
                     HELP: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
             HITS:
                 TITLE: Trefferübersicht
+                QUERY:
+                    LABEL: Suchbegriff
+                    HELP: Suchbegriff festlegen
                 ADD_TO_SEARCH:
                     LABEL: Suchanfrage erweitern
                     HELP: Suchanfrage erweitern
@@ -1170,7 +1173,10 @@ THEME:
                         HELP: Indexfelder ausschließen
                 SORT:
                     SORTBYDATE:
-                        LABEL: Trefferübersicht nach Datum sortiert (modtime)
+                        LABEL: Trefferübersicht mit Suchbegriff nach Datum sortiert (modtime)
+                        HELP: Treffer sortiert nach Datum
+                    EMPTYQUERYSORTBYDATE:
+                        LABEL: Trefferübersicht ohne Suchbegriff nach Datum sortiert (modtime)
                         HELP: Treffer sortiert nach Datum
             RSS:
                 TITLE: RSS

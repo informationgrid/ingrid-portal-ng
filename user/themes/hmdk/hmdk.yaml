@@ -181,12 +181,14 @@ home:
       - '-datatype:address'
       - '-isfolder:true'
   hits:
+    query: ''
     add_to_search:
       - '-datatype:address'
       - '-isfolder:true'
     hits_num: 0
     sort:
       sortByDate: true
+      emptyQuerySortByDate: true
 hit_search:
   hits_num: 10
   facet_config: [
