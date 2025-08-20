@@ -124,8 +124,8 @@
         {% endif %}
         {% if folderNames is not empty %}
             <div class="helper icon info">
-                <span class="ic-ic-folder" title="{{ folderNames[0] }}"></span>
-                <span class="text">{{ folderNames[0] }}</span>
+                <span class="ic-ic-folder" title="{{ folderNames|split(',')[0] }}"></span>
+                <span class="text">{{ folderNames|split(',')[0] }}</span>
             </div>
         {% endif %}
         </div>
