@@ -194,7 +194,6 @@ hit_search:
   facet_config: [
     {
       "id": "type",
-      "open": true,
       "facets": {
         "metadata": {
           "display_sort_hits_on_selection": true,
