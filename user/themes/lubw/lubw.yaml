@@ -1,0 +1,561 @@
+enabled: true
+header:
+  title_extend: 'LUBW'
+  logo_enabled: true
+  logo_class: 'xsmall-7 small-7 medium-8 large-7 xlarge-9'
+  menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
+  menu_dropdown: true
+  shrink: true
+  logo:
+    user/themes/lubw/images/logo/bw-wappen.png:
+      name: bw-wappen.png
+      full_path: bw-wappen.png
+      type: image/png
+      size: 5898
+      path: user/themes/lubw/images/logo/bw-wappen.png
+footer:
+  logo_enabled: true
+  copyright:
+    text: '- Landesanstalt für Umwelt Baden-Württemberg'
+    class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
+    show_year: true
+  menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
+  hr_line: true
+  logo:
+    user/themes/lubw/images/logo/bw-wappen.png:
+      name: bw-wappen.png
+      full_path: bw-wappen.png
+      type: image/png
+      size: 5898
+      path: user/themes/lubw/images/logo/bw-wappen.png
+  share:
+    enabled: true
+    enabled_x: true
+    enabled_facebook: true
+    enabled_linkedin: true
+    enabled_xing: true
+    enabled_whatsapp: true
+    enabled_mail: true
+  print:
+    enabled: false
+  up:
+    enabled: true
+  banner:
+    enabled: false
+    text: 'PORTAL-NG'
+menu:
+  main:
+    -
+      path: /search
+      icon: ic-ic-lupe
+    -
+      path: /map
+      icon: ic-ic-karten
+    -
+      path: /catalog
+      icon: ic-ic-datenkataloge
+  site:
+    -
+      path: /search
+      highlighted: true
+    -
+      path: /map
+      highlighted: true
+    -
+      path: /catalog
+      highlighted: true
+    -
+      path: /about
+      highlighted: true
+    -
+      path: /datasource
+      highlighted: true
+    -
+      path: /help
+      highlighted: false
+    -
+      path: /contact
+      highlighted: false
+    -
+      path: /sitemap
+      highlighted: false
+    -
+      path: /imprint
+      highlighted: false
+      target_blank: true
+    -
+      path: /privacy
+      highlighted: false
+      target_blank: true
+    -
+      path: /accessibility
+      highlighted: false
+  footer:
+    -
+      path: /help
+    -
+      path: /contact
+    -
+      path: /sitemap
+    -
+      path: /imprint
+      target_blank: true
+    -
+      path: /privacy
+      target_blank: true
+    -
+      path: /accessibility
+home:
+  sort_modules:
+    -
+      path: /home/_search
+      hidden: false
+    -
+      path: /home/_warning
+      hidden: true
+    -
+      path: /home/_categories
+      hidden: false
+    -
+      path: /home/_inform
+      hidden: false
+    -
+      path: /home/_news
+      hidden: true
+  rss:
+    feeds_limit: 6
+  categories:
+    rss:
+    facet_config: [
+      {
+        "id": "type",
+        "facets": {
+          "metaclass_map": {
+            "label": "Geodatensatz",
+            "icon": "ic-earth",
+            "display_on_empty": true,
+            "query": {
+              "filter": {
+                "term": {
+                  "t01_object.obj_class": 1
+                }
+              }
+            }
+          },
+          "download-wfs": {
+            "label": "Downloaddienst WFS",
+            "icon": "ic-download",
+            "display_on_empty": true,
+            "query": {
+              "filter": {
+                "term": {
+                  "t011_obj_serv_version.version_value": "OGC:WFS"
+                }
+              }
+            }
+          },
+          "map-wms": {
+            "label": "Darstellungsdienst WMS",
+            "icon": "ic-maps",
+            "display_on_empty": true,
+            "query": {
+              "filter": {
+                "term": {
+                  "t011_obj_serv_version.version_value": "OGC:WMS"
+                }
+              }
+            }
+          },
+          "inspire": {
+            "icon": "ic-inspire",
+            "display_on_empty": true,
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspire"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "inspireidentifiziert"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "opendata": {
+            "icon": "ic-opendata",
+            "display_on_empty": true,
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendata"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "opendataident"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "udo-data": {
+            "label": "Umwelt-Daten und -Karten Online",
+            "icon": "ic-leaf",
+            "display_on_empty": true,
+            "query": {
+              "filter": {
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t017_url_ref.url_link": "*udo.lubw.baden-wuerttemberg.de*"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t017_url_ref.url_link": "*umweltdaten.lubw.baden-wuerttemberg.de*"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
+  hits:
+    query: ''
+    add_to_search:
+      - '-datatype:address'
+      - '-isfolder:true'
+    hits_num: 0
+    sort:
+      sortByDate: true
+      emptyQuerySortByDate: true
+hit_search:
+  hits_num: 10
+  facet_config: [
+    {
+      "id": "type",
+      "open": true,
+      "facets": {
+        "metaclass_map": {
+          "label": "Geodatensatz",
+          "icon": "ic-earth",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "t01_object.obj_class": 1
+              }
+            }
+          }
+        },
+        "download-wfs": {
+          "label": "Downloaddienst WFS",
+          "query": {
+            "filter": {
+              "term": {
+                "t011_obj_serv_version.version_value": "OGC:WFS"
+              }
+            }
+          }
+        },
+        "download-atom": {
+          "label": "Downloaddienst ATOM-Feed",
+          "query": {
+            "filter": {
+              "term": {
+                "t011_obj_serv_version.version_value": "*ATOM*"
+              }
+            }
+          }
+        },
+        "map-wms": {
+          "label": "Darstellungsdienst WMS",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "t011_obj_serv_version.version_value": "OGC:WMS"
+              }
+            }
+          }
+        },
+        "map-wmts": {
+          "label": "Darstellungsdienst WMTS",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "t011_obj_serv_version.version_value": "OGC:WMTS"
+              }
+            }
+          }
+        },
+        "inspire": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspire"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspireidentifiziert"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "opendata": {
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendata"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "opendataident"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "hvd": {
+          "label": "HVD",
+          "display_on_empty": true,
+          "query": {
+            "filter": {
+              "term": {
+                "is_hvd": true
+              }
+            }
+          }
+        },
+        "udo-data": {
+          "label": "Umwelt-Daten und -Karten Online",
+          "query": {
+            "filter": {
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t017_url_ref.url_link": "udo.lubw.baden-wuerttemberg.de"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t017_url_ref.url_link": "umweltdaten.lubw.baden-wuerttemberg.de"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "distributor",
+      "label": "Vertrieb der Geodaten",
+      "query": {
+        "terms": {
+          "field": "distributor",
+          "min_doc_count": 0
+        }
+      },
+      "search": "distributor:%s"
+    },
+    {
+      "id": "metadata_tree",
+      "label": "Fachthemen",
+      "query": {
+        "terms": {
+          "field": "distributor",
+          "min_doc_count": 0
+        }
+      },
+      "search": "distributor:%s"
+    }
+  ]
+  add_to_search:
+    - '-datatype:address'
+    - '-isfolder:true'
+  query_fields:
+    - title^10.0
+    - title.edge_ngram^4.0
+    - title.ngram^2.0
+    - summary
+    - summary.edge_ngram^0.4
+    - summary.ngram^0.2
+    - content^0.2
+    - content.ngram^0.1
+  requested_fields:
+    - t04_search.searchterm
+    - t017_url_ref.url_link
+    - t017_url_ref.content
+    - t017_url_ref.special_ref
+    - t017_url_ref.datatype
+    - object_reference.obj_uuid
+    - object_reference.obj_name
+    - object_reference.obj_class
+    - object_reference.type
+    - object_reference.version
+    - refering.object_reference.obj_uuid
+    - refering.object_reference.obj_name
+    - refering.object_reference.obj_class
+    - refering.object_reference.type
+    - refering.object_reference.version
+  source:
+      include:
+      exclude:
+        - content
+        - idf
+  query_string_operator: AND
+  sort:
+    enabled: false
+    sortByDate: false
+    emptyQuerySortByDate: false
+  expandable:
+    enabled: true
+  summary_replace_newline: '<br>'
+  summary_lines_limit: 5
+  links_max: 5
+  csw_enabled: true
+  rdf_enabled: false
+  partner_logo_enabled: false
+  link_sort_asc: true
+  sns:
+    similar_terms:
+      enabled: true
+provider:
+  query:
+  hits_num:
+  requested_fields:
+  source:
+    include:
+    exclude:
+      - content
+      - idf
+hit_detail:
+  summary_replace_newline: '<br>'
+  reference_system_link: 'https://epsg.io/'
+  reference_system_link_replace: 'urn:ogc:def:crs:'
+  csw_enabled: true
+  rdf_enabled: false
+  time_in_description: true
+  address_order:
+    - '3'
+    - '0'
+    - '1'
+    - '2'
+  address_unlink: false
+  contact_order:
+    - pointOfContact
+    - distributor
+    - publisher
+    - owner
+    - processor
+    - author
+  requested_fields:
+    - partner
+    - provider
+    - t03_catalogue.cat_name
+  source:
+    include:
+      - idf
+      - dataSourceName
+      - iPlugId
+      - title
+    exclude:
+      - content
+  query_string_operator: AND
+  display_use_constraints_json: false
+  link_sort_asc: true
+map:
+  url: /ingrid-webmap-client/frontend/prd
+  leaflet:
+    epsg: '3857'
+    bg:
+      layer:
+        wmts: { url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
+        wms: { url: null, name: null }
+        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+        opacity: 1
+    bbox:
+      color: '#3278B9'
+      opacity: 0.2
+      weight: 1
+      inverted: false
+    enable:
+      wkt: true
+      geocoder: false
+      spinloader: false
+      clustering: false
+    geocoder:
+      enable: false
+      service: 'https://nominatim.openstreetmap.org/search?countrycodes=de'
+    position: 46.58,5.22,55.40,15.68
+measure:
+  networks:
+    exclude:
+    initial:
+  url:
+  elastic:
+redirect:
+  pages_to_404:
+    - /rss
+    - /measure
+    - /datasource
+  pages_to_redirect:
+    - path: /imprint
+      url: 'https://www.lubw.baden-wuerttemberg.de/impressum'
+    - path: /privacy
+      url: 'https://www.lubw.baden-wuerttemberg.de/datenschutz/allgemeine-datenschutzerklaerung'
+catalog:
+  open_nodes_level: 3
+  display_partner: true
+  sort_by_name: true
+  open_on_new_tab: true
+help:
+  default_hkey: about-1
+datasource:
+  excludes:
+rss:
+  feeds:
+streams:
+ schemes:
+   theme:
+     type: ReadOnlyStream
+     prefixes:
+       '':
+         - user/themes/lubw
+         - user/themes/ingrid

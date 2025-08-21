@@ -1,0 +1,46 @@
+<script>
+    document.querySelectorAll('section button').forEach((el) => {
+        el.addEventListener('click', () => toggleExpandable(el));
+    });
+
+    document.querySelectorAll('a[tag]').forEach((el) => {
+        el.addEventListener('click', () => onShortcutClicked(el));
+    });
+
+    function onShortcutClicked(el) {
+        var tag = el.getAttribute('tag');
+        var target = document.querySelector(`${tag} button`);
+        var top = target.getBoundingClientRect().top;
+        var offset = -140;
+
+        if (document.body.classList.contains('shrink')) {
+            offset += 48;
+        }
+
+        setTimeout(() => {
+            scrollTo({
+                top: top + window.scrollY + offset,
+                behavior: "smooth",
+            });
+        }, 120);
+
+        toggleExpandable(target, true);
+    }
+
+    function toggleExpandable(el, toExpand) {
+        var section = el.parentElement;
+        var content = section.querySelector('.content');
+
+        var isExpanded = section.classList.contains('expanded');
+        if (toExpand && isExpanded) {
+            return;
+        }
+
+        section.classList.toggle('expanded');
+        if (section.classList.contains('expanded')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+            content.style.maxHeight = "";
+        }
+    }
+</script>

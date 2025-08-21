@@ -1,0 +1,22 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite von RIPS-Metadaten aufrufen
+  MAP: Karten
+  CATALOG: Themenübersicht
+  ABOUT: 'Über die %s'
+  HELP_MENU_TITLE: Erläuterungen zur der Nutzung von RIPS-Metadaten
+  SITEMAP: Inhalt
+  LANGUAGE_SIGN: Gebärdensprache
+  LANGUAGE_SIGN_MENU_TITLE: Gebärdensprache
+  LANGUAGE_SIGN_META_TITLE: '%s - Gebärdensprache'
+  LANGUAGE_SIGN_META_DESCRIPTION: Hinweise zur Gebärdensprache
+  LANGUAGE_SIGN_META_KEYWORDS: Gebärdensprache
+  LANGUAGE_EASY: Leichte Sprache
+  LANGUAGE_EASY_MENU_TITLE: Leichte Sprache
+  LANGUAGE_EASY_META_TITLE: '%s - Leichte Sprache'
+  LANGUAGE_EASY_META_DESCRIPTION: Hinweise zur leichten Sprache
+  LANGUAGE_EASY_META_KEYWORDS: Leichte Sprache
+
+SEARCH:
+  PORTLET_TITLE_1: Umweltgeodaten
+  PORTLET_TITLE_2: für Baden-Württemberg<br>finden&nbsp;
+  PORTLET_TITLE_3: Geodaten, Dienste und Metadaten
