@@ -2,6 +2,8 @@
 {% set header_menu_class = theme_var('header.menu_class') %}
 {% set header_menu_dropdown = theme_var('header.menu_dropdown') %}
 
+{% include 'partials/header/css.html.twig' ignore missing %}
+
 <header>
     <div class="row">
         <div class="{{ header_logo_class }} columns">
@@ -12,6 +14,7 @@
                 {% include 'partials/header/navigation.html.twig' %}
             </nav>
         </div>
+        {% include 'partials/header/side_logos.html.twig' ignore missing %}
         {% if header_menu_dropdown %}
             {% include 'partials/header/menu.html.twig' %}
         {% endif %}

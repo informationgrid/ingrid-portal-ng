@@ -75,6 +75,7 @@ PAGES:
     PRIVACY_META_DESCRIPTION: 'Privacy policy statement of %s and information about the collection of personal data.'
     PRIVACY_META_KEYWORDS: '%s, data privacy, protection of data privacy, regulations, privacy policy, access-data, personal data, data collection, data storage'
     ACCESSIBILITY: Accessibility
+    ACCESSIBILITY_CONTENT: Accessibility
     ACCESSIBILITY_MENU_TITLE: Accessibility
     ACCESSIBILITY_META_TITLE: Accessibility
     ACCESSIBILITY_META_DESCRIPTION: 'Associated environmental authorities from federation, federal states and local authorities providing environmental information via %s - free of cost and free of ads.'
@@ -1146,6 +1147,9 @@ THEME:
                     HELP: Anhand von Elasticsearch Queries können Daten aus der (leeren) Suchanfrage ausgeschlossen werden.
             HITS:
                 TITLE: Trefferübersicht
+                QUERY:
+                    LABEL: Suchbegriff
+                    HELP: Suchbegriff festlegen
                 ADD_TO_SEARCH:
                     LABEL: Suchanfrage erweitern
                     HELP: Suchanfrage erweitern

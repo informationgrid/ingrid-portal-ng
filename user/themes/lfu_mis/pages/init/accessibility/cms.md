@@ -2,6 +2,7 @@
 title: Barrierefreiheit
 custom_title:
   html: PAGES.ACCESSIBILITY
+  content: PAGES.ACCESSIBILITY_CONTENT
   menu: PAGES.ACCESSIBILITY_MENU_TITLE
 meta:
   title: PAGES.ACCESSIBILITY_META_TITLE
@@ -50,7 +51,7 @@ E-Mail: [gdi-admin@lfu.bayern.de](mailto:gdi-admin@lfu.bayern.de)
 ### Durchsetzungsverfahren
 
 Im Rahmen eines Durchsetzungsverfahrens haben Sie nachfolgend die Möglichkeit, online einen Antrag auf Prüfung der Einhaltung der Anforderungen an die Barrierefreiheit zu stellen.
-Antrag auf Prüfung der Einhaltung der Anforderungen an die Barrierefreiheit 
+Antrag auf Prüfung der Einhaltung der Anforderungen an die Barrierefreiheit
 
 ### Kontaktdaten der Durchsetzungsstelle
 

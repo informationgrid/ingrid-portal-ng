@@ -2,6 +2,7 @@
 title: Barrierefreiheit
 custom_title:
   html: PAGES.ACCESSIBILITY
+  content: PAGES.ACCESSIBILITY_CONTENT
   menu: PAGES.ACCESSIBILITY_MENU_TITLE
 meta:
   title: PAGES.ACCESSIBILITY_META_TITLE

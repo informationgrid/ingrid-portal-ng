@@ -4,7 +4,8 @@ PAGES:
   MAP: Karten
   CATALOG: Themenübersicht
   HELP_MENU_TITLE: Erläuterungen zur Nutzung von LfU-MIS
-  ACCESSIBILITY: Erklärung zur Barrierefreiheit
+  ACCESSIBILITY: Barrierefreiheit
+  ACCESSIBILITY_CONTENT: Erklärung zur Barrierefreiheit
 
 SEARCH:
   PORTLET_TITLE_1: LfU-MIS

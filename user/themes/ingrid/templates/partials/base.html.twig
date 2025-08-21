@@ -107,6 +107,10 @@
             {{ assets.js('bottom')|raw }}
         {% endblock %}
 
+        {% if page.header.toggleTag %}
+            {% include 'partials/footer/toggle_tag.html.twig' ignore missing %}
+        {% endif %}
+
         <script>
         $('.js-anchor-target').anchorTarget();
         </script>
