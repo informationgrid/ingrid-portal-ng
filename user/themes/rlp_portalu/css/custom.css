@@ -7,12 +7,12 @@
  * Licensed under the EUPL, Version 1.2 or – as soon they will be
  * approved by the European Commission - subsequent versions of the
  * EUPL (the "Licence");
- * 
+ *
  * You may not use this work except in compliance with the Licence.
  * You may obtain a copy of the Licence at:
- * 
+ *
  * https://joinup.ec.europa.eu/software/page/eupl
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -635,9 +635,6 @@ header .row .columns:last-of-type {
 .catalog .accordion .accordion .accordion-title:hover {
   box-shadow: none;
 }
-.catalog :not(.accordion-item-sub) + .accordion-item-sub, .catalog :not(.accordion-item-sub) + .accordion {
-  border-top: 1px solid #C6CFE2;
-}
 .catalog a.icon span.text {
   font-family: Arial, sans-serif !important;
 }
@@ -865,7 +862,7 @@ header .menu-tab-row .menu-tab {
     font-size: 26px;
   }
 }
-@media print, screen and (min-width: 64em) { 
+@media print, screen and (min-width: 64em) {
 }
 @media print, screen and (min-width: 78em) {
   header .logo {
