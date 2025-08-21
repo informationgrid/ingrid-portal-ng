@@ -495,13 +495,11 @@ function elementInViewport(el) {
     );
 }
 
-function loadDefaultMapImage(elem, partner, theme) {
+function loadDefaultMapImage(elem, defaultImage, initImage) {
     elem.onerror = null;
-    var image = 'image_map';
-    if(partner && partner !== 'bund') {
-      image += '_' + partner;
+    if (!defaultImage) {
+        defaultImage = initImage;
     }
-    var defaultImage = theme + '/maps/' + image + '.png';
     if(elem) {
       elem.src = defaultImage;
       var src = elem.dataset.src;

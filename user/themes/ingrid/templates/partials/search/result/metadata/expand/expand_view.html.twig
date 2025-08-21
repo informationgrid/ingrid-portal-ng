@@ -232,7 +232,7 @@
                         <div class="swiper-slide">
                             {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_PREVIEW"|t, null, 'text-center') }}
                             <a target="_blank" class="external-link" href="{{ link.url }}" title="{{ link.title }}" rel="noopener noreferrer">
-                                <img {% if 'http:' in link.url %} src="./" data-src={% else %} src={% endif %}"{{ link.url }}" height="100" class="preview_image" alt="{{ link.title }}" title="{{ link.title }}" onerror="loadDefaultMapImage(this, '{{ partners[0] }}', '{{ url("theme://images/") }}');">
+                                <img {% if 'http:' in link.url %} src="./" data-src={% else %} src={% endif %}"{{ link.url }}" height="100" class="preview_image" alt="{{ link.title }}" title="{{ link.title }}" onerror="loadDefaultMapImage(this, '{{ url("theme://images/maps/image_map_" ~ partners[0] ~ ".png") }}', '{{ url("theme://images/maps/image_map.png") }}');">
                             </a>
                         </div>
                     {% endfor %}
