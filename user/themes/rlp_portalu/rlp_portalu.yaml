@@ -369,7 +369,7 @@ hit_search:
   links_max: 5
   csw_enabled: true
   rdf_enabled: false
-  partner_logo_enabled: true
+  partner_logo_enabled: false
   link_sort_asc: true
   sns:
     similar_terms:
