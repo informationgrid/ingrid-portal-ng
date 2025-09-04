@@ -34,7 +34,7 @@ rm -Rf %{buildroot}*
 
 mkdir -p %{buildroot}/var/www
 
-unzip -qq grav-admin.zip -d %{buildroot}/var/www/
+unzip -qq grav-admin.zip -x 'grav-admin/user/pages/*' -d %{buildroot}/var/www/
 rm grav-admin.zip
 mv %{buildroot}/var/www/grav-admin %{buildroot}/var/www/%{context_path}
 
