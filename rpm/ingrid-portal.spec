@@ -12,6 +12,8 @@ AutoReqProv: no
 
 %define context_path ingrid-portal-grav
 %define system_yaml %{buildroot}/var/www/%{context_path}/user/config/system.yaml
+%define version_grav 1.7.48
+%define version_mvis 2.0.11
 
 ################################################################################
 %description
@@ -19,11 +21,8 @@ InGrid Portal Next Generation
 
 ################################################################################
 %prep
-GRAV_VERSION=1.7.48
-curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION}
-
-MVIS_VERSION=2.0.11
-curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip
+curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/%{version_grav}
+curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/%{version_mvis}/measurement-client-%{version_mvis}.zip
 
 ################################################################################
 %build
