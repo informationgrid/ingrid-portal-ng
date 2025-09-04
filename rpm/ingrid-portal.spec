@@ -40,7 +40,7 @@ mv %{buildroot}/var/www/grav-admin %{buildroot}/var/www/%{context_path}
 
 unzip -qq mvis.zip -d %{buildroot}/var/www/%{context_path}/assets
 rm mvis.zip
-mv %{buildroot}/var/www/%{context_path}/assets/measurement-client-${MVIS_VERSION} %{buildroot}/var/www/%{context_path}/assets/mvis
+mv %{buildroot}/var/www/%{context_path}/assets/measurement-client-%{version_mvis} %{buildroot}/var/www/%{context_path}/assets/mvis
 
 # COPY OUR ADDITIONAL THEMES AND PLUGINS
 mkdir -p %{buildroot}/var/www/%{context_path}/user
