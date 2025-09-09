@@ -2,8 +2,7 @@
 
 {% block field %}
 {% set input_value = value is iterable ? value|join(',') : value|string %}
-<input aria-hidden="true"
-       type="text"
+<input type="text"
        class="yummy"
        tabindex="-1"
        autocomplete="off"
