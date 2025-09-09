@@ -1,0 +1,12 @@
+{% extends "forms/field.html.twig" %}
+
+{% block field %}
+{% set input_value = value is iterable ? value|join(',') : value|string %}
+<input aria-hidden="true"
+       type="text"
+       class="yummy"
+       tabindex="-1"
+       autocomplete="off"
+       name="{{ (scope ~ field.name)|fieldName }}"
+       value="{{ input_value|e }}" />
+{% endblock %}
