@@ -138,7 +138,8 @@
         {% for partner in partners if not break %}
             <div class="teaser-logo-partner">
             {% if partner != "all" and partner != "bund" %}
-                <img src="{{ url('theme://images/partner/svg/' ~ partner ~ '.svg') }}" alt="{{ partner }}" title="{{ partner }}"/>
+                {% set partnerText = ('COMMON.RESULT_PARTNER_' ~ (partner)|upper)|t %}
+                <img src="{{ url('theme://images/partner/svg/' ~ partner ~ '.svg') }}" alt="{{ partnerText }}" title="{{ partnerText }}"/>
             {% endif %}
             </div>
             {% set break = true %}
