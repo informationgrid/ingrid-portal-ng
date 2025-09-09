@@ -208,6 +208,16 @@ hit_search:
       "id": "type",
       "open": true,
       "facets": {
+        "download_metadata": {
+          "label": "Downloads",
+          "query": {
+            "filter": {
+              "term": {
+                "t017_url_ref.url_link": "*/terra*/ordering/shop.do*"
+              }
+            }
+          }
+        },
         "inspire": {
           "query": {
             "filter": {

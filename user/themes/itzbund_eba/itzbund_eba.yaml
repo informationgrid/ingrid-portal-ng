@@ -394,11 +394,13 @@ redirect:
     - /datasource
     - /provider
     - /contact
-    - /home
   pages_to_redirect:
     -
       path: /help
       url: 'https://geoportal.eisenbahn-bundesamt.de/hilfe'
+    -
+      path: /home
+      url: /kartendienste
 streams:
  schemes:
    theme:
