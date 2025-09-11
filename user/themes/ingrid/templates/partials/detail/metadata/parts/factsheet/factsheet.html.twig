@@ -2,7 +2,7 @@
 
 <div class="data">
     <div class="teaser-data search row is-active">
-        <div class="xsmall-24 small-24 {% if previews|length > 0 or (mapUrl and hasAccessConstraint is not same as("true")) %} medium-14 large-14 xlarge-14{% endif %}columns">
+        <div class="xsmall-24 small-24{% if previews|length > 0 or (mapUrl and hasAccessConstraint is not same as("true")) %} medium-14 large-14 xlarge-14{% endif %} columns">
         {# Durch die Ressource abgedeckte Zeitspanne #}
             {% if class == 1 or class == 3 or class == 5 or class == 6 %}
                 {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
