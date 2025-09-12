@@ -1,8 +1,8 @@
 [submodule "user/plugins/ingrid-grav"]
 	path = user/plugins/ingrid-grav
 	url = https://github.com/informationgrid/ingrid-grav-plugin.git
-	branch = develop
+	branch = main
 [submodule "user/plugins/ingrid-grav-utils"]
 	path = user/plugins/ingrid-grav-utils
 	url = https://github.com/informationgrid/ingrid-grav-plugin-utils.git
-    branch = develop
+    branch = main
