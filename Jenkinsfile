@@ -11,7 +11,7 @@ pipeline {
 
     stages {
         stage('Update submodule') {
-            when { expression { return shouldBuildDevOrRelease() } }
+            //when { expression { return shouldBuildDevOrRelease() } }
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: 'ae3a7670-c4c8-413c-9df2-45373f1723a2', gitToolName: 'git')]) {
                     sh 'git submodule update --init --remote --recursive'
