@@ -292,7 +292,7 @@ hit_search:
     emptyQuerySortByDate: false
   expandable:
     enabled: true
-  summary_replace_newline: ' '
+  summary_replace_newline: '<br>'
   summary_lines_limit: 5
   links_max: 5
   csw_enabled: true
@@ -312,7 +312,7 @@ provider:
       - content
       - idf
 hit_detail:
-  summary_replace_newline: ' '
+  summary_replace_newline: '<br>'
   reference_system_link: 'https://epsg.io/'
   reference_system_link_replace: 'urn:ogc:def:crs:'
   csw_enabled: true
