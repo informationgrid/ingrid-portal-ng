@@ -500,8 +500,8 @@ redirect:
     - /measure
   pages_to_redirect:
 catalog:
-  open_nodes_level: 0
-  display_partner: true
+  open_nodes_level: 3
+  display_partner: false
   sort_by_name: true
   open_on_new_tab: true
 help:
