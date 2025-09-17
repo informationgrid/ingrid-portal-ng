@@ -65,10 +65,10 @@ menu:
       path: /about
       highlighted: true
     -
-      path: /datasource
+      path: /provider
       highlighted: true
     -
-      path: /provider
+      path: /datasource
       highlighted: true
     -
       path: /help
