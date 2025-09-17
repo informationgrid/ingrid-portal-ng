@@ -8,7 +8,7 @@ PAGES:
 SEARCH:
   PORTLET_TITLE_1: ' '
   PORTLET_TITLE_2: Metadaten
-  PORTLET_TITLE_3: 'zu Geodaten, Webdiensten und Geofachportalen<br>der Städte Bottrop und Krefeld sowie<br>der Kreise Kleve, Viersen und Wesel'
+  PORTLET_TITLE_3: 'zu Geodaten, Webdiensten und Geofachportalen<br>der Städte Bottrop, Erkrath und Krefeld sowie<br>der Kreise Kleve, Viersen und Wesel'
 
 SEARCH_DETAIL:
   T01_OBJECT_POLYGON_WKT: Begrenzungspolygon im WKT Format (in WGS84)
