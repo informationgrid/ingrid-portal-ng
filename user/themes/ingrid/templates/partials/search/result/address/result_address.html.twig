@@ -1,6 +1,10 @@
 {# @var hit \Grav\Plugin\SearchResultHit #}
 {% import 'macros/hit_macros.html.twig' as hit_macros %}
 
+{% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
+{% set summary_lines_limit = theme_var('hit_search.summary_lines_limit') %}
+{% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
+
 {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.uuid ~ "&isAddress=true" %}
 {% set queries = uri.query(null, true) %}
 {% for key, param in queries %}
@@ -15,13 +19,16 @@
         <div class="helper icon">
             {{ hit_macros.render_address_icon(hit.type, ("COMMON.UDK_ADR_CLASS_NAME_" ~ hit.type)|t) }}
         </div>
+        {% if partner_logo %}
+            {{ hit_macros.render_hit_logo(hit.partners) }}
+        {% endif %}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>
         </a>
         {% if hit.summary %}
-        <p class="data-text">
-            {{ hit.summary }}
-        </p>
+            <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
+                {{  convertUrlInText(hit.summary)|replace({'\n': summary_replace_newline})|raw }}
+            </p>
         {% endif %}
         <a href="{{ detailLink }}" title="{{ "COMMON.DETAIL_ARROW_PREFIX"|t ~ " " ~ hit.title }}">
             <span class="ic-ic-arrow arrow"></span>
