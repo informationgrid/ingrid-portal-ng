@@ -1320,6 +1320,9 @@ THEME:
             OPEN_ON_NEW_TAB:
                 LABEL: Links im neuem Tab anzeigen
                 HELP: Ist dieses Einstellung aktiv, so wird die Detaildarstellung in einem neuem Tab angezeigt.
+            ADDRESS_FOLDER_CLOSED:
+                LABEL: Adressen Ordner per Default geschlossen
+                HELP: Adressen Ordner per Default geschlossen
             DISPLAY_PARTNER:
                 LABEL: Partner anzeigen
                 HELP: Schalten Sie hier die Darstellung des Partners aus.

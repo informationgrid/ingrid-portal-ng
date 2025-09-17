@@ -33,6 +33,16 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    catalog.address_folder_closed:
+      type: toggle
+      label: THEME.ADMIN.CATALOG.ADDRESS_FOLDER_CLOSED.LABEL
+      help: THEME.ADMIN.CATALOG.ADDRESS_FOLDER_CLOSED.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
     catalog.display_partner:
       type: toggle
       label: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.LABEL
