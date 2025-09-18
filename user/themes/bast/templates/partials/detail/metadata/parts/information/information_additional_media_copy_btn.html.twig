@@ -1,0 +1,68 @@
+<script>
+    $("table:contains('Speicherort')").map(function () {
+        var button = '<button class="copy-btn" title="Kopieren">';
+        button += '<img src="{{ url('theme://images/copy.svg') }}" aria-hidden="true"/>';
+        button += '<span class="copy-btn-tooltip">Kopiert!</span>';
+        button += '</button>';
+
+        var targetCell = $(this).find('td:nth-child(3)');
+        $(targetCell).append(button);
+    });
+
+    var btns = document.querySelectorAll('.copy-btn');
+
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', copyCell);
+        btns[i].addEventListener('mouseleave', clearCopyTooltip);
+    }
+
+    function copyCell(evt) {
+        var btn = evt.target;
+        btn.classList.add('copied');
+        var toCopy = evt.target.parentElement?.innerText;
+        // Remove inner text from copy tooltip.
+        toCopy = toCopy.replace('Kopiert!', '');
+        navigator.clipboard.writeText(toCopy);
+    }
+
+    function clearCopyTooltip(evt) {
+        var btn = evt.target;
+        btn.classList.remove('copied');
+    }
+</script>
+
+<style>
+    .copy-btn {
+        float: right;
+        position: relative;
+        background: #333333;
+        padding: 4px;
+        border-radius: 6px;
+        transition: all ease 0.3s;
+
+        &:hover {
+            background: #686868;
+        }
+
+        img, .copy-btn-tooltip {
+            pointer-events: none;
+        }
+
+        &.copied .copy-btn-tooltip {
+            opacity: 1;
+        }
+
+        .copy-btn-tooltip {
+            opacity: 0;
+            color: white;
+            background: #686868;
+            font-size: 14px;
+            position: absolute;
+            bottom: -5px;
+            transform: translate(-60%, 100%);
+            padding: 5px 8px;
+            border-radius: 6px;
+            transition: all ease 0.8s;
+        }
+    }
+</style>

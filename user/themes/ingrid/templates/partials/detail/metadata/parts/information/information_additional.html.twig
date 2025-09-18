@@ -42,6 +42,7 @@
             "SEARCH_DETAIL.T0112_MEDIA_OPTION_MEDIUM_NOTE"|t
         ] %}
         {{ hit_macros.render_table("SEARCH_DETAIL.T0112_MEDIA_OPTION_MEDIUM"|t, header, infoRefs_additional.media) }}
+        {% include 'partials/detail/metadata/parts/information/information_additional_media_copy_btn.html.twig' ignore missing %}
     {# Bestellinformationen #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_ORDERING_INSTRUCTIONS"|t, infoRefs_additional.orderInstructions) }}
     </div>
