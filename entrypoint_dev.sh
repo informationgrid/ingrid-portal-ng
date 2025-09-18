@@ -9,6 +9,15 @@ ENABLE_SCHEDULER_CODELIST=${ENABLE_SCHEDULER_CODELIST:-true}
 ENABLE_SCHEDULER_RSS=${ENABLE_SCHEDULER_RSS:-true}
 MARKDOWN_AUTO_LINE_BREAKS=${MARKDOWN_AUTO_LINE_BREAKS:-true}
 SITE_DEFAULT_LANG=${SITE_DEFAULT_LANG:-de}
+PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-1024M}
+PHP_MAX_EXECUTION_TIME=${PHP_MAX_EXECUTION_TIME:-300}
+
+#####################
+# PHP ini
+#####################
+PHP_INI_FILE="$PHP_INI_DIR"/php.ini
+sed -i "s/memory_limit = 128M/memory_limit = $PHP_MEMORY_LIMIT/" "$PHP_INI_FILE"
+sed -i "s/max_execution_time = 30/max_execution_time = $PHP_MAX_EXECUTION_TIME/" "$PHP_INI_FILE"
 
 #####################
 # Default system config

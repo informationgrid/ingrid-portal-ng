@@ -10,6 +10,8 @@ RUN apt-get update
 # Install dependencies
 RUN apt-get install -y libzip-dev libpng-dev libjpeg-dev unzip vim libxslt1-dev libxml2 cron wget
 
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
 # Configure and install PHP extensions
 RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install zip gd xsl xml dom
