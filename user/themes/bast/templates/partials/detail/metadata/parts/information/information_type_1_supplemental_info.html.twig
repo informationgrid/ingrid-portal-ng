@@ -1,0 +1,5 @@
+{# Anzeige der Bemerkungen #}
+
+{% if hit.internalNotes %}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_DATA_DESCRIPTION"|t, hit.internalNotes) }}
+{% endif %}
