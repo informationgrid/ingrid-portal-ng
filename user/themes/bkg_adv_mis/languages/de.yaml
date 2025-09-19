@@ -4,6 +4,10 @@ PAGES:
     HOME_META_TITLE: Startseite
     ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
 
+COMMON:
+    TIME_TYPE: Zeitbezug der Daten
+    TIME_UNTIL: '-'
+
 CONTACT:
     SUCCESS: Ihre Anfrage wurde erfolgreich an die AdV-MIS-Redaktion versendet.
     REPORT_EMAIL_SUBJECT: Nachricht von AdV-MIS
