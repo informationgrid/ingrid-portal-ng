@@ -5,6 +5,10 @@ PAGES:
     ACCESSIBILITY: Erklärung zur Barrierefreiheit
     ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
 
+COMMON:
+    TIME_TYPE: Zeitbezug der Daten
+    TIME_UNTIL: '-'
+
 SEARCH:
     PORTLET_TITLE_1: ' '
     PORTLET_TITLE_2: Metadaten
