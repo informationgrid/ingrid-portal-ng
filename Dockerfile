@@ -1,52 +1,45 @@
-FROM php:8.3-fpm-bullseye
+FROM php:8.3-fpm-trixie
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
 # renovate: datasource=github-tags depName=getgrav/grav versioning=semver
-ENV GRAV_VERSION 1.7.49.5
+ENV GRAV_VERSION=1.7.49.5
 # renovate: datasource=github-tags depName=krakjoe/apcu versioning=semver
-ENV PHP_APCU_VERSION v5.1.23
+ENV PHP_APCU_VERSION=v5.1.23
 # renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
-ENV PHP_YAML_VERSION 2.2.3
+ENV PHP_YAML_VERSION=2.2.5
 
 ENV YQ_VERSION=v4.45.1
-ENV INGRID_GRAV_PLUGIN_BRANCH develop
-ENV INGRID_GRAV_PLUGIN_UTILS_BRANCH develop
+ENV INGRID_GRAV_PLUGIN_BRANCH=develop
+ENV INGRID_GRAV_PLUGIN_UTILS_BRANCH=develop
 
-ENV ADMIN_EMAIL portal@test.de
-ENV ADMIN_FULL_NAME "The Admin"
+ENV ADMIN_EMAIL=portal@test.de
+ENV ADMIN_FULL_NAME="The Admin"
 ENV TZ='Europe/Berlin'
 
 RUN groupadd --system foo; \
     useradd --no-log-init --system --gid foo --create-home foo; \
     \
-    apt-get update; \
-    apt-get install -y --no-install-recommends \
+    apt update; \
+    apt install -y --no-install-recommends \
         git \
         unzip \
+        yq \
         rsync \
         gosu \
-        ##### Run dependencies
-        libzip4 \
-        libyaml-0-2 \
-        libpng16-16 \
-        libjpeg62-turbo \
-        libwebp6 \
-        libfreetype6 \
-        ##### Build dependencies
-        libwebp-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libfreetype6-dev \
-        libyaml-dev \
-        libzip-dev \
-        apache2-utils \
-        libxslt1-dev \
-        libxml2 \
         cron \
-        wget \
-    ; \
-    docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
+        wget
+
+RUN apt install -y --no-install-recommends \
+    libfreetype6-dev \
+    libzip-dev \
+    libpng-dev \
+    libwebp-dev \
+    libjpeg-dev \
+    libyaml-dev \
+    libxslt-dev
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
         zip \
         gd \
@@ -62,14 +55,14 @@ RUN groupadd --system foo; \
         apcu \
         yaml \
     ; \
-    apt-get purge -y --auto-remove \
-        libwebp-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libfreetype6-dev \
-        libyaml-dev \
-        libzip-dev \
-    ; \
+#    apt purge -y --auto-remove \
+#        libwebp-dev \
+#        libjpeg-dev \
+#        libpng-dev \
+#        libfreetype6-dev \
+#        libyaml-dev \
+#        libzip-dev \
+#    ; \
     rm -rf /var/lib/apt/lists/*; \
     \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini";
