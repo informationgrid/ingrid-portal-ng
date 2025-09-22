@@ -37,7 +37,8 @@ RUN apt install -y --no-install-recommends \
     libwebp-dev \
     libjpeg-dev \
     libyaml-dev \
-    libxslt-dev
+    libxslt-dev \
+    libicu-dev
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
 	docker-php-ext-install -j "$(nproc)" \
@@ -47,6 +48,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp; \
         xsl \
         xml \
         dom \
+        intl \
     ; \
     pecl install apcu-${PHP_APCU_VERSION:1}; \
     pecl install yaml-$PHP_YAML_VERSION; \
