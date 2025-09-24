@@ -12,7 +12,6 @@
             "SEARCH_DETAIL.SPATIAL_REF_VALUE_X1"|t,
             "SEARCH_DETAIL.SPATIAL_REF_VALUE_Y1"|t,
         ] %}
-        {{ vardump(mapRefs.geographicElement) }}
         {{ hit_macros.render_table("SEARCH_DETAIL.GEOTHESAURUS_SPACIAL_REFERENCE"|t, header, mapRefs.geographicElement, [0]) }}
     {# Regionalschlüssel #}
         {{ hit_macros.render_label_link("SEARCH_DETAIL.REGIONKEY"|t, mapRefs.regionKey.key, mapRefs.regionKey.url, "external") }}
