@@ -32,30 +32,5 @@
 {# Ansprechpartner (Metadatum) #}
     {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_metadatum.html.twig' ignore missing %}
 {# Metadatenquellen #}
-    {% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
-    <div class="table table--lined">
-        <table>
-            <tbody>
-                <tr>
-                    <th>{{ "SEARCH_DETAIL.METADATA_SOURCE"|t }}</th>
-                    <td>
-                        <div>
-                            {{ metaInfoRefs.plug_data_source_name }}
-                        </div>
-                    </td>
-                </tr>
-                {% for provider in metaInfoRefs.plug_providers %}
-                    <tr>
-                    <th></th>
-                    <td>
-                        <div>
-                            {{ provider }}
-                        </div>
-                    </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
+    {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_source.html.twig' ignore missing %}
 </div>

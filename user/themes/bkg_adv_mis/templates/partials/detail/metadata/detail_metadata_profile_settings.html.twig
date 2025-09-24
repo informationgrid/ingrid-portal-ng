@@ -1,0 +1,4 @@
+{% set infoRefs_additional = removeKey(infoRefs_additional, "conformity") %}
+{% set dataQualityRefs = addKeyValue(dataQualityRefs, "conformity", hit.conformity) %}
+
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

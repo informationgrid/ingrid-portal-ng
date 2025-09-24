@@ -10,6 +10,8 @@
         "SEARCH_DETAIL.DATA_QUALITY_TABLE_HEADER3"|t,
     ] %}
     <div class="row columns">
+    {# Konformität #}
+        {% include 'partials/detail/metadata/parts/dataquality/dataquality_conformity.html.twig' ignore missing %}
     {# Datendefizit #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_COVERAGE"|t, dataQualityRefs.completenessOmission) }}
     {# Höhengenauigkeit (m) #}

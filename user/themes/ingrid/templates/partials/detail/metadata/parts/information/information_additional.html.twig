@@ -18,13 +18,7 @@
     {# Sprache des Datensatzes #}
         {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T01_OBJECT_DATA_LANGUAGE"|t, infoRefs_additional.languageCode ? infoRefs_additional.languageCode|sort ) }}
     {# Konformität #}
-        {% set header = [
-            "SEARCH_DETAIL.OBJECT_CONFORMITY_SPECIFICATION"|t,
-            "SEARCH_DETAIL.OBJECT_CONFORMITY_PUBLICATION_DATE"|t,
-            "SEARCH_DETAIL.OBJECT_CONFORMITY_DEGREE_VALUE"|t,
-            "SEARCH_DETAIL.OBJECT_CONFORMITY_EXPLANATION"|t
-        ] %}
-        {{ hit_macros.render_table("SEARCH_DETAIL.OBJECT_CONFORMITY"|t, header, infoRefs_additional.conformity, [0]) }}
+        {% include 'partials/detail/metadata/parts/information/information_additional_conformity.html.twig' ignore missing %}
     {# Datenformat #}
         {% set header = [
             "SEARCH_DETAIL.T0110_AVAIL_FORMAT_NAME"|t,

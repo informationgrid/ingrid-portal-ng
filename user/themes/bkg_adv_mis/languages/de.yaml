@@ -20,5 +20,8 @@ SEARCH:
 SEARCH_RESULT:
     INFO_LINKS: Links
 
+SEARCH_DETAIL:
+    T011_OBJ_GEO_SPECIAL_BASE: Zusammenfassung der Herkunftsangaben
+
 CATEGORIES:
     TITLE: Recherchieren Sie in diesen Kategorien

@@ -1,0 +1,8 @@
+{# Konformität #}
+{% set header = [
+    "SEARCH_DETAIL.OBJECT_CONFORMITY_SPECIFICATION"|t,
+    "SEARCH_DETAIL.OBJECT_CONFORMITY_PUBLICATION_DATE"|t,
+    "SEARCH_DETAIL.OBJECT_CONFORMITY_DEGREE_VALUE"|t,
+    "SEARCH_DETAIL.OBJECT_CONFORMITY_EXPLANATION"|t
+] %}
+{{ hit_macros.render_table("SEARCH_DETAIL.OBJECT_CONFORMITY"|t, header, infoRefs_additional.conformity, [0]) }}

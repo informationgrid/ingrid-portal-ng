@@ -30,3 +30,4 @@ SEARCH_DETAIL:
     TECHNICAL_INFORMATION_6: Informationen zur Geodatenressource
     T011_OBJ_GEO_DATASOURCE_UUID: Identifier
     T011_OBJ_SERV_OPERATION_INVOCATION_NAME: Zugangspunkt der Operation oder des Dienstes
+    POINTOFCONTACT_METADATA: ' '

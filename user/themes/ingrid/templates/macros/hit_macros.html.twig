@@ -338,12 +338,18 @@
         {% endfor %}
         {% for address in addresses %}
             {% if address.type is empty %}
-                {{ address.organisationName }}
-                <br>
-                {{ address.positionName }}
-                <br>
-                {{ address.individualName }}
-                <br>
+                {% if address.organisationName %}
+                    {{ address.organisationName }}
+                    <br>
+                {% endif %}
+                {% if address.positionName %}
+                    {{ address.positionName }}
+                    <br>
+                {% endif %}
+                {% if address.individualName %}
+                    {{ address.individualName }}
+                    <br>
+                {% endif %}
             {% endif %}
         {% endfor %}
         </p>
@@ -468,12 +474,18 @@
                                 {% endfor %}
                                 {% for address in addresses %}
                                     {% if address.type is empty %}
-                                        {{ address.organisationName }}
-                                        <br>
-                                        {{ address.positionName }}
-                                        <br>
-                                        {{ address.individualName }}
-                                        <br>
+                                        {% if address.organisationName %}
+                                            {{ address.organisationName }}
+                                            <br>
+                                        {% endif %}
+                                        {% if address.positionName %}
+                                            {{ address.positionName }}
+                                            <br>
+                                        {% endif %}
+                                        {% if address.individualName %}
+                                            {{ address.individualName }}
+                                            <br>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </p>
