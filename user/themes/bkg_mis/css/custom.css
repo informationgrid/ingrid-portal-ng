@@ -836,6 +836,9 @@ thead {
 }
 
 @media print, screen and (min-width: 64em) {
+  .search-filtered .accordion.accordion-filter-group .accordion-content.filter-wrapper {
+    padding: 0px;
+  }
   .desktop__title a {
     font-size: 30px;
   }
