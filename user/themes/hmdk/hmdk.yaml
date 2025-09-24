@@ -71,6 +71,9 @@ menu:
       path: /datasource
       highlighted: true
     -
+      path: /api
+      highlighted: true
+    -
       path: /help
       highlighted: false
     -
