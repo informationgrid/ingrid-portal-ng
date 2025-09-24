@@ -1,0 +1,12 @@
+{# Erstellungsmaßstab #}
+{% if infoRefs.resolutions %}
+    {% if infoRefs.resolutions.denominators %}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_SCALE_SCALE"|t, infoRefs.resolutions.denominators) }}
+    {% endif %}
+    {% if infoRefs.resolutions.meters %}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_SCALE_RESOLUTION_GROUND"|t, infoRefs.resolutions.meters) }}
+    {% endif %}
+    {% if infoRefs.resolutions.dpis %}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_SERV_SCALE_RESOLUTION_SCAN"|t, infoRefs.resolutions.dpis) }}
+    {% endif %}
+{% endif %}

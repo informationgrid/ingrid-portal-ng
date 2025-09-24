@@ -1,0 +1,14 @@
+{# Erstellungsmaßstab #}
+{% set header = [
+    "SEARCH_DETAIL.T011_OBJ_SERV_SCALE_SCALE"|t,
+    "SEARCH_DETAIL.T011_OBJ_SERV_SCALE_RESOLUTION_GROUND"|t,
+    "SEARCH_DETAIL.T011_OBJ_SERV_SCALE_RESOLUTION_SCAN"|t,
+] %}
+{% if infoRefs.resolutions.denominators or infoRefs.resolutions.meters or infoRefs.resolutions.dpis %}
+    {% set entries = [
+        infoRefs.resolutions.denominators,
+        infoRefs.resolutions.meters,
+        infoRefs.resolutions.dpis,
+    ] %}
+{% endif %}
+{{ hit_macros.render_table_list("SEARCH_DETAIL.T011_OBJ_SERV_SCALE"|t, header, entries) }}
