@@ -437,15 +437,15 @@ hit_search:
     - refering.object_reference.type
     - refering.object_reference.version
   source:
-      include:
-      exclude:
-        - content
-        - idf
+    include:
+    exclude:
+      - content
+      - idf
   query_string_operator: AND
   sort:
     enabled: false
     sortByDate: false
-    emptyQuerySortByDate: true
+    emptyQuerySortByDate: false
   expandable:
     enabled: true
   summary_replace_newline: ' '
