@@ -130,19 +130,7 @@
         <section help-key="search-results-3">
             <header>Räumliche Einschränkungen</header>
             <content>
-                <p>Sie können Ihr Suchergebnis räumlich einschränken, indem Sie entweder den Raum durch ein Suchrechteck in 
-				   einer Karte oder durch die Angabe eines Ortsnamens einschränken.</p>
-                <p>Anders als bei vielen anderen Suchmaschinen, erfolgt die räumliche Einschränkung also nicht über eine einfache Volltextsuche, 
-				   sondern über die gezielte Suche nach Raumbezügen, die den Suchergebnissen zugeordnet wurden.</p>
-				<p><b><u>Nach Ort suchen</u></b></p>
-				<p>Sie können Ihr Suchergebnis über Eingabe eines Ortsnamens und anderen geographischen Bezeichnungen einschränken. 
-				   Dabei werden Ihnen passende Einträge aus dem Geo-Thesaurus-Umwelt angeboten. 
-                   Klicken Sie hierfür auf die Schaltfläche <i><u>Nach Ort suchen</u></i>, geben Sie eine geographische Bezeichnung (z.B. einen Ortsnamen) 
-				   ein und klicken Sie anschließend auf <i><u>suchen</u></i>. Aktivieren Sie nun die passende Checkbox und klicken Sie auf <i><u>Auswahl anwenden</u></i> 
-				   um die räumliche Einschränkung für die Suchergebnisse zu übernehmen.</p>
-				<p><b><u>Auf Karte festlegen</u></b></p>   
-				<p>Hier können Sie ein Suchgebiet auf einer Karte festlegen, indem Sie mit Shift + gedrückter linker Maustaste ein Rechteck auf der Karte aufziehen. Klicken 
-				   Sie auf die Schaltfläche <i><u>Auswahl anwenden</u></i>, um die räumliche Einschränkung für die Suchergebnisse zu übernehmen.</p>
+                <p>Sie können Ihr Suchergebnis räumlich einschränken indem Sie im Kartenfeld des Abschnitts <i><u>In Kartenausschnitt suchen</u></i> mit Shift + gedrückter linker Maustaste ein Rechteck auf der Karte aufziehen oder mit Strg + Mausrad rein oder raus zoomen. Wählen Sie so den ungefähren gewünschten Ausschnitt und klicken Sie auf die Schaltfläche <i><u>Auswahl anwenden</u></i>, um die räumliche Einschränkung für die Suchergebnisse zu übernehmen.</p>
             </content>
         </section>
     </chapter>
