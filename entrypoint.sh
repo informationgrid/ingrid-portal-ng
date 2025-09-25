@@ -15,6 +15,7 @@ SERVICE_WAIT_TIMEOUT=${SERVICE_WAIT_TIMEOUT:-60}
 SERVICE_WAIT_INTERVAL=${SERVICE_WAIT_INTERVAL:-5}
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-1024M}
 PHP_MAX_EXECUTION_TIME=${PHP_MAX_EXECUTION_TIME:-300}
+PHP_FPM_PM_MAX_CHILDREN=${PHP_FPM_PM_MAX_CHILDREN:-10}
 
 #####################
 # PHP ini
@@ -22,6 +23,12 @@ PHP_MAX_EXECUTION_TIME=${PHP_MAX_EXECUTION_TIME:-300}
 PHP_INI_FILE="$PHP_INI_DIR"/php.ini
 sed -i "s/memory_limit = 128M/memory_limit = $PHP_MEMORY_LIMIT/" "$PHP_INI_FILE"
 sed -i "s/max_execution_time = 30/max_execution_time = $PHP_MAX_EXECUTION_TIME/" "$PHP_INI_FILE"
+
+#####################
+# PHP FPM
+#####################
+PHP_FPM_FILE=/usr/local/etc/php-fpm.d/www.conf
+sed -i "s/pm.max_children = 5/pm.max_children = $PHP_FPM_PM_MAX_CHILDREN/" "$PHP_FPM_FILE"
 
 # Function to wait for a service to be ready
 wait_for_codelist_repo() {
