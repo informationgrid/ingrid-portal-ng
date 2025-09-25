@@ -1,2 +1,4 @@
 {# Nutzungsbedingungen (useConstraints) #}
-{{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, useRefs.useConstraints.constraints|filter(v => not (v starts with '{')), useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
+{% if useRefs.useConstraints.constraints %}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, useRefs.useConstraints.constraints|filter(v => not (v starts with '{')), useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
+{% endif %}
