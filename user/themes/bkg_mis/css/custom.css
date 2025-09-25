@@ -355,7 +355,7 @@ header {
 .select2-container--default .select2-selection--single::after {
   color: #333333;
 }
-.control input:checked ~ .control__indicator {
+.control__indicator.checked {
   border: 1px solid #333333;
 }
 .button.pill {

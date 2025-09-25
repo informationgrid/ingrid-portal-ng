@@ -112,6 +112,13 @@
     box-shadow: 0 0 0 1px $dark-midnight;
   }
 }
+.input-checkbox:focus {
+  .control__indicator {
+    background: $white;
+    border: 1px solid $dark-midnight !important;
+    box-shadow: 0 0 0 1px $dark-midnight;
+  }
+}
 .map .control input:checked ~ .control__indicator {
   background: #303030;
 }

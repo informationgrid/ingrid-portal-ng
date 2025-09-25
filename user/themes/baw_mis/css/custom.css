@@ -1185,6 +1185,6 @@ footer .footer-buttons-bar .login-buttons .login-form {
     top: 34px !important;
 }
 
-.control input:checked ~ .control__indicator {
+.control__indicator.checked {
     border: 1px solid #012D47;
 }

@@ -10550,6 +10550,12 @@ div.description {
   box-shadow: 0 0 0 1px #203564;
 }
 
+.input-checkbox:focus .control__indicator {
+  background: #fff;
+  border: 1px solid #203564 !important;
+  box-shadow: 0 0 0 1px #203564;
+}
+
 .map .control input:checked ~ .control__indicator {
   background: #303030;
 }
@@ -11333,7 +11339,7 @@ ul#select2-location-results {
   }
   .search-filtered .accordion.accordion-filter-group .accordion-content.filter-wrapper {
     display: block !important;
-    padding: 8px;
+    padding: 0px;
     border: 2px solid #FFFFFF;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
