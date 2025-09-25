@@ -3434,7 +3434,7 @@ select[multiple] {
 
 .is-invalid-input:not(:focus) {
   border-color: #ca526a;
-  background-color: rgb(249.7, 237.7, 240.1);
+  background-color: #faeef0;
 }
 .is-invalid-input:not(:focus):-ms-input-placeholder {
   color: #ca526a !important;
@@ -4151,23 +4151,23 @@ a.button:hover, a.button:focus {
   margin-bottom: 0;
 }
 .callout.primary {
-  background-color: rgb(221.4188622754, 230.0452095808, 237.1311377246);
+  background-color: #dde6ed;
   color: #3A566D;
 }
 .callout.secondary {
-  background-color: rgb(220.8548780488, 243.3951219512, 237.8158536585);
+  background-color: #ddf3ee;
   color: #3A566D;
 }
 .callout.success {
-  background-color: rgb(231.813362069, 246.5521551724, 221.7478448276);
+  background-color: #e8f7de;
   color: #3A566D;
 }
 .callout.warning {
-  background-color: rgb(253.35, 239.1, 222.3);
+  background-color: #fdefde;
   color: #3A566D;
 }
 .callout.alert {
-  background-color: rgb(247.05, 229.05, 232.65);
+  background-color: #f7e5e9;
   color: #3A566D;
 }
 .callout.small {
@@ -5953,7 +5953,7 @@ a.button:hover, a.button:focus {
   outline: 0;
 }
 .slider-handle:hover {
-  background-color: rgb(49.3, 73.1, 92.65);
+  background-color: #31495d;
 }
 .slider-handle.is-dragging {
   transition: all 0s linear;
@@ -6166,12 +6166,12 @@ caption {
 }
 
 thead {
-  background: rgba(6.375, 6.375, 6.375, 0);
+  background: rgba(6, 6, 6, 0);
   color: #3A566D;
 }
 
 tfoot {
-  background: rgba(12.75, 12.75, 12.75, 0);
+  background: rgba(13, 13, 13, 0);
   color: #3A566D;
 }
 
@@ -6195,7 +6195,7 @@ tbody td {
 
 tbody tr:nth-child(even) {
   border-bottom: 0;
-  background-color: rgba(12.75, 12.75, 12.75, 0);
+  background-color: rgba(13, 13, 13, 0);
 }
 
 table.unstriped tbody {
@@ -6231,10 +6231,10 @@ table.scroll {
 }
 
 table.hover thead tr:hover {
-  background-color: rgba(1.275, 1.275, 1.275, 0);
+  background-color: rgba(1, 1, 1, 0);
 }
 table.hover tfoot tr:hover {
-  background-color: rgba(7.65, 7.65, 7.65, 0);
+  background-color: rgba(8, 8, 8, 0);
 }
 table.hover tbody tr:hover {
   background-color: rgba(0, 0, 0, 0);
@@ -10439,6 +10439,10 @@ div.description {
 }
 .form-element .control:focus-within {
   text-decoration: underline;
+}
+.form-element .control.toggle.toggle input:focus ~ .toggle-slider {
+  outline: 1px solid #203564 !important;
+  box-shadow: 0 0 0 1px #203564;
 }
 
 .control input {

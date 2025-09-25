@@ -17,6 +17,10 @@
     &:focus-within {
       text-decoration: underline;
     }
+    &.toggle.toggle input:focus ~ .toggle-slider {
+      outline: 1px solid $dark-midnight !important;
+      box-shadow: 0 0 0 1px $dark-midnight;
+    }
   }
 }
 .control input {

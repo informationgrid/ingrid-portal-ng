@@ -55,29 +55,6 @@
                                 <div id="{{ item.id }}-accordion" class="accordion-content {{ item.id }}" role="tabpanel"
                                     aria-labelledby="{{ item.id }}-accordion-label" {{ itemOpenContentAria|raw }}
                                     {{ itemOpenContentStyle|raw }} data-tab-content>
-
-                                    {% if item.toggle %}
-                                        {% set actionLink = page.find('/search').url ~ '?' %}
-                                        {% set queries = uri.query(null, true) %}
-                                        {% set queries = queries|merge({
-                                            (item.toggle.id) : item.toggle.active ? '' : item.id
-                                        }) %}
-                                        {% for key, param in queries %}
-                                            {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
-                                        {% endfor %}
-                                        <div class="form-element boxed toggle-group">
-                                            <label class="control toggle" title="{{ item.toggle.label.title|t }}">
-                                                <input type="checkbox" onclick="location.href='{{ actionLink }}'" name="{{ item.toggle.id }}"
-                                                   {% if item.toggle.active %}
-                                                        checked
-                                                   {% endif %}
-                                                >
-                                                <span class="toggle-slider round"></span>
-                                            </label>
-                                            <span class="toggle-label checked {% if item.toggle.active is not sameas(true) %}is-hidden{% endif %}">{{ item.toggle.label.on|t }}</span>
-                                            <span class="toggle-label unchecked {% if item.toggle.active %}is-hidden{% endif %}">{{ item.toggle.label.off|t }}</span>
-                                        </div>
-                                    {% endif %}
                                     {% if item.info %}
                                     <div class="form-element boxed">
                                         <div class="input-check caption" style="text-align:left;">
@@ -97,6 +74,28 @@
                                         {% include 'partials/search/filter/facet_timeref.html.twig' %}
                                     {% else %}
                                         <div class="boxes">
+                                            {% if item.toggle %}
+                                                {% set actionLink = page.find('/search').url ~ '?' %}
+                                                {% set queries = uri.query(null, true) %}
+                                                {% set queries = queries|merge({
+                                                    (item.toggle.id) : item.toggle.active ? '' : item.id
+                                                }) %}
+                                                {% for key, param in queries %}
+                                                    {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                                                {% endfor %}
+                                                <div class="form-element boxed toggle-group">
+                                                    <label class="control toggle" title="{{ item.toggle.label.title|t }}">
+                                                        <input type="checkbox" onclick="location.href='{{ actionLink }}'" name="{{ item.toggle.id }}"
+                                                                {% if item.toggle.active %}
+                                                                    checked
+                                                                {% endif %}
+                                                        >
+                                                        <span class="toggle-slider round"></span>
+                                                    </label>
+                                                    <span class="toggle-label checked {% if item.toggle.active is not sameas(true) %}is-hidden{% endif %}">{{ item.toggle.label.on|t }}</span>
+                                                    <span class="toggle-label unchecked {% if item.toggle.active %}is-hidden{% endif %}">{{ item.toggle.label.off|t }}</span>
+                                                </div>
+                                            {% endif %}
                                             {% set itemsSelectedFacets = [] %}
                                             {% if selected_facets is not empty %}
                                                 {% set itemsSelectedFacets = selected_facets[item.id]|split(FACET_ENTRIES_SEPARATOR) %}
