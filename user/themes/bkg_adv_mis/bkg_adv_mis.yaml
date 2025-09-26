@@ -183,11 +183,22 @@ home:
             "parent": "adv",
             "query": {
               "filter": {
-                "term": {
-                  "t04_search.searchterm": "advmis"
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "t04_search.searchterm": "AdVMIS"
+                      }
+                    },
+                    {
+                      "term": {
+                        "t04_search.searchterm": "AdV"
+                      }
+                    }
+                  ]
                 }
               }
-            },
+            }
           }
         }
       },
