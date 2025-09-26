@@ -171,27 +171,16 @@ home:
             "parent": "hvd",
             "query": {
               "filter": {
-                "bool": {
-                  "should": [
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendata"
-                      }
-                    },
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendataident"
-                      }
-                    }
-                  ]
+                "term": {
+                  "is_hvd": "true"
                 }
               }
             }
           },
           "adv_true": {
             "label": "AdV-Produkt",
-            "display_on_empty": true,
             "icon": "images/adv.jpg",
+            "parent": "adv",
             "query": {
               "filter": {
                 "term": {
