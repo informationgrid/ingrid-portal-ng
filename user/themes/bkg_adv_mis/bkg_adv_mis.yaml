@@ -176,32 +176,9 @@ home:
                 }
               }
             }
-          },
-          "adv_true": {
-            "label": "AdV-Produkt",
-            "icon": "images/adv.jpg",
-            "parent": "adv",
-            "query": {
-              "filter": {
-                "bool": {
-                  "should": [
-                    {
-                      "term": {
-                        "t04_search.searchterm": "AdVMIS"
-                      }
-                    },
-                    {
-                      "term": {
-                        "t04_search.searchterm": "AdV"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
           }
         }
-      },
+      }
     ]
     add_to_search:
       - '-datatype:address'
