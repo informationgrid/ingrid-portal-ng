@@ -767,7 +767,7 @@ hit_detail:
   display_use_constraints_json: true
   link_sort_asc: true
 map:
-  url:
+  url: /ingrid-webmap-client/frontend/prd
   leaflet:
     epsg: '3857'
     bg:
