@@ -1,0 +1,13 @@
+<div class="subpage-wrapper" style="background-image: url('{{ url('theme://images/template/drops-subpage.svg') }}');">
+    <div class="row align-center">
+        <div class="large-20 columns dark">
+            <h1>
+                {% if page.header.custom_title.content %}
+                    {{ page.header.custom_title.content|t(header_title_extend) }}
+                {% else %}
+                    {{ page.header.custom_title.html|t(header_title_extend) }}
+                {% endif %}
+            </h1>
+        </div>
+    </div>
+</div>
