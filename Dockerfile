@@ -9,7 +9,7 @@ ENV PHP_APCU_VERSION=v5.1.23
 # renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
 ENV PHP_YAML_VERSION=2.2.5
 
-ENV YQ_VERSION=v4.45.1
+ENV YQ_VERSION=v4.47.2
 ENV INGRID_GRAV_PLUGIN_BRANCH=develop
 ENV INGRID_GRAV_PLUGIN_UTILS_BRANCH=develop
 
