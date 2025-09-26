@@ -163,7 +163,7 @@ home:
             },
           },
           "opendata_hvd": {
-            "label": "Open Data und HVD",
+            "label": "Open Data / HVD",
             "display_on_empty": true,
             "icon": "ic-opendata",
             "query": {
