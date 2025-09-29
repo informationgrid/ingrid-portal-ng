@@ -101,7 +101,7 @@ a.icon:hover {
   background-color: #0A4E5A;
 }
 .input-search .input-search-field {
-  border: 0;
+  border: 3px solid #0A4E5A;
 }
 header {
   -webkit-border-image: -webkit-linear-gradient(to left, #0A4E5A, #00A8B8) 0 1 100%;
@@ -420,8 +420,9 @@ footer .footer-top-link:focus {
 .select2-container--default .select2-selection--single::after {
   color: #0089C6;
 }
-.form-element .control {
-  color: #00A8B8;
+.form-element .control,
+.nav-group .accordion-content a {
+  color: #0A4E5A;
 }
 .accordion-content {
   color: #0089C6;
