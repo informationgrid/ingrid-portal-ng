@@ -148,7 +148,7 @@ home:
             "display_on_empty": true,
             "query": {
               "filter": {
-                "term": {
+                "match": {
                   "t011_obj_serv_version.version_value": "OGC:WFS"
                 }
               }
@@ -160,7 +160,7 @@ home:
             "display_on_empty": true,
             "query": {
               "filter": {
-                "term": {
+                "match": {
                   "t011_obj_serv_version.version_value": "OGC:WMS"
                 }
               }
@@ -219,13 +219,13 @@ home:
                 "bool": {
                   "should": [
                     {
-                      "term": {
-                        "t017_url_ref.url_link": "*udo.lubw.baden-wuerttemberg.de*"
+                      "wildcard": {
+                        "t017_url_ref.url_link": "*udo.*"
                       }
                     },
                     {
-                      "term": {
-                        "t017_url_ref.url_link": "*umweltdaten.lubw.baden-wuerttemberg.de*"
+                      "wildcard": {
+                        "t017_url_ref.url_link": "*umweltdaten.*"
                       }
                     }
                   ]
@@ -271,7 +271,7 @@ hit_search:
           "label": "Downloaddienst WFS",
           "query": {
             "filter": {
-              "term": {
+              "match": {
                 "t011_obj_serv_version.version_value": "OGC:WFS"
               }
             }
@@ -281,8 +281,8 @@ hit_search:
           "label": "Downloaddienst ATOM-Feed",
           "query": {
             "filter": {
-              "term": {
-                "t011_obj_serv_version.version_value": "*ATOM*"
+              "match": {
+                "t011_obj_serv_version.version_value": "ATOM"
               }
             }
           }
@@ -292,7 +292,7 @@ hit_search:
           "display_on_empty": true,
           "query": {
             "filter": {
-              "term": {
+              "match": {
                 "t011_obj_serv_version.version_value": "OGC:WMS"
               }
             }
@@ -303,7 +303,7 @@ hit_search:
           "display_on_empty": true,
           "query": {
             "filter": {
-              "term": {
+              "match": {
                 "t011_obj_serv_version.version_value": "OGC:WMTS"
               }
             }
@@ -367,13 +367,13 @@ hit_search:
               "bool": {
                 "should": [
                   {
-                    "term": {
-                      "t017_url_ref.url_link": "udo.lubw.baden-wuerttemberg.de"
+                    "wildcard": {
+                      "t017_url_ref.url_link": "*udo.*"
                     }
                   },
                   {
-                    "term": {
-                      "t017_url_ref.url_link": "umweltdaten.lubw.baden-wuerttemberg.de"
+                    "wildcard": {
+                      "t017_url_ref.url_link": "*umweltdaten.*"
                     }
                   }
                 ]
