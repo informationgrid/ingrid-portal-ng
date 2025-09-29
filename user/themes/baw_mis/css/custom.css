@@ -191,7 +191,7 @@ header {
 
 .accordion-title {
   color: #ffffff;
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   background-color: #00A8B8;
   transition: background-color 0.2s ease-out, color 0.2s ease-out;
 }
@@ -441,13 +441,13 @@ footer .footer-top-link:focus {
 .catalog a.icon {
   display: block;
   padding: 10px 0;
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   margin: 0 24px 0 10px;
 }
 .catalog span.icon {
   display: block;
   padding: 10px 0;
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   margin: 0 24px 0 6px;
 }
 .catalog span.icon [class^="ic-"] {
@@ -495,7 +495,7 @@ footer .footer-top-link:focus {
   border-top: 1px solid #C6CFE2;
 }
 .catalog a.icon span.text {
-  font-family: 'Flexo-Regular', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 .dropmenu__box {
   position: relative;
@@ -764,19 +764,19 @@ header .menu-tab-row .menu-tab {
 
 /* general */
 body {
-  font-family: 'Flexo-Regular', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 b {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
 }
 .button {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
 }
 .ic-ic-asterisc:before {
   content: "";
 }
 h1, h2, h3, h4, h5, h6{
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   color: #0A4E5A !important;
 }
 .row.alert .success {
@@ -827,18 +827,18 @@ h1, h2, h3, h4, h5, h6{
 }
 /* search details page */
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-  font-family: 'Flexo-Medium', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 .accordion-title.js-anchor-target.is-active {
   transition: background-color 0.2s ease-out, color 0.2s ease-out;
   background-color: #00A8B8 !important;;
 }
 .helper {
-  font-family: 'Flexo-Medium', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 /* search page */
 .filter-group .accordion-item .accordion-title[role="tab"]{
-  font-family: 'Flexo-Medium', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
   transition: background-color 0.2s ease-out, color 0.2s ease-out;
   color: #FFFFFF;
   margin-bottom: 5px;
@@ -877,7 +877,7 @@ h1, h2, h3, h4, h5, h6{
   padding-left: 1.2rem;
 }
 .form-element .control {
-  font-family: 'Flexo-Regular', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 .form-element .input-check {
   padding-left: 10px;
@@ -908,13 +908,13 @@ h1, h2, h3, h4, h5, h6{
     margin: 0;
   }
   .search.similar .row .columns .nested-group .accordion-item .accordion-title {
-    font-family: Flexo-Bold, sans-serif !important;
+    font-family: BundesSansWeb-Bold, sans-serif !important;
     padding: 20px 24px 20px 24px !important;
     border-radius: 0 !important;
     background-image: linear-gradient(to right, #E2EFFC, #BDD5ED);
   }
   .accordion-content.similar-accordion .accordion.nested-group-sub .accordion-item .accordion-title.icon{
-    font-family: Flexo-Regular, sans-serif !important;
+    font-family: BundesSansWeb-Regular, sans-serif !important;
     background-image: none;
     padding: 12px 12px 12px 20px !important;
     border-radius: 5px !important;
@@ -926,7 +926,7 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 0 0 5px 5px;
   }
   .accordion-title.accordion-title-filter-group {
-    font-family: 'Flexo-Bold', sans-serif !important;
+    font-family: 'BundesSansWeb-Bold', sans-serif !important;
   }
 }
 .columns.text-center .button {
@@ -936,7 +936,7 @@ h1, h2, h3, h4, h5, h6{
   top: 55%;
 }
 .search.similar .row .columns .nested-group .accordion-item .accordion-title {
-  font-family: Flexo-Regular, sans-serif;
+  font-family: BundesSansWeb-Regular, sans-serif;
   text-transform: uppercase;
   border-radius: 5px;
   font-size: 16px;
@@ -980,12 +980,12 @@ h1, h2, h3, h4, h5, h6{
   left: calc(50% - 25px);
 }
 .teaser .teaser-link {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   font-size: 16px;
   padding: 145px 8px 0;
 }
 .teaser .teaser-link .teaser-number {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   color: #FFFFFFFF;
   background-color: #00A8B8;
 }
@@ -1009,56 +1009,56 @@ h1, h2, h3, h4, h5, h6{
 }
 /* top menu */
 .menu-tab-row .menu-tab {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   font-size: 18px;
 }
 /* side menu */
 .menu-main-links a.header-menu-entry {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
   font-size: 20px;
 }
 .menu-main-links a {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
 }
 .menu-sub-links a {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
 }
 .menu-sub-links .button.logout {
-  font-family: 'Flexo-Bold', sans-serif;
+  font-family: 'BundesSansWeb-Bold', sans-serif;
 }
 [type='text'], [type='password'] {
   box-shadow: none;
-  font-family: 'Flexo-Regular', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 /* footer */
 a.icon {
-  font-family: 'Flexo-Medium', sans-serif !important;
+  font-family: 'BundesSansWeb-Regular', sans-serif !important;
 }
 /* contact form */
 .form-element label {
-  font-family: 'Flexo-Regular', sans-serif;
+  font-family: 'BundesSansWeb-Regular', sans-serif;
 }
 /* fonts */
 @font-face {
-  font-family: 'Flexo-Bold';
-  src: url('../fonts/Flexo/Flexo-Bold.eot');
-  src: url('../fonts/Flexo/Flexo-Bold.eot?#iefix') format("embedded-opentype"),
-       url('../fonts/Flexo/Flexo-Bold.woff') format("woff"),
-       url('../fonts/Flexo/Flexo-Bold.ttf')  format('truetype');
+  font-family: 'BundesSansWeb-Bold';
+  src: url('../fonts/BundesSansWeb/BundesSansWeb-Bold.eot');
+  src: url('../fonts/BundesSansWeb/BundesSansWeb-Bold.eot?#iefix') format("embedded-opentype"),
+       url('../fonts/BundesSansWeb/BundesSansWeb-Bold.woff') format("woff"),
+       url('../fonts/BundesSansWeb/BundesSansWeb-Bold.ttf')  format('truetype');
 }
 @font-face {
-  font-family: 'Flexo-Regular';
-  src: url('../fonts/Flexo/Flexo-Regular.eot');
-  src: url('../fonts/Flexo/Flexo-Regular.eot?#iefix') format("embedded-opentype"),
-       url('../fonts/Flexo/Flexo-Regular.woff') format("woff"),
-       url('../fonts/Flexo/Flexo-Regular.ttf')  format('truetype');
+  font-family: 'BundesSansWeb-Regular';
+  src: url('../fonts/BundesSansWeb/BundesSansWeb-Regular.eot');
+  src: url('../fonts/BundesSansWeb/BundesSansWeb-Regular.eot?#iefix') format("embedded-opentype"),
+       url('../fonts/BundesSansWeb/BundesSansWeb-Regular.woff') format("woff"),
+       url('../fonts/BundesSansWeb/BundesSansWeb-Regular.ttf')  format('truetype');
 }
 @font-face {
-  font-family: 'Flexo-Medium';
-  src: url('../fonts/Flexo/Flexo-Medium.eot');
-  src: url('../fonts/Flexo/Flexo-Medium.eot?#iefix') format("embedded-opentype"),
-       url('../fonts/Flexo/Flexo-Medium.woff') format("woff"),
-       url('../fonts/Flexo/Flexo-Medium.ttf')  format('truetype');
+  font-family: 'BundesSansWeb-Regular';
+  src: url('../fonts/BundesSansWeb/BundesSansWeb-Regular.eot');
+  src: url('../fonts/BundesSansWeb/BundesSansWeb-Regular.eot?#iefix') format("embedded-opentype"),
+       url('../fonts/BundesSansWeb/BundesSansWeb-Regular.woff') format("woff"),
+       url('../fonts/BundesSansWeb/BundesSansWeb-Regular.ttf')  format('truetype');
 }
 
 
