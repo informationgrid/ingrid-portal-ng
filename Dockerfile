@@ -21,7 +21,6 @@ RUN groupadd --system foo; \
     useradd --no-log-init --system --gid foo --create-home foo; \
     \
     apt update; \
-    apt upgrade -y; \
     apt install -y --no-install-recommends \
         git \
         unzip \
