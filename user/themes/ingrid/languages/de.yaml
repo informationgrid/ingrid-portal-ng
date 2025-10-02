@@ -869,8 +869,6 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Beschreibung
     IDENTIFIER: Identifikator
-    LFU_GEO_DATALINK: URI des Datenbestandes
-    LFU_INTERNAL_NOTES: Interne Bemerkungen
 
 SITEMAP:
     AREA_MAIN: Hauptbereich

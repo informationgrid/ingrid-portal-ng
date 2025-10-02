@@ -596,8 +596,11 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_label_text_row (title, text, css, expandable) %}
+{% macro render_label_text_row (title, text, convertText, css, expandable) %}
     {% if text %}
+        {% if convertText is null %}
+            {% set convertText = convertText|default(true) %}
+        {% endif %}
         <div class="table table--lined">
             <table>
                 <tr>
@@ -609,7 +612,13 @@
                             <div class="js-expand-box js-expand-text js-non-expand-text">
                                 <div class="js-expand-text-content">
                         {% endif %}
-                        <p {% if css %}class="{{ css }}"{% endif %}>{{ convertUrlInText(removeHashLocale(text))|raw }}</p>
+                        <p {% if css %}class="{{ css }}"{% endif %}>
+                            {% if convertText %}
+                                {{ convertUrlInText(removeHashLocale(text))|raw }}
+                            {% else %}
+                                {{ text }}
+                            {% endif %}
+                        </p>
                         {% if expandable %}
                                 </div>
                                 <div class="desc-fade"></div>
@@ -1042,7 +1051,9 @@
         {% for entry in entries if not break %}
             {% set num = loop.index %}
             <div class="list-item">
-                {% if entry.uuid or entry.cswUrl %}
+                {% if isFacts %}
+                    <div class="no-image">
+                {% elseif entry.uuid or entry.cswUrl %}
                     <div class="image">
                 {% else %}
                     <div {%if isDownload %}class="download"{% endif %}>

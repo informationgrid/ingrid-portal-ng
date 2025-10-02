@@ -14,7 +14,7 @@
         "SEARCH_DETAIL.T011_OBJ_GEO_VECTOR_GEOMETRIC_OBJECT_TYPE"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_VECTOR_GEOMETRIC_OBJECT_COUNT"|t,
     ] %}
-    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_VECTOR"|t, header, infoRefs.vectors, [0]) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_VECTOR"|t, header, infoRefs.vectors) }}
 {# Erstellungsmaßstab #}
     {% include 'partials/detail/metadata/parts/information/information_type_1_resolutions.html.twig' ignore missing %}
 {# Systemumgebung #}

@@ -287,6 +287,16 @@ hit_search:
     {
       "id": "type",
       "facets": {
+        "metadata": {
+          "display_sort_hits_on_selection": true,
+          "query": {
+            "filter": {
+              "term": {
+                "datatype": "metadata"
+              }
+            }
+          }
+        },
         "inspire": {
           "query": {
             "filter": {
@@ -325,41 +335,11 @@ hit_search:
             }
           }
         },
-        "adv": {
-          "query": {
-            "filter": {
-              "bool": {
-                "should": [
-                  {
-                    "term": {
-                      "t04_search.searchterm": "AdVMIS"
-                    }
-                  },
-                  {
-                    "term": {
-                      "t04_search.searchterm": "AdV"
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        },
         "maps": {
           "query": {
             "filter": {
               "wildcard": {
                 "capabilities_url": "http*"
-              }
-            }
-          }
-        },
-        "metadata": {
-          "display_sort_hits_on_selection": true,
-          "query": {
-            "filter": {
-              "term": {
-                "datatype": "metadata"
               }
             }
           }
@@ -496,6 +476,10 @@ hit_search:
       }
     },
     {
+      "id": "timeref",
+      "filter": "{\"range\": {\"t01_object.time_from\": {\"gte\": \"%s0*\", \"lte\": \"%s9*\"}}}"
+    },
+    {
       "id": "bbox",
       "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
     }
@@ -541,7 +525,7 @@ hit_search:
   expandable:
     enabled: true
   summary_replace_newline: '<br>'
-  summary_lines_limit: 5
+  summary_lines_limit: 2
   links_max: 5
   csw_enabled: true
   rdf_enabled: false

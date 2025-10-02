@@ -2,7 +2,7 @@
     <div class="sub-section">
         {# Geodatenlink #}
         {% if hit.geodataLink %}
-            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.GEO_DATALINK"|t, hit.geodataLink) }}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.GEO_DATALINK"|t, hit.geodataLink, false) }}
         {% endif %}
         {# Interne Bemerkungen #}
         {% if hit.internalNotes %}
