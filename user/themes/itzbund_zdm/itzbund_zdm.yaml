@@ -6,7 +6,7 @@ footer:
   url: 'https://www.kuestendaten.de/{PORTAL}/DE/_seitenrahmen/footer'
 hit_detail:
   summary_replace_newline: ' '
-  reference_system_link: 'https://epsg.io/'
+  reference_system_link: 'https://spatialreference.org/ref/epsg/'
   reference_system_link_replace: 'urn:ogc:def:crs:'
   csw_enabled: true
   rdf_enabled: false
