@@ -111,7 +111,7 @@
                                                         <div class="form-element boxed">
                                                             <div class="input-check">
                                                                 {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
-                                                                <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
                                                                     <div class="control-group">
                                                                         <div class="control control--{{ inputType }}">
                                                                             <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
@@ -148,7 +148,7 @@
                                                             {% if facet_label %}
                                                                 <div class="form-element boxed">
                                                                     <div class="input-check">
-                                                                        <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                        <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
                                                                             <div class="control-group">
                                                                                 <div class="control control--{{ inputType }}">
                                                                                     <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
@@ -192,7 +192,7 @@
                                                             {% if facet_label %}
                                                                 <div class="form-element boxed">
                                                                     <div class="input-check">
-                                                                        <a id="facet-{{ facetId }}" href="{{ base_url }}{{ bucket.actionLink }}" class="input-checkbox">
+                                                                        <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
                                                                             <div class="control-group">
                                                                                 <div class="control control--{{ inputType }}">
                                                                                     <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
