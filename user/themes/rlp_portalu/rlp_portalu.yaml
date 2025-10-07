@@ -321,7 +321,7 @@ hit_search:
     },
     {
       "id": "bbox",
-      "filter": "{\"range\": {\"x1\": {\"gte\": %f}}}, {\"range\": {\"y1\": {\"gte\": %f}}}, {\"range\": {\"x2\": {\"lte\": %f}}}, {\"range\": {\"y2\": {\"lte\": %f}}}"
+      "filter": "{\"nested\":{\"path\":\"spatial\",\"query\": {\"geo_bounding_box\":{\"spatial.geometries\":{\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}}}}"
     }
   ]
   add_to_search:
