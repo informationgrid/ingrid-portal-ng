@@ -14,7 +14,7 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Configure and install PHP extensions
 RUN docker-php-ext-configure gd --with-jpeg
-RUN docker-php-ext-install zip gd xsl xml dom
+RUN docker-php-ext-install zip gd xsl xml dom intl
 
 WORKDIR /var/www
 RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \

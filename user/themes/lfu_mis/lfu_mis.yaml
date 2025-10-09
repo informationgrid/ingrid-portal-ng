@@ -413,10 +413,6 @@ hit_search:
     },
     {
       "id": "modtime",
-      "display_depend_on": {
-        "type": "metadata",
-        "metadata_group": "",
-      },
       "facets": {
         "last_month": {
           "query": {
