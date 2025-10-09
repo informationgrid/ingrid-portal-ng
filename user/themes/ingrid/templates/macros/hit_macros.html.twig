@@ -50,13 +50,7 @@
     <div class="info--right {% if isTeaser %}teaser-info{% endif %}{% if isMobile %} show-for-xsmall-only{% else %} hide-for-xsmall-only{% endif %}">
         {% for type in types %}
             {% if type %}
-                {% set typeText = "COMMON.SERVICE_TYPE_" ~ type|upper %}
-                {% set transText = typeText|t %}
-                {% if transText == typeText %}
-                    <span>{{ type }}</span>
-                {% else %}
-                    <span>{{ transText }}</span>
-                {% endif %}
+                <span>{{ type }}</span>
             {% endif %}
         {% endfor %}
     </div>
@@ -1060,9 +1054,9 @@
                 {% endif %}
                 <div class="info--right">
                 {% if entry.applicationProfile %}
-                    {% set infoText = "COMMON.SERVICE_TYPE_" ~ entry.applicationProfile|upper %}
+                    {% set infoText = entry.applicationProfile %}
                     {% if infoText|t == infoText %}
-                        <span>{{ getMimeByContentType(entry.applicationProfile)|upper }}</span>
+                        <span>{{ getMimeByContentType(entry.applicationProfile) }}</span>
                     {% else %}
                         <span>{{ infoText|t }}</span>
                     {% endif %}
