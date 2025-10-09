@@ -225,7 +225,7 @@ if [ ! -f "$THEME_CONFIG_YAML" ]; then
   if [ ! -d "$THEMES_CONFIG_FOLDER" ]; then
     mkdir "$THEMES_CONFIG_FOLDER"
   fi
-  cp /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/"$THEME".yaml "$THEME_CONFIG_YAML"
+  # cp /var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/"$THEME".yaml "$THEME_CONFIG_YAML"
 fi
 
 #####################
