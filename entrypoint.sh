@@ -215,6 +215,10 @@ if [ "$ENABLE_FOOTER_BANNER" ]; then
   yq -i '.footer.banner.enabled = env(ENABLE_FOOTER_BANNER)' "$INGRID_GRAV_THEME_YAML"
 fi
 
+if [ "$TEXT_FOOTER_BANNER" ]; then
+  yq -i '.footer.banner.text = env(TEXT_FOOTER_BANNER)' "$INGRID_GRAV_THEME_YAML"
+fi
+
 #####################
 # Default admin config
 #####################
