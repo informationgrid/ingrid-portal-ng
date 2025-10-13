@@ -1153,11 +1153,12 @@
                 {% if entry.linkInfo %}
                     <small class="text">{{ entry.linkInfo }}</small>
                 {% endif %}
+                {% set map = theme_var('map') %}
                 {% if entry.extMapUrl %}
                     <a target="_blank" class="button outline pill" href="{{ entry.extMapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
                         {{ "COMMON.RESULT_SHOWMAP"|t }}
                     </a>
-                {% elseif entry.mapUrl %}
+                {% elseif entry.mapUrl and map.url %}
                     <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ '?layers=' ~ entry.mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
                         {{ "COMMON.RESULT_SHOWMAP"|t }}
                     </a>

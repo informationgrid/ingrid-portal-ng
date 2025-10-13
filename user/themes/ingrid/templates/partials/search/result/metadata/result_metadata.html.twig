@@ -20,10 +20,7 @@
         {% if partner_logo %}
            {{ hit_macros.render_hit_logo(hit.partners) }}
         {% endif %}
-        {% if hit.type is not empty %}
-            {% include 'partials/search/result/metadata/parts/metadata_type.html.twig' with {hit:hit} %}
-        {% endif %}
-        {% include 'partials/search/result/metadata/parts/metadata_search_terms.html.twig' with {hit:hit} %}
+        {% include 'partials/search/result/metadata/parts/metadata_banner.html.twig' with {hit:hit} %}
         <a href="{{ detailLink }}" title="{{ hit.title }}">
             <h2 class="header">{{ hit.title }}</h2>
         </a>

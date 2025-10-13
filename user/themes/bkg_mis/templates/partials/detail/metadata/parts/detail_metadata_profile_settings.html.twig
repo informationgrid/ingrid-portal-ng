@@ -1,5 +1,3 @@
-{% set infoRefs_additional = removeKey(infoRefs_additional, "conformity") %}
-{% set dataQualityRefs = addKeyValue(dataQualityRefs, "conformity", hit.conformity) %}
 {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt) %}
 {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

@@ -24,6 +24,7 @@ SEARCH_DETAIL:
     T01_OBJECT_MOD_TIME: Datum
     TIME_REFERENCE: Zeitbezug
     TIME_REFERENCE_CONTENT: Zeitbezug der Daten
+    TIME_REFERENCE_CONTENT_ENTRY: Zeitbezug der Daten
     TIME_REFERENCE_RECORD: Zeitbezug
     TECHNICAL_INFORMATION: Informationen zur Geodatenressource
     TECHNICAL_INFORMATION_3: Informationen zur Geodatenressource

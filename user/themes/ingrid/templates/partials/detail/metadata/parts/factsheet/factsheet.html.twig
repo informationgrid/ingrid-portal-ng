@@ -9,9 +9,9 @@
         <div class="xsmall-24 small-24{% if hasFactPreview or hasFactMap %} medium-14 large-14 xlarge-14{% endif %} columns">
         {# Durch die Ressource abgedeckte Zeitspanne #}
             {% if class == 1 or class == 3 or class == 5 or class == 6 %}
-                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
+                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT_ENTRY"|t %}
             {% else %}
-                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE"|t %}
+                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_ENTRY"|t %}
             {% endif %}
             {% set toIndeterminate = "" %}
             {% if timeRefs.timeFromType and timeRefs.timeFromType == "now" %}

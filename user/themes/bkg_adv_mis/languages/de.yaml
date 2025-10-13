@@ -5,7 +5,7 @@ PAGES:
     ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
 
 COMMON:
-    TIME_TYPE: Zeitbezug der Daten
+    TIME_TYPE: Zeitliche Ausdehnung
     TIME_UNTIL: '-'
 
 CONTACT:
@@ -22,6 +22,7 @@ SEARCH_RESULT:
 
 SEARCH_DETAIL:
     T011_OBJ_GEO_SPECIAL_BASE: Zusammenfassung der Herkunftsangaben
+    TIME_REFERENCE_CONTENT_ENTRY: Zeitliche Ausdehnung
     TIME_REFERENCE_RECORD: Status und Aktualität
 
 CATEGORIES:

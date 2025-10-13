@@ -320,7 +320,9 @@ SEARCH_DETAIL:
     SUBJECT_REFERENCE: Thematic Reference
     SPACIAL_REFERENCE: Spatial Reference
     TIME_REFERENCE: Temporal Reference
+    TIME_REFERENCE_ENTRY: Temporal Reference
     TIME_REFERENCE_CONTENT: Temporal Reference of Content
+    TIME_REFERENCE_CONTENT_ENTRY: Temporal Reference of Content
     TIME_REFERENCE_RECORD: Temporal Reference of Record
     AVAILABILITY: Availability
     DATA_FORMAT: Data Format
