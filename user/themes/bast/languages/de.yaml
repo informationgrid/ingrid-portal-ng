@@ -23,10 +23,6 @@ CATEGORIES:
     TITLE: Recherchieren nach Kategorien
 
 SEARCH_DETAIL:
-    T01_OBJECT_POLYGON_WKT: Begrenzungspolygon im WKT Format (in WGS84)
-    T011_OBJ_SERV_ENVIRONMENT: Produktionsumgebung
-    TECHNICAL_INFORMATION_3: Informationen zum Dienst
-    TECHNICAL_INFORMATION_6: Informationen zur Anwendung
     T011_OBJ_DATA_DESCRIPTION: Bemerkungen
 
 FACETS:

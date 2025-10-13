@@ -1,0 +1,16 @@
+{% if isOpendata and class == 1 %}
+    <div class="helper icon">
+        <span class="ic-ic-karte" title="Open Data"></span>
+        <span class="text">Open Data</span>
+    </div>
+    {{ hit_macros.render_hit_searchterm (isInspire, false, hit.hasAccessConstraint, false) }}
+    {% if hit.isHVD %}
+        <div class="helper icon info">
+            <span class="ic-ic-opendata" title="HVD"></span>
+            <span class="text">HVD</span>
+        </div>
+    {% endif %}
+{% else %}
+    {% include 'partials/detail/metadata/parts/banner/banner_class.html.twig' %}
+    {% include 'partials/detail/metadata/parts/banner/banner_search_terms.html.twig' %}
+{% endif %}

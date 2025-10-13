@@ -1,0 +1,18 @@
+{% if hit.isOpendata and hit.type == 1 %}
+    <div class="helper icon">
+        <span class="ic-ic-karte" title="Open Data"></span>
+        <span class="text">Open Data</span>
+    </div>
+    {{ hit_macros.render_hit_searchterm (hit.isInspire, false, hasAccessConstraint, false) }}
+    {% if isHVD %}
+        <div class="helper icon info">
+            <span class="ic-ic-opendata" title="HVD"></span>
+            <span class="text">HVD</span>
+        </div>
+    {% endif %}
+{% else %}
+    {% if hit.type is not empty %}
+        {% include 'partials/search/result/metadata/parts/metadata_type.html.twig' with {hit:hit} %}
+    {% endif %}
+    {% include 'partials/search/result/metadata/parts/metadata_search_terms.html.twig' with {hit:hit} %}
+{% endif %}

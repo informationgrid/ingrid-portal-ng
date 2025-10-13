@@ -1,0 +1,4 @@
+{% if hit.type is not empty %}
+    {% include 'partials/search/result/metadata/parts/metadata_type.html.twig' with {hit:hit} %}
+{% endif %}
+{% include 'partials/search/result/metadata/parts/metadata_search_terms.html.twig' with {hit:hit} %}
