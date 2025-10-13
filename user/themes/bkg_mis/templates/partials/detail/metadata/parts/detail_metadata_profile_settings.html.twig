@@ -1,3 +1,26 @@
 {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt) %}
 {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
+
+{% if useRefs.useConstraints.constraints %}
+    {% set tmpConstraints = useRefs.useConstraints.constraints|filter(v => not (v starts with '{')) %}
+    {% if tmpConstraints is empty %}
+        {% for constraints in useRefs.useConstraints.constraints %}
+            {% set entryToJson = constraints|json_decode() %}
+            {% if entryToJson.name is not empty %}
+                {% set constrName = entryToJson.name %}
+                {% if constrName not in tmpConstraints %}
+                    {% set tmpConstraints = tmpConstraints|merge({(loop.index0): constrName}) %}
+                {% endif %}
+            {% endif %}
+            {% if entryToJson.quelle is not empty %}
+                {% set constrSource = entryToJson.quelle %}
+                {% if constrSource not in tmpConstraints %}
+                    {% set tmpConstraints = tmpConstraints|merge({(loop.index0): constrSource}) %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% set useRefs = addKeyValue(useRefs, "useConstraints", { "constraints": tmpConstraints }) %}
+{% endif %}
+
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}
