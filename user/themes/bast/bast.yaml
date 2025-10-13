@@ -72,7 +72,6 @@ menu:
     -
       path: /help
       highlighted: false
-      target_blank: true
     -
       path: /contact
       highlighted: false
@@ -82,38 +81,30 @@ menu:
     -
       path: /imprint
       highlighted: false
-      target_blank: true
     -
       path: /privacy
       highlighted: false
-      target_blank: true
     -
       path: /accessibility
       highlighted: false
-      target_blank: true
     -
       path: /problem
       highlighted: false
   footer:
     -
       path: /help
-      target_blank: true
     -
       path: /contact
     -
       path: /sitemap
     -
       path: /imprint
-      target_blank: true
     -
       path: /privacy
-      target_blank: true
     -
       path: /accessibility
-      target_blank: true
     -
       path: /problem
-      highlighted: false
 home:
   sort_modules:
     -
