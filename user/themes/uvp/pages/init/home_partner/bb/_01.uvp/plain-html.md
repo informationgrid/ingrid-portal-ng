@@ -3,11 +3,11 @@ title: UVP
 ---
 <div class="teaser-data search">
     <div class="data">
-        <a href="" title="Zum UVP-Portal">
+        <a href="/" title="Zum UVP-Portal">
             <h2 class="header">Umweltverträglichkeitsprüfungen</h2>
         </a>
         <div class="img">
-            <a href="">
+            <a href="/" title="Zum UVP-Portal">
                 <img class="link-img" src="user/themes/uvp/images/partner-page/bb/images/uvp.jpg" alt="uvp.jpg">
             </a>
             <div class="helper text">
@@ -23,7 +23,7 @@ title: UVP
         <p>
             Bei darüber hinausgehenden Fragen und Hinweisen wenden Sie sich an <a href="mailto:uvp-portal@mluk.brandenburg.de">uvp-portal@mluk.brandenburg.de</a>.
         </p>
-        <a href="" title="Zum UVP-Portal">
+        <a href="/" title="Zum UVP-Portal">
             <span class="ic-ic-arrow arrow"></span>
         </a>
    </div>
