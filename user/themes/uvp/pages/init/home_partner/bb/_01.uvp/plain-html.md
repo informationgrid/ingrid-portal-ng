@@ -21,7 +21,7 @@ title: UVP
             Sollten Sie Fragen zu den einzelnen UVP-pflichtigen Verfahren haben, so wenden Sie sich bitte an diejenige Behörde, die das jeweilige Trägerverfahren führt. Diese zuständigen Behörden und weitere Informationen finden Sie auf der <a target="_blank" href="https://mluk.brandenburg.de/mluk/de/umwelt/fachuebergreifendes-umweltrecht/umweltpruefung/zentrales-uvp-portal/">Internetseite</a> des für Umweltverträglichkeitsprüfungen zuständigen Ministeriums.
         </p>
         <p>
-            Bei darüber hinausgehenden Fragen und Hinweisen wenden Sie sich an <a href="mailto:uvp-portal@mluk.brandenburg.de">uvp-portal@mluk.brandenburg.de</a>.
+            Bei darüber hinausgehenden Fragen und Hinweisen wenden Sie sich an <a href="mailto:uvp-portal@mleuv.brandenburg.de">uvp-portal@mleuv.brandenburg.de</a>.
         </p>
         <a href="/" title="Zum UVP-Portal">
             <span class="ic-ic-arrow arrow"></span>
