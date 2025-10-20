@@ -96,7 +96,7 @@ pipeline {
                 echo 'Generating Software Bill of Materials (SBOM)'
 
                 script {
-                    def version = computeVersion()
+                    def version = "latest"
                     def imageToScan = "docker-registry.wemove.com/ingrid-portal:${version}"
                     def sbomFilename = "ingrid-portal-${determineVersion()}-sbom.json"
 
