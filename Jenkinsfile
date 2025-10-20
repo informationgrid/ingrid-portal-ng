@@ -28,16 +28,10 @@ pipeline {
                     // remove build dir containing previous RPM
                     sh 'if [ -d build ]; then rm -rf build; fi'
 
-                    if (env.TAG_NAME) {
-                        env.VERSION = env.TAG_NAME
-                    } else if (BRANCH_NAME == 'main') {
-                        env.VERSION = 'latest'
-                    } else {
-                        env.VERSION = BRANCH_NAME.replaceAll('/', '-')
-                    }
+                    def version = computeVersion()
 
                     docker.withRegistry('https://docker-registry.wemove.com', 'docker-registry-wemove') {
-                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${env.VERSION}", "--pull .")
+                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${version}", "--pull .")
 
                         /* Push the container to the custom Registry */
                         customImage.push()
@@ -102,7 +96,8 @@ pipeline {
                 echo 'Generating Software Bill of Materials (SBOM)'
 
                 script {
-                    def imageToScan = "docker-registry.wemove.com/ingrid-portal:${env.VERSION}"
+                    def version = computeVersion()
+                    def imageToScan = "docker-registry.wemove.com/ingrid-portal:${version}"
                     def sbomFilename = "ingrid-portal-${determineVersion()}-sbom.json"
 
                     sh """
@@ -170,6 +165,16 @@ def determineRpmReleasePart() {
         return '1'
     } else {
         return 'dev'
+    }
+}
+
+def computeVersion() {
+    if (env.TAG_NAME) {
+        return env.TAG_NAME
+    } else if (env.BRANCH_NAME == 'main') {
+        return 'latest'
+    } else {
+        return env.BRANCH_NAME.replaceAll('/', '-')
     }
 }
 
