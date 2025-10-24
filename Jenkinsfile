@@ -83,13 +83,15 @@ pipeline {
                     ]) {
                         sh 'gpg --batch --import $RPM_PUBLIC_KEY'
                         sh 'gpg --batch --import $RPM_PRIVATE_KEY'
-                        sh 'expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm'
                         sh "mkdir -p ./build"
                         sh "mkdir -p ./build/ingrid"
                         sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/ingrid/"
+                        sh "expect /rpm-sign.exp ${WORKSPACE}/build/ingrid/*.rpm"
 
                         archiveArtifacts artifacts: 'build/ingrid/ingrid-portal-*.rpm', fingerprint: true
                     }
+
+                    sh "rpmsign --del-sign /root/rpmbuild/RPMS/noarch/*.rpm"
 
                     withCredentials([
                         file(credentialsId: 'itzbund-ingrid-rpm-public', variable: 'RPM_PUBLIC_KEY'),
@@ -98,10 +100,10 @@ pipeline {
                     ]) {
                         sh 'gpg --batch --import $RPM_PUBLIC_KEY'
                         sh 'gpg --batch --import $RPM_PRIVATE_KEY'
-                        sh 'expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm'
                         sh "mkdir -p ./build"
                         sh "mkdir -p ./build/ingrid"
                         sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/itzbund/"
+                        sh "expect /rpm-sign.exp ${WORKSPACE}/build/itzbund/*.rpm"
 
                         archiveArtifacts artifacts: 'build/itzbund/ingrid-portal-*.rpm', fingerprint: true
                     }
