@@ -3,13 +3,7 @@ pipeline {
     triggers{ cron( getCronParams() ) }
 
     environment {
-        RPM_PUBLIC_KEY  = credentials('ingrid-rpm-public')
-        RPM_PRIVATE_KEY = credentials('ingrid-rpm-private')
-        RPM_SIGN_PASSPHRASE = credentials('ingrid-rpm-passphrase')
         SYFT_VERSION = 'latest'
-        RPM_PUBLIC_KEY_ITZBUND  = credentials('itzbund-ingrid-rpm-public')
-        RPM_PRIVATE_KEY_ITZBUND = credentials('itzbund-ingrid-rpm-private')
-        RPM_SIGN_PASSPHRASE_ITZBUND = credentials('itzbund-ingrid-rpm-passphrase')
     }
 
     stages {
@@ -77,31 +71,40 @@ pipeline {
                     sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
                     sh "sed -i 's/^Release:.*/Release: ${determineRpmReleasePart()}/' rpm/ingrid-portal.spec"
 
-                    echo 'Build RPM for InGrid'
                     sh """
                         cp ${WORKSPACE}/rpm/ingrid-portal.spec /root/rpmbuild/SPECS/ingrid-portal.spec &&
-                        rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
-                        gpg --batch --import $RPM_PUBLIC_KEY &&
-                        gpg --batch --import $RPM_PRIVATE_KEY &&
-                        expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm
+                        rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec
                     """
-                    sh "mkdir -p ./build"
-                    sh "mkdir -p ./build/ingrid"
-                    sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/ingrid"
-                    archiveArtifacts artifacts: 'build/ingrid/ingrid-portal-*.rpm', fingerprint: true
 
-                    echo 'Build RPM for ITZBund'
-                    sh """
-                        cp ${WORKSPACE}/rpm/ingrid-portal.spec /root/rpmbuild/SPECS/ingrid-portal.spec &&
-                        rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
-                        gpg --batch --import $RPM_PUBLIC_KEY_ITZBUND &&
-                        gpg --batch --import $RPM_PRIVATE_KEY_ITZBUND &&
-                        expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm
-                    """
-                    sh "mkdir -p ./build"
-                    sh "mkdir -p ./build/itzbund"
-                    sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/itzbund"
-                    archiveArtifacts artifacts: 'build/itzbund/ingrid-portal-*.rpm', fingerprint: true
+                    withCredentials([
+                        file(credentialsId: 'ingrid-rpm-public', variable: 'RPM_PUBLIC_KEY'),
+                        file(credentialsId: 'ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY')
+                        string(credentialsId: 'ingrid-rpm-passphrase', variable: 'RPM_SIGN_PASSPHRASE')
+                    ]) {
+                        sh 'gpg --batch --import $RPM_PUBLIC_KEY'
+                        sh 'gpg --batch --import $RPM_PRIVATE_KEY'
+                        sh 'expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm'
+                        sh "mkdir -p ./build"
+                        sh "mkdir -p ./build/ingrid"
+                        sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/ingrid/"
+
+                        archiveArtifacts artifacts: 'build/ingrid/ingrid-portal-*.rpm', fingerprint: true
+                    }
+
+                    withCredentials([
+                        file(credentialsId: 'itzbund-ingrid-rpm-public', variable: 'RPM_PUBLIC_KEY'),
+                        file(credentialsId: 'itzbund-ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY')
+                        string(credentialsId: 'itzbund-ingrid-rpm-passphrase', variable: 'RPM_SIGN_PASSPHRASE')
+                    ]) {
+                        sh 'gpg --batch --import $RPM_PUBLIC_KEY'
+                        sh 'gpg --batch --import $RPM_PRIVATE_KEY'
+                        sh 'expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm'
+                        sh "mkdir -p ./build"
+                        sh "mkdir -p ./build/ingrid"
+                        sh "cp -r /root/rpmbuild/RPMS/noarch/* ${WORKSPACE}/build/itzbund/"
+
+                        archiveArtifacts artifacts: 'build/itzbund/ingrid-portal-*.rpm', fingerprint: true
+                    }
                 }
             }
         }
@@ -117,10 +120,10 @@ pipeline {
                     def sbomFilename = "ingrid-portal-${determineVersion()}-sbom.json"
 
                     sh """
-                        docker run --rm --pull=always --volumes-from jenkins anchore/syft:latest ${imageToScan} --output cyclonedx-json=${WORKSPACE}/build/ingrid/${sbomFilename}
+                        docker run --rm --pull=always --volumes-from jenkins anchore/syft:latest ${imageToScan} --output cyclonedx-json=${WORKSPACE}/build/${sbomFilename}
                     """
                     // Archive the SBOM file as an artifact
-                    archiveArtifacts artifacts: "build/ingrid/${sbomFilename}", fingerprint: true
+                    archiveArtifacts artifacts: "build/${sbomFilename}", fingerprint: true
                 }
             }
         }
@@ -132,25 +135,25 @@ pipeline {
                     def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
                     withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh '''
-                            curl -f --user $USERNAME:$PASSWORD --upload-file build/ingrid/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
-                            curl -f --user $USERNAME:$PASSWORD --upload-file build/ingrid/*-sbom.json https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                         '''
                     }
                     if (repoType == 'rpm-ingrid-releases') {
                         if (env.TAG_NAME && env.TAG_NAME.startsWith("RPM-")) {
                             withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                                 sh '''
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/itzbund/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/ingrid/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
                                 '''
                             }
                         } else {
                             withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                                 sh '''
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/itzbund/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/ingrid/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/itzbund/*.rpm https://nexus.informationgrid.eu/repository/rpm-zdm_release/
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/ingrid/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-zdm_release/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-zdm_release/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-zdm_release/
                                 '''
                             }
                         }
