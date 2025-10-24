@@ -7,6 +7,9 @@ pipeline {
         RPM_PRIVATE_KEY = credentials('ingrid-rpm-private')
         RPM_SIGN_PASSPHRASE = credentials('ingrid-rpm-passphrase')
         SYFT_VERSION = 'latest'
+        RPM_PUBLIC_KEY_ITZBUND  = credentials('itzbund-ingrid-rpm-public')
+        RPM_PRIVATE_KEY_ITZBUND = credentials('itzbund-ingrid-rpm-private')
+        RPM_SIGN_PASSPHRASE_ITZBUND = credentials('itzbund-ingrid-rpm-passphrase')
     }
 
     stages {
@@ -79,6 +82,8 @@ pipeline {
                         rpmbuild -bb /root/rpmbuild/SPECS/ingrid-portal.spec &&
                         gpg --batch --import $RPM_PUBLIC_KEY &&
                         gpg --batch --import $RPM_PRIVATE_KEY &&
+                        gpg --batch --import $RPM_PUBLIC_KEY_ITZBUND &&
+                        gpg --batch --import $RPM_PRIVATE_KEY_ITZBUND &&
                         expect /rpm-sign.exp /root/rpmbuild/RPMS/noarch/*.rpm
                     """
 
@@ -119,6 +124,20 @@ pipeline {
                             curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                             curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                         '''
+                    }
+                    withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh '''
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                        '''
+                    }
+                    if (repoType == 'rpm-ingrid-releases') {
+                        withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                            sh '''
+                                curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-zdm_release/
+                                curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-zdm_release/
+                            '''
+                        }
                     }
                 }
             }
