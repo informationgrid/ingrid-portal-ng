@@ -78,7 +78,7 @@ pipeline {
 
                     withCredentials([
                         file(credentialsId: 'ingrid-rpm-public', variable: 'RPM_PUBLIC_KEY'),
-                        file(credentialsId: 'ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY')
+                        file(credentialsId: 'ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY'),
                         string(credentialsId: 'ingrid-rpm-passphrase', variable: 'RPM_SIGN_PASSPHRASE')
                     ]) {
                         sh 'gpg --batch --import $RPM_PUBLIC_KEY'
@@ -93,7 +93,7 @@ pipeline {
 
                     withCredentials([
                         file(credentialsId: 'itzbund-ingrid-rpm-public', variable: 'RPM_PUBLIC_KEY'),
-                        file(credentialsId: 'itzbund-ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY')
+                        file(credentialsId: 'itzbund-ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY'),
                         string(credentialsId: 'itzbund-ingrid-rpm-passphrase', variable: 'RPM_SIGN_PASSPHRASE')
                     ]) {
                         sh 'gpg --batch --import $RPM_PUBLIC_KEY'
