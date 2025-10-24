@@ -91,8 +91,6 @@ pipeline {
                         archiveArtifacts artifacts: 'build/ingrid/ingrid-portal-*.rpm', fingerprint: true
                     }
 
-                    sh "rpmsign --del-sign /root/rpmbuild/RPMS/noarch/*.rpm"
-
                     withCredentials([
                         file(credentialsId: 'itzbund-ingrid-rpm-public', variable: 'RPM_PUBLIC_KEY'),
                         file(credentialsId: 'itzbund-ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY'),
