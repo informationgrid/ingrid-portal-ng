@@ -125,18 +125,23 @@ pipeline {
                             curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/''' + repoType + '''/
                         '''
                     }
-                    withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        sh '''
-                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                            curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                        '''
-                    }
                     if (repoType == 'rpm-ingrid-releases') {
-                        withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                            sh '''
-                                curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-zdm_release/
-                                curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-zdm_release/
-                            '''
+                        if (env.TAG_NAME && env.TAG_NAME.startsWith("RPM-")) {
+                            withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                                sh '''
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                '''
+                            }
+                        } else {
+                            withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                                sh '''
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*.rpm https://nexus.informationgrid.eu/repository/rpm-zdm_release/
+                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-zdm_release/
+                                '''
+                            }
                         }
                     }
                 }
