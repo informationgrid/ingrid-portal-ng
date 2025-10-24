@@ -81,7 +81,7 @@ pipeline {
                         file(credentialsId: 'ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY'),
                         string(credentialsId: 'ingrid-rpm-passphrase', variable: 'RPM_SIGN_PASSPHRASE')
                     ]) {
-                        echo $RPM_SIGN_PASSPHRASE
+                        sh 'echo $RPM_SIGN_PASSPHRASE'
                         echo "${env.RPM_SIGN_PASSPHRASE}"
                         sh 'gpg --batch --import $RPM_PUBLIC_KEY'
                         sh 'gpg --batch --import $RPM_PRIVATE_KEY'
@@ -98,7 +98,7 @@ pipeline {
                         file(credentialsId: 'itzbund-ingrid-rpm-private', variable: 'RPM_PRIVATE_KEY'),
                         string(credentialsId: 'itzbund-ingrid-rpm-passphrase', variable: 'RPM_SIGN_PASSPHRASE')
                     ]) {
-                        echo $RPM_SIGN_PASSPHRASE
+                        sh 'echo $RPM_SIGN_PASSPHRASE'
                         echo "${env.RPM_SIGN_PASSPHRASE}"
                         sh 'gpg --batch --import $RPM_PUBLIC_KEY'
                         sh 'gpg --batch --import $RPM_PRIVATE_KEY'
