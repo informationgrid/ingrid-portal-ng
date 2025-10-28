@@ -142,13 +142,14 @@ pipeline {
                         '''
                     }
                     if (repoType == 'rpm-ingrid-releases') {
+                        withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                            sh '''
+                                curl -f --user $USERNAME:$PASSWORD --upload-file build/itzbund/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                                curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
+                            '''
+                        }
                         if (env.TAG_NAME && env.TAG_NAME.startsWith("RPM-")) {
-                            withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                                sh '''
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/itzbund/*.rpm https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                                    curl -f --user $USERNAME:$PASSWORD --upload-file build/*-sbom.json https://nexus.informationgrid.eu/repository/rpm-ingrid-itzbund/
-                                '''
-                            }
+                            // No upload to other ITZBund repos
                         } else {
                             withCredentials([usernamePassword(credentialsId: '9623a365-d592-47eb-9029-a2de40453f68', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                                 sh '''
