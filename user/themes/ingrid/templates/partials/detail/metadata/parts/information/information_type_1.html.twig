@@ -31,7 +31,7 @@
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_SYMBOL_DATE"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_SYMC_EDITION"|t,
     ] %}
-    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_SYMC"|t, header, infoRefs.symbolCatalogues, [0]) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_SYMC"|t, header, infoRefs.symbolCatalogues) }}
 {# Schlüsselkatalog: im Datensatz vorhanden #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_KEYC_INCL_W_DATASET"|t, infoRefs.includedWithDataset) }}
 {# Schlüsselkatalog #}
@@ -40,7 +40,7 @@
         "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_KEY_DATE"|t,
         "SEARCH_DETAIL.T011_OBJ_GEO_KEYC_EDITION"|t,
     ] %}
-    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues, [0]) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.T011_OBJ_GEO_KEYC"|t, header, infoRefs.featureCatalogues) }}
 {# Sachdaten/Attributinformation #}
     {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.T011_OBJ_GEO_SUPPLINFO_FEATURE_TYPE"|t, infoRefs.featureTypes) }}
 {# Geometrie-Kontext #}

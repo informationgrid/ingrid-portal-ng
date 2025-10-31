@@ -608,7 +608,12 @@
                         {% endif %}
                         <p {% if css %}class="{{ css }}"{% endif %}>
                             {% if convertText %}
-                                {{ convertUrlInText(removeHashLocale(text))|raw }}
+                                {% set text = convertUrlInText(removeHashLocale(text))|raw %}
+                            {% endif %}
+                            {% if text is same as("true") %}
+                                {{ "COMMON.GENERAL_YES"|t }}
+                            {% elseif text is same as("false") %}
+                                {{ "COMMON.GENERAL_NO"|t }}
                             {% else %}
                                 {{ text }}
                             {% endif %}
