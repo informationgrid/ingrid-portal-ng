@@ -13,6 +13,7 @@ pipeline {
         stage('Update submodule') {
             when { expression { return shouldBuildDevOrRelease() } }
             steps {
+                // get latest version of submodules
                 withCredentials([gitUsernamePassword(credentialsId: 'ae3a7670-c4c8-413c-9df2-45373f1723a2', gitToolName: 'git')]) {
                     sh 'git submodule update --init --remote --recursive'
                 }
@@ -54,6 +55,10 @@ pipeline {
                 }
             }
             steps {
+                // get submodules with commit id
+                withCredentials([gitUsernamePassword(credentialsId: 'ae3a7670-c4c8-413c-9df2-45373f1723a2', gitToolName: 'git')]) {
+                    sh 'git submodule update --init --recursive'
+                }
                 script {
                     docker.withRegistry('https://docker-registry.wemove.com', 'docker-registry-wemove') {
                         def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${env.TAG_NAME}", "--pull .")
