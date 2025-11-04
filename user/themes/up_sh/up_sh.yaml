@@ -484,8 +484,8 @@ redirect:
     - /datasource
   pages_to_redirect:
 catalog:
-  open_nodes_level: 0
-  display_partner: true
+  open_nodes_level: 2
+  display_partner: false
   sort_by_name: true
   open_on_new_tab: true
   address_folder_closed: false
