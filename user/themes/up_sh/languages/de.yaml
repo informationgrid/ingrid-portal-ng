@@ -1,0 +1,17 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite von UP-SH
+  ABOUT: Über UP-SH
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu UP-SH
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von UP-SH
+  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an UP-SH-Team
+  SITEMAP: Inhalt
+  SITEMAP_MENU_TITLE: Alle Inhalte von UP-SH auf einen Blick
+
+CONTACT:
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team UP-SH gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+
+SEARCH:
+  PORTLET_TITLE_1: Umweltinformationen
+  PORTLET_TITLE_2: 'für Schleswig-Holstein <br> finden&nbsp;'
+  PORTLET_TITLE_3: 'z.B. Daten, Karten & Webangebote'

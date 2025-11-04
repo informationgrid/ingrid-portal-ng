@@ -1,0 +1,19 @@
+{% block content %}
+    <div class="about">
+        <div class="about-wrapper dark">
+            <div class="row">
+                <div class="large-24 columns" style="padding-top: 15px">
+                    <h2 style="text-align: center">
+                        {{ page.title|raw }}
+                    </h2>
+                    <div class="info-teaser-block">
+                    {{ page.content|raw }}
+                    {% for module in page.collection() %}
+                        {{ module.content|raw }}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

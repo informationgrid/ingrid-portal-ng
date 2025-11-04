@@ -1,0 +1,8 @@
+---
+title: Weißte de Watt
+---
+
+<div class="info-teaser-box">
+<a class="info-teaser-box" href="https://melba.schleswig-holstein.de" target="_blank"> <img src="https://www.schleswig-holstein.de/SharedDocs/Bilder/DE/Themen/UmweltNatur/artenschutz2_rsp.webp?__blob=panorama&amp;v=2" srcset="https://www.schleswig-holstein.de/SharedDocs/Bilder/DE/Themen/UmweltNatur/artenschutz2_rsp.webp?__blob=panorama&amp;v=2"> <div class="text-box"> <div class="title">MelBA-online (Melde- und Bescheinigungs-wesen Artenschutz) </div> <p>Programm für den Vollzug der Artenschutzfälle im internationalen Handel mit gefährdeten freileben-den Tieren und Pflanzen nach dem Washingtoner Artenschutzüber-einkommen (WA) bzw. der Convention in International Trade in Endangered Species of Wild Fauna and Flora (CITES) und der EG-Artenschutzverordnung</p><p>Der Zugang zu dieser Anwendung ist passwortgeschützt.</p> </div> </a>
+</div>
+

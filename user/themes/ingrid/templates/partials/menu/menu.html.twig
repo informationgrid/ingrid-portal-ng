@@ -1,4 +1,65 @@
 {% import 'macros/default_macros.html.twig' as macros %}
 {% set menu_site = theme_var('menu.site') %}
+{% set header_title_extend = theme_var('header.title_extend') %}
 
-{{ macros.nav_menu_loop(menu_site, pages) }}
+<div class="header-menu" style="display: none;" role="navigation" aria-label="Navigation Menu">
+    <div class="header-menu-close">
+        <button type="button" class="button ">{{ "PAGES.MENU"|t }}<span class="ic-ic-cross"></span></button>
+    </div>
+    <div class="menu-main-links">
+        <div class="highlighted">
+            {% for menuentry in menu_site %}
+                {% if menuentry.highlighted %}
+                    {% set p = pages.find(menuentry.path) %}
+                    {% if p and p.visible %}
+                        {% set page_active = (p.active or p.activeChild) ? 'is-active' : '' %}
+                        {% set page_url = p.url %}
+                        {% set page_title = p.header.custom_title.html ?? p.title %}
+                        {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+                        {% if page_url is not empty %}
+                            <a href="{{ page_url|e }}" class="header-menu-entry {{ page_active }}" title="{{ page_menu_title|t(header_title_extend)|e }}"{% if menuentry.target_blank %} target="_blank" {% endif %}>
+                                <span class="text">{{ page_title|t(header_title_extend)|e }}</span>
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% for menuentry in menu_site %}
+            {% if not menuentry.highlighted %}
+                {% set p = pages.find(menuentry.path) %}
+                {% if p and p.visible %}
+                    {% set page_active = (p.active or p.activeChild) ? 'is-selected' : '' %}
+                    {% set page_url = p.url %}
+                    {% set page_title = p.header.custom_title.html ?? p.title  %}
+                    {% set page_menu_title = p.header.custom_title.menu ?? p.title %}
+                    {% if page_url is not empty %}
+                        <a href="{{ page_url|e }}" class="{{ page_active }}" title="{{ page_menu_title|t(header_title_extend)|e }}" {% if menuentry.target_blank %} target="_blank" {% endif %}>
+                            <span class="text">{{ page_title|t(header_title_extend)|e }}</span>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% include 'partials/menu/menu_logins_links.html.twig' ignore missing %}
+    <div class="menu-sub-links">
+        {% if grav.language.getLanguages|count > 1 %}
+            <div class="menu-settings-links">
+                {% if grav.language.getLanguages|count > 1 %}
+                    <h6>{{ "COMMON.LANGUAGE_TITLE"|t }}</h6>
+                    {% for lang in grav.language.getLanguages %}
+                        {% set pageUrl = grav.base_url ~ "/" ~ lang ~ grav.uri.path ~ "?" ~ grav.uri.query %}
+                        <a href="{{ pageUrl }}"
+                           role="button"
+                           {% if grav.language.getLanguage == lang %}class="is-active"{% endif %}
+                                {% if grav.language.getLanguage == lang %}aria-pressed="true"{% else %}aria-pressed="false"{% endif %}
+                           aria-label="{{ lang|upper }}">
+                            {{ lang|upper }}
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
