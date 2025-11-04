@@ -104,6 +104,14 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/rss
 
+        ## Tab measure
+        tab_measure:
+          type: tab
+          title: THEME.ADMIN.MEASURE.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/measure
+
         ## Tab redirect
         tab_redirect:
           type: tab

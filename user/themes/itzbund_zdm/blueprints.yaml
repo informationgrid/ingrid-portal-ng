@@ -55,7 +55,7 @@ form:
           title: THEME.ADMIN.MEASURE.TITLE
           import@:
             type: default
-            context: user://themes/ingrid/blueprints/measure
+            context: user://themes/itzbund_zdm/blueprints/measure
 
         ## Tab redirect
         tab_redirect:
