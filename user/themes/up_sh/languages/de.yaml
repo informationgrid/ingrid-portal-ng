@@ -15,3 +15,10 @@ SEARCH:
   PORTLET_TITLE_1: Umweltinformationen
   PORTLET_TITLE_2: 'für Schleswig-Holstein <br> finden&nbsp;'
   PORTLET_TITLE_3: 'z.B. Daten, Karten & Webangebote'
+
+THEME:
+  ADMIN:
+    UPLOAD:
+      TITLE: Upload
+      PORTALS:
+        TITLE: Portale

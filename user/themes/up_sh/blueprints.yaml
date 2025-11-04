@@ -119,3 +119,11 @@ form:
           import@:
             type: default
             context: user://themes/ingrid/blueprints/redirect
+
+        ## Tab upload
+        tab_upload:
+          type: tab
+          title: THEME.ADMIN.UPLOAD.TITLE
+          import@:
+            type: default
+            context: user://themes/up_sh/blueprints/ingrid/upload
