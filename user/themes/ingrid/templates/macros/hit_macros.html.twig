@@ -608,14 +608,14 @@
                         {% endif %}
                         <p {% if css %}class="{{ css }}"{% endif %}>
                             {% if convertText %}
-                                {% set text = convertUrlInText(removeHashLocale(text))|raw %}
+                                {% set text = convertUrlInText(removeHashLocale(text)) %}
                             {% endif %}
                             {% if text is same as("true") %}
                                 {{ "COMMON.GENERAL_YES"|t }}
                             {% elseif text is same as("false") %}
                                 {{ "COMMON.GENERAL_NO"|t }}
                             {% else %}
-                                {{ text }}
+                                {{ text|raw }}
                             {% endif %}
                         </p>
                         {% if expandable %}
@@ -1093,10 +1093,10 @@
                         {% if entry.type and isFacts is sameas(true) %}
                             {{ _self.render_metadata_icon(entry.type, null, entry.type_name) }}
                         {% endif %}
-                        <span class="text">{{ entry.title }}</span>
+                        <span class="text">{{ removeHashLocale(entry.title) }}</span>
                     </a>
                 {% else %}
-                    <p>{{ entry.title }}<p>
+                    <p>{{ removeHashLocale(entry.title) }}<p>
                 {% endif %}
                 {% if entry.attachedToField %}
                     <small>{{ convertUrlInText(entry.attachedToField)|raw }}</small>
@@ -1152,7 +1152,7 @@
                 {% endif %}
                 {% if entry.description %}
                     <div class="description">
-                        <small class="description">{{ convertUrlInText(entry.description)|raw }}</small>
+                        <small class="description">{{ convertUrlInText(removeHashLocale(entry.description))|raw }}</small>
                     </div>
                 {% endif %}
                 {% if entry.linkInfo %}

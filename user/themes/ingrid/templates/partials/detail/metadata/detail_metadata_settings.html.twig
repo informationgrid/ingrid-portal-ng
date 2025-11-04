@@ -102,6 +102,8 @@
         {% set infoRefs = addKeyValue(infoRefs, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
         {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
         {% set infoRefs = addKeyValue(infoRefs, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
+        {# Geometrie-Kontext #}
+        {% set infoRefs = addKeyValue(infoRefs, "geometryContext", hit.geometryContext) %}
     {% case '2' %}
         {% set infoRefs = addKeyValue(infoRefs, "literaturAutor", hit.literaturAutor) %}
         {% set infoRefs = addKeyValue(infoRefs, "literaturLoc", hit.literaturLoc) %}

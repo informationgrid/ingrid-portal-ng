@@ -11,7 +11,7 @@
         {% endfor %}
     {# Beschreibung #}
         {% if summary %}
-            {{ hit_macros.render_text_only(summary|replace({'\n': summary_replace_newline})|raw, true)}}
+            {{ hit_macros.render_text_only(removeHashLocale(summary)|replace({'\n': summary_replace_newline})|raw, true)}}
         {% endif %}
     {# Additional Information #}
         {% include 'partials/detail/metadata/parts/description/description_additional_info.html.twig' ignore missing %}
