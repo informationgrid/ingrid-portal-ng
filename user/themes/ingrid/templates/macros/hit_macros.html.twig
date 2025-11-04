@@ -719,7 +719,7 @@
                             </div>
                         </div>
                         <a target="_blank" class="button outline pill" href="{{ mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                            {{ "COMMON.RESULT_SHOWMAP"|t }}
+                            <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>
                         </a>
                     </td>
                 </tr>
@@ -1161,11 +1161,11 @@
                 {% set map = theme_var('map') %}
                 {% if entry.extMapUrl %}
                     <a target="_blank" class="button outline pill" href="{{ entry.extMapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                        {{ "COMMON.RESULT_SHOWMAP"|t }}
+                        <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>
                     </a>
                 {% elseif entry.mapUrl and map.url %}
                     <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ '?layers=' ~ entry.mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                        {{ "COMMON.RESULT_SHOWMAP"|t }}
+                        <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>
                     </a>
                 {% endif %}
                 </div>

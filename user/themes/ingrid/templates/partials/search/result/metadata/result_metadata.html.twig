@@ -21,13 +21,13 @@
            {{ hit_macros.render_hit_logo(hit.partners) }}
         {% endif %}
         {% include 'partials/search/result/metadata/parts/metadata_banner.html.twig' with {hit:hit} %}
-        <a href="{{ detailLink }}" title="{{ hit.title }}">
-            <h2 class="header">{{ hit.title }}</h2>
+        <a href="{{ detailLink }}" title="{{ removeHashLocale(hit.title) }}">
+            <h2 class="header">{{ removeHashLocale(hit.title) }}</h2>
         </a>
         {% include 'partials/search/result/metadata/parts/metadata_time.html.twig' with {hit:hit} %}
         {% if hit.summary %}
             <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
-                {{  convertUrlInText(hit.summary)|replace({'\n': summary_replace_newline})|raw }}
+                {{ convertUrlInText(removeHashLocale(hit.summary))|replace({'\n': summary_replace_newline})|raw }}
             </p>
         {% endif %}
         {% include 'partials/search/result/metadata/parts/metadata_providers.html.twig' ignore missing with {hit:hit} %}

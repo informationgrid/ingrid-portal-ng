@@ -275,7 +275,7 @@
                 {% if mapUrl or mapUrlClient %}
                     <p class="caption">
                         <a target="_blank" class="button small" href="{{ mapUrlClient ?: (page.find('/map').url ~ '?layers=' ~ mapUrl) }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
-                            {{ "COMMON.RESULT_SHOWMAP"|t }}
+                            <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>
                         </a>
                     </p>
                 {% endif %}
