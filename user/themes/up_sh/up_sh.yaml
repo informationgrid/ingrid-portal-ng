@@ -243,7 +243,7 @@ hit_search:
             }
           },
         },
-        "dpcument": {
+        "document": {
           "codelist": "8000",
           "codelist_entry_id": "2",
           "query": {
@@ -261,17 +261,6 @@ hit_search:
             "filter": {
               "term": {
                 "t01_object.obj_class": "3"
-              }
-            }
-          },
-        },
-        "project": {
-          "codelist": "8000",
-          "codelist_entry_id": "4",
-          "query": {
-            "filter": {
-              "term": {
-                "t01_object.obj_class": "4"
               }
             }
           },
@@ -401,7 +390,7 @@ hit_search:
   sort:
     enabled: false
     sortByDate: false
-    emptyQuerySortByDate: false
+    emptyQuerySortByDate: true
   expandable:
     enabled: true
   summary_replace_newline: '<br>'
@@ -486,8 +475,9 @@ measure:
   networks:
     exclude:
     initial:
-  url:
-  elastic:
+      - uba
+  url: '/assets/mvis/index.html'
+  elastic: 'https://umweltportal.schleswig-holstein.de/elastic-measure/'
 redirect:
   pages_to_404:
     - /api
