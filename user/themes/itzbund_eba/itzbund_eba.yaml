@@ -88,11 +88,22 @@ hit_search:
         "inspire": {
           "query": {
             "filter": {
-              "term": {
-                "t04_search.searchterm": "inspireidentifiziert"
+              "bool": {
+                "should": [
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspire"
+                    }
+                  },
+                  {
+                    "term": {
+                      "t04_search.searchterm": "inspireidentifiziert"
+                    }
+                  }
+                ]
               }
             }
-          },
+          }
         },
         "opendata": {
           "query": {
