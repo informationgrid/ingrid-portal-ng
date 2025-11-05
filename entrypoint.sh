@@ -88,7 +88,6 @@ else
              --exclude /logs/ \
              --exclude /tmp/ \
              --exclude /user/accounts/admin.yaml \
-             --exclude /user/pages \
              /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 fi
 
