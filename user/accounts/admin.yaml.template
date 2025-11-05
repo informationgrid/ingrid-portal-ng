@@ -8,3 +8,4 @@ access:
     super: true
   site:
     login: true
+hashed_password:
