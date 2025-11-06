@@ -939,7 +939,7 @@ FACETS:
         TYPE: Ergebnistyp
     MODTIME:
         LAST_MONTH: "letzter Monat"
-        LAST_THREE_MONTH: "letzte 3 Monat"
+        LAST_THREE_MONTH: "letzte 3 Monate"
         LAST_YEAR: "letztes Jahr"
         LAST_FIVE_YEARS: "letzte 5 Jahre"
         OLDER_FIVE_YEARS: "älter als 5 Jahre"
