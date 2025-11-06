@@ -124,62 +124,6 @@ home:
     rss:
     facet_config: [
       {
-        "id": "type",
-        "facets": {
-          "www": {
-            "icon": "ic-www",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "www"
-                }
-              }
-            }
-          },
-          "metadata": {
-            "icon": "ic-metadata",
-            "query": {
-              "filter": {
-                "term": {
-                  "datatype": "metadata"
-                }
-              }
-            }
-          },
-          "opendata": {
-            "icon": "ic-opendata",
-            "query": {
-              "filter": {
-                "bool": {
-                  "should": [
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendata"
-                      }
-                    },
-                    {
-                      "term": {
-                        "t04_search.searchterm": "opendataident"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "maps": {
-            "icon": "ic-map",
-            "query": {
-              "filter": {
-                "wildcard": {
-                  "capabilities_url": "http*"
-                }
-              }
-            }
-          }
-        }
-      },
-      {
         "id": "waterway",
         "facets": {
           "Donau": {
@@ -323,7 +267,67 @@ home:
             }
           }
         }
-      }
+      },
+      {
+        "id": "baw_abteilung",
+        "label": "Abteilung",
+        "facets": {
+          "bautechnik": {
+            "label": "Bautechnik",
+            "icon_text": "B",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "b"
+                }
+              }
+            }
+          },
+          "geotechnik": {
+            "label": "Geotechnik",
+            "icon_text": "G",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "g"
+                }
+              }
+            }
+          },
+          "binnenbereich": {
+            "label": "Wasserbau im Binnenbereich",
+            "icon_text": "W",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "w"
+                }
+              }
+            }
+          },
+          "kuestenbereich": {
+            "label": "Wasserbau im Küstenbereich",
+            "icon_text": "K",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "k"
+                }
+              }
+            }
+          },
+          "zentral": {
+            "label": "Zentraler Service",
+            "icon_text": "MLK",
+            "query": {
+              "filter": {
+                "term": {
+                  "baw_abteilung_short": "z"
+                }
+              }
+            }
+          }
+        }
     ]
     add_to_search:
       - "-datatype:address"
