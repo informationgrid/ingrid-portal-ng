@@ -179,7 +179,7 @@ home:
       {
         "id": "waterway",
         "facets": {
-          "donau": {
+          "Donau": {
             "icon_text": "Do",
             "query": {
               "filter": {
@@ -189,7 +189,7 @@ home:
               }
             }
           },
-          "eider": {
+          "Eider": {
             "icon_text": "Ei",
             "query": {
               "filter": {
@@ -199,7 +199,7 @@ home:
               }
             }
           },
-          "elbe": {
+          "Elbe": {
             "icon_text": "El",
             "query": {
               "filter": {
@@ -209,7 +209,7 @@ home:
               }
             }
           },
-          "ems": {
+          "Ems": {
             "icon_text": "Em",
             "query": {
               "filter": {
@@ -219,7 +219,7 @@ home:
               }
             }
           },
-          "main-donau-kanal": {
+          "Main-Donau-Kanal": {
             "icon_text": "MDK",
             "query": {
               "filter": {
@@ -229,7 +229,7 @@ home:
               }
             }
           },
-          "mittellandkanal": {
+          "Mittellandkanal": {
             "icon_text": "MLK",
             "query": {
               "filter": {
@@ -239,7 +239,7 @@ home:
               }
             }
           },
-          "mosel": {
+          "Mosel": {
             "icon_text": "Mo",
             "query": {
               "filter": {
@@ -249,7 +249,7 @@ home:
               }
             }
           },
-          "neckar": {
+          "Neckar": {
             "icon_text": "Ne",
             "query": {
               "filter": {
@@ -259,7 +259,7 @@ home:
               }
             }
           },
-          "nord-ostsee-kanal": {
+          "Nord-Ostsee-Kanal": {
             "icon_text": "NOK",
             "query": {
               "filter": {
@@ -269,7 +269,7 @@ home:
               }
             }
           },
-          "nordsee": {
+          "Nordsee": {
             "icon_text": "NSee",
             "query": {
               "filter": {
@@ -279,7 +279,7 @@ home:
               }
             }
           },
-          "oder": {
+          "Oder": {
             "icon_text": "Od",
             "query": {
               "filter": {
@@ -289,7 +289,7 @@ home:
               }
             }
           },
-          "ostsee": {
+          "Ostsee": {
             "icon_text": "OSee",
             "query": {
               "filter": {
@@ -299,7 +299,7 @@ home:
               }
             }
           },
-          "rhein": {
+          "Rhein": {
             "icon_text": "Rh",
             "query": {
               "filter": {
@@ -309,7 +309,7 @@ home:
               }
             }
           },
-          "weser": {
+          "Weser": {
             "icon_text": "We",
             "query": {
               "filter": {
