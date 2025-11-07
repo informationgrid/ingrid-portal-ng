@@ -9,9 +9,9 @@ ENV PHP_APCU_VERSION=v5.1.23
 # renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
 ENV PHP_YAML_VERSION=2.2.5
 
+ENV MVIS_VERSION=2.0.11
+
 ENV YQ_VERSION=v4.47.2
-ENV INGRID_GRAV_PLUGIN_BRANCH=develop
-ENV INGRID_GRAV_PLUGIN_UTILS_BRANCH=develop
 
 ENV ADMIN_EMAIL=portal@test.de
 ENV ADMIN_FULL_NAME="The Admin"
@@ -90,6 +90,12 @@ RUN cd /usr/share/grav-admin/user/plugins/ingrid-grav-utils && composer update
 # Install yq
 RUN wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 \
  && chmod +x /usr/local/bin/yq
+
+# Install mvis
+RUN cd /usr/share/grav-admin \
+ && curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip \
+ && unzip mvis.zip -d /usr/share/grav-admin/assets/mvis \
+ && rm mvis.zip
 
 COPY entrypoint.sh /entrypoint.sh
 #COPY grav.ini $PHP_INI_DIR/conf.d/
