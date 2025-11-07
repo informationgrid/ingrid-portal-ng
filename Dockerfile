@@ -93,9 +93,9 @@ RUN wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download
 
 # Install mvis
 RUN cd /usr/share/grav-admin \
- && curl -o mvis.zip -SL "https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/$MVIS_VERSION/measurement-client-$MVIS_VERSION.zip" \
- && unzip mvis.zip -d \
- && mv "/usr/share/grav-admin/measurement-client-$MVIS_VERSION" /usr/share/grav-admin/assets/mvis \
+ && curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip \
+ && unzip mvis.zip \
+ && mv /usr/share/grav-admin/measurement-client-"${MVIS_VERSION}" /usr/share/grav-admin/assets/mvis \
  && rm mvis.zip
 
 COPY entrypoint.sh /entrypoint.sh
