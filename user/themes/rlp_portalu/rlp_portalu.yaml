@@ -244,70 +244,6 @@ hit_search:
       "search": "t01_object.obj_class:%d"
     },
     {
-      "id": "modtime",
-      "display_depend_on": {
-        "type": "metadata",
-        "metadata_group": "",
-      },
-      "facets": {
-        "last_month": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-1M"
-                }
-              }
-            }
-          }
-        },
-        "last_three_month": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-3M"
-                }
-              }
-            }
-          }
-        },
-        "last_year": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-1y"
-                }
-              }
-            }
-          }
-        },
-        "last_five_years": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "gte": "now-5y"
-                }
-              }
-            }
-          }
-        },
-        "older_five_years": {
-          "query": {
-            "filter": {
-              "range": {
-                "modified": {
-                  "lte": "now-5y"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
       "id": "provider",
       "codelist": "111",
       "list_limit": 6,
@@ -361,7 +297,7 @@ hit_search:
   sort:
     enabled: false
     sortByDate: false
-    emptyQuerySortByDate: true
+    emptyQuerySortByDate: false
   expandable:
     enabled: true
   summary_replace_newline: '<br>'
@@ -459,7 +395,7 @@ catalog:
   open_nodes_level: 3
   display_partner: false
   sort_by_name: true
-  open_on_new_tab: true
+  open_on_new_tab: false
   address_folder_closed: false
 help:
   default_hkey: about-1
