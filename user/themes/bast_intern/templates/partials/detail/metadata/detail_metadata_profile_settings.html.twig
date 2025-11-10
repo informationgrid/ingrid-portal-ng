@@ -1,0 +1,5 @@
+{# Fachinformationen #}
+{% set infoRefs = addKeyValue(infoRefs, "projectTitle", hit.projectTitle) %}
+{% set infoRefs = addKeyValue(infoRefs, "projectNumber", hit.projectNumber) %}
+
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

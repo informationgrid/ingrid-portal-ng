@@ -4,6 +4,8 @@
     {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
 {# Identifikator #}
     {% include 'partials/detail/metadata/parts/information/information_type_1_identificator.html.twig' %}
+{# Projekt #}
+    {% include 'partials/detail/metadata/parts/information/information_project.html.twig' ignore missing %}
 {# Messdaten #}
     {% include 'partials/detail/metadata/parts/information/information_type_1_measurement.html.twig' ignore missing %}
 {# Digitale Repräsentation #}

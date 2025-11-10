@@ -1,0 +1,9 @@
+{# Projekttitel #}
+{% if infoRefs.projectTitle %}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.PROJECT_TITLE"|t, infoRefs.projectTitle) }}
+{% endif %}
+
+{# Projektnummer #}
+{% if infoRefs.projectNumber %}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.PROJECT_NUMBER"|t, infoRefs.projectNumber) }}
+{% endif %}
