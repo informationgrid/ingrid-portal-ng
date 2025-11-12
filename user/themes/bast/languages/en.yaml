@@ -4,20 +4,13 @@ PAGES:
     ABOUT: About this metadata catalog
     ABOUT_MENU_TITLE: 'Features and Portrait of %s'
     PROBLEM: Report accessibility
-    PROBLEM_MENU_TITLE: 'Send any comments, suggestions or questions to our Coordination Center %s'
+    PROBLEM_MENU_TITLE: Report accessibility
     PROBLEM_META_TITLE: Report accessibility
-    PROBLEM_META_DESCRIPTION: 'Kontaktieren Sie %s online über unser Kontaktformular oder unsere E-Mail-Adresse. Sie können auch für Ihre Mitteilungen den herkömmlichen Postweg benutzen.'
-    PROBLEM_META_KEYWORDS: '%s, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen'
-    SITEMAP: Inhalt
+    PROBLEM_META_DESCRIPTION: Contact us using the contact form, writing an e-mail, or by post.
+    PROBLEM_META_KEYWORDS: '%s, contact, contact form, e-mail, regular mail, comments, suggestions, questions, request'
+    SITEMAP: Site map
 
 SEARCH:
     PORTLET_TITLE_1: BASt metadata catalog
     PORTLET_TITLE_2: Research portal for data sets
     PORTLET_TITLE_3: ' '
-
-SEARCH_DETAIL:
-    T011_OBJ_DATA_DESCRIPTION: Bemerkungen
-
-FACETS:
-    FACET_LABEL:
-        BBOX: In Kartenausschnitt suchen
