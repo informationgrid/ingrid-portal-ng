@@ -934,7 +934,7 @@ FACETS:
         BBOX: Map search
         MODTIME: Time
         MAP: Raumbezug
-        TIMEREF: Zeitbezug
+        TIMEREF: Time reference
     FACET_PILL:
         TYPE: Datatype
     MODTIME:

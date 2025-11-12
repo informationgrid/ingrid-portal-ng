@@ -1,7 +1,8 @@
-PAGES:
-    HOME_META_TITLE: Interner Metadatenkatalog
 SEARCH:
-    PORTLET_TITLE_2: Internes Rechercheportal für Datensätze
+    PORTLET_TITLE_2: Internal research portal for data sets
+
+FACETS:
+    DISTRIBUTOR: Providers
 
 SEARCH_DETAIL:
     PROJECT_TITLE: Project title

@@ -3,6 +3,9 @@ PAGES:
 SEARCH:
     PORTLET_TITLE_2: Internes Rechercheportal für Datensätze
 
+FACETS:
+    DISTRIBUTOR: Fachliche Ansprechstelle
+
 SEARCH_DETAIL:
     PROJECT_TITLE: Projekttitel
     PROJECT_NUMBER: Projektnummer

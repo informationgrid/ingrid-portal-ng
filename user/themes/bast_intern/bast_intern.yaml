@@ -316,7 +316,6 @@ hit_search:
     },
     {
       "id": "distributor",
-      "label": "Fachliche Ansprechstelle",
       "query": {
         "terms": {
           "field": "distributor",
