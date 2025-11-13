@@ -16,13 +16,7 @@
     {# Regionalschlüssel #}
         {{ hit_macros.render_label_link("SEARCH_DETAIL.REGIONKEY"|t, mapRefs.regionKey.key, mapRefs.regionKey.url, "external") }}
     {# Höhe #}
-        {% set header = [
-            "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_MINIMUM"|t,
-            "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_MAXIMUM"|t,
-            "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_UNIT"|t,
-            "SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT_VDATUM"|t,
-        ] %}
-        {{ hit_macros.render_table("SEARCH_DETAIL.T01_OBJECT_VERTICAL_EXTENT"|t, header, mapRefs.areaHeight) }}
+        {% include 'partials/detail/metadata/parts/area/area_height.html.twig' %}
     {# Erläuterung zum Raumbezug #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_LOC_DESCR"|t, mapRefs.locDescr) }}
     {# Begrenzungspolygon als WKT #}

@@ -5,3 +5,6 @@ PAGES:
     SITEMAP: Inhalt
 SEARCH:
     PORTLET_TITLE_1: BAW-Datenfinder
+
+SEARCH_DETAIL:
+    T01_OBJECT_VERTICAL_EXTENT_UNIT: Raumbezugssystem
