@@ -64,7 +64,7 @@
         {% set bodyShrink = 'shrink-default' %}
     {% endif %}
 {% endif %}
-<body id="top" class="{{ page.header.body_classes|e }} {{ bodyShrink }}">
+<body id="top" class="{{ page.header.body_classes|e }} {{ bodyShrink }} page-{{ page.slug }}">
 {% if page.header.container_body_disabled is null %}
     <div class="container">
 {% endif %}
