@@ -35,7 +35,7 @@ PAGES:
     ABOUT_MENU_TITLE: 'Features and Portrait of %s'
     ABOUT_META_TITLE: Facts, features, background information
     ABOUT_META_DESCRIPTION: 'Learn more about %s, e.g. purpose, statutory basis, number of connected data bases and offered features.'
-    ABOUT_META_KEYWORDS: '%s, background information, background, history, information, facts, purpose, objective, statutory basis, environmental information regulations, EIR, environmental data catalogues, UDK, data bases, features, search, Directive 2003/4/EC, EU Directive, EU, technology, environmental news, environmental monitoring data, environmental topics, Coordination Center %s'
+    ABOUT_META_KEYWORDS: '%s, background information, background, history, information, facts, purpose, objective, statutory basis, environmental information regulations, EIR, environmental data catalogues, UDK, data bases, features, search, Directive 2003/4/EC, EU Directive, EU'
     PROVIDER: Information Providers
     PROVIDER_MENU_TITLE: Cooperation partners and associated public agencies
     PROVIDER_CONTENT: Information providers
