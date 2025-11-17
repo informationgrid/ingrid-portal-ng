@@ -20,3 +20,6 @@ SEARCH:
   PORTLET_TITLE_1: Umweltgeodaten
   PORTLET_TITLE_2: für Baden-Württemberg<br>finden&nbsp;
   PORTLET_TITLE_3: Geodaten, Dienste und Metadaten
+  CSV_DOWNLOAD:
+      BUTTON_TITLE: als CSV herunterladen
+      BUTTON_TITLE_TOOLTIP: Bitte beachten Sie, dass sich die Angaben zu den Daten und insb. Diensten fortlaufend ändern und aktualisiert werden können. Der CSV-Download erfolgt standardmäßig nach einer fachlichen Hierarchie. Zur vollständigen Ansicht und der Übersicht in Spalten müssen Sie die Inhalte in Ihrem Tabellenprogramm (z.B. über die Funktion Text in Spalten, Trennzeichen Tabstopp) entsprechend anpassen.

@@ -8,6 +8,7 @@
         {{ "COMMON.RESULT_COUNTER_RANKED_WITHSEARCHVALUE"|t(numOfHits, query)|raw }}
     {% endif %}
     </h3>
+    {% include 'partials/search/result/result_counter_download.html.twig' ignore missing %}
 </div>
 
 {% set isExpandable = theme_var('hit_search.expandable.enabled') %}

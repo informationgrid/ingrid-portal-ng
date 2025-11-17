@@ -1,0 +1,288 @@
+{% if numOfHits > 0 %}
+    <button class="download_button search_download" onClick="javascript:downloadCSV()" title="{{ "SEARCH.CSV_DOWNLOAD.BUTTON_TITLE_TOOLTIP"|t }}">
+        <span class="ic-ic-download"></span>
+        <span>{{ "SEARCH.CSV_DOWNLOAD.BUTTON_TITLE"|t }}</span>
+    </button>
+
+    <script>
+        function getFileDate(date) {
+            var tmpDate = '';
+            tmpDate += date.getFullYear();
+            var month = date.getMonth() + 1;
+            if (month < 10) {
+                tmpDate += '-0';
+            } else {
+                tmpDate += '-';
+            }
+            tmpDate += month;
+            var day = date.getDate();
+            if (day < 10) {
+                tmpDate += '-0';
+            } else {
+                tmpDate += '-';
+            }
+            tmpDate += day;
+            var hours = date.getHours();
+            if (hours < 10) {
+                tmpDate += '-0';
+            } else {
+                tmpDate += '-';
+            }
+            tmpDate += hours;
+            var min = date.getMinutes();
+            if (min < 10) {
+                tmpDate += '-0';
+            } else {
+                tmpDate += '-';
+            }
+            tmpDate += min;
+            var sec = date.getSeconds();
+            if (sec < 10) {
+                tmpDate += '-0';
+            } else {
+                tmpDate += '-';
+            }
+            tmpDate += sec;
+            return tmpDate;
+        }
+
+        function disabledButton() {
+            var button = $('.search_download');
+            button.attr('disabled','disabled');
+        }
+
+        function enabledButton() {
+            var button = $('.search_download');
+            button.removeAttr('disabled');
+        }
+
+        function downloadCSV(){
+            disabledButton();
+            const csvHeader = [
+                'Typ',
+                'Themenbereich',
+                'Unterbereich',
+                'Themenname (Titel des Metadatums)',
+                'Filterkriterien',
+                'Darstellungsdienst (GetCapabilities)',
+                'Downloaddienst (GetCapabilities)',
+                'Metadatenaufruf Einzelansicht',
+                'OAC (Objektartencode)',
+                'Metadatenidentifikator',
+                'Zugang geschützt',
+                'Aufruf Suchergebnis'
+            ];
+            const requestedFields = [
+                't01_object.obj_id',
+                't01_object.obj_class',
+                'title',
+                'oac',
+                't011_obj_serv.has_access_constraint',
+                'object_node.tree_path.name',
+                'object_node.tree_path.uuid',
+                'capabilities_url',
+                'capabilities_download_url',
+                'distributor'
+            ];
+            var dateFormat = getFileDate(new Date());
+            var urlDomain = window.location.origin;
+            var urlSearch = window.location.search;
+            const urlParams = new URLSearchParams(urlSearch);
+            jQuery.post('rest/downloadCSV', {
+                requestedFields: requestedFields,
+                codelists: {
+                    't01_object.obj_class': '8000'
+                },
+                query: urlParams.get('q')
+            })
+            .done(function(response, textStatus, jqxhr) {
+                let json = JSON.parse(response);
+                if (json) {
+                    json.sort(function (a, b) {
+                        var tmpA = a['object_node.tree_path.name'];
+                        var tmpB = b['object_node.tree_path.name'];
+                        if (tmpA.length > 1 && tmpB.length > 1) {
+                          return tmpA[0].localeCompare(tmpB[0]) || tmpA[1].localeCompare(tmpB[1]) || a['title'].localeCompare(b['title']);
+                        }
+                        return tmpA[0].localeCompare(tmpB[0]) || a['title'].localeCompare(b['title']);
+                    });
+
+                    var delimiter = '\t';
+                    var csv = json.map(function(row){
+                        var tmpRow = '';
+{# Typ #}
+                        if (row['t01_object.obj_class']){
+                        tmpRow += row['t01_object.obj_class'];
+                        }
+                        tmpRow += delimiter;
+
+{# Themenbereich #}
+                        if (row['object_node.tree_path.name']){
+                            var tmpValue = row['object_node.tree_path.name'];
+                            if (tmpValue.length > 0){
+                                tmpRow += tmpValue[0];
+                            }
+                            tmpRow += delimiter;
+{# Unterbereich #}
+                            if (tmpValue.length > 1){
+                                tmpRow += tmpValue[1];
+                            }
+                            tmpRow += delimiter;
+                        } else {
+                            tmpRow += delimiter;
+                            tmpRow += delimiter;
+                        }
+{# Themenname #}
+                        if (row['title']){
+                            tmpRow += row['title'];
+                        }
+                        tmpRow += delimiter;
+{# Filterkriterium #}
+                        var tmpValue = '';
+{# Ergebnistyp #}
+                        if (row['portal.facet.type']){
+                            row['portal.facet.type'].forEach(function(value){
+                                if (tmpValue !== ''){
+                                    tmpValue += ', ';
+                                }
+                                tmpValue += '$MESSAGES.getString("searchResult.facete.title.types.single") = ' + value;
+                            });
+                        }
+{# Vertrieb der Geodaten #}
+                        if (row['portal.facet.distributor']){
+                            row['portal.facet.distributor'].forEach(function(value){
+                                if (tmpValue !== ''){
+                                    tmpValue += ', ';
+                                }
+                                tmpValue += '$MESSAGES.getString("searchResult.facete.title.provider") = ' + value;
+                            });
+                        }
+{# Fachthemen #}
+                        if (row['portal.facet.metadata_tree']){
+                            row['portal.facet.metadata_tree'].forEach(function(value){
+                                if (tmpValue !== ''){
+                                    tmpValue += ', ';
+                                }
+                                tmpValue += '$MESSAGES.getString("searchResult.facete.title.metadata_tree") = ' + value;
+{# Unterthemen #}
+                                if (row['object_node.tree_path.uuid']){
+                                    row['object_node.tree_path.uuid'].forEach(function(uuid){
+                                        if (row['portal.facet.metadata_tree_' + uuid]){
+                                            row['portal.facet.metadata_tree_' + uuid].forEach(function(subvalue){
+                                                if (tmpValue !== ''){
+                                                    tmpValue += ', ';
+                                                }
+                                                tmpValue += value + ' = ' + subvalue;
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                        tmpRow += tmpValue + delimiter;
+{# Darstellungsdienst #}
+                        var tmpValue = '';
+                        if (row['capabilities_url']){
+                            if (Array.isArray(row['capabilities_url'])) {
+                                row['capabilities_url'].forEach(function(value){
+                                    if (tmpValue !== ''){
+                                        tmpValue += ', ';
+                                    }
+                                    tmpValue += value;
+                                });
+                            } else {
+                                tmpValue += row['capabilities_url'];
+                            }
+                        }
+                        tmpRow += tmpValue + delimiter;
+{# Downloaddienst #}
+                        var tmpValue = '';
+                        if (row['capabilities_download_url']){
+                            if (Array.isArray(row['capabilities_url'])) {
+                                row['capabilities_download_url'].forEach(function (value) {
+                                    if (tmpValue !== '') {
+                                        tmpValue += ', ';
+                                    }
+                                    tmpValue += value;
+                                });
+                            } else {
+                                tmpValue += row['capabilities_download_url'];
+                            }
+                        }
+                        tmpRow += tmpValue + delimiter;
+{# Metadatenaufruf #}
+                        if (row['t01_object.obj_id']){
+                            tmpRow += urlDomain + '/trefferanzeige?docuuid=' + row['t01_object.obj_id'];
+                        }
+                        tmpRow += delimiter;
+{# OAC #}
+                        if (row['oac']){
+                            tmpRow += row['oac'];
+                        }
+                        tmpRow += delimiter;
+{# Metadatenidentifikator #}
+                        if (row['t01_object.obj_id']){
+                            tmpRow += row['t01_object.obj_id'];
+                        }
+                        tmpRow += delimiter;
+{# Zugang geschützt #}
+                        if (row['t011_obj_serv.has_access_constraint']){
+                            let value = row['t011_obj_serv.has_access_constraint'];
+                            if (value === 'Y'){
+                                tmpRow += 'Ja';
+                            } else if (value === 'N') {
+                                tmpRow += 'Nein';
+                            } else {
+                                tmpRow += '--';
+                            }
+                        } else {
+                            tmpRow += '--';
+                        }
+                        tmpRow += delimiter;
+{# Aufruf Suchergebnis #}
+                        var url = urlDomain + '/freitextsuche?rstart=';
+                        if (row['portal.page']){
+                            url += row['portal.page'];
+                        }
+                        url += '0';
+                        if (row['portal.query']){
+                            url += '&q=' + encodeURIComponent(row['portal.query']);
+                        }
+                        if (row['portal.facet']){
+                            url += row['portal.facet'];
+                        }
+                        if (row['t01_object.obj_id']){
+                            url += '#' + row['t01_object.obj_id'];
+                        }
+                        tmpRow += url;
+                        tmpRow += delimiter;
+                        return tmpRow;
+                    });
+                    if (csv !== '') {
+                        csv.unshift(csvHeader.join(delimiter));
+                        csv = csv.join('\r\n');
+                    }
+                    var blob = new Blob( ['\ufeff' + csv], {type: 'text/csv;charset=utf-8;'} );
+                    if (navigator.msSaveBlob) {
+                        navigator.msSaveBlob( blob, filename );
+                    } else {
+                        var link = document.createElement( "a" );
+                        if (link.download !== undefined) {
+                            var url = URL.createObjectURL( blob );
+                            link.setAttribute( "href", url );
+                            link.setAttribute( "download", "Export_RIPS-Metadaten_" + dateFormat + ".csv" );
+                            link.style.visibility = 'hidden';
+                            document.body.appendChild( link );
+                            link.click();
+                            document.body.removeChild( link );
+                        }
+                    }
+                }
+                enabledButton();
+            })
+            .fail(function () {
+                enabledButton();
+            });
+        }
+    </script>
+{% endif %}
