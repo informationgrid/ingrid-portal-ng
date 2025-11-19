@@ -1232,3 +1232,12 @@ footer .footer-buttons-bar .login-buttons .login-form {
 .search-filtered .table:not(.table--lined) table tr th {
   border-bottom: 2px solid #0A4E5A;
 }
+
+.js-popup {
+  cursor: pointer;
+  color: #00A8B8;
+}
+
+.page-detail .body {
+  background-image: linear-gradient(to right, #FFFFFF, #FFFFFF);
+}
