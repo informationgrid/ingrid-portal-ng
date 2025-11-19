@@ -4,7 +4,8 @@ SEARCH:
     PORTLET_TITLE_2: Internes Rechercheportal für Datensätze
 
 FACETS:
-    DISTRIBUTOR: Fachliche Ansprechstelle
+    FACET_LABEL:
+        DISTRIBUTOR: Fachliche Ansprechstelle
 
 SEARCH_DETAIL:
     PROJECT_TITLE: Projekttitel

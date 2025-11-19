@@ -2,7 +2,8 @@ SEARCH:
     PORTLET_TITLE_2: Internal research portal for data sets
 
 FACETS:
-    DISTRIBUTOR: Providers
+    FACET_LABEL:
+        DISTRIBUTOR: Providers
 
 SEARCH_DETAIL:
     PROJECT_TITLE: Project title

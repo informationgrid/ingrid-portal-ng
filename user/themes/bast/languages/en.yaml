@@ -1,8 +1,9 @@
 PAGES:
     HOME_MENU_TITLE: Home
     HOME_META_TITLE: Go directly to the BASt homepage
-    ABOUT: About this metadata catalog
+    ABOUT: About BASt metadata catalog
     ABOUT_MENU_TITLE: 'Features and Portrait of %s'
+    ABOUT_META_TITLE: About
     PROBLEM: Report accessibility
     PROBLEM_MENU_TITLE: Report accessibility
     PROBLEM_META_TITLE: Report accessibility
