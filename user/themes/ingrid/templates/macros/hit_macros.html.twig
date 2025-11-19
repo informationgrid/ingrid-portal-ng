@@ -1281,6 +1281,35 @@
     {% endif %}
 {% endmacro %}
 
+{% macro render_table_colspan (title, header, entries, colspanColumns, additionalRows, setCenter) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table">
+            {% if title %}
+                <h5>{{ title|raw }}</h5>
+            {% endif %}
+            <table style="display: inline-table;">
+            {% if header and header|length > 0 %}
+                <thead>
+                    <tr>
+                    {% for head in header %}
+                        {% set num = loop.index - 1 %}
+                        <th {% if colspanColumns[num] %}colspan="{{ colspanColumns[num] }}"{% endif %}>{{ head }}</th>
+                    {% endfor %}
+                    </tr>
+                </thead>
+            {% endif %}
+            {% for items in entries %}
+                <tr>
+                {% for item in items %}
+                    {% set num = loop.index - 1 %}
+                    {{ _self.render_table_entry_value(item, colspanColumns[num]) }}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
 
 {% macro render_table_info (title, header, entries, increaseColumns, titleInfo) %}
     {% if entries.rows and entries.rows|length > 0 %}
@@ -1615,23 +1644,23 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_table_entry_value (item) %}
+{% macro render_table_entry_value (item, colspan) %}
     {% if item.type == "text" %}
         {% if item.value is not null %}
-            <td>{{ item.value }}</td>
+            <td {% if colspan %}colspan="{{ colspan }}{% endif %}">{{ item.value }}</td>
         {% elseif item.values is not null %}
-            <td>
+            <td {% if colspan %}colspan="{{ colspan }}{% endif %}">
             {% for value in item.values %}
                 <p>{{ value }}</p>
             {% endfor %}
             </td>
         {% endif %}
     {% elseif item.type == "date" %}
-        <td>{{ item.value|date("d.m.Y") }}</td>
+        <td {% if colspan %}colspan="{{ colspan }}{% endif %}">{{ item.value|date("d.m.Y") }}</td>
     {% elseif item.type == "link" %}
-        <td><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
+        <td {% if colspan %}colspan="{{ colspan }}{% endif %}"><a href="{{ item.value }}" title="{{ item.value }}">{{ item.value }}</a></td>
     {% elseif item.type == "symbol" %}
-        <td class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
+        <td {% if colspan %}colspan="{{ colspan }}{% endif %}" class="symbol" {% if setCenter %}style="text-align:center;"{% endif %}>
         {% if item.value == "true" %}
             <span class="ic-ic-check" title="{{ ("COMMON.GENERAL_" ~ item.value|upper)|t }}"></span>
         {% elseif item.value == "false" %}
@@ -1641,6 +1670,6 @@
         {% endif %}
         </td>
     {% else %}
-        <td></td>
+        <td {% if colspan %}colspan="{{ colspan }}{% endif %}"></td>
     {% endif %}
 {% endmacro %}
