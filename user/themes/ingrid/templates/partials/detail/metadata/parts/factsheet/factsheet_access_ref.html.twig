@@ -1,0 +1,7 @@
+{# URL des Zugangs #}
+{% if linkAccessRefs and linkAccessRefs|length > 0 %}
+    <div class="sub-section sub-section-unlined">
+        {% set tmpTitle = "SEARCH_DETAIL.ACCESS_URL"|t %}
+        {{ hit_macros.render_label_link_image_list(tmpTitle, linkAccessRefs, "external", page, false, 2) }}
+    </div>
+{% endif %}

@@ -12,25 +12,7 @@
     <div class="row">
         <div class="xsmall-24 small-24 medium-14 large-14 xlarge-14 columns">
 {# URL des Zugangs #}
-            {% if access|length > 0 %}
-                <div class="sub-section">
-                    {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_ACCESS_URL"|t, access|length) }}
-                    <div class="document-list">
-                        {% for link in access %}
-                        <div class="list-item">
-                            <div>
-                                <a href="{{ link.url }}" class="icon external-link" title="{{ link.title }}" target="_blank" rel="noopener noreferrer">
-                                    <span class="ic-ic-external"></span>
-                                    <span class="text">
-                                        {{ link.title ?? link.url }}
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
+            {% include 'partials/search/result/metadata/expand/access_ref/expand_access_ref.html.twig' ignore missing %}
 {# Link zur Verordnung #}
             {% if regulation|length > 0 %}
                 <div class="sub-section">
