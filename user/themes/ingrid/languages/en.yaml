@@ -229,7 +229,7 @@ COMMON:
     TIME_TYPE: Temporal reference of content
     TIME_FROM: ' '
     TIME_TO: '-'
-    TIME_UNTIL: '-'
+    TIME_UNTIL: until
     TIME_SINCE: since
     TIME_UNTILNOW: , currently up to date
     TIME_UNTILUNKNOWN: , current actuality unknown
