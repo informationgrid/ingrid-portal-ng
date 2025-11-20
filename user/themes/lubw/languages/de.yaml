@@ -18,6 +18,7 @@ PAGES:
 
 COMMON:
   RESULT_SHOWMAP_TOOLTIP_SHORT: Vorschaubild öffnen
+  RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<strong class="search-result-hits">%d</strong> Ergebnisse'
 
 SEARCH:
   PORTLET_TITLE_1: Umweltgeodaten

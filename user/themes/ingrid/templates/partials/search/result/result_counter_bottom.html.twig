@@ -15,6 +15,7 @@
             <h3>
                 {{ "COMMON.RESULT_COUNTER_RANKED_GROUPED"|t(counterStartHit, counterEndHit, numOfHits)|raw }}
             </h3>
+            {% include 'partials/search/result/result_counter_download.html.twig' ignore missing %}
         {% endif %}
 
         {% if numOfHits > 0 and enableExportCSV %}
