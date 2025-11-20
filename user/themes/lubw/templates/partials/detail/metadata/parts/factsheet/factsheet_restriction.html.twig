@@ -1,0 +1,4 @@
+{# Zugriffsbeschränkungen #}
+{% if useRefs.accessConstraints.constraints %}
+    {{ hit_macros.render_label_list("SEARCH_DETAIL.OBJECT_ACCESS_RESTRICTION_VALUE"|t, [useRefs.accessConstraints.constraints|first]) }}
+{% endif %}

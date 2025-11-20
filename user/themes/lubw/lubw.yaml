@@ -118,7 +118,7 @@ home:
       hidden: false
     -
       path: /home/_inform
-      hidden: false
+      hidden: true
     -
       path: /home/_news
       hidden: true
@@ -534,7 +534,6 @@ redirect:
   pages_to_404:
     - /rss
     - /measure
-    - /datasource
   pages_to_redirect:
     - path: /imprint
       url: 'https://www.lubw.baden-wuerttemberg.de/impressum'

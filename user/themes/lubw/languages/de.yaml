@@ -7,14 +7,17 @@ PAGES:
   SITEMAP: Inhalt
   LANGUAGE_SIGN: Gebärdensprache
   LANGUAGE_SIGN_MENU_TITLE: Gebärdensprache
-  LANGUAGE_SIGN_META_TITLE: '%s - Gebärdensprache'
+  LANGUAGE_SIGN_META_TITLE: Gebärdensprache
   LANGUAGE_SIGN_META_DESCRIPTION: Hinweise zur Gebärdensprache
   LANGUAGE_SIGN_META_KEYWORDS: Gebärdensprache
   LANGUAGE_EASY: Leichte Sprache
   LANGUAGE_EASY_MENU_TITLE: Leichte Sprache
-  LANGUAGE_EASY_META_TITLE: '%s - Leichte Sprache'
+  LANGUAGE_EASY_META_TITLE: Leichte Sprache
   LANGUAGE_EASY_META_DESCRIPTION: Hinweise zur leichten Sprache
   LANGUAGE_EASY_META_KEYWORDS: Leichte Sprache
+
+COMMON:
+  RESULT_SHOWMAP_TOOLTIP_SHORT: Vorschaubild öffnen
 
 SEARCH:
   PORTLET_TITLE_1: Umweltgeodaten
