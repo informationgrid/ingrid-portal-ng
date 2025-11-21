@@ -11,7 +11,7 @@
         {{ hit_macros.render_multi_images(previews, partners) }}
         {% if hasFactMap %}
             <p class="caption">
-                {% set showMapUrl = page.find('/map').url ~ '?layers=' ~ mapUrl %}
+                {% set showMapUrl = page.find('/map').url ~ mapUrl %}
                 {% if mapUrlClient %}
                     {% set showMapUrl = mapUrlClient %}
                 {% endif %}

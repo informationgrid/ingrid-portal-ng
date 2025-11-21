@@ -36,7 +36,7 @@
         {% set tmpTitle = "SEARCH_DETAIL.SHOWGETCAPABILITYURLRESTRICTED"|t %}
     {% endif %}
     {% if map.url and mapUrl and hasAccessConstraint is not same as("true") %}
-        {{ hit_macros.render_label_link_map(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external", "", page.find('/map').url ~ '?layers=' ~ mapUrl) }}
+        {{ hit_macros.render_label_link_map(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external", "", page.find('/map').url ~ mapUrl) }}
     {% else %}
         {{ hit_macros.render_label_link(tmpTitle, "SEARCH_DETAIL.SHOWGETCAPABILITYURL_TITLE"|t, infoRefs.operationConnectPoint, "external") }}
     {% endif %}

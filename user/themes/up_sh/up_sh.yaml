@@ -449,6 +449,7 @@ hit_detail:
   link_sort_asc: false
 map:
   url: /ingrid-webmap-client/frontend/prd
+  is_masterportal: false
   leaflet:
     epsg: '3857'
     bg:

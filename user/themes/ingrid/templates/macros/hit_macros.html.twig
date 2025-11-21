@@ -1164,7 +1164,7 @@
                         <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>
                     </a>
                 {% elseif entry.mapUrl and map.url %}
-                    <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ '?layers=' ~ entry.mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
+                    <a target="_blank" class="button outline pill" href="{{ page.find('/map').url ~ entry.mapUrl }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
                         <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>
                     </a>
                 {% endif %}

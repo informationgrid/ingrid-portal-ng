@@ -218,6 +218,13 @@ if [ "$TEXT_FOOTER_BANNER" ]; then
   yq -i '.footer.banner.text = env(TEXT_FOOTER_BANNER)' "$INGRID_GRAV_THEME_YAML"
 fi
 
+if [ "$MAP_URL" ]; then
+  yq -i '.map.url = env(MAP_URL)' "$INGRID_GRAV_THEME_YAML"
+fi
+
+if [ "$MAP_IS_MASTERPORTAL" ]; then
+  yq -i '.map.is_masterportal = env(MAP_IS_MASTERPORTAL)' "$INGRID_GRAV_THEME_YAML"
+fi
 #####################
 # Default admin config
 #####################

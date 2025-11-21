@@ -1034,6 +1034,7 @@ hit_detail:
   link_sort_asc: true
 map:
   url:
+  is_masterportal: false
   leaflet:
     epsg: '3857'
     bg:

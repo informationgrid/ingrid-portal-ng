@@ -10,6 +10,18 @@ form:
       label: THEME.ADMIN.MAP.URL.LABEL
       help: THEME.ADMIN.MAP.URL.HELP
 
+    map.is_masterportal:
+      type: toggle
+      label: THEME.ADMIN.MAP.IS_MASTERPORTAL.LABEL
+      help: THEME.ADMIN.MAP.IS_MASTERPORTAL.HELP
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
     map.shrink_header:
       type: toggle
       label: THEME.ADMIN.MAP.SHRINK_HEADER.LABEL

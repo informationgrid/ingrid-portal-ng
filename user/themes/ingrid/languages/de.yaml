@@ -1331,6 +1331,9 @@ THEME:
             URL:
                 LABEL: Link zur Karte
                 HELP: Trage Sie hier die URL zur Karte.
+            IS_MASTERPORTAL:
+                LABEL: Masterportal
+                HELP: Wird das Masterportal verwendet?
             SHRINK_HEADER:
                 LABEL: Portal Header verkleiner
                 HELP: Bei Aktivierung wird der Header verkleinert dargestellt.
