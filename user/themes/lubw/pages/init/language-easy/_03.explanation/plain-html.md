@@ -26,11 +26,11 @@ title: Erklärung zur Barriere·freiheit in Leichter Sprache
             <p>LUBW ist die Abkürzung für:</p>
             <p class="indent-md"><b>L</b>andes·anstalt für <b>U</b>mwelt <b>B</b>aden-<b>W</b>ürttemberg.</p>
             <p>Die LUBW ist eine öffentliche Stelle in Baden-Württemberg.</p>
-            <img src="user/themes/lubw/images/template/easy_language_02.png" style="width: 20%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_02.png" style="width: 20%" alt="image" aria-hidden="true">
             <p>Öffentliche Stellen übernehmen viele wichtige Aufgaben.</p>
             <p>Alle Menschen sollen die öffentlichen Stellen nutzen können.</p>
             <p>Auch Menschen mit Behinderung.</p>
-            <img src="user/themes/lubw/images/template/easy_language_26.png" style="width: 30%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_26.png" style="width: 30%" alt="image" aria-hidden="true">
             <p>Und deshalb sollen die Internet·seiten von öffentlichen Stellen barriere·frei sein.</p>
             <p>Das steht sogar in einem Gesetz.</p>
             <p>In Baden-Württemberg heißt das Gesetz:</p>
@@ -94,7 +94,7 @@ title: Erklärung zur Barriere·freiheit in Leichter Sprache
             <p>Mit einem Screen·reader können sich diese Menschen die Texte vorlesen lassen.</p>
             <p>Screen·reader ist das englische Wort für:</p>
             <p class="indent-md">Bildschirm·vorlese·programm.</p>
-            <img src="user/themes/lubw/images/template/easy_language_27.png" style="width: 40%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_27.png" style="width: 40%" alt="image" aria-hidden="true">
             <p>Der Screen·reader liest den Text auf dem Bildschirm vor.</p>
             <p>Und der Screen·reader liest auch die Alternativ·texte vor.</p>
             <p>Manche Bilder auf der Internet·seite von RIPS-Meta·daten haben noch <b>keinen</b> Alternativ·text.</p>
@@ -117,7 +117,7 @@ title: Erklärung zur Barriere·freiheit in Leichter Sprache
             <p>Erweiterbare Inhalte bedeutet:</p>
             <p class="indent-md">Die Inhalte verändern sich bei Bedarf.</p>
             <p>Erweiterbare Inhalte gibt es zum Beispiel bei Beschreibungs·texten.</p>
-            <img src="user/themes/lubw/images/template/easy_language_28.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_28.png" alt="image" aria-hidden="true">
             <p>Sie sehen zuerst immer nur einen Teil von der Beschreibung.</p>
             <p>Sie wollen den ganzen Text lesen?</p>
             <p>Dann müssen Sie auf den kleinen Kasten mit dem Wort Mehr klicken.</p>
@@ -181,7 +181,7 @@ title: Erklärung zur Barriere·freiheit in Leichter Sprache
             <p>Sie haben verschiedene Möglichkeiten:</p>
             <h3>
                 Über unser Feedback-Formular
-                <img src="user/themes/lubw/images/template/easy_language_29.png" style="width: 25%; float: right" alt="image" aria-hidden="true">
+                <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_29.png" style="width: 25%; float: right" alt="image" aria-hidden="true">
             </h3>
             <p>Feedback ist ein englisches Wort und bedeutet:</p>
             <p class="indent-md">Rückmeldung oder Bewertung.</p>
@@ -189,19 +189,19 @@ title: Erklärung zur Barriere·freiheit in Leichter Sprache
             <p><a href="/kontakt"><span>Hier</span></a> kommen Sie zum Feedback-Formular.</p>
             <h3>
                 Mit einer E-Mail
-                <img src="user/themes/lubw/images/template/easy_language_30.png" style="width: 18%; float: right" alt="image" aria-hidden="true">
+                <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_30.png" style="width: 18%; float: right" alt="image" aria-hidden="true">
             </h3>
             <p>Sie können uns auch eine E-Mail schicken.</p>
             <p>Unsere E-Mail-Adresse ist: <a href="mailto:poststelle@lubw.bwl.de"><span>poststelle@lubw.bwl.de</span></a></p>
             <h3>
                 Über Telefon
-                <img src="user/themes/lubw/images/template/easy_language_31.png" style="width: 18%; float: right" alt="image" aria-hidden="true">
+                <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_31.png" style="width: 18%; float: right" alt="image" aria-hidden="true">
             </h3>
             <p>Sie können uns auch anrufen.</p>
             <p>Unsere Telefon·nummer ist: <a href="tel:0049 721 5600 0"><span>0049 721 5600 0</span></a></p>
             <h3>
                 Mit der Post
-                <img src="user/themes/lubw/images/template/easy_language_32.png" style="width: 20%; float: right" alt="image" aria-hidden="true">
+                <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_32.png" style="width: 20%; float: right" alt="image" aria-hidden="true">
             </h3>
             <p>Sie können uns auch einen Brief schicken.</p>
             <p>Unsere Post·adresse ist:</p>

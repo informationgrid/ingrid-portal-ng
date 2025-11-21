@@ -22,7 +22,7 @@ title: Informationen über unsere Internetseite
             <p>Meta·daten sind nämlich Zusatz·informationen.</p>
             <p>Ein Beispiel:</p>
             <p>Wissenschaftlerinnen und Wissenschaftler machen Untersuchungen.</p>
-            <img src="user/themes/lubw/images/template/easy_language_01.png" style="width: 30%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_01.png" style="width: 30%" alt="image" aria-hidden="true">
             <p>So bekommen die Wissenschaftlerinnen und Wissenschaftler Informationen. Diese Informationen schreiben die
                 Wissenschaftlerinnen und Wissenschaftler auf.</p>
             <p>Dann können auch andere Menschen mit den Informationen arbeiten.</p>
@@ -58,7 +58,7 @@ title: Informationen über unsere Internetseite
             <p><b>L</b>andes·anstalt für <b>U</b>mwelt <b>B</b>aden-<b>W</b>ürttemberg.</p>
             <p>Baden-Württemberg ist ein Bundes·land im Süden von Deutschland.</p>
             <p>Die LUBW ist eine <b>Behörde</b> in Baden-Württemberg.</p>
-            <img src="user/themes/lubw/images/template/easy_language_02.png" style="width: 30%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_02.png" style="width: 30%" alt="image" aria-hidden="true">
             <p>Die LUBW kümmert sich um das Umwelt-Informations-System von Baden-Württemberg.</p>
             <p>Die Abkürzung für das <b>U</b>mwelt-<b>I</b>nformations-<b>S</b>ystem ist: <b>UIS</b>.</p>
             <p>Im UIS gibt es sehr viele Umwelt·informationen.</p>
@@ -103,7 +103,7 @@ title: Informationen über unsere Internetseite
                 <li>eine Beschreibung</li>
             </ul>
             <p>So sieht eine Seite mit einem Meta·daten·satz auf RIPS-Metadaten aus:</p>
-            <img src="user/themes/lubw/images/template/easy_language_03.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_03.png" alt="image" aria-hidden="true">
             <p>Die Meta·daten von RIPS-Metadaten sind in verschiedene Kategorien unterteilt.</p>
             <p>Diese Kategorien gibt es zurzeit:</p>
             <ul>
@@ -172,18 +172,18 @@ title: Informationen über unsere Internetseite
             <p>Sie können zum Beispiel nach Informationen zu <b>Wasser</b> suchen.</p>
             <p>Oder nach Informationen zur <b>Luft</b>.</p>
             <p>So finden Sie leichter die passenden Daten·sätze.</p>
-            <img src="user/themes/lubw/images/template/easy_language_04.png" style="width: 80%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_04.png" style="width: 80%" alt="image" aria-hidden="true">
             <h3>2. Karten·funktion</h3>
             <p>Die Internet·seite hat eine Karten·funktion.</p>
             <p>Es gibt eine inter·aktive Karte.</p>
             <p>Inter·aktiv bedeutet:</p>
             <p>Die Karte kann verschiedene Informationen anzeigen.</p>
             <p>Sie können die Informationen auf der Karte anpassen.</p>
-            <img src="user/themes/lubw/images/template/easy_language_05.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_05.png" alt="image" aria-hidden="true">
             <h3>3. Themen·übersicht</h3>
             <p>Die vielen Informationen sind nach Themen geordnet.</p>
             <p>Auf der Internet·seite gibt es eine Liste mit den verschiedenen Themen.</p>
-            <img src="user/themes/lubw/images/template/easy_language_06.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_06.png" alt="image" aria-hidden="true">
             <h3>4. Filter</h3>
             <p>Für die Suche von Informationen gibt es auf der Internet·seite viele verschiedene Filter.</p>
             <p>Mit Filtern können Sie Ihre Suche genauer machen.</p>
@@ -192,7 +192,7 @@ title: Informationen über unsere Internetseite
             <p>So können Sie bestimmen: In welcher Kategorie wollen Sie nach Informationen suchen?</p>
             <p>Sie können auch zwischen verschiedenen Themen·gebieten auswählen.</p>
             <p>Oder Sie können auswählen: Von wem kommen die Informationen?</p>
-            <img src="user/themes/lubw/images/template/easy_language_07.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_07.png" alt="image" aria-hidden="true">
             <h3>5. Daten·angebot</h3>
             <p>Auf der Internet·seite gibt es sehr viele Meta·daten.</p>
             <h3>6. CSV-Export</h3>
@@ -200,13 +200,13 @@ title: Informationen über unsere Internetseite
             <p>CSV ist ein besonderes Datei-Format.</p>
             <p>Mit dem CSV-Export können Sie verschiedene Meta·daten in einer Tabelle sammeln und ab·speichern.</p>
             <p>So können Sie ganz einfach eine eigene Liste mit Such·ergebnissen machen.</p>
-            <img src="user/themes/lubw/images/template/easy_language_08.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_08.png" alt="image" aria-hidden="true">
             <h3>7. Links</h3>
             <p>Auf der Internet·seite gibt es auch viele Links.</p>
             <p>Zum Beispiel zu Dateien zum Herunter·laden.</p>
             <p>Oder zu anderen Internet·seiten mit weiteren Informationen zum Thema.</p>
             <p>Diese Links sehen zum Beispiel so aus:</p>
-            <img src="user/themes/lubw/images/template/easy_language_09.png" style="width: 50%" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_09.png" style="width: 50%" alt="image" aria-hidden="true">
         </div>
     </section>
 </div>

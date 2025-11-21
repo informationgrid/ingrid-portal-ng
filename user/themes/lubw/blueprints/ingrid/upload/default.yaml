@@ -1,0 +1,16 @@
+form:
+  fields:
+    upload.section:
+      type: section
+      title: THEME.ADMIN.UPLOAD.TITLE
+      underline: true
+
+    upload.easylanguage:
+      type: file
+      label: THEME.ADMIN.UPLOAD.EASYLANGUAGE.TITLE
+      destination: 'theme://assets/upload/easylanguage'
+      multiple: true
+      limit: 0
+      autofocus: false
+      accept:
+        - image/*

@@ -26,7 +26,7 @@ title: Informationen über den Aufbau von unserer Internet-Seite
         </button>
         <div class="content">
             <p>Ganz oben auf unserer Internet·seite ist immer die Kopf·zeile.</p>
-            <img src="user/themes/lubw/images/template/easy_language_10.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_10.png" alt="image" aria-hidden="true">
             <p>In der Kopf·zeile finden Sie:</p>
             <ul>
                 <li>das Wappen</li>
@@ -42,15 +42,15 @@ title: Informationen über den Aufbau von unserer Internet-Seite
             <p>Ganz links in der Kopf·zeile ist das Wappen von Baden-Württemberg.</p>
             <p>Neben dem Wappen steht:</p>
             <p>Landesanstalt für Umwelt Baden-Württemberg.</p>
-            <img src="user/themes/lubw/images/template/easy_language_11.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_11.png" alt="image" aria-hidden="true">
             <p>Sie klicken auf das Wappen oder die Schrift?</p>
             <p>Dann kommen Sie immer zur Start·seite von RIPS-Meta·daten.</p>
             <h3>Die Suche</h3>
             <p>In der Kopf·zeile finden Sie auch die Such·funktion.</p>
-            <img src="user/themes/lubw/images/template/easy_language_12.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_12.png" alt="image" aria-hidden="true">
             <p>Sie klicken auf die Lupe?</p>
             <p>Dann öffnet sich eine neue Seite mit einem Text·feld.</p>
-            <img src="user/themes/lubw/images/template/easy_language_13.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_13.png" alt="image" aria-hidden="true">
             <p>Geben Sie Ihr Such·wort in das Text·feld ein.</p>
             <p>Klicken Sie dann auf das Wort <b>Suche</b> rechts neben dem Textfeld.</p>
             <p>Dann bekommen Sie unter dem Text·feld eine Liste mit den Such·ergebnissen.</p>
@@ -58,7 +58,7 @@ title: Informationen über den Aufbau von unserer Internet-Seite
             <p>Mit den Filtern können Sie die Such·ergebnisse noch genauer machen.</p>
             <h3>Karten</h3>
             <p>Sie klicken in der Kopf·zeile auf <b>Karten</b>?</p>
-            <img src="user/themes/lubw/images/template/easy_language_14.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_14.png" alt="image" aria-hidden="true">
             <p>Dann kommen Sie zur Karten·komponente von RIPS-Meta·daten.</p>
             <p>Die Karten·komponente ist eine besondere Funktion.</p>
             <p>Mit der Karten·komponente können Sie eine interaktive Karte nutzen.</p>
@@ -67,9 +67,9 @@ title: Informationen über den Aufbau von unserer Internet-Seite
             <p>Und Sie können diese Informationen selbst bestimmen.</p>
             <h3>Die Themen·übersicht</h3>
             <p>Sie klicken in der Kopf·zeile auf <b>Themen·übersicht</b>?</p>
-            <img src="user/themes/lubw/images/template/easy_language_15.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_15.png" alt="image" aria-hidden="true">
             <p>Dann kommen Sie zu einer Liste mit den verschiedenen Themen·gebieten von RIPS-Meta·daten.</p>
-            <img src="user/themes/lubw/images/template/easy_language_16.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_16.png" alt="image" aria-hidden="true">
             <p>Die Liste ist nach dem Alphabet geordnet.</p>
             <p>Sie klicken auf das Plus-Zeichen neben einem Themen·gebiet?</p>
             <p>Dann öffnen sich weitere Unter·themen von dem Themen·gebiet.</p>
@@ -77,16 +77,16 @@ title: Informationen über den Aufbau von unserer Internet-Seite
             <p>Dann kommen Sie zu den Informationen.</p>
             <h3>Leichte Sprache</h3>
             <p>Sie klicken in der Kopf·zeile auf <b>Leichte Sprache</b>?</p>
-            <img src="user/themes/lubw/images/template/easy_language_17.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_17.png" alt="image" aria-hidden="true">
             <p>Dann kommen Sie zu unseren Informationen in Leichter Sprache.</p>
             <h3>Gebärden·sprache</h3>
             <p>Sie klicken in der Kopf·zeile auf <b>Gebärden·sprache</b>?</p>
-            <img src="user/themes/lubw/images/template/easy_language_18.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_18.png" alt="image" aria-hidden="true">
             <p>Dann kommen Sie zu unseren Informationen in Gebärden·sprache.</p>
             <h3>Das LUBW-Logo</h3>
             <p>Sie klicken in der Kopf·zeile auf das LUBW-Logo?</p>
             <p>Dann kommen Sie immer zur Start·seite von RIPS-Meta·daten.</p>
-            <img src="user/themes/lubw/images/template/easy_language_19.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_19.png" alt="image" aria-hidden="true">
         </div>
     </section>
     <section id="main_menu">
@@ -97,10 +97,10 @@ title: Informationen über den Aufbau von unserer Internet-Seite
         <div class="content">
             <p>Ganz rechts in der Kopf·zeile ist ein Menü.</p>
             <p>Dieses Menü ist das Haupt·menü von der Internet·seite.</p>
-            <img src="user/themes/lubw/images/template/easy_language_20.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_20.png" alt="image" aria-hidden="true">
             <p>Sie klicken auf das Menü?</p>
             <p>Dann öffnet sich eine Liste mit den Menü·punkten.</p>
-            <img src="user/themes/lubw/images/template/easy_language_21.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_21.png" alt="image" aria-hidden="true">
             <p>Das Menü hat verschiedene Menü·punkte.</p>
             <p>Ganz oben finden Sie zum Beispiel:</p>
             <ul>
@@ -147,14 +147,14 @@ title: Informationen über den Aufbau von unserer Internet-Seite
             <p>Hier bekommen Sie einen Überblick über das Angebot.</p>
             <p>Und Sie kommen direkt zu den wichtigsten Funktionen.</p>
             <p style="margin-top: 1.2rem">Oben auf der Start·seite finden Sie eine Such·funktion.</p>
-            <img src="user/themes/lubw/images/template/easy_language_22.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_22.png" alt="image" aria-hidden="true">
             <p>Hier könne Sie die Internet·seite nach Informationen durchsuchen.</p>
             <p>Geben Sie einfach Ihr Such·wort in das Text·feld ein.</p>
             <p>Klicken Sie dann auf auf das Wort Suchen rechts neben dem Text·feld.</p>
             <p>Dann sucht der Computer in allen RIPS-Meta·daten.</p>
             <p style="margin-top: 1.2rem">Unter der Such·funktion auf der Start·seite finden Sie eine Auswahl an
                 Kategorien.</p>
-            <img src="user/themes/lubw/images/template/easy_language_23.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_23.png" alt="image" aria-hidden="true">
             <p>Hier sind die Meta·daten schon in verschiedene Kategorien eingeteilt.</p>
             <p>So können Sie die passende Kategorie für Ihre Meta·daten-Suche anklicken.</p>
             <p style="margin-top: 1.2rem">Sie finden hier zurzeit diese Kategorien:</p>
@@ -169,7 +169,7 @@ title: Informationen über den Aufbau von unserer Internet-Seite
             <p><b>Hinweis</b>: In einem anderen Text in Leichter Sprache beschreiben wir diese Kategorien genauer.</p>
             <p>Der Text heißt: <a href="#about_internetseite"><span>Über unsere Internet·seite</span></a>.</p>
             <p style="margin-top: 1.2rem">Unter den Kategorien finden Sie einen Info·text.</p>
-            <img src="user/themes/lubw/images/template/easy_language_24.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_24.png" alt="image" aria-hidden="true">
             <p>Es gibt eine wichtige Information für die Nutzerinnen und Nutzer von der Internet·seite?</p>
             <p>Dann steht dort diese Information.</p>
         </div>
@@ -181,7 +181,7 @@ title: Informationen über den Aufbau von unserer Internet-Seite
         </button>
         <div class="content">
             <p>Ganz unten auf der Internet·seite ist immer die Fuß·zeile.</p>
-            <img src="user/themes/lubw/images/template/easy_language_25.png" alt="image" aria-hidden="true">
+            <img src="user/themes/lubw/assets/upload/easylanguage/easy_language_25.png" alt="image" aria-hidden="true">
             <p>In der Fuß·zeile finden Sie diese Menü·punkte:</p>
             <ul>
                 <li>Das Wappen</li>
