@@ -119,6 +119,9 @@ if [ "$ENABLE_LANG_EN" ]; then
   yq -i '.languages.supported = ["de", "en"]' "$SYSTEM_YAML"
 fi
 
+# Display errors
+yq -i '.errors.display = -1' "$SYSTEM_YAML"
+
 # Add theme
 THEME="$THEME" \
 yq -i '.pages.theme = env(THEME)' "$SYSTEM_YAML"
