@@ -7,6 +7,7 @@ ENABLE_CACHE=${ENABLE_CACHE:-true}
 THEME_COPY_PAGES_INIT=${THEME_COPY_PAGES_INIT:-false}
 ENABLE_SCHEDULER_CODELIST=${ENABLE_SCHEDULER_CODELIST:-true}
 ENABLE_SCHEDULER_RSS=${ENABLE_SCHEDULER_RSS:-true}
+ENABLE_SCHEDULER_BACKUP=${ENABLE_SCHEDULER_RSS:-false}
 MARKDOWN_AUTO_LINE_BREAKS=${MARKDOWN_AUTO_LINE_BREAKS:-true}
 HOMEPAGE=${HOMEPAGE:-/home}
 SITE_DEFAULT_LANG=${SITE_DEFAULT_LANG:-de}
@@ -264,10 +265,16 @@ else
   yq -i '.status.ingrid-codelist-index = "disabled"' "$SCHEDULER_YAML"
 fi
 
-if [ "$ENABLE_SCHEDULER_RSS" = "true"  ]; then
+if [ "$ENABLE_SCHEDULER_RSS" = "true" ]; then
   yq -i '.status.ingrid-rss-index = "enabled"' "$SCHEDULER_YAML"
 else
   yq -i '.status.ingrid-rss-index = "disabled"' "$SCHEDULER_YAML"
+fi
+
+if [ "$ENABLE_SCHEDULER_BACKUP" = "true" ]; then
+  yq -i '.status.default-site-backup = "enabled"' "$SCHEDULER_YAML"
+else
+  yq -i '.status.default-site-backup = "disabled"' "$SCHEDULER_YAML"
 fi
 
 mkdir -p assets backup cache images logs tmp
