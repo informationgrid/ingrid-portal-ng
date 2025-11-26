@@ -7,16 +7,16 @@ header:
   menu_dropdown: true
   shrink: true
   logo:
-    user/themes/nlpv/images/logo/logo.svg:
-      name: logo.svg
-      full_path: logo.svg
+    user/themes/nlpv/images/logo/logo.png:
+      name: logo.png
+      full_path: logo.png
       type: image/svg+xml
       size: 5898
-      path: user/themes/nlpv/images/logo/logo.svg
+      path: user/themes/nlpv/images/logo/logo.png
 footer:
   logo_enabled: false
   copyright:
-    text: 'Ministerium für Energiewende, Klimaschutz, Umwelt und Natur'
+    text: 'Nationalpark Wattenmeer'
     class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
@@ -46,9 +46,6 @@ menu:
       path: /map
       icon: ic-ic-karten
     -
-      path: /measure
-      icon: ic-ic-chemie
-    -
       path: /catalog
       icon: ic-ic-datenkataloge
   site:
@@ -57,9 +54,6 @@ menu:
       highlighted: true
     -
       path: /map
-      highlighted: true
-    -
-      path: /measure
       highlighted: true
     -
       path: /catalog
@@ -117,7 +111,7 @@ home:
       hidden: false
     -
       path: /home/_inform
-      hidden: false
+      hidden: true
   rss:
     feeds_limit: 6
   categories:
@@ -483,6 +477,7 @@ redirect:
   pages_to_404:
     - /api
     - /datasource
+    - /measure
   pages_to_redirect:
 catalog:
   open_nodes_level: 2
@@ -523,109 +518,5 @@ streams:
      prefixes:
        '':
          - user/themes/nlpv
+         - user/themes/up_sh
          - user/themes/ingrid
-
-upload:
-  portals:
-    user/themes/nlpv/assets/upload/portals/untergrund_3DModell_SH2016.jpg:
-      name: untergrund_3DModell_SH2016.jpg
-      full_path: untergrund_3DModell_SH2016.jpg
-      type: image/jpeg
-      size: 19330
-      path: user/themes/nlpv/assets/upload/portals/untergrund_3DModell_SH2016.jpg
-    user/themes/nlpv/assets/upload/portals/drop2.jpg:
-      name: drop2.jpg
-      full_path: drop2.jpg
-      type: image/jpeg
-      size: 22830
-      path: user/themes/nlpv/assets/upload/portals/drop2.jpg
-    user/themes/nlpv/assets/upload/portals/artenschutz2_rsp.webp:
-      name: artenschutz2_rsp.webp
-      full_path: artenschutz2_rsp.webp
-      type: image/webp
-      size: 179108
-      path: user/themes/nlpv/assets/upload/portals/artenschutz2_rsp.webp
-    user/themes/nlpv/assets/upload/portals/login_dwh_sm_scaled.jpg:
-      name: login_dwh_sm_scaled.jpg
-      full_path: login_dwh_sm_scaled.jpg
-      type: image/jpeg
-      size: 10552
-      path: user/themes/nlpv/assets/upload/portals/login_dwh_sm_scaled.jpg
-    user/themes/nlpv/assets/upload/portals/feldblockfinder.jpg:
-      name: feldblockfinder.jpg
-      full_path: feldblockfinder.jpg
-      type: image/jpeg
-      size: 113890
-      path: user/themes/nlpv/assets/upload/portals/feldblockfinder.jpg
-    user/themes/nlpv/assets/upload/portals/login_ffhvp.png:
-      name: login_ffhvp.png
-      full_path: login_ffhvp.png
-      type: image/png
-      size: 1422769
-      path: user/themes/nlpv/assets/upload/portals/login_ffhvp.png
-    user/themes/nlpv/assets/upload/portals/laermkarte_2022.gif:
-      name: laermkarte_2022.gif
-      full_path: laermkarte_2022.gif
-      type: image/gif
-      size: 40522
-      path: user/themes/nlpv/assets/upload/portals/laermkarte_2022.gif
-    user/themes/nlpv/assets/upload/portals/Marderhund.webp:
-      name: Marderhund.webp
-      full_path: Marderhund.webp
-      type: image/webp
-      size: 120930
-      path: user/themes/nlpv/assets/upload/portals/Marderhund.webp
-    user/themes/nlpv/assets/upload/portals/schutzgebiete_rsp.jpg:
-      name: schutzgebiete_rsp.jpg
-      full_path: schutzgebiete_rsp.jpg
-      type: image/jpeg
-      size: 206930
-      path: user/themes/nlpv/assets/upload/portals/schutzgebiete_rsp.jpg
-    user/themes/nlpv/assets/upload/portals/schellente_MStock_17040090-web.jpg:
-      name: schellente_MStock_17040090-web.jpg
-      full_path: schellente_MStock_17040090-web.jpg
-      type: image/jpeg
-      size: 306142
-      path: user/themes/nlpv/assets/upload/portals/schellente_MStock_17040090-web.jpg
-    user/themes/nlpv/assets/upload/portals/login_hwrm.jpg:
-      name: login_hwrm.jpg
-      full_path: login_hwrm.jpg
-      type: image/jpeg
-      size: 21990
-      path: user/themes/nlpv/assets/upload/portals/login_hwrm.jpg
-    user/themes/nlpv/assets/upload/portals/Starkregenportal.jpg:
-      name: Starkregenportal.jpg
-      full_path: Starkregenportal.jpg
-      type: image/jpeg
-      size: 635295
-      path: user/themes/nlpv/assets/upload/portals/Starkregenportal.jpg
-    user/themes/nlpv/assets/upload/portals/login_wrrl.jpg:
-      name: login_wrrl.jpg
-      full_path: login_wrrl.jpg
-      type: image/jpeg
-      size: 13257
-      path: user/themes/nlpv/assets/upload/portals/login_wrrl.jpg
-    user/themes/nlpv/assets/upload/portals/login_bki.jpg:
-      name: login_bki.jpg
-      full_path: login_bki.jpg
-      type: image/jpeg
-      size: 15260
-      path: user/themes/nlpv/assets/upload/portals/login_bki.jpg
-    user/themes/nlpv/assets/upload/portals/login_anlagenkataster.jpg:
-      name: login_anlagenkataster.jpg
-      full_path: login_anlagenkataster.jpg
-      type: image/jpeg
-      size: 12455
-      path: user/themes/nlpv/assets/upload/portals/login_anlagenkataster.jpg
-    user/themes/nlpv/assets/upload/portals/login_bodis.jpg:
-      name: login_bodis.jpg
-      full_path: login_bodis.jpg
-      type: image/jpeg
-      size: 8736
-      path: user/themes/nlpv/assets/upload/portals/login_bodis.jpg
-    user/themes/nlpv/assets/upload/portals/login_kulisse.jpg:
-      name: login_kulisse.jpg
-      full_path: login_kulisse.jpg
-      type: image/jpeg
-      size: 8089
-      path: user/themes/nlpv/assets/upload/portals/login_kulisse.jpg

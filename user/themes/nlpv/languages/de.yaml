@@ -1,6 +1,6 @@
 PAGES:
   HOME_MENU_TITLE: Startseite von NLPV
-  HOME_META_TITLE: Umweltportal Schleswig-Holstein
+  HOME_META_TITLE: Marine Metadaten für Niedersachsen
   ABOUT: Über NLPV
   ABOUT_MENU_TITLE: Hintergrundinformationen zu NLPV
   HELP_MENU_TITLE: Erläuterungen zur Nutzung von NLPV
@@ -13,8 +13,8 @@ CONTACT:
   SUCCESS_LINK: Zurück zur Startseite
 
 SEARCH:
-  PORTLET_TITLE_1: Umweltinformationen
-  PORTLET_TITLE_2: 'für Schleswig-Holstein <br> finden&nbsp;'
+  PORTLET_TITLE_1: 'Umweltinformationen'
+  PORTLET_TITLE_2: 'für Niedersachsen <br> finden&nbsp;'
   PORTLET_TITLE_3: 'z.B. Daten, Karten & Webangebote'
 
 THEME:

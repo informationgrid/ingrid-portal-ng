@@ -10,27 +10,13 @@
         {% if logo %}
             {% set header_logo_file = (logo|first).name %}
         {% else %}
-            {% set header_logo_file = 'logo.svg' %}
+            {% set header_logo_file = 'logo.png' %}
         {% endif %}
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="show-for-large hide-for-xsmall-only">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
-            <div class="text">
-                <p class="strong">Schleswig-Holstein</p>
-                <p>Umweltportal</p>
-            </div>
-        </a>
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-xlarge hide-for-large hide-for-xsmall-only hide-for-small-only">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
-            <div class="text">
-                <p class="strong">Schleswig-Holstein</p>
-                <p>Umweltportal</p>
-            </div>
-        </a>
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-medium">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
-            <div class="text">
-                <p class="strong">Schleswig-Holstein</p>
-                <p>Umweltportal</p>
+        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="transition-all">
+            <img class="logo__img" src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}"/>
+            <div class="logo__text">
+                Marine Metadaten <br>
+                für Niedersachsen
             </div>
         </a>
     </div>
