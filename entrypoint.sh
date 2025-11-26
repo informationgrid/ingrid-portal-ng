@@ -162,7 +162,7 @@ else
 fi
 
 # Set cache clear to type 'cache-only'
-yq -i ".cache.clear_job_type = 'cache-only'" "$SYSTEM_YAML"
+yq -i '.cache.clear_job_type = "cache-only"' "$SYSTEM_YAML"
 
 #####################
 # Default ingrid grav plugin config
