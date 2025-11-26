@@ -1,5 +1,12 @@
 # InGrid Portal-NG
 
+<img src="https://ingrid-oss.eu/8.2.0/assets/components/ingrid-plattform.png" alt="InformationGrid illustration" width="480" align="right">
+
+This repository is part of **[InGrid](https://ingrid-oss.eu)**, an open-source solution for building, managing, and exposing metadata-driven information systems. 
+
+**About InGrid Portal-NG:**  
+User-friendly search across the InGrid data space and services — catalog browsing, map client, time series — with faceted search, news aggregation, and profile-based customization.
+
 ## Development
 
 Just start up the development container and develop your pages, plugins and themes.
