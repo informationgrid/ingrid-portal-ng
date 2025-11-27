@@ -191,18 +191,6 @@ header a.icon.is-selected {
   color: #003064;
 }
 
-.header-menu a.is-active {
-  color: white;
-  background-color: #D4004B;
-}
-.menu-main-links a:hover, .menu-main-links .button.logout:hover,
-.menu-main-links a:focus, .menu-main-links .button.logout:focus {
-  background-color: #003064;
-  color: #FFFFFF;
-}
-.menu-sub-links {
-  background-color: #F1F1F1;
-}
 .menu-sub-links .button.logout {
   color: #FFFFFF;
   font-weight: normal;
@@ -648,9 +636,6 @@ footer .footer .logo {
   color: #004188 !important;
 }
 
-
-.header-menu-close { padding: 28px 0px 0 0; }
-
 footer .footer .copyright span.text {
   margin-right: 0;
   text-align: left;
@@ -847,10 +832,78 @@ header .menu-tab-row .menu-tab .link-menu-tab {
   }
 }
 
-/* ---- header menu ---- */
+/* ---- side header menu ---- */
 .header-menu {
   background-color: white;
   box-shadow: -4px 0 16px 0 rgba(0, 0, 0, 0.12);
+}
+.header-menu-close .button {
+  background-color: var(--color-btn-primary-hover);
+}
+.shrink .header-menu-open button {
+  margin: 14px 0 0 0;
+}
+.header-menu-open .button,
+.header-menu-close .button {
+  width: 120px;
+  height: 48px;
+  padding: 0;
+  border: unset;
+  border-radius: 6px;
+}
+.menu-main-links a {
+  text-transform: initial;
+  color: var(--color-default);
+}
+.header-menu a, .menu-main-links a.header-menu-entry {
+  border-radius: 0;
+  padding: 10px 20px 7px 30px;
+  font-family: FSMeW05, sans-serif;
+  font-size: var(--font-size-md);
+}
+.menu-main-links a.header-menu-entry {
+  padding: 14px 20px 10px 30px;
+  font-size: var(--font-size-lg);
+}
+.menu-main-links a:hover, .menu-main-links .button.logout:hover,
+.menu-main-links a:focus, .menu-main-links .button.logout:focus {
+  color: #FFFFFF;
+  background-color: var(--color-btn-primary-hover);
+}
+.header-menu a.is-active, .header-menu a.is-selected {
+  color: #FFFFFF;
+  background-color: var(--color-btn-primary-hover);
+}
+.menu-login-links h6 {
+  color: #FFFFFF;
+  padding: 2px 24px;
+}
+.menu-login-links {
+  background: var(--color-primary);
+  padding: 25px 0 25px 0;
+}
+.menu-sub-links {
+  background-color: var(--color-background-light);
+}
+@media print, screen and (min-width: 64em) {
+  .header-menu-close {
+    padding: 33px 12px 0 0 !important;
+  }
+}
+@media print, screen and (max-width: 64em) {
+  .header-menu-open .button {
+    width: 40px;
+    height: 40px;
+  }
+  .header-menu-close .button {
+    width: 90px;
+    height: 40px;
+  }
+}
+@media print, screen and (max-width: 48em) {
+  .header-menu-close {
+    padding: 18px 12px 0 0;
+  }
 }
 
 /* ---- banner ---- */
@@ -956,30 +1009,10 @@ a img[title='SNS'] {
 }
 
 /* menu */
-.shrink .header-menu-open button {
-  margin: 14px 0 0 0;
-}
-.menu-main-links a, .header-menu a {
-  font-family: AvenirNextLTPro-Regular, sans-serif !important;
-  color: #003064;
-}
-.header-menu-open .button, .header-menu-close .button {
-  border-radius: 5px;
-}
-.header-menu-close .button {
-  background-color: #D4004B;
-}
 .menu-sub-links .button.logout:hover {
   background-color: #D4004B;
 }
-.menu-main-links a.header-menu-entry {
-  border-radius: 0;
-  padding: 14px 20px 10px 30px;
-}
-.header-menu a {
-  border-radius: 0;
-  padding: 10px 20px 7px 30px;
-}
+
 
 /* search simple */
 .banner.home h1.green, .banner.home .home-wrapper .indent span, .banner.home h1 {
@@ -1577,17 +1610,6 @@ table .dark h1, table .dark h2, table .dark p, table .dark a, table .dark abbr, 
   font-size: 20px;
   background: #003064;
   padding: 8px 8px 5px;
-  color: #FFFFFF;
-}
-
-.menu-login-links {
-  font-family: AvenirNextLTPro-Demi, sans-serif;
-  color: #FFFFFF;
-  background: #003064;
-  padding: 25px 0 25px 0;
-}
-.menu-login-links h6 {
-  padding: 2px 24px;
   color: #FFFFFF;
 }
 
