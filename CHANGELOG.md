@@ -1,4 +1,17 @@
-## 8.1.2 (19.11.2025)
+
+## 8.1.3 (02.12.2025)
+
+### Features
+
+* Portal-NG: Darstellung der Vertikalen Ausdehnung  (#8464)
+* Umstellung Portal auf neue Portal-Technologie (#7806)
+* Portal: BAW-Profile nach GravCMS portieren (#7670)
+
+### Bugfixes
+
+* PORTAL: Fehlende Lokalisierung bei "URL des Zugangs" (#8494)
+* PORTAL: Fehler bei der Darstellung von Querverweise in der Detaildarstellung (#8489)
+    ## 8.1.2 (19.11.2025)
 
 ### Features
 
