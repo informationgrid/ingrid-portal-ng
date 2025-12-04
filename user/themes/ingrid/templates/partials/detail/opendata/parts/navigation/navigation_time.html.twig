@@ -1,0 +1,25 @@
+{% if hasTime and hasTimeResource %}
+    <li class="accordion-item" data-accordion-item>
+        <a href="#{{ hash_time }}" class="accordion-title js-anchor-target" aria-controls="{{ hash_time }}-accordion" role="tab" id="{{ hash_time }}-accordion-label">
+            <span class="text">{{ "SEARCH_DETAIL.TIME_REFERENCE"|t }}</span>
+        </a>
+        <div class="accordion-content {% if not hasTimeData and not hasTimeResource %}is-hidden{% endif %}" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_time }}-accordion-label" id="{{ hash_time }}-accordion">
+            <div class="boxes">
+                {% if hasTimeData %}
+                    {% set tmpHash = hash_time ~ "_time_reference" %}
+                    {% set tmpTitle = "" %}
+                    {% if class == 1 or class == 3 or class == 5 or class == 6 %}
+                        {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
+                    {% else %}
+                        {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE"|t %}
+                    {% endif %}
+                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                {% endif %}
+                {% if hasTimeResource %}
+                    {% set tmpHash = hash_description ~ "_time_reference_record" %}
+                    {{ hit_macros.render_sub_navigation("SEARCH_DETAIL.TIME_REFERENCE_RECORD" |t, tmpHash) }}
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endif %}

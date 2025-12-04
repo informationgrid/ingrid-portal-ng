@@ -1,0 +1,9 @@
+{# Kontakt #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_contact }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.CONTACT"|t)}}
+    <div class="row columns">
+        {{ hit_macros_opendata.render_contact(contactRefs, sortAddressTyp, addressUnlink, hash_contact, true) }}
+    </div>
+</div>

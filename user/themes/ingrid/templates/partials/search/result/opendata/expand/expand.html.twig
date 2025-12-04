@@ -1,0 +1,20 @@
+{% set hit_search_links_max = theme_var('hit_search.links_max') %}
+{% set map_leaflet_config = theme_var('map.leaflet') %}
+
+{% set uuid = hit.id %}
+{% set partners = hit.partners %}
+{% set distributions = hit.distributions %}
+{% set spatial = hit.spatial %}
+
+{% set param_hit_open = uri.query('more') %}
+{% set hitsOpen = param_hit_open|split(',') %}
+{% set hitOpenId = 'hit_open_' ~ counter %}
+{% set isHitOpen = hitOpenId in hitsOpen %}
+{% set hitMapId = 'hit_map_' ~ counter %}
+
+{% set hitOpenId = 'hit_open_' ~ counter %}
+{% set moreIdLinks = counter ~ "_more_links" %}
+
+{% set moreIdLinks = counter ~ "_more_links" %}
+
+{% include 'partials/search/result/opendata/expand/expand_profile.html.twig' %}

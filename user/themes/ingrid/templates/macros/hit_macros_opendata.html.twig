@@ -1,0 +1,314 @@
+{% macro render_fact_title (title, class) %}
+    <h4
+    {% if class %}
+        class="{{ class }}"
+    {% endif %}
+    >{{ title }}</h4>
+{% endmacro %}
+
+{% macro render_contact_facts (title, items, sortAddressTyp, isAddress, addressUnlink) %}
+    {% set break = false %}
+    {% for item in items if not break %}
+        {% set role = item.role %}
+        {% set role_name = item.role_name %}
+        {% set name = item.name %}
+        {% set street = item.street %}
+        {% set postcode = item.pocode %}
+        {% set pobox = item.pobox %}
+        {% set city = (item.code ~ ' ' ~ item.locality)|trim %}
+        {% set country = item.country %}
+        {% set administrative_area = item.administrative_area %}
+        {% set communications = item.communications %}
+
+{# Titel #}
+        {% if title %}
+            {{ _self.render_fact_title(title) }}
+        {% elseif role_name %}
+            {{ _self.render_fact_title(role_name) }}
+        {% elseif role %}
+            {{ _self.render_fact_title(role) }}
+        {% endif %}
+        <p>
+{# Adressen #}
+        {% if name %}
+            {{ name }}
+        {% endif %}
+        </p>
+        {% if isAddress %}
+            <p>
+{# Street #}
+            {% if street %}
+                {{ street }}
+                <br>
+            {% endif %}
+{# Postcode #}
+            {% if postcode %}
+                {{ postcode }}
+            {% endif %}
+{# City #}
+            {% if city %}
+                {{ city }}
+                <br>
+            {% endif %}
+{# Country #}
+            {% if country %}
+                {{ country }}
+            {% endif %}
+            </p>
+        {% endif %}
+        {% if communications %}
+            {% for communication in communications %}
+                {% switch communication.type %}
+                    {# E-Mail #}
+                    {% case 'email' %}
+                    <div>
+                        <a class="icon" href="mailto:{{ communication.value }}" title="{{ communication.value }}">
+                            <span class="ic-ic-mailto"></span>
+                            <span class="text">{{ communication.value }}</span>
+                        </a>
+                    </div>
+                    {# Telefon #}
+                    {% case 'phone' %}
+                    <div>
+                        <a class="icon" href="tel:{{ communication.value }}" title="{{ communication.value }}">
+                            <span class="ic-ic-phone"></span>
+                            <span class="text">{{ communication.value }}</span>
+                        </a>
+                    </div>
+                    {# Fax #}
+                    {% case 'fax' %}
+                    <div>
+                        <a class="icon" href="{{ communication.value }}" title="{{ communication.value }}">
+                            <span class="ic-ic-fax"></span>
+                            <span class="text">{{ communication.value }}</span>
+                        </a>
+                    </div>
+                    {# URL #}
+                    {% case 'url' %}
+                    <div>
+                        <a target="_blank" class="icon external-link" href="{{ communication.value }}" title="{{ communication.value }}">
+                            <span class="ic-ic-external"></span>
+                            <span class="text">{{ communication.value }}</span>
+                        </a>
+                    </div>
+                {% endswitch %}
+            {% endfor %}
+        {% endif %}
+        {% set break = true %}
+        </p>
+    {% endfor %}
+{% endmacro %}
+
+{% macro render_contact (items, sortAddressTyp, addressUnlink, hash) %}
+    {% for item in items %}
+        {% set num = loop.index - 1 %}
+        {% set role = item.role %}
+        {% set role_name = item.role_name %}
+        {% set name = item.name %}
+        {% set street = item.street %}
+        {% set postcode = item.pocode %}
+        {% set pobox = item.pobox %}
+        {% set city = (item.code ~ ' ' ~ item.locality)|trim %}
+        {% set country = item.country %}
+        {% set administrative_area = item.administrative_area %}
+        {% set communications = item.communications %}
+
+        <div class="sub-section">
+            <div class="table table--lined">
+                <a class="anchor" id="{{ hash }}_contact-{{ num }}"></a>
+                <h5>{{ role_name }}</h5>
+                <table>
+                    <tr>
+                        <td>
+                            <p>
+                            {# Adressen #}
+                                {% if name %}
+                                    {{ name }}
+                                {% endif %}
+                            </p>
+                            <p>
+                            {# Street #}
+                                {% if street %}
+                                    {{ street }}
+                                    <br>
+                                {% endif %}
+                            {# Postcode #}
+                                {% if postcode %}
+                                    {{ postcode }}
+                                {% endif %}
+                            {# City #}
+                                {% if city %}
+                                    {{ city }}
+                                    <br>
+                                {% endif %}
+                            {# Country #}
+                                {% if country %}
+                                    {{ country }}
+                                {% endif %}
+                            </p>
+                            {% if communications %}
+                                {% for communication in communications %}
+                                    {% switch communication.type %}
+                                        {# E-Mail #}
+                                        {% case 'email' %}
+                                        <div>
+                                            <a class="icon" href="mailto:{{ communication.value }}" title="{{ communication.value }}">
+                                                <span class="ic-ic-mailto"></span>
+                                                <span class="text">{{ communication.value }}</span>
+                                            </a>
+                                        </div>
+                                        {# Telefon #}
+                                        {% case 'phone' %}
+                                        <div>
+                                            <a class="icon" href="tel:{{ communication.value }}" title="{{ communication.value }}">
+                                                <span class="ic-ic-phone"></span>
+                                                <span class="text">{{ communication.value }}</span>
+                                            </a>
+                                        </div>
+                                        {# Fax #}
+                                        {% case 'fax' %}
+                                        <div>
+                                            <a class="icon" href="{{ communication.value }}" title="{{ communication.value }}">
+                                                <span class="ic-ic-fax"></span>
+                                                <span class="text">{{ communication.value }}</span>
+                                            </a>
+                                        </div>
+                                        {# URL #}
+                                        {% case 'url' %}
+                                        <div>
+                                            <a target="_blank" class="icon external-link" href="{{ communication.value }}" title="{{ communication.value }}">
+                                                <span class="ic-ic-external"></span>
+                                                <span class="text">{{ communication.value }}</span>
+                                            </a>
+                                        </div>
+                                    {% endswitch %}
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+{% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
+    {% if entries and entries|length > 0 %}
+        <div class="table list">
+            <table>
+                <tr>
+                    {% if title %}
+                        <td>{{ title }}</td>
+                    {% endif %}
+                    <td>
+                        {% if isExpandable %}
+                            {% set listExpanded = false %}
+                            {% set isMoreId = false %}
+                            {% if expandableId in paramsMore %}
+                                {% set isMoreId = true %}
+                            {% endif %}
+                            {% for entry in entries %}
+                                {% if loop.index > expandableLimit and not listExpanded %}
+                                    {% set listExpanded = true %}
+                                    <button type="button"
+                                            id="{{ expandableId }}"
+                                            class="js-expander js-open-expand-text button outline {{ expandableId }}{% if isMoreId %} is-hidden{% endif %}"
+                                            title="{{ 'SEARCH_DETAIL.INFO_MORE'|t }}">
+                                        {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
+                                    </button>
+                                    <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
+                                {% endif %}
+                                <span class="list_entry">{{ entry.term }}</span>
+                            {% endfor %}
+                            {% if listExpanded %}
+                                {% set listExpanded = false %}
+                                </span>
+                                <button type="button"
+                                        style="display:block"
+                                        class="js-open-expand-text button outline js-expander-close {{ expandableId }} {% if not isMoreId %} is-hidden {% endif %}"
+                                        title="{{ 'SEARCH_DETAIL.INFO_LESS'|t }}">
+                                    {{ 'SEARCH_DETAIL.INFO_LESS'|t }}
+                                </button>
+                            {% endif %}
+                        {% else %}
+                            {% for entry in entries %}
+                                <span class="list_entry">{{ entry.term }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_label_link_image_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
+    {% if entries and entries|length > 0 %}
+        {% set isDownload = false %}
+        {% set isExternal = false %}
+
+        {% if type == "external" %}
+            {% set isExternal = true %}
+        {% elseif type == "download" %}
+            {% set isDownload = true %}
+        {% endif %}
+
+        {% if title %}
+            <h4>
+                {{ title }}
+                <span>({{ entries|length }})</span>
+            </h4>
+        {% endif %}
+        <div class="document-list">
+        {% set break = false %}
+        {% for entry in entries if not break %}
+            {% set num = loop.index %}
+            <div class="list-item">
+                {% if isFacts %}
+                    <div class="no-image">
+                {% else %}
+                    <div {%if isDownload %}class="download"{% endif %}>
+                {% endif %}
+                <div class="info--right">
+                    {% if entry.formats %}
+                        {% for format in entry.formats %}
+                            <span>{{ format|t }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                {% set link = entry.access_url %}
+                {% if link %}
+                    <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title }}">
+                        {% if isExternal %}
+                            <span class="ic-ic-external"></span>
+                        {% elseif isDownload %}
+                            <span class="ic-ic-download"></span>
+                        {% endif %}
+                        <span class="text">{{ removeHashLocale(entry.title) }}</span>
+                    </a>
+                {% endif %}
+
+                {% if entry.description %}
+                    <div class="description">
+                        <small class="description">{{ convertUrlInText(removeHashLocale(entry.description))|raw }}</small>
+                    </div>
+                {% endif %}
+
+                {% if entry.availability %}
+                    <small class="text">{{ entry.availability }}</small>
+                {% endif %}
+            </div>
+            </div>
+            {% if breakListCounter and num > breakListCounter - 1 %}
+                {% set break = true %}
+            {% endif %}
+            {% if break %}
+                <a class="button outline" title="{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}" href="#detail_links">
+                    <span>{{ "SEARCH_DETAIL.INFO_LINKS_MORE"|t }}</span>
+                </a>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}

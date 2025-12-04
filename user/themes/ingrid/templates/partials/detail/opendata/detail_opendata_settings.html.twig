@@ -1,0 +1,57 @@
+{# @var hit \Grav\Plugin\SearchHitOpendata #}
+
+{# theme_var #}
+{% set isTimeInDescription = theme_var('hit_detail.time_in_description') %}
+{% set sortAddressTyp = theme_var('hit_detail.address_order') %}
+{% set sortContactByType = theme_var('hit_detail.contact_order') %}
+{% set addressUnlink = theme_var('hit_detail.address_unlink') %}
+
+{# var #}
+{% set hit = hit %}
+{% set uuid = hit.id %}
+{% set title = hit.title %}
+{% set partners = partners %}
+
+{# Vorschau #}
+{% set previews = hit.previews %}
+
+{# Beschreibung #}
+{% set description = hit.description %}
+
+{# Zeitbezug #}
+{% set timeRefs = {} %}
+{% set timeRefs = addKeyValue(timeRefs, "accrual_periodicity", hit.temporal.accrual_periodicity) %}
+
+{# Raumbezug #}
+{% set mapRefs = {} %}
+{% set mapRefs = addKeyValue(mapRefs, "polygonGeojsons", hit.spatial.geometries) %}
+{% set mapRefs = addKeyValue(mapRefs, "polygonWkts", hit.spatial.wkts) %}
+
+{# Verweise und Downloads #}
+{% set linkRefs = {} %}
+{% set linkRefs = addKeyValue(linkRefs, "links", hit.distributions) %}
+{% if linkRefs.links %}
+    {% set linkOtherRefs = linkRefs.links %}
+{% endif %}
+
+{# Nutzung #}
+{% set useRefs = {} %}
+
+{# Fachinformationen #}
+{% set infoRefs = {} %}
+
+{% set infoRefs_additional = {} %}
+
+{% set infoRefs_keyword = {} %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "searchTerms", hit.keywords) %}
+
+{# Kontakt #}
+{% set contactRefs = hit.contacts %}
+
+{# Metadaten Informationen #}
+{% set metaInfoRefs = {} %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "uuid", hit.id) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "modTime", hit.metadata.modified) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_data_source_name", hit.dataSourceName) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_providers", hit.providers) %}
+{% include 'partials/detail/opendata/detail_opendata_profile_settings.html.twig' %}

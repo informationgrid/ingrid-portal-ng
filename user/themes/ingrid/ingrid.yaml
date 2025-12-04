@@ -475,7 +475,7 @@ hit_search:
   summary_lines_limit: 5
   links_max: 5
   csw_enabled: true
-  rdf_enabled: false
+  rdf_enabled: true
   partner_logo_enabled: false
   link_sort_asc: true
   sns:
@@ -495,7 +495,7 @@ hit_detail:
   reference_system_link: 'https://epsg.io/'
   reference_system_link_replace: 'urn:ogc:def:crs:'
   csw_enabled: true
-  rdf_enabled: false
+  rdf_enabled: true
   time_in_description: true
   address_order:
     - '3'
@@ -514,12 +514,9 @@ hit_detail:
     - partner
     - provider
     - t03_catalogue.cat_name
+    - t01_object.obj_class
   source:
     include:
-      - idf
-      - dataSourceName
-      - iPlugId
-      - title
     exclude:
       - content
   query_string_operator: AND

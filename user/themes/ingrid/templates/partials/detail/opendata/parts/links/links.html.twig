@@ -1,0 +1,15 @@
+{# Verweise und Downloads #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_links }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.REFERENCES_TAB"|t) }}
+    <div class="row columns">
+        {% if linkOtherRefs and linkOtherRefs|length > 0 %}
+        <div class="sub-section sub-section-unlined">
+            {% set tmpTitle = "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.TITLE"|t %}
+            <a class="anchor" id="{{ hash_links }}_www_references"></a>
+            {{ hit_macros_opendata.render_label_link_image_list(tmpTitle, linkOtherRefs, "external", page) }}
+        </div>
+        {% endif %}
+    </div>
+</div>

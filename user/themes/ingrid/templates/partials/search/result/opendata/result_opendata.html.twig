@@ -1,0 +1,39 @@
+{% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
+{% set summary_lines_limit = theme_var('hit_search.summary_lines_limit') %}
+{% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
+{% set isExpandable = theme_var('hit_search.expandable.enabled') %}
+
+{% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.id %}
+{% set queries = uri.query(null, true) %}
+{% for key, param in queries %}
+    {% set detailLink = detailLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+{% endfor %}
+
+<div class="data">
+    <div class="teaser-data search">
+        {% if hit.id %}
+            <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
+        {% endif %}
+        {% if partner_logo %}
+            {{ hit_macros.render_hit_logo(hit.partners) }}
+        {% endif %}
+        {% include 'partials/search/result/metadata/parts/metadata_banner.html.twig' with {hit:hit} %}
+        <a href="{{ detailLink }}" title="{{ removeHashLocale(hit.title) }}">
+            <h2 class="header">{{ removeHashLocale(hit.title) }}</h2>
+        </a>
+        {% include 'partials/search/result/metadata/parts/metadata_time.html.twig' with {hit:hit} %}
+        {% if hit.description %}
+            <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
+                {{ convertUrlInText(removeHashLocale(hit.description))|replace({'\n': summary_replace_newline})|raw }}
+            </p>
+        {% endif %}
+        {% include 'partials/search/result/metadata/parts/metadata_providers.html.twig' ignore missing with {hit:hit} %}
+        {{ hit_macros.render_hit_types(hit.serviceTypes, true, true) }}
+        <a href="{{ detailLink }}" title="{{ "COMMON.DETAIL_ARROW_PREFIX"|t ~ " " ~ hit.title }}">
+            <span class="ic-ic-arrow arrow"></span>
+        </a>
+        {% if isExpandable %}
+            {% include 'partials/search/result/opendata/expand/expand.html.twig' with {hit:hit, counter: counter} %}
+        {% endif %}
+    </div>
+</div>

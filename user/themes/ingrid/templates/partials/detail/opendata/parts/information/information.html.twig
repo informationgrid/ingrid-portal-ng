@@ -1,0 +1,10 @@
+{# Information #}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_info }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_REFERENCE_TAB"|t) }}
+    <div class="row columns">
+    {# Schlagworte #}
+        {% include 'partials/detail/opendata/parts/information/information_keywords.html.twig' %}
+    </div>
+</div>

@@ -283,7 +283,9 @@ SEARCH_RESULT:
     SEARCH_SIMILAR_EMPTY: Kein ähnlicher Begriff verfügbar.
     SEARCH_SIMILAR_ADD: Zur Suchanfrage hinzufügen
     SEARCH_SIMILAR_LOADING: Ähnliche Begriffe laden ...
-
+    OPENDATA:
+      DISTRIBUTIONS:
+        TITLE: Ressourcen
 CATEGORIES:
     TITLE: Stöbern Sie in diesen Kategorien
 
@@ -871,6 +873,9 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Beschreibung
     IDENTIFIER: Identifikator
+    OPENDATA:
+      DISTRIBUTIONS:
+        TITLE: Ressourcen
 
 SITEMAP:
     AREA_MAIN: Hauptbereich

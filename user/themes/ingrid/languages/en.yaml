@@ -283,6 +283,9 @@ SEARCH_RESULT:
     SEARCH_SIMILAR_EMPTY: Kein ähnlicher Begriff verfügbar.
     SEARCH_SIMILAR_ADD: Zur Suchanfrage hinzufügen
     SEARCH_SIMILAR_LOADING: Ähnliche Begriffe laden ...
+    OPENDATA:
+      DISTRIBUTIONS:
+        TITLE: Ressourcen
 
 CATEGORIES:
     TITLE: Search in categories

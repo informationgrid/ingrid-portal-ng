@@ -1,0 +1,4 @@
+{# Nutzungsbedingungen (useConstraints) #}
+{% if useRefs.useConstraints.constraints %}
+    {{ hit_macros.render_label_list("SEARCH_DETAIL.OBJECT_ACCESS_LICENSE"|t, [useRefs.useConstraints.constraints|first], useRefs.useConstraints.restriction ? useRefs.useConstraints.restriction ~ ":" : null) }}
+{% endif %}

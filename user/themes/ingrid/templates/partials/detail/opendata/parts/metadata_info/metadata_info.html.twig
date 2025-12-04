@@ -1,0 +1,30 @@
+{# Informationen zum Metadatensatz #}
+{% set displayISOXML = theme_var('hit_detail.csw_enabled') %}
+{% set displayRDFXML = theme_var('hit_detail.rdf_enabled') %}
+
+<div class="section">
+    <a class="anchor" id="{{ hash_metadata_info }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
+{# Objekt-ID #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
+{# Datum #}
+    {% set dateFormat = "d.m.Y" %}
+    {% if "T" in metaInfoRefs.modTime %}
+        {% set dateFormat = "d.m.Y H:i:s" %}
+    {% endif %}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.modTime ? metaInfoRefs.modTime|date(dateFormat)|e) }}
+{# Sprache Metadatensatz #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
+{# Datensatz/Datenserie #}
+    {% if class == 1 %}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchyLevel) }}
+    {% endif %}
+{# RDF Darstellung  #}
+    {% if displayRDFXML and rdf_url %}
+        {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdf_url ~ uuid, "download" ) }}
+    {% endif %}
+{# Ansprechpartner (Metadatum) #}
+    {% include 'partials/detail/opendata/parts/metadata_info/metadata_info_metadatum.html.twig' ignore missing %}
+{# Metadatenquellen #}
+    {% include 'partials/detail/opendata/parts/metadata_info/metadata_info_source.html.twig' ignore missing %}
+</div>

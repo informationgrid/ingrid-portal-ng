@@ -1,0 +1,14 @@
+{# Nutzungsbedingungen #}
+{% if license %}
+    {{ hit_macros.render_fact_title('SEARCH_RESULT.INFO_LICENSE'|t) }}
+    {% if license.url %}
+        <p>
+            <a class="icon external-link" href="{{ license.url }}" title="{{ license.name }}" target="_blank" rel="noopener noreferrer">
+                <span class="ic-ic-external"></span>
+                <span class="text">{{ license.name }}</span>
+            </a>
+        </p>
+    {% elseif license.name %}
+        <p>{{ convertUrlInText(license.name)| raw }}</p>
+    {% endif %}
+{% endif %}
