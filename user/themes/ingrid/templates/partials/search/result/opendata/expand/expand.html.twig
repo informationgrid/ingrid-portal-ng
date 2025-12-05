@@ -5,6 +5,7 @@
 {% set partners = hit.partners %}
 {% set distributions = hit.distributions %}
 {% set spatial = hit.spatial %}
+{% set categories = hit.keywords|filterByKey("source", "THEMES") %}
 
 {% set param_hit_open = uri.query('more') %}
 {% set hitsOpen = param_hit_open|split(',') %}

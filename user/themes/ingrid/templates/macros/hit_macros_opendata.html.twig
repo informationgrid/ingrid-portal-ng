@@ -298,6 +298,27 @@
                 {% if entry.availability %}
                     <small class="text">{{ entry.availability }}</small>
                 {% endif %}
+                {% if entry.license %}
+                    {% set url = entry.license.url %}
+                    {% set name = entry.license.name %}
+                    {% set attribution_by_text = entry.license.attribution_by_text %}
+                    {% set title = attribution_by_text %}
+                    {% if title is empty %}
+                        {% set title = name %}
+                    {% endif %}
+                    {% if title is empty %}
+                        {% set title = url %}
+                    {% endif %}
+                    <div class="info--right">
+                        {% if url %}
+                            <a href="{{ url }}" target="_blank" class="icon" title="{{ title }}">
+                                <span class="text">{{ name ?? url }}</span>
+                            </a>
+                        {% elseif name %}
+                            <span>{{ name }}</span>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
             </div>
             {% if breakListCounter and num > breakListCounter - 1 %}

@@ -95,18 +95,6 @@
                         </div>
                     </li>
                 {% endif %}
-            {# Nutzung #}
-                {% if hasUse %}
-                    <li class="accordion-item" data-accordion-item>
-                        <a href="#{{ hash_use }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_use }}-accordion-label">
-                            <span class="text">{{ "SEARCH_DETAIL.USAGE"|t }}</span>
-                        </a>
-                        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_use }}-accordion-label" id="{{ hash_use }}-accordion">
-                            <div class="boxes">
-                            </div>
-                        </div>
-                    </li>
-                {% endif %}
             {# Kontakt #}
                 {% if hasContact %}
                     <li class="accordion-item" data-accordion-item>

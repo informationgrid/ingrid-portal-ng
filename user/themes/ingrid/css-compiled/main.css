@@ -533,6 +533,58 @@
   content: "\e974";
 }
 
+.ic-ic-agri:before {
+  content: "\e956";
+}
+
+.ic-ic-econ:before {
+  content: "\e94f";
+}
+
+.ic-ic-educ:before {
+  content: "\e952";
+}
+
+.ic-ic-ener:before {
+  content: "\e954";
+}
+
+.ic-ic-envi:before {
+  content: "\e94e";
+}
+
+.ic-ic-heal:before {
+  content: "\e945";
+}
+
+.ic-ic-intr:before {
+  content: "\e96e";
+}
+
+.ic-ic-just:before {
+  content: "\e94d";
+}
+
+.ic-ic-soci:before {
+  content: "\e953";
+}
+
+.ic-ic-gove:before {
+  content: "\e972";
+}
+
+.ic-ic-regi:before {
+  content: "\e948";
+}
+
+.ic-ic-tech:before {
+  content: "\e949";
+}
+
+.ic-ic-tran:before {
+  content: "\e955";
+}
+
 /**
  * Foundation for Sites by ZURB
  * Version 6.4.3
@@ -3434,7 +3486,7 @@ select[multiple] {
 
 .is-invalid-input:not(:focus) {
   border-color: #ca526a;
-  background-color: #faeef0;
+  background-color: rgb(249.7, 237.7, 240.1);
 }
 .is-invalid-input:not(:focus):-ms-input-placeholder {
   color: #ca526a !important;
@@ -4151,23 +4203,23 @@ a.button:hover, a.button:focus {
   margin-bottom: 0;
 }
 .callout.primary {
-  background-color: #dde6ed;
+  background-color: rgb(221.4188622754, 230.0452095808, 237.1311377246);
   color: #3A566D;
 }
 .callout.secondary {
-  background-color: #ddf3ee;
+  background-color: rgb(220.8548780488, 243.3951219512, 237.8158536585);
   color: #3A566D;
 }
 .callout.success {
-  background-color: #e8f7de;
+  background-color: rgb(231.813362069, 246.5521551724, 221.7478448276);
   color: #3A566D;
 }
 .callout.warning {
-  background-color: #fdefde;
+  background-color: rgb(253.35, 239.1, 222.3);
   color: #3A566D;
 }
 .callout.alert {
-  background-color: #f7e5e9;
+  background-color: rgb(247.05, 229.05, 232.65);
   color: #3A566D;
 }
 .callout.small {
@@ -5953,7 +6005,7 @@ a.button:hover, a.button:focus {
   outline: 0;
 }
 .slider-handle:hover {
-  background-color: #31495d;
+  background-color: rgb(49.3, 73.1, 92.65);
 }
 .slider-handle.is-dragging {
   transition: all 0s linear;
@@ -6166,12 +6218,12 @@ caption {
 }
 
 thead {
-  background: rgba(6, 6, 6, 0);
+  background: rgba(6.375, 6.375, 6.375, 0);
   color: #3A566D;
 }
 
 tfoot {
-  background: rgba(13, 13, 13, 0);
+  background: rgba(12.75, 12.75, 12.75, 0);
   color: #3A566D;
 }
 
@@ -6195,7 +6247,7 @@ tbody td {
 
 tbody tr:nth-child(even) {
   border-bottom: 0;
-  background-color: rgba(13, 13, 13, 0);
+  background-color: rgba(12.75, 12.75, 12.75, 0);
 }
 
 table.unstriped tbody {
@@ -6231,10 +6283,10 @@ table.scroll {
 }
 
 table.hover thead tr:hover {
-  background-color: rgba(1, 1, 1, 0);
+  background-color: rgba(1.275, 1.275, 1.275, 0);
 }
 table.hover tfoot tr:hover {
-  background-color: rgba(8, 8, 8, 0);
+  background-color: rgba(7.65, 7.65, 7.65, 0);
 }
 table.hover tbody tr:hover {
   background-color: rgba(0, 0, 0, 0);

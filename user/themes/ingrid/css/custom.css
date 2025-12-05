@@ -300,6 +300,58 @@ header {
   font-size: 70px;
   content: "\e970";
 }
+.teaser .teaser-link .ic-agri:before {
+  font-size: 70px;
+  content: "\e956";
+}
+.teaser .teaser-link .ic-econ:before {
+  font-size: 70px;
+  content: "\e94f";
+}
+.teaser .teaser-link .ic-educ:before {
+  font-size: 70px;
+  content: "\e952";
+}
+.teaser .teaser-link .ic-ener:before {
+  font-size: 70px;
+  content: "\e954";
+}
+.teaser .teaser-link .ic-envi:before {
+  font-size: 70px;
+  content: "\e94e";
+}
+.teaser .teaser-link .ic-heal:before {
+  font-size: 70px;
+  content: "\e945";
+}
+.teaser .teaser-link .ic-intr:before {
+  font-size: 70px;
+  content: "\e96e";
+}
+.teaser .teaser-link .ic-just:before {
+  font-size: 70px;
+  content: "\e94d";
+}
+.teaser .teaser-link .ic-soci:before {
+  font-size: 70px;
+  content: "\e953";
+}
+.teaser .teaser-link .ic-gove:before {
+  font-size: 70px;
+  content: "\e972";
+}
+.teaser .teaser-link .ic-regi:before {
+  font-size: 70px;
+  content: "\e948";
+}
+.teaser .teaser-link .ic-tech:before {
+  font-size: 70px;
+  content: "\e949";
+}
+.teaser .teaser-link .ic-tran:before {
+  font-size: 70px;
+  content: "\e955";
+}
 .teaser .teaser-link [class^="ic-"],
 .teaser .teaser-link [class*=" ic-"] {
   background-image: -moz-linear-gradient(to bottom, var(--colorTeaser1), var(--colorTeaser2));

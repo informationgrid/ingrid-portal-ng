@@ -286,6 +286,9 @@ SEARCH_RESULT:
     OPENDATA:
       DISTRIBUTIONS:
         TITLE: Ressourcen
+      CATEGORIES:
+        TITLE: Kategorien
+
 CATEGORIES:
     TITLE: Stöbern Sie in diesen Kategorien
 
@@ -876,6 +879,8 @@ SEARCH_DETAIL:
     OPENDATA:
       DISTRIBUTIONS:
         TITLE: Ressourcen
+      CATEGORIES:
+        TITLE: Open Data Kategorie
 
 SITEMAP:
     AREA_MAIN: Hauptbereich
@@ -933,13 +938,17 @@ CATALOG_HIERARCHY:
 
 FACETS:
     FACET_LABEL:
-        TYPE: Ergebnistypen
-        METADATA_GROUP: Metadaten
-        PROVIDER: Anbieter
-        BBOX: Auf Karte festlegen
-        MODTIME: Aktualität
-        MAP: Raumbezug
-        TIMEREF: Zeitbezug
+      TYPE: Ergebnistypen
+      METADATA_GROUP: Metadaten
+      PROVIDER: Anbieter
+      BBOX: Auf Karte festlegen
+      MODTIME: Aktualität
+      MAP: Raumbezug
+      TIMEREF: Zeitbezug
+      OPENDATA_KEYWORDS: Open Data Kategorie
+      OPENDATA_LICENSES: Open Data Lizenzen
+    METADATA_GROUP:
+      OPENDATA_METADATA: Datensatz
     FACET_PILL:
         TYPE: Ergebnistyp
     MODTIME:

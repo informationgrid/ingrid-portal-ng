@@ -37,18 +37,21 @@
                     </div>
                 </div>
             {% endif %}
-{# Nutzungsbedingungen #}
-
 {# Kategorien #}
-
+            {% if categories|length > 0 %}
+                {{ hit_macros.render_fact_title("SEARCH_RESULT.OPENDATA.CATEGORIES.TITLE"|t) }}
+                {% for category in categories %}
+                    <div class="helper icon">
+                        {% if category.key %}
+                            <span class="ic-ic-{{ category.key|lower }}"></span>
+                        {% endif %}
+                        <span class="text">{{ category.term }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
 {# RDF Darstellung #}
             <div class="teaser-links">
-                {% if "wfs" not in datatypes
-                    and "www" not in datatypes
-                    and "address" not in datatypes
-                %}
-                    {% include 'partials/search/result/opendata/expand/xml/expand_rdf_xml.html.twig' ignore missing %}
-                {% endif %}
+                {% include 'partials/search/result/opendata/expand/xml/expand_rdf_xml.html.twig' ignore missing %}
             </div>
         </div>
 {# Vorschau / Karte #}

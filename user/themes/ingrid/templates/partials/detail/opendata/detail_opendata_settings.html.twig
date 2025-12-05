@@ -34,16 +34,14 @@
     {% set linkOtherRefs = linkRefs.links %}
 {% endif %}
 
-{# Nutzung #}
-{% set useRefs = {} %}
-
 {# Fachinformationen #}
 {% set infoRefs = {} %}
 
 {% set infoRefs_additional = {} %}
 
 {% set infoRefs_keyword = {} %}
-{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "searchTerms", hit.keywords) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "search_terms", hit.keywords|filterByKey("source", "FREE")) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "categories", hit.keywords|filterByKey("source", "THEMES")) %}
 
 {# Kontakt #}
 {% set contactRefs = hit.contacts %}

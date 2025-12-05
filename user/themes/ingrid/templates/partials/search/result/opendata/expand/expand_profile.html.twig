@@ -1,5 +1,6 @@
 {% if distributions|length > 0
     or spatial.geometries
+    or categories|length > 0
 %}
     {% include 'partials/search/result/opendata/expand/expand_view.html.twig' %}
 {% endif %}
