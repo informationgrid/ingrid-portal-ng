@@ -880,7 +880,7 @@ SEARCH_DETAIL:
       DISTRIBUTIONS:
         TITLE: Ressourcen
       CATEGORIES:
-        TITLE: Open Data Kategorie
+        TITLE: Open Data Kategorien
 
 SITEMAP:
     AREA_MAIN: Hauptbereich
@@ -945,7 +945,7 @@ FACETS:
       MODTIME: Aktualität
       MAP: Raumbezug
       TIMEREF: Zeitbezug
-      OPENDATA_KEYWORDS: Open Data Kategorie
+      OPENDATA_KEYWORDS: Open Data Kategorien
       OPENDATA_LICENSES: Open Data Lizenzen
     METADATA_GROUP:
       OPENDATA_METADATA: Datensatz

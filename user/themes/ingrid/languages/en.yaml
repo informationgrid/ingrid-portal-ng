@@ -285,7 +285,9 @@ SEARCH_RESULT:
     SEARCH_SIMILAR_LOADING: Ähnliche Begriffe laden ...
     OPENDATA:
       DISTRIBUTIONS:
-        TITLE: Ressourcen
+        TITLE: Resources
+      CATEGORIES:
+        TITLE: Categories
 
 CATEGORIES:
     TITLE: Search in categories
@@ -874,6 +876,11 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Description
     IDENTIFIER: Identifier
+    OPENDATA:
+      DISTRIBUTIONS:
+        TITLE: Resources
+      CATEGORIES:
+        TITLE: Open Data Categories
 
 SITEMAP:
     AREA_MAIN: Main menu
@@ -938,6 +945,10 @@ FACETS:
         MODTIME: Time
         MAP: Raumbezug
         TIMEREF: Time reference
+        OPENDATA_KEYWORDS: Open Data Categories
+        OPENDATA_LICENSES: Open Data Licenses
+    METADATA_GROUP:
+      OPENDATA_METADATA: Dataset
     FACET_PILL:
         TYPE: Datatype
     MODTIME:
