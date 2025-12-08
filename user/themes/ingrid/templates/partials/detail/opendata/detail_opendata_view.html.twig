@@ -6,7 +6,7 @@
 {% set hasDescription = (alternateTitle or description) %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% if hasTimeData is not defined %}
-    {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
+    {% set hasTimeData = (timeRefs.accrual_periodicity) %}
 {% endif %}
 {% if hasTimeResource is not defined %}
     {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision) %}
