@@ -78,7 +78,7 @@
                                 {% endif %}
                                 {% if linkOtherRefs|length > 0 %}
                                     {% set tmpHash = hash_links ~ "_www_references" %}
-                                    {% set tmpTitle = "SEARCH_DETAIL.WWW_REFERENCES"|t %}
+                                    {% set tmpTitle = "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.TITLE"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
                                 {% if linkSubordinatedRefs|length > 0 %}
