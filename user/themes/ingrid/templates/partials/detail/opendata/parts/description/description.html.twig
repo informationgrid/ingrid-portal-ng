@@ -5,6 +5,12 @@
     <a class="anchor" id="{{ hash_description }}"></a>
     {{ hit_macros.render_title("SEARCH_DETAIL.DETAIL_DESCRIPTION"|t)}}
     <div class="row columns">
+    {# Landing page #}
+        {% if landing_page %}
+            <p class="slab-bold">
+                {{ convertUrlInText(landing_page)|raw }}
+            </p>
+        {% endif %}
     {# Beschreibung #}
         {% if description %}
             {{ hit_macros.render_text_only(removeHashLocale(description)|replace({'\n': summary_replace_newline})|raw, true)}}

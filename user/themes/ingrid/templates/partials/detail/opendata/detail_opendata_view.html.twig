@@ -3,7 +3,7 @@
 
 {# booleans #}
 {% set hasOverview = (links|length > 0 or useRefs.useConstraints.constraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
-{% set hasDescription = (alternateTitle or description) %}
+{% set hasDescription = (alternateTitle or description or landing_page) %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% if hasTimeData is not defined %}
     {% set hasTimeData = (timeRefs.accrual_periodicity) %}
