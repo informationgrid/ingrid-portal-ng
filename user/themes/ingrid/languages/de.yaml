@@ -947,6 +947,7 @@ FACETS:
       TIMEREF: Zeitbezug
       OPENDATA_KEYWORDS: Open Data Kategorien
       OPENDATA_LICENSES: Open Data Lizenzen
+      OPENDATA_FORMATS: Open Data Formate
     METADATA_GROUP:
       OPENDATA_METADATA: Datensatz
     FACET_PILL:

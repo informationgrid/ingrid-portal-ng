@@ -14,14 +14,21 @@
         {% if hit.id %}
             <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
         {% endif %}
+        {% if hit.distributions %}
+            <div class="info--right {% if isTeaser %}teaser-info{% endif %}{% if isMobile %} show-for-xsmall-only{% else %} hide-for-xsmall-only{% endif %}">
+                {% for distribution in hit.distributions %}
+                    {% for format in distribution.formats %}
+                        <span>{{ format }}</span>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
         {% if partner_logo %}
             {{ hit_macros.render_hit_logo(hit.partners) }}
         {% endif %}
-        {% include 'partials/search/result/metadata/parts/metadata_banner.html.twig' with {hit:hit} %}
         <a href="{{ detailLink }}" title="{{ removeHashLocale(hit.title) }}">
             <h2 class="header">{{ removeHashLocale(hit.title) }}</h2>
         </a>
-        {% include 'partials/search/result/metadata/parts/metadata_time.html.twig' with {hit:hit} %}
         {% if hit.description %}
             <p class="data-text" {% if summary_lines_limit %} style="-webkit-line-clamp: {{ summary_lines_limit }};"{% endif %}>
                 {{ convertUrlInText(removeHashLocale(hit.description))|replace({'\n': summary_replace_newline})|raw }}

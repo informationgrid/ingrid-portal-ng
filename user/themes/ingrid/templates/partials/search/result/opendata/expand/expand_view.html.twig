@@ -25,6 +25,13 @@
                             {% endif %}
                             <div class="list-item">
                                 <div>
+                                    {% if distribution.formats %}
+                                        <div class="info--right">
+                                            {% for format in distribution.formats %}
+                                                <span>{{ format }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                     <a href="{{ distributionUrl }}" class="icon external-link" title="{{ distributionTitle }}" target="_blank" rel="noopener noreferrer">
                                         <span class="ic-ic-external"></span>
                                         <span class="text">

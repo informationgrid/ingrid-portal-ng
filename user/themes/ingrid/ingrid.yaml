@@ -1066,6 +1066,16 @@ hit_search:
       "search": "distributions.license.name.keyword:\"%s\""
     },
     {
+      "id": "opendata_formats",
+      "query": {
+        "terms": {
+          "field": "distributions.format.keyword",
+          "min_doc_count": 0
+        }
+      },
+      "search": "distributions.format.keyword:\"%s\""
+    },
+    {
       "id": "modtime",
       "display_depend_on": {
         "type": "metadata",
