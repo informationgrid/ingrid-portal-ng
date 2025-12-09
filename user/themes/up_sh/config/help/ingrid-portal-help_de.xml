@@ -57,14 +57,15 @@
             </content>
         </section>
         <section help-key="search-3">
-            <header>Nach Ort suchen</header>
+            <header>Auf Karte festlegen</header>
             <content>
-                <p>Sie können Ihre Suchanfrage ortsbezogen über die Eingabe eines geografischen Namens ausführen.
-                    Dabei werden Ihnen passende Einträge aus dem Geo-Thesaurus-Umwelt angeboten.
-                    Nach Auswahl eines Raumbezugs wird die Suche mit der eindeutigen Kennung dieses Raumbezuges ausgeführt (z.B. administrative Einheit).</p>
-                <p>Anders als bei vielen anderen Suchmaschinen, erfolgt die räumliche
-                    Einschränkung also nicht über eine einfache Volltextsuche, sondern
-                    über die gezielte Suche nach Raumbezügen, die den Suchergebnissen zugeordnet wurden.</p>
+                <p>Die räumliche Einschränkung der Umweltportal-Suche ist über die Facette "Auf Karte festlegen"
+                    möglich.</p>
+                <p> Klicken Sie in der geöffneten Facette in der Karte auf das Weltkugel-Symbol mit der Lupe.
+                    Es öffnet sich ein Dialog, in dem Sie verschiedene Möglichkeiten der räumlichen Auswahl haben:
+                    Sie können über den Suchschlitz nach einem Ort suchen oder alternativ auf das Quadrat rechts oben im Fenster klicken. Anschließend können Sie auf der Karte ein Rechteck aufziehen. Dieses können Sie über den mittleren Button rechts oben (Stift-Symbol) bearbeiten oder löschen.
+                    Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
+                    werden die Suchergebnisse entsprechend gefiltert.</p>
             </content>
         </section>
         <section help-key="search-4">
