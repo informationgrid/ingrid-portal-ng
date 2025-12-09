@@ -16,7 +16,7 @@ header:
 footer:
   logo_enabled: true
   copyright:
-    text: '© Arbeitsgemeinschaft der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland'
+    text: '© Bundesamt für Kartographie und Geodäsie'
     class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
