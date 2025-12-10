@@ -1,7 +1,12 @@
 PAGES:
     HOME_META_TITLE: Interner Metadatenkatalog
+
 SEARCH:
     PORTLET_TITLE_2: Internes Rechercheportal für Datensätze
+
+CONTACT:
+  SUCCESS: Ihre Anfrage wurde erfolgreich an die BASt-Redaktion versendet.
+  REPORT_EMAIL_SUBJECT: Nachricht vom BASt
 
 FACETS:
     FACET_LABEL:

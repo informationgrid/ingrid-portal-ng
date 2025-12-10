@@ -12,6 +12,10 @@ PAGES:
     PROBLEM_META_KEYWORDS: '%s, Kontakt, Kontaktformular, E-Mail, Email, Postadresse, Postweg, Anfrage, Fragen, Mitteilungen, Anmerkungen, Anregungen'
     SITEMAP: Inhalt
 
+CONTACT:
+  SUCCESS: Ihre Anfrage wurde erfolgreich an die BASt-Redaktion versendet.
+  REPORT_EMAIL_SUBJECT: Nachricht vom BASt
+
 SEARCH:
     PORTLET_TITLE_1: Metadatenkatalog der BASt
     PORTLET_TITLE_2: Rechercheportal für Datensätze

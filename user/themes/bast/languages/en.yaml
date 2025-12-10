@@ -15,3 +15,7 @@ SEARCH:
     PORTLET_TITLE_1: BASt metadata catalog
     PORTLET_TITLE_2: Research portal for data sets
     PORTLET_TITLE_3: ' '
+
+CONTACT:
+    SUCCESS: Your message has been sent to the BASt editorial office.
+    REPORT_EMAIL_SUBJECT: Message from BASt
