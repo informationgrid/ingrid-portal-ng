@@ -6,7 +6,7 @@
 {% set hasDescription = (alternateTitle or description or landing_page) %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% if hasTimeData is not defined %}
-    {% set hasTimeData = (timeRefs.accrual_periodicity) %}
+    {% set hasTimeData = (timeRefs.accrual_periodicity or timeRefs.issued or timeRefs.created) %}
 {% endif %}
 {% if hasTimeResource is not defined %}
     {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision) %}

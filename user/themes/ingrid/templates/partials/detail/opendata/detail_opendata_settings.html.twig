@@ -7,6 +7,7 @@
 {% set addressUnlink = theme_var('hit_detail.address_unlink') %}
 
 {# var #}
+{{ vardump(hit) }}
 {% set uuid = hit.id %}
 {% set title = hit.title %}
 {% set partners = partners %}
@@ -21,11 +22,14 @@
 {# Zeitbezug #}
 {% set timeRefs = {} %}
 {% set timeRefs = addKeyValue(timeRefs, "accrual_periodicity", hit.temporal.accrual_periodicity) %}
+{% set timeRefs = addKeyValue(timeRefs, "created", hit.created) %}
+{% set timeRefs = addKeyValue(timeRefs, "issued", hit.issued) %}
 
 {# Raumbezug #}
 {% set mapRefs = {} %}
 {% set mapRefs = addKeyValue(mapRefs, "polygonGeojsons", hit.spatial.geometries) %}
 {% set mapRefs = addKeyValue(mapRefs, "polygonWkts", hit.spatial.wkts) %}
+{% set mapRefs = addKeyValue(mapRefs, "political_geocoding_level_uri", hit.political_geocoding_level_uri) %}
 
 {# Verweise und Downloads #}
 {% set linkRefs = {} %}
@@ -36,6 +40,8 @@
 
 {# Fachinformationen #}
 {% set infoRefs = {} %}
+{% set infoRefs = addKeyValue(infoRefs, "quality_process_uri", hit.quality_process_uri) %}
+{% set infoRefs = addKeyValue(infoRefs, "legal_basis", hit.legal_basis) %}
 
 {% set infoRefs_additional = {} %}
 
@@ -49,7 +55,7 @@
 {# Metadaten Informationen #}
 {% set metaInfoRefs = {} %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "uuid", hit.id) %}
-{% set metaInfoRefs = addKeyValue(metaInfoRefs, "modTime", hit.metadata.modified) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "modified", hit.metadata.modified) %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_data_source_name", hit.dataSourceName) %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_providers", hit.providers) %}
 {% include 'partials/detail/opendata/detail_opendata_profile_settings.html.twig' %}

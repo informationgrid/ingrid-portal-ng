@@ -877,10 +877,22 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Description
     IDENTIFIER: Identifier
     OPENDATA:
-      DISTRIBUTIONS:
-        TITLE: Resources
-      CATEGORIES:
-        TITLE: Open Data Categories
+        DISTRIBUTIONS:
+            TITLE: Resources
+        CATEGORIES:
+            TITLE: Open Data Categories
+        POLITICAL_GEOCODING_LEVEL_URI:
+            TITLE: Ebene der geopolitischen Abdeckung
+        QUALITY_PROCESS_URI:
+            TITLE: Qualitätssicherungsprozess URI
+        LEGAL_BASIS:
+            TITLE: Rechtsgrundlage für die Zugangseröffnung
+        CREATED:
+            TITLE: Erstellt am
+        ISSUED:
+            TITLE: Veröffentlicht am
+        MODIFIED:
+            TITLE: Geändert am
 
 SITEMAP:
     AREA_MAIN: Main menu

@@ -7,12 +7,8 @@
     {{ hit_macros.render_title("SEARCH_DETAIL.SUBJECT_METADATA_INFO"|t) }}
 {# Objekt-ID #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
-{# Datum #}
-    {% set dateFormat = "d.m.Y" %}
-    {% if "T" in metaInfoRefs.modTime %}
-        {% set dateFormat = "d.m.Y H:i:s" %}
-    {% endif %}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_MOD_TIME"|t, metaInfoRefs.modTime ? metaInfoRefs.modTime|date(dateFormat)|e) }}
+{# Geändert am #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.MODIFIED.TITLE"|t, timeRefs.modified|date('d.m.Y H:i:s'), null, "text-capitalize") }}
 {# Sprache Metadatensatz #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Datensatz/Datenserie #}
