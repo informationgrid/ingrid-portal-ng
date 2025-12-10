@@ -5,7 +5,7 @@ PAGES:
     HELP_CONTENT: BAW Help Center
 
 CONTACT:
-    REPORT_EMAIL_SUBJECT: Message from %s-Datenrepository
+    REPORT_EMAIL_SUBJECT: Message from BAW-Datenrepository
 
 SEARCH:
     PORTLET_TITLE_1: BAW-DATENREPOSITORY

@@ -9,7 +9,6 @@ ENABLE_SCHEDULER_CODELIST=${ENABLE_SCHEDULER_CODELIST:-true}
 ENABLE_SCHEDULER_RSS=${ENABLE_SCHEDULER_RSS:-true}
 ENABLE_SCHEDULER_BACKUP=${ENABLE_SCHEDULER_BACKUP:-false}
 MARKDOWN_AUTO_LINE_BREAKS=${MARKDOWN_AUTO_LINE_BREAKS:-true}
-HOMEPAGE=${HOMEPAGE:-/home}
 SITE_DEFAULT_LANG=${SITE_DEFAULT_LANG:-de}
 SERVICE_WAIT_TIMEOUT=${SERVICE_WAIT_TIMEOUT:-60}
 SERVICE_WAIT_INTERVAL=${SERVICE_WAIT_INTERVAL:-5}
@@ -143,7 +142,9 @@ ENABLE_CACHE="$ENABLE_CACHE" \
 yq -i '.cache.enabled = env(ENABLE_CACHE)' "$SYSTEM_YAML"
 
 # Add home
-yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
+if [ "$HOMEPAGE" ]; then
+  yq -i '.home.alias = env(HOMEPAGE)' "$SYSTEM_YAML"
+fi
 
 # copy default cms pages
 if [ ! -e /var/www/"$GRAV_FOLDER"/user/config/initialized ] || [ "$THEME_COPY_PAGES_INIT" = "true" ]; then
@@ -232,6 +233,25 @@ fi
 if [ "$MAP_IS_MASTERPORTAL" ]; then
   yq -i '.map.is_masterportal = env(MAP_IS_MASTERPORTAL)' "$INGRID_GRAV_THEME_YAML"
 fi
+
+#####################
+# Active theme localisation
+#####################
+INGRID_GRAV_THEME_LOCALISATION_DE_YAML=/var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/languages/de.yaml
+INGRID_GRAV_THEME_LOCALISATION_EN_YAML=/var/www/"$GRAV_FOLDER"/user/themes/"$THEME"/languages/en.yaml
+
+if [ -f "$INGRID_GRAV_THEME_LOCALISATION_DE_YAML" ]; then
+  if [ "$CONTACT_MAIL_SUBJECT_DE" ]; then
+    yq -i '.CONTACT.REPORT_EMAIL_SUBJECT = env(CONTACT_MAIL_SUBJECT_DE)' "$INGRID_GRAV_THEME_LOCALISATION_DE_YAML"
+  fi
+fi
+
+if [ -f "$INGRID_GRAV_THEME_LOCALISATION_EN_YAML" ]; then
+  if [ "$CONTACT_MAIL_SUBJECT_EN" ]; then
+    yq -i '.CONTACT.REPORT_EMAIL_SUBJECT = env(CONTACT_MAIL_SUBJECT_EN)' "$INGRID_GRAV_THEME_LOCALISATION_EN_YAML"
+  fi
+fi
+
 #####################
 # Default admin config
 #####################
