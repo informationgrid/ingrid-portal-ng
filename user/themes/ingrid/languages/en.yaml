@@ -235,6 +235,10 @@ COMMON:
     TIME_UNTILUNKNOWN: , current actuality unknown
     TIME_AT: ' '
 
+HOME:
+    HITS:
+        TITLE: Current data
+
 SEARCH:
     TITLE_SEARCH: Search
     TITLE_RESULT: Search Results
@@ -254,7 +258,6 @@ SEARCH_RESULT:
     FACET_DELETE_SELECTION_TOOLTIP: Removal of the expenditure limitations
     SEARCH_TEASER_PORTLET_TITLE: Search in categories
     CATEGORY_NEWS_TITLE: News
-    HITTEASER_PORTLET_TITLE: Vorhaben im Überblick
     INFO_MORE: More infos
     INFO_LESS: Less infos
     INFO_DOWNLOADS_MORE: All

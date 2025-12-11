@@ -125,6 +125,9 @@ home:
       path: /home/_warning
       hidden: true
     -
+      path: /home/_hits
+      hidden: false
+    -
       path: /home/_categories
       hidden: false
     -
@@ -543,8 +546,10 @@ home:
   hits:
     query: ''
     add_to_search:
-      - "-isfolder:true"
-    hits_num: 0
+      - '-datatype:address'
+      - '-datatype:www'
+      - '-isfolder:true'
+    hits_num: 2
     sort:
       sortByDate: true
       emptyQuerySortByDate: true

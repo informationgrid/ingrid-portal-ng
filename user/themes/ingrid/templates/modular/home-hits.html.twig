@@ -1,0 +1,40 @@
+{% set hits = hits_result.hits %}
+{% set summary_lines_limit = theme_var('hit_search.summary_lines_limit') %}
+{% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
+{% set map_leaflet_config = theme_var('map.leaflet') %}
+
+{% include 'partials/global/map/leaflet.html.twig' %}
+
+<div class="columns">
+    <div class="teaser-data-projects">
+        <div class="row">
+            <div class="columns text-center">
+                <h2>{{ "HOME.HITS.TITLE"|t }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns">
+            {% if hits %}
+                {% for hit in hits %}
+                    {% if (hit.datatypes) %}
+                        {% if in_array('address', hit.datatypes) %}
+                            {% include 'partials/search/result/address/result_address.html.twig' with {hit:hit, counter: loop.index0} %}
+                        {% elseif in_array('www', hit.datatypes) %}
+                            {% include 'partials/search/result/www/result_www.html.twig' with {hit:hit} %}
+                        {% else %}
+                            {% include 'partials/search/result/metadata/result_metadata.html.twig' with {hit:hit, counter: loop.index0} %}
+                        {% endif %}
+                    {% else %}
+                        {% include 'partials/search/result/opendata/result_opendata.html.twig' with {hit:hit, counter: loop.index0} %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="columns text-center">
+                <a class="button outline" href="{{ page.find('/search').url }}" >Mehr anzeigen<span class="ic-ic-angle-down"></span></a>
+            </div>
+        </div>
+    </div>
+</div>

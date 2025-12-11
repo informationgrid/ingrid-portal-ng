@@ -246,6 +246,10 @@ SEARCH:
     PORTLET_TITLE_2: Indexieren, Recherchieren, Visualisieren und Teilen
     PORTLET_TITLE_3: von Datenquellen, Metadaten und Kartendiensten
 
+HOME:
+    HITS:
+        TITLE: Aktuelle Daten
+
 SEARCH_RESULT:
     RESULTS_REQUESTED: Ihr Suchergebnis wird angefordert.
     FACET_CATEGORY_PLUS: Mehr
@@ -254,7 +258,6 @@ SEARCH_RESULT:
     FACET_DELETE_SELECTION_TOOLTIP: Entfernung der getätigten Einschränkungen
     SEARCH_TEASER_PORTLET_TITLE: Stöbern Sie in diesen Kategorien
     CATEGORY_NEWS_TITLE: Aktuelles
-    HITTEASER_PORTLET_TITLE: Vorhaben im Überblick
     INFO_MORE: Mehr Infos
     INFO_LESS: Weniger Infos
     INFO_DOWNLOADS_MORE: Alle Links
@@ -288,6 +291,8 @@ SEARCH_RESULT:
         TITLE: Ressourcen
       CATEGORIES:
         TITLE: Kategorien
+      CLASS:
+        TITLE: Datensatz
 
 CATEGORIES:
     TITLE: Stöbern Sie in diesen Kategorien

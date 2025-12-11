@@ -26,6 +26,10 @@
         {% if partner_logo %}
             {{ hit_macros.render_hit_logo(hit.partners) }}
         {% endif %}
+        <div class="helper icon">
+            <span class="ic-ic-folder-open" title="{{ "SEARCH_RESULT.OPENDATA.CLASS.TITLE"|t }}"></span>
+            <span class="text">{{ "SEARCH_RESULT.OPENDATA.CLASS.TITLE"|t }}</span>
+        </div>
         <a href="{{ detailLink }}" title="{{ removeHashLocale(hit.title) }}">
             <h2 class="header">{{ removeHashLocale(hit.title) }}</h2>
         </a>

@@ -27,6 +27,10 @@ COMMON:
   TOGGLE_APPROVAL_DATE_MAP_ON: 'Nur aktuelle: ein'
   TOGGLE_APPROVAL_DATE_MAP_OFF: 'Nur aktuelle: aus'
 
+HOME:
+  HITS:
+    TITLE: Vorhaben im Überblick
+
 SEARCH:
   PORTLET_TITLE_1: Informationen über
   PORTLET_TITLE_2: UVP-pflichtige<br>Vorhaben finden&nbsp;
