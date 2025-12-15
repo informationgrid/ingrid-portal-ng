@@ -43,6 +43,16 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    catalog.address_folder_hidden:
+      type: toggle
+      label: THEME.ADMIN.CATALOG.ADDRESS_FOLDER_HIDDEN.LABEL
+      help: THEME.ADMIN.CATALOG.ADDRESS_FOLDER_HIDDEN.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
     catalog.display_partner:
       type: toggle
       label: THEME.ADMIN.CATALOG.DISPLAY_PARTNER.LABEL

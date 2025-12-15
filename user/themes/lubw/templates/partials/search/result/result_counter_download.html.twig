@@ -88,7 +88,7 @@
             var urlDomain = window.location.origin;
             var urlSearch = window.location.search;
             const urlParams = new URLSearchParams(urlSearch);
-            jQuery.post('rest/downloadCSV', {
+            jQuery.post('rest/downloadCSV?' + urlParams.toString(), {
                 requestedFields: requestedFields,
                 codelists: {
                     't01_object.obj_class': '8000'

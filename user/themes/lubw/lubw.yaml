@@ -540,12 +540,15 @@ redirect:
       url: 'https://www.lubw.baden-wuerttemberg.de/impressum'
     - path: /privacy
       url: 'https://www.lubw.baden-wuerttemberg.de/datenschutz/allgemeine-datenschutzerklaerung'
+    - path: /about
+      url: 'https://www.lubw.baden-wuerttemberg.de/die-lubw'
 catalog:
   open_nodes_level: 3
   display_partner: false
   sort_by_name: true
   open_on_new_tab: false
   address_folder_closed: false
+  address_folder_hidden: true
 help:
   default_hkey: about-1
 datasource:

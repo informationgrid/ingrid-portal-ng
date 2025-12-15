@@ -1323,6 +1323,9 @@ THEME:
             ADDRESS_FOLDER_CLOSED:
                 LABEL: Adressen Ordner per Default geschlossen
                 HELP: Adressen Ordner per Default geschlossen
+            ADDRESS_FOLDER_HIDDEN:
+              LABEL: Adressen Ordner per Default ausblenden
+              HELP: Adressen Ordner per Default ausblenden
             DISPLAY_PARTNER:
                 LABEL: Partner anzeigen
                 HELP: Schalten Sie hier die Darstellung des Partners aus.
