@@ -67,6 +67,7 @@ menu:
     -
       path: /about
       highlighted: true
+      target_blank: true
     -
       path: /datasource
       highlighted: true
