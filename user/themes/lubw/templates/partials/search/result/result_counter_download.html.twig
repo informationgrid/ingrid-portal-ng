@@ -208,17 +208,7 @@
                         }
                         tmpRow += delimiter;
 {# Aufruf Suchergebnis #}
-                        var url = urlDomain + '/freitextsuche?rstart=';
-                        if (row['portal.page']){
-                            url += row['portal.page'];
-                        }
-                        url += '0';
-                        if (row['portal.query']){
-                            url += '&q=' + encodeURIComponent(row['portal.query']);
-                        }
-                        if (row['portal.facet']){
-                            url += row['portal.facet'];
-                        }
+                        var url = window.location;
                         if (row['t01_object.obj_id']){
                             url += '#' + row['t01_object.obj_id'];
                         }
