@@ -398,13 +398,9 @@ hit_search:
     {
       "id": "metadata_tree",
       "label": "Fachthemen",
-      "query": {
-        "terms": {
-          "field": "distributor",
-          "min_doc_count": 0
-        }
-      },
-      "search": "distributor:%s"
+      "catalog": {
+        "ident": "bw"
+      }
     }
   ]
   add_to_search:
