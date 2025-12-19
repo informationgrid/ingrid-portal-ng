@@ -831,6 +831,7 @@ div.accordion-item.is-active > .more{
       position: absolute;
       top: 16px;
       right: 32px;
+      border: 1px solid;
     }
   }
   .text-box {
@@ -876,8 +877,8 @@ div.accordion-item.is-active > .more{
     }
 
     .ic-ic-cross {
-      top: 10px;
-      left: 3px;
+      top: 9px;
+      left: 2px;
     }
   }
 

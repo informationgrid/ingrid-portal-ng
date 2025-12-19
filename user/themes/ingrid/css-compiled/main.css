@@ -7709,6 +7709,7 @@ div.accordion-item.is-active > .more .plus {
   position: absolute;
   top: 16px;
   right: 32px;
+  border: 1px solid;
 }
 .popup .text-box {
   background-color: #fff;
@@ -7746,8 +7747,8 @@ div.accordion-item.is-active > .more .plus {
   color: #f6f6f6;
 }
 .help-popup .button.round .ic-ic-cross {
-  top: 10px;
-  left: 3px;
+  top: 9px;
+  left: 2px;
 }
 .help-popup .text-box {
   padding: 32px 32px 32px;
