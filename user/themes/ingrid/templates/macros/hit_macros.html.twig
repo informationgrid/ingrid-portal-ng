@@ -590,7 +590,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_label_text_row (title, text, convertText, css, expandable) %}
+{% macro render_label_text_row (title, text, convertText, css, expandable, helpTitle, helpMessage) %}
     {% if text %}
         {% if convertText is null %}
             {% set convertText = convertText|default(true) %}
@@ -605,6 +605,9 @@
                         {% if expandable %}
                             <div class="js-expand-box js-expand-text js-non-expand-text">
                                 <div class="js-expand-text-content">
+                        {% endif %}
+                        {% if helpTitle and helpMessage %}
+                            <span class="info--right ic-ic-info js-popup" data-title="{{ helpTitle }}" data-content="{{ helpMessage }}"></span>
                         {% endif %}
                         <p {% if css %}class="{{ css }}"{% endif %}>
                             {% if convertText %}

@@ -384,8 +384,8 @@ SEARCH_DETAIL:
     T01_OBJECT_TIME_TO: Durch die Ressource abgedeckte Zeitspanne > bis
     T01_OBJECT_TIME_TYPE: 'Zeitbezug: am, seit (bis: Zeitpunkt des Abrufs), seit (bis: unbekannter Zeitpunkt), von'
     T01_OBJECT_TIME_DESCR: Erläuterung zum Zeitbezug
-    T01_OBJECT_TIME_PERIOD: Periodizität
-    T01_OBJECT_TIME_INTERVAL: Intervall der Erhebung
+    T01_OBJECT_TIME_PERIOD: Pflege- und Aktualisierungsintervall
+    T01_OBJECT_TIME_INTERVAL: Benutzerdefiniertes Intervall der Erhebung
     T01_OBJECT_TIME_ALLE: Intervall (alle)
     T01_OBJECT_TIME_STATUS: Status
     T01_OBJECT_AVAIL_ACCESS_NOTE: Nutzungsanmerkung
@@ -871,6 +871,38 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Beschreibung
     IDENTIFIER: Identifikator
+    TIME:
+      HELP:
+        CREATION:
+          TITLE: Hinweis
+          MESSAGE: Wann wurde der Datensatz ursprünglich erstellt?
+        PUBLICATION:
+          TITLE: Hinweis
+          MESSAGE: Wann wurde der Datensatz erstmalig veröffentlicht?
+        REVISION:
+          TITLE: Hinweis
+          MESSAGE: Wann wurde der Datensatz zuletzt geändert?
+        STATUS:
+          TITLE: Hinweis
+          MESSAGE: In welchem Bearbeitungsstadium befindet sich der Datensatz?
+        PERIOD:
+          TITLE: Hinweis
+          MESSAGE: Wie oft wird der Datensatz aktualisiert?
+        INTERVAL:
+          TITLE: Hinweis
+          MESSAGE: Wenn ein Intervall angegeben werden kann, geben Sie das Intervall an, in dem der Datensatz aktualisiert wird.
+        TIME_AT:
+          TITLE: Hinweis
+          MESSAGE: Die Daten beziehen sich auf den %s.
+        TIME_SINCE:
+          TITLE: Hinweis
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne bis %s (Beginn unbekannt).
+        TIME_UNTIL:
+          TITLE: Hinweis
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne ab dem %s (Ende unbekannt).
+        TIME_FROM:
+          TITLE: Hinweis
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne vom %s bis %s.
 
 SITEMAP:
     AREA_MAIN: Hauptbereich

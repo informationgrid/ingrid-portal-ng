@@ -871,6 +871,38 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Description
     IDENTIFIER: Identifier
+    TIME:
+      HELP:
+        CREATION:
+          TITLE: Hint
+          MESSAGE: Wann wurde der Datensatz ursprünglich erstellt?
+        PUBLICATION:
+          TITLE: Hint
+          MESSAGE: Wann wurde der Datensatz erstmalig veröffentlicht?
+        REVISION:
+          TITLE: Hint
+          MESSAGE: Wann wurde der Datensatz zuletzt geändert?
+        STATUS:
+          TITLE: Hint
+          MESSAGE: In welchem Bearbeitungsstadium befindet sich der Datensatz?
+        PERIOD:
+          TITLE: Hint
+          MESSAGE: Wie oft wird der Datensatz aktualisiert?
+        INTERVAL:
+          TITLE: Hint
+          MESSAGE: Wenn ein Intervall angegeben werden kann, geben Sie das Intervall an, in dem der Datensatz aktualisiert wird.
+        TIME_AT:
+          TITLE: Hint
+          MESSAGE: Die Daten beziehen sich auf den %s.
+        TIME_SINCE:
+          TITLE: Hint
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne bis %s (Beginn unbekannt).
+        TIME_UNTIL:
+          TITLE: Hint
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne ab dem %s (Ende unbekannt).
+        TIME_FROM:
+          TITLE: Hint
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne vom %s bis %s.
 
 SITEMAP:
     AREA_MAIN: Main menu
