@@ -503,7 +503,7 @@ hit_search:
       "selection_single": true,
       "facets": {
         "opendata_hvd": {
-          "label": "HVD",
+          "label": "Open Data / HVD",
           "query": {
             "filter": {
               "term": {
