@@ -763,6 +763,7 @@
 
 {% macro render_label_text_list_row (title, entries, listPreset, css, expandable, entryPerRow) %}
     {% if entries and entries|length > 0 %}
+        {% set isSingleEntry = entries|length == 1 %}
         <div class="table table--lined">
             <table>
                 {% if entryPerRow %}
@@ -780,7 +781,9 @@
                         <div class="js-expand-box js-expand-text js-non-expand-text {{ css }}">
                             <div class="js-expand-text-content">
                         {% endif %}
+                        {% if isSingleEntry == false %}
                         <div class="text-list">
+                        {% endif %}
                         {% if listPreset %}
                           <span>{{ listPreset }}</span>
                         {% endif %}
@@ -803,7 +806,9 @@
                             {% else %}
                                 <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                             {% endif %}
+                        {% if isSingleEntry == false %}
                         </div>
+                        {% endif %}
                         {% if expandable %}
                                 </div>
                                 <div class="desc-fade"></div>
@@ -827,7 +832,9 @@
                         <div class="js-expand-box js-expand-text js-non-expand-text">
                             <div class="js-expand-text-content">
                         {% endif %}
+                        {% if isSingleEntry == false %}
                         <div class="text-list">
+                        {% endif %}
                         {% if listPreset %}
                             <span>{{ listPreset }}</span>
                         {% endif %}
@@ -852,7 +859,9 @@
                               <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                             {% endif %}
                         {% endfor %}
+                        {% if isSingleEntry == false %}
                         </div>
+                        {% endif %}
                         {% if expandable %}
                                 </div>
                                 <div class="desc-fade"></div>
@@ -874,6 +883,7 @@
 
 {% macro render_label_link_list_row (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
     {% if entries and entries|length > 0 %}
+        {% set isSingleEntry = entries|length == 1 %}
         <div class="table table--lined">
             <table>
                 <tr>
@@ -881,7 +891,9 @@
                     <th>{{ title }}</th>
                 {% endif %}
                     <td>
+                        {% if isSingleEntry == false %}
                         <div class="text-list">
+                        {% endif %}
                         {% if isExpandable %}
 
                             {% set listExpanded = false %}
@@ -941,7 +953,9 @@
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
+                        {% if isSingleEntry == false %}
                         </div>
+                        {% endif %}
                     </td>
                 </tr>
             </table>
