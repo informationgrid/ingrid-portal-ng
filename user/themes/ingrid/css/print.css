@@ -1,0 +1,189 @@
+/* PRINT */
+
+.body {
+    padding-bottom: 0;
+}
+
+.popup {
+    display: none;
+}
+
+.popup.is-open {
+    display: block;
+}
+
+.footer, .unbreak {
+    page-break-inside: avoid;
+    break-inside: avoid
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+
+/* DETAIL */
+.detail .row, .detail .timeline .timeline-text {
+    display: block;
+}
+
+.detail .ic-ic-timeline-bullet {
+    display: none;
+}
+
+/* SEARCH */
+@-moz-document url-prefix() {
+    .search-filtered .row {
+        display: block;
+    }
+}
+
+/* CATEGORY*/
+
+.category .tabs-panel .row {
+    display: block;
+}
+
+.category .tabs-content {
+    background: transparent;
+}
+
+.category .tabs-panel .row .columns {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.category .teaser .blue-border {
+    display: none;
+}
+
+.category .teaser .teaser-link {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.category .teaser .teaser-link .teaser-number {
+    display: inline;
+}
+
+.category .teaser .teaser-link span:first-child {
+    display: none;
+}
+
+.category .teaser {
+    height: 10px;
+    box-shadow: 0 0 0 0;
+}
+
+
+/* Fix print view #4848 */
+
+footer {
+    display: none;
+    position: relative;
+}
+
+header {
+    display: none;
+}
+
+/* Remove facets */
+div.search-filtered > div:first-of-type {
+    display: none;
+}
+
+div.page-wrapper div.row > div:first-of-type {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove bottom margins */
+body {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.detail div.row div.columns {
+    margin-bottom: 0;
+}
+
+/* full width for content */
+.xlarge-18 {
+    flex: 0 0 90%;
+    max-width: 90%;
+    padding-left: 35px;
+}
+
+/* full width teaser content left column and break on right column  */
+div.teaser-data > div:first-child {
+    flex: 1;
+    max-width: 100%;
+}
+
+
+/* remove side margin  */
+.xsmall-14 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+div.page-wrapper {
+    padding: 0;
+}
+
+/* add some padding to the left*/
+.detail .row > .columns:last-child {
+    padding-left: 30px
+}
+
+
+.sub-section, .section, h3, h4, h5, div.data {
+    margin-bottom: 0 !important;
+}
+
+/* do not break headers and content */
+h1, h2, h3, h4, h5 {
+    break-after: avoid;
+}
+
+/* do not break map */
+#map_detail {
+    break-inside: avoid;
+    page-break-inside: avoid; /* For compatibility with older browsers */
+}
+
+/* show long description automatically and remove toggle button */
+.js-expand-text .js-expand-text-content:before {
+    content: none !important; /* Override the content property for print */
+
+}
+
+.js-expand-text {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+button.js-close-expand-text {
+    display: none;
+}
+
+button.js-open-expand-text {
+    display: none;
+}
+
+/* set link color to black */
+a {
+    color: black;
+    text-decoration: none; /* Remove underlines, if desired */
+}
+
+/* remove all links button */
+a.button.outline{
+    display: none;
+}
+
+/* remove overview */
+div.teaser-data.search{
+    display: none;
+}
