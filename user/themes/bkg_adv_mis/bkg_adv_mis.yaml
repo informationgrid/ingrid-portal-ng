@@ -809,6 +809,7 @@ hit_search:
       "id": "maintain",
       "label": "Verwaltet von",
       "list_limit": 6,
+      "sort": "name",
       "query": {
         "terms": {
           "field": "t02_address.identificationinfo_administrative_area_value",
