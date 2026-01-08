@@ -1,9 +1,10 @@
 PAGES:
     HOME: Startseite
     HOME_MENU_TITLE: BKG Webseite
-    HOME_META_TITLE: Startseite
+    HOME_META_TITLE: Metainformationssystem
     ACCESSIBILITY: Erklärung zur Barrierefreiheit
     ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
+    ACCESSIBILITY_CONTENT: Erklärung zur Barrierefreiheit
 
 COMMON:
     TIME_TYPE: Zeitbezug der Daten

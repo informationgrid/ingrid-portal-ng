@@ -1076,7 +1076,7 @@
                 {% endif %}
                 <div class="info--right">
                 {% if entry.applicationProfile %}
-                    {% set infoText = entry.applicationProfile %}
+                    {% set infoText = "COMMON.SERVICE_TYPE_" ~ entry.applicationProfile|upper %}
                     {% if infoText|t == infoText %}
                         <span>{{ getMimeByContentType(entry.applicationProfile) }}</span>
                     {% else %}
