@@ -197,7 +197,6 @@ hit_search:
   facet_config: [
     {
       "id": "type",
-      "label": "Art der Ressource",
       "facets": {
         "data": {
           "codelist": "8000",
