@@ -117,6 +117,7 @@ yq -i '.languages.default_lang = "de"' "$SYSTEM_YAML"
 yq -i '.languages.include_default_lang = false' "$SYSTEM_YAML"
 if [ "$ENABLE_LANG_EN" ]; then
   yq -i '.languages.supported = ["de", "en"]' "$SYSTEM_YAML"
+  yq -i '.languages.http_accept_language = true' "$SYSTEM_YAML"
 fi
 
 # Display errors
