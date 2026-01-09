@@ -69,17 +69,6 @@
             </content>
         </section>
         <section help-key="search-4">
-            <header>Auf Karte festlegen</header>
-            <content>
-                <p>Die räumliche Einschränkung der Umweltportal-Suche ist auch über die Auswahl eines Kartenausschnitts
-                    möglich.</p>
-                <p>Wählen Sie ein Gebiet aus, indem Sie mit Shift + gedrückter
-                    linker Maustaste ein Rechteck auf der Karte aufziehen.
-                    Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
-                    werden die Koordinaten der Suche hinzugefügt.</p>
-            </content>
-        </section>
-        <section help-key="search-5">
             <header>Suche verfeinern</header>
             <content>
                 <p>Neben der einfachen Suche können Sie Ihre Suche weiter

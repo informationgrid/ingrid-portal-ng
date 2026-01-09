@@ -30,35 +30,25 @@
             </content>
         </section>
         <section help-key="search-3">
-            <header>Nach Ort suchen</header>
+            <header>Auf Karte festlegen</header>
             <content>
-                <p>Sie können Ihre Suchanfrage ortsbezogen über die Eingabe eines geografischen Namens ausführen.
-                   Dabei werden Ihnen passende Einträge aus dem Geo-Thesaurus-Umwelt angeboten.
-                   Nach Auswahl eines Raumbezugs wird die Suche mit der eindeutigen Kennung dieses Raumbezuges ausgeführt (z.B. administrative Einheit).</p>
-                <p>Anders als bei vielen anderen Suchmaschinen, erfolgt die räumliche
-                   Einschränkung also nicht über eine einfache Volltextsuche, sondern
-                   über die gezielte Suche nach Raumbezügen, die den Suchergebnissen zugeordnet wurden.</p>
+                <p>Die räumliche Einschränkung der Suche ist über die Facette "Auf Karte festlegen"
+                    möglich.</p>
+                <p> Klicken Sie in der geöffneten Facette in der Karte auf das Weltkugel-Symbol mit der Lupe.
+                    Es öffnet sich ein Dialog, in dem Sie verschiedene Möglichkeiten der räumlichen Auswahl haben:
+                    Sie können über den Suchschlitz nach einem Ort suchen oder alternativ auf das Quadrat rechts oben im Fenster klicken. Anschließend können Sie auf der Karte ein Rechteck aufziehen. Dieses können Sie über den mittleren Button rechts oben (Stift-Symbol) bearbeiten oder löschen.
+                    Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
+                    werden die Suchergebnisse entsprechend gefiltert.</p>
             </content>
         </section>
         <section help-key="search-4">
-            <header>Auf Karte festlegen</header>
-            <content>
-                <p>Die räumliche Einschränkung der BAW-Suche ist auch über die Auswahl eines Kartenausschnitts 
-                   möglich.</p>
-                <p>Wählen Sie ein Gebiet aus, indem Sie mit Shift + gedrückter 
-                   linker Maustaste ein Rechteck auf der Karte aufziehen.
-                   Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
-                   werden die Koordinaten der Suche hinzugefügt.</p>
-            </content>
-        </section>
-        <section help-key="search-5">
             <header>Suche verfeinern</header>
             <content>
                 <p>Neben der einfachen Suche können Sie Ihre Suche weiter
                     verfeinern. Lesen Sie hierzu folgende Themen:</p>
                 <ul>
                     <li>
-                        <a href="?hkey=search-results-3">Ähnliche Begriffe zur 
+                        <a href="?hkey=search-results-3">Ähnliche Begriffe zur
                         Suche hinzufügen</a>
                     </li>
                     <li>
@@ -73,7 +63,7 @@
         <section help-key="search-expert-1">
             <header>Experteneingabe</header>
             <content>
-                <p>Alle Einstellungen der Such-Oberfläche und  
+                <p>Alle Einstellungen der Such-Oberfläche und
                     spezielle Einstellungen darüber hinaus lassen sich auch
                     direkt über den Suchausdruck in die Suche eingeben. Da die
                     Syntax durch die große Anzahl der Suchmethoden recht
@@ -151,7 +141,7 @@
         <section help-key="search-expert-6">
             <header>Suche nach Bereichen von Zeichen</header>
             <content>
-                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden  
+                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden
                     in eckige [] oder geschweifte {} Klammern gefasst und die untere und obere
                     Angabe mit dem Operator TO verbunden. Eckige Klammern []
                     bedeuten, dass der untere und der obere Wert des Bereichs in
@@ -159,10 +149,10 @@
                     bedeuten, dass der untere und der obere Wert des Bereichs
                     nicht in die Suche einbezogen werden.</p>
                 <p>Beispiel: ‚[Aller TO Elbe]’ (Es wird nach Dokumenten gesucht, die
-                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
                     ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich enthalten.</p>
                 <p>Beispiel: ‚{Aller TO Elbe}’ (Es wird nach Dokumenten gesucht, die
-                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
                     ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich nicht enthalten.)</p>
                 <p>Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.</p>
                 <p>Beispiel: ‚te[i TO x]t’ (Es wird nach Dokumenten gesucht, die
@@ -199,7 +189,7 @@
         <section help-key="search-expert-9a">
             <header>Suche nach speziellen Dokumenttypen</header>
             <content>
-                <p> In BAW kann nach verschiedenen Dokumenttypen gesucht werden. 
+                <p> In BAW kann nach verschiedenen Dokumenttypen gesucht werden.
                     Dazu wird die Syntax ‚fileformat:Wert’ verwandt.</p>
                 <p>Beispiel: ‚fileformat:pdf’ (Es wird nur nach
                     PDF-Dokumenten gesucht.)</p>
@@ -214,23 +204,23 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>pdf </td>  
+                    <td>pdf </td>
                     <td> Es wird nur nach PDF - Dokumenten gesucht</td>
                     </tr>
                     <tr>
-                    <td>rtf  </td>  
+                    <td>rtf  </td>
                     <td> Es wird nur nach RTF - Dokumenten gesucht</td>
                     </tr>
                     <tr>
-                    <td>msword </td>  
+                    <td>msword </td>
                     <td> Es wird nur nach MS Word - Dokumenten gesucht</td>
                     </tr>
                     <tr>
-                    <td>msexcel  </td>  
+                    <td>msexcel  </td>
                     <td> Es wird nur nach MS Excel - Dokumenten gesucht</td>
                     </tr>
                     <tr>
-                    <td>mspowerpoint </td>  
+                    <td>mspowerpoint </td>
                     <td> Es wird nur nach MS PowerPoint - Dokumenten gesucht</td>
                     </tr>
                 </table>
@@ -258,48 +248,48 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>www</td>  
+                    <td>www</td>
                     <td> Es wird nur nach Webseiten gesucht.</td>
                     </tr>
-                    
+
                     <tr>
-                    <td>default</td>  
+                    <td>default</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Umweltinformationen' gesucht.</td>
                     </tr>
-                    
+
                     <tr>
-                    <td>law</td>  
+                    <td>law</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Rechtsvorschriften' gesucht.</td>
                     </tr>
-                    
+
                      <tr>
-                    <td>research</td>  
+                    <td>research</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Forschungsprojekte' gesucht.</td>
                     </tr>
-         
+
                     <tr>
-                    <td>address</td>  
+                    <td>address</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Adressen' gesucht.</td>
                     </tr>
-                   
+
                     <tr>
-                    <td>topics</td>  
+                    <td>topics</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Themen' gesucht.</td>
                     </tr>
                      <tr>
-                    <td>service</td>  
+                    <td>service</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Service' gesucht.</td>
                     </tr>
                     <tr>
-                    <td>measure</td>  
+                    <td>measure</td>
                     <td> Es wird nach Dokumenten aus dem Bereich 'Messwerte' gesucht.</td>
                     </tr>
                     <tr>
-                    <td>metadata</td>  
+                    <td>metadata</td>
                     <td> Es wird nur nach Metadaten gesucht</td>
                     </tr>
                     <tr>
-                    <td>fis</td>  
+                    <td>fis</td>
                     <td> Es wird nach Informationen aus Fachdatenbanken gesucht.</td>
                     </tr>
                 </table>
@@ -309,13 +299,13 @@
         <section help-key="search-expert-10">
             <header>Suche nach einem speziellen Umweltthema</header>
             <content>
-                <p>Die Suche kann nach den Seiten eingegrenzt werden, die einem oder mehreren Umwelthemen 
+                <p>Die Suche kann nach den Seiten eingegrenzt werden, die einem oder mehreren Umwelthemen
                 zugeordnet sind. Dazu wird die Syntax ‚topic:Wert’ verwandt.</p>
                 <p>Beispiel: ‚datatype:topics topic:Abfall’ (Es wird nach
                     Dokumenten gesucht, die unter dem Umweltthema 'Abfall' eingeordnet wurden.)</p>
                 <p> Folgende Werte sind möglich:</p>
-                <p> Abfall, Altlasten, Bauen, Boden, Chemikalien, Energie, Forstwirtschaft, Gentechnik, 
-                    Geologie, Gesundheit, LaermErschuetterung, Landwirtschaft, LuftKlima, 
+                <p> Abfall, Altlasten, Bauen, Boden, Chemikalien, Energie, Forstwirtschaft, Gentechnik,
+                    Geologie, Gesundheit, LaermErschuetterung, Landwirtschaft, LuftKlima,
                     NachhaltigeEntwicklung, NaturLandschaft, Strahlung, Tierschutz, Umweltinformation,
                     Umweltwirtschaft, Verkehr, Wasser </p>
             </content>
@@ -328,7 +318,7 @@
                 <p>Beispiel: ‚datatype:measure topic:air’ (Es wird nach
                     Dokumenten gesucht, die Messungen zum Thema 'Luft' zum Inhalt haben.)</p>
                 <p> Folgende Werte sind möglich:</p>
-                <p> <b>radiation</b> für Strahlung, <b>air</b> für Luft, 
+                <p> <b>radiation</b> für Strahlung, <b>air</b> für Luft,
                     <b>water</b> für Wasser
                     und <b>misc</b> für weitere Messwerte. </p>
             </content>
@@ -336,7 +326,7 @@
         <section help-key="search-expert-12">
             <header>Suche nach einem speziellen Service</header>
             <content>
-                <p>Die Suche kann nach den Seiten eingegrenzt werden, die einem Service 
+                <p>Die Suche kann nach den Seiten eingegrenzt werden, die einem Service
                 zugeordnet sind. Dazu wird die Syntax ‚topic:Wert’ verwandt.</p>
                 <p>Beispiel: ‚datatype:service topic:press’ (Es wird nach
                     Dokumenten gesucht, die Pressemitteilungen enthalten.)</p>
@@ -347,7 +337,7 @@
         <section help-key="search-expert-13">
             <header>Suche nach einer speziellen Metadatenklasse</header>
             <content>
-                <p>Bei der Suche nach einer spezielen Metadatenklasse wird die 
+                <p>Bei der Suche nach einer spezielen Metadatenklasse wird die
                 Syntax ‚topic:Wert’ verwandt.</p>
                 <p>Beispiel: ‚datatype:metadata metaclass:map’ (Es wird nach
                     Metadaten der Klasse Geo-Information/Karte gesucht.)</p>
@@ -362,35 +352,35 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>job </td>  
+                    <td>job </td>
                     <td> Es wird nach Metadaten der Klasse 'Organisationseinheit/Fachaufgabe' gesucht</td>
                     </tr>
                     <tr>
-                    <td>map  </td>  
+                    <td>map  </td>
                     <td> Es wird nach Metadaten der Klasse 'Geo-Information/Karte' gesucht</td>
                     </tr>
                     <tr>
-                    <td>document </td>  
+                    <td>document </td>
                     <td> Es wird nach Metadaten der Klasse 'Dokument/Bericht/Literatur' gesucht</td>
                     </tr>
-                    
+
                     <tr>
-                    <td>geoservice </td>  
+                    <td>geoservice </td>
                     <td> Es wird nach Metadaten der Klasse 'Geodatendienst' gesucht</td>
                     </tr>
-                    
+
                      <tr>
-                    <td>project </td>  
+                    <td>project </td>
                     <td> Es wird nach Metadaten der Klasse 'Vorhaben/Projekt/Programm' gesucht</td>
                     </tr>
-                                        
+
                         <tr>
-                    <td>database  </td>  
+                    <td>database  </td>
                     <td> Es wird nach Metadaten der Klasse 'Datensammlung/Datenbank' gesucht</td>
                     </tr>
 
                     <tr>
-                    <td>service </td>  
+                    <td>service </td>
                     <td> Es wird nach Metadaten der Klasse 'Dienst/Anwendung/Informationssystem' gesucht</td>
                     </tr>
                 </table>
@@ -400,13 +390,13 @@
         <section help-key="search-expert-14">
             <header>Angabe des Raumbezugs</header>
             <content>
-                <p> Die Suche kann auf Dokumente, die einem bestimmten Raumbezug zugeordnet sind, eingeschränkt 
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Raumbezug zugeordnet sind, eingeschränkt
                 werden.
-                Der Raumbezug kann über Koordinaten oder über den räumlichen Schlüssel der Verwaltungseinheit 
+                Der Raumbezug kann über Koordinaten oder über den räumlichen Schlüssel der Verwaltungseinheit
                 angegeben werden.</p>
-                <p>Beispiel: ‚areaid: areaid:11000000’ (Die Suche wird auf Berlin als 
+                <p>Beispiel: ‚areaid: areaid:11000000’ (Die Suche wird auf Berlin als
                 Verwaltungseinheit eingeschränkt.)</p>
-                <p>Beispiel: ‚x1:7.52 y1:50.18 x2:10.17 y2:52.73’ (Die Suche wird auf ein 
+                <p>Beispiel: ‚x1:7.52 y1:50.18 x2:10.17 y2:52.73’ (Die Suche wird auf ein
                 ausgewähltes Rechteck eingeschränkt.)</p>
                 <p>Folgende Felder stehen für die Einschränkung des Raumbezugs in BAW zur Verfügung:</p>
                 <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
@@ -419,23 +409,23 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>areaid </td>  
+                    <td>areaid </td>
                     <td> Schlüssel der Verwaltungseinheit (AGS)</td>
                     </tr>
                     <tr>
-                    <td>x1  </td>  
+                    <td>x1  </td>
                     <td> links</td>
                     </tr>
                     <tr>
-                    <td>x2 </td>  
+                    <td>x2 </td>
                     <td> rechts</td>
                     </tr>
                     <tr>
-                    <td>y1 </td>  
+                    <td>y1 </td>
                     <td> oben</td>
                     </tr>
                     <tr>
-                    <td>y2 </td>  
+                    <td>y2 </td>
                     <td> unten</td>
                     </tr>
                </table> <br></br>
@@ -445,9 +435,9 @@
         <section help-key="search-expert-15">
             <header>Angabe des Zeitbezugs</header>
             <content>
-                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt 
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt
                 werden. </p>
-                <p>Beispiel: ‚t1:2006-01-01 t2:2008-12-31’ (Die Suche wird auf ein 
+                <p>Beispiel: ‚t1:2006-01-01 t2:2008-12-31’ (Die Suche wird auf ein
                 ausgewähltes Zeitintervall eingeschränkt.)</p>
                 <p>Folgende Felder stehen für die Einschränkung des Zeitbezugs in BAW zur Verfügung:</p>
                 <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
@@ -460,21 +450,21 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>t0 </td>  
+                    <td>t0 </td>
                     <td> Das Dokument wurde dem angegebenen Zeitpunkt zugeordnet</td>
                     </tr>
                     <tr>
-                    <td>t1  </td>  
-                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    <td>t1  </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
                     angegebenen Wert beginnt</td>
                     </tr>
                     <tr>
-                    <td>t2 </td>  
-                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    <td>t2 </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
                     angegebenen Wert endet</td>
                     </tr>
                </table><br></br>
-               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag) 
+               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag)
                eingegeben werden. </p>
             </content>
         </section>
@@ -560,7 +550,7 @@
         <section help-key="search-catalog-1">
             <header display="false">Kataloge</header>
             <content>
-                <p>Die angeschlossenen Kataloge und deren Inhalte werden in einem Hierarchie-Baum dargestellt. In jedem Katalog kann durch Klick auf "+" durch Objekte und Adressen navigiert werden. Die Detaildarstellung eines Eintrags erfolgt auf Anfrage, d.h. bei Klick auf dessen Titel, analog zur Funktion der <a href="?hkey=search-results-2">Hauptergebnisliste</a> bei der Suche.</p> 
+                <p>Die angeschlossenen Kataloge und deren Inhalte werden in einem Hierarchie-Baum dargestellt. In jedem Katalog kann durch Klick auf "+" durch Objekte und Adressen navigiert werden. Die Detaildarstellung eines Eintrags erfolgt auf Anfrage, d.h. bei Klick auf dessen Titel, analog zur Funktion der <a href="?hkey=search-results-2">Hauptergebnisliste</a> bei der Suche.</p>
             </content>
         </section>
     </chapter>
