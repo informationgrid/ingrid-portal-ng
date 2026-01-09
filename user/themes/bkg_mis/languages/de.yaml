@@ -33,3 +33,5 @@ SEARCH_DETAIL:
     T011_OBJ_GEO_DATASOURCE_UUID: Identifier
     T011_OBJ_SERV_OPERATION_INVOCATION_NAME: Zugangspunkt der Operation oder des Dienstes
     POINTOFCONTACT_METADATA: ' '
+    T01_OBJECT_TIME_PERIOD: Periodizität
+    T01_OBJECT_TIME_INTERVAL: Intervall der Erhebung
