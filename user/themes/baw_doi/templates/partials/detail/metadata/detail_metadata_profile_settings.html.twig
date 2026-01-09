@@ -6,4 +6,15 @@
 {% set doi = hit.doi %}
 {% set citations = hit.citations %}
 
+{# Fachinformationen #}
+{% switch class %}
+
+    {% case '6' %}
+        {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsnummer", hit.erstellungsvertragsnummer) %}
+        {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsdatum", hit.erstellungsvertragsdatum) %}
+
+    {% default %}
+
+{% endswitch %}
+
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

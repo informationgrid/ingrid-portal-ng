@@ -966,7 +966,7 @@
 
 {% macro render_titles_entries_group (titles, entries) %}
     {% if entries and entries|length > 0 %}
-        <div class="table table--lined--list">
+        <div class="table table--lined">
             <table>
                 {% for entry in entries %}
                     {% if entry.value or entry.values %}
@@ -1403,7 +1403,7 @@
 
 {% macro render_table_group (title, header, entries, displayEmptyValues) %}
     {% if entries and entries|length > 0 %}
-        <div class="table table--lined--list">
+        <div class="table table--lined">
             {% if title %}
                 <h5>{{ title|raw }}</h5>
             {% endif %}
@@ -1601,9 +1601,9 @@
 
 {% macro render_citation (title, values, page) %}
     <div class="sub-section sub-section-unlined">
-        {{ _self.render_group_title(title) }}
+        {{ _self.render_group_title(title|raw) }}
         <div class="document-list">
-            {% set value = values %}
+            {% for value in values %}
             <div class="list-item">
                 {% if value.uuid %}
                     <a class="external-link" href="?docuuid={{ value.uuid }}" target="_blank" title="{{ value.title }}">{{ value.title }}</a>
@@ -1645,6 +1645,7 @@
                     <a class="external-link" href="{{ value.doi }}" target="_blank" title="{{ value.doi }}">{{ value.doi }}</a>
                 {% endif %}
             </div>
+            {% endfor %}
         </div>
     </div>
 {% endmacro %}
