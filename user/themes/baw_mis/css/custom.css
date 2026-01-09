@@ -458,8 +458,10 @@ footer .footer-top-link:focus {
   padding: 6px;
   border: 1px solid #C6CFE2;
 }
-.catalog .accordion {
-  margin-top: 0;
+.catalog .accordion,
+.catalog .accordion-content {
+    margin-top: 0;
+    background-color: #fff !important;
 }
 .catalog .accordion .accordion-content {
   padding: 0;
