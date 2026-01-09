@@ -1231,9 +1231,16 @@ footer .footer-buttons-bar .login-buttons .login-form {
 }
 
 .search-filtered .table h4,
-.search-filtered .table h5,
-.search-filtered .table:not(.table--lined) table tr th {
+.search-filtered .table h5 {
   border-bottom: 2px solid #0A4E5A;
+}
+
+.search-filtered .table:not(.table--lined) table tr th {
+    border-bottom: 1px solid #0A4E5A;
+}
+
+.search-filtered .table.table--lined--list table tr th {
+    border-bottom: 0;
 }
 
 .js-popup {

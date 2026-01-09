@@ -1403,7 +1403,7 @@
 
 {% macro render_table_group (title, header, entries, displayEmptyValues) %}
     {% if entries and entries|length > 0 %}
-        <div class="table table--lined">
+        <div class="table table--lined--list">
             {% if title %}
                 <h5>{{ title|raw }}</h5>
             {% endif %}
