@@ -66,7 +66,7 @@ a:focus {
   text-decoration: none;
 }
 a.icon [class^='ic-'] {
-  font-size: 16px;
+  font-size: 18px;
 }
 a.icon:hover {
   color: #0A4E5A;
@@ -941,7 +941,7 @@ h1, h2, h3, h4, h5, h6{
   font-family: BundesSansWeb-Regular, sans-serif;
   text-transform: uppercase;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   padding: 18px 20px 18px 20px;
 }
 .search.similar .row .columns .nested-group .accordion-item .accordion-title:hover span,
@@ -983,7 +983,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .teaser .teaser-link {
   font-family: 'BundesSansWeb-Bold', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   padding: 145px 8px 0;
 }
 .teaser .teaser-link .teaser-number {
@@ -1261,4 +1261,12 @@ footer .footer-buttons-bar .login-buttons .login-form {
     .page-detail .search-filtered {
         padding-top: 0;
     }
+}
+
+#searchResult {
+    font-size: 18px;
+}
+
+.detail {
+    font-size: 18px;
 }
