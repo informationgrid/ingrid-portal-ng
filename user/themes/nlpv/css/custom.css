@@ -778,6 +778,7 @@ header .logo {
   display: flex;
 }
 header .logo a {
+  height: 119px;
   position: unset;
   display: flex;
   flex-direction: row;
@@ -785,17 +786,27 @@ header .logo a {
   gap: 16px;
   color: var(--color-default);
 }
+.shrink header .logo a {
+  height: 80px;
+}
 header .logo a:hover {
   text-decoration: none;
   color: var(--color-hyperlink);
 }
-header .logo a .logo__img {
-  width: 56px;
-  height: 56px;
+header .logo a .logo__img:nth-child(1) {
+  height: 65%;
+}
+header .logo a .logo__img:nth-child(2) {
+  height: 90%;
 }
 header .logo a .logo__text {
   font-weight: 500;
   font-size: var(--font-size-xl);
+}
+@media screen and (max-width: 51em) {
+  header .logo a {
+    height: 79px;
+  }
 }
 
 /* ---- header menu tab ---- */
@@ -1030,6 +1041,17 @@ a img[title='SNS'] {
 
 
 /* search simple */
+.banner.home h1 {
+  font-size: 36px;
+  font-weight: 500;
+}
+.banner.home h1.green {
+  font-size: 28px;
+  font-weight: 400;
+}
+.banner.home h1.green span {
+  display: none;
+}
 .banner.home h1.green, .banner.home .home-wrapper .indent span, .banner.home h1 {
   color: #FFFFFF;
 }
