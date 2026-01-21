@@ -793,6 +793,9 @@ header .logo a:hover {
   text-decoration: none;
   color: var(--color-hyperlink);
 }
+header .logo .logo__img {
+  width: unset;
+}
 header .logo a .logo__img:nth-child(1) {
   height: 65%;
 }
