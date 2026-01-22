@@ -492,7 +492,6 @@ hit_search:
     }
   ]
   add_to_search:
-    - '-datatype:address'
     - '-isfolder:true'
   query_fields:
     - title^10.0
