@@ -1304,6 +1304,7 @@ catalog:
   sort_by_name: true
   open_on_new_tab: true
   address_folder_closed: false
+  address_folder_hidden: false
 help:
   default_hkey: about-1
 datasource:

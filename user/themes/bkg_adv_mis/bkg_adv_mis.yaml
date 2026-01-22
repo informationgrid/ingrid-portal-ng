@@ -16,7 +16,7 @@ header:
 footer:
   logo_enabled: true
   copyright:
-    text: '© Arbeitsgemeinschaft der Vermessungsverwaltungen der Länder der Bundesrepublik Deutschland'
+    text: '© Bundesamt für Kartographie und Geodäsie'
     class: 'xsmall-24 small-24 medium-24 large-24 xlarge-10'
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
@@ -197,7 +197,6 @@ hit_search:
   facet_config: [
     {
       "id": "type",
-      "label": "Art der Ressource",
       "facets": {
         "data": {
           "codelist": "8000",
@@ -809,6 +808,7 @@ hit_search:
       "id": "maintain",
       "label": "Verwaltet von",
       "list_limit": 6,
+      "sort": "name",
       "query": {
         "terms": {
           "field": "t02_address.identificationinfo_administrative_area_value",
@@ -823,7 +823,7 @@ hit_search:
       "selection_single": true,
       "facets": {
         "opendata_hvd": {
-          "label": "HVD",
+          "label": "Open Data / HVD",
           "query": {
             "filter": {
               "term": {
@@ -979,7 +979,7 @@ hit_search:
   expandable:
     enabled: true
   summary_replace_newline: ' '
-  summary_lines_limit: 5
+  summary_lines_limit: 2
   links_max: 5
   csw_enabled: true
   rdf_enabled: false

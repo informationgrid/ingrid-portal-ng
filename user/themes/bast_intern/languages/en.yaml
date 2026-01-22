@@ -1,6 +1,10 @@
 SEARCH:
     PORTLET_TITLE_2: Internal research portal for data sets
 
+CONTACT:
+  SUCCESS: Your message has been sent to the BASt editorial office.
+  REPORT_EMAIL_SUBJECT: Message from BASt
+
 FACETS:
     FACET_LABEL:
         DISTRIBUTOR: Providers

@@ -14,7 +14,7 @@
 <div class="data">
     <div class="teaser-data search">
         {% if hit.uuid %}
-            <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
+            <a class="anchor" id="{{ hit.uuid }}"></a>
         {% endif %}
         <div class="helper icon">
             {{ hit_macros.render_address_icon(hit.type, ("COMMON.UDK_ADR_CLASS_NAME_" ~ hit.type)|t) }}

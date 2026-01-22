@@ -1,9 +1,10 @@
 PAGES:
     HOME: Startseite
     HOME_MENU_TITLE: BKG Webseite
-    HOME_META_TITLE: Startseite
+    HOME_META_TITLE: Metainformationssystem
     ACCESSIBILITY: Erklärung zur Barrierefreiheit
     ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
+    ACCESSIBILITY_CONTENT: Erklärung zur Barrierefreiheit
 
 COMMON:
     TIME_TYPE: Zeitbezug der Daten
@@ -32,3 +33,5 @@ SEARCH_DETAIL:
     T011_OBJ_GEO_DATASOURCE_UUID: Identifier
     T011_OBJ_SERV_OPERATION_INVOCATION_NAME: Zugangspunkt der Operation oder des Dienstes
     POINTOFCONTACT_METADATA: ' '
+    T01_OBJECT_TIME_PERIOD: Periodizität
+    T01_OBJECT_TIME_INTERVAL: Intervall der Erhebung

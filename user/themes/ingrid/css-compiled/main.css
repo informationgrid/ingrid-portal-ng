@@ -7761,6 +7761,7 @@ div.accordion-item.is-active > .more .plus {
   position: absolute;
   top: 16px;
   right: 32px;
+  border: 1px solid;
 }
 .popup .text-box {
   background-color: #fff;
@@ -7776,9 +7777,37 @@ div.accordion-item.is-active > .more .plus {
   display: block;
 }
 
+.help-popup .headline {
+  padding: 16px 32px 6px;
+  background-color: #c6cfe2;
+}
+.help-popup .headline p {
+  color: #203564;
+}
+.help-popup .headline button {
+  padding: 14px 16px;
+}
+.help-popup .button.round {
+  top: 16px;
+  right: 32px;
+  width: 0;
+  height: 32px;
+  font-size: 12px;
+  background-color: inherit;
+}
+.help-popup .button.round:hover .ic-ic-cross {
+  color: #f6f6f6;
+}
+.help-popup .button.round .ic-ic-cross {
+  top: 9px;
+  left: 2px;
+}
+.help-popup .text-box {
+  padding: 32px 32px 32px;
+}
+
 .js-popup {
   cursor: pointer;
-  color: #c6cfe2;
 }
 
 .js-popup:hover {
@@ -8733,7 +8762,6 @@ footer .footer-top-link:hover {
   width: 82%;
 }
 .timeline .timeline-text h4 span {
-  color: #c6cfe2;
   vertical-align: middle;
   padding-left: 8px;
 }

@@ -88,7 +88,7 @@
             var urlDomain = window.location.origin;
             var urlSearch = window.location.search;
             const urlParams = new URLSearchParams(urlSearch);
-            jQuery.post('rest/downloadCSV', {
+            jQuery.post('rest/downloadCSV?' + urlParams.toString(), {
                 requestedFields: requestedFields,
                 codelists: {
                     't01_object.obj_class': '8000'
@@ -139,44 +139,12 @@
                         tmpRow += delimiter;
 {# Filterkriterium #}
                         var tmpValue = '';
-{# Ergebnistyp #}
-                        if (row['portal.facet.type']){
-                            row['portal.facet.type'].forEach(function(value){
+                        if (row['facets']){
+                            row['facets'].forEach(function(value){
                                 if (tmpValue !== ''){
                                     tmpValue += ', ';
                                 }
-                                tmpValue += '$MESSAGES.getString("searchResult.facete.title.types.single") = ' + value;
-                            });
-                        }
-{# Vertrieb der Geodaten #}
-                        if (row['portal.facet.distributor']){
-                            row['portal.facet.distributor'].forEach(function(value){
-                                if (tmpValue !== ''){
-                                    tmpValue += ', ';
-                                }
-                                tmpValue += '$MESSAGES.getString("searchResult.facete.title.provider") = ' + value;
-                            });
-                        }
-{# Fachthemen #}
-                        if (row['portal.facet.metadata_tree']){
-                            row['portal.facet.metadata_tree'].forEach(function(value){
-                                if (tmpValue !== ''){
-                                    tmpValue += ', ';
-                                }
-                                tmpValue += '$MESSAGES.getString("searchResult.facete.title.metadata_tree") = ' + value;
-{# Unterthemen #}
-                                if (row['object_node.tree_path.uuid']){
-                                    row['object_node.tree_path.uuid'].forEach(function(uuid){
-                                        if (row['portal.facet.metadata_tree_' + uuid]){
-                                            row['portal.facet.metadata_tree_' + uuid].forEach(function(subvalue){
-                                                if (tmpValue !== ''){
-                                                    tmpValue += ', ';
-                                                }
-                                                tmpValue += value + ' = ' + subvalue;
-                                            });
-                                        }
-                                    });
-                                }
+                                tmpValue += value;
                             });
                         }
                         tmpRow += tmpValue + delimiter;
@@ -240,17 +208,7 @@
                         }
                         tmpRow += delimiter;
 {# Aufruf Suchergebnis #}
-                        var url = urlDomain + '/freitextsuche?rstart=';
-                        if (row['portal.page']){
-                            url += row['portal.page'];
-                        }
-                        url += '0';
-                        if (row['portal.query']){
-                            url += '&q=' + encodeURIComponent(row['portal.query']);
-                        }
-                        if (row['portal.facet']){
-                            url += row['portal.facet'];
-                        }
+                        var url = window.location;
                         if (row['t01_object.obj_id']){
                             url += '#' + row['t01_object.obj_id'];
                         }

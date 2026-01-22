@@ -16,6 +16,8 @@ SEARCH:
 
 SEARCH_RESULT:
     INFO_LINKS: Links
+    HIT_TYPE_NAME_SIMULATION: Simulationsdaten
+    HIT_TYPE_NAME_MEASURE: Messdaten
 
 SEARCH_DETAIL:
     MEASUREMENT:
@@ -52,7 +54,6 @@ SEARCH_DETAIL:
             TYPE: Art
             UOM: Maßeinheit
             CALCULATIONFORMULA: Formel/Funktion
-
     GEOMETRICS:
         CONTEXT:
             TITLE: Geometrie-Kontext
@@ -62,6 +63,8 @@ SEARCH_DETAIL:
             FEATURE:
                 CODE: Code
                 DESCRIPTION: Beschreibung
+    HIT_TYPE_NAME_SIMULATION: Simulationsdaten
+    HIT_TYPE_NAME_MEASURE: Messdaten
 
 FACETS:
     FACET_LABEL:

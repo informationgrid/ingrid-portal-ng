@@ -394,7 +394,7 @@ hit_search:
   expandable:
     enabled: true
   summary_replace_newline: '<br>'
-  summary_lines_limit: 5
+  summary_lines_limit: 2
   links_max: 5
   csw_enabled: true
   rdf_enabled: false
@@ -485,7 +485,7 @@ redirect:
     - /datasource
   pages_to_redirect:
 catalog:
-  open_nodes_level: 2
+  open_nodes_level: 3
   display_partner: false
   sort_by_name: true
   open_on_new_tab: true

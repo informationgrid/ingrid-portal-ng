@@ -831,6 +831,7 @@ div.accordion-item.is-active > .more{
       position: absolute;
       top: 16px;
       right: 32px;
+      border: 1px solid;
     }
   }
   .text-box {
@@ -848,9 +849,46 @@ div.accordion-item.is-active > .more{
   display: block;
 }
 
+.help-popup {
+  .headline {
+    padding: 16px 32px 6px;
+    background-color: $blue-light;
+
+    p {
+      color: $dark-midnight;
+    }
+    button {
+      padding: 14px 16px;
+    }
+  }
+
+  .button.round {
+    top: 16px;
+    right: 32px;
+    width: 0;
+    height: 32px;
+    font-size: 12px;
+    background-color: inherit;
+
+    &:hover {
+      .ic-ic-cross {
+        color: $white-cascade;
+      }
+    }
+
+    .ic-ic-cross {
+      top: 9px;
+      left: 2px;
+    }
+  }
+
+  .text-box {
+    padding: 32px 32px 32px;
+  }
+}
+
 .js-popup {
     cursor: pointer;
-    color: $blue-light;
 }
 
 .js-popup:hover {
@@ -1819,7 +1857,6 @@ footer {
     width: 82%;
 
     h4 span {
-      color: $blue-light;
       vertical-align: middle;
       padding-left: 8px;
     }

@@ -15,27 +15,16 @@ routes:
 
 Das Bundesamt für Kartographie und Geodäsie (BKG) ist bemüht, seine Website im Einklang mit Richtlinie (EU) 2016/2102 des Europäischen Parlaments und des Rates vom 26. Oktober 2016 über den barrierefreien Zugang zu den Websites und mobilen Anwendungen öffentlicher Stellen ([ABl. L 327 vom 2.12.2016, S. 1](https://eur-lex.europa.eu/legal-content/DE/AUTO/?uri=OJ:L:2016:327:TOC&target=_blank "Link öffnet im neuem Tab")) barrierefrei zugänglich zu machen.
 
-Diese Erklärung zur Barrierefreiheit gilt für die Webseite [https://advmis.geodatenzentrum.de/](https://advmis.geodatenzentrum.de/?target=_blank "Link öffnet im neuem Tab").
-
 ## Stand der Vereinbarkeit mit den Anforderungen
 
-Diese Website ist wegen der folgenden Unvereinbarkeiten und Ausnahmen teilweise mit der [Verordnung zur Schaffung barrierefreier Informationstechnik nach dem Behindertengleichstellungsgesetz (Barrierefreie-Informationstechnik-Verordnung - BITV 2.0)](http://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html?target=_blank "Link öffnet im neuem Tab") vereinbar.
+Diese Webseiten sind mit den Vorgaben der harmonisierten europäischen Norm EN 301 549 V2.1.2 (08-2018) größtenteils vereinbar.
 
-## Nicht barrierefreie Inhalte
-
-Die nachstehend aufgeführten Inhalte sind aus folgenden Gründen nicht barrierefrei:
-
-a) Unvereinbarkeit mit der Barrierefreie-Informationstechnik-Verordnung (BITV 2.0)
-
-1. Diverse Layoutgrafiken besitzen keine alt-Attribute. (BITV-Test 1.1.1c Leere alt-Attribute für Layoutgrafiken)
-2. Die HTML-Syntax der Seite besteht die Prüfung mit dem W3C-HTML-Validator nicht. (BITV-Test 4.1.1a Korrekte Syntax)
-3. Das Kontaktformular verfügt über kein passendes autocomplete-Attribut. (BITV-Test 1.3.5a Eingabefelder zu Nutzerdaten vermitteln den Zweck)
-4. Für die Facettierung der Suche werden nicht semantische Elemente verwendet. (BITV-Test 4.1.2a Name, Rolle, Wert verfügbar)
+Die Webanwendung im Bereich 'Karte' ist grafisch basiert. Eine barrierefreie Umsetzung ist derzeit nicht möglich.
 
 ## Erstellung dieser Erklärung zur Barrierefreiheit
 
 Diese Erklärung wurde am 23. September 2020 von der Externen Firma wemove digital solutions GmbH erstellt. Die Ergebnisse basieren auf einer ebenfalls von wemove durchgeführten [BITV-Selbstbewertung der Website](https://www.bitvtest.de/bitv_test/einfuehrung/selbstbewertung.html?target=_blank "Link öffnet im neuem Tab").
-Die Erklärung wurde zuletzt am 23. September 2020 überprüft.
+Die Erklärung wurde zuletzt am 27.11.2025 überprüft.
 
 ## Feedback und Kontaktangaben
 

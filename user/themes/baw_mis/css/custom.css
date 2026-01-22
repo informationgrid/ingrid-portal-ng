@@ -66,7 +66,7 @@ a:focus {
   text-decoration: none;
 }
 a.icon [class^='ic-'] {
-  font-size: 16px;
+  font-size: 18px;
 }
 a.icon:hover {
   color: #0A4E5A;
@@ -458,8 +458,10 @@ footer .footer-top-link:focus {
   padding: 6px;
   border: 1px solid #C6CFE2;
 }
-.catalog .accordion {
-  margin-top: 0;
+.catalog .accordion,
+.catalog .accordion-content {
+    margin-top: 0;
+    background-color: #fff !important;
 }
 .catalog .accordion .accordion-content {
   padding: 0;
@@ -939,7 +941,7 @@ h1, h2, h3, h4, h5, h6{
   font-family: BundesSansWeb-Regular, sans-serif;
   text-transform: uppercase;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   padding: 18px 20px 18px 20px;
 }
 .search.similar .row .columns .nested-group .accordion-item .accordion-title:hover span,
@@ -981,7 +983,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .teaser .teaser-link {
   font-family: 'BundesSansWeb-Bold', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   padding: 145px 8px 0;
 }
 .teaser .teaser-link .teaser-number {
@@ -1108,7 +1110,7 @@ a.icon {
 }
 
 .category .teaser:hover .blue-border {
-  box-shadow: 0px 0px 0px 8px rgba(46, 133, 201, 0.17);
+    box-shadow: 0px 0px 0px 8px rgba(46, 133, 201, 0.17);
 }
 
 .js-expander-toggle-all a.icon:hover,
@@ -1122,10 +1124,11 @@ a.icon {
 }
 .teaser-data a:hover .header, .teaser-data a:hover .arrow,
 .teaser-data a:focus .header, .teaser-data a:focus .arrow {
-  color: #0A4E5A;
+    color: #0A4E5A;
 }
 
 .search-filtered .table.table--lined table th:first-child, .search-filtered .table.list table tr td:first-child, .search-filtered .table.table--lined--list table th:first-child {
+    width: 240px;
     color: #0A4E5A;
 }
 
@@ -1224,13 +1227,20 @@ footer .footer-buttons-bar .login-buttons .login-form {
 .accordion,
 .search-filtered .table,
 .search-filtered .table.list table {
-  background-color: transparent !important;
+  background-color: #F4F4F4 !important;
 }
 
 .search-filtered .table h4,
-.search-filtered .table h5,
-.search-filtered .table:not(.table--lined) table tr th {
+.search-filtered .table h5 {
   border-bottom: 2px solid #0A4E5A;
+}
+
+.search-filtered .table:not(.table--lined) table tr th {
+    border-bottom: 1px solid #0A4E5A;
+}
+
+.search-filtered .table.table--lined--list table tr th {
+    border-bottom: 0;
 }
 
 .js-popup {
@@ -1238,6 +1248,25 @@ footer .footer-buttons-bar .login-buttons .login-form {
   color: #00A8B8;
 }
 
-.page-detail .body {
+.page-detail .body,
+.page-catalog .body {
   background-image: linear-gradient(to right, #FFFFFF, #FFFFFF);
+}
+
+.page-detail .search-filtered {
+    padding-top: 0;
+}
+
+@media print, screen and (min-width: 64em) {
+    .page-detail .search-filtered {
+        padding-top: 0;
+    }
+}
+
+#searchResult {
+    font-size: 18px;
+}
+
+.detail {
+    font-size: 18px;
 }

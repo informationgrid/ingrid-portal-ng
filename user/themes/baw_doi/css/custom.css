@@ -1106,6 +1106,7 @@ a.icon {
 }
 
 .search-filtered .table.table--lined table th:first-child, .search-filtered .table.list table tr td:first-child, .search-filtered .table.table--lined--list table th:first-child {
+    width: 240px;
     color: #2C63B1;
 }
 
@@ -1179,4 +1180,14 @@ footer .footer-buttons-bar .login-buttons .login-form {
 
 .detail .page-wrapper {
   background-image: unset !important;
+}
+
+.page-detail .search-filtered {
+    padding-top: 0;
+}
+
+@media print, screen and (min-width: 64em) {
+    .page-detail .search-filtered {
+        padding-top: 0;
+    }
 }

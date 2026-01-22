@@ -72,7 +72,7 @@ forms:
 
     process:
       - email:
-          from: "{{ config.plugins.email.from }}"
+          from: "{{ form.value.user_email }}"
           to:
             - "{{ config.plugins.email.to }}"
             - "{{ form.value.user_email }}"

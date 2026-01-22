@@ -3,6 +3,7 @@ title: Datenschutz
 custom_title:
   html: PAGES.PRIVACY
   menu: PAGES.PRIVACY_MENU_TITLE
+  content: PAGES.PRIVACY_CONTENT
 meta:
   title: PAGES.PRIVACY_META_TITLE
   keywords: PAGES.PRIVACY_META_KEYWORDS

@@ -55,13 +55,13 @@
         <section help-key="search-1">
             <header>Sucheingabe</header>
             <content>
-                <p>Suchen ist ganz einfach. Geben Sie in das Suchfeld einen oder 
-                   mehrere Begriffe ein und klicken Sie anschließend auf die 
+                <p>Suchen ist ganz einfach. Geben Sie in das Suchfeld einen oder
+                   mehrere Begriffe ein und klicken Sie anschließend auf die
                    Schaltfläche <b>Suche</b>.</p>
                 <p>Das Portal durchsucht alle
-                   eingebundenen Informationen. Die 
-                   Ergebnisse Ihrer Suchanfrage werden in einer 
-                   <a href="?hkey=search-results-1">Suchergebnisseite</a> 
+                   eingebundenen Informationen. Die
+                   Ergebnisse Ihrer Suchanfrage werden in einer
+                   <a href="?hkey=search-results-1">Suchergebnisseite</a>
                    wiedergegeben.</p>
             </content>
         </section>
@@ -73,18 +73,19 @@
                    Diese können Sie dann per Klick auf die Kategorien sich anzeigen lassen und weiter verfeinern.</p>
             </content>
         </section>
-        <section help-key="search-4">
+        <section help-key="search-3">
             <header>Auf Karte festlegen</header>
             <content>
-                <p>Die räumliche Einschränkung der InGrid-Portal-Suche ist auch über die Auswahl eines Kartenausschnitts 
-                   möglich.</p>
-                <p>Wählen Sie ein Gebiet aus, indem Sie mit Shift + gedrückter 
-                   linker Maustaste ein Rechteck auf der Karte aufziehen.
-                   Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
-                   werden die Koordinaten der Suche hinzugefügt.</p>
+                <p>Die räumliche Einschränkung der Suche ist über die Facette "Auf Karte festlegen"
+                    möglich.</p>
+                <p> Klicken Sie in der geöffneten Facette in der Karte auf das Weltkugel-Symbol mit der Lupe.
+                    Es öffnet sich ein Dialog, in dem Sie verschiedene Möglichkeiten der räumlichen Auswahl haben:
+                    Sie können über den Suchschlitz nach einem Ort suchen oder alternativ auf das Quadrat rechts oben im Fenster klicken. Anschließend können Sie auf der Karte ein Rechteck aufziehen. Dieses können Sie über den mittleren Button rechts oben (Stift-Symbol) bearbeiten oder löschen.
+                    Mit Klick auf die Schaltfläche <b>Auswahl anwenden</b>
+                    werden die Suchergebnisse entsprechend gefiltert.</p>
             </content>
-        </section>                
-        <section help-key="search-5">
+        </section>
+        <section help-key="search-4">
             <header>Suche verfeinern</header>
             <content>
                 <p>Neben der einfachen Suche können Sie Ihre Suche weiter
@@ -102,7 +103,7 @@
         <section help-key="search-expert-1">
             <header>Experteneingabe</header>
             <content>
-                <p>Alle Einstellungen der Such-Oberfläche und  
+                <p>Alle Einstellungen der Such-Oberfläche und
                     spezielle Einstellungen darüber hinaus lassen sich auch
                     direkt über den Suchausdruck in die Suche eingeben. Da die
                     Syntax durch die große Anzahl der Suchmethoden recht
@@ -180,7 +181,7 @@
         <section help-key="search-expert-6">
             <header>Suche nach Bereichen von Zeichen</header>
             <content>
-                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden  
+                <p>Es ist möglich, nach Bereichen von Zeichen zu suchen. Die Bereiche werden
                     in eckige [] oder geschweifte {} Klammern gefasst und die untere und obere
                     Angabe mit dem Operator TO verbunden. Eckige Klammern []
                     bedeuten, dass der untere und der obere Wert des Bereichs in
@@ -188,10 +189,10 @@
                     bedeuten, dass der untere und der obere Wert des Bereichs
                     nicht in die Suche einbezogen werden.</p>
                 <p>Beispiel: ‚[Aller TO Elbe]’ (Es wird nach Dokumenten gesucht, die
-                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
                     ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich enthalten.</p>
                 <p>Beispiel: ‚{Aller TO Elbe}’ (Es wird nach Dokumenten gesucht, die
-                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte 
+                    Worte enthalten, die im Alphabet bei Aller beginnen und bei Elbe enden. Die Worte
                     ‚Aller’ und ‚Elbe’ sind dabei im Suchbereich nicht enthalten.)</p>
                 <p>Der Suchbereich kann aber auch innerhalb eines Suchwortes angegeben werden.</p>
                 <p>Beispiel: ‚te[i TO x]t’ (Es wird nach Dokumenten gesucht, die
@@ -228,10 +229,10 @@
         <section help-key="search-expert-14">
             <header>Angabe des Raumbezugs</header>
             <content>
-                <p> Die Suche kann auf Dokumente, die einem bestimmten Raumbezug zugeordnet sind, eingeschränkt 
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Raumbezug zugeordnet sind, eingeschränkt
                 werden.
                 Der Raumbezug kann über Koordinaten angegeben werden.</p>
-                <p>Beispiel: 'x1:7.52 y1:50.18 x2:10.17 y2:52.73' (Die Suche wird auf ein 
+                <p>Beispiel: 'x1:7.52 y1:50.18 x2:10.17 y2:52.73' (Die Suche wird auf ein
                 ausgewähltes Rechteck eingeschränkt.)</p>
                 <p>Folgende Felder stehen für die Einschränkung des Raumbezugs in InGrid-Portal zur Verfügung:</p>
                 <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
@@ -244,19 +245,19 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>x1  </td>  
+                    <td>x1  </td>
                     <td> links</td>
                     </tr>
                     <tr>
-                    <td>x2 </td>  
+                    <td>x2 </td>
                     <td> rechts</td>
                     </tr>
                     <tr>
-                    <td>y1 </td>  
+                    <td>y1 </td>
                     <td> oben</td>
                     </tr>
                     <tr>
-                    <td>y2 </td>  
+                    <td>y2 </td>
                     <td> unten</td>
                     </tr>
                </table> <br></br>
@@ -266,9 +267,9 @@
         <section help-key="search-expert-15">
             <header>Angabe des Zeitbezugs</header>
             <content>
-                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt 
+                <p> Die Suche kann auf Dokumente, die einem bestimmten Zeitbezug zugeordnet sind, eingeschränkt
                 werden. </p>
-                <p>Beispiel: 't1:2006-01-01 t2:2008-12-31' (Die Suche wird auf ein 
+                <p>Beispiel: 't1:2006-01-01 t2:2008-12-31' (Die Suche wird auf ein
                 ausgewähltes Zeitintervall eingeschränkt.)</p>
                 <p>Folgende Felder stehen für die Einschränkung des Zeitbezugs in InGrid-Portal zur Verfügung:</p>
                 <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none">
@@ -281,21 +282,21 @@
                         </td>
                     </tr>
                     <tr>
-                    <td>t0 </td>  
+                    <td>t0 </td>
                     <td> Das Dokument wurde dem angegebenen Zeitpunkt zugeordnet</td>
                     </tr>
                     <tr>
-                    <td>t1  </td>  
-                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    <td>t1  </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
                     angegebenen Wert beginnt</td>
                     </tr>
                     <tr>
-                    <td>t2 </td>  
-                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem 
+                    <td>t2 </td>
+                    <td> Das Dokument wurde einer Zeitspanne zugeordnet, die mit dem
                     angegebenen Wert endet</td>
                     </tr>
                </table><br></br>
-               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag) 
+               <p> Die Zeitangaben müssen immer in der Form YYYY-MM-DD (Y=Jahr, M=Monat, D=Tag)
                eingegeben werden. </p>
             </content>
         </section>
@@ -306,18 +307,18 @@
             <header>Ergebnisseite</header>
             <content>
                 <p>Nach dem Absenden einer Suchanfrage werden die Suchergebnisse
-                   angezeigt. Die Suchergebnisseite ist in zwei Bereiche 
-                   gegliedert. Rechts finden Sie die Hauptergebnisliste, links  
-                   davon die nach  
-                   <a href="?hkey=search-results-2">Kategorien</a> sortierten 
-                   Ergebnisse. 
-                   In der Hauptergebnisliste und in den Kategorien sind 
-                   Webseiten, Metadaten und/oder Fachinformationen enthalten, 
-                   die nach Relevanz gewichtet und sortiert sind. Der oberste 
-                   Eintrag weist hierbei die höchste Relevanz für die 
+                   angezeigt. Die Suchergebnisseite ist in zwei Bereiche
+                   gegliedert. Rechts finden Sie die Hauptergebnisliste, links
+                   davon die nach
+                   <a href="?hkey=search-results-2">Kategorien</a> sortierten
+                   Ergebnisse.
+                   In der Hauptergebnisliste und in den Kategorien sind
+                   Webseiten, Metadaten und/oder Fachinformationen enthalten,
+                   die nach Relevanz gewichtet und sortiert sind. Der oberste
+                   Eintrag weist hierbei die höchste Relevanz für die
                    Suchanfrage auf.</p>
-                <p>Ein Suchergebnis besteht aus einem Titel, der auf die 
-                   Webseite bzw. den Katalog- oder Datenbankeintrag verlinkt, 
+                <p>Ein Suchergebnis besteht aus einem Titel, der auf die
+                   Webseite bzw. den Katalog- oder Datenbankeintrag verlinkt,
                    eine Kurzbeschreibung und ggf. weiteren Angaben. Die Schaltfläche <b>XML</b> liefert die ISO
                    Darstellung des Treffers, soweit dieser CSW konform abgegeben werden kann.
                 </p>
@@ -326,21 +327,21 @@
         <section help-key="search-results-2">
             <header>Kategorien</header>
             <content>
-                <p>In der linken Spalte der Ergebnisseite werden die 
-                   Suchergebnisse nach Kategorien sortiert. In Klammern wird 
-                   hierbei angegeben, wie viele Ergebnisse pro Kategorie 
+                <p>In der linken Spalte der Ergebnisseite werden die
+                   Suchergebnisse nach Kategorien sortiert. In Klammern wird
+                   hierbei angegeben, wie viele Ergebnisse pro Kategorie
                    gefunden wurden. </p>
-                <p>Durch einen Klick auf eine Kategorie wird das Suchergebnis 
-                   in der Hauptergebnisliste entsprechend eingepasst. Erscheinen 
-                   Checkboxen bei der Auswahl einer Kategorie, so werden die 
-                   Ergebnisse aller angeklickten Unterkategorien in der 
-                   Hauptergebnisliste wiedergegeben. Über die Schaltfläche 
-                   <b>Mehr</b> können Sie sich weitere Unterkategorien anzeigen 
+                <p>Durch einen Klick auf eine Kategorie wird das Suchergebnis
+                   in der Hauptergebnisliste entsprechend eingepasst. Erscheinen
+                   Checkboxen bei der Auswahl einer Kategorie, so werden die
+                   Ergebnisse aller angeklickten Unterkategorien in der
+                   Hauptergebnisliste wiedergegeben. Über die Schaltfläche
+                   <b>Mehr</b> können Sie sich weitere Unterkategorien anzeigen
                    lassen. </p>
-                <p>Wenn Sie Ihre Suchanfrage präzisieren möchten, können Sie 
+                <p>Wenn Sie Ihre Suchanfrage präzisieren möchten, können Sie
                    auch mehrere Kategorien auswählen.</p>
-                <p>Um die vorgenommenen Einschränkung wieder aufzugeben, 
-                   klicken Sie nochmals auf die gewählte Kategorie bzw. auf die 
+                <p>Um die vorgenommenen Einschränkung wieder aufzugeben,
+                   klicken Sie nochmals auf die gewählte Kategorie bzw. auf die
                    grauen Schalfläche(n), die oben in der Ergebnisliste die aktuellen Einschränkungen anzeigen.</p>
             </content>
         </section>

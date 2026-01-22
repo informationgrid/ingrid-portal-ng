@@ -1,0 +1,9 @@
+<div class="helper icon">
+    {% set typeName = hit.type_name %}
+    {% if hit.data_category == "Simulationsdaten" %}
+        {% set typeName = "SEARCH_RESULT.HIT_TYPE_NAME_SIMULATION"|t %}
+    {% elseif hit.data_category == "Messdaten" %}
+        {% set typeName = "SEARCH_RESULT.HIT_TYPE_NAME_MEASURE"|t %}
+    {% endif %}
+    {{ hit_macros.render_metadata_icon(hit.type, typeName) }}
+</div>

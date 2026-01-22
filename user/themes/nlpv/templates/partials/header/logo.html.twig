@@ -1,0 +1,9 @@
+{% set header_logo_enabled = theme_var('header.logo_enabled') %}
+{% if header_logo_enabled %}
+    <div class="logo" role="banner">
+        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+            <img class="logo__img" src="{{ url('theme://images/logo/nlwkn_logo.png') }}" alt="{{ site.title }}"/>
+            <img class="logo__img" src="{{ url('theme://images/logo/nwn_logo.jpg') }}" alt="{{ site.title }}"/>
+        </a>
+    </div>
+{% endif %}

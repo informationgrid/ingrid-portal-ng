@@ -33,8 +33,6 @@
         {% set infoRefs = addKeyValue(infoRefs, "nutzerkreis", hit.nutzerkreis) %}
         {% set infoRefs = addKeyValue(infoRefs, "produktiverEinsatz", hit.produktiverEinsatz) %}
         {% set infoRefs = addKeyValue(infoRefs, "betriebssystem", hit.betriebssystem) %}
-        {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsnummer", hit.erstellungsvertragsnummer) %}
-        {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsdatum", hit.erstellungsvertragsdatum) %}
         {% set infoRefs = addKeyValue(infoRefs, "supportvertragsnummer", hit.supportvertragsnummer) %}
         {% set infoRefs = addKeyValue(infoRefs, "supportvertragsdatum", hit.supportvertragsdatum) %}
         {% set infoRefs = addKeyValue(infoRefs, "supportvertragsinfo", hit.supportvertragsinfo) %}
@@ -53,5 +51,7 @@
         {% set infoRefs = addKeyValue(infoRefs, "dataFormat", hit.dataFormat) %}
 
 {% endswitch %}
+
+{% set hierachyLevelName = hit.hierachyLevelName %}
 
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

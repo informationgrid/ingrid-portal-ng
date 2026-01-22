@@ -5,22 +5,7 @@
 <head>
 {% block head %}
     <meta charset="utf-8" />
-    <title>
-        {% set header_title = '' %}
-        {% if page_custom_title %}
-            {% set header_title = page_custom_title %}
-        {% elseif header.meta.title %}
-            {% set header_title = header.meta.title|t|e %}
-        {% elseif header.custom_title.html %}
-            {% set header_title = header.custom_title.html|t|e %}
-        {% elseif header.title %}
-            {% set header_title = header.title %}
-        {% endif %}
-        {% if header_title|trim|length > 0 %}
-            {{ header_title }} |
-        {% endif %}
-        {{ header_title_extend|e }}
-    </title>
+    {% include 'partials/header/title.html.twig' %}
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,6 +39,7 @@
 
 {% block assets deferred %}
     {{ assets.css()|raw }}
+    <link href="{{ url('theme://css/print.css') }}" type="text/css" rel="stylesheet" media="print">
     {{ assets.js()|raw }}
 {% endblock %}
 

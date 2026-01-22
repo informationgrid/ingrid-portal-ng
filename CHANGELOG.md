@@ -1,4 +1,51 @@
-## 8.1.2 (19.11.2025)
+
+## 8.2.0 (12.01.2026)
+
+### Features
+
+* Portal-NG: Nacharbeiten zum Ticket #7670 (#8605)
+* Inhalte der englischen Portalseiten im Repo ablegen (#8586)
+* Druckansicht im Portal verschlechtert (#8582)
+* Portaldarstellung Zeitbezüge (#8503)
+* Portal-NG: Darstellung der Vertikalen Ausdehnung  (#8464)
+* Portal-NG: Abnahme (#8327)
+* Portal-NG: Weitere Anpassungen und Korrekturen für BKG-MIS (#8326)
+* Portal-NG: Weitere Anpassungen und Korrekturen für AdV-MIS (#8325)
+* Portal-NG: weitere Anpassungen (#8321)
+* UP-SH: Umstellung Portal auf neue Portal-Technologie (#7967)
+* Update auf Version 8.1.0 (#7846)
+* Umstellung Portal auf neue Portal-Technologie (#7806)
+* Portal: BAW-Profile nach GravCMS portieren (#7670)
+* Portal: Darstellung von Koordinatenreferenzsystemen und vertikaler Ausdehnung anpassen (#7569)
+* Portal-Anpassungen für NLPV (#7339)
+* Anzeige von Projektnummer und Projekttitel im Portal (#6713)
+
+### Bugfixes
+
+* Attribute der Geometrie-Kontexten werden im Portal nicht angezeigt.  (#8590)
+* Portal-NG, notwendige Korrekturen/Anpassungen (#8551)
+* Portal-NG, notwendige Korrekturen/Anpassungen (#8542)
+* PORTAL: Fehlende Lokalisierung bei "URL des Zugangs" (#8494)
+* PORTAL: Fehler bei der Darstellung von Querverweise in der Detaildarstellung (#8489)
+* Portal zeigt englische Codelistenwerte an (#8471)
+* Weitere Anpassungen neues Portal, LfU spezifisch (#8384)
+* Weitere Anpassungen neues Portal (allgemeingültig) (#8383)
+* Download von Dokumenten als ZIP unvollständig (#8351)
+* Portal-NG: Korrekturen internes Portal (#8320)
+    
+## 8.1.3 (02.12.2025)
+
+### Features
+
+* Portal-NG: Darstellung der Vertikalen Ausdehnung  (#8464)
+* Umstellung Portal auf neue Portal-Technologie (#7806)
+* Portal: BAW-Profile nach GravCMS portieren (#7670)
+
+### Bugfixes
+
+* PORTAL: Fehlende Lokalisierung bei "URL des Zugangs" (#8494)
+* PORTAL: Fehler bei der Darstellung von Querverweise in der Detaildarstellung (#8489)
+    ## 8.1.2 (19.11.2025)
 
 ### Features
 

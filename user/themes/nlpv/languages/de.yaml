@@ -1,0 +1,25 @@
+PAGES:
+  HOME_MENU_TITLE: Startseite von NLPV
+  HOME_META_TITLE: Marine Metadaten für Niedersachsen
+  ABOUT: Über NLPV
+  ABOUT_MENU_TITLE: Hintergrundinformationen zu NLPV
+  HELP_MENU_TITLE: Erläuterungen zur Nutzung von NLPV
+  CONTACT_MENU_TITLE: Ihre Nachricht, Fragen oder Anregungen direkt an NLPV-Team
+  SITEMAP: Inhalt
+  SITEMAP_MENU_TITLE: Alle Inhalte von NLPV auf einen Blick
+
+CONTACT:
+  SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team NLPV gesendet. Sie haben eine Bestätigungsmail erhalten.
+  SUCCESS_LINK: Zurück zur Startseite
+
+SEARCH:
+  PORTLET_TITLE_1: 'Marimeta'
+  PORTLET_TITLE_2: 'Marine Metadaten Niedersachsen'
+  PORTLET_TITLE_3: ' '
+
+THEME:
+  ADMIN:
+    UPLOAD:
+      TITLE: Upload
+      PORTALS:
+        TITLE: Portale

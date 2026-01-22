@@ -1,7 +1,7 @@
 PAGES:
     HOME: Startseite
     HOME_MENU_TITLE: AdV Webseite
-    HOME_META_TITLE: Startseite
+    HOME_META_TITLE: MetadatenInformationsSystem der AdV
     ACCESSIBILITY_MENU_TITLE: Erklärung zur Barrierefreiheit
 
 COMMON:
@@ -27,3 +27,9 @@ SEARCH_DETAIL:
 
 CATEGORIES:
     TITLE: Recherchieren Sie in diesen Kategorien
+
+FACETS:
+  FACET_LABEL:
+    TYPE: Art der Ressource
+  FACET_PILL:
+    TYPE: Art der Ressource

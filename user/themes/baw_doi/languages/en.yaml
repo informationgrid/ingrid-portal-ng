@@ -5,7 +5,7 @@ PAGES:
     HELP_CONTENT: BAW Help Center
 
 CONTACT:
-    REPORT_EMAIL_SUBJECT: Message from %s-Datenrepository
+    REPORT_EMAIL_SUBJECT: Message from BAW-Datenrepository
 
 SEARCH:
     PORTLET_TITLE_1: BAW-DATENREPOSITORY
@@ -14,6 +14,8 @@ SEARCH:
 
 SEARCH_RESULT:
     INFO_LINKS: Verweise und Downloads
+    HIT_TYPE_NAME_SIMULATION: Simulationsdaten
+    HIT_TYPE_NAME_MEASURE: Messdaten
 
 SEARCH_DETAIL:
     MEASUREMENT:
@@ -50,7 +52,6 @@ SEARCH_DETAIL:
             TYPE: Art
             UOM: Maßeinheit
             CALCULATIONFORMULA: Formel/Funktion
-
     GEOMETRICS:
         CONTEXT:
             TITLE: Geometrie-Kontext
@@ -60,6 +61,8 @@ SEARCH_DETAIL:
             FEATURE:
                 CODE: Code
                 DESCRIPTION: Beschreibung
+    HIT_TYPE_NAME_SIMULATION: Simulationsdaten
+    HIT_TYPE_NAME_MEASURE: Messdaten
 
 FACETS:
     FACET_LABEL:

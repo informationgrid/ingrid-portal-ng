@@ -14,7 +14,7 @@
 <div class="data">
     <div class="teaser-data search">
         {% if hit.uuid %}
-            <a class="anchor" id="{{ 'hit_' ~ counter }}"></a>
+            <a class="anchor" id="{{ hit.uuid }}"></a>
         {% endif %}
         {{ hit_macros.render_hit_types(hit.serviceTypes, true) }}
         {% if partner_logo %}

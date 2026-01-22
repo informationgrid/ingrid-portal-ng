@@ -1,0 +1,14 @@
+{# Erstellungsvertrag #}
+        {{ hit_macros.render_table_group(
+            "Erstellungsvertrag",
+            ['Vertragsnr','Datum'],
+            [infoRefs.erstellungsvertragsnummer, infoRefs.erstellungsvertragsdatum],
+            true
+        ) }}
+{# Supportvertrag #}
+        {{ hit_macros.render_table_group(
+            "Supportvertrag",
+            ['Vertragsnr','Datum','Anmerkungen'],
+            [infoRefs.supportvertragsnummer, infoRefs.supportvertragsdatum, infoRefs.supportvertragsInfo],
+            true
+        ) }}

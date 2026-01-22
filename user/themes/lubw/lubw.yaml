@@ -67,6 +67,7 @@ menu:
     -
       path: /about
       highlighted: true
+      target_blank: true
     -
       path: /datasource
       highlighted: true
@@ -397,13 +398,9 @@ hit_search:
     {
       "id": "metadata_tree",
       "label": "Fachthemen",
-      "query": {
-        "terms": {
-          "field": "distributor",
-          "min_doc_count": 0
-        }
-      },
-      "search": "distributor:%s"
+      "catalog": {
+        "ident": "bw"
+      }
     }
   ]
   add_to_search:
@@ -540,12 +537,15 @@ redirect:
       url: 'https://www.lubw.baden-wuerttemberg.de/impressum'
     - path: /privacy
       url: 'https://www.lubw.baden-wuerttemberg.de/datenschutz/allgemeine-datenschutzerklaerung'
+    - path: /about
+      url: 'https://www.lubw.baden-wuerttemberg.de/die-lubw'
 catalog:
   open_nodes_level: 3
   display_partner: false
   sort_by_name: true
   open_on_new_tab: false
   address_folder_closed: false
+  address_folder_hidden: true
 help:
   default_hkey: about-1
 datasource:

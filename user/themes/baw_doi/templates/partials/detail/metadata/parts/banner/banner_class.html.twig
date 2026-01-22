@@ -1,0 +1,8 @@
+<div class="helper icon">
+   {% if hierachyLevelName == "Simulationsdaten" %}
+        {% set className = "SEARCH_DETAIL.HIT_TYPE_NAME_SIMULATION"|t %}
+    {% elseif hierachyLevelName == "Messdaten" %}
+        {% set className = "SEARCH_DETAIL.HIT_TYPE_NAME_MEASURE"|t %}
+    {% endif %}
+    {{ hit_macros.render_metadata_icon(class, className) }}
+</div>

@@ -1,0 +1,16 @@
+<title>
+    {% set header_title = '' %}
+    {% if page_custom_title %}
+        {% set header_title = page_custom_title %}
+    {% elseif header.meta.title %}
+        {% set header_title = header.meta.title|t|e %}
+    {% elseif header.custom_title.html %}
+        {% set header_title = header.custom_title.html|t|e %}
+    {% elseif header.title %}
+        {% set header_title = header.title %}
+    {% endif %}
+    {{ header_title_extend|e }}
+    {% if header_title|trim|length > 0 %}
+        - {{ header_title }}
+    {% endif %}
+</title>

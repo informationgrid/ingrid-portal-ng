@@ -773,7 +773,7 @@ map:
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png' }
+        wmts: { url: 'https://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web_light_grau/default/WEBMERCATOR/{z}/{y}/{x}.png' }
         wms: { url: null, name: null }
         attribution: '&copy; Bundesamt für Kartographie und Geodäsie (2025)&#44; <a href=\"https://sg.geodatenzentrum.de/web_public/Datenquellen_TopPlus_Open.pdf\" target=\"_blank\">Datenquellen</a>'
         opacity: 0.5
@@ -805,7 +805,7 @@ redirect:
   pages_to_redirect:
 catalog:
   open_nodes_level: 3
-  display_partner: false
+  display_partner: true
   sort_by_name: true
   open_on_new_tab: true
   address_folder_closed: false

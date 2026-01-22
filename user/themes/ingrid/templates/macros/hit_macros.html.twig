@@ -590,7 +590,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_label_text_row (title, text, convertText, css, expandable) %}
+{% macro render_label_text_row (title, text, convertText, css, expandable, helpTitle, helpMessage) %}
     {% if text %}
         {% if convertText is null %}
             {% set convertText = convertText|default(true) %}
@@ -605,6 +605,9 @@
                         {% if expandable %}
                             <div class="js-expand-box js-expand-text js-non-expand-text">
                                 <div class="js-expand-text-content">
+                        {% endif %}
+                        {% if helpTitle and helpMessage %}
+                            <span class="info--right ic-ic-info js-popup" data-title="{{ helpTitle }}" data-content="{{ helpMessage }}"></span>
                         {% endif %}
                         <p {% if css %}class="{{ css }}"{% endif %}>
                             {% if convertText %}
@@ -760,6 +763,7 @@
 
 {% macro render_label_text_list_row (title, entries, listPreset, css, expandable, entryPerRow) %}
     {% if entries and entries|length > 0 %}
+        {% set isSingleEntry = entries|length == 1 %}
         <div class="table table--lined">
             <table>
                 {% if entryPerRow %}
@@ -777,7 +781,9 @@
                         <div class="js-expand-box js-expand-text js-non-expand-text {{ css }}">
                             <div class="js-expand-text-content">
                         {% endif %}
+                        {% if isSingleEntry == false %}
                         <div class="text-list">
+                        {% endif %}
                         {% if listPreset %}
                           <span>{{ listPreset }}</span>
                         {% endif %}
@@ -800,7 +806,9 @@
                             {% else %}
                                 <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                             {% endif %}
+                        {% if isSingleEntry == false %}
                         </div>
+                        {% endif %}
                         {% if expandable %}
                                 </div>
                                 <div class="desc-fade"></div>
@@ -824,7 +832,9 @@
                         <div class="js-expand-box js-expand-text js-non-expand-text">
                             <div class="js-expand-text-content">
                         {% endif %}
+                        {% if isSingleEntry == false %}
                         <div class="text-list">
+                        {% endif %}
                         {% if listPreset %}
                             <span>{{ listPreset }}</span>
                         {% endif %}
@@ -849,7 +859,9 @@
                               <p class="list-item">{{ convertUrlInText(removeHashLocale(entry))|raw }}</p>
                             {% endif %}
                         {% endfor %}
+                        {% if isSingleEntry == false %}
                         </div>
+                        {% endif %}
                         {% if expandable %}
                                 </div>
                                 <div class="desc-fade"></div>
@@ -871,6 +883,7 @@
 
 {% macro render_label_link_list_row (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
     {% if entries and entries|length > 0 %}
+        {% set isSingleEntry = entries|length == 1 %}
         <div class="table table--lined">
             <table>
                 <tr>
@@ -878,7 +891,9 @@
                     <th>{{ title }}</th>
                 {% endif %}
                     <td>
+                        {% if isSingleEntry == false %}
                         <div class="text-list">
+                        {% endif %}
                         {% if isExpandable %}
 
                             {% set listExpanded = false %}
@@ -938,7 +953,9 @@
                                 {% endif %}
                             {% endfor %}
                         {% endif %}
+                        {% if isSingleEntry == false %}
                         </div>
+                        {% endif %}
                     </td>
                 </tr>
             </table>
@@ -949,7 +966,7 @@
 
 {% macro render_titles_entries_group (titles, entries) %}
     {% if entries and entries|length > 0 %}
-        <div class="table table--lined--list">
+        <div class="table table--lined">
             <table>
                 {% for entry in entries %}
                     {% if entry.value or entry.values %}
@@ -1059,7 +1076,7 @@
                 {% endif %}
                 <div class="info--right">
                 {% if entry.applicationProfile %}
-                    {% set infoText = entry.applicationProfile %}
+                    {% set infoText = "COMMON.SERVICE_TYPE_" ~ entry.applicationProfile|upper %}
                     {% if infoText|t == infoText %}
                         <span>{{ getMimeByContentType(entry.applicationProfile) }}</span>
                     {% else %}
@@ -1584,9 +1601,9 @@
 
 {% macro render_citation (title, values, page) %}
     <div class="sub-section sub-section-unlined">
-        {{ _self.render_group_title(title) }}
+        {{ _self.render_group_title(title|raw) }}
         <div class="document-list">
-            {% set value = values %}
+            {% for value in values %}
             <div class="list-item">
                 {% if value.uuid %}
                     <a class="external-link" href="?docuuid={{ value.uuid }}" target="_blank" title="{{ value.title }}">{{ value.title }}</a>
@@ -1628,6 +1645,7 @@
                     <a class="external-link" href="{{ value.doi }}" target="_blank" title="{{ value.doi }}">{{ value.doi }}</a>
                 {% endif %}
             </div>
+            {% endfor %}
         </div>
     </div>
 {% endmacro %}

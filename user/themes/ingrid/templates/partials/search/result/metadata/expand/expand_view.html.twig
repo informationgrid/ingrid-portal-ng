@@ -254,7 +254,7 @@
                     </div>
                 {% endif %}
     {# Kartenansicht #}
-                {% if mapUrl or mapUrlClient %}
+                {% if (map.url and mapUrl) or mapUrlClient %}
                     <p class="caption">
                         <a target="_blank" class="button small" href="{{ mapUrlClient ?: (page.find('/map').url ~ mapUrl) }}" title="{{ "COMMON.RESULT_SHOWMAP_TOOLTIP"|t }}">
                             <span>{{ "COMMON.RESULT_SHOWMAP"|t }}</span>

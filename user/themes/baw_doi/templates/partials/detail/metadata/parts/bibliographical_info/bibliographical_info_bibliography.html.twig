@@ -1,5 +1,5 @@
 {# Literaturverweise #}
 
 {% if bibliographies %}
-    {{ hit_macros.render_citation("SEARCH_DETAIL.BIBLIOGRAPHY"|t, bibliographies, page) }}
+    {{ hit_macros.render_citation("SEARCH_DETAIL.BIBLIOGRAPHY"|t ~ ' (' ~ bibliographies|length ~ ')', bibliographies, page) }}
 {% endif %}

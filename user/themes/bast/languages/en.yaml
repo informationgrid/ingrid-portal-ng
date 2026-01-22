@@ -1,6 +1,6 @@
 PAGES:
-    HOME_MENU_TITLE: Home
-    HOME_META_TITLE: Go directly to the BASt homepage
+    HOME_MENU_TITLE: Go directly to the BASt homepage
+    HOME_META_TITLE: Metadata catalog
     ABOUT: About BASt metadata catalog
     ABOUT_MENU_TITLE: 'Features and Portrait of %s'
     ABOUT_META_TITLE: About
@@ -15,3 +15,7 @@ SEARCH:
     PORTLET_TITLE_1: BASt metadata catalog
     PORTLET_TITLE_2: Research portal for data sets
     PORTLET_TITLE_3: ' '
+
+CONTACT:
+    SUCCESS: Your message has been sent to the BASt editorial office.
+    REPORT_EMAIL_SUBJECT: Message from BASt

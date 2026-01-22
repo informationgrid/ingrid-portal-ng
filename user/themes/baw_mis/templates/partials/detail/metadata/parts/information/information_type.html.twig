@@ -67,20 +67,7 @@
         {{ hit_macros.render_label_text_list_row("Entwicklungsumgebung"|t, infoRefs.entwicklungsumgebung) }}
 {# Bibliotheken #}
         {{ hit_macros.render_label_text_list_row("Bibliotheken"|t, infoRefs.bibliotheken) }}
-{# Erstellungsvertrag #}
-        {{ hit_macros.render_table_group(
-            "Erstellungsvertrag",
-            ['Vertragsnr','Datum'],
-            [infoRefs.erstellungsvertragsnummer, infoRefs.erstellungsvertragsdatum],
-            true
-        ) }}
-{# Supportvertrag #}
-        {{ hit_macros.render_table_group(
-            "Supportvertrag",
-            ['Vertragsnr','Datum','Anmerkungen'],
-            [infoRefs.supportvertragsnummer, infoRefs.supportvertragsdatum, infoRefs.supportvertragsInfo],
-            true
-        ) }}
+        {% include 'partials/detail/metadata/parts/information/information_type_software_support.html.twig' ignore missing %}
 {# Installationsort #}
         {{ hit_macros.render_table_group(
             "Installationsort",
