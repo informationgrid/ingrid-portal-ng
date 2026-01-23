@@ -210,9 +210,9 @@ COMMON:
     SERVICE_TYPE_PREDEFINED_ATOM: ATOM
     SERVICE_TYPE_OGC: api_features=API Feature
     SERVICE_TYPE_OGCAPIFEATURE: API Feature
-    XML_LINK: Metadaten als XML herunterladen
-    XML_LINK_LABEL: XML Darstellung
-    RDF_LINK: Daten als RDF herunterladen
+    XML_LINK: ISO/XML herunterladen
+    XML_LINK_LABEL: ISO/XML
+    RDF_LINK: RDF/XML herunterladen
     RDF_LINK_LABEL: RDF/XML
     DETAIL_ARROW_PREFIX: 'Detailansicht:'
     LANGUAGE_TITLE: 'Sprache:'
