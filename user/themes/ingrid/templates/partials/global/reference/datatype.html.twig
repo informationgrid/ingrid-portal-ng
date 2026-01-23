@@ -6,14 +6,14 @@
             if (a) {
                 if(a.length > 0){
                     var href = a[0].href;
-                    var spanParent = aParent.find('.info--right');
+                    var spanParent = aParent.first('.info--right');
                     if(spanParent.length === 0) {
                         aParent.prepend('<div class="info--right"></div>');
                         spanParent = aParent.find('.info--right');
                     }
                     if(href){
                         spanParent.append('<span></span>');
-                        var span = spanParent.find('span:empty');
+                        var span = spanParent.first('span:empty');
                         getLinkFileDataType('rest/getMimeType?url=' + encodeURIComponent(href), span);
                     }
                 }

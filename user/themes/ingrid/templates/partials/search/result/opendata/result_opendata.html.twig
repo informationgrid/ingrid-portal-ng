@@ -16,9 +16,13 @@
         {% endif %}
         {% if hit.distributions %}
             <div class="info--right {% if isTeaser %}teaser-info{% endif %}{% if isMobile %} show-for-xsmall-only{% else %} hide-for-xsmall-only{% endif %}">
+                {% set array = [] %}
                 {% for distribution in hit.distributions %}
                     {% for format in distribution.formats %}
-                        <span>{{ format }}</span>
+                        {% if format not in array %}
+                            {% set array = array|merge([format]) %}
+                            <span>{{ format }}</span>
+                        {% endif %}
                     {% endfor %}
                 {% endfor %}
             </div>
