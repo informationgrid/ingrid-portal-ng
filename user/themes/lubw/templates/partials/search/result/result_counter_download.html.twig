@@ -60,8 +60,9 @@
             disabledButton();
             const csvHeader = [
                 'Typ',
-                'Themenbereich',
-                'Unterbereich',
+                'Themenbereich 1',
+                'Themenbereich 2',
+                'Themenbereich 3',
                 'Themenname (Titel des Metadatums)',
                 'Filterkriterien',
                 'Darstellungsdienst (GetCapabilities)',
@@ -116,19 +117,25 @@
                         }
                         tmpRow += delimiter;
 
-{# Themenbereich #}
+{# Themenbereich 1 #}
                         if (row['object_node.tree_path.name']){
                             var tmpValue = row['object_node.tree_path.name'];
                             if (tmpValue.length > 0){
                                 tmpRow += tmpValue[0];
                             }
                             tmpRow += delimiter;
-{# Unterbereich #}
+{# Themenbereich 2 #}
                             if (tmpValue.length > 1){
                                 tmpRow += tmpValue[1];
                             }
                             tmpRow += delimiter;
+{# Themenbereich 3 #}
+                            if (tmpValue.length > 2){
+                                tmpRow += tmpValue[2];
+                            }
+                            tmpRow += delimiter;
                         } else {
+                            tmpRow += delimiter;
                             tmpRow += delimiter;
                             tmpRow += delimiter;
                         }
