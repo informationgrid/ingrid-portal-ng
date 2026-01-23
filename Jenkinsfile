@@ -218,6 +218,9 @@ def determineRpmReleasePart() {
 
 def computeVersion() {
     if (env.TAG_NAME) {
+        if (env.TAG_NAME.startsWith("RPM-")) {
+            return 'latest'
+        }
         return env.TAG_NAME
     } else if (env.BRANCH_NAME == 'main') {
         return 'latest'
