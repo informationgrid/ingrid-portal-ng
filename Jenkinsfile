@@ -122,13 +122,15 @@ pipeline {
                 echo 'Generating Software Bill of Materials (SBOM)'
 
                 script {
-                    def version = "latest"
+                    def version = computeVersion()
                     def imageToScan = "docker-registry.wemove.com/ingrid-portal:${version}"
                     def sbomFilename = "ingrid-portal-${determineVersion()}-sbom.json"
 
-                    sh """
-                        docker run --rm --pull=always --volumes-from jenkins anchore/syft:latest ${imageToScan} --output cyclonedx-json=${WORKSPACE}/build/${sbomFilename}
-                    """
+                    docker.withRegistry('https://docker-registry.wemove.com', 'docker-registry-wemove') {
+                        sh """
+                            docker run --rm --pull=always --volumes-from jenkins anchore/syft:latest ${imageToScan} --output cyclonedx-json=${WORKSPACE}/build/${sbomFilename}
+                        """
+                    }
                     // Archive the SBOM file as an artifact
                     archiveArtifacts artifacts: "build/${sbomFilename}", fingerprint: true
                 }
