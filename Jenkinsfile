@@ -62,7 +62,7 @@ pipeline {
         }
 
         stage('Build RPM') {
-            when { expression { return shouldBuildDevOrRelease() } }
+            when { expression { return shouldBuildRPM() } }
             agent {
                 docker {
                     image 'docker-registry.wemove.com/ingrid-rpmbuilder-php8'
@@ -117,7 +117,7 @@ pipeline {
         }
 
         stage('Build SBOM') {
-            when { expression { return shouldBuildDevOrRelease() } }
+            when { expression { return shouldBuildRPM() } }
             steps {
                 echo 'Generating Software Bill of Materials (SBOM)'
 
@@ -138,7 +138,7 @@ pipeline {
         }
 
         stage('Deploy RPM & SBOM') {
-            when { expression { return shouldBuildDevOrRelease() } }
+            when { expression { return shouldBuildRPM() } }
             steps {
                 script {
                     def repoType = env.TAG_NAME ? "rpm-ingrid-releases" : "rpm-ingrid-snapshots"
@@ -239,4 +239,11 @@ def shouldBuildDockerImage() {
     if (env.TAG_NAME && env.TAG_NAME.startsWith("RPM-")) {
         return false
     } else return true
+}
+
+def shouldBuildRPM() {
+    if (env.BRANCH_NAME && env.BRANCH_NAME.startsWith("feature/")) {
+        return false
+    }
+    return shouldBuildDevOrRelease()
 }
