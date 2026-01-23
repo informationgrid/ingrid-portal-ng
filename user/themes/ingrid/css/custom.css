@@ -243,6 +243,10 @@ header {
   color: #FFFFFF;
 }
 
+.tabs {
+  box-shadow: 0 10px 6px -6px #4EAD46;
+}
+
 .tabs-content {
   background: transparent;
 }
