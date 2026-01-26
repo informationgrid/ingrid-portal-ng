@@ -30,7 +30,7 @@ footer:
       path: user/themes/lubw/images/logo/bw-wappen.png
   share:
     enabled: true
-    enabled_x: true
+    enabled_x: false
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true
