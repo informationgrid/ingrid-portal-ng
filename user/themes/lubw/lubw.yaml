@@ -31,6 +31,7 @@ footer:
   share:
     enabled: true
     enabled_x: false
+    enabled_mastodon: true
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true

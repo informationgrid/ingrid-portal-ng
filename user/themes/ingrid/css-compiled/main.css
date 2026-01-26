@@ -533,6 +533,10 @@
   content: "\e974";
 }
 
+.ic-ic-mastodon:before {
+  content: "\e976";
+}
+
 /**
  * Foundation for Sites by ZURB
  * Version 6.4.3
