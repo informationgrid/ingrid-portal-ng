@@ -1002,6 +1002,7 @@ SHARE:
     WHATSAPP: WhatsApp
     XING: XING
     MAIL: E-Mail
+    MASTODON: Mastodon
 
 PRINT:
     TITLE: Print page

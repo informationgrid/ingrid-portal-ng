@@ -179,6 +179,17 @@ form:
           validate:
             type: bool
 
+        footer.share.enabled_mastodon:
+          type: toggle
+          label: Teilen auf "Mastodon"
+          help: Teilen auf "Mastodon" aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
         footer.share.enabled_x:
           type: toggle
           label: Teilen auf "Plattform X"

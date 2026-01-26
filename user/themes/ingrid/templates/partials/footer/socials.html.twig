@@ -3,6 +3,11 @@
 {% if share.enabled %}
     {% set page_site = uri.base ~ uri.uri %}
     <div class="social-buttons">
+        {% if share.enabled_mastodon %}
+        <a href="https://mastodon.social/share?text={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MASTODON"|t }}">
+            <span class="ic-ic-mastodon"></span><span class="text"></span>
+        </a>
+        {% endif %}
         {% if share.enabled_x %}
         <a href="https://x.com/intent/post?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.X"|t }}">
             <span class="ic-ic-twitter"></span><span class="text"></span>
