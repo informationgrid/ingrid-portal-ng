@@ -166,6 +166,7 @@
                                                 {% if itemsSelected|length > 0 %}
                                                     <hr class="no-margin border-dotted">
                                                 {% endif %}
+                                                {% set countItems = 0 %}
                                                 {% for bucket in itemsUnselected %}
                                                     {% set displayFacet = true %}
                                                     {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
@@ -176,7 +177,7 @@
                                                     {% if displayFacet %}
                                                         {% if bucket.value is not null or bucket.value is not empty %}
                                                             {% if item.listLimit and activeListLimit == false %}
-                                                                {% if loop.index > item.listLimit + ignoreItems %}
+                                                                {% if countItems > item.listLimit + ignoreItems %}
                                                                     {% set activeListLimit = true %}
                                                                     <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
                                                                     <div class="accordion-item text-right" data-accordion-item>
@@ -209,6 +210,7 @@
                                                                 {% set ignoreItems = ignoreItems + 1 %}
                                                             {% endif %}
                                                         {% endif %}
+                                                        {% set countItems = countItems + 1 %}
                                                     {% endif %}
                                                 {% endfor %}
                                                 {% if activeListLimit == true %}

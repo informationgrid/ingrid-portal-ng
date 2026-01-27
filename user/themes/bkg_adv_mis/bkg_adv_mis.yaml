@@ -203,6 +203,7 @@ hit_search:
           "codelist": "8000",
           "codelist_entry_id": "1",
           "active": true,
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -229,6 +230,7 @@ hit_search:
         },
         "tile": {
           "label": "Kacheln",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -241,6 +243,7 @@ hit_search:
           "codelist": "8000",
           "codelist_entry_id": "3",
           "active": true,
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -253,6 +256,7 @@ hit_search:
           "codelist": "8000",
           "codelist_entry_id": "6",
           "active": true,
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -270,6 +274,7 @@ hit_search:
       "facets": {
         "service_type_view": {
           "label": "Darstellungsdienste",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -312,6 +317,7 @@ hit_search:
         },
         "service_type_download": {
           "label": "Downloaddienste",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -369,6 +375,7 @@ hit_search:
         },
         "service_type_others": {
           "label": "Sonstige Dienste",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
