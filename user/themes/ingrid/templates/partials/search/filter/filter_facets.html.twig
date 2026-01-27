@@ -170,6 +170,8 @@
                                                     {% set displayFacet = true %}
                                                     {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
                                                         {% set displayFacet = false %}
+                                                    {% elseif bucket.displayOnEmpty == false and bucket.docCount == 0 %}
+                                                        {% set displayFacet = false %}
                                                     {% endif %}
                                                     {% if displayFacet %}
                                                         {% if bucket.value is not null or bucket.value is not empty %}
