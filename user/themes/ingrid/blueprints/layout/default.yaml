@@ -35,9 +35,9 @@ form:
           type: file
           label: Header Logo
           size: large
-          destination: 'config://themes/logo'
-          multiple: true
-          description: Das letzte Logo wird als Standard verwendet.
+          destination: 'config://themes/logo/header/de'
+          multiple: false
+          description: Logo ersetzen
           accept:
             - image/*
 
@@ -45,10 +45,10 @@ form:
           type: file
           label: Header Logo (EN)
           size: large
-          destination: 'config://themes/logo'
-          multiple: true
+          destination: 'config://themes/logo/header/en'
+          multiple: false
           markdown: true
-          description: Das letzte Logo wird als Standard verwendet.
+          description: Logo ersetzen.
           accept:
             - image/*
 
@@ -108,10 +108,10 @@ form:
           type: file
           label: Footer Logo
           size: large
-          destination: 'config://themes/logo'
-          multiple: true
+          destination: 'config://themes/logo/footer/de'
+          multiple: false
           markdown: true
-          description: Das letzte Logo wird als Standard verwendet.
+          description: Logo ersetzen.
           accept:
             - image/*
 

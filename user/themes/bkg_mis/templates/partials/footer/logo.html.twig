@@ -1,3 +1,14 @@
-<div class="xsmall-24 small-6 medium-3 columns bkg-logo">
-    <img src="user/themes/bkg_mis/images/logo/bkg_logo.png" alt="BKG">
-</div>
+{% set footer_logo_default = theme_var('footer.logo_default') %}
+{% set footer_logo = theme_var('footer.logo') %}
+{% set footer_logo_enabled = theme_var('footer.logo_enabled') %}
+
+{% if footer_logo_enabled %}
+    {% if footer_logo %}
+        {% set footer_logo_file = (footer_logo|first).path %}
+    {% elseif footer_logo_default %}
+        {% set footer_logo_file = (footer_logo_default|first).path %}
+    {% endif %}
+    <div class="xsmall-24 small-6 medium-3 columns bkg-logo">
+        <img src="{{ url(footer_logo_file) }}" alt="BKG">
+    </div>
+{% endif %}

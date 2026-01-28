@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-16 small-15 medium-9 large-7 xlarge-6'
   menu_dropdown: true
   shrink: false
-  logo:
+  logo_default:
     user/themes/uvp/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg

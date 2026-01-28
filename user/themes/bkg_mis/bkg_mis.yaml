@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-9 small-7 medium-7 large-7 xlarge-6'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/bkg_mis/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg
@@ -21,7 +21,7 @@ footer:
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo:
+  logo_default:
     user/themes/bkg_mis/images/logo/bkg_logo.png:
       name: bkg_logo.png
       full_path: bkg_logo.png

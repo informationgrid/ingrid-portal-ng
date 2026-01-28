@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/itzbund_eba/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg
