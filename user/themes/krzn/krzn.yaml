@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-3 small-3 medium-3 large-3 xlarge-3'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/krzn/images/logo/logo.png:
       name: logo.png
       full_path: logo.png
@@ -21,7 +21,7 @@ footer:
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo:
+  logo_default:
     user/themes/krzn/images/logo/footer-logo.svg:
       name: footer-logo.svg
       full_path: footer-logo.svg

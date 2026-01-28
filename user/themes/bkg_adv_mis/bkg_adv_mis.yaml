@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-9 small-7 medium-7 large-7 xlarge-6'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
       name: advmis_logo.png
       full_path: advmis_logo.png
@@ -21,7 +21,7 @@ footer:
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo:
+  logo_default:
     user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
       name: advmis_logo.png
       full_path: advmis_logo.png
