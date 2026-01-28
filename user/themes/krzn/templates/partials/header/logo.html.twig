@@ -16,7 +16,7 @@
 
             {% if logo %}
                 {% set header_logo_file = (logo|first).path %}
-            {% elseif logo_lang_default %}
+            {% elseif logo_default %}
                 {% set header_logo_file = (logo_default|first).path %}
             {% endif %}
 
