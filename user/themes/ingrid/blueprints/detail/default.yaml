@@ -27,6 +27,17 @@ form:
       validate:
         type: text
 
+    hit_detail.remove_use_constraints_prefix:
+      type: toggle
+      label: THEME.ADMIN.HIT_DETAIL.REMOVE_USE_CONSTRAINTS_PREFIX.LABEL
+      help: THEME.ADMIN.HIT_DETAIL.REMOVE_USE_CONSTRAINTS_PREFIX.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: text
+
     hit_detail.requested_fields:
       type: selectize
       label: THEME.ADMIN.HIT_DETAIL.REQUESTED_FIELDS.LABEL
