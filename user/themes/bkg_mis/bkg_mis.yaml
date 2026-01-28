@@ -712,7 +712,7 @@ hit_detail:
     exclude:
       - content
   query_string_operator: AND
-  display_use_constraints_json: true
+  display_use_constraints_json: false
   link_sort_asc: true
 map:
   url:
