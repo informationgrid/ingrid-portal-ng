@@ -8,7 +8,7 @@ form:
     upload.easylanguage:
       type: file
       label: THEME.ADMIN.UPLOAD.EASYLANGUAGE.TITLE
-      destination: 'theme://assets/upload/easylanguage'
+      destination: 'config://themes/upload/easylanguage'
       multiple: true
       limit: 0
       autofocus: false

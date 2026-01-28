@@ -8,7 +8,7 @@
 
     <div class="logo" role="banner">
         {% if logo %}
-            {% set header_logo_file = (logo|first).name %}
+            {% set header_logo_file = (logo|last).name %}
         {% else %}
             {% set header_logo_file = 'logo.svg' %}
         {% endif %}

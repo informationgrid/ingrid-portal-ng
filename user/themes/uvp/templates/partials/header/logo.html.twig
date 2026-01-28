@@ -8,7 +8,7 @@
     {% endif %}
 
     {% if logo %}
-        {% set header_logo_file = (logo|first).name %}
+        {% set header_logo_file = (logo|last).name %}
     {% endif %}
     <div class="logo" role="banner">
         <a href="{{ home_url }}" class="hide-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">

@@ -11,7 +11,7 @@
             <div class="logo" role="banner">
                 <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
                 {% if logo %}
-                    {% set header_logo_file = (logo|first).name %}
+                    {% set header_logo_file = (logo|last).name %}
                 {% else %}
                     {% set header_logo_file = 'logo.svg' %}
                 {% endif %}
