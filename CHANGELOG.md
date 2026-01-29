@@ -1,4 +1,18 @@
 
+## 8.2.1 (29.01.2026)
+
+### Features
+
+* X aus der Funktion "Teilen" im neuen Portal entfernen; weitere Anpassungen Portal-NG (#8666)
+* Anpassungen Portal-NG, Teil 2 (#8612)
+* CSV Export: Erweiterung und Umbenennung der Ebenen (#8483)
+* Portal-Anpassungen für NLPV (#7339)
+
+### Bugfixes
+
+* Kartenansicht: Verlinkungen haben falschen Titel (#8688)
+* AdV-MIS: Angezeigte Einträge in Facetten angleichen im Portal NG (#8606)
+    
 ## 8.2.0 (12.01.2026)
 
 ### Features
