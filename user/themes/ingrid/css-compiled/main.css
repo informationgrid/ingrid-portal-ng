@@ -8476,11 +8476,10 @@ a.data:hover {
 .info--right {
   float: right;
 }
-.info--right span {
+.info--right > span {
   position: relative;
   top: 0;
   font-size: 14px;
-  border-bottom: 1px dashed #5e788d;
   margin-left: 10px;
   float: right;
   margin-bottom: 8px;
@@ -8488,6 +8487,23 @@ a.data:hover {
   line-height: 18px;
   text-align: center;
   color: #3a566d;
+}
+
+div.info--right span {
+  border-bottom: 1px dashed #5e788d;
+}
+
+p.info--right,
+p.info--left {
+  margin-bottom: 0;
+  line-height: 12px;
+}
+p.info--right a,
+p.info--left a {
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 400;
+  line-height: 0px;
 }
 
 .teaser-logo-partner {
@@ -10500,6 +10516,7 @@ span.text-break {
 
 div.description {
   overflow: hidden;
+  min-width: 50%;
 }
 
 /* colors */

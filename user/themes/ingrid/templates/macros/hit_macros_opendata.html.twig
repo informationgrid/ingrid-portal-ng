@@ -276,7 +276,6 @@
                         {% endfor %}
                     {% endif %}
                 </div>
-
                 {% set link = entry.access_url %}
                 {% if link %}
                     <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title }}">
@@ -289,6 +288,18 @@
                     </a>
                 {% endif %}
 
+                {% if entry.modified %}
+                    <small class="text">{{ entry.modified|date("d.m.Y") }}</small>
+                {% endif %}
+
+                {% if entry.languages %}
+                    <div class="info--right">
+                        {% for language in entry.languages %}
+                            <span class="text">{{ language }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
                 {% if entry.description %}
                     <div class="description">
                         <small class="description">{{ convertUrlInText(removeHashLocale(entry.description))|raw }}</small>
@@ -296,8 +307,9 @@
                 {% endif %}
 
                 {% if entry.availability %}
-                    <small class="text">{{ entry.availability }}</small>
+                    <small class="info--left text">{{ entry.availability }}</small>
                 {% endif %}
+
                 {% if entry.license %}
                     {% set url = entry.license.url %}
                     {% set name = entry.license.name %}
@@ -309,17 +321,20 @@
                     {% if title is empty %}
                         {% set title = url %}
                     {% endif %}
-                    <div class="info--right">
-                        {% if url %}
-                            <a href="{{ url }}" target="_blank" class="icon" title="{{ title }}">
+                    {% if url %}
+                        <p class="info--right">
+                            <a href="{{ url }}" target="_blank" title="{{ title }}">
                                 <span class="text">{{ name ?? url }}</span>
                             </a>
-                        {% elseif name %}
+                        </p>
+                    {% elseif name %}
+                        <p class="info--right">
                             <span>{{ name }}</span>
-                        {% endif %}
-                    </div>
+                        </p>
+                    {% endif %}
                 {% endif %}
-            </div>
+
+                </div>
             </div>
             {% if breakListCounter and num > breakListCounter - 1 %}
                 {% set break = true %}
