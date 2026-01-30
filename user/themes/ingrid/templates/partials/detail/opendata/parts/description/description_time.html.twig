@@ -25,10 +25,14 @@
             {% endif %}
         {% endif %}
     {# Erstellt am #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.CREATED.TITLE"|t, timeRefs.created|date('d.m.Y H:i:s'), null, "text-capitalize") }}
+        {% if timeRefs.created %}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.CREATED.TITLE"|t, timeRefs.created|date('d.m.Y H:i:s'), null, "text-capitalize") }}
+        {% endif %}
     {# Veröffentlicht am #}
-        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.ISSUED.TITLE"|t, timeRefs.issued|date('d.m.Y H:i:s'), null, "text-capitalize") }}
-    {# Periodizität #}
+        {% if timeRefs.issued %}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.ISSUED.TITLE"|t, timeRefs.issued|date('d.m.Y H:i:s'), null, "text-capitalize") }}
+        {% endif %}
+        {# Periodizität #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.accrual_periodicity, null, "text-capitalize") }}
 
     </div>
