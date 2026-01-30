@@ -21,8 +21,8 @@
 {# Zeitbezug #}
 {% set timeRefs = {} %}
 {% set timeRefs = addKeyValue(timeRefs, "accrual_periodicity", hit.temporal.accrual_periodicity) %}
-{% set timeRefs = addKeyValue(timeRefs, "created", hit.created) %}
-{% set timeRefs = addKeyValue(timeRefs, "issued", hit.issued) %}
+{% set timeRefs = addKeyValue(timeRefs, "gte", hit.temporal.gte) %}
+{% set timeRefs = addKeyValue(timeRefs, "lte", hit.temporal.lte) %}
 
 {# Raumbezug #}
 {% set mapRefs = {} %}
