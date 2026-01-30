@@ -3777,3 +3777,22 @@ div.description {
   overflow: hidden;
   min-width: 50%;
 }
+
+.search-filtered .list-item .table {
+  background: transparent;
+  padding: 4px 0 0;
+
+  table {
+    background: transparent;
+    margin: 0;
+
+    tr th, tr td {
+      padding: 0;
+      font-size: 14px;
+    }
+
+    a:not(.button) {
+      font-size: 14px;
+    }
+  }
+}

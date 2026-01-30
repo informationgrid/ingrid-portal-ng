@@ -882,6 +882,11 @@ SEARCH_DETAIL:
     OPENDATA:
         DISTRIBUTIONS:
             TITLE: Resources
+            LICENSE: License
+            DESCRIPTION: Description
+            AVAILABILITY: Availability
+            LANGUAGES: Languages
+            MODIFIED: Modified
         CATEGORIES:
             TITLE: Open Data Categories
         POLITICAL_GEOCODING_LEVEL_URI:

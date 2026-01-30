@@ -884,6 +884,11 @@ SEARCH_DETAIL:
     OPENDATA:
         DISTRIBUTIONS:
             TITLE: Ressourcen
+            LICENSE: Lizenz
+            DESCRIPTION: Beschreibung
+            AVAILABILITY: Verfügbarkeit
+            LANGUAGES: Sprache(n)
+            MODIFIED: Aktualisierungsdatum
         CATEGORIES:
             TITLE: Open Data Kategorien
         POLITICAL_GEOCODING_LEVEL_URI:

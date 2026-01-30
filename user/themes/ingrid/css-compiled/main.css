@@ -10519,6 +10519,22 @@ div.description {
   min-width: 50%;
 }
 
+.search-filtered .list-item .table {
+  background: transparent;
+  padding: 4px 0 0;
+}
+.search-filtered .list-item .table table {
+  background: transparent;
+  margin: 0;
+}
+.search-filtered .list-item .table table tr th, .search-filtered .list-item .table table tr td {
+  padding: 0;
+  font-size: 14px;
+}
+.search-filtered .list-item .table table a:not(.button) {
+  font-size: 14px;
+}
+
 /* colors */
 /* UVP colors */
 .form-element .control {
