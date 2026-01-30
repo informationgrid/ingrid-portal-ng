@@ -288,52 +288,68 @@
                     </a>
                 {% endif %}
 
-                {% if entry.modified %}
-                    <small class="text">{{ entry.modified|date("d.m.Y") }}</small>
-                {% endif %}
+                <div class="table">
+                    <table>
+                        <tbody>
+                            {% if entry.description %}
+                                <tr>
+                                    <th>{{ "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.DESCRIPTION"|t }}</th>
+                                    <td>{{ convertUrlInText(removeHashLocale(entry.description))|raw }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if entry.modified %}
+                                <tr>
+                                    <th>{{ "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.MODIFIED"|t }}</th>
+                                    <td>{{ entry.modified|date("d.m.Y") }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if entry.availability %}
+                                <tr>
+                                    <th>{{ "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.AVAILABILITY"|t }}</th>
+                                    <td>{{ entry.availability }}</td>
+                                </tr>
+                            {% endif %}
 
-                {% if entry.languages %}
-                    <div class="info--right">
-                        {% for language in entry.languages %}
-                            <span class="text">{{ language }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                            {% if entry.languages %}
+                                <tr>
+                                    <th>{{ "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.LANGUAGES"|t }}</th>
+                                    <td>
+                                        {% for language in entry.languages %}
+                                        <span class="text">{{ language }}</span>
+                                        {% endfor %}
+                                        </td>
+                                </tr>
+                            {% endif %}
 
-                {% if entry.description %}
-                    <div class="description">
-                        <small class="description">{{ convertUrlInText(removeHashLocale(entry.description))|raw }}</small>
-                    </div>
-                {% endif %}
+                            {% if entry.license %}
+                                {% set url = entry.license.url %}
+                                {% set name = entry.license.name %}
+                                {% set attribution_by_text = entry.license.attribution_by_text %}
 
-                {% if entry.availability %}
-                    <small class="info--left text">{{ entry.availability }}</small>
-                {% endif %}
+                                {% set title = name %}
+                                {% if title is empty %}
+                                    {% set title = url %}
+                                {% endif %}
 
-                {% if entry.license %}
-                    {% set url = entry.license.url %}
-                    {% set name = entry.license.name %}
-                    {% set attribution_by_text = entry.license.attribution_by_text %}
-                    {% set title = attribution_by_text %}
-                    {% if title is empty %}
-                        {% set title = name %}
-                    {% endif %}
-                    {% if title is empty %}
-                        {% set title = url %}
-                    {% endif %}
-                    {% if url %}
-                        <p class="info--right">
-                            <a href="{{ url }}" target="_blank" title="{{ title }}">
-                                <span class="text">{{ name ?? url }}</span>
-                            </a>
-                        </p>
-                    {% elseif name %}
-                        <p class="info--right">
-                            <span>{{ name }}</span>
-                        </p>
-                    {% endif %}
-                {% endif %}
-
+                                <tr>
+                                    <th>{{ "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.LICENSE"|t }}</th>
+                                    {% if url %}
+                                        <td>
+                                            <a href="{{ url }}" target="_blank" title="{{ title }}">
+                                                <span class="text">{{ name ?? url }}</span>
+                                            </a>
+                                            <span class="text">{{ attribution_by_text }}</span>
+                                        </td>
+                                    {% elseif name %}
+                                        <td>
+                                            <span>{{ name }}</span>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
                 </div>
             </div>
             {% if breakListCounter and num > breakListCounter - 1 %}

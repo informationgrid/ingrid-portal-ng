@@ -11,22 +11,13 @@
         {{ hit_macros.render_group_title(tmpTitle|t) }}
 
     {# Durch die Ressource abgedeckte Zeitspanne #}
-        {% set toIndeterminate = "" %}
-        {% if timeRefs.timeFromType and timeRefs.timeFromType == "now" %}
-            {% set toIndeterminate = "COMMON.TIME_UNTILNOW"|t %}
-        {% else %}
-            {% set toIndeterminate = "COMMON.TIME_UNTILUNKNOWN"|t %}
-        {% endif %}
-        {% if timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt %}
-            {% set timeAt = timeRefs.timeAt ? timeRefs.timeAt|date("d.m.Y") : "" %}
-            {% set timeBegin = timeRefs.timeBegin ? timeRefs.timeBegin|date("d.m.Y") : "" %}
-            {% set timeEnd = timeRefs.timeEnd ? timeRefs.timeEnd|date("d.m.Y") : "" %}
-            {% if timeAt %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeAt) }}
-            {% elseif timeBegin == timeEnd %}
+        {% if timeRefs.gte or timeRefs.lte %}
+            {% set timeBegin = timeRefs.gte ? timeRefs.gte|date("d.m.Y") : "" %}
+            {% set timeEnd = timeRefs.lte ? timeRefs.lte|date("d.m.Y") : "" %}
+            {% if timeBegin == timeEnd %}
                 {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeBegin) }}
             {% elseif timeBegin and timeEnd is empty %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_SINCE"|t ~ " " ~ timeBegin ~ toIndeterminate) }}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_SINCE"|t ~ " " ~ timeBegin) }}
             {% elseif timeBegin is empty and timeEnd %}
                 {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_UNTIL"|t ~ " " ~ timeEnd) }}
             {% elseif timeBegin != timeEnd %}
