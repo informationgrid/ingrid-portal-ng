@@ -1,21 +1,29 @@
 {% set header_logo_enabled = theme_var('header.logo_enabled') %}
 
 {% if header_logo_enabled %}
+    {% set logo_default = theme_var('header.logo_default') %}
     {% set logo = theme_var('header.logo') %}
+    {% set logo_lang_default = theme_var('header.logo_' ~ grav.language.getLanguage ~ '_default') %}
     {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+
     {% if logo_lang %}
         {% set logo = logo_lang %}
+    {% elseif logo_lang_default %}
+        {% set logo = logo_lang_default %}
     {% endif %}
 
     {% if logo %}
-        {% set header_logo_file = (logo|first).name %}
+        {% set header_logo_file = (logo|first).path %}
+    {% elseif logo_default %}
+        {% set header_logo_file = (logo_default|first).path %}
     {% endif %}
+
     <div class="logo" role="banner">
         <a href="{{ home_url }}" class="hide-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}"/>
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}"/>
         </a>
         <a href="{{ home_url }}" class="show-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}"/>
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}"/>
         </a>
         <a href="{{ home_url }}" class="show-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
             <img src="{{ url('theme://images/logo/logo-xsmall.svg') }}" alt="{{ site.title }}"/>

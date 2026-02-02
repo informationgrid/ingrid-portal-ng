@@ -3,18 +3,25 @@
     <div class="columns xsmall-20 small-17 medium-17 large-17 xlarge-10">
         <div class="logo" role="banner">
             {% if header_logo_enabled %}
+                {% set logo_default = theme_var('header.logo_default') %}
                 {% set logo = theme_var('header.logo') %}
+                {% set logo_lang_default = theme_var('header.logo_' ~ grav.language.getLanguage ~ '_default') %}
                 {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+
                 {% if logo_lang %}
                     {% set logo = logo_lang %}
+                {% elseif logo_lang_default %}
+                    {% set logo = logo_lang_default %}
                 {% endif %}
+
+                {% if logo %}
+                    {% set header_logo_file = (logo|first).path %}
+                {% elseif logo_default %}
+                    {% set header_logo_file = (logo_default|first).path %}
+                {% endif %}
+
                 <a target="_blank" href="https://www.adv-online.de" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
-                    {% if logo %}
-                        {% set header_logo_file = (logo|first).name %}
-                    {% else %}
-                        {% set header_logo_file = 'logo.svg' %}
-                    {% endif %}
-                    <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+                    <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
                 </a>
             {% endif %}
             <div class="desktop__title">

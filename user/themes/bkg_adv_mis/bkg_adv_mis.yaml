@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-9 small-7 medium-7 large-7 xlarge-6'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
       name: advmis_logo.png
       full_path: advmis_logo.png
@@ -21,7 +21,7 @@ footer:
     show_year: true
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo:
+  logo_default:
     user/themes/bkg_adv_mis/images/logo/advmis_logo.png:
       name: advmis_logo.png
       full_path: advmis_logo.png
@@ -31,6 +31,7 @@ footer:
   share:
     enabled: false
     enabled_x: true
+    enabled_mastodon: false
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true
@@ -202,6 +203,7 @@ hit_search:
           "codelist": "8000",
           "codelist_entry_id": "1",
           "active": true,
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -228,6 +230,7 @@ hit_search:
         },
         "tile": {
           "label": "Kacheln",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -240,6 +243,7 @@ hit_search:
           "codelist": "8000",
           "codelist_entry_id": "3",
           "active": true,
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -252,6 +256,7 @@ hit_search:
           "codelist": "8000",
           "codelist_entry_id": "6",
           "active": true,
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -269,6 +274,7 @@ hit_search:
       "facets": {
         "service_type_view": {
           "label": "Darstellungsdienste",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -311,6 +317,7 @@ hit_search:
         },
         "service_type_download": {
           "label": "Downloaddienste",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -368,6 +375,7 @@ hit_search:
         },
         "service_type_others": {
           "label": "Sonstige Dienste",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -1030,7 +1038,8 @@ hit_detail:
     exclude:
       - content
   query_string_operator: AND
-  display_use_constraints_json: true
+  display_use_constraints_json: false
+  remove_use_constraints_prefix: true
   link_sort_asc: true
 map:
   url:

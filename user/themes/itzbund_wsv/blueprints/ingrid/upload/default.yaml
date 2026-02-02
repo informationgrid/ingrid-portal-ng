@@ -8,7 +8,7 @@ form:
     upload.slideshow:
       type: file
       label: THEME.ADMIN.UPLOAD.SLIDESHOW.TITLE
-      destination: 'theme://assets/cms/slideshow/images'
+      destination: 'config://themes/cms/slideshow/images'
       multiple: true
       limit: 0
       autofocus: false
@@ -18,7 +18,7 @@ form:
     upload.apps:
       type: file
       label: THEME.ADMIN.UPLOAD.APPS.TITLE
-      destination: 'theme://assets/cms/apps/images'
+      destination: 'config://themes/cms/apps/images'
       multiple: true
       limit: 0
       autofocus: false

@@ -35,10 +35,9 @@ form:
           type: file
           label: Header Logo
           size: large
-          destination: 'theme://images/logo'
+          destination: 'config://themes/logo/header/de'
           multiple: false
-          markdown: true
-          description: Will be used instead of default logo `theme://images/logo/logo.svg`
+          description: Logo ersetzen
           accept:
             - image/*
 
@@ -46,10 +45,10 @@ form:
           type: file
           label: Header Logo (EN)
           size: large
-          destination: 'theme://images/logo'
+          destination: 'config://themes/logo/header/en'
           multiple: false
           markdown: true
-          description: Will be used instead of default logo `theme://images/logo/logo.svg`
+          description: Logo ersetzen.
           accept:
             - image/*
 
@@ -109,10 +108,10 @@ form:
           type: file
           label: Footer Logo
           size: large
-          destination: 'theme://images/logo'
+          destination: 'config://themes/logo/footer/de'
           multiple: false
           markdown: true
-          description: Will be used instead of default logo `theme://images/logo/footer-logo.svg`
+          description: Logo ersetzen.
           accept:
             - image/*
 
@@ -172,6 +171,17 @@ form:
           type: toggle
           label: Teilen
           help: Teilen aktivieren.
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.ENABLED
+            0: PLUGIN_ADMIN.DISABLED
+          validate:
+            type: bool
+
+        footer.share.enabled_mastodon:
+          type: toggle
+          label: Teilen auf "Mastodon"
+          help: Teilen auf "Mastodon" aktivieren.
           highlight: 1
           options:
             1: PLUGIN_ADMIN.ENABLED

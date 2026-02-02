@@ -1,33 +1,39 @@
 {% set header_logo_enabled = theme_var('header.logo_enabled') %}
 {% if header_logo_enabled %}
+    {% set logo_default = theme_var('header.logo_default') %}
     {% set logo = theme_var('header.logo') %}
+    {% set logo_lang_default = theme_var('header.logo_' ~ grav.language.getLanguage ~ '_default') %}
     {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+
     {% if logo_lang %}
         {% set logo = logo_lang %}
+    {% elseif logo_lang_default %}
+        {% set logo = logo_lang_default %}
+    {% endif %}
+
+    {% if logo %}
+        {% set header_logo_file = (logo|first).path %}
+    {% elseif logo_default %}
+        {% set header_logo_file = (logo_default|first).path %}
     {% endif %}
 
     <div class="logo" role="banner">
-        {% if logo %}
-            {% set header_logo_file = (logo|first).name %}
-        {% else %}
-            {% set header_logo_file = 'logo.svg' %}
-        {% endif %}
         <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="show-for-large hide-for-xsmall-only">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
             <div class="text">
                 <p class="strong">Schleswig-Holstein</p>
                 <p>Umweltportal</p>
             </div>
         </a>
         <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-xlarge hide-for-large hide-for-xsmall-only hide-for-small-only">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
             <div class="text">
                 <p class="strong">Schleswig-Holstein</p>
                 <p>Umweltportal</p>
             </div>
         </a>
         <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-medium">
-            <img src="{{ url('theme://images/logo/' ~ header_logo_file) }}" alt="{{ site.title }}" />
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
             <div class="text">
                 <p class="strong">Schleswig-Holstein</p>
                 <p>Umweltportal</p>

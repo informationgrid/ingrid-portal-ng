@@ -6,14 +6,14 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-16 xlarge-14'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/bast/images/logo/logo_de.png:
       name: logo_de.png
       full_path: logo_de.png
       type: image/png
       size: 55181
       path: user/themes/bast/images/logo/logo_de.png
-  logo_en:
+  logo_en_default:
     user/themes/bast/images/logo/logo_en.png:
       name: logo_en.png
       full_path: logo_en.png
@@ -33,6 +33,7 @@ footer:
   share:
     enabled: false
     enabled_x: true
+    enabled_mastodon: false
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true
@@ -482,6 +483,7 @@ hit_detail:
       - content
   query_string_operator: AND
   display_use_constraints_json: true
+  remove_use_constraints_prefix: false
   link_sort_asc: true
 map:
   url: /ingrid-webmap-client/frontend/prd

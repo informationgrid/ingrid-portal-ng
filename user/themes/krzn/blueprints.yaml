@@ -56,6 +56,14 @@ form:
             type: default
             context: user://themes/ingrid/blueprints/detail
 
+        ## Tab map
+        tab_map:
+          type: tab
+          title: THEME.ADMIN.MAP.TITLE
+          import@:
+            type: default
+            context: user://themes/ingrid/blueprints/map
+
         ## Tab help
         tab_help:
           type: tab

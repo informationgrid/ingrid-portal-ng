@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/baw_mis/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg
@@ -21,7 +21,7 @@ footer:
     show_year: false
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-17'
   hr_line: true
-  logo:
+  logo_default:
     user/themes/baw_mis/images/logo/logo-white.svg:
       name: logo-white.svg
       full_path: logo-white.svg
@@ -31,6 +31,7 @@ footer:
   share:
     enabled: true
     enabled_x: true
+    enabled_mastodon: false
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true
@@ -765,6 +766,7 @@ hit_detail:
       - content
   query_string_operator: AND
   display_use_constraints_json: true
+  remove_use_constraints_prefix: false
   link_sort_asc: true
 map:
   url: /ingrid-webmap-client/frontend/prd

@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: true
   shrink: true
-  logo:
+  logo_default:
     user/themes/itzbund_wsv/images/logo/logo-mobile.png:
       name: logo-mobile.png
       full_path: logo-mobile.png
@@ -21,7 +21,7 @@ footer:
     show_year: false
   menu_class: 'xsmall-24 small-24 medium-24 large-24 xlarge-14'
   hr_line: true
-  logo:
+  logo_default:
     user/themes/itzbund_wsv/images/logo/logo_footer_1.png:
       name: logo_footer_1.png
       full_path: logo_footer_1.png
@@ -31,6 +31,7 @@ footer:
   share:
     enabled: false
     enabled_x: true
+    enabled_mastodon: false
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true
@@ -514,6 +515,7 @@ hit_detail:
       - content
   query_string_operator: AND
   display_use_constraints_json: true
+  remove_use_constraints_prefix: false
   link_sort_asc: true
 map:
   url: /ingrid-webmap-client/frontend/prd

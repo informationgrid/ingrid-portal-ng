@@ -1039,6 +1039,7 @@ SHARE:
     WHATSAPP: WhatsApp
     XING: XING
     MAIL: E-Mail
+    MASTODON: Mastodon
 
 PRINT:
     TITLE: Seite drucken
@@ -1324,8 +1325,11 @@ THEME:
                 LABEL: Query String Operator
                 HELP: Query String Operator
             DISPLAY_USE_CONSTRAINTS_JSON:
-                LABEL: Nutzungsbedingungen im JSON-Format anzeigen
-                HELP: Nutzungsbedingungen im JSON-Format können angezeigt bzw. ausgeblendet werden.
+              LABEL: Nutzungsbedingungen im JSON-Format anzeigen
+              HELP: Nutzungsbedingungen im JSON-Format können angezeigt bzw. ausgeblendet werden.
+            REMOVE_USE_CONSTRAINTS_PREFIX:
+              LABEL: "Präfix \"Quellenvermerk: \" bei Nutzungsbedingungen entfernen"
+              HELP: "Präfix \"Quellenvermerk: \" bei Nutzungsbedingungen wird entfernt."
             REQUESTED_FIELDS:
                 LABEL: Felder anfragen
                 HELP: Felder anfragen

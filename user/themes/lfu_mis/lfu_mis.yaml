@@ -6,7 +6,7 @@ header:
   menu_class: 'xsmall-16 small-15 medium-15 large-13 xlarge-10'
   menu_dropdown: false
   shrink: true
-  logo:
+  logo_default:
     user/themes/lfu_mis/images/logo/logo.svg:
       name: logo.svg
       full_path: logo.svg
@@ -25,6 +25,7 @@ footer:
   share:
     enabled: false
     enabled_x: true
+    enabled_mastodon: false
     enabled_facebook: true
     enabled_linkedin: true
     enabled_xing: true
@@ -583,6 +584,7 @@ hit_detail:
       - content
   query_string_operator: AND
   display_use_constraints_json: false
+  remove_use_constraints_prefix: true
   link_sort_asc: true
 map:
   url: /ingrid-webmap-client/frontend/prd

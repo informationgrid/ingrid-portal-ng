@@ -1352,6 +1352,7 @@ ul.select2-results__options {
 .popup .headline p {
   font-family: Gudea-Bold, sans-serif;
   margin-bottom: unset;
+  color: #FFFFFF;
 }
 
 .popup .headline .button.round {
