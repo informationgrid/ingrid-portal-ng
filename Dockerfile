@@ -2,14 +2,19 @@ FROM php:8.3-fpm-trixie
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
+# set versions in versions.props!
+ARG GRAV_VERSION=1.7.49.5
+ARG MVIS_VERSION=2.0.11
+
 # renovate: datasource=github-tags depName=getgrav/grav versioning=semver
-ENV GRAV_VERSION=1.7.49.5
+ENV GRAV_VERSION=${GRAV_VERSION}
+ENV MVIS_VERSION=${MVIS_VERSION}
+
 # renovate: datasource=github-tags depName=krakjoe/apcu versioning=semver
 ENV PHP_APCU_VERSION=v5.1.23
 # renovate: datasource=github-tags depName=php/pecl-file_formats-yaml versioning=semver
 ENV PHP_YAML_VERSION=2.2.5
 
-ENV MVIS_VERSION=2.0.11
 
 ENV YQ_VERSION=v4.47.2
 

@@ -23,13 +23,14 @@ pipeline {
                 echo 'Starting to build docker image'
 
                 script {
+                    def versions = readProperties file: 'versions.props'
                     // remove build dir containing previous RPM
                     sh 'if [ -d build ]; then rm -rf build; fi'
 
                     def version = computeVersion()
 
                     docker.withRegistry('https://docker-registry.wemove.com', 'docker-registry-wemove') {
-                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${version}", "--pull .")
+                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${version}", "--pull --build-arg GRAV_VERSION=${versions['GRAV_VERSION']} --build-arg MVIS_VERSION=${versions['MVIS_VERSION']} .")
 
                         /* Push the container to the custom Registry */
                         customImage.push()
@@ -51,8 +52,9 @@ pipeline {
                     sh 'git submodule update --init --recursive'
                 }
                 script {
+                    def versions = readProperties file: 'versions.props'
                     docker.withRegistry('https://docker-registry.wemove.com', 'docker-registry-wemove') {
-                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${env.TAG_NAME}", "--pull .")
+                        def customImage = docker.build("docker-registry.wemove.com/ingrid-portal:${env.TAG_NAME}", "--pull --build-arg GRAV_VERSION=${versions['GRAV_VERSION']} --build-arg MVIS_VERSION=${versions['MVIS_VERSION']} .")
 
                         /* Push the container to the custom Registry */
                         customImage.push()
@@ -73,8 +75,11 @@ pipeline {
                 echo 'Starting to build RPM package'
 
                 script {
+                    def versions = readProperties file: 'versions.props'
                     sh "sed -i 's/^Version:.*/Version: ${determineVersion()}/' rpm/ingrid-portal.spec"
                     sh "sed -i 's/^Release:.*/Release: ${determineRpmReleasePart()}/' rpm/ingrid-portal.spec"
+                    sh "sed -i 's/^%define version_grav .*/%define version_grav ${versions['GRAV_VERSION']}/' rpm/ingrid-portal.spec"
+                    sh "sed -i 's/^%define version_mvis .*/%define version_mvis ${versions['MVIS_VERSION']}/' rpm/ingrid-portal.spec"
 
                     sh """
                         cp ${WORKSPACE}/rpm/ingrid-portal.spec /root/rpmbuild/SPECS/ingrid-portal.spec &&
