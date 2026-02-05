@@ -10,7 +10,7 @@
     {% endif %}
 
     <div class="logo">
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
+        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
             <img class="footer__logo" src="{{ url(footer_logo_file) }}" alt="{{ site.title }}">
         </a>
     </div>

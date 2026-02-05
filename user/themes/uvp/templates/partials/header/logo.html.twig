@@ -19,13 +19,13 @@
     {% endif %}
 
     <div class="logo" role="banner">
-        <a href="{{ home_url }}" class="hide-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+        <a href="{{ page.find('/home').url }}" class="hide-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
             <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}"/>
         </a>
-        <a href="{{ home_url }}" class="show-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+        <a href="{{ page.find('/home').url }}" class="show-for-medium hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
             <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}"/>
         </a>
-        <a href="{{ home_url }}" class="show-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+        <a href="{{ page.find('/home').url }}" class="show-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
             <img src="{{ url('theme://images/logo/logo-xsmall.svg') }}" alt="{{ site.title }}"/>
         </a>
     </div>

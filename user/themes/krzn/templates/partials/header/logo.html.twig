@@ -21,7 +21,7 @@
             {% endif %}
 
             <div class="logo" role="banner">
-                <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+                <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
                     <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
                 </a>
             </div>
@@ -34,7 +34,7 @@
                     <strong>G</strong>eodatenkatalog <strong>N</strong>iederrhein
                 </span>
             {% else %}
-                <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+                <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
                     <span>
                         <strong>G</strong>eodatenkatalog <strong>N</strong>iederrhein
                    </span>
