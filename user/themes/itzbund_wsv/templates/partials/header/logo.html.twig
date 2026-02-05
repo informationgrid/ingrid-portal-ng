@@ -21,7 +21,7 @@
 
         <div class="columns xsmall-12 small-12 medium-8 large-7 xlarge-7">
             <div class="logo" role="banner">
-                <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
+                <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
                     <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
                 </a>
             </div>

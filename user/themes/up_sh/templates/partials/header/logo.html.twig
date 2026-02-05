@@ -18,21 +18,21 @@
     {% endif %}
 
     <div class="logo" role="banner">
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="show-for-large hide-for-xsmall-only">
+        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="show-for-large hide-for-xsmall-only">
             <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
             <div class="text">
                 <p class="strong">Schleswig-Holstein</p>
                 <p>Umweltportal</p>
             </div>
         </a>
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-xlarge hide-for-large hide-for-xsmall-only hide-for-small-only">
+        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-xlarge hide-for-large hide-for-xsmall-only hide-for-small-only">
             <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
             <div class="text">
                 <p class="strong">Schleswig-Holstein</p>
                 <p>Umweltportal</p>
             </div>
         </a>
-        <a href="{{ home_url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-medium">
+        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" class="hide-for-medium">
             <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
             <div class="text">
                 <p class="strong">Schleswig-Holstein</p>
