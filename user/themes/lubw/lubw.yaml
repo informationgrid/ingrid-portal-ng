@@ -256,11 +256,10 @@ hit_search:
     {
       "id": "type",
       "open": true,
+      "selection_single": true,
       "facets": {
         "metaclass_map": {
           "label": "Geodatensatz",
-          "icon": "ic-earth",
-          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -291,7 +290,6 @@ hit_search:
         },
         "map-wms": {
           "label": "Darstellungsdienst WMS",
-          "display_on_empty": true,
           "query": {
             "filter": {
               "match": {
@@ -302,7 +300,6 @@ hit_search:
         },
         "map-wmts": {
           "label": "Darstellungsdienst WMTS",
-          "display_on_empty": true,
           "query": {
             "filter": {
               "match": {
@@ -353,7 +350,6 @@ hit_search:
         },
         "hvd": {
           "label": "HVD",
-          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -388,6 +384,7 @@ hit_search:
     {
       "id": "distributor",
       "label": "Vertrieb der Geodaten",
+      "selection_single": true,
       "query": {
         "terms": {
           "field": "distributor",
@@ -399,6 +396,7 @@ hit_search:
     {
       "id": "metadata_tree",
       "label": "Fachthemen",
+      "selection_single": true,
       "catalog": {
         "ident": "bw"
       }

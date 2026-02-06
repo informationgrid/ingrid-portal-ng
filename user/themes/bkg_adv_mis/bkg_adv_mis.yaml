@@ -832,6 +832,7 @@ hit_search:
       "facets": {
         "opendata_hvd": {
           "label": "Open Data / HVD",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "term": {
@@ -842,6 +843,7 @@ hit_search:
         },
         "opendata_true": {
           "label": "Open Data",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -863,6 +865,7 @@ hit_search:
         },
         "opendata_false": {
           "label": "Nein",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -897,6 +900,7 @@ hit_search:
       "facets": {
         "inspire_true": {
           "label": "Ja",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
@@ -918,6 +922,7 @@ hit_search:
         },
         "inspire_false": {
           "label": "Nein",
+          "display_on_empty": true,
           "query": {
             "filter": {
               "bool": {
