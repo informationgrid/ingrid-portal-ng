@@ -26,6 +26,7 @@ form:
               show_root: false
               show_all: false
               start_route: /home
+              limit_levels: 2
             .hidden:
               type: checkbox
               label: THEME.ADMIN.HOME.SORT_MODULES.HIDDEN.LABEL

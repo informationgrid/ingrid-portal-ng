@@ -1,5 +1,5 @@
 ---
-title: Weißte de Watt
+title: Geologieportal
 ---
 
 <div class="info-teaser-box">
