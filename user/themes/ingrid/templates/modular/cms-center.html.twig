@@ -1,0 +1,10 @@
+{% if page.content|length > 0 %}
+<div class="search-filtered row">
+    <div class="xsmall-24 columns text-center">
+        {% if page.header.custom_title.html|length > 0 %}
+            <h2>{{ page.header.custom_title.html }}</h2>
+        {% endif %}
+        {{ page.content|raw }}
+    </div>
+</div>
+{% endif %}
