@@ -1,5 +1,5 @@
 ---
-title: Weißte de Watt
+title: Wasserkörper- und Nährstoffinformationen
 ---
 
 <div class="info-teaser-box">

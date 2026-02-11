@@ -1,5 +1,5 @@
 ---
-title: Weißte de Watt
+title: Data Warehouse (DWH)
 ---
 
 <div class="info-teaser-box">

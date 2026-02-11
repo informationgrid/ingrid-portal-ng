@@ -1,5 +1,5 @@
 ---
-title: Weißte de Watt
+title: Lärmkarten
 ---
 
 <div class="info-teaser-box">

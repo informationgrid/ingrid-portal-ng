@@ -1,5 +1,5 @@
 ---
-title: Weißte de Watt
+title: Bodendauer-beobachtung
 ---
 
 <div class="info-teaser-box">
