@@ -5,6 +5,8 @@ PAGES:
     LABEL: Zeitreihen
   MAP:
     LABEL: Karte
+  DETAIL:
+    LABEL: Trefferanzeige
 THEME:
   ADMIN:
     LAYOUT:
