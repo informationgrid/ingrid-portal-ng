@@ -1,4 +1,19 @@
 
+## 8.2.2 (13.02.2026)
+
+### Features
+
+* Portal: Verlinkung zu "Interner Bereich: Metadaten" aus Menü entfernen (#8702)
+* GravCMS: Einstellungen für die Kartenansicht (#8700)
+
+### Bugfixes
+
+* PORTAL: Doppelte Quellenvermerk-Einträge in der Detaildarstellung (#8725)
+* PORTAL: Link zur Verordnung Änderungen führt zu Fehler bei Objektklasse Anwendung (#8724)
+* CSV-Export aus Portal-NG beinhaltet Informationen die falsch gedeutet werden können. (#8710)
+* Kartenansicht: Verlinkungen haben falschen Titel (#8688)
+* GravCMS: Kann Logos nicht löschen (#8563)
+    
 ## 8.2.1 (29.01.2026)
 
 ### Features
