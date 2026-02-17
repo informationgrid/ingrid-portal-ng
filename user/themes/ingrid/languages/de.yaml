@@ -331,8 +331,8 @@ SEARCH_DETAIL:
     SPACIAL_REFERENCE: Raumbezug
     TIME_REFERENCE: Zeitbezug
     TIME_REFERENCE_ENTRY: Zeitbezug
-    TIME_REFERENCE_CONTENT: Aktualität der Daten
-    TIME_REFERENCE_CONTENT_ENTRY: Aktualität der Daten
+    TIME_REFERENCE_CONTENT: Zeitbezug der Daten im Datensatz
+    TIME_REFERENCE_CONTENT_ENTRY: Zeitbezug der Daten
     TIME_REFERENCE_RECORD: Aktualität des Datensatzes
     AVAILABILITY: Verfügbarkeit
     DATA_FORMAT: Datenformat

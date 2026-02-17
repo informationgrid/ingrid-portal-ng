@@ -10,5 +10,13 @@
         {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "publication", lang), timeRefs.timePublication ? timeRefs.timePublication|date("d.m.Y")|e, null, null, null, "SEARCH_DETAIL.TIME.HELP.PUBLICATION.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.PUBLICATION.MESSAGE"|t) }}
 {# letzte Änderung #}
         {{ hit_macros.render_label_text_row(getValueFromCodelist("502", "revision", lang), timeRefs.timeRevision ? timeRefs.timeRevision|date("d.m.Y")|e, null, null, null, "SEARCH_DETAIL.TIME.HELP.REVISION.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.REVISION.MESSAGE"|t) }}
+{# Status #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_STATUS"|t, timeRefs.timeStatus, null, "text-capitalize", null, "SEARCH_DETAIL.TIME.HELP.STATUS.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.STATUS.MESSAGE"|t) }}
+{# Periodizität #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.timePeriod, null, "text-capitalize", null, "SEARCH_DETAIL.TIME.HELP.PERIOD.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.PERIOD.MESSAGE"|t) }}
+{# Intervall der Erhebung #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_INTERVAL"|t, timeRefs.timeInterval, null, null, null, "SEARCH_DETAIL.TIME.HELP.INTERVAL.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.INTERVAL.MESSAGE"|t) }}
+{# Erläuterung zum Zeitbezug #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_DESCR"|t, timeRefs.timeDescr) }}
     </div>
 {% endif %}
