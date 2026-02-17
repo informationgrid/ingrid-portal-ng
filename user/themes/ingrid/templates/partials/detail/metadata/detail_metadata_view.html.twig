@@ -5,10 +5,10 @@
 {% set hasDescription = (alternateTitle or summary) %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% if hasTimeData is not defined %}
-    {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
+    {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
 {% endif %}
 {% if hasTimeResource is not defined %}
-    {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision) %}
+    {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval) %}
 {% endif %}
 {% set hasArea = (mapRefs|length > 0) %}
 {% set hasLinks = (linkRefs|length > 0) %}
