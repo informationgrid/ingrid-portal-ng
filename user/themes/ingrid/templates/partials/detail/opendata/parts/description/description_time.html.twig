@@ -3,11 +3,7 @@
 {% if hasTimeData %}
     <div class="sub-section">
         <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference"{% else %}id="{{ hash_time }}_time_reference"{% endif %}></a>
-        {% if class == 1 or class == 3 or class == 5 or class == 6 %}
-            {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT" %}
-        {% else %}
-            {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE" %}
-        {% endif %}
+        {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT" %}
         {{ hit_macros.render_group_title(tmpTitle|t) }}
 
     {# Durch die Ressource abgedeckte Zeitspanne #}
@@ -32,7 +28,7 @@
         {% if timeRefs.issued %}
             {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.ISSUED.TITLE"|t, timeRefs.issued|date('d.m.Y H:i:s'), null, "text-capitalize") }}
         {% endif %}
-        {# Periodizität #}
+    {# Periodizität #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.accrual_periodicity, null, "text-capitalize") }}
 
     </div>

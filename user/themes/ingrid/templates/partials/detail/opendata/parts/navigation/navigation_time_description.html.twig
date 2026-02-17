@@ -3,12 +3,7 @@
     <div class="boxes">
         {% if hasTimeData %}
             {% set tmpHash = hash_description ~ "_time_reference" %}
-            {% set tmpTitle = "" %}
-            {% if class == 1 or class == 3 or class == 5 or class == 6 %}
-                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
-            {% else %}
-                {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE"|t %}
-            {% endif %}
+            {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT"|t %}
             {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
         {% endif %}
         {% if hasTimeResource %}
