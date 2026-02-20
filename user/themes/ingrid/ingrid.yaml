@@ -1056,7 +1056,7 @@ hit_search:
           "min_doc_count": 0
         }
       },
-      "search": "distributions.license.name.keyword:\"%s\""
+      "search": "distributions.license.name.keyword:%s"
     },
     {
       "id": "opendata_formats",
@@ -1066,7 +1066,7 @@ hit_search:
           "min_doc_count": 0
         }
       },
-      "search": "distributions.format.keyword:\"%s\""
+      "search": "distributions.format.keyword:%s"
     },
     {
       "id": "modtime",
