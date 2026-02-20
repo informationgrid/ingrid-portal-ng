@@ -243,7 +243,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "1"
+                        "keywords.id": "1"
                       }
                     }
                   ]
@@ -267,7 +267,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "2"
+                        "keywords.id": "2"
                       }
                     }
                   ]
@@ -291,7 +291,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "3"
+                        "keywords.id": "3"
                       }
                     }
                   ]
@@ -315,7 +315,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "4"
+                        "keywords.id": "4"
                       }
                     }
                   ]
@@ -339,7 +339,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "5"
+                        "keywords.id": "5"
                       }
                     }
                   ]
@@ -363,7 +363,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "6"
+                        "keywords.id": "6"
                       }
                     }
                   ]
@@ -387,7 +387,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "7"
+                        "keywords.id": "7"
                       }
                     }
                   ]
@@ -411,7 +411,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "8"
+                        "keywords.id": "8"
                       }
                     }
                   ]
@@ -435,7 +435,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "9"
+                        "keywords.id": "9"
                       }
                     }
                   ]
@@ -459,7 +459,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "10"
+                        "keywords.id": "10"
                       }
                     }
                   ]
@@ -483,7 +483,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "11"
+                        "keywords.id": "11"
                       }
                     }
                   ]
@@ -507,7 +507,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "12"
+                        "keywords.id": "12"
                       }
                     }
                   ]
@@ -531,7 +531,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.id.keyword": "13"
+                        "keywords.id": "13"
                       }
                     }
                   ]
@@ -619,7 +619,7 @@ hit_search:
                         },
                         {
                           "term": {
-                            "keywords.source.keyword": "THEMES"
+                            "keywords.source": "THEMES"
                           }
                         }
                       ]
@@ -750,7 +750,7 @@ hit_search:
           "query": {
             "filter": {
               "term": {
-                "keywords.source.keyword": "THEMES"
+                "keywords.source": "THEMES"
               }
             }
           }
@@ -763,7 +763,6 @@ hit_search:
         "agri": {
           "codelist": "6400",
           "codelist_entry_id": "1",
-          "icon": "ic-agri",
           "query": {
             "filter": {
               "bool": {
@@ -775,7 +774,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "1"
+                      "keywords.id": "1"
                     }
                   }
                 ]
@@ -786,7 +785,6 @@ hit_search:
         "econ": {
           "codelist": "6400",
           "codelist_entry_id": "2",
-          "icon": "ic-econ",
           "query": {
             "filter": {
               "bool": {
@@ -798,7 +796,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "2"
+                      "keywords.id": "2"
                     }
                   }
                 ]
@@ -809,7 +807,6 @@ hit_search:
         "educ": {
           "codelist": "6400",
           "codelist_entry_id": "3",
-          "icon": "ic-educ",
           "query": {
             "filter": {
               "bool": {
@@ -821,7 +818,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "3"
+                      "keywords.id": "3"
                     }
                   }
                 ]
@@ -832,7 +829,6 @@ hit_search:
         "ener": {
           "codelist": "6400",
           "codelist_entry_id": "4",
-          "icon": "ic-ener",
           "query": {
             "filter": {
               "bool": {
@@ -844,7 +840,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "4"
+                      "keywords.id": "4"
                     }
                   }
                 ]
@@ -855,7 +851,6 @@ hit_search:
         "envi": {
           "codelist": "6400",
           "codelist_entry_id": "5",
-          "icon": "ic-envi",
           "query": {
             "filter": {
               "bool": {
@@ -867,7 +862,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "5"
+                      "keywords.id": "5"
                     }
                   }
                 ]
@@ -878,7 +873,6 @@ hit_search:
         "heal": {
           "codelist": "6400",
           "codelist_entry_id": "6",
-          "icon": "ic-heal",
           "query": {
             "filter": {
               "bool": {
@@ -890,7 +884,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "6"
+                      "keywords.id": "6"
                     }
                   }
                 ]
@@ -901,7 +895,6 @@ hit_search:
         "intr": {
           "codelist": "6400",
           "codelist_entry_id": "7",
-          "icon": "ic-intr",
           "query": {
             "filter": {
               "bool": {
@@ -913,7 +906,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "7"
+                      "keywords.id": "7"
                     }
                   }
                 ]
@@ -924,7 +917,6 @@ hit_search:
         "just": {
           "codelist": "6400",
           "codelist_entry_id": "8",
-          "icon": "ic-just",
           "query": {
             "filter": {
               "bool": {
@@ -936,7 +928,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "8"
+                      "keywords.id": "8"
                     }
                   }
                 ]
@@ -947,7 +939,6 @@ hit_search:
         "soci": {
           "codelist": "6400",
           "codelist_entry_id": "9",
-          "icon": "ic-soci",
           "query": {
             "filter": {
               "bool": {
@@ -959,7 +950,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "9"
+                      "keywords.id": "9"
                     }
                   }
                 ]
@@ -970,7 +961,6 @@ hit_search:
         "gove": {
           "codelist": "6400",
           "codelist_entry_id": "10",
-          "icon": "ic-gove",
           "query": {
             "filter": {
               "bool": {
@@ -982,7 +972,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "10"
+                      "keywords.id": "10"
                     }
                   }
                 ]
@@ -993,7 +983,6 @@ hit_search:
         "regi": {
           "codelist": "6400",
           "codelist_entry_id": "11",
-          "icon": "ic-regi",
           "query": {
             "filter": {
               "bool": {
@@ -1005,7 +994,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "11"
+                      "keywords.id": "11"
                     }
                   }
                 ]
@@ -1016,7 +1005,6 @@ hit_search:
         "tech": {
           "codelist": "6400",
           "codelist_entry_id": "12",
-          "icon": "ic-tech",
           "query": {
             "filter": {
               "bool": {
@@ -1028,7 +1016,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "12"
+                      "keywords.id": "12"
                     }
                   }
                 ]
@@ -1039,7 +1027,6 @@ hit_search:
         "tran": {
           "codelist": "6400",
           "codelist_entry_id": "13",
-          "icon": "ic-tran",
           "query": {
             "filter": {
               "bool": {
@@ -1051,7 +1038,7 @@ hit_search:
                   },
                   {
                     "term": {
-                      "keywords.id.keyword": "13"
+                      "keywords.id": "13"
                     }
                   }
                 ]
