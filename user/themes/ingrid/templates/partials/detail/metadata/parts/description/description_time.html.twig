@@ -22,7 +22,7 @@
             {% set timeBegin = timeRefs.timeBegin ? timeRefs.timeBegin|date("d.m.Y") : "" %}
             {% set timeEnd = timeRefs.timeEnd ? timeRefs.timeEnd|date("d.m.Y") : "" %}
             {% if timeAt %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeAt, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeBegin)) }}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeAt, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeAt)) }}
             {% elseif timeBegin == timeEnd %}
                 {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeBegin, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeBegin)) }}
             {% elseif timeBegin and timeEnd is empty %}

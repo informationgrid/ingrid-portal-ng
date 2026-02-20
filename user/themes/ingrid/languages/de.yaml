@@ -383,7 +383,7 @@ SEARCH_DETAIL:
     T01_OBJECT_TIME_FROM: Durch die Ressource abgedeckte Zeitspanne > von
     T01_OBJECT_TIME_TO: Durch die Ressource abgedeckte Zeitspanne > bis
     T01_OBJECT_TIME_TYPE: 'Zeitbezug: am, seit (bis: Zeitpunkt des Abrufs), seit (bis: unbekannter Zeitpunkt), von'
-    T01_OBJECT_TIME_DESCR: Erläuterung zum Zeitbezug
+    T01_OBJECT_TIME_DESCR: Erläuterung zum Pflegeintervall
     T01_OBJECT_TIME_PERIOD: Pflege- und Aktualisierungsintervall
     T01_OBJECT_TIME_INTERVAL: Benutzerdefiniertes Intervall der Erhebung
     T01_OBJECT_TIME_ALLE: Intervall (alle)
@@ -504,7 +504,7 @@ SEARCH_DETAIL:
     T0113_DATASET_REFERENCE_REFERENCE_DATE: Zeitbezug der Ressource > Wert
     T0113_DATASET_REFERENCE_TYPE: Zeitbezug der Ressource > Typ
     T0113_DATASET_REFERENCE_TYPE1: Erstellung
-    T0113_DATASET_REFERENCE_TYPE2: Publikation
+    T0113_DATASET_REFERENCE_TYPE2: Erstmalige Veröffentlichung
     T0113_DATASET_REFERENCE_TYPE3: Letzte Änderung
     T0113_DATASET_REFERENCE_MOD_TYPE: Änderungsflag
     T011_OBJ_GEO_SPATIAL_REP_OBJ_ID: Object-ID
