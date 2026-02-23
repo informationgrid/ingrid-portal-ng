@@ -17,7 +17,7 @@ jobs:
             web-ui: "https://devguard.wemove.com"
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
-            token: ${{ secrets.GH_PAT }}
+            GH_PAT: ${{ secrets.GH_PAT }}
 
     bad-practice-finder:
         uses: l3montree-dev/devguard-action/.github/workflows/static-application-security-testing.yml@main
@@ -27,7 +27,7 @@ jobs:
             web-ui: "https://devguard.wemove.com"
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
-            token: ${{ secrets.GH_PAT }}
+            GH_PAT: ${{ secrets.GH_PAT }}
 
     infrastructure-as-code-scanning:
         uses: l3montree-dev/devguard-action/.github/workflows/iac.yml@main
@@ -37,7 +37,7 @@ jobs:
             web-ui: "https://devguard.wemove.com"
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
-            token: ${{ secrets.GH_PAT }}
+            GH_PAT: ${{ secrets.GH_PAT }}
 
     dependency-scanning:
         uses: l3montree-dev/devguard-action/.github/workflows/software-composition-analysis.yml@main
@@ -47,4 +47,4 @@ jobs:
             web-ui: "https://devguard.wemove.com"
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings 
-            token: ${{ secrets.GH_PAT }}
+            GH_PAT: ${{ secrets.GH_PAT }}
