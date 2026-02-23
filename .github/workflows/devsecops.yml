@@ -15,9 +15,9 @@ jobs:
             asset-name: "wemove/projects/ingrid/assets/ingrid-portal"
             api-url: "https://api.devguard.wemove.com"
             web-ui: "https://devguard.wemove.com"
-            token: ${{ secrets.GH_PAT }}
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
+            token: ${{ secrets.GH_PAT }}
 
     bad-practice-finder:
         uses: l3montree-dev/devguard-action/.github/workflows/static-application-security-testing.yml@main
@@ -25,7 +25,6 @@ jobs:
             asset-name: "wemove/projects/ingrid/assets/ingrid-portal"
             api-url: "https://api.devguard.wemove.com"
             web-ui: "https://devguard.wemove.com"
-            token: ${{ secrets.GH_PAT }}
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
             token: ${{ secrets.GH_PAT }}
@@ -36,7 +35,6 @@ jobs:
             asset-name: "wemove/projects/ingrid/assets/ingrid-portal"
             api-url: "https://api.devguard.wemove.com"
             web-ui: "https://devguard.wemove.com"
-            token: ${{ secrets.GH_PAT }}
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
             token: ${{ secrets.GH_PAT }}
@@ -47,7 +45,6 @@ jobs:
             asset-name: "wemove/projects/ingrid/assets/ingrid-portal"
             api-url: "https://api.devguard.wemove.com"
             web-ui: "https://devguard.wemove.com"
-            token: ${{ secrets.GH_PAT }}
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings 
             token: ${{ secrets.GH_PAT }}
