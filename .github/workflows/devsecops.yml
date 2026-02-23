@@ -10,7 +10,7 @@ permissions:
 
 jobs:
     find-leaked-secrets:
-        uses: ./.github/workflows/secret-scanning.yml
+        uses: l3montree-dev/devguard-action/.github/workflows/secret-scanning.yml@main
         with:
             asset-name: "wemove/projects/ingrid/assets/ingrid-portal"
             api-url: "https://api.devguard.wemove.com"
