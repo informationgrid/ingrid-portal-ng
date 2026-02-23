@@ -41,7 +41,7 @@ jobs:
       with:
         submodules: recursive
         fetch-depth: 0
-        persist-credentials: false
+        persist-credentials: true
         token: ${{ secrets.GH_PAT }}
     - name: DevGuard Static application security testing
       uses: docker://ghcr.io/l3montree-dev/devguard/scanner:main-latest
