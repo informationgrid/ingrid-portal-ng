@@ -17,7 +17,6 @@ jobs:
             web-ui: "https://devguard.wemove.com"
         secrets:
             devguard-token: "${{ secrets.DEVGUARD_TOKEN }}" # you need to create this secret in your GitHub repository settings
-            GH_PAT: ${{ secrets.GH_PAT }}
 
     bad-practice-finder:
         uses: ./.github/workflows/static-application-security-testing.yml
