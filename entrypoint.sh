@@ -226,13 +226,47 @@ fi
 #####################
 LOGIN_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/login/login.yaml
 
-yq -i '.route = env(LOGIN_PLUGIN_ROUTE)' "$LOGIN_YAML"
-yq -i '.route_activate = env(LOGIN_PLUGIN_ROUTE_ACTIVATE)' "$LOGIN_YAML"
-yq -i '.route_forgot = env(LOGIN_PLUGIN_ROUTE_FORGOT)' "$LOGIN_YAML"
-yq -i '.route_reset = env(LOGIN_PLUGIN_ROUTE_RESET)' "$LOGIN_YAML"
-yq -i '.route_profile = env(LOGIN_PLUGIN_ROUTE_PROFILE)' "$LOGIN_YAML"
-yq -i '.route_register = env(LOGIN_PLUGIN_ROUTE_REGISTER)' "$LOGIN_YAML"
-yq -i '.route_unauthorized = env(LOGIN_PLUGIN_ROUTE_UNAUTHORIZED)' "$LOGIN_YAML"
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route = env(LOGIN_PLUGIN_ROUTE)' "$LOGIN_YAML"
+else
+  yq -i '.route = ""' "$LOGIN_YAML"
+fi
+
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route_activate = env(LOGIN_PLUGIN_ROUTE_ACTIVATE)' "$LOGIN_YAML"
+else
+  yq -i '.route_activate = ""' "$LOGIN_YAML"
+fi
+
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route_forgot = env(LOGIN_PLUGIN_ROUTE_FORGOT)' "$LOGIN_YAML"
+else
+  yq -i '.route_forgot = ""' "$LOGIN_YAML"
+fi
+
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route_reset = env(LOGIN_PLUGIN_ROUTE_RESET)' "$LOGIN_YAML"
+else
+  yq -i '.route_reset = ""' "$LOGIN_YAML"
+fi
+
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route_profile = env(LOGIN_PLUGIN_ROUTE_PROFILE)' "$LOGIN_YAML"
+else
+  yq -i '.route_profile = ""' "$LOGIN_YAML"
+fi
+
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route_register = env(LOGIN_PLUGIN_ROUTE_REGISTER)' "$LOGIN_YAML"
+else
+  yq -i '.route_register = ""' "$LOGIN_YAML"
+fi
+
+if [ "$LOGIN_PLUGIN_ROUTE" ]; then
+  yq -i '.route_unauthorized = env(LOGIN_PLUGIN_ROUTE_UNAUTHORIZED)' "$LOGIN_YAML"
+else
+  yq -i '.route_unauthorized = ""' "$LOGIN_YAML"
+fi
 
 #####################
 # Active theme config
