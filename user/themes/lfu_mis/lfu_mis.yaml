@@ -628,7 +628,7 @@ redirect:
     - /sitemap
   pages_to_redirect:
     - path: /imprint
-      url: 'https://intranet.lfu.bybn.de/impressum/index.htm'
+      url: 'http://intranet.lfu.bybn.de/impressum/index.htm'
 catalog:
   open_nodes_level: 3
   display_partner: true
