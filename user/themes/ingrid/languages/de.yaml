@@ -896,10 +896,11 @@ SEARCH_DETAIL:
           MESSAGE: Die Daten beziehen sich auf den %s.
         TIME_SINCE:
           TITLE: Hinweis
-          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne bis %s (Beginn unbekannt).
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne ab dem %s (Ende unbekannt).
+          MESSAGE_NOW: Die Daten beziehen sich auf eine fortlaufende Zeitspanne seit dem %s.
         TIME_UNTIL:
           TITLE: Hinweis
-          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne ab dem %s (Ende unbekannt).
+          MESSAGE: Die Daten beziehen sich auf eine Zeitspanne bis %s (Beginn unbekannt).
         TIME_FROM:
           TITLE: Hinweis
           MESSAGE: Die Daten beziehen sich auf eine Zeitspanne vom %s bis %s.
