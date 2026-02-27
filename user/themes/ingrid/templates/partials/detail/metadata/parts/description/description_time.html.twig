@@ -22,15 +22,24 @@
             {% set timeBegin = timeRefs.timeBegin ? timeRefs.timeBegin|date("d.m.Y") : "" %}
             {% set timeEnd = timeRefs.timeEnd ? timeRefs.timeEnd|date("d.m.Y") : "" %}
             {% if timeAt %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeAt, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeAt)) }}
+                {% set help = "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeAt) %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeAt, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, help) }}
             {% elseif timeBegin == timeEnd %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeBegin, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeBegin)) }}
+                {% set help = "SEARCH_DETAIL.TIME.HELP.TIME_AT.MESSAGE"|t(timeBegin) %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeBegin, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_AT.TITLE"|t, help) }}
             {% elseif timeBegin and timeEnd is empty %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_SINCE"|t ~ " " ~ timeBegin ~ toIndeterminate, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_SINCE.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_SINCE.MESSAGE"|t(timeBegin)) }}
+                {% if timeRefs.timeFromType and timeRefs.timeFromType == "now" %}
+                    {% set help = "SEARCH_DETAIL.TIME.HELP.TIME_SINCE.MESSAGE_NOW"|t(timeBegin) %}
+                {% else %}
+                    {% set help = "SEARCH_DETAIL.TIME.HELP.TIME_SINCE.MESSAGE"|t(timeBegin) %}
+                {% endif %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_SINCE"|t ~ " " ~ timeBegin ~ toIndeterminate, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_SINCE.TITLE"|t, help) }}
             {% elseif timeBegin is empty and timeEnd %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_UNTIL"|t ~ " " ~ timeEnd, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_UNTIL.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_UNTIL.MESSAGE"|t(timeEnd)) }}
+                {% set help = "SEARCH_DETAIL.TIME.HELP.TIME_UNTIL.MESSAGE"|t(timeEnd) %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_UNTIL"|t ~ " " ~ timeEnd, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_UNTIL.TITLE"|t, help) }}
             {% elseif timeBegin != timeEnd %}
-                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_FROM"|t ~ " " ~ timeBegin ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeEnd, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_FROM.TITLE"|t, "SEARCH_DETAIL.TIME.HELP.TIME_FROM.MESSAGE"|t(timeBegin, timeEnd)) }}
+                {% set help = "SEARCH_DETAIL.TIME.HELP.TIME_FROM.MESSAGE"|t(timeBegin, timeEnd) %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_FROM"|t ~ " " ~ timeBegin ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeEnd, null, null, null, "SEARCH_DETAIL.TIME.HELP.TIME_FROM.TITLE"|t, help) }}
             {% endif %}
         {% endif %}
     {# Zeitliche Genauigkeit #}
