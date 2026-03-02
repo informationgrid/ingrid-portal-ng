@@ -10,6 +10,7 @@ meta:
 visible: true
 include_twigs:
   - 'partials/global/teaser/teaser-resizer.html.twig'
+cache_enable: false
 routes:
   default: /anwendungen
 content:
