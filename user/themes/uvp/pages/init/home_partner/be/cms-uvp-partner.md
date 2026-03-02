@@ -10,6 +10,7 @@ meta:
   keywords: PAGES.PARTNER_META_KEYWORDS
   description: PAGES.PARTNER_META_DESCRIPTION
 visible: true
+cache_enable: false
 routes:
   default: /be
 content:

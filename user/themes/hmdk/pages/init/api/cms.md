@@ -9,6 +9,7 @@ meta:
   keywords: PAGES.API_META_KEYWORDS
   description: PAGES.API_META_DESCRIPTION
 visible: true
+cache_enable: false
 routes:
   default: /api
 content:

@@ -8,6 +8,7 @@ meta:
   keywords: PAGES.LANGUAGE_EASY_META_KEYWORDS
   description: PAGES.LANGUAGE_EASY_META_DESCRIPTION
 visible: true
+cache_enable: false
 routes:
   default: /leichte-sprache
 content:
