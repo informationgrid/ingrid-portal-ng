@@ -33,6 +33,7 @@ RUN groupadd --system foo; \
         rsync \
         gosu \
         cron \
+        apache2-utils \
         wget
 
 RUN apt install -y --no-install-recommends \
