@@ -405,7 +405,7 @@ mkdir -p assets backup cache images logs tmp
 
 # Install mvis
 if [ "$ENABLE_MVIS" = "false" ]; then
-  rm -rf /var/www/"$GRAV_FOLDER"/assets/mvis
+  rm -rf /var/www/"$GRAV_FOLDER"/user/data/mvis
 fi
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2

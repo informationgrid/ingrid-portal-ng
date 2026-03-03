@@ -39,9 +39,9 @@ unzip -qq grav-admin.zip -x 'grav-admin/user/pages/*' -d %{buildroot}/var/www/
 rm grav-admin.zip
 mv %{buildroot}/var/www/grav-admin %{buildroot}%{install_root}
 
-unzip -qq mvis.zip -d %{buildroot}%{install_root}/assets
+unzip -qq mvis.zip -d %{buildroot}%{install_root}/user/data
 rm mvis.zip
-mv %{buildroot}%{install_root}/assets/measurement-client-%{version_mvis} %{buildroot}%{install_root}/assets/mvis
+mv %{buildroot}%{install_root}/user/data/measurement-client-%{version_mvis} %{buildroot}%{install_root}/user/data/mvis
 
 # COPY OUR ADDITIONAL THEMES AND PLUGINS
 mkdir -p %{buildroot}%{install_root}/user

@@ -388,7 +388,7 @@ measure:
       - nlwkn
     initial:
       - odl
-  url: '/assets/mvis/index.html'
+  url: '/user/data/mvis/index.html'
   elastic: 'https://numis.niedersachsen.de/elastic-measure-7/'
 redirect:
   pages_to_404:
