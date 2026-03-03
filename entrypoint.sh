@@ -420,6 +420,16 @@ cd /var/www/"$GRAV_FOLDER"
 runuser -u www-data -- /usr/local/bin/php bin/grav scheduler -r ingrid-codelist-index
 runuser -u www-data -- /usr/local/bin/php bin/grav scheduler -r ingrid-rss-index
 
+##########################
+# Migration theme settings
+##########################
+INGRID_GRAV_THEME_CONFIG_YAML=/var/www/"$GRAV_FOLDER"/user/config/themes/"$THEME"/"$THEME".yaml
+
+if [ -f "$INGRID_GRAV_THEME_CONFIG_YAML" ]; then
+  # Change measure URL
+  yq -i '.measure.url = "/user/data/mvis/index.html"' "$INGRID_GRAV_THEME_CONFIG_YAML"
+fi
+
 service cron start
 
 exec gosu www-data "$@"
