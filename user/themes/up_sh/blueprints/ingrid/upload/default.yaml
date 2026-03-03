@@ -8,7 +8,7 @@ form:
     upload.portals:
       type: file
       label: THEME.ADMIN.UPLOAD.PORTALS.TITLE
-      destination: 'config://themes/upload/portals'
+      destination: 'user-data://uploads/portals'
       multiple: true
       limit: 0
       autofocus: false
