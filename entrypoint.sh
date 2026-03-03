@@ -93,16 +93,18 @@ if [ -d "/var/www/$GRAV_FOLDER/user/config" ]; then
              --exclude /logs/ \
              --exclude /tmp/ \
              --exclude /user/config/ \
-             --exclude /user/accounts/admin.yaml \
+             --exclude /user/accounts/ \
              --exclude /user/pages \
+             --exclude /user/data/uploads \
              /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 else
   rsync -rlD --delete \
              --exclude /backup/ \
              --exclude /logs/ \
              --exclude /tmp/ \
-             --exclude /user/accounts/admin.yaml \
+             --exclude /user/accounts/ \
              --exclude /user/pages \
+             --exclude /user/data/uploads \
              /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 fi
 
