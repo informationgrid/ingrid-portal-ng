@@ -423,7 +423,7 @@ runuser -u www-data -- /usr/local/bin/php bin/grav scheduler -r ingrid-rss-index
 ##########################
 # Migration theme settings
 ##########################
-INGRID_GRAV_THEME_CONFIG_YAML=/var/www/"$GRAV_FOLDER"/user/config/themes/"$THEME"/"$THEME".yaml
+INGRID_GRAV_THEME_CONFIG_YAML=/var/www/"$GRAV_FOLDER"/user/config/themes/"$THEME".yaml
 
 if [ -f "$INGRID_GRAV_THEME_CONFIG_YAML" ]; then
   # Change measure URL
