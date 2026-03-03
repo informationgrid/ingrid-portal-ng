@@ -111,7 +111,12 @@ fi
 #####################
 # Default admin config
 #####################
-ADMIN_YAML=/var/www/"$GRAV_FOLDER"/user/accounts/admin.yaml
+ACCOUNTS_CONFIG_FOLDER=/var/www/"$GRAV_FOLDER"/user/accounts
+ADMIN_YAML="$ACCOUNTS_CONFIG_FOLDER"/admin.yaml
+
+if [ ! -d "$ACCOUNTS_CONFIG_FOLDER" ]; then
+  mkdir "$ACCOUNTS_CONFIG_FOLDER"
+fi
 
 # Add admin user
 if [ ! -f "$ADMIN_YAML" ] && [ -n "$ADMIN_PASSWORD" ]; then
