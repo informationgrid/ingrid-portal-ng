@@ -119,12 +119,12 @@ if [ ! -d "$ACCOUNTS_CONFIG_FOLDER" ]; then
 fi
 
 # Add admin user
-if [ ! -f "$ADMIN_YAML" ] && [ -n "$ADMIN_PASSWORD" ]; then
+if [ ! -f "$ADMIN_YAML" ] && [ "$ADMIN_PASSWORD" ]; then
   cp /usr/share/grav-admin/user/accounts/admin.yaml.template "$ADMIN_YAML"
   yq -i '.email = env(ADMIN_EMAIL)' "$ADMIN_YAML"
   yq -i '.fullname = env(ADMIN_FULL_NAME)' "$ADMIN_YAML"
 
-  hashed_password=$(htpasswd -bnBC 8 "" "$ADMIN_PASSWORD" | grep -oP '\$2[ayb]\$.{56}') \
+  export hashed_password=$(htpasswd -bnBC 8 "" "$ADMIN_PASSWORD" | grep -oP '\$2[ayb]\$.{56}')
   yq -i '.hashed_password = env(hashed_password)' "$ADMIN_YAML"
 fi
 
