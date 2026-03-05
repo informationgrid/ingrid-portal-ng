@@ -554,7 +554,12 @@ redirect:
   pages_to_redirect:
     -
       path: /help
-      url: 'https://it-navigator.itzbund_wsv.res.bund.de/display/geoportalwsvhilfe/GeoPortal.WSV+Hilfe'
+      url: 'https://confluence.swlm.zd.in.bund.de/x/XghLsg'
+    -
+      path: /help
+      params:
+        hkey: maps-1
+      url: 'https://confluence.swlm.zd.in.bund.de/x/1g1Osg'
 rss:
   feeds:
 upload:

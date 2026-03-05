@@ -44,6 +44,11 @@ form:
               limit_levels: 2
               validate:
                 required: true
+            .params:
+              type: array
+              label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.LABEL
+              placeholder_key: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.KEY
+              placeholder_value: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.Value
             .url:
               type: text
               label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.URL.LABEL
