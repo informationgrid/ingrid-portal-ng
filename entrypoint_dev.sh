@@ -95,7 +95,7 @@ cd /var/www/html/user/plugins/ingrid-grav-utils && composer update
 cd /var/www
 curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/${MVIS_VERSION}/measurement-client-${MVIS_VERSION}.zip && \
 unzip mvis.zip && \
-mv /var/www/measurement-client-"$MVIS_VERSION" /var/www/"$GRAV_FOLDER"/user/data/mvis && \
+mv /var/www/measurement-client-"$MVIS_VERSION"/ /var/www/"$GRAV_FOLDER"/mvis/ && \
 rm mvis.zip
 
 # init gravcms scheduler

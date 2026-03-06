@@ -410,7 +410,7 @@ mkdir -p assets backup cache images logs tmp
 
 # Install mvis
 if [ "$ENABLE_MVIS" = "false" ]; then
-  rm -rf /var/www/"$GRAV_FOLDER"/user/data/mvis
+  rm -rf /var/www/"$GRAV_FOLDER"/mvis
 fi
 
 chown www-data /proc/self/fd/1 /proc/self/fd/2
@@ -432,7 +432,7 @@ INGRID_GRAV_THEME_CONFIG_YAML=/var/www/"$GRAV_FOLDER"/user/config/themes/"$THEME
 
 if [ -f "$INGRID_GRAV_THEME_CONFIG_YAML" ]; then
   # Change measure URL
-  yq -i '.measure.url = "/user/data/mvis/index.html"' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i '.measure.url = "/mvis/index.html"' "$INGRID_GRAV_THEME_CONFIG_YAML"
 fi
 
 service cron start

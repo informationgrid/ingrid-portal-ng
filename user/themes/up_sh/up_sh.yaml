@@ -479,7 +479,7 @@ measure:
     exclude:
     initial:
       - uba
-  url: '/user/data/mvis/index.html'
+  url: '/mvis/index.html'
   elastic: 'https://umweltportal.schleswig-holstein.de/elastic-measure/'
 redirect:
   pages_to_404:
