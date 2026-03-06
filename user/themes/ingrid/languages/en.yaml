@@ -1156,7 +1156,7 @@ THEME:
                 PARAMS:
                     LABEL: Parameter
                     KEY: Key
-                    VALUE: Wert
+                    VALUE: Value
         PAGES:
             TITLE: Pages
         HOME:

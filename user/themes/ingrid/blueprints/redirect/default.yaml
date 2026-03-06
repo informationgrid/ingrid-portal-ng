@@ -48,7 +48,7 @@ form:
               type: array
               label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.LABEL
               placeholder_key: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.KEY
-              placeholder_value: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.Value
+              placeholder_value: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.PARAMS.VALUE
             .url:
               type: text
               label: THEME.ADMIN.REDIRECT.PAGES_TO_REDIRECT.URL.LABEL
