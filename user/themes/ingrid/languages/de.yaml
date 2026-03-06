@@ -1155,8 +1155,8 @@ THEME:
                     LABEL: URL
                 PARAMS:
                     LABEL: Parameter
-                    KEY: Key
-                    VALUE: Wert
+                    KEY: Parameter-Schlüssel
+                    VALUE: Parameter-Wert
         PAGES:
             TITLE: Seiten
         HOME:
