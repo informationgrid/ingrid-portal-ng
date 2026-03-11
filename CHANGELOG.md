@@ -1,4 +1,17 @@
 
+## 8.2.5 (11.03.2026)
+
+### Features
+
+* Portal: Umsortierung Zeitbezüge (#8770)
+* Was ist geodatenkatalog-niederrhein.de/login (#8751)
+
+### Bugfixes
+
+* PORTAL: Messwerte-Client kann durch die GravCMS-Administration gelöscht werden (#8820)
+* PORTAL: Uploads werden nach Neustart des Docker-Containers entfernt (#8819)
+* Zeitbezug: Diskrepanz Hinweistexte im Portal und im Editor (#8813)
+    
 ## 8.2.2 (13.02.2026)
 
 ### Features
