@@ -3,7 +3,7 @@ PAGES:
   HOME: Startseite
   HOME_META_TITLE: Startseite
   MAP: GeoViewer.WSV
-  MAP_META_TITLE: 'Verfügbare Kartendienste vom %s'
+  MAP_META_TITLE: 'Verfügbare Kartendienste vom GeoPortal.WSV'
   APPLICATION: Anwendungen
   APPLICATION_MENU_TITLE: Anwendungen
   APPLICATION_META_TITLE: Anwendungen
