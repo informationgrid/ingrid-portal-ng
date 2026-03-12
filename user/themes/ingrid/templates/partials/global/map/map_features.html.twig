@@ -1,8 +1,8 @@
 {% if geojsons %}
     {% for geojson in geojsons %}
-        addLayerWKT(tmpMap, '{{ geojson|raw }}');
+        addLayerWKT({{ map }}, '{{ geojson|raw }}');
     {% endfor %}
 {% endif %}
 {% if coords %}
-    addLayerBounds(tmpMap, coords, {{ usePopUp ?? false }});
+    addLayerBounds({{ map }}, coords, {{ usePopUp ?? false }});
 {% endif %}
