@@ -15,31 +15,31 @@
         {% if map_bg_wms.url and map_bg_wms.name %}
             bgLayer = getWMSLayer('{{ map_bg_wms.url }}', '{{ map_bg_wms.name }}', '');
         {% endif %}
-        var tmpMap = addLeafletMapWithId('{{ mapId }}', bgLayer, null, null , 10);
+        var {{ mapId }} = addLeafletMapWithId('{{ mapId }}', bgLayer, null, null , 10);
         {% if displayControls %}
-            tmpMap.gestureHandling.enable();
+        {{ mapId }}.gestureHandling.enable();
         {% else %}
-            disableLeafletMapTouchControl(tmpMap);
+            disableLeafletMapTouchControl({{ mapId }});
         {% endif %}
 
-        {% include 'partials/global/map/map_features.html.twig' %}
+        {% include 'partials/global/map/map_features.html.twig' with { 'map': mapId }%}
 
         {% if not isHitOpen %}
             $('#' + id).closest('.js-expander-content').addClass('is-hidden');
         {% endif %}
 
         var features = [];
-        tmpMap.eachLayer(function (layer) {
+        {{ mapId }}.eachLayer(function (layer) {
             if (layer && (layer.getBounds || layer.getLatLng)) {
                 features.push(layer);
             }
         })
         if (features.length > 0) {
             bounds = L.featureGroup(features).getBounds();
-            tmpMap.fitBounds(bounds);
+            {{ mapId }}.fitBounds(bounds);
         }
         {% if displayControls %}
-            addLeafletHomeControl(tmpMap, 'Zoom auf initialen Kartenausschnitt', 'topleft', 'ic-ic-center', tmpMap.getBounds(), '', '23px');
+            addLeafletHomeControl({{ mapId }}, 'Zoom auf initialen Kartenausschnitt', 'topleft', 'ic-ic-center', {{ mapId }}.getBounds(), '', '23px');
         {% endif %}
     </script>
 {% endif %}
