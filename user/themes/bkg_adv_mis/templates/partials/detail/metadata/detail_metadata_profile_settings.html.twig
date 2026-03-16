@@ -1,29 +1,6 @@
 {% set infoRefs_additional = removeKey(infoRefs_additional, "conformity") %}
 {% set dataQualityRefs = addKeyValue(dataQualityRefs, "conformity", hit.conformity) %}
 {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt) %}
-{% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
-
-{% if useRefs.useConstraints.constraints %}
-    {% set jsonConstraints = useRefs.useConstraints.constraints|filter(v => (v starts with '{')) %}
-    {% set stringConstraints = useRefs.useConstraints.constraints|filter(v => not (v starts with '{')) %}
-    {% if jsonConstraints is not empty %}
-        {% for constraints in jsonConstraints %}
-            {% set entryToJson = constraints|json_decode() %}
-            {% if entryToJson.name is not empty %}
-                {% set constrName = entryToJson.name %}
-                {% if constrName not in stringConstraints %}
-                    {% set stringConstraints = stringConstraints|merge({(loop.index0): constrName}) %}
-                {% endif %}
-            {% endif %}
-            {% if entryToJson.quelle is not empty %}
-                {% set constrSource = entryToJson.quelle %}
-                {% if constrSource not in stringConstraints %}
-                    {% set stringConstraints = stringConstraints|merge({(loop.index0): constrSource}) %}
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-    {% set useRefs = addKeyValue(useRefs, "useConstraints", { "constraints": stringConstraints }) %}
-{% endif %}
+{% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or timeRefs.timePeriod or timeRefs.timeInterval) %}
 
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

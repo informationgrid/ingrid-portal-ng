@@ -1,0 +1,18 @@
+{# Simulationsdaten #}
+
+{% if hasSimulation %}
+    <li class="accordion-item" data-accordion-item>
+        <a href="#{{ hash_simulation }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_simulation }}-accordion-label">
+            <span class="text">{{ "SEARCH_DETAIL.SIMULATION.TITLE"|t }}</span>
+        </a>
+        <div class="accordion-content {% if not hasSimulationBautechnik %}is-hidden{% endif %}" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_simulation }}-accordion-label" id="{{ hash_simulation }}-accordion">
+            <div class="boxes">
+                {% if hasSimulationBautechnik %}
+                    {% set tmpHash = hash_simulationBautechnik %}
+                    {% set tmpTitle = "SEARCH_DETAIL.SIMULATION.BAUTECHNIK.TITLE"|t %}
+                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endif %}

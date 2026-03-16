@@ -1,0 +1,57 @@
+{# Simulationsdaten Bautechnik #}
+
+{% if hasSimulationBautechnik %}
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_simulationBautechnik }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.TITLE"|t) }}
+{# Software (Name/Version) #}
+    {% set header = [
+        "Name",
+        "Version",
+    ] %}
+    {{ hit_macros.render_table("Software", header, simulationBautechnik.software, [0]) }}
+{# Objekt #}
+    {{ hit_macros.render_label_text_list_row("Objekt", simulationBautechnik.object) }}
+{# Objektteil #}
+    {{ hit_macros.render_label_text_list_row("Objektteil", simulationBautechnik.objectPart) }}
+{# Untersuchungsziel #}
+    {{ hit_macros.render_label_text_list_row("Untersuchungsziel", simulationBautechnik.researchGoal) }}
+{# Räumliche Dimensionen #}
+
+{# Zeitliche Dimension (Checkbox) #}
+    {{ hit_macros.render_label_text_list_row("Zeitliche Dimension", simulationBautechnik.timeDimension) }}
+{# Level der Untersuchung #}
+    {{ hit_macros.render_label_text_list_row("Level der Untersuchung", simulationBautechnik.level) }}
+{# Untersuchungsstufe #}
+    {{ hit_macros.render_label_text_list_row("Untersuchungsstufe", simulationBautechnik.phase) }}
+{# Berechnungskonzepte (Materiell/Geometrisch linear, Imperfektionen) #}
+    {% set header = [
+        "materiell",
+        "geometrisch",
+        "Imperfektionen",
+    ] %}
+    {{ hit_macros.render_table("Berechnungskonzepte", header, simulationBautechnik.calculationConcept, [0]) }}
+{# Werkstoffe #}
+    {{ hit_macros.render_label_text_list_row("Werkstoffe", simulationBautechnik.materials) }}
+{# Fließgrenze Bewehrung #}
+    {{ hit_macros.render_label_text_list_row("Fließgrenze Bewehrung", simulationBautechnik.reinforcement) }}
+{# Fließgrenze Stahl #}
+    {{ hit_macros.render_label_text_list_row("Fließgrenze Stahl", simulationBautechnik.steel) }}
+{# Betondruckfestigkeit #}
+    {% set header = [
+        "Wert",
+        "Einheit",
+    ] %}
+    {{ hit_macros.render_table("Vertikale Ausdehnung (Min/Max)", header, simulationBautechnik.compressiveStrength, [0,1]) }}
+{# Materialmodell #}
+    {{ hit_macros.render_label_text_list_row("RMaterialmodell", simulationBautechnik.materialModel) }}
+{# Elementtypen #}
+    {{ hit_macros.render_label_text_list_row("Elementtypen", simulationBautechnik.elementTypes) }}
+{# Einwirkung #}
+    {{ hit_macros.render_label_text_list_row("Einwirkung", simulationBautechnik.einwirkung) }}
+{# Physik #}
+    {{ hit_macros.render_label_text_list_row("Physik", simulationBautechnik.physics) }}
+{# Analysetyp #}
+    {{ hit_macros.render_label_text_list_row("Analysetyp", simulationBautechnik.analysisType) }}
+</div>
+{% endif %}

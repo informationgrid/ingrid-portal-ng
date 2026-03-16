@@ -1,0 +1,18 @@
+{# Messdaten Bautechnik #}
+
+{% if hasMeasurementBautechnik %}
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_measurementBautechnik }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.MEASUREMENT.BAUTECHNIK.TITLE"|t) }}
+{# Untersuchungsziel #}
+    {{ hit_macros.render_label_text_list_row("Untersuchungsziel", measurementBautechnik.researchGoal) }}
+{# Art #}
+    {{ hit_macros.render_label_text_row("Art", measurementBautechnik.measurementType) }}
+{# Objektidentnr #}
+    {{ hit_macros.render_label_text_row("Objektidentnr", measurementBautechnik.windID) }}
+{# Messrichtung #}
+    {{ hit_macros.render_label_text_row("Messrichtung", measurementBautechnik.measurementDirection) }}
+{# Messgrößen #}
+    {{ hit_macros.render_label_text_list_row("Messverfahren", measurementBautechnik.parameter) }}
+</div>
+{% endif %}

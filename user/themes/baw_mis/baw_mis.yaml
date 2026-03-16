@@ -762,6 +762,7 @@ hit_detail:
       - dataSourceName
       - iPlugId
       - title
+      - simulation_data_type
     exclude:
       - content
   query_string_operator: AND

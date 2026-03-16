@@ -1,0 +1,6 @@
+{# BAW Schlagworte #}
+{{ hit_macros.render_teaser_list("SEARCH_DETAIL.BAW_KEYWORDS"|t, infoRefs_keyword.bawKeywords) }}
+{# BAW Schlagworte #}
+{{ hit_macros.render_teaser_list("SEARCH_DETAIL.SUBSOIL_KEYWORDS"|t, infoRefs_keyword.subsoilKeywords) }}
+{# Suchbegriffe #}
+{{ hit_macros.render_teaser_list("SEARCH_DETAIL.SEARCH_TERMS"|t, (infoRefs_keyword.searchTerms ?? [])|sortIgnoreCase, true, "search_terms", 10, paramsMore) }}

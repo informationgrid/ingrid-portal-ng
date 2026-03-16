@@ -39,8 +39,6 @@
 {% set timeRefs = addKeyValue(timeRefs, "timeCreation", hit.timeCreation) %}
 {% set timeRefs = addKeyValue(timeRefs, "timePublication", hit.timePublication) %}
 {% set timeRefs = addKeyValue(timeRefs, "timeRevision", hit.timeRevision) %}
-{% set timeRefs = addKeyValue(timeRefs, "timeMeasureValue", hit.timeMeasureValue) %}
-{% set timeRefs = addKeyValue(timeRefs, "timeMeasureUnit", hit.timeMeasureUnit) %}
 
 {# Raumbezug #}
 {% set mapRefs = {} %}
@@ -90,20 +88,6 @@
         {% set infoRefs = addKeyValue(infoRefs, "includedWithDataset", hit.includedWithDataset) %}
         {% set infoRefs = addKeyValue(infoRefs, "featureCatalogues", hit.featureCatalogues) %}
         {% set infoRefs = addKeyValue(infoRefs, "featureTypes", hit.featureTypes) %}
-        {# Messdaten #}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMethod", hit.measurementMethod) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMinDischarge", hit.measurementMinDischarge) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
-        {# Geometrie-Kontext #}
-        {% set infoRefs = addKeyValue(infoRefs, "geometryContext", hit.geometryContext) %}
     {% case '2' %}
         {% set infoRefs = addKeyValue(infoRefs, "literaturAutor", hit.literaturAutor) %}
         {% set infoRefs = addKeyValue(infoRefs, "literaturLoc", hit.literaturLoc) %}
@@ -157,7 +141,6 @@
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "languageCode", hit.languageCode) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "conformity", hit.conformity) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "dataformat", hit.dataformat) %}
-{% set infoRefs_additional = addKeyValue(infoRefs_additional, "geodataLink", hit.geodataLink) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "media", hit.media) %}
 {% set infoRefs_additional = addKeyValue(infoRefs_additional, "orderInstructions", hit.orderInstructions) %}
 

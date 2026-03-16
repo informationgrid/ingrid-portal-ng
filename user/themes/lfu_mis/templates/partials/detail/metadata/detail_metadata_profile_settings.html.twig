@@ -1,2 +1,5 @@
 {% set folderNames = hit.folderNames %}
+
+{% set hasDescription = (alternateTitle or summary or hit.geodataLink or hit.internalNotes) %}
+
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

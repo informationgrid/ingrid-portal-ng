@@ -2,10 +2,12 @@
 
 {# booleans #}
 {% set hasOverview = (links|length > 0 or useRefs.useConstraints.constraints|length > 0 or previews|length > 0 or contactRefs|length > 0) %}
-{% set hasDescription = (alternateTitle or summary) %}
+{% if hasDescription is not defined %}
+    {% set hasDescription = (alternateTitle or summary) %}
+{% endif %}
 {% set hasTime = (timeRefs|length > 0) %}
 {% if hasTimeData is not defined %}
-    {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
+    {% set hasTimeData = (timeRefs.timeBegin or timeRefs.timeEnd or timeRefs.timeAt) %}
 {% endif %}
 {% if hasTimeResource is not defined %}
     {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval) %}
@@ -19,7 +21,6 @@
 {% set hasDataquality = (dataQualityRefs|length > 0) %}
 {% set hasAdditionalFields = (additionalFields|length > 0) %}
 {% set hasMetadataInfo = (metaInfoRefs|length > 0) %}
-{% set hasBibliographicalInfo = (bibliographies|length > 0 or doi or citations|length > 0) %}
 
 {# labels #}
 {% set hash_overview = "detail_overview" %}
@@ -32,7 +33,6 @@
 {% set hash_additional = "detail_additional" %}
 {% set hash_contact = "detail_contact" %}
 {% set hash_metadata_info = "metadata_info" %}
-{% set hash_bibliographical_info = "bibliographical_info" %}
 {% set hash_time = "detail_time" %}
 
 <div class="detail" id="detail">
@@ -67,51 +67,63 @@
         </div>
         <a class="anchor" id="{{ hash_overview }}"></a>
         <div class="xsmall-24 large-18 xlarge-18 columns">
-            {# FactSheet #}
+{# FactSheet #}
             {% if hasOverview %}
                 {% include 'partials/detail/metadata/parts/factsheet/factsheet.html.twig' %}
             {% endif %}
-            {# Beschreibung #}
+{# Beschreibung #}
             {% if hasDescription %}
                 {% include 'partials/detail/metadata/parts/description/description.html.twig' %}
             {% endif %}
-            {# Bibliografische Angaben #}
+{# Bibliografische Angaben #}
             {% if hasBibliographicalInfo %}
                 {% include 'partials/detail/metadata/parts/bibliographical_info/bibliographical_info.html.twig' ignore missing %}
             {% endif %}
-            {# Zeitbezug #}
+{# Zeitbezug #}
             {% if not isTimeInDescription and hasTime %}
                 {% include 'partials/detail/metadata/parts/time/time.html.twig' %}
             {% endif %}
-            {# Raumbezug #}
+{# Raumbezug #}
             {% if hasArea %}
                 {% include 'partials/detail/metadata/parts/area/area.html.twig' %}
             {% endif %}
-            {# Verweise und Downloads #}
+{# Verweise und Downloads #}
             {% if hasLinks %}
                 {% include 'partials/detail/metadata/parts/links/links.html.twig' %}
             {% endif %}
-            {# Nutzung #}
+{# Nutzung #}
             {% if hasUse %}
                 {% include 'partials/detail/metadata/parts/use/use.html.twig' %}
             {% endif %}
-            {# Kontakt #}
+{# Kontakt #}
             {% if hasContact %}
                 {% include 'partials/detail/metadata/parts/contact/contact.html.twig' %}
             {% endif %}
-            {# Fachinformationen #}
+{# Fachinformationen #}
             {% if hasInfo %}
                 {% include 'partials/detail/metadata/parts/information/information.html.twig' %}
             {% endif %}
-            {# Datenqualität #}
+{# Labordaten #}
+            {% if hasLaboratory %}
+                {% include 'partials/detail/metadata/parts/laboratory/laboratory.html.twig' ignore missing %}
+            {% endif %}
+{# Messdaten #}
+            {% if hasMeasurement or hasMeasurementBautechnik %}
+                {% include 'partials/detail/metadata/parts/measurement/measurement.html.twig' ignore missing %}
+            {% endif %}
+{# Simulationsdaten #}
+            {% if hasSimulation or hasSimulationBautechnik %}
+                {% include 'partials/detail/metadata/parts/simulation/simulation.html.twig' ignore missing %}
+            {% endif %}
+{# Datenqualität #}
             {% if hasDataquality %}
                 {% include 'partials/detail/metadata/parts/dataquality/dataquality.html.twig' %}
             {% endif %}
-            {# Zusatzfelder #}
+{# Zusatzfelder #}
             {% if hasAdditionalFields %}
                 {% include 'partials/detail/metadata/parts/additional_fields/additional_fields.html.twig' %}
             {% endif %}
-            {# Infos zur Datensatzbeschreibung #}
+{# Infos zur Datensatzbeschreibung #}
             {% if hasMetadataInfo %}
                 {% include 'partials/detail/metadata/parts/metadata_info/metadata_info.html.twig' %}
             {% endif %}

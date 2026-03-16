@@ -33,7 +33,7 @@
                     </li>
                 {% endif %}
             {# Bibliografische Angaben #}
-                {% include 'partials/detail/metadata/parts/navigation/navigation_bibliographies.html.twig' %}
+                {% include 'partials/detail/metadata/parts/navigation/navigation_bibliographies.html.twig' ignore missing %}
             {# Zeitbezug #}
                 {% if not isTimeInDescription %}
                     {% include 'partials/detail/metadata/parts/navigation/navigation_time.html.twig' %}
@@ -160,6 +160,12 @@
                         </div>
                     </li>
                 {% endif %}
+            {# Labordaten #}
+                {% include 'partials/detail/metadata/parts/navigation/navigation_laboratory.html.twig' ignore missing %}
+            {# Messdaten #}
+                {% include 'partials/detail/metadata/parts/navigation/navigation_measurement.html.twig' ignore missing %}
+            {# Simulationsdaten #}
+                {% include 'partials/detail/metadata/parts/navigation/navigation_simulation.html.twig' ignore missing %}
             {# Datenqualität #}
                 {% if hasDataquality %}
                     <li class="accordion-item" data-accordion-item>

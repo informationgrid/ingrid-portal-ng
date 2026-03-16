@@ -1,0 +1,13 @@
+{# Labordaten #}
+
+{% if hasLaboratory %}
+    <li class="accordion-item" data-accordion-item>
+        <a href="#{{ hash_laboratory }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_laboratory }}-accordion-label">
+            <span class="text">{{ "SEARCH_DETAIL.LABORATORY.TITLE"|t }}</span>
+        </a>
+        <div class="accordion-content is-hidden" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_laboratory }}-accordion-label" id="{{ hash_laboratory }}-accordion">
+            <div class="boxes">
+            </div>
+        </div>
+    </li>
+{% endif %}
