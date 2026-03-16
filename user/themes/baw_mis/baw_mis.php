@@ -392,7 +392,7 @@ class BawMis extends Theme
                 $hit->spatialDimension = IdfHelper::getNodeValue($node, $xpathExpression);
                 // Zeitliche Dimension (Checkbox)
                 $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Dimensionen/zeit/gco:Boolean';
-                $hit->timeDimension = IdfHelper::getNodeBoolValue($node, $xpathExpression);
+                $hit->timeDimension = IdfHelper::getNodeValue($node, $xpathExpression);
                 // Level der Untersuchung
                 $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/LevelDerUntersuchung/levelDerUntersuchung';
                 $hit->level = IdfHelper::getNodeValueList($node, $xpathExpression);
