@@ -1052,21 +1052,21 @@ hit_search:
       "id": "opendata_licenses",
       "query": {
         "terms": {
-          "field": "distributions.license.name.keyword",
+          "field": "distributions.license.name",
           "min_doc_count": 0
         }
       },
-      "search": "distributions.license.name.keyword:%s"
+      "search": "distributions.license.name:%s"
     },
     {
       "id": "opendata_formats",
       "query": {
         "terms": {
-          "field": "distributions.format.keyword",
+          "field": "distributions.format",
           "min_doc_count": 0
         }
       },
-      "search": "distributions.format.keyword:%s"
+      "search": "distributions.format:%s"
     },
     {
       "id": "modtime",
