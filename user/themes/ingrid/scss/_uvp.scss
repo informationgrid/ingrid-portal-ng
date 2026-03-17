@@ -1565,11 +1565,10 @@ a.data:hover {
 .info--right {
   float: right;
 
-  span {
+  > span {
     position: relative;
     top: 0;
     font-size: 14px;
-    border-bottom: 1px dashed #5e788d;
     margin-left: 10px;
     float: right;
     margin-bottom: 8px;
@@ -1579,6 +1578,25 @@ a.data:hover {
     color: #3a566d;
   }
 }
+
+div.info--right {
+  span {
+    border-bottom: 1px dashed #5e788d;
+  }
+}
+
+p.info--right,
+p.info--left,{
+  margin-bottom: 0;
+  line-height: 12px;
+  a {
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 400;
+    line-height: 0px;
+  }
+}
+
 .teaser-logo-partner {
   float: right;
   display: block;
@@ -3757,4 +3775,24 @@ span.text-break {
 
 div.description {
   overflow: hidden;
+  min-width: 50%;
+}
+
+.search-filtered .list-item .table {
+  background: transparent;
+  padding: 4px 0 0;
+
+  table {
+    background: transparent;
+    margin: 0;
+
+    tr th, tr td {
+      padding: 0;
+      font-size: 14px;
+    }
+
+    a:not(.button) {
+      font-size: 14px;
+    }
+  }
 }

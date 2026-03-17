@@ -1,0 +1,36 @@
+{# Zeitbezug #}
+
+{% if hasTimeData %}
+    <div class="sub-section">
+        <a class="anchor" {% if isTimeInDescription %}id="{{ hash_description }}_time_reference"{% else %}id="{{ hash_time }}_time_reference"{% endif %}></a>
+        {% set tmpTitle = "SEARCH_DETAIL.TIME_REFERENCE_CONTENT" %}
+        {{ hit_macros.render_group_title(tmpTitle|t) }}
+
+    {# Durch die Ressource abgedeckte Zeitspanne #}
+        {% if timeRefs.gte or timeRefs.lte %}
+            {% set timeBegin = timeRefs.gte ? timeRefs.gte|date("d.m.Y") : "" %}
+            {% set timeEnd = timeRefs.lte ? timeRefs.lte|date("d.m.Y") : "" %}
+            {% if timeBegin == timeEnd %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_AT"|t ~ " " ~ timeBegin) }}
+            {% elseif timeBegin and timeEnd is empty %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_SINCE"|t ~ " " ~ timeBegin) }}
+            {% elseif timeBegin is empty and timeEnd %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_UNTIL"|t ~ " " ~ timeEnd) }}
+            {% elseif timeBegin != timeEnd %}
+                {{ hit_macros.render_label_text_row((tmpTitle ~ "_ENTRY")|t, "COMMON.TIME_FROM"|t ~ " " ~ timeBegin ~ " " ~ "COMMON.TIME_TO"|t ~ " " ~ timeEnd) }}
+            {% endif %}
+        {% endif %}
+    {# Erstellt am #}
+        {% if timeRefs.created %}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.CREATED.TITLE"|t, timeRefs.created|date('d.m.Y H:i:s'), null, "text-capitalize") }}
+        {% endif %}
+    {# Veröffentlicht am #}
+        {% if timeRefs.issued %}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.ISSUED.TITLE"|t, timeRefs.issued|date('d.m.Y H:i:s'), null, "text-capitalize") }}
+        {% endif %}
+    {# Periodizität #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_TIME_PERIOD"|t, timeRefs.accrual_periodicity, null, "text-capitalize") }}
+
+    </div>
+{% endif %}
+

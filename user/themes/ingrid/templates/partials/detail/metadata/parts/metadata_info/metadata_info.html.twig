@@ -21,13 +21,13 @@
     {% if class == 1 %}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_HIERARCHY_LEVEL"|t, metaInfoRefs.hierarchyLevel) }}
     {% endif %}
-{# XML Darstellung  #}
+{# ISO/XML  #}
     {% if displayISOXML and csw_url %}
         {{ hit_macros.render_label_link("COMMON.XML_LINK_LABEL"|t, "COMMON.XML_LINK"|t, csw_url ~ uuid, "download") }}
     {% endif %}
-{# RDF Darstellung  #}
-    {% if displayRDFXML and rdf_url %}
-        {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK_LABEL"|t, rdf_url ~ uuid, "download" ) }}
+{# RDF/XML #}
+    {% if displayRDFXML and rdf_url and isOpendata %}
+        {{ hit_macros.render_label_link("COMMON.RDF_LINK_LABEL"|t, "COMMON.RDF_LINK"|t, rdf_url ~ uuid, "download" ) }}
     {% endif %}
 {# Ansprechpartner (Metadatum) #}
     {% include 'partials/detail/metadata/parts/metadata_info/metadata_info_metadatum.html.twig' ignore missing %}

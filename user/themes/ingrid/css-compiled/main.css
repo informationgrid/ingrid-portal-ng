@@ -533,6 +533,58 @@
   content: "\e974";
 }
 
+.ic-ic-agri:before {
+  content: "\e956";
+}
+
+.ic-ic-econ:before {
+  content: "\e94f";
+}
+
+.ic-ic-educ:before {
+  content: "\e952";
+}
+
+.ic-ic-ener:before {
+  content: "\e954";
+}
+
+.ic-ic-envi:before {
+  content: "\e94e";
+}
+
+.ic-ic-heal:before {
+  content: "\e945";
+}
+
+.ic-ic-intr:before {
+  content: "\e96e";
+}
+
+.ic-ic-just:before {
+  content: "\e94d";
+}
+
+.ic-ic-soci:before {
+  content: "\e953";
+}
+
+.ic-ic-gove:before {
+  content: "\e972";
+}
+
+.ic-ic-regi:before {
+  content: "\e948";
+}
+
+.ic-ic-tech:before {
+  content: "\e949";
+}
+
+.ic-ic-tran:before {
+  content: "\e955";
+}
+
 .ic-ic-mastodon:before {
   content: "\e976";
 }
@@ -8428,11 +8480,10 @@ a.data:hover {
 .info--right {
   float: right;
 }
-.info--right span {
+.info--right > span {
   position: relative;
   top: 0;
   font-size: 14px;
-  border-bottom: 1px dashed #5e788d;
   margin-left: 10px;
   float: right;
   margin-bottom: 8px;
@@ -8440,6 +8491,23 @@ a.data:hover {
   line-height: 18px;
   text-align: center;
   color: #3a566d;
+}
+
+div.info--right span {
+  border-bottom: 1px dashed #5e788d;
+}
+
+p.info--right,
+p.info--left {
+  margin-bottom: 0;
+  line-height: 12px;
+}
+p.info--right a,
+p.info--left a {
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: 400;
+  line-height: 0px;
 }
 
 .teaser-logo-partner {
@@ -10452,6 +10520,23 @@ span.text-break {
 
 div.description {
   overflow: hidden;
+  min-width: 50%;
+}
+
+.search-filtered .list-item .table {
+  background: transparent;
+  padding: 4px 0 0;
+}
+.search-filtered .list-item .table table {
+  background: transparent;
+  margin: 0;
+}
+.search-filtered .list-item .table table tr th, .search-filtered .list-item .table table tr td {
+  padding: 0;
+  font-size: 14px;
+}
+.search-filtered .list-item .table table a:not(.button) {
+  font-size: 14px;
 }
 
 /* colors */

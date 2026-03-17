@@ -210,9 +210,9 @@ COMMON:
     SERVICE_TYPE_PREDEFINED_ATOM: ATOM
     SERVICE_TYPE_OGC-API_FEATURES: API Feature
     SERVICE_TYPE_OGCAPIFEATURE: API Feature
-    XML_LINK: Download metadata as XML
-    XML_LINK_LABEL: XML
-    RDF_LINK: Download metadata as RDF
+    XML_LINK: Download ISO/XML
+    XML_LINK_LABEL: ISO/XML
+    RDF_LINK: Download RDF/XML
     RDF_LINK_LABEL: RDF/XML
     DETAIL_ARROW_PREFIX: 'Detail:'
     LANGUAGE_TITLE: 'Language:'
@@ -235,6 +235,10 @@ COMMON:
     TIME_UNTILUNKNOWN: , current actuality unknown
     TIME_AT: ' '
 
+HOME:
+    HITS:
+        TITLE: Current data
+
 SEARCH:
     TITLE_SEARCH: Search
     TITLE_RESULT: Search Results
@@ -254,7 +258,6 @@ SEARCH_RESULT:
     FACET_DELETE_SELECTION_TOOLTIP: Removal of the expenditure limitations
     SEARCH_TEASER_PORTLET_TITLE: Search in categories
     CATEGORY_NEWS_TITLE: News
-    HITTEASER_PORTLET_TITLE: Vorhaben im Überblick
     INFO_MORE: More infos
     INFO_LESS: Less infos
     INFO_DOWNLOADS_MORE: All
@@ -283,6 +286,11 @@ SEARCH_RESULT:
     SEARCH_SIMILAR_EMPTY: Kein ähnlicher Begriff verfügbar.
     SEARCH_SIMILAR_ADD: Zur Suchanfrage hinzufügen
     SEARCH_SIMILAR_LOADING: Ähnliche Begriffe laden ...
+    OPENDATA:
+      DISTRIBUTIONS:
+        TITLE: Resources
+      CATEGORIES:
+        TITLE: Categories
 
 CATEGORIES:
     TITLE: Search in categories
@@ -871,6 +879,28 @@ SEARCH_DETAIL:
     GEOMETRICS_CONTEXT_FEATURE_CODE: Code
     GEOMETRICS_CONTEXT_FEATURE_DESCRIPTION: Description
     IDENTIFIER: Identifier
+    OPENDATA:
+        DISTRIBUTIONS:
+            TITLE: Resources
+            LICENSE: License
+            DESCRIPTION: Description
+            AVAILABILITY: Availability
+            LANGUAGES: Languages
+            MODIFIED: Modified
+        CATEGORIES:
+            TITLE: Open Data Categories
+        POLITICAL_GEOCODING_LEVEL_URI:
+            TITLE: Ebene der geopolitischen Abdeckung
+        QUALITY_PROCESS_URI:
+            TITLE: Qualitätssicherungsprozess URI
+        LEGAL_BASIS:
+            TITLE: Rechtsgrundlage für die Zugangseröffnung
+        CREATED:
+            TITLE: Erstellt am
+        ISSUED:
+            TITLE: Veröffentlicht am
+        MODIFIED:
+            TITLE: Geändert am
     TIME:
       HELP:
         CREATION:
@@ -968,6 +998,11 @@ FACETS:
         MODTIME: Time
         MAP: Raumbezug
         TIMEREF: Time reference
+        OPENDATA_KEYWORDS: Open Data Categories
+        OPENDATA_LICENSES: Open Data Licenses
+        OPENDATA_FORMATS: Open Data Formats
+    METADATA_GROUP:
+      OPENDATA_METADATA: Dataset
     FACET_PILL:
         TYPE: Datatype
     MODTIME:

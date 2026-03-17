@@ -1,0 +1,11 @@
+{# Informationen zum Datensatz #}
+{% if infoRefs and infoRefs|length > 0 %}
+    <div class="sub-section">
+        <a class="anchor" id="{{ hash_info }}_technical_information"></a>
+        {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
+{# Qualitätssicherungsprozess URI #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.QUALITY_PROCESS_URI.TITLE"|t, infoRefs.quality_process_uri) }}
+{# Rechtsgrundlage für die Zugangseröffnung #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.LEGAL_BASIS.TITLE"|t, infoRefs.legal_basis) }}
+    </div>
+{% endif %}

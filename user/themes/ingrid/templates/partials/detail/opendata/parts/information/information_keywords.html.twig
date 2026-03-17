@@ -1,0 +1,11 @@
+{# Schlagworte #}
+{% if infoRefs_keyword and infoRefs_keyword|length > 0 %}
+    <div class="sub-section">
+        <a class="anchor" id="{{ hash_info }}_fs_keywords"></a>
+        {{ hit_macros.render_group_title("SEARCH_DETAIL.FS_KEYWORDS"|t) }}
+    {# Kategorien #}
+        {% include 'partials/detail/opendata/parts/information/information_keywords_category.html.twig' ignore missing %}
+    {# Suchbegriffe #}
+        {% include 'partials/detail/opendata/parts/information/information_keywords_search_terms.html.twig' %}
+    </div>
+{% endif %}
