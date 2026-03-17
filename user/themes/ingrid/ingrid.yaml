@@ -204,7 +204,7 @@ home:
                     },
                     {
                       "term": {
-                        "keywords.source.keyword": "THEMES"
+                        "keywords.term": "opendata"
                       }
                     }
                   ]
@@ -619,7 +619,7 @@ hit_search:
                         },
                         {
                           "term": {
-                            "keywords.source": "THEMES"
+                            "keywords.term": "opendata"
                           }
                         }
                       ]
