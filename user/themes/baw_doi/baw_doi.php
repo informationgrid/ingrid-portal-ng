@@ -32,6 +32,29 @@ class BawDoi extends Theme
 
     }
 
+    private static function getBwaStrs(\stdClass $esHit): array
+    {
+        $array = [];
+        $ids = ElasticsearchHelper::getValueArray($esHit, "bwstr-bwastr-id");
+        $froms = ElasticsearchHelper::getValueArray($esHit, "bwstr-strecken_km_von");
+        $tos = ElasticsearchHelper::getValueArray($esHit, "bwstr-strecken_km_bis");
+        if (!empty($ids) && !empty($froms) && !empty($tos)) {
+            for ($i = 0; $i < count($ids); $i++) {
+                $id = $ids[$i];
+                if (str_ends_with($id, '00')) {
+                    $id = substr($id, 0, -2);
+                    $id = $id . '01';
+                }
+                $array[] = [
+                    "id" => $id,
+                    "from" => $froms[$i],
+                    "to" => $tos[$i],
+                ];
+            }
+        }
+        return $array;
+    }
+
     public function addThemeMetadataContent(Event $event): void
     {
         // Get variables from event
