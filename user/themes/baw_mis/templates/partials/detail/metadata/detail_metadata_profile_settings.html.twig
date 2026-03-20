@@ -1,3 +1,9 @@
+{# BAW Auftragsnummer #}
+{% set bawauftragsnummer = hit.bawauftragsnummer %}
+
+{# BAW Auftragstitel #}
+{% set bawauftragstitel = hit.bawauftragstitel %}
+
 {# Zeitbezug #}
 {% set timeRefs = addKeyValue(timeRefs, "timeMeasureValue", hit.timeMeasureValue) %}
 {% set timeRefs = addKeyValue(timeRefs, "timeMeasureUnit", hit.timeMeasureUnit) %}

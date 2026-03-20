@@ -1,0 +1,9 @@
+{# BAW Auftragsnummer #}
+{% if bawauftragsnummer %}
+    {{ hit_macros.render_label_text("Auftragsnummer", bawauftragsnummer) }}
+{% endif %}
+
+{# BAW Auftragstitel #}
+{% if bawauftragstitel %}
+    {{ hit_macros.render_label_text("Auftragstitel", bawauftragstitel) }}
+{% endif %}

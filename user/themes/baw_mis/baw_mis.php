@@ -63,9 +63,23 @@ class BawMis extends Theme
         $esHit = $event['esHit'];
         $lang = $event['lang'];
 
+        $objClass = ElasticsearchHelper::getValue($esHit, 't01_object.obj_class');
+
         $node = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
 
         // Add theme specific variables
+        if ($objClass === '4') {
+            $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]';
+            $hit->bawauftragsnummer = IdfHelper::getNodeValue($node, $xpathExpression);
+            $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]';
+            $hit->bawauftragstitel = IdfHelper::getNodeValue($node, $xpathExpression);
+        } else {
+            $xpathExpression = './gmd:identificationInfo/*/gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetName/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]';
+            $hit->bawauftragsnummer = IdfHelper::getNodeValue($node, $xpathExpression);
+            $xpathExpression = './gmd:identificationInfo/*/gmd:aggregationInfo/gmd:MD_AggregateInformation[not(./gmd:associationType/gmd:DS_AssociationTypeCode/@codeListValue = "crossReference")]/gmd:aggregateDataSetName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]';
+            $hit->bawauftragstitel = IdfHelper::getNodeValue($node, $xpathExpression);
+        }
+
         $hit->sourceCodeRights = self::getBoolInfoValue($node, './gmd:identificationInfo/*/software/QuellCodeRechte[./baw/gco:Boolean]', './baw/gco:Boolean', './anmerkungen');
         $hit->useRights = self::getBoolInfoValue($node, './gmd:identificationInfo/*/software/NutzungsRechte[./dritte/gco:Boolean]', './dritte/gco:Boolean', 'anmerkungen');
         $hit->doi = self::getDoi($node);
