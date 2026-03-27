@@ -1,4 +1,11 @@
 
+## 8.2.7 (27.03.2026)
+
+
+### Bugfixes
+
+* Aufruf der Metadaten mit Stamm-URL "https://rips-metadaten.lubw.de/trefferanzeige?oac=" ergibt Fehlermeldung (#8888)
+    
 ## 8.2.5 (11.03.2026)
 
 ### Features
