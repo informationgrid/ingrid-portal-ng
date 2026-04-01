@@ -17,7 +17,9 @@
 {% set hasUse = (useRefs|length > 0) %}
 {% set hasAdditional = (additionalFields|length > 0) %}
 {% set hasContact = (contactRefs|length > 0) %}
-{% set hasInfo = (infoRefs|length > 0 or infoRefs_additional|length > 0 or infoRefs_keyword|length > 0 ) %}
+{% if hasInfo is not defined %}
+    {% set hasInfo = (infoRefs|length > 0 or infoRefs_additional|length > 0 or infoRefs_keyword|length > 0 ) %}
+{% endif %}
 {% set hasDataquality = (dataQualityRefs|length > 0) %}
 {% set hasAdditionalFields = (additionalFields|length > 0) %}
 {% set hasMetadataInfo = (metaInfoRefs|length > 0) %}
@@ -102,18 +104,6 @@
 {# Fachinformationen #}
             {% if hasInfo %}
                 {% include 'partials/detail/metadata/parts/information/information.html.twig' %}
-            {% endif %}
-{# Labordaten #}
-            {% if hasLaboratory %}
-                {% include 'partials/detail/metadata/parts/laboratory/laboratory.html.twig' ignore missing %}
-            {% endif %}
-{# Messdaten #}
-            {% if hasMeasurement or hasMeasurementBautechnik %}
-                {% include 'partials/detail/metadata/parts/measurement/measurement.html.twig' ignore missing %}
-            {% endif %}
-{# Simulationsdaten #}
-            {% if hasSimulation or hasSimulationBautechnik %}
-                {% include 'partials/detail/metadata/parts/simulation/simulation.html.twig' ignore missing %}
             {% endif %}
 {# Datenqualität #}
             {% if hasDataquality %}

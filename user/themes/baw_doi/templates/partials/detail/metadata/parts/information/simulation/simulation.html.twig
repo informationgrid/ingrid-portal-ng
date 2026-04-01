@@ -1,0 +1,35 @@
+{# Simulationsdaten #}
+
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_simulation }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.SIMULATION.TITLE"|t) }}
+{# Raumbezugssystem (Höhe) #}
+    {{ hit_macros.render_label_text_list_row("Raumbezugssystem (Höhe)", simulation.verticalSpatialSystems) }}
+{# Vertikale Ausdehnung (Min/Max) #}
+    {% set header = [
+        "Minimun",
+        "Maximum",
+        "Raumbezugssystem"
+    ] %}
+    {{ hit_macros.render_table("Vertikale Ausdehnung (Min/Max)", header, simulation.verticalExtent) }}
+{# Bwstr Bezug #}
+
+{# Simulationsverfahren #}
+    {{ hit_macros.render_label_text_row("Simulationsverfahren", simulation.process) }}
+{# Räumliche Dimensionalität #}
+    {{ hit_macros.render_label_text_row("Räumliche Dimensionalität", simulation.dimensionality) }}
+{# Simulationsmodellart #}
+    {{ hit_macros.render_label_text_list_row("Simulationsmodellart", simulation.simulationModelType) }}
+{# Simulationsparameter #}
+    {% set header = [
+        "Name",
+        "Rolle",
+        "Wert/Wertebereich",
+        "Maßeinheit"
+    ] %}
+    {{ hit_macros.render_table("Simulationsparameter", header, simulation.simulationParameter, [0]) }}
+{# Zeitliche Genauigkeit #}
+    {{ hit_macros.render_label_text_row("Zeitliche Genauigkeit", simulation.timestep) }}
+</div>
+{# Simulationsdaten Bautechnik #}
+{% include 'partials/detail/metadata/parts/information/simulation/simulation_bautechnik.html.twig' ignore missing %}

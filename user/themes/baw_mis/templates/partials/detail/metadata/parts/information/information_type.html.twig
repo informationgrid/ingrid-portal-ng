@@ -24,8 +24,6 @@
             "Wert"
         ] %}
         {{ hit_macros.render_table("Parameter und Zustandsgrößen", header, infoRefs.dataQualities) }}
-{# Messdaten #}
-        {% include 'partials/detail/metadata/parts/information/information_type_1_measurement.html.twig' ignore missing %}
 {# Fachliche Grundlage #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
     </div>

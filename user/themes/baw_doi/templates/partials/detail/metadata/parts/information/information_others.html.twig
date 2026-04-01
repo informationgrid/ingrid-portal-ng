@@ -1,0 +1,12 @@
+{# Labordaten #}
+    {% if hasLaboratory %}
+        {% include 'partials/detail/metadata/parts/information/laboratory/laboratory.html.twig' ignore missing %}
+    {% endif %}
+{# Messdaten #}
+    {% if hasMeasurement or hasMeasurementBautechnik %}
+        {% include 'partials/detail/metadata/parts/information/measurement/measurement.html.twig' ignore missing %}
+    {% endif %}
+{# Simulationsdaten #}
+    {% if hasSimulation or hasSimulationBautechnik %}
+        {% include 'partials/detail/metadata/parts/information/simulation/simulation.html.twig' ignore missing %}
+    {% endif %}

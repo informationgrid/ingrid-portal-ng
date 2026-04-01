@@ -68,23 +68,28 @@ class BawMis extends Theme
         $node = IdfHelper::getNode($content, '//gmd:MD_Metadata | //idf:idfMdMetadata');
 
         // Add theme specific variables
-        if ($objClass === '4') {
-            $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]';
-            $hit->bawauftragsnummer = IdfHelper::getNodeValue($node, $xpathExpression);
-            $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]';
-            $hit->bawauftragstitel = IdfHelper::getNodeValue($node, $xpathExpression);
-        } else {
-            $xpathExpression = './gmd:identificationInfo/*/gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetName/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]';
-            $hit->bawauftragsnummer = IdfHelper::getNodeValue($node, $xpathExpression);
-            $xpathExpression = './gmd:identificationInfo/*/gmd:aggregationInfo/gmd:MD_AggregateInformation[not(./gmd:associationType/gmd:DS_AssociationTypeCode/@codeListValue = "crossReference")]/gmd:aggregateDataSetName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]';
-            $hit->bawauftragstitel = IdfHelper::getNodeValue($node, $xpathExpression);
-        }
+        switch ($objClass) {
+            case '4':
+                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]';
+                $hit->bawauftragsnummer = IdfHelper::getNodeValue($node, $xpathExpression);
+                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]';
+                $hit->bawauftragstitel = IdfHelper::getNodeValue($node, $xpathExpression);
+                break;
 
+            default:
+                $xpathExpression = './gmd:identificationInfo/*/gmd:aggregationInfo/gmd:MD_AggregateInformation/gmd:aggregateDataSetName/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code/*[self::gco:CharacterString or self::gmx:Anchor]';
+                $hit->bawauftragsnummer = IdfHelper::getNodeValue($node, $xpathExpression);
+                $xpathExpression = './gmd:identificationInfo/*/gmd:aggregationInfo/gmd:MD_AggregateInformation[not(./gmd:associationType/gmd:DS_AssociationTypeCode/@codeListValue = "crossReference")]/gmd:aggregateDataSetName/gmd:CI_Citation/gmd:title/*[self::gco:CharacterString or self::gmx:Anchor]';
+                $hit->bawauftragstitel = IdfHelper::getNodeValue($node, $xpathExpression);
+                break;
+        }
         $hit->sourceCodeRights = self::getBoolInfoValue($node, './gmd:identificationInfo/*/software/QuellCodeRechte[./baw/gco:Boolean]', './baw/gco:Boolean', './anmerkungen');
         $hit->useRights = self::getBoolInfoValue($node, './gmd:identificationInfo/*/software/NutzungsRechte[./dritte/gco:Boolean]', './dritte/gco:Boolean', 'anmerkungen');
         $hit->doi = self::getDoi($node);
         $hit->citations = self::getCitations($node);
         $hit->bibliographies = self::getBibliographies($node);
+
+        // Messdaten
         $xpathExpression = "./gmd:identificationInfo/*/measurementInfo/MeasurementMethod/measurementMethod";
         $hit->measurementMethod = IdfHelper::getNodeValueList($node, $xpathExpression);
         $xpathExpression = "./gmd:identificationInfo/*/measurementInfo/spatialOrientation";
@@ -116,6 +121,7 @@ class BawMis extends Theme
         $hit->timeMeasureValue = IdfHelper::getNodeValue($node, $xpathExpression);
         $xpathExpression = "./gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_AccuracyOfATimeMeasurement/gmd:result/gmd:DQ_QuantitativeResult/gmd:valueUnit/gml:UnitDefinition/gml:catalogSymbol";
         $hit->timeMeasureUnit = IdfHelper::getNodeValue($node, $xpathExpression);
+
         $xpathExpression = "//gmd:resourceFormat/gmd:MD_Format";
         $xpathExpressionSub = [
             "./gmd:name/*[self::gco:CharacterString or self::gmx:Anchor]",
@@ -220,248 +226,255 @@ class BawMis extends Theme
 
         $hit->areaHeight = self::getAreaHeight($node, $lang);
 
-        $simulationType = ElasticsearchHelper::getValue($esHit, 'simulation_data_type');
-        switch ($simulationType) {
-            // BawLaboratoryData
-            case 'Labordaten':
-                // Anlass der Datenerhebung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/AnlassDerDatenerhebung/anlassDerDatenerhebung';
-                $hit->dataCollectionReason = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Probenherkunft
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/Probenherkunft/probenherkunft';
-                $hit->sampleOrigin = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Geprüftes Material
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/GeprueftesMaterial/geprueftesMaterial';
-                $hit->testedMaterial = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Mess- und Prüfverfahren
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/MessUndPruefverfahren';
-                $xpathExpressionSub = [
-                    "./messUndPruefverfahren",
-                    "./messgeraete",
-                    "./Norm/normBezeichnung",
-                    "./Norm/ausgabedatum"
-                ];
-                $subTypes = [
-                    "text",
-                    "text",
-                    "text",
-                    "date"
-                ];
-                $hit->testMethod = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub, $subTypes);
-                // Zulassungsprüfung (Status)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/Zulassungspruefung';
-                $xpathExpressionSub = [
-                    "./pruefnummer",
-                    "./aufbauDesSystems",
-                    "./Sichtbarkeit/sichtbarkeit",
-                    "./zulassungspruefung/gco:Boolean"
-                ];
-                $subTypes = [
-                    "text",
-                    "text",
-                    "text",
-                    "symbol"
-                ];
-                $hit->isApprovalProcedure = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub, $subTypes);
+        switch ($objClass) {
+            case '1':
+                $simulationType = ElasticsearchHelper::getValue($esHit, 'simulation_data_type');
+                switch ($simulationType) {
+                    // BawLaboratoryData
+                    case 'Labordaten':
+                        // Anlass der Datenerhebung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/AnlassDerDatenerhebung/anlassDerDatenerhebung';
+                        $hit->dataCollectionReason = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Probenherkunft
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/Probenherkunft/probenherkunft';
+                        $hit->sampleOrigin = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Geprüftes Material
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/GeprueftesMaterial/geprueftesMaterial';
+                        $hit->testedMaterial = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Mess- und Prüfverfahren
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/MessUndPruefverfahren';
+                        $xpathExpressionSub = [
+                            "./messUndPruefverfahren",
+                            "./messgeraete",
+                            "./Norm/normBezeichnung",
+                            "./Norm/ausgabedatum"
+                        ];
+                        $subTypes = [
+                            "text",
+                            "text",
+                            "text",
+                            "date"
+                        ];
+                        $hit->testMethod = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub, $subTypes);
+                        // Zulassungsprüfung (Status)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/labordaten/Zulassungspruefung';
+                        $xpathExpressionSub = [
+                            "./pruefnummer",
+                            "./aufbauDesSystems",
+                            "./Sichtbarkeit/sichtbarkeit",
+                            "./zulassungspruefung/gco:Boolean"
+                        ];
+                        $subTypes = [
+                            "text",
+                            "text",
+                            "text",
+                            "symbol"
+                        ];
+                        $hit->isApprovalProcedure = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub, $subTypes);
+                        break;
+                    // BawMeasurement
+                    case 'Messdaten':
+                        // Baugrunddynamik-Schlagworte
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="Baugrunddynamik-Schlagwortkatalog"]/gmd:keyword/gco:CharacterString';
+                        $hit->subsoilKeywords = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Raumbezugssystem (Höhe)
+                        $xpathExpression = './gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gco:CharacterString';
+                        $hit->verticalSpatialSystems = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Vertikale Ausdehnung (Min/Max)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement/gmd:EX_VerticalExtent';
+                        $xpathExpressionSub = [
+                            "./gmd:minimumValue",
+                            "./gmd:maximumValue"
+                        ];
+                        $hit->verticalExtent = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Bwstr Bezug (Name / Kennung)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicDescription';
+                        $hit->references = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Messverfahren
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasurementMethod/measurementMethod';
+                        $hit->measuringMethod = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Messgerät (Name/ID/Modell)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasurementDevice';
+                        $xpathExpressionSub = [
+                            "./name",
+                            "./id",
+                            "./model",
+                            "./description"
+                        ];
+                        $hit->gauge = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Zielparameter
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasuredQuantities';
+                        $xpathExpressionSub = [
+                            "./name",
+                            "./type",
+                            "./uom",
+                            "./calculationFormula"
+                        ];
+                        $hit->targetParameters = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Räumlichkeit
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/spatialOrientation';
+                        $hit->spatiality = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Messtiefe
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasurementDepth';
+                        $hit->measuringDepth = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Frequenz der Messung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/measurementFrequency';
+                        $hit->frequency = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Gemittelter Wasserstand
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeanWaterLevel';
+                        $hit->averageWaterLevel = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Pegelnullpunkt
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/GaugeDatum';
+                        $hit->zeroLevel = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Abfluss (min/max)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/minDischarge / maxDischarge';
+                        $hit->drain = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Datenqualität (Beschreibung)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/dataQualityDescription';
+                        $hit->dataQualityDescription = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Zeitliche Genauigkeit
+                        $xpathExpression = './gmd:DQ_AccuracyOfATimeMeasurement/gmd:result/gmd:DQ_QuantitativeResult/gmd:value/gco:Record';
+                        $hit->timestep = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Bautechnik Messdaten
+                        // Untersuchungsziel
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/Untersuchungsziel/untersuchungsziel';
+                        $hit->researchGoal = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Art der Messung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/artDerMessung';
+                        $hit->measurementType = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Objektidentnr. Wind
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/objektIdentNrWind';
+                        $hit->windID = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Messrichtung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/messrichtung';
+                        $hit->measurementDirection = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Messgrößen
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/Messgroessen/messgroessen';
+                        $hit->parameter = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        break;
+                    // BawSimulation
+                    case 'Simulationsdaten':
+                        // Baugrunddynamik-Schlagworte
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[./gmd:thesaurusName/*/*/gco:CharacterString="Baugrunddynamik-Schlagwortkatalog"]/gmd:keyword/gco:CharacterString';
+                        $hit->subsoilKeywords = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Raumbezugssystem (Höhe)
+                        $xpathExpression = '//gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gmx:Anchor';
+                        $hit->verticalSpatialSystems = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Vertikale Ausdehnung (Min/Max)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement/gmd:EX_VerticalExtent';
+                        $xpathExpressionSub = [
+                            "./gmd:minimumValue/gco:Real",
+                            "./gmd:maximumValue/gco:Real",
+                            "./gmd:verticalCRS/@xlink:title"
+                        ];
+                        $hit->verticalExtent = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Bwstr Bezug
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicDescription';
+                        $hit->references = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Simulationsverfahren
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="de.baw.codelist.model.method"]/gmd:keyword/gco:CharacterString';
+                        $hit->process = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Räumliche Dimensionalität
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="de.baw.codelist.model.dimensionality"]/gmd:keyword/gco:CharacterString';
+                        $hit->dimensionality = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Simulationsmodellart
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="de.baw.codelist.model.type"]/gmd:keyword/gco:CharacterString';
+                        $hit->simulationModelType = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Simulationsparameter
+                        $xpathExpression = '//gmd:DQ_QuantitativeAttributeAccuracy/gmd:result/gmd:DQ_QuantitativeResult';
+                        $xpathExpressionSub = [
+                            "./gmd:valueType/gco:RecordType",
+                            "./anfangsbedingung-TODO",
+                            "./gmd:value/gco:Record",
+                            "./gmd:valueUnit/gml:UnitDefinition/gml:catalogSymbol"
+                        ];
+                        $hit->simulationParameter = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Zeitliche Genauigkeit
+                        $xpathExpression = '//gmd:DQ_AccuracyOfATimeMeasurement/gmd:result/gmd:DQ_QuantitativeResult/gmd:value/gco:Record';
+                        $hit->timestep = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Bautechnik Simulationsdaten
+                        // Software (Name/Version)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Software';
+                        $xpathExpressionSub = [
+                            "./name",
+                            "./version"
+                        ];
+                        $hit->software = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Objekt
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Objekt/objekt';
+                        $hit->object = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Objektteil
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Objektteil/objektteil';
+                        $hit->objectPart = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Untersuchungsziel
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Untersuchungsziel/untersuchungsziel';
+                        $hit->researchGoal = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Räumliche Dimensionen
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Dimensionen/raeumlicheDimensionen';
+                        $hit->spatialDimension = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Zeitliche Dimension (Checkbox)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Dimensionen/zeit/gco:Boolean';
+                        $hit->timeDimension = IdfHelper::getNodeValue($node, $xpathExpression);
+                        // Level der Untersuchung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/LevelDerUntersuchung/levelDerUntersuchung';
+                        $hit->level = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Untersuchungsstufe
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Untersuchungsstufe/untersuchungsstufe';
+                        $hit->phase = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Berechnungskonzepte (Materiell/Geometrisch linear, Imperfektionen)
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Berechnungskonzepte';
+                        $xpathExpressionSub = [
+                            "./materiellLinear/gco:Boolean",
+                            "./materiellLinear/gco:Boolean",
+                            "./imperfektionen/gco:Boolean"
+                        ];
+                        $subTypes = [
+                            "symbol",
+                            "symbol",
+                            "symbol"
+                        ];
+                        $hit->calculationConcept = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub, $subTypes);
+                        // Werkstoffe
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Werkstoffe/werkstoffe';
+                        $hit->materials = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Fließgrenze Bewehrung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/GrundlegendeWerkstoffparameter/Bewehrung/fliessgrenzeBewehrung';
+                        $hit->reinforcement = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Fließgrenze Stahl
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/GrundlegendeWerkstoffparameter/Stahl/fliessgrenzeStahl';
+                        $hit->steel = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Betondruckfestigkeit
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/GrundlegendeWerkstoffparameter/Betondruckfestigkeit';
+                        $xpathExpressionSub = [
+                            "./betondruckfestigkeit",
+                            "./einheit"
+                        ];
+                        $hit->compressiveStrength = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
+                        // Materialmodell
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Materialmodell/materialmodell';
+                        $hit->materialModel = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Elementtypen
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Elementtypen/elementtypen';
+                        $hit->elementTypes = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Einwirkung
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Einwirkung/einwirkung';
+                        $hit->einwirkung = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Physik
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Physik/physik';
+                        $hit->physics = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        // Analysetyp
+                        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Analysetyp/analysetyp';
+                        $hit->analysisType = IdfHelper::getNodeValueList($node, $xpathExpression);
+                        break;
+                    default:
+                        break;
+                }
+                $hit->simulationType = $simulationType;
                 break;
-            // BawMeasurement
-            case 'Messdaten':
-                // Baugrunddynamik-Schlagworte
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="Baugrunddynamik-Schlagwortkatalog"]/gmd:keyword/gco:CharacterString';
-                $hit->subsoilKeywords = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Raumbezugssystem (Höhe)
-                $xpathExpression = './gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gco:CharacterString';
-                $hit->verticalSpatialSystems = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Vertikale Ausdehnung (Min/Max)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement/gmd:EX_VerticalExtent';
-                $xpathExpressionSub = [
-                    "./gmd:minimumValue",
-                    "./gmd:maximumValue"
-                ];
-                $hit->verticalExtent = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Bwstr Bezug (Name / Kennung)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicDescription';
-                $hit->references = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Messverfahren
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasurementMethod/measurementMethod';
-                $hit->measuringMethod = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Messgerät (Name/ID/Modell)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasurementDevice';
-                $xpathExpressionSub = [
-                    "./name",
-                    "./id",
-                    "./model",
-                    "./description"
-                ];
-                $hit->gauge = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Zielparameter
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasuredQuantities';
-                $xpathExpressionSub = [
-                    "./name",
-                    "./type",
-                    "./uom",
-                    "./calculationFormula"
-                ];
-                $hit->targetParameters = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Räumlichkeit
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/spatialOrientation';
-                $hit->spatiality = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Messtiefe
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeasurementDepth';
-                $hit->measuringDepth = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Frequenz der Messung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/measurementFrequency';
-                $hit->frequency = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Gemittelter Wasserstand
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/MeanWaterLevel';
-                $hit->averageWaterLevel = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Pegelnullpunkt
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/GaugeDatum';
-                $hit->zeroLevel = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Abfluss (min/max)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/minDischarge / maxDischarge';
-                $hit->drain = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Datenqualität (Beschreibung)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/measurementInfo/dataQualityDescription';
-                $hit->dataQualityDescription = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Zeitliche Genauigkeit
-                $xpathExpression = './gmd:DQ_AccuracyOfATimeMeasurement/gmd:result/gmd:DQ_QuantitativeResult/gmd:value/gco:Record';
-                $hit->timestep = IdfHelper::getNodeValue($node, $xpathExpression);
-            // Bautechnik Messdaten
-                // Untersuchungsziel
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/Untersuchungsziel/untersuchungsziel';
-                $hit->researchGoal = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Art der Messung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/artDerMessung';
-                $hit->measurementType = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Objektidentnr. Wind
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/objektIdentNrWind';
-                $hit->windID = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Messrichtung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/messrichtung';
-                $hit->measurementDirection = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Messgrößen
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikMessdaten/Messgroessen/messgroessen';
-                $hit->parameter = IdfHelper::getNodeValueList($node, $xpathExpression);
-                break;
-            // BawSimulation
-            case 'Simulationsdaten':
-                // Baugrunddynamik-Schlagworte
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[./gmd:thesaurusName/*/*/gco:CharacterString="Baugrunddynamik-Schlagwortkatalog"]/gmd:keyword/gco:CharacterString';
-                $hit->subsoilKeywords = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Raumbezugssystem (Höhe)
-                $xpathExpression = '//gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gmx:Anchor';
-                $hit->verticalSpatialSystems = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Vertikale Ausdehnung (Min/Max)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement/gmd:EX_VerticalExtent';
-                $xpathExpressionSub = [
-                    "./gmd:minimumValue/gco:Real",
-                    "./gmd:maximumValue/gco:Real",
-                    "./gmd:verticalCRS/@xlink:title"
-                ];
-                $hit->verticalExtent = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Bwstr Bezug
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicDescription';
-                $hit->references = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Simulationsverfahren
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="de.baw.codelist.model.method"]/gmd:keyword/gco:CharacterString';
-                $hit->process = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Räumliche Dimensionalität
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="de.baw.codelist.model.dimensionality"]/gmd:keyword/gco:CharacterString';
-                $hit->dimensionality = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Simulationsmodellart
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="de.baw.codelist.model.type"]/gmd:keyword/gco:CharacterString';
-                $hit->simulationModelType = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Simulationsparameter
-                $xpathExpression = '//gmd:DQ_QuantitativeAttributeAccuracy/gmd:result/gmd:DQ_QuantitativeResult';
-                $xpathExpressionSub = [
-                    "./gmd:valueType/gco:RecordType",
-                    "./anfangsbedingung-TODO",
-                    "./gmd:value/gco:Record",
-                    "./gmd:valueUnit/gml:UnitDefinition/gml:catalogSymbol"
-                ];
-                $hit->simulationParameter = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Zeitliche Genauigkeit
-                $xpathExpression = '//gmd:DQ_AccuracyOfATimeMeasurement/gmd:result/gmd:DQ_QuantitativeResult/gmd:value/gco:Record';
-                $hit->timestep = IdfHelper::getNodeValue($node, $xpathExpression);
-            // Bautechnik Simulationsdaten
-                // Software (Name/Version)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Software';
-                $xpathExpressionSub = [
-                    "./name",
-                    "./version"
-                ];
-                $hit->software = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Objekt
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Objekt/objekt';
-                $hit->object = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Objektteil
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Objektteil/objektteil';
-                $hit->objectPart = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Untersuchungsziel
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Untersuchungsziel/untersuchungsziel';
-                $hit->researchGoal = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Räumliche Dimensionen
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Dimensionen/raeumlicheDimensionen';
-                $hit->spatialDimension = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Zeitliche Dimension (Checkbox)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Dimensionen/zeit/gco:Boolean';
-                $hit->timeDimension = IdfHelper::getNodeValue($node, $xpathExpression);
-                // Level der Untersuchung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/LevelDerUntersuchung/levelDerUntersuchung';
-                $hit->level = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Untersuchungsstufe
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Untersuchungsstufe/untersuchungsstufe';
-                $hit->phase = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Berechnungskonzepte (Materiell/Geometrisch linear, Imperfektionen)
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Berechnungskonzepte';
-                $xpathExpressionSub = [
-                    "./materiellLinear/gco:Boolean",
-                    "./materiellLinear/gco:Boolean",
-                    "./imperfektionen/gco:Boolean"
-                ];
-                $subTypes = [
-                    "symbol",
-                    "symbol",
-                    "symbol"
-                ];
-                $hit->calculationConcept = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub, $subTypes);
-                // Werkstoffe
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Werkstoffe/werkstoffe';
-                $hit->materials = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Fließgrenze Bewehrung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/GrundlegendeWerkstoffparameter/Bewehrung/fliessgrenzeBewehrung';
-                $hit->reinforcement = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Fließgrenze Stahl
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/GrundlegendeWerkstoffparameter/Stahl/fliessgrenzeStahl';
-                $hit->steel = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Betondruckfestigkeit
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/GrundlegendeWerkstoffparameter/Betondruckfestigkeit';
-                $xpathExpressionSub = [
-                    "./betondruckfestigkeit",
-                    "./einheit"
-                ];
-                $hit->compressiveStrength = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
-                // Materialmodell
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Materialmodell/materialmodell';
-                $hit->materialModel = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Elementtypen
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Elementtypen/elementtypen';
-                $hit->elementTypes = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Einwirkung
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Einwirkung/einwirkung';
-                $hit->einwirkung = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Physik
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Physik/physik';
-                $hit->physics = IdfHelper::getNodeValueList($node, $xpathExpression);
-                // Analysetyp
-                $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/bautechnikSimulationsdaten/Analysetyp/analysetyp';
-                $hit->analysisType = IdfHelper::getNodeValueList($node, $xpathExpression);
-                break;
+
             default:
                 break;
         }
-        $hit->simulationType = $simulationType;
 
         $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString="BAW-Schlagwortkatalog"]/gmd:keyword/gco:CharacterString';
         $hit->bawKeywords = IdfHelper::getNodeValueList($node, $xpathExpression);
@@ -622,20 +635,20 @@ class BawMis extends Theme
 
     private static function getBoolInfoValue(\SimpleXMLElement $node, string $xpathExpression, string $xpathSubExpressionBool, string $xpathSubExpressionInfo): ?array
     {
-        $xpathExpression = "./gmd:identificationInfo/*/software/QuellCodeRechte[./baw/gco:Boolean]";
         $tmpNode = IdfHelper::getNode($node, $xpathExpression);
         if ($tmpNode) {
             return array(
                 array (
-                    "value" => IdfHelper::getNodeValue($tmpNode, "./baw/gco:Boolean"),
+                    "value" => IdfHelper::getNodeValue($tmpNode, $xpathSubExpressionBool),
                     "type" => "bool"
                 ),
                 array (
-                    "values" => IdfHelper::getNodeValueList($tmpNode, "./anmerkungen"),
+                    "values" => IdfHelper::getNodeValueList($tmpNode, $xpathSubExpressionInfo),
                     "type" => "text"
                 )
             );
         }
         return null;
     }
+
 }

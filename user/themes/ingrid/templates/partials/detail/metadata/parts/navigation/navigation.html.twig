@@ -156,16 +156,11 @@
                                     {% set tmpTitle = "SEARCH_DETAIL.FS_KEYWORDS"|t %}
                                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                                 {% endif %}
+                                {% include 'partials/detail/metadata/parts/navigation/navigation_information_others.html.twig' ignore missing %}
                             </div>
                         </div>
                     </li>
                 {% endif %}
-            {# Labordaten #}
-                {% include 'partials/detail/metadata/parts/navigation/navigation_laboratory.html.twig' ignore missing %}
-            {# Messdaten #}
-                {% include 'partials/detail/metadata/parts/navigation/navigation_measurement.html.twig' ignore missing %}
-            {# Simulationsdaten #}
-                {% include 'partials/detail/metadata/parts/navigation/navigation_simulation.html.twig' ignore missing %}
             {# Datenqualität #}
                 {% if hasDataquality %}
                     <li class="accordion-item" data-accordion-item>

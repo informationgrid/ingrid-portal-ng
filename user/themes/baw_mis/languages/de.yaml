@@ -8,15 +8,3 @@ SEARCH:
 
 SEARCH_DETAIL:
     T01_OBJECT_VERTICAL_EXTENT_UNIT: Raumbezugssystem
-    BAW_KEYWORDS: BAW Schlagworte
-    SUBSOIL_KEYWORDS: Baugrunddynamik-Schlagworte
-    LABORATORY:
-      TITLE: Labordaten
-    SIMULATION:
-      TITLE: Simulationsdaten
-      BAUTECHNIK:
-          TITLE: Bautechnik
-    MEASUREMENT:
-      TITLE: Messdaten
-      BAUTECHNIK:
-          TITLE: Bautechnik

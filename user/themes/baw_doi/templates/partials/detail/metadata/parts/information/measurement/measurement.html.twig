@@ -1,0 +1,70 @@
+{# Messdaten #}
+
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_measurement }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.MEASUREMENT.TITLE"|t) }}
+{# Raumbezugssystem (Höhe) #}
+
+{# Vertikale Ausdehnung (Min/Max) #}
+
+{# Bwstr Bezug (Name / Kennung) #}
+
+{# Messverfahren #}
+    {{ hit_macros.render_label_text_list_row("Messverfahren", measurement.measuringMethod) }}
+{# Messgerät (Name/ID/Modell) #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.NAME"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.ID"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.MODEL"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.DESCRIPTION"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.TITLE"|t, header, measurement.measurementMeasurementDevice) }}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.TITLE"|t, header, measurement.gauge) }}
+{# Zielparameter #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.NAME"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.TYPE"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.UOM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.CALCULATIONFORMULA"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.TITLE"|t, header, measurement.targetParameters) }}
+{# Räumlichkeit #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.SPATIALORIENTATION"|t, measurement.measurementSpatialOrientation) }}
+{# Messtiefe #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.DEPTH"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.UOM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.VERTICALCRS"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEPTH.TITLE"|t, header, measurement.measurementMeasurementDepth) }}
+
+{# Frequenz der Messung #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTFREQUENCY"|t, measurement.measurementMeasurementFrequency) }}
+{# Gemittelter Wasserstand #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.MEANWATERLEVEL.WATERLEVEL"|t,
+        "SEARCH_DETAIL.MEASUREMENT.MEANWATERLEVEL.UOM"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEANWATERLEVEL.TITLE"|t, header, measurement.measurementMeanWaterLevel) }}
+{# Pegelnullpunkt #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.DATUM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.UOM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.VERTICALCRS"|t,
+        "SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.DESCRIPTION"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.GAUGEDATUM.TITLE"|t, header, measurement.measurementGaugeDatum) }}
+{# Abfluss (min/max) #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.MINDISCHARGE"|t, measurement.measurementMinDischarge) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.MAXDISCHARGE"|t, measurement.measurementMaxDischarge) }}
+{# Datenqualität (Beschreibung) #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.DATAQUALITYDESCRIPTION"|t, measurement.measurementDataQualityDescription) }}
+
+{# Zeitliche Genauigkeit #}
+
+{# Verfahren #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.MEASUREMENT.INFOMETHOD"|t, measurement.measurementMethod) }}
+
+</div>
+{# Messdaten Bautechnik #}
+{% include 'partials/detail/metadata/parts/information/measurement/measurement_bautechnik.html.twig' ignore missing %}

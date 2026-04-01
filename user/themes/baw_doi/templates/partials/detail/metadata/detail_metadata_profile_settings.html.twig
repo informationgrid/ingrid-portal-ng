@@ -12,18 +12,6 @@
 
 {# Fachinformationen #}
 {% switch class %}
-    {% case '1' %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMethod", hit.measurementMethod) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMinDischarge", hit.measurementMinDischarge) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
-        {% set infoRefs = addKeyValue(infoRefs, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
     {% case '6' %}
         {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsnummer", hit.erstellungsvertragsnummer) %}
         {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsdatum", hit.erstellungsvertragsdatum) %}
@@ -32,8 +20,107 @@
 
 {% endswitch %}
 
+{# Verweise und Downloads #}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "bawKeywords", hit.bawKeywords) %}
+{% set infoRefs_keyword = addKeyValue(infoRefs_keyword, "subsoilKeywords", hit.subsoilKeywords) %}
+
 {% set hierachyLevelName = hit.hierachyLevelName %}
+{% set simulationType = hit.simulationType %}
+{% set laboratory = [] %}
+{% set simulation = [] %}
+{% set simulationBautechnik = [] %}
+{% set measurement = [] %}
+{% set measurementBautechnik = [] %}
+
+{% switch simulationType %}
+    {% case 'Labordaten' %}
+        {% set laboratory = addKeyValue(laboratory, "dataCollectionReason", hit.dataCollectionReason) %}
+        {% set laboratory = addKeyValue(laboratory, "sampleOrigin", hit.sampleOrigin) %}
+        {% set laboratory = addKeyValue(laboratory, "testedMaterial", hit.testedMaterial) %}
+        {% set laboratory = addKeyValue(laboratory, "testMethod", hit.testMethod) %}
+        {% set laboratory = addKeyValue(laboratory, "instrument", hit.instrument) %}
+        {% set laboratory = addKeyValue(laboratory, "standard", hit.standard) %}
+        {% set laboratory = addKeyValue(laboratory, "standardIssueDate", hit.standardIssueDate) %}
+        {% set laboratory = addKeyValue(laboratory, "isApprovalProcedure", hit.isApprovalProcedure) %}
+        {% set laboratory = addKeyValue(laboratory, "testNumber", hit.testNumber) %}
+        {% set laboratory = addKeyValue(laboratory, "systemSetup", hit.systemSetup) %}
+        {% set laboratory = addKeyValue(laboratory, "datasetVisibility", hit.datasetVisibility) %}
+
+    {% case 'Simulationsdaten' %}
+        {% set simulation = addKeyValue(simulation, "verticalSpatialSystems", hit.verticalSpatialSystems) %}
+        {% set simulation = addKeyValue(simulation, "verticalExtent", hit.verticalExtent) %}
+        {% set simulation = addKeyValue(simulation, "references", hit.references) %}
+        {% set simulation = addKeyValue(simulation, "process", hit.process) %}
+        {% set simulation = addKeyValue(simulation, "dimensionality", hit.dimensionality) %}
+        {% set simulation = addKeyValue(simulation, "simulationModelType", hit.simulationModelType) %}
+        {% set simulation = addKeyValue(simulation, "simulationParameter", hit.simulationParameter) %}
+        {% set simulation = addKeyValue(simulation, "timestep", hit.timestep) %}
+
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "software", hit.software) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "object", hit.object) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "objectPart", hit.objectPart) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "researchGoal", hit.researchGoal) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "spatialDimension", hit.spatialDimension) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "timeDimension", hit.timeDimension) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "level", hit.level) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "phase", hit.phase) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "calculationConcept", hit.calculationConcept) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "materials", hit.materials) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "reinforcement", hit.reinforcement) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "steel", hit.steel) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "compressiveStrength", hit.compressiveStrength) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "materialModel", hit.materialModel) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "elementTypes", hit.elementTypes) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "einwirkung", hit.einwirkung) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "physics", hit.physics) %}
+        {% set simulationBautechnik = addKeyValue(simulationBautechnik, "analysisType", hit.analysisType) %}
+
+    {% case 'Messdaten' %}
+        {% set measurement = addKeyValue(measurement, "measurementMethod", hit.measurementMethod) %}
+        {% set measurement = addKeyValue(measurement, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
+        {% set measurement = addKeyValue(measurement, "measurementMinDischarge", hit.measurementMinDischarge) %}
+        {% set measurement = addKeyValue(measurement, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
+        {% set measurement = addKeyValue(measurement, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
+        {% set measurement = addKeyValue(measurement, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
+        {% set measurement = addKeyValue(measurement, "verticalSpatialSystems", hit.verticalSpatialSystems) %}
+        {% set measurement = addKeyValue(measurement, "verticalExtent", hit.verticalExtent) %}
+        {% set measurement = addKeyValue(measurement, "references", hit.references) %}
+        {% set measurement = addKeyValue(measurement, "measuringMethod", hit.measuringMethod) %}
+        {% set measurement = addKeyValue(measurement, "gauge", hit.gauge) %}
+        {% set measurement = addKeyValue(measurement, "targetParameters", hit.targetParameters) %}
+        {% set measurement = addKeyValue(measurement, "spatiality", hit.spatiality) %}
+        {% set measurement = addKeyValue(measurement, "measuringDepth", hit.measuringDepth) %}
+        {% set measurement = addKeyValue(measurement, "frequency", hit.frequency) %}
+        {% set measurement = addKeyValue(measurement, "averageWaterLevel", hit.averageWaterLevel) %}
+        {% set measurement = addKeyValue(measurement, "zeroLevel", hit.zeroLevel) %}
+        {% set measurement = addKeyValue(measurement, "drain", hit.drain) %}
+        {% set measurement = addKeyValue(measurement, "dataQualityDescription", hit.dataQualityDescription) %}
+        {% set measurement = addKeyValue(measurement, "timestep", hit.timestep) %}
+
+        {% set measurementBautechnik = addKeyValue(measurementBautechnik, "researchGoal", hit.researchGoal) %}
+        {% set measurementBautechnik = addKeyValue(measurementBautechnik, "measurementType", hit.measurementType) %}
+        {% set measurementBautechnik = addKeyValue(measurementBautechnik, "windID", hit.windID) %}
+        {% set measurementBautechnik = addKeyValue(measurementBautechnik, "measurementDirection", hit.measurementDirection) %}
+        {% set measurementBautechnik = addKeyValue(measurementBautechnik, "parameter", hit.parameter) %}
+{% endswitch %}
 
 {% set hasTimeResource = (timeRefs.timeCreation or timeRefs.timePublication or timeRefs.timeRevision or timeRefs.timeStatus or  timeRefs.timePeriod or timeRefs.timeInterval or (timeRefs.timeMeasureValue and timeRefs.timeMeasureUnit)) %}
+{% set hasLaboratory = (laboratory|length > 0) %}
+{% set hasSimulation = (simulation|length > 0) %}
+{% set hasSimulationBautechnik = (simulationBautechnik|length > 0) %}
+{% set hasMeasurement = (measurement|length > 0) %}
+{% set hasMeasurementBautechnik = (measurementBautechnik|length > 0) %}
+{% set hasInfo = (infoRefs|length > 0 or infoRefs_additional|length > 0 or infoRefs_keyword|length > 0 or hasLaboratory or hasSimulation or hasSimulationBautechnik or hasMeasurement or hasMeasurementBautechnik) %}
+
+{% set hash_laboratory = "laboratory" %}
+{% set hash_simulation = "simulation" %}
+{% set hash_simulationBautechnik = "simulationBautechnik" %}
+{% set hash_measurement = "measurement" %}
+{% set hash_measurementBautechnik = "measurementBautechnik" %}
 
 {% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

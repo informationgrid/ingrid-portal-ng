@@ -117,6 +117,17 @@
         {% set simulationBautechnik = addKeyValue(simulationBautechnik, "analysisType", hit.analysisType) %}
 
     {% case 'Messdaten' %}
+        {% set measurement = addKeyValue(measurement, "measurementMethod", hit.measurementMethod) %}
+        {% set measurement = addKeyValue(measurement, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
+        {% set measurement = addKeyValue(measurement, "measurementMinDischarge", hit.measurementMinDischarge) %}
+        {% set measurement = addKeyValue(measurement, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
+        {% set measurement = addKeyValue(measurement, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
+        {% set measurement = addKeyValue(measurement, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
         {% set measurement = addKeyValue(measurement, "verticalSpatialSystems", hit.verticalSpatialSystems) %}
         {% set measurement = addKeyValue(measurement, "verticalExtent", hit.verticalExtent) %}
         {% set measurement = addKeyValue(measurement, "references", hit.references) %}
@@ -145,6 +156,7 @@
 {% set hasSimulationBautechnik = (simulationBautechnik|length > 0) %}
 {% set hasMeasurement = (measurement|length > 0) %}
 {% set hasMeasurementBautechnik = (measurementBautechnik|length > 0) %}
+{% set hasInfo = (infoRefs|length > 0 or infoRefs_additional|length > 0 or infoRefs_keyword|length > 0 or hasLaboratory or hasSimulation or hasSimulationBautechnik or hasMeasurement or hasMeasurementBautechnik) %}
 {% set hasBibliographicalInfo = (bibliographies|length > 0 or doi or citations|length > 0) %}
 
 {% set hash_laboratory = "laboratory" %}
