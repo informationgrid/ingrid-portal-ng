@@ -1,3 +1,9 @@
+{% set laboratory = [] %}
+{% set simulation = [] %}
+{% set simulationBautechnik = [] %}
+{% set measurement = [] %}
+{% set measurementBautechnik = [] %}
+
 {# Zeitbezug #}
 {% set timeRefs = addKeyValue(timeRefs, "timeMeasureValue", hit.timeMeasureValue) %}
 {% set timeRefs = addKeyValue(timeRefs, "timeMeasureUnit", hit.timeMeasureUnit) %}
@@ -12,6 +18,19 @@
 
 {# Fachinformationen #}
 {% switch class %}
+    {% case '1' %}
+        {% set measurement = addKeyValue(measurement, "measurementMethod", hit.measurementMethod) %}
+        {% set measurement = addKeyValue(measurement, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
+        {% set measurement = addKeyValue(measurement, "measurementMinDischarge", hit.measurementMinDischarge) %}
+        {% set measurement = addKeyValue(measurement, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
+        {% set measurement = addKeyValue(measurement, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
+        {% set measurement = addKeyValue(measurement, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
+        {% set measurement = addKeyValue(measurement, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
+
     {% case '6' %}
         {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsnummer", hit.erstellungsvertragsnummer) %}
         {% set infoRefs = addKeyValue(infoRefs, "erstellungsvertragsdatum", hit.erstellungsvertragsdatum) %}
@@ -26,11 +45,6 @@
 
 {% set hierachyLevelName = hit.hierachyLevelName %}
 {% set simulationType = hit.simulationType %}
-{% set laboratory = [] %}
-{% set simulation = [] %}
-{% set simulationBautechnik = [] %}
-{% set measurement = [] %}
-{% set measurementBautechnik = [] %}
 
 {% switch simulationType %}
     {% case 'Labordaten' %}
@@ -76,17 +90,6 @@
         {% set simulationBautechnik = addKeyValue(simulationBautechnik, "analysisType", hit.analysisType) %}
 
     {% case 'Messdaten' %}
-        {% set measurement = addKeyValue(measurement, "measurementMethod", hit.measurementMethod) %}
-        {% set measurement = addKeyValue(measurement, "measurementSpatialOrientation", hit.measurementSpatialOrientation) %}
-        {% set measurement = addKeyValue(measurement, "measurementMinDischarge", hit.measurementMinDischarge) %}
-        {% set measurement = addKeyValue(measurement, "measurementMaxDischarge", hit.measurementMaxDischarge) %}
-        {% set measurement = addKeyValue(measurement, "measurementMeasurementFrequency", hit.measurementMeasurementFrequency) %}
-        {% set measurement = addKeyValue(measurement, "measurementDataQualityDescription", hit.measurementDataQualityDescription) %}
-        {% set measurement = addKeyValue(measurement, "measurementMeasurementDepth", hit.measurementMeasurementDepth) %}
-        {% set measurement = addKeyValue(measurement, "measurementMeanWaterLevel", hit.measurementMeanWaterLevel) %}
-        {% set measurement = addKeyValue(measurement, "measurementGaugeDatum", hit.measurementGaugeDatum) %}
-        {% set measurement = addKeyValue(measurement, "measurementMeasurementDevice", hit.measurementMeasurementDevice) %}
-        {% set measurement = addKeyValue(measurement, "measurementMeasuredQuantities", hit.measurementMeasuredQuantities) %}
         {% set measurement = addKeyValue(measurement, "verticalSpatialSystems", hit.verticalSpatialSystems) %}
         {% set measurement = addKeyValue(measurement, "verticalExtent", hit.verticalExtent) %}
         {% set measurement = addKeyValue(measurement, "references", hit.references) %}
