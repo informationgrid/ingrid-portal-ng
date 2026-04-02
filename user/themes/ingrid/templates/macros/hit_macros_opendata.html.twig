@@ -278,13 +278,13 @@
                 </div>
                 {% set link = entry.access_url %}
                 {% if link %}
-                    <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title }}">
+                    <a {% if isExternal %}target="_blank"{% endif %} href="{{ link }}" class="icon" title="{{ entry.title ?? entry.access_url }}">
                         {% if isExternal %}
                             <span class="ic-ic-external"></span>
                         {% elseif isDownload %}
                             <span class="ic-ic-download"></span>
                         {% endif %}
-                        <span class="text">{{ removeHashLocale(entry.title) }}</span>
+                        <span class="text">{{ removeHashLocale(entry.title ?? entry.access_url) }}</span>
                     </a>
                 {% endif %}
 
