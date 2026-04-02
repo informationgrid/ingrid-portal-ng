@@ -44,6 +44,7 @@
     </div>
     {% include 'partials/menu/menu_logins_links.html.twig' ignore missing %}
     <div class="menu-sub-links">
+        {% include 'partials/menu/menu_logins_button.html.twig' ignore missing %}
         {% if grav.language.getLanguages|count > 1 %}
             <div class="menu-settings-links">
                 {% if grav.language.getLanguages|count > 1 %}
