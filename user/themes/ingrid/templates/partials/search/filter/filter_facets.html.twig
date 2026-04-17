@@ -47,194 +47,196 @@
                                 {% set itemOpenContentStyle = 'style="display:block;"' %}
                                 {% set itemOpenContentAria = 'aria-hidden="false"' %}
                             {% endif %}
-                            <li {{ itemOpenClass|raw }} data-accordion-item>
-                                <a id="{{ item.id }}-accordion-label" class="accordion-title" href="#" aria-controls="{{ item.id }}-accordion" role="tab"
-                                   {{ itemOpenAria|raw }}>
-                                    <span class="text">{{ item.label|t }}</span>
-                                </a>
-                                <div id="{{ item.id }}-accordion" class="accordion-content {{ item.id }}" role="tabpanel"
-                                    aria-labelledby="{{ item.id }}-accordion-label" {{ itemOpenContentAria|raw }}
-                                    {{ itemOpenContentStyle|raw }} data-tab-content>
-                                    {% if item.info %}
-                                    <div class="form-element boxed">
-                                        <div class="input-check caption" style="text-align:left;">
-                                            <div class="icon check">
-                                                <span class="ic-ic-info"></span>
-                                                <span>{{ item.info|t }}</span>
+                            {% if hasFacets(item) %}
+                                <li {{ itemOpenClass|raw }} data-accordion-item>
+                                    <a id="{{ item.id }}-accordion-label" class="accordion-title" href="#" aria-controls="{{ item.id }}-accordion" role="tab"
+                                       {{ itemOpenAria|raw }}>
+                                        <span class="text">{{ item.label|t }}</span>
+                                    </a>
+                                    <div id="{{ item.id }}-accordion" class="accordion-content {{ item.id }}" role="tabpanel"
+                                        aria-labelledby="{{ item.id }}-accordion-label" {{ itemOpenContentAria|raw }}
+                                        {{ itemOpenContentStyle|raw }} data-tab-content>
+                                        {% if item.info %}
+                                        <div class="form-element boxed">
+                                            <div class="input-check caption" style="text-align:left;">
+                                                <div class="icon check">
+                                                    <span class="ic-ic-info"></span>
+                                                    <span>{{ item.info|t }}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    {% endif %}
-                                    {% if (item.id == "bbox") %}
-                                        {% include 'partials/search/filter/facet_area_map.html.twig' with {
-                                            id: item.id ~ '-accordion-label',
-                                            active: isItemOpen
-                                        } %}
-                                    {% elseif (item.id == "timeref") %}
-                                        {% include 'partials/search/filter/facet_timeref.html.twig' %}
-                                    {% else %}
-                                        <div class="boxes">
-                                            {% if item.toggle %}
-                                                {% set actionLink = page.find('/search').url ~ '?' %}
-                                                {% set queries = uri.query(null, true) %}
-                                                {% set queries = queries|merge({
-                                                    (item.toggle.id) : item.toggle.active ? '' : item.id
-                                                }) %}
-                                                {% for key, param in queries %}
-                                                    {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
-                                                {% endfor %}
-                                                <div class="form-element boxed toggle-group">
-                                                    <label class="control toggle" title="{{ item.toggle.label.title|t }}">
-                                                        <input type="checkbox" onclick="location.href='{{ actionLink }}'" name="{{ item.toggle.id }}"
-                                                                {% if item.toggle.active %}
-                                                                    checked
+                                        {% endif %}
+                                        {% if (item.id == "bbox") %}
+                                            {% include 'partials/search/filter/facet_area_map.html.twig' with {
+                                                id: item.id ~ '-accordion-label',
+                                                active: isItemOpen
+                                            } %}
+                                        {% elseif (item.id == "timeref") %}
+                                            {% include 'partials/search/filter/facet_timeref.html.twig' %}
+                                        {% else %}
+                                            <div class="boxes">
+                                                {% if item.toggle %}
+                                                    {% set actionLink = page.find('/search').url ~ '?' %}
+                                                    {% set queries = uri.query(null, true) %}
+                                                    {% set queries = queries|merge({
+                                                        (item.toggle.id) : item.toggle.active ? '' : item.id
+                                                    }) %}
+                                                    {% for key, param in queries %}
+                                                        {% set actionLink = actionLink ~ '&' ~ key|url_encode ~ '=' ~ param|url_encode %}
+                                                    {% endfor %}
+                                                    <div class="form-element boxed toggle-group">
+                                                        <label class="control toggle" title="{{ item.toggle.label.title|t }}">
+                                                            <input type="checkbox" onclick="location.href='{{ actionLink }}'" name="{{ item.toggle.id }}"
+                                                                    {% if item.toggle.active %}
+                                                                        checked
+                                                                    {% endif %}
+                                                            >
+                                                            <span class="toggle-slider round"></span>
+                                                        </label>
+                                                        <span class="toggle-label checked {% if item.toggle.active is not sameas(true) %}is-hidden{% endif %}">{{ item.toggle.label.on|t }}</span>
+                                                        <span class="toggle-label unchecked {% if item.toggle.active %}is-hidden{% endif %}">{{ item.toggle.label.off|t }}</span>
+                                                    </div>
+                                                {% endif %}
+                                                {% set itemsSelectedFacets = [] %}
+                                                {% if selected_facets is not empty %}
+                                                    {% set itemsSelectedFacets = selected_facets[item.id]|split(FACET_ENTRIES_SEPARATOR) %}
+                                                {% endif %}
+                                                {% if item.selectionSingle %}
+                                                    {% set inputType = 'radio' %}
+                                                    {% for bucket in item.items %}
+                                                        {% set displayFacet = true %}
+                                                        {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
+                                                            {% set displayFacet = false %}
+                                                        {% elseif bucket.displayOnEmpty == false and bucket.docCount == 0 %}
+                                                            {% set displayFacet = false %}
+                                                        {% endif %}
+                                                        {% if displayFacet %}
+                                                            <div class="form-element boxed">
+                                                                <div class="input-check">
+                                                                    {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
+                                                                    <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
+                                                                        <div class="control-group">
+                                                                            <div class="control control--{{ inputType }}">
+                                                                                <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
+                                                                                <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                                <span class="text">{{ bucket.label|t }}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% set inputType = 'checkbox' %}
+                                                    {% set activeListLimit = false %}
+                                                    {% set itemsSelected = item.items|filter(f => f.value in itemsSelectedFacets) %}
+                                                    {% set itemsUnselected = item.items|filter(f => f.value not in itemsSelectedFacets) %}
+                                                    {% set ignoreItems = 0 %}
+                                                    {% for bucket in itemsSelected %}
+                                                        {% set displayFacet = true %}
+                                                        {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
+                                                            {% set displayFacet = false %}
+                                                        {% endif %}
+                                                        {% if displayFacet %}
+                                                            {% if bucket.value is not null or bucket.value is not empty %}
+                                                                {% if bucket.displayLineAbove %}
+                                                                    <hr class="no-margin border-dotted">
                                                                 {% endif %}
-                                                        >
-                                                        <span class="toggle-slider round"></span>
-                                                    </label>
-                                                    <span class="toggle-label checked {% if item.toggle.active is not sameas(true) %}is-hidden{% endif %}">{{ item.toggle.label.on|t }}</span>
-                                                    <span class="toggle-label unchecked {% if item.toggle.active %}is-hidden{% endif %}">{{ item.toggle.label.off|t }}</span>
-                                                </div>
-                                            {% endif %}
-                                            {% set itemsSelectedFacets = [] %}
-                                            {% if selected_facets is not empty %}
-                                                {% set itemsSelectedFacets = selected_facets[item.id]|split(FACET_ENTRIES_SEPARATOR) %}
-                                            {% endif %}
-                                            {% if item.selectionSingle %}
-                                                {% set inputType = 'radio' %}
-                                                {% for bucket in item.items %}
-                                                    {% set displayFacet = true %}
-                                                    {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
-                                                        {% set displayFacet = false %}
-                                                    {% elseif bucket.displayOnEmpty == false and bucket.docCount == 0 %}
-                                                        {% set displayFacet = false %}
-                                                    {% endif %}
-                                                    {% if displayFacet %}
-                                                        <div class="form-element boxed">
-                                                            <div class="input-check">
                                                                 {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
-                                                                <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
-                                                                    <div class="control-group">
-                                                                        <div class="control control--{{ inputType }}">
-                                                                            <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
-                                                                            <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                            <span class="text">{{ bucket.label|t }}</span>
+                                                                {% set facet_label = bucket.label|t %}
+                                                                {% if 'FACETS.' in facet_label %}
+                                                                    {% set facet_label = bucket.value %}
+                                                                {% endif %}
+                                                                {% if facet_label %}
+                                                                    <div class="form-element boxed">
+                                                                        <div class="input-check">
+                                                                            <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
+                                                                                <div class="control-group">
+                                                                                    <div class="control control--{{ inputType }}">
+                                                                                        <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
+                                                                                        <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                                        <span class="text">{{ facet_label }}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
                                                                         </div>
                                                                     </div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            {% else %}
-                                                {% set inputType = 'checkbox' %}
-                                                {% set activeListLimit = false %}
-                                                {% set itemsSelected = item.items|filter(f => f.value in itemsSelectedFacets) %}
-                                                {% set itemsUnselected = item.items|filter(f => f.value not in itemsSelectedFacets) %}
-                                                {% set ignoreItems = 0 %}
-                                                {% for bucket in itemsSelected %}
-                                                    {% set displayFacet = true %}
-                                                    {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
-                                                        {% set displayFacet = false %}
-                                                    {% endif %}
-                                                    {% if displayFacet %}
-                                                        {% if bucket.value is not null or bucket.value is not empty %}
-                                                            {% if bucket.displayLineAbove %}
-                                                                <hr class="no-margin border-dotted">
-                                                            {% endif %}
-                                                            {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
-                                                            {% set facet_label = bucket.label|t %}
-                                                            {% if 'FACETS.' in facet_label %}
-                                                                {% set facet_label = bucket.value %}
-                                                            {% endif %}
-                                                            {% if facet_label %}
-                                                                <div class="form-element boxed">
-                                                                    <div class="input-check">
-                                                                        <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
-                                                                            <div class="control-group">
-                                                                                <div class="control control--{{ inputType }}">
-                                                                                    <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
-                                                                                    <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                                    <span class="text">{{ facet_label }}</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            {% endif %}
-                                                        {% endif %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                                {% if itemsSelected|length > 0 %}
-                                                    <hr class="no-margin border-dotted">
-                                                {% endif %}
-                                                {% set countItems = 0 %}
-                                                {% for bucket in itemsUnselected %}
-                                                    {% set displayFacet = true %}
-                                                    {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
-                                                        {% set displayFacet = false %}
-                                                    {% elseif bucket.displayOnEmpty == false and bucket.docCount == 0 %}
-                                                        {% set displayFacet = false %}
-                                                    {% endif %}
-                                                    {% if displayFacet %}
-                                                        {% if bucket.value is not null or bucket.value is not empty %}
-                                                            {% if item.listLimit and activeListLimit == false %}
-                                                                {% if countItems > item.listLimit + ignoreItems %}
-                                                                    {% set activeListLimit = true %}
-                                                                    <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
-                                                                    <div class="accordion-item text-right" data-accordion-item>
-                                                                    <div id="{{ item.id }}_more" class="text-left" style="display: none;" role="tabpanel" aria-labelledby="type-accordion-label" aria-hidden="false" data-tab-content >
                                                                 {% endif %}
                                                             {% endif %}
-                                                            {% if bucket.displayLineAbove %}
-                                                                <hr class="no-margin border-dotted">
-                                                            {% endif %}
-                                                            {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
-                                                            {% set facet_label = bucket.label|t %}
-                                                            {% if 'FACETS.' in facet_label%}
-                                                                {% set facet_label = bucket.value %}
-                                                            {% endif %}
-                                                            {% if facet_label %}
-                                                                <div class="form-element boxed">
-                                                                    <div class="input-check">
-                                                                        <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
-                                                                            <div class="control-group">
-                                                                                <div class="control control--{{ inputType }}">
-                                                                                    <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
-                                                                                    <span class="nr-results">({{ bucket.docCount }})</span>
-                                                                                    <span class="text">{{ facet_label }}</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            {% else %}
-                                                                {% set ignoreItems = ignoreItems + 1 %}
-                                                            {% endif %}
                                                         {% endif %}
-                                                        {% set countItems = countItems + 1 %}
+                                                    {% endfor %}
+                                                    {% if itemsSelected|length > 0 %}
+                                                        <hr class="no-margin border-dotted">
                                                     {% endif %}
-                                                {% endfor %}
-                                                {% if activeListLimit == true %}
-                                                    </div>
-                                                    <a id="{{ item.id }}_more-label" href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" aria-expanded="false" aria-selected="false">
-                                                        <div class="helper plus">
-                                                            <span class="ic-ic-plus"></span>
-                                                            <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_PLUS"|t }}</span>
+                                                    {% set countItems = 0 %}
+                                                    {% for bucket in itemsUnselected %}
+                                                        {% set displayFacet = true %}
+                                                        {% if bucket.hiddenBy and selected_facets[bucket.hiddenBy] is not empty %}
+                                                            {% set displayFacet = false %}
+                                                        {% elseif bucket.displayOnEmpty == false and bucket.docCount == 0 %}
+                                                            {% set displayFacet = false %}
+                                                        {% endif %}
+                                                        {% if displayFacet %}
+                                                            {% if bucket.value is not null or bucket.value is not empty %}
+                                                                {% if item.listLimit and activeListLimit == false %}
+                                                                    {% if countItems > item.listLimit + ignoreItems %}
+                                                                        {% set activeListLimit = true %}
+                                                                        <div class="accordion " data-allow-all-closed="true" role="tablist" data-accordion>
+                                                                        <div class="accordion-item text-right" data-accordion-item>
+                                                                        <div id="{{ item.id }}_more" class="text-left" style="display: none;" role="tabpanel" aria-labelledby="type-accordion-label" aria-hidden="false" data-tab-content >
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                                {% if bucket.displayLineAbove %}
+                                                                    <hr class="no-margin border-dotted">
+                                                                {% endif %}
+                                                                {% set facetId = item.id ~ '-' ~ bucket.value|underscorize %}
+                                                                {% set facet_label = bucket.label|t %}
+                                                                {% if 'FACETS.' in facet_label%}
+                                                                    {% set facet_label = bucket.value %}
+                                                                {% endif %}
+                                                                {% if facet_label %}
+                                                                    <div class="form-element boxed">
+                                                                        <div class="input-check">
+                                                                            <a id="facet-{{ facetId }}" href="{{ bucket.actionLink }}" class="input-checkbox">
+                                                                                <div class="control-group">
+                                                                                    <div class="control control--{{ inputType }}">
+                                                                                        <span class="control__indicator {% if bucket.value in itemsSelectedFacets %} checked {% endif %}"></span>
+                                                                                        <span class="nr-results">({{ bucket.docCount }})</span>
+                                                                                        <span class="text">{{ facet_label }}</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                {% else %}
+                                                                    {% set ignoreItems = ignoreItems + 1 %}
+                                                                {% endif %}
+                                                            {% endif %}
+                                                            {% set countItems = countItems + 1 %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if activeListLimit == true %}
                                                         </div>
-                                                        <div class="helper minus">
-                                                            <span class="ic-ic-minus"></span>
-                                                            <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_MINUS"|t }}</span>
+                                                        <a id="{{ item.id }}_more-label" href="#" class="more" aria-controls="{{ item.id }}_more" role="tab" aria-expanded="false" aria-selected="false">
+                                                            <div class="helper plus">
+                                                                <span class="ic-ic-plus"></span>
+                                                                <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_PLUS"|t }}</span>
+                                                            </div>
+                                                            <div class="helper minus">
+                                                                <span class="ic-ic-minus"></span>
+                                                                <span class="text">{{ "SEARCH_RESULT.FACET_CATEGORY_MINUS"|t }}</span>
+                                                            </div>
+                                                        </a>
                                                         </div>
-                                                    </a>
-                                                    </div>
-                                                    </div>
+                                                        </div>
+                                                    {% endif %}
                                                 {% endif %}
-                                            {% endif %}
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </li>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endif %}
                         </ul>
                         {% endif %}
                     {% endfor %}
