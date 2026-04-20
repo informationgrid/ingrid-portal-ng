@@ -797,10 +797,10 @@ header .logo .logo__img {
   width: unset;
 }
 header .logo a .logo__img:nth-child(1) {
-  height: 65%;
+  height: 90%;
 }
 header .logo a .logo__img:nth-child(2) {
-  height: 90%;
+  height: 65%;
 }
 header .logo a .logo__text {
   font-weight: 500;
