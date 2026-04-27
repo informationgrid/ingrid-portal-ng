@@ -109,10 +109,10 @@ home:
             "query": {
               "filter": {
                 "term": {
-                  "t01_object.obj_class": "6"
+                  "hierarchylevel": "application"
                 }
               }
-            },
+            }
           },
           "data": {
             "codelist": "8000",
@@ -121,11 +121,27 @@ home:
             "icon": "ic-map",
             "query": {
               "filter": {
-                "term": {
-                  "t01_object.obj_class": "1"
+                "bool": {
+                  "should": [
+                    {
+                      "term": {
+                        "hierarchylevel": "dataset"
+                      }
+                    },
+                    {
+                      "term": {
+                        "hierarchylevel": "series"
+                      }
+                    },
+                    {
+                      "term": {
+                        "hierarchylevel": "featureType"
+                      }
+                    }
+                  ]
                 }
               }
-            },
+            }
           },
           "service": {
             "codelist": "8000",
@@ -135,10 +151,10 @@ home:
             "query": {
               "filter": {
                 "term": {
-                  "t01_object.obj_class": "3"
+                  "hierarchylevel": "service"
                 }
               }
-            },
+            }
           },
           "inspire_true": {
             "label": "INSPIRE",
@@ -262,9 +278,8 @@ hit_search:
                 "hierarchylevel": "application"
               }
             }
-          },
-        },
-
+          }
+        }
       }
     },
     {
