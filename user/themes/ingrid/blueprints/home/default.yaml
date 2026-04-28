@@ -148,5 +148,5 @@ form:
       label: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.LABEL
       help: THEME.ADMIN.HOME.RSS.FEEDS_LIMIT.HELP
       validate:
-        min: 1
+        min: 0
         max: 10
