@@ -2119,6 +2119,7 @@ footer {
       font-family: $button-font-family;
       white-space: nowrap;
       margin-right: 6px;
+      display: inline;
 
       ~ .button {
         margin: 0;

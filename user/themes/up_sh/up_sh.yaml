@@ -448,6 +448,7 @@ hit_detail:
   query_string_operator: AND
   display_use_constraints_json: true
   remove_use_constraints_prefix: false
+  keywords_as_link: false
   link_sort_asc: false
 map:
   url: /ingrid-webmap-client/frontend/prd

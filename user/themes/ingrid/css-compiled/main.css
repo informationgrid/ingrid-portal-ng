@@ -8981,6 +8981,7 @@ footer .footer-top-link:hover {
   font-family: "Roboto-Bold";
   white-space: nowrap;
   margin-right: 6px;
+  display: inline;
 }
 .search-filtered .table.list .list_entry ~ .button {
   margin: 0;

@@ -1354,6 +1354,9 @@ THEME:
             REFERENCE_SYSTEM_LINK_REPLACE:
                 LABEL: Reference-Systemen ersetzen
                 HELP: Ersetzen des Teilstring bei den Reference-Systemen.
+            KEYWORDS_AS_LINK:
+                LABEL: Schlagworte als Link darstellen
+                HELP: Schlagworte werden als Link dargestellt und lösen bei Betätigung einen Suche mit dem Schlagwort aus.
             LINK_SORT_ASC:
                 LABEL: Links alphabetisch sortieren
                 HELP: Bei Aktivierung dieser Option werden Links alphabetisch sortiert.

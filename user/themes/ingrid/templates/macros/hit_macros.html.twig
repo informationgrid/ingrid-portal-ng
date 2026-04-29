@@ -995,7 +995,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore) %}
+{% macro render_teaser_list (title, entries, isExpandable, expandableId, expandableLimit, paramsMore, page, entryAsLink) %}
     {% if entries and entries|length > 0 %}
         <div class="table list">
             <table>
@@ -1017,11 +1017,15 @@
                                         id="{{ expandableId }}"
                                         class="js-expander js-open-expand-text button outline {{ expandableId }}{% if isMoreId %} is-hidden{% endif %}"
                                         title="{{ 'SEARCH_DETAIL.INFO_MORE'|t }}">
-                                        {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
+                                            {{ 'SEARCH_DETAIL.INFO_MORE'|t }}
                                     </button>
                                     <span class="js-expander-content {{ expandableId }} {% if not isMoreId %} is-hidden{% endif %}">
                                 {% endif %}
-                                <span class="list_entry">{{ entry }}</span>
+                                {% if entryAsLink %}
+                                    <a class="list_entry" href="{{ page.find('/search').url ~ '?q=' ~ entry|url_encode }}" title="{{ entry }}">{{ entry }}</a>
+                                {% else %}
+                                    <span class="list_entry">{{ entry }}</span>
+                                {% endif %}
                             {% endfor %}
                             {% if listExpanded %}
                                 {% set listExpanded = false %}
@@ -1035,7 +1039,11 @@
                             {% endif %}
                         {% else %}
                             {% for entry in entries %}
-                                <span class="list_entry">{{ entry }}</span>
+                                {% if entryAsLink %}
+                                    <a class="list_entry" href="{{ page.find('/search').url ~ '?q=' ~ entry|url_encode }}" title="{{ entry }}">{{ entry }}</a>
+                                {% else %}
+                                    <span class="list_entry">{{ entry }}</span>
+                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     </td>

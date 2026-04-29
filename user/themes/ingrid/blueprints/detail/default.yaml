@@ -76,6 +76,17 @@ form:
       label: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.LABEL
       help: THEME.ADMIN.HIT_DETAIL.REFERENCE_SYSTEM_LINK_REPLACE.HELP
 
+    hit_detail.keywords_as_link:
+      type: toggle
+      label: THEME.ADMIN.HIT_DETAIL.KEYWORDS_AS_LINK.LABEL
+      help: THEME.ADMIN.HIT_DETAIL.KEYWORDS_AS_LINK.HELP
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+
     hit_detail.link_sort_asc:
       type: toggle
       label: THEME.ADMIN.HIT_DETAIL.LINK_SORT_ASC.LABEL
@@ -85,7 +96,7 @@ form:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
       validate:
-        type: text
+        type: bool
 
     hit_detail.csw_enabled:
       type: toggle
