@@ -22,7 +22,7 @@ InGrid Portal Next Generation
 
 ################################################################################
 %prep
-curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/%{version_grav}
+curl -o grav-admin.zip -SL https://github.com/getgrav/grav/releases/download/%{version_grav}/grav-admin-v%{version_grav}.zip
 curl -o mvis.zip -SL https://nexus.informationgrid.eu/repository/maven-public/de/ingrid/measurement-client/%{version_mvis}/measurement-client-%{version_mvis}.zip
 
 ################################################################################
