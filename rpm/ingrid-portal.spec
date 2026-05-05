@@ -13,7 +13,7 @@ AutoReqProv: no
 %define context_path ingrid-portal-grav
 %define install_root /var/www/%{context_path}
 %define system_yaml %{buildroot}%{install_root}/user/config/system.yaml
-%define version_grav 1.7.48
+%define version_grav 1.7.52
 %define version_mvis 2.0.11
 
 ################################################################################
