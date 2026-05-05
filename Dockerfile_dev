@@ -1,6 +1,6 @@
 FROM php:8.3-apache@sha256:41ce934bddbd1b79927187723bbfeab8ec730d1604bbbf5b00ce98cd3c4ac5af
 
-ENV GRAV_VERSION=1.7.49.5
+ENV GRAV_VERSION=1.7.52
 ENV YQ_VERSION=v4.45.1
 ENV TZ='Europe/Berlin'
 
@@ -17,7 +17,7 @@ RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install zip gd xsl xml dom intl
 
 WORKDIR /var/www
-RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
+RUN curl -o grav-admin.zip -SL https://github.com/getgrav/grav/releases/download/${GRAV_VERSION}/grav-admin-v${GRAV_VERSION}.zip && \
     unzip grav-admin.zip && \
     cp -rT /var/www/grav-admin /var/www/html && \
     rm grav-admin.zip
