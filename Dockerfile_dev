@@ -17,7 +17,7 @@ RUN docker-php-ext-configure gd --with-jpeg
 RUN docker-php-ext-install zip gd xsl xml dom intl
 
 WORKDIR /var/www
-RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
+RUN curl -o grav-admin.zip -SL https://github.com/getgrav/grav/releases/download/${GRAV_VERSION}/grav-admin-v${GRAV_VERSION}.zip && \
     unzip grav-admin.zip && \
     cp -rT /var/www/grav-admin /var/www/html && \
     rm grav-admin.zip
