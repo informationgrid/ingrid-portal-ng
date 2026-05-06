@@ -2,11 +2,10 @@ FROM php:8.3-fpm-trixie
 
 SHELL [ "/bin/bash", "-exo", "pipefail", "-c" ]
 
-# set versions in versions.props!
-ARG GRAV_VERSION=1.7.52
-ARG MVIS_VERSION=2.0.11
+# ATTENTION: versions must be managed in versions.props!
+ARG GRAV_VERSION
+ARG MVIS_VERSION
 
-# renovate: datasource=github-tags depName=getgrav/grav versioning=semver
 ENV GRAV_VERSION=${GRAV_VERSION}
 ENV MVIS_VERSION=${MVIS_VERSION}
 
