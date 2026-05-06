@@ -88,7 +88,7 @@ cd /var/www/"$GRAV_FOLDER"
 
 # exclude user config when it's already there
 if [ -d "/var/www/$GRAV_FOLDER/user/config" ]; then
-  rsync -rlD --delete \
+  rsync -rl --delete \
              --exclude /backup/ \
              --exclude /logs/ \
              --exclude /tmp/ \
@@ -98,7 +98,7 @@ if [ -d "/var/www/$GRAV_FOLDER/user/config" ]; then
              --exclude /user/data/uploads \
              /usr/share/grav-admin/ /var/www/"$GRAV_FOLDER"
 else
-  rsync -rlD --delete \
+  rsync -rl --delete \
              --exclude /backup/ \
              --exclude /logs/ \
              --exclude /tmp/ \
