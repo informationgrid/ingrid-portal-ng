@@ -1,13 +1,15 @@
 {% import 'macros/hit_macros.html.twig' as hit_macros %}
 
-<a id="{{ hitOpenId }}" class="js-expander {% if isHitOpen %}is-hidden{% endif %}" title="{{ "SEARCH_RESULT.INFO_MORE"|t }}" href="#" {% if bboxes|length > 0 %}onclick="resizeMap({{ hitMapId }})"{% endif %}>
-    <span class="icon  ic-ic-plus"></span>
+<a id="{{ hitOpenId }}" class="js-expander {% if isHitOpen %}is-hidden{% endif %}" href="#" aria-label="{{ "SEARCH_RESULT.INFO_MORE"|t }}" aria-expanded="false" role="button" {% if bboxes|length > 0 %}onclick="resizeMap({{ hitMapId }})"{% endif %}>
+    <span class="icon ic-ic-plus"></span>
     <span class="text">{{ "SEARCH_RESULT.INFO_MORE"|t }}</span>
 </a>
-<a class="js-expander-close {{ hitOpenId }} {% if not isHitOpen %}is-hidden{% endif %}" title="{{ "SEARCH_RESULT.INFO_LESS"|t }}" href="#">
-    <span class="icon  ic-ic-minus"></span>
+
+<a class="js-expander-close {{ hitOpenId }} {% if not isHitOpen %}is-hidden{% endif %}" href="#" aria-label="{{ "SEARCH_RESULT.INFO_LESS"|t }}" aria-expanded="true" role="button">
+    <span class="icon ic-ic-minus"></span>
     <span class="text">{{ "SEARCH_RESULT.INFO_LESS"|t }}</span>
 </a>
+
 <div class="js-expander-content {{ hitOpenId }} {% if not isHitOpen %}is-hidden{% endif %}">
     <div class="row">
         <div class="xsmall-24 small-24 medium-14 large-14 xlarge-14 columns">
@@ -216,7 +218,7 @@
                         <div class="swiper-slide">
                             {{ hit_macros.render_fact_title("SEARCH_RESULT.INFO_PREVIEW"|t, null, 'text-center') }}
                             <a target="_blank" class="external-link" href="{{ link.url }}" title="{{ link.title }}" rel="noopener noreferrer">
-                                <img {% if 'http:' in link.url %} src="./" data-src={% else %} src={% endif %}"{{ link.url }}" height="100" class="preview_image" alt="{{ link.title }}" title="{{ link.title }}" onerror="loadDefaultMapImage(this, '{{ url("theme://images/maps/image_map_" ~ partners[0] ~ ".png") }}', '{{ url("theme://images/maps/image_map.png") }}');">
+                                <img {% if 'http:' in link.url %} src="./" data-src={% else %} src={% endif %}"{{ link.url }}" height="100" class="preview_image" alt="{{ link.title ?? 'SEARCH_DETAIL.PREVIEW'|t }}" title="{{ link.title }}" onerror="loadDefaultMapImage(this, '{{ url("theme://images/maps/image_map_" ~ partners[0] ~ ".png") }}', '{{ url("theme://images/maps/image_map.png") }}');">
                             </a>
                         </div>
                     {% endfor %}

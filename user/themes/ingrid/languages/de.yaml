@@ -161,6 +161,11 @@ COMMON:
     RESULT_SEARCH_FOR: Suche nach
     RESULT_SHOWSERVICE: Zeige Dienst
     RESULT_SHOWCOUPLEDRESOURCE: Zeige Kartenobjekt
+    RESULT_PAGE: Seite %d
+    RESULT_TO_FIRST_PAGE: Zur ersten Seite
+    RESULT_TO_LAST_PAGE: Zur letzten Seite
+    RESULT_TO_NEXT_PAGE: Nächste Seite
+    RESULT_TO_PREVIOUS_PAGE: Letzte Seite
     MAPS_PAGE_TITLE: Karten
     MAPS_ERROR_NOFRAMES: Leider kann Ihr Browser keine iframes darstellen.
     MAPS_LOAD_WMC: Karte laden

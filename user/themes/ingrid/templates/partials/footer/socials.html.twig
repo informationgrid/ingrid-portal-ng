@@ -4,41 +4,41 @@
     {% set page_site = uri.base ~ uri.uri %}
     <div class="social-buttons flex-container flex-dir-column">
         {% if share.enabled_mastodon %}
-        <a href="https://mastodon.social/share?text={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MASTODON"|t }}">
+        <a href="https://mastodon.social/share?text={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MASTODON"|t }}" aria-label="{{ "SHARE.MASTODON"|t }}">
             <span class="ic-ic-mastodon"></span><span class="text"></span>
         </a>
         {% endif %}
         {% if share.enabled_x %}
-        <a href="https://x.com/intent/post?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.X"|t }}">
+        <a href="https://x.com/intent/post?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.X"|t }}" aria-label="{{ "SHARE.X"|t }}">">
             <span class="ic-ic-twitter"></span><span class="text"></span>
         </a>
         {% endif %}
         {% if share.enabled_facebook %}
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.FACEBOOK"|t }}">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.FACEBOOK"|t }}" aria-label="{{ "SHARE.FACEBOOK"|t }}">
             <span class="ic-ic-facebook"></span><span class="text"></span>
         </a>
         {% endif %}
         {% if share.enabled_linkedin %}
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.LINKEDIN"|t }}">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.LINKEDIN"|t }}" aria-label="{{ "SHARE.LINKEDIN"|t }}">
             <span class="ic-ic-linkedin"></span><span class="text"></span>
         </a>
         {% endif %}
         {% if share.enabled_whatsapp %}
-        <a href="whatsapp://send?text={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.WHATSAPP"|t }}">
+        <a href="whatsapp://send?text={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.WHATSAPP"|t }}" aria-label="{{ "SHARE.WHATSAPP"|t }}">
             <span class="ic-ic-whatsapp"></span><span class="text"></span>
         </a>
         {% endif %}
         {% if share.enabled_xing %}
-        <a href="https://www.xing.com/social_plugins/share?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.XING"|t }}">
+        <a href="https://www.xing.com/social_plugins/share?url={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.XING"|t }}" aria-label="{{ "SHARE.XING"|t }}">
             <span class="ic-ic-xing"></span><span class="text"></span>
         </a>
         {% endif %}
         {% if share.enabled_mail %}
-        <a href="mailto:?body={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MAIL"|t }}">
+        <a href="mailto:?body={{ page_site|url_encode }}" class="button round social" target="_blank" title="{{ "SHARE.MAIL"|t }}" aria-label="{{ "SHARE.MAIL"|t }}">
             <span class="ic-ic-mailto"></span><span class="text"></span>
         </a>
         {% endif %}
-        <button id="share-buttons" class="button round social share" title="{{ "SHARE.TITLE"|t }}">
+        <button id="share-buttons" class="button round social share" title="{{ "SHARE.TITLE"|t }}" aria-label="{{ "SHARE.TITLE"|t }}">
             <span class="ic-ic-share"></span>
             <span class="text"></span>
         </button>
