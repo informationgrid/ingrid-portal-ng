@@ -92,6 +92,11 @@ ul li::before {
   color: #296e4b;
 }
 
+button:focus-visible {
+  outline-offset: 4px;
+  outline-width: 3px !important;
+}
+
 .header__logo {
   width: auto;
 }
@@ -176,7 +181,11 @@ header .button .ic-ic-hamburger:before {
   gap: 5px;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+}
+
+.side-logos a:focus-visible {
+  outline-offset: 3px;
+  outline: solid 3px black !important;
 }
 
 .side-logos a:first-child {
@@ -1284,6 +1293,11 @@ table .dark a {
   display: none;
 }
 
+.select2-container--focus {
+  outline-offset: 4px;
+  outline: 3px solid black;
+}
+
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
   height: unset;
@@ -1445,6 +1459,11 @@ footer .footer-top-link:focus {
   background-color: #024731;
 }
 
+footer .footer a:focus-visible > span, footer .footer a:focus-visible > img  {
+    outline-color: white !important;
+    outline-offset: 4px;
+}
+
 /* contact form page */
 [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'],
 [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'],
@@ -1466,6 +1485,10 @@ footer .footer-top-link:focus {
   border-bottom: 2px solid #3f3f3f;
   outline-offset: 5px;
   outline: 3px solid #296e4b !important;
+}
+
+.banner [type='text']:focus {
+  outline-color: white !important;
 }
 
 .form-element label {

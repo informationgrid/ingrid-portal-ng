@@ -2682,9 +2682,19 @@ h2 .anchor:target {
       margin: auto;
       padding: 24px 24px;
     }
+    a:focus-visible .preview_image {
+      outline-offset: -3px;
+      outline: 3px solid black;
+    }
+
     .map-ingrid {
       margin: 24px 24px;
     }
+    .map-ingrid:focus-visible {
+      outline-offset: 3px;
+      outline: 3px solid black;
+    }
+
     .swiper-wrapper {
       padding-bottom: 30px;
     }

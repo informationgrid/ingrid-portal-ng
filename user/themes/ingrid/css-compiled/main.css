@@ -9479,8 +9479,16 @@ h2 .anchor:target {
   margin: auto;
   padding: 24px 24px;
 }
+.teaser-data .swiper-container-background a:focus-visible .preview_image {
+  outline-offset: -3px;
+  outline: 3px solid black;
+}
 .teaser-data .swiper-container-background .map-ingrid {
   margin: 24px 24px;
+}
+.teaser-data .swiper-container-background .map-ingrid:focus-visible {
+  outline-offset: 3px;
+  outline: 3px solid black;
 }
 .teaser-data .swiper-container-background .swiper-wrapper {
   padding-bottom: 30px;
