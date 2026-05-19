@@ -1544,7 +1544,7 @@
 
     {% if node.children or node.hasChildren %}
         <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" role="tablist" >
-            <li class="accordion-item" >
+            <li class="accordion-item">
             {% if nodeUrl != '' or node.type == "1000"%}
                 <div class="accordion-item-sub">
                     <span class="icon">
@@ -1559,7 +1559,7 @@
                     </span>
                 </div>
             {% else %}
-                <a class="accordion-title" id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if nodeRequestDisable %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}"{% endif %} aria-controls="{{ node.id }}-accordion" role="tab" title="{{ nodeTitle|t }}">
+                <a class="accordion-title" id="{{ linkId }}" href="#{{ linkId }}" onclick="updateLeaf('{{ linkId }}', true, event)" {% if nodeRequestDisable %}hx-get="{{ nodeRequest }}" hx-trigger="click once" hx-target="#replace-{{ linkId }}"{% endif %} aria-controls="{{ node.id }}-accordion" role="tab" title="{{ nodeTitle|t }}" aria-expanded="false">
                     <span>{{ nodeTitle|t }}</span>
                 </a>
             {% endif %}
