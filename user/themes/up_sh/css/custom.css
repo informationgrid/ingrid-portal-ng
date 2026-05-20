@@ -101,6 +101,9 @@ a.icon:hover {
 .button:focus {
   background-color: #D4004B;
 }
+.button:focus-visible {
+  outline-offset: 2px;
+}
 .button.round {
   color: #003064;
   border: 1px solid #003064;
@@ -127,6 +130,14 @@ a.icon:hover {
 }
 .input-search .input-search-field {
   border: 2px solid #0098B6;
+}
+.input-search .input-search-field:focus-visible {
+  outline-offset: 6px;
+  outline: 3px white solid;
+}
+.input-search .button.large:focus-visible {
+  outline-offset: -6px;
+  outline: 3px white solid !important;
 }
 header {
   -webkit-border-image: -webkit-linear-gradient(to left, #003064, #003064) 0 1 100%;
@@ -266,6 +277,10 @@ footer .footer-top-link:hover {
   color: #FFFFFF;
   background-color: #003064;
 }
+.button.pill:focus-visible {
+  outline: 3px solid #003064;
+  outline-offset: 3px;
+}
 .button.outline.pill span {
   margin-left: 0;
   color: #FFFFFF;
@@ -302,6 +317,9 @@ footer .footer-top-link:hover {
 }
 .nav-content .accordion-title span {
   text-transform: none;
+}
+.accordion-item-filter-group .is-active a.accordion-title:focus-visible span {
+  outline: 2px solid white !important;
 }
 .accordion-content .boxes a.icon {
   border-bottom: 1px dotted #c6cfe2;
@@ -349,6 +367,10 @@ footer .footer-top-link:hover {
 .teaser:hover .teaser-link, .tabs-content .tabs-panel .teaser:hover .teaser-link,
 .teaser:focus-within .teaser-link, .tabs-content .tabs-panel .teaser:focus-within .teaser-link {
   color: #003064;
+}
+.teaser a.teaser-link:focus-visible {
+  outline: 3px solid white !important;
+  outline-offset: 6px;
 }
 @property --colorTeaser1 {
   syntax: '<color>';
@@ -1215,6 +1237,10 @@ ul.select2-results__options {
 .js-expander-toggle-all a.icon {
   border: 1px solid #1D4B7B;
 }
+.js-expander-toggle-all a.icon:focus-visible {
+  outline-offset: 3px;
+  outline: 3px solid #1e4b7b;
+}
 .js-toggle-all-expander-collapse,
 .js-toggle-all-expander-expand {
   display: flex;
@@ -1446,6 +1472,10 @@ table .dark h1, table .dark h2, table .dark p, table .dark a, table .dark abbr, 
   transform: scale(0.3);
   opacity: .1;
   background: url(../images/template/sprite.svg) no-repeat -50px -50px;
+}
+.info-teaser-box:has(a:focus-visible) {
+  outline: 3px solid white;
+  outline-offset: 6px;
 }
 .info-teaser-box .text-box {
   padding: 20px 30px 10px;

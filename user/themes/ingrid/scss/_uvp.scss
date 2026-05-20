@@ -1939,6 +1939,11 @@ footer {
     width: 100%;
   }
 
+  a:focus-visible .preview_image {
+    outline-offset: -2px;
+    outline: 2px solid black;
+  }
+
   .table {
     background-color: #F6F6F6;
 
@@ -2681,10 +2686,6 @@ h2 .anchor:target {
     .preview_image {
       margin: auto;
       padding: 24px 24px;
-    }
-    a:focus-visible .preview_image {
-      outline-offset: -3px;
-      outline: 3px solid black;
     }
 
     .map-ingrid {
@@ -3442,6 +3443,10 @@ a.menu-tab:focus-visible span,
 a.accordion-title:focus-visible span,
 a:empty:focus-visible {
   outline: 2px solid #000 !important;
+}
+
+a:focus-visible:not(:has(span, img)) {
+  outline: 2px solid #000;
 }
 
 .tabs-content a.teaser-link:focus span,

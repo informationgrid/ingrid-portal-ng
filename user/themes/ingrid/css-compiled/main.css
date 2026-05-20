@@ -8839,6 +8839,10 @@ footer .footer-top-link:hover {
 .search-filtered .preview_image {
   width: 100%;
 }
+.search-filtered a:focus-visible .preview_image {
+  outline-offset: -2px;
+  outline: 2px solid black;
+}
 .search-filtered .table {
   background-color: #F6F6F6;
   text-align: left;
@@ -9478,10 +9482,6 @@ h2 .anchor:target {
 .teaser-data .swiper-container-background .preview_image {
   margin: auto;
   padding: 24px 24px;
-}
-.teaser-data .swiper-container-background a:focus-visible .preview_image {
-  outline-offset: -3px;
-  outline: 3px solid black;
 }
 .teaser-data .swiper-container-background .map-ingrid {
   margin: 24px 24px;
@@ -10194,6 +10194,10 @@ a.menu-tab:focus-visible span,
 a.accordion-title:focus-visible span,
 a:empty:focus-visible {
   outline: 2px solid #000 !important;
+}
+
+a:focus-visible:not(:has(span, img)) {
+  outline: 2px solid #000;
 }
 
 .tabs-content a.teaser-link:focus span,
