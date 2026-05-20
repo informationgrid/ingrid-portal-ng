@@ -67,7 +67,10 @@
 
 })();
 
-$('.js-anchor-target').on('click', function (event) {
+$('.js-anchor-target').on('click keydown', function (event) {
+  // Allow only enter keypress or click event
+  if (event.key !== 'Enter' && event.type !== 'click') return;
+
   var parent = $(this).parent();
   if(parent) {
     var children = parent.children();
