@@ -81,7 +81,13 @@
                                             {% endfor %}
                                         </ul>
                                     {% else %}
+                                        {% if field.type == 'textarea' %}
+                                            <p>
+                                        {% endif %}
                                         {{ string(value)|e|nl2br }}
+                                        {% if field.type == 'textarea' %}
+                                            </p>
+                                        {% endif %}
                                     {% endif %}
                                 {% endif %}
                             {% endblock %}
