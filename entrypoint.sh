@@ -27,6 +27,8 @@ EMAIL_PLUGIN_MAILER_SMTP_PORT=${EMAIL_PLUGIN_MAILER_SMTP_PORT:-''}
 EMAIL_PLUGIN_MAILER_SMTP_ENCRYPTION=${EMAIL_PLUGIN_MAILER_SMTP_ENCRYPTION:-'ssl'}
 EMAIL_PLUGIN_MAILER_SMTP_USER=${EMAIL_PLUGIN_MAILER_SMTP_USER:-''}
 EMAIL_PLUGIN_MAILER_SMTP_PASSWORD=${EMAIL_PLUGIN_MAILER_SMTP_PASSWORD:-''}
+PROXY_URL=${PROXY_URL:-''}
+PROXY_NO=${PROXY_NO:-''}
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-1024M}
 PHP_MAX_EXECUTION_TIME=${PHP_MAX_EXECUTION_TIME:-300}
 PHP_FPM_PM=${PHP_FPM_PM:-dynamic}
@@ -187,6 +189,17 @@ fi
 
 # Set cache clear to type 'cache-only'
 yq -i '.cache.clear_job_type = "cache-only"' "$SYSTEM_YAML"
+
+# Set proxy
+if [ "$PROXY_URL" ]; then
+  yq -i '.http.proxy_url = env(PROXY_URL)' "$SYSTEM_YAML"
+fi
+
+if [ "$PROXY_NO" ]; then
+  yq -i '.http.proxy_no = [env(PROXY_NO)]' "$SYSTEM_YAML"
+else
+  yq -i '.http.proxy_no = []' "$SYSTEM_YAML"
+fi
 
 #####################
 # Default ingrid grav plugin config
