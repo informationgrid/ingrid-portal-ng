@@ -1,0 +1,31 @@
+{% set header_logo_enabled = theme_var('header.logo_enabled') %}
+{% if header_logo_enabled %}
+    {% set logo_default = theme_var('header.logo_default') %}
+    {% set logo = theme_var('header.logo') %}
+    {% set logo_lang_default = theme_var('header.logo_' ~ grav.language.getLanguage ~ '_default') %}
+    {% set logo_lang = theme_var('header.logo_' ~ grav.language.getLanguage) %}
+
+    {% if logo_lang %}
+        {% set logo = logo_lang %}
+    {% elseif logo_lang_default %}
+        {% set logo = logo_lang_default %}
+    {% endif %}
+
+    {% if logo %}
+        {% set header_logo_file = (logo|first).path %}
+    {% elseif logo_default %}
+        {% set header_logo_file = (logo_default|first).path %}
+    {% endif %}
+
+    <div class="logo" role="banner">
+        <div class="switch">
+            <span class="ic-ic-angle-down js-popup" data-title="Hinweis" data-content="" data-box=".switch-popup"></span>
+        </div>
+        <a href="{{ page.find('/home').url }}" class="show-for-xlarge hide-for-xsmall-only" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}"/>
+        </a>
+        <a href="{{ page.find('/home').url }}" class="hide-for-xlarge" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
+            <img src="{{ url('user/themes/numis/images/logo/logo-xsmall.svg') }}" alt="{{ site.title }}"/>
+        </a>
+    </div>
+{% endif %}

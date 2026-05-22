@@ -1,0 +1,7 @@
+{# Link zur Verordnung #}
+{% if linkRefs.links %}
+    {% set linkRegulationRefs = linkRefs.links|filterLinks("regulation") %}
+    {% set linkOtherRefs = linkRefs.links|filterLinks("other_exclude_regulation") %}
+{% endif %}
+
+{% include 'partials/detail/metadata/detail_metadata_view.html.twig' %}

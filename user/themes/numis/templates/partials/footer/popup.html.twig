@@ -1,0 +1,33 @@
+{# Popup #}
+<div class="popup help-popup">
+    <div class="headline popup__header">
+        <p class="popup__title medium">{{ "PAGES.HELP"|t }}</p>
+        <button type="button" class="button round popup__close js-popup-close"><span class="ic-ic-cross"></span></button>
+    </div>
+    <div class="popup__content text-box">
+        <p></p>
+    </div>
+</div>
+<!-- Popup -->
+<div class="popup switch-popup">
+    <div class="row">
+        <div class="popup__content text-box">
+            <div class="list-item">
+                <button type="button" class="button round popup__close js-popup-close" data-box=".switch-popup"><span class="ic-ic-cross"></span></button>
+                <a class="switch-link numis">
+                    <span class="ic-ic-check"></span>
+                    <img src="{{ url('theme://images/logo/logo-numis-mit-tag.svg') }}" alt="NUMIS" class="hide-for-xsmall-only"/>
+                    <img src="{{ url('theme://images/logo/logo-numis-mobile.svg') }}" alt="NUMIS" class="show-for-xsmall-only"/>
+                </a>
+            </div>
+
+            <div class="list-item">
+                <a class="switch-link uvp" href="https://uvp-verbund.de">
+                    <span class=""></span>
+                    <img src="{{ url('theme://images/logo/logo-uvp-mit-tag.svg') }}" alt="UVP" class="hide-for-xsmall-only">
+                    <img src="{{ url('theme://images/logo/logo-uvp-mobile.svg') }}" alt="UVP" class="show-for-xsmall-only">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

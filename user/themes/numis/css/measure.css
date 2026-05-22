@@ -1,0 +1,24 @@
+#iframe_measure {
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
+.embed-container {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 120px;
+}
+
+.sidebar {
+  top: 0 !important;
+  left: 0 !important;
+}
+.sidebar .sidebar-tabs {
+  background-color: #1D4B7B !important;
+}
+.sidebar.collapsed {
+  top: 10px !important;
+  left: 10px !important;
+}
