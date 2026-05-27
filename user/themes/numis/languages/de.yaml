@@ -12,8 +12,6 @@ PAGES:
   PROVIDER: Anbieter
 
 CONTACT:
-  FORM: Kontakt online
-  FORM_COMPANY: Welches Bundesland betrifft Ihre Anfrage? (optional)
   SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team NUMIS gesendet. Sie haben eine Bestätigungsmail erhalten.
   SUCCESS_LINK: Zurück zur Startseite
 
@@ -22,5 +20,6 @@ SEARCH:
   PORTLET_TITLE_2: für Niedersachsen<br>finden&nbsp;
   PORTLET_TITLE_3: 'z.B. Aktuelles, Daten, Karten & Webangebote'
 
-CATEGORIES:
-  TITLE: Stöbern Sie in diesen ...
+FACETS:
+  TYPE:
+    METADATA: Datenkataloge
