@@ -21,5 +21,7 @@ SEARCH:
   PORTLET_TITLE_3: 'z.B. Aktuelles, Daten, Karten & Webangebote'
 
 FACETS:
+  FACET_LABEL:
+    METADATA_GROUP: Datenkataloge
   TYPE:
     METADATA: Datenkataloge

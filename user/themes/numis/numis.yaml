@@ -231,6 +231,7 @@ hit_search:
   facet_config: [
     {
       "id": "type",
+      "open": true,
       "facets": {
         "www": {
           "query": {
