@@ -1,4 +1,18 @@
 
+## 8.3.1 (27.05.2026)
+
+### Features
+
+* Portal-Anpassungen für NLPV (#7339)
+* "Ansprechpartner Metadaten" - Text in Editor und Portal vereinheitlichen (#6707)
+
+### Bugfixes
+
+* Portal-Administration ermöglichen (#9015)
+* METAVER Startet nicht (#8927)
+* AdV-MIS: PROD und TEST: bei Wahl einer Kachel auf Startseite > Filterung fehlt tlw. (#8911)
+* Portal AdV-MIS und BKG-MIS: Kontaktformular - Layout der Zusammenfassung (#8844)
+    
 ## 8.2.0 (12.01.2026)
 
 ### Features
