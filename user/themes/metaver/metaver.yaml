@@ -240,6 +240,17 @@ home:
               }
             },
           },
+          "bb": {
+            "icon": "images/partner/svg/bb.svg",
+            "codelist": "110",
+            "query": {
+              "filter": {
+                "term": {
+                  "partner": "bb"
+                }
+              }
+            },
+          },
           "hb": {
             "icon": "images/partner/svg/hb.svg",
             "codelist": "110",
