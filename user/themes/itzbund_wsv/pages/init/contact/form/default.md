@@ -78,7 +78,7 @@ forms:
           rule: email
           required: true
 
-      user_organisation:
+      user_company:
         label: CONTACT.FORM_COMPANY
         placeholder: CONTACT.FORM_COMPANY
         autocomplete: on
