@@ -42,7 +42,7 @@ forms:
         validate:
           required: true
 
-      - name: user_organisation
+      - name: user_company
         label: CONTACT.FORM_COMPANY
         placeholder: CONTACT.FORM_COMPANY
         autocomplete: on
