@@ -42,18 +42,18 @@ PHP_FPM_PM_MAX_SPARE_SERVERS=${PHP_FPM_PM_MAX_SPARE_SERVERS:-15}
 # PHP ini
 #####################
 PHP_INI_FILE="$PHP_INI_DIR"/php.ini
-sed -i "s/memory_limit = 128M/memory_limit = $PHP_MEMORY_LIMIT/" "$PHP_INI_FILE"
-sed -i "s/max_execution_time = 30/max_execution_time = $PHP_MAX_EXECUTION_TIME/" "$PHP_INI_FILE"
+sed -i "s/memory_limit = 128M$/memory_limit = $PHP_MEMORY_LIMIT/" "$PHP_INI_FILE"
+sed -i "s/max_execution_time = 30$/max_execution_time = $PHP_MAX_EXECUTION_TIME/" "$PHP_INI_FILE"
 
 #####################
 # PHP FPM
 #####################
 PHP_FPM_FILE=/usr/local/etc/php-fpm.d/www.conf
-sed -i "s/pm = dynamic/pm = $PHP_FPM_PM/" "$PHP_FPM_FILE"
-sed -i "s/pm.max_children = 5/pm.max_children = $PHP_FPM_PM_MAX_CHILDREN/" "$PHP_FPM_FILE"
-sed -i "s/pm.start_servers = 2/pm.start_servers = $PHP_FPM_PM_START_SERVERS/" "$PHP_FPM_FILE"
-sed -i "s/pm.min_spare_servers = 1/pm.min_spare_servers = $PHP_FPM_PM_MIN_SPARE_SERVERS/" "$PHP_FPM_FILE"
-sed -i "s/pm.max_spare_servers = 3/pm.max_spare_servers = $PHP_FPM_PM_MAX_SPARE_SERVERS/" "$PHP_FPM_FILE"
+sed -i "s/pm = dynamic$/pm = $PHP_FPM_PM/" "$PHP_FPM_FILE"
+sed -i "s/pm.max_children = 5$/pm.max_children = $PHP_FPM_PM_MAX_CHILDREN/" "$PHP_FPM_FILE"
+sed -i "s/pm.start_servers = 2$/pm.start_servers = $PHP_FPM_PM_START_SERVERS/" "$PHP_FPM_FILE"
+sed -i "s/pm.min_spare_servers = 1$/pm.min_spare_servers = $PHP_FPM_PM_MIN_SPARE_SERVERS/" "$PHP_FPM_FILE"
+sed -i "s/pm.max_spare_servers = 3$/pm.max_spare_servers = $PHP_FPM_PM_MAX_SPARE_SERVERS/" "$PHP_FPM_FILE"
 
 # Function to wait for a service to be ready
 wait_for_codelist_repo() {
