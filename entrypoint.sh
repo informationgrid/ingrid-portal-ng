@@ -302,10 +302,12 @@ fi
 EMAIL_YAML=/var/www/"$GRAV_FOLDER"/user/plugins/email/email.yaml
 
 if [ "$EMAIL_PLUGIN_FROM" ]; then
+  EMAIL_PLUGIN_FROM="$EMAIL_PLUGIN_FROM" \
   yq -i '.from = env(EMAIL_PLUGIN_FROM)' "$EMAIL_YAML"
 fi
 
 if [ "$EMAIL_PLUGIN_TO" ]; then
+  EMAIL_PLUGIN_TO="$EMAIL_PLUGIN_TO" \
   yq -i '.to = env(EMAIL_PLUGIN_TO)' "$EMAIL_YAML"
 fi
 
@@ -315,10 +317,12 @@ if [ "$EMAIL_PLUGIN_MAILER_ENGINE" ]; then
 fi
 
 if [ "$EMAIL_PLUGIN_MAILER_SMTP_SERVER" ]; then
+  EMAIL_PLUGIN_MAILER_SMTP_SERVER="$EMAIL_PLUGIN_MAILER_SMTP_SERVER" \
   yq -i '.mailer.smtp.server = env(EMAIL_PLUGIN_MAILER_SMTP_SERVER)' "$EMAIL_YAML"
 fi
 
 if [ "$EMAIL_PLUGIN_MAILER_SMTP_PORT" ]; then
+  EMAIL_PLUGIN_MAILER_SMTP_PORT="$EMAIL_PLUGIN_MAILER_SMTP_PORT" \
   yq -i '.mailer.smtp.port = env(EMAIL_PLUGIN_MAILER_SMTP_PORT)' "$EMAIL_YAML"
 fi
 
