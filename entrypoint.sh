@@ -461,6 +461,12 @@ if [ -f "$INGRID_GRAV_THEME_CONFIG_YAML" ]; then
   yq -i '.measure.url = "/mvis/index.html"' "$INGRID_GRAV_THEME_CONFIG_YAML"
 fi
 
+INGRID_PAGES_CONTACT_FORM=/var/www/"$GRAV_FOLDER"/user/pages/contact/form/default.md
+
+if [ -f "$INGRID_PAGES_CONTACT_FORM" ]; then
+  sed -i "s/      - name: user_organisation$/      - name: user_company/" "$INGRID_PAGES_CONTACT_FORM"
+fi
+
 service cron start
 
 exec gosu www-data "$@"
