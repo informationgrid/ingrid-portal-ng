@@ -52,6 +52,7 @@ forms:
       - name: user_email
         label: CONTACT.FORM_EMAIL
         placeholder: CONTACT.FORM_EMAIL
+        autocomplete: on
         type: email
         outerclasses: form-element
         validate:
@@ -61,6 +62,7 @@ forms:
       - name: user_phone
         label: CONTACT.FORM_PHONE
         placeholder: CONTACT.FORM_PHONE
+        autocomplete: on
         type: text
         outerclasses: form-element
 
