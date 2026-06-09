@@ -21,6 +21,9 @@ COMMON:
   RESULT_SHOWMAP_TOOLTIP_SHORT: Vorschaubild öffnen
   RESULT_COUNTER_RANKED_WITHSEARCHVALUE: '<strong class="search-result-hits">%d</strong> Ergebnisse'
 
+CONTACT:
+  SUCCESS: Ihre Anfrage wurde erfolgreich an die LUBW-Redaktion versendet.
+
 SEARCH:
   PORTLET_TITLE_1: Umweltgeodaten
   PORTLET_TITLE_2: für Baden-Württemberg<br>finden&nbsp;
