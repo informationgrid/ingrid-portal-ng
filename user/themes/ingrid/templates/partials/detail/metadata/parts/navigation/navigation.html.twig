@@ -118,7 +118,7 @@
                         <div class="accordion-content" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_contact }}-accordion-label" id="{{ hash_contact }}-accordion">
                             <div class="boxes">
                             {% set tmpCount = 0 %}
-                            {% for item in contactRefs %}
+                            {% for item in contactRefs|sortContacts(sortContactByType) %}
                                 {% set tmpHash = hash_contact ~ "_contact-" ~ tmpCount %}
                                 {% set tmpTitle = item.role_name %}
                                 {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
