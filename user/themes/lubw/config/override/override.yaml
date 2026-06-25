@@ -1,114 +1,115 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "metaclass_map": {
-                    "label": "Geodatensatz",
-                    "icon": "ic-earth",
-                    "display_on_empty": true,
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": 1
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "metaclass_map": {
+                        "label": "Geodatensatz",
+                        "icon": "ic-earth",
+                        "display_on_empty": true,
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": 1
+                                }
                             }
                         }
-                    }
-                },
-                "download-wfs": {
-                    "label": "Downloaddienst WFS",
-                    "icon": "ic-download",
-                    "display_on_empty": true,
-                    "query": {
-                        "filter": {
-                            "match": {
-                                "t011_obj_serv_version.version_value": "OGC:WFS"
+                    },
+                    "download-wfs": {
+                        "label": "Downloaddienst WFS",
+                        "icon": "ic-download",
+                        "display_on_empty": true,
+                        "query": {
+                            "filter": {
+                                "match": {
+                                    "t011_obj_serv_version.version_value": "OGC:WFS"
+                                }
                             }
                         }
-                    }
-                },
-                "map-wms": {
-                    "label": "Darstellungsdienst WMS",
-                    "icon": "ic-maps",
-                    "display_on_empty": true,
-                    "query": {
-                        "filter": {
-                            "match": {
-                                "t011_obj_serv_version.version_value": "OGC:WMS"
+                    },
+                    "map-wms": {
+                        "label": "Darstellungsdienst WMS",
+                        "icon": "ic-maps",
+                        "display_on_empty": true,
+                        "query": {
+                            "filter": {
+                                "match": {
+                                    "t011_obj_serv_version.version_value": "OGC:WMS"
+                                }
                             }
                         }
-                    }
-                },
-                "inspire": {
-                    "icon": "ic-inspire",
-                    "display_on_empty": true,
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspire"
+                    },
+                    "inspire": {
+                        "icon": "ic-inspire",
+                        "display_on_empty": true,
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspire"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspireidentifiziert"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspireidentifiziert"
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                "opendata": {
-                    "icon": "ic-opendata",
-                    "display_on_empty": true,
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
+                    },
+                    "opendata": {
+                        "icon": "ic-opendata",
+                        "display_on_empty": true,
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendataident"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                "udo-data": {
-                    "label": "Umwelt-Daten und -Karten Online",
-                    "icon": "ic-leaf",
-                    "display_on_empty": true,
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "wildcard": {
-                                            "t017_url_ref.url_link": "*udo.*"
+                    },
+                    "udo-data": {
+                        "label": "Umwelt-Daten und -Karten Online",
+                        "icon": "ic-leaf",
+                        "display_on_empty": true,
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "wildcard": {
+                                                "t017_url_ref.url_link": "*udo.*"
+                                            }
+                                        },
+                                        {
+                                            "wildcard": {
+                                                "t017_url_ref.url_link": "*umweltdaten.*"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "wildcard": {
-                                            "t017_url_ref.url_link": "*umweltdaten.*"
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {

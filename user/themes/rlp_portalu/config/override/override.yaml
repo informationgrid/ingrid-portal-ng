@@ -1,6 +1,7 @@
-categories:
-    facet_config: [
-    ]
+home:
+    categories:
+        facet_config: [
+        ]
 hit_search:
     facet_config: [
         {

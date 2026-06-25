@@ -1,77 +1,78 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "metadata": {
-                    "display_on_empty": true,
-                    "icon": "ic-metadata",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "metadata"
-                            }
-                        }
-                    }
-                },
-                "inspire": {
-                    "display_on_empty": true,
-                    "icon": "ic-inspire",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspire"
-                                        }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspireidentifiziert"
-                                        }
-                                    }
-                                ]
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "metadata": {
+                        "display_on_empty": true,
+                        "icon": "ic-metadata",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "metadata"
+                                }
                             }
                         }
                     },
-                },
-                "opendata": {
-                    "display_on_empty": true,
-                    "icon": "ic-opendata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
+                    "inspire": {
+                        "display_on_empty": true,
+                        "icon": "ic-inspire",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspire"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspireidentifiziert"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
+                                    ]
+                                }
+                            }
+                        },
+                    },
+                    "opendata": {
+                        "display_on_empty": true,
+                        "icon": "ic-opendata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendataident"
+                                            }
                                         }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                "maps": {
-                    "display_on_empty": true,
-                    "icon": "ic-map",
-                    "query": {
-                        "filter": {
-                            "wildcard": {
-                                "capabilities_url": "http*"
+                    },
+                    "maps": {
+                        "display_on_empty": true,
+                        "icon": "ic-map",
+                        "query": {
+                            "filter": {
+                                "wildcard": {
+                                    "capabilities_url": "http*"
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {

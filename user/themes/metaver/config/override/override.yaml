@@ -1,264 +1,265 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "www": {
-                    "icon": "ic-www",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "www"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "www": {
+                        "icon": "ic-www",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "www"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "metadata": {
-                    "icon": "ic-metadata",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "metadata"
+                    "metadata": {
+                        "icon": "ic-metadata",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "metadata"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "inspire": {
-                    "icon": "ic-inspire",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspire"
+                    "inspire": {
+                        "icon": "ic-inspire",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspire"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspireidentifiziert"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspireidentifiziert"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "opendata": {
+                        "icon": "ic-opendata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendataident"
+                                            }
                                         }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
-                        }
-                    }
-                },
-                "opendata": {
-                    "icon": "ic-opendata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
-                                        }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
+                        },
                     },
-                },
-                "maps": {
-                    "icon": "ic-map",
-                    "query": {
-                        "filter": {
-                            "wildcard": {
-                                "capabilities_url": "http*"
+                    "maps": {
+                        "icon": "ic-map",
+                        "query": {
+                            "filter": {
+                                "wildcard": {
+                                    "capabilities_url": "http*"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-            }
-        },{
-            "id": "provider",
-            "label": "Bundesländern",
-            "facets": {
-                "bw": {
-                    "icon": "images/partner/svg/bw.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "bw"
+                }
+            },{
+                "id": "provider",
+                "label": "Bundesländern",
+                "facets": {
+                    "bw": {
+                        "icon": "images/partner/svg/bw.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "bw"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "by": {
-                    "icon": "images/partner/svg/by.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "by"
+                    "by": {
+                        "icon": "images/partner/svg/by.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "by"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "be": {
-                    "icon": "images/partner/svg/be.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "be"
+                    "be": {
+                        "icon": "images/partner/svg/be.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "be"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "bb": {
-                    "icon": "images/partner/svg/bb.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "bb"
+                    "bb": {
+                        "icon": "images/partner/svg/bb.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "bb"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "hb": {
-                    "icon": "images/partner/svg/hb.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "hb"
+                    "hb": {
+                        "icon": "images/partner/svg/hb.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "hb"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "hh": {
-                    "icon": "images/partner/svg/hh.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "hh"
+                    "hh": {
+                        "icon": "images/partner/svg/hh.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "hh"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "he": {
-                    "icon": "images/partner/svg/he.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "he"
+                    "he": {
+                        "icon": "images/partner/svg/he.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "he"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "mv": {
-                    "icon": "images/partner/svg/mv.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "mv"
+                    "mv": {
+                        "icon": "images/partner/svg/mv.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "mv"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "ni": {
-                    "icon": "images/partner/svg/ni.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "ni"
+                    "ni": {
+                        "icon": "images/partner/svg/ni.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "ni"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "nw": {
-                    "icon": "images/partner/svg/nw.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "nw"
+                    "nw": {
+                        "icon": "images/partner/svg/nw.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "nw"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "rp": {
-                    "icon": "images/partner/svg/rp.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "rp"
+                    "rp": {
+                        "icon": "images/partner/svg/rp.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "rp"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "sl": {
-                    "icon": "images/partner/svg/sl.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "sl"
+                    "sl": {
+                        "icon": "images/partner/svg/sl.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "sl"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "sn": {
-                    "icon": "images/partner/svg/sn.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "sn"
+                    "sn": {
+                        "icon": "images/partner/svg/sn.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "sn"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "st": {
-                    "icon": "images/partner/svg/st.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "st"
+                    "st": {
+                        "icon": "images/partner/svg/st.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "st"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "sh": {
-                    "icon": "images/partner/svg/sh.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "sh"
+                    "sh": {
+                        "icon": "images/partner/svg/sh.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "sh"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "th": {
-                    "icon": "images/partner/svg/th.svg",
-                    "codelist": "110",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "partner": "th"
+                    "th": {
+                        "icon": "images/partner/svg/th.svg",
+                        "codelist": "110",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "partner": "th"
+                                }
                             }
-                        }
+                        },
                     },
-                },
-            }
-        },
-    ]
+                }
+            },
+        ]
 hit_search:
     facet_config: [
         {

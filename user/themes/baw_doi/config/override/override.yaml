@@ -1,207 +1,208 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "www": {
-                    "icon": "ic-www",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "www"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "www": {
+                        "icon": "ic-www",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "www"
+                                }
                             }
                         }
-                    }
-                },
-                "metadata": {
-                    "icon": "ic-metadata",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "metadata"
+                    },
+                    "metadata": {
+                        "icon": "ic-metadata",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "metadata"
+                                }
                             }
                         }
-                    }
-                },
-                "opendata": {
-                    "icon": "ic-opendata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
+                    },
+                    "opendata": {
+                        "icon": "ic-opendata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendataident"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "maps": {
+                        "icon": "ic-map",
+                        "query": {
+                            "filter": {
+                                "wildcard": {
+                                    "capabilities_url": "http*"
+                                }
                             }
                         }
                     }
-                },
-                "maps": {
-                    "icon": "ic-map",
-                    "query": {
-                        "filter": {
-                            "wildcard": {
-                                "capabilities_url": "http*"
+                }
+            },
+            {
+                "id": "waterway",
+                "facets": {
+                    "Donau": {
+                        "icon_text": "Do",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "donau"
+                                }
+                            }
+                        }
+                    },
+                    "Eider": {
+                        "icon_text": "Ei",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "eider"
+                                }
+                            }
+                        }
+                    },
+                    "Elbe": {
+                        "icon_text": "El",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "elbe"
+                                }
+                            }
+                        }
+                    },
+                    "Ems": {
+                        "icon_text": "Em",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "ems"
+                                }
+                            }
+                        }
+                    },
+                    "Main-Donau-Kanal": {
+                        "icon_text": "MDK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "main-donau-kanal"
+                                }
+                            }
+                        }
+                    },
+                    "Mittellandkanal": {
+                        "icon_text": "MLK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "mittellandkanal"
+                                }
+                            }
+                        }
+                    },
+                    "Mosel": {
+                        "icon_text": "Mo",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "mosel"
+                                }
+                            }
+                        }
+                    },
+                    "Neckar": {
+                        "icon_text": "Ne",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "neckar"
+                                }
+                            }
+                        }
+                    },
+                    "Nord-Ostsee-Kanal": {
+                        "icon_text": "NOK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
+                                }
+                            }
+                        }
+                    },
+                    "Nordsee": {
+                        "icon_text": "NSee",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "nordsee"
+                                }
+                            }
+                        }
+                    },
+                    "Oder": {
+                        "icon_text": "Od",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "oder"
+                                }
+                            }
+                        }
+                    },
+                    "Ostsee": {
+                        "icon_text": "OSee",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "ostsee"
+                                }
+                            }
+                        }
+                    },
+                    "Rhein": {
+                        "icon_text": "Rh",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "rhein"
+                                }
+                            }
+                        }
+                    },
+                    "Weser": {
+                        "icon_text": "We",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "weser"
+                                }
                             }
                         }
                     }
                 }
             }
-        },
-        {
-            "id": "waterway",
-            "facets": {
-                "Donau": {
-                    "icon_text": "Do",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "donau"
-                            }
-                        }
-                    }
-                },
-                "Eider": {
-                    "icon_text": "Ei",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "eider"
-                            }
-                        }
-                    }
-                },
-                "Elbe": {
-                    "icon_text": "El",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "elbe"
-                            }
-                        }
-                    }
-                },
-                "Ems": {
-                    "icon_text": "Em",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "ems"
-                            }
-                        }
-                    }
-                },
-                "Main-Donau-Kanal": {
-                    "icon_text": "MDK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "main-donau-kanal"
-                            }
-                        }
-                    }
-                },
-                "Mittellandkanal": {
-                    "icon_text": "MLK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "mittellandkanal"
-                            }
-                        }
-                    }
-                },
-                "Mosel": {
-                    "icon_text": "Mo",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "mosel"
-                            }
-                        }
-                    }
-                },
-                "Neckar": {
-                    "icon_text": "Ne",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "neckar"
-                            }
-                        }
-                    }
-                },
-                "Nord-Ostsee-Kanal": {
-                    "icon_text": "NOK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
-                            }
-                        }
-                    }
-                },
-                "Nordsee": {
-                    "icon_text": "NSee",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "nordsee"
-                            }
-                        }
-                    }
-                },
-                "Oder": {
-                    "icon_text": "Od",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "oder"
-                            }
-                        }
-                    }
-                },
-                "Ostsee": {
-                    "icon_text": "OSee",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "ostsee"
-                            }
-                        }
-                    }
-                },
-                "Rhein": {
-                    "icon_text": "Rh",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "rhein"
-                            }
-                        }
-                    }
-                },
-                "Weser": {
-                    "icon_text": "We",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "weser"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {

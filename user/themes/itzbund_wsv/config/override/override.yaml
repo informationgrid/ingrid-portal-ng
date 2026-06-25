@@ -1,83 +1,84 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "www": {
-                    "icon": "ic-www",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "www"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "www": {
+                        "icon": "ic-www",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "www"
+                                }
+                            }
+                        },
+                    },
+                    "metadata": {
+                        "icon": "ic-metadata",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "datatype": "metadata"
+                                }
+                            }
+                        },
+                    },
+                    "inspire": {
+                        "icon": "ic-inspire",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspire"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspireidentifiziert"
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         }
                     },
-                },
-                "metadata": {
-                    "icon": "ic-metadata",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "datatype": "metadata"
+                    "opendata": {
+                        "icon": "ic-opendata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendataident"
+                                            }
+                                        }
+                                    ]
+                                }
                             }
-                        }
+                        },
                     },
-                },
-                "inspire": {
-                    "icon": "ic-inspire",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspire"
-                                        }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspireidentifiziert"
-                                        }
-                                    }
-                                ]
+                    "maps": {
+                        "icon": "ic-map",
+                        "query": {
+                            "filter": {
+                                "wildcard": {
+                                    "capabilities_url": "http*"
+                                }
                             }
-                        }
-                    }
-                },
-                "opendata": {
-                    "icon": "ic-opendata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
-                                        }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
+                        },
                     },
-                },
-                "maps": {
-                    "icon": "ic-map",
-                    "query": {
-                        "filter": {
-                            "wildcard": {
-                                "capabilities_url": "http*"
-                            }
-                        }
-                    },
-                },
+                }
             }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {

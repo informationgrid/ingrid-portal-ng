@@ -1,68 +1,69 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "application": {
-                    "icon": "ic-chemie",
-                    "codelist": "8000",
-                    "codelist_entry_id": "6",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": "6"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "application": {
+                        "icon": "ic-chemie",
+                        "codelist": "8000",
+                        "codelist_entry_id": "6",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": "6"
+                                }
                             }
                         }
-                    }
-                },
-                "map": {
-                    "icon": "ic-map",
-                    "codelist": "8000",
-                    "codelist_entry_id": "1",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": "1"
+                    },
+                    "map": {
+                        "icon": "ic-map",
+                        "codelist": "8000",
+                        "codelist_entry_id": "1",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": "1"
+                                }
                             }
                         }
-                    }
-                },
-                "geoservice": {
-                    "icon": "ic-dienste",
-                    "codelist": "8000",
-                    "codelist_entry_id": "3",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": "3"
+                    },
+                    "geoservice": {
+                        "icon": "ic-dienste",
+                        "codelist": "8000",
+                        "codelist_entry_id": "3",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": "3"
+                                }
                             }
                         }
-                    }
-                },
-                "opendata": {
-                    "icon": "ic-opendata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
+                    },
+                    "opendata": {
+                        "icon": "ic-opendata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "opendataident"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {

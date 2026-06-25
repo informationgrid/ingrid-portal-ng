@@ -1,170 +1,171 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "metadata": {
-                    "icon": "ic-metadata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "must": [
-                                    {
-                                        "term": {
-                                            "datatype": "metadata"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "metadata": {
+                        "icon": "ic-metadata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "term": {
+                                                "datatype": "metadata"
+                                            }
+                                        },
+                                        {
+                                            "bool": {
+                                                "should": [
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten Dritter"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Geobasisdaten"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    },
-                                    {
-                                        "bool": {
-                                            "should": [
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten Dritter"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Geobasisdaten"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                "inspire": {
-                    "icon": "ic-inspire",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "must": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspireidentifiziert"
+                    },
+                    "inspire": {
+                        "icon": "ic-inspire",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspireidentifiziert"
+                                            }
+                                        },
+                                        {
+                                            "bool": {
+                                                "should": [
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten Dritter"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Geobasisdaten"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    },
-                                    {
-                                        "bool": {
-                                            "should": [
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten Dritter"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Geobasisdaten"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                "opendata": {
-                    "icon": "ic-opendata",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "must": [
-                                    {
-                                        "bool": {
-                                            "should": [
-                                                {
-                                                    "term": {
-                                                        "t04_search.searchterm": "opendata"
+                    },
+                    "opendata": {
+                        "icon": "ic-opendata",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "bool": {
+                                                "should": [
+                                                    {
+                                                        "term": {
+                                                            "t04_search.searchterm": "opendata"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "t04_search.searchterm": "opendataident"
+                                                        }
                                                     }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "t04_search.searchterm": "opendataident"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "bool": {
+                                                "should": [
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten Dritter"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Geobasisdaten"
+                                                        }
                                                     }
-                                                }
-                                            ]
+                                                ]
+                                            }
                                         }
-                                    },
-                                    {
-                                        "bool": {
-                                            "should": [
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten Dritter"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Geobasisdaten"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                "maps": {
-                    "icon": "ic-map",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "must": [
-                                    {
-                                        "wildcard": {
-                                            "capabilities_url": "http*"
+                    },
+                    "maps": {
+                        "icon": "ic-map",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "wildcard": {
+                                                "capabilities_url": "http*"
+                                            }
+                                        },
+                                        {
+                                            "bool": {
+                                                "should": [
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Fachdaten Dritter"
+                                                        }
+                                                    },
+                                                    {
+                                                        "term": {
+                                                            "object_node.tree_path.name": "Geobasisdaten"
+                                                        }
+                                                    }
+                                                ]
+                                            }
                                         }
-                                    },
-                                    {
-                                        "bool": {
-                                            "should": [
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Fachdaten Dritter"
-                                                    }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "object_node.tree_path.name": "Geobasisdaten"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {

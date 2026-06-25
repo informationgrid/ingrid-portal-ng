@@ -1,110 +1,111 @@
-categories:
-    facet_config: [
-        {
-            "id": "type",
-            "facets": {
-                "application": {
-                    "codelist": "8000",
-                    "codelist_entry_id": "6",
-                    "display_on_empty": true,
-                    "icon": "ic-chemie",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": "6"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "type",
+                "facets": {
+                    "application": {
+                        "codelist": "8000",
+                        "codelist_entry_id": "6",
+                        "display_on_empty": true,
+                        "icon": "ic-chemie",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": "6"
+                                }
+                            }
+                        },
+                    },
+                    "map": {
+                        "codelist": "8000",
+                        "codelist_entry_id": "1",
+                        "display_on_empty": true,
+                        "icon": "ic-map",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": "1"
+                                }
+                            }
+                        },
+                    },
+                    "geoservice": {
+                        "codelist": "8000",
+                        "codelist_entry_id": "3",
+                        "display_on_empty": true,
+                        "icon": "ic-ic-dienste",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "t01_object.obj_class": "3"
+                                }
+                            }
+                        },
+                    },
+                    "inspire_true": {
+                        "label": "INSPIRE",
+                        "display_on_empty": true,
+                        "icon": "ic-inspire",
+                        "parent": "inspire",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspire"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "inspireidentifiziert"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                    },
+                    "opendata_hvd": {
+                        "label": "Open Data / HVD",
+                        "display_on_empty": true,
+                        "icon": "ic-opendata",
+                        "parent": "hvd",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "is_hvd": "true"
+                                }
                             }
                         }
                     },
-                },
-                "map": {
-                    "codelist": "8000",
-                    "codelist_entry_id": "1",
-                    "display_on_empty": true,
-                    "icon": "ic-map",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": "1"
-                            }
-                        }
-                    },
-                },
-                "geoservice": {
-                    "codelist": "8000",
-                    "codelist_entry_id": "3",
-                    "display_on_empty": true,
-                    "icon": "ic-ic-dienste",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "t01_object.obj_class": "3"
-                            }
-                        }
-                    },
-                },
-                "inspire_true": {
-                    "label": "INSPIRE",
-                    "display_on_empty": true,
-                    "icon": "ic-inspire",
-                    "parent": "inspire",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspire"
+                    "adv_true": {
+                        "label": "AdV-Produkt",
+                        "icon": "images/adv.jpg",
+                        "parent": "adv",
+                        "query": {
+                            "filter": {
+                                "bool": {
+                                    "should": [
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "AdVMIS"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "t04_search.searchterm": "AdV"
+                                            }
                                         }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "inspireidentifiziert"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                },
-                "opendata_hvd": {
-                    "label": "Open Data / HVD",
-                    "display_on_empty": true,
-                    "icon": "ic-opendata",
-                    "parent": "hvd",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "is_hvd": "true"
-                            }
-                        }
-                    }
-                },
-                "adv_true": {
-                    "label": "AdV-Produkt",
-                    "icon": "images/adv.jpg",
-                    "parent": "adv",
-                    "query": {
-                        "filter": {
-                            "bool": {
-                                "should": [
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "AdVMIS"
-                                        }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "AdV"
-                                        }
-                                    }
-                                ]
+                                    ]
+                                }
                             }
                         }
                     }
                 }
-            }
-        },
-    ]
+            },
+        ]
 hit_search:
     facet_config: [
         {

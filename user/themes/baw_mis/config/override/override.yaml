@@ -1,212 +1,213 @@
-categories:
-    facet_config: [
-        {
-            "id": "waterway",
-            "facets": {
-                "Donau": {
-                    "icon_text": "Do",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "donau"
+home:
+    categories:
+        facet_config: [
+            {
+                "id": "waterway",
+                "facets": {
+                    "Donau": {
+                        "icon_text": "Do",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "donau"
+                                }
+                            }
+                        }
+                    },
+                    "Eider": {
+                        "icon_text": "Ei",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "eider"
+                                }
+                            }
+                        }
+                    },
+                    "Elbe": {
+                        "icon_text": "El",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "elbe"
+                                }
+                            }
+                        }
+                    },
+                    "Ems": {
+                        "icon_text": "Em",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "ems"
+                                }
+                            }
+                        }
+                    },
+                    "Main-Donau-Kanal": {
+                        "icon_text": "MDK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "main-donau-kanal"
+                                }
+                            }
+                        }
+                    },
+                    "Mittellandkanal": {
+                        "icon_text": "MLK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "mittellandkanal"
+                                }
+                            }
+                        }
+                    },
+                    "Mosel": {
+                        "icon_text": "Mo",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "mosel"
+                                }
+                            }
+                        }
+                    },
+                    "Neckar": {
+                        "icon_text": "Ne",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "neckar"
+                                }
+                            }
+                        }
+                    },
+                    "Nord-Ostsee-Kanal": {
+                        "icon_text": "NOK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
+                                }
+                            }
+                        }
+                    },
+                    "Nordsee": {
+                        "icon_text": "NSee",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "nordsee"
+                                }
+                            }
+                        }
+                    },
+                    "Oder": {
+                        "icon_text": "Od",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "oder"
+                                }
+                            }
+                        }
+                    },
+                    "Ostsee": {
+                        "icon_text": "OSee",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "ostsee"
+                                }
+                            }
+                        }
+                    },
+                    "Rhein": {
+                        "icon_text": "Rh",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "rhein"
+                                }
+                            }
+                        }
+                    },
+                    "Weser": {
+                        "icon_text": "We",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "bwstr-bwastr_name.phrase": "weser"
+                                }
                             }
                         }
                     }
-                },
-                "Eider": {
-                    "icon_text": "Ei",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "eider"
+                }
+            },
+            {
+                "id": "baw_abteilung",
+                "label": "Abteilung",
+                "facets": {
+                    "bautechnik": {
+                        "label": "Bautechnik",
+                        "icon_text": "B",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "baw_abteilung_short": "b"
+                                }
                             }
                         }
-                    }
-                },
-                "Elbe": {
-                    "icon_text": "El",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "elbe"
+                    },
+                    "geotechnik": {
+                        "label": "Geotechnik",
+                        "icon_text": "G",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "baw_abteilung_short": "g"
+                                }
                             }
                         }
-                    }
-                },
-                "Ems": {
-                    "icon_text": "Em",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "ems"
+                    },
+                    "binnenbereich": {
+                        "label": "Wasserbau im Binnenbereich",
+                        "icon_text": "W",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "baw_abteilung_short": "w"
+                                }
                             }
                         }
-                    }
-                },
-                "Main-Donau-Kanal": {
-                    "icon_text": "MDK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "main-donau-kanal"
+                    },
+                    "kuestenbereich": {
+                        "label": "Wasserbau im Küstenbereich",
+                        "icon_text": "K",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "baw_abteilung_short": "k"
+                                }
                             }
                         }
-                    }
-                },
-                "Mittellandkanal": {
-                    "icon_text": "MLK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "mittellandkanal"
-                            }
-                        }
-                    }
-                },
-                "Mosel": {
-                    "icon_text": "Mo",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "mosel"
-                            }
-                        }
-                    }
-                },
-                "Neckar": {
-                    "icon_text": "Ne",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "neckar"
-                            }
-                        }
-                    }
-                },
-                "Nord-Ostsee-Kanal": {
-                    "icon_text": "NOK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
-                            }
-                        }
-                    }
-                },
-                "Nordsee": {
-                    "icon_text": "NSee",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "nordsee"
-                            }
-                        }
-                    }
-                },
-                "Oder": {
-                    "icon_text": "Od",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "oder"
-                            }
-                        }
-                    }
-                },
-                "Ostsee": {
-                    "icon_text": "OSee",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "ostsee"
-                            }
-                        }
-                    }
-                },
-                "Rhein": {
-                    "icon_text": "Rh",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "rhein"
-                            }
-                        }
-                    }
-                },
-                "Weser": {
-                    "icon_text": "We",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "bwstr-bwastr_name.phrase": "weser"
+                    },
+                    "zentral": {
+                        "label": "Zentraler Service",
+                        "icon_text": "MLK",
+                        "query": {
+                            "filter": {
+                                "term": {
+                                    "baw_abteilung_short": "z"
+                                }
                             }
                         }
                     }
                 }
             }
-        },
-        {
-            "id": "baw_abteilung",
-            "label": "Abteilung",
-            "facets": {
-                "bautechnik": {
-                    "label": "Bautechnik",
-                    "icon_text": "B",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "baw_abteilung_short": "b"
-                            }
-                        }
-                    }
-                },
-                "geotechnik": {
-                    "label": "Geotechnik",
-                    "icon_text": "G",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "baw_abteilung_short": "g"
-                            }
-                        }
-                    }
-                },
-                "binnenbereich": {
-                    "label": "Wasserbau im Binnenbereich",
-                    "icon_text": "W",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "baw_abteilung_short": "w"
-                            }
-                        }
-                    }
-                },
-                "kuestenbereich": {
-                    "label": "Wasserbau im Küstenbereich",
-                    "icon_text": "K",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "baw_abteilung_short": "k"
-                            }
-                        }
-                    }
-                },
-                "zentral": {
-                    "label": "Zentraler Service",
-                    "icon_text": "MLK",
-                    "query": {
-                        "filter": {
-                            "term": {
-                                "baw_abteilung_short": "z"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    ]
+        ]
 hit_search:
     facet_config: [
         {
