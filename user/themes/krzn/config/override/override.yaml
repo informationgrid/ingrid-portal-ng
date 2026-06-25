@@ -1,0 +1,135 @@
+categories:
+    facet_config: [
+        {
+            "id": "type",
+            "facets": {
+                "application": {
+                    "icon": "ic-chemie",
+                    "codelist": "8000",
+                    "codelist_entry_id": "6",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "6"
+                            }
+                        }
+                    }
+                },
+                "map": {
+                    "icon": "ic-map",
+                    "codelist": "8000",
+                    "codelist_entry_id": "1",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "1"
+                            }
+                        }
+                    }
+                },
+                "geoservice": {
+                    "icon": "ic-dienste",
+                    "codelist": "8000",
+                    "codelist_entry_id": "3",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "3"
+                            }
+                        }
+                    }
+                },
+                "opendata": {
+                    "icon": "ic-opendata",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendata"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendataident"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+hit_search:
+    facet_config: [
+        {
+            "id": "type",
+            "open": true,
+            "facets": {
+                "application": {
+                    "icon": "ic-chemie",
+                    "codelist": "8000",
+                    "codelist_entry_id": "6",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "6"
+                            }
+                        }
+                    }
+                },
+                "map": {
+                    "icon": "ic-map",
+                    "codelist": "8000",
+                    "codelist_entry_id": "1",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "1"
+                            }
+                        }
+                    }
+                },
+                "geoservice": {
+                    "icon": "ic-dienste",
+                    "codelist": "8000",
+                    "codelist_entry_id": "3",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "3"
+                            }
+                        }
+                    }
+                },
+                "opendata": {
+                    "icon": "ic-opendata",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendata"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendataident"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "bbox",
+            "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
+        }
+    ]

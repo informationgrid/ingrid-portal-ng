@@ -1,0 +1,609 @@
+categories:
+    facet_config: [
+        {
+            "id": "type",
+            "facets": {
+                "www": {
+                    "icon": "ic-www",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "datatype": "www"
+                            }
+                        }
+                    },
+                },
+                "metadata": {
+                    "icon": "ic-metadata",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "datatype": "metadata"
+                            }
+                        }
+                    },
+                },
+                "inspire": {
+                    "icon": "ic-inspire",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "inspire"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "inspireidentifiziert"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "opendata": {
+                    "icon": "ic-opendata",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendata"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendataident"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.term": "opendata"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                },
+                "maps": {
+                    "icon": "ic-map",
+                    "query": {
+                        "filter": {
+                            "wildcard": {
+                                "capabilities_url": "http*"
+                            }
+                        }
+                    },
+                },
+            }
+        },
+        {
+            "id": "opendata_keywords",
+            "facets": {
+                "agri": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "1",
+                    "icon": "ic-agri",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "AGRI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "econ": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "2",
+                    "icon": "ic-econ",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "ECON"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "2"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "educ": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "3",
+                    "icon": "ic-educ",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "EDUC"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "3"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "ener": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "4",
+                    "icon": "ic-ener",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "ENER"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "4"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "envi": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "5",
+                    "icon": "ic-envi",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "ENVI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "5"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "heal": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "6",
+                    "icon": "ic-heal",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "HEAL"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "6"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "intr": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "7",
+                    "icon": "ic-intr",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "INTR"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "7"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "just": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "8",
+                    "icon": "ic-just",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "JUST"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "8"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "soci": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "9",
+                    "icon": "ic-soci",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "SOCI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "9"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "gove": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "10",
+                    "icon": "ic-gove",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "GOVE"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "10"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "regi": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "11",
+                    "icon": "ic-regi",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "REGI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "11"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "tech": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "12",
+                    "icon": "ic-tech",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "TECH"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "12"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "tran": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "13",
+                    "icon": "ic-tran",
+                    "display_on_empty": true,
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "TRAN"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "13"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+hit_search:
+    facet_config: [
+        {
+            "id": "type",
+            "open": true,
+            "facets": {
+                "inspire": {
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "inspire"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "inspireidentifiziert"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "opendata": {
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendata"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendataident"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                },
+                "hvd": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "is_hvd": "true"
+                            }
+                        }
+                    },
+                },
+                "adv": {
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "AdVMIS"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "AdV"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                },
+                "maps": {
+                    "query": {
+                        "filter": {
+                            "wildcard": {
+                                "capabilities_url": "http*"
+                            }
+                        }
+                    },
+                },
+                "metadata": {
+                    "display_sort_hits_on_selection": true,
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "datatype": "metadata"
+                            }
+                        }
+                    },
+                },
+                "www": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "datatype": "www"
+                            }
+                        }
+                    },
+                },
+            }
+        },
+        {
+            "id": "metadata_group",
+            "open_by": {
+                "type": "metadata",
+            },
+            "display_sort_hits_on_selection": true,
+            "codelist": "8000",
+            "query": {
+                "terms": {
+                    "field": "t01_object.obj_class",
+                    "exclude": "1000",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "t01_object.obj_class:%d"
+        },
+        {
+            "id": "modtime",
+            "display_depend_on": {
+                "type": "metadata",
+                "metadata_group": "",
+            },
+            "facets": {
+                "last_month": {
+                    "query": {
+                        "filter": {
+                            "range": {
+                                "modified": {
+                                    "gte": "now-1M"
+                                }
+                            }
+                        }
+                    }
+                },
+                "last_three_month": {
+                    "query": {
+                        "filter": {
+                            "range": {
+                                "modified": {
+                                    "gte": "now-3M"
+                                }
+                            }
+                        }
+                    }
+                },
+                "last_year": {
+                    "query": {
+                        "filter": {
+                            "range": {
+                                "modified": {
+                                    "gte": "now-1y"
+                                }
+                            }
+                        }
+                    }
+                },
+                "last_five_years": {
+                    "query": {
+                        "filter": {
+                            "range": {
+                                "modified": {
+                                    "gte": "now-5y"
+                                }
+                            }
+                        }
+                    }
+                },
+                "older_five_years": {
+                    "query": {
+                        "filter": {
+                            "range": {
+                                "modified": {
+                                    "lte": "now-5y"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "provider",
+            "codelist": "110",
+            "extend_facet_selection_config": {
+                "field": "provider",
+                "list_limit": 6,
+                "sort": "name"
+            },
+            "sort": "name",
+            "query": {
+                "terms": {
+                    "field": "partner",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "partner:%s"
+        },
+        {
+            "id": "bbox",
+            "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
+        }
+    ]

@@ -1,14 +1,10 @@
 <?php
 namespace Grav\Theme;
 
+use Grav\Common\File\CompiledYamlFile;
 use Grav\Common\Theme;
-use Grav\Common\Utils;
-use Grav\Plugin\CapabilitiesHelper;
 use Grav\Plugin\CodelistHelper;
-use Grav\Plugin\DebugHelper;
 use Grav\Plugin\ElasticsearchHelper;
-use Grav\Plugin\IdfHelper;
-use GuzzleHttp\Client;
 use RocketTheme\Toolbox\Event\Event;
 
 class Lubw extends Theme
@@ -16,8 +12,25 @@ class Lubw extends Theme
     public static function getSubscribedEvents(): array
     {
         return [
+            'onThemeInitialized' => ['onThemeInitialized', 0],
             'onThemeDetailHitMetadataWithOtherParamsEvent' => ['onThemeDetailHitMetadataWithOtherParamsEvent', 0],
         ];
+    }
+
+    public function onThemeInitialized()
+    {
+        if (!$this->isAdmin()) {
+            // Load default configuration.
+            $file = CompiledYamlFile::instance("themes://{$this->name}/config/override/override" . YAML_EXT);
+
+            if ($file->exists()) {
+                $themeOverrideConfig = $file->content();
+                $this->config->set(
+                    "themes.{$this->name}",
+                    array_replace_recursive($this->config(), $themeOverrideConfig)
+                );
+            }
+        }
     }
 
     public function onThemeDetailHitMetadataWithOtherParamsEvent(Event $event): void

@@ -1,0 +1,539 @@
+categories:
+    facet_config: [
+        {
+            "id": "waterway",
+            "facets": {
+                "Donau": {
+                    "icon_text": "Do",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "donau"
+                            }
+                        }
+                    }
+                },
+                "Eider": {
+                    "icon_text": "Ei",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "eider"
+                            }
+                        }
+                    }
+                },
+                "Elbe": {
+                    "icon_text": "El",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "elbe"
+                            }
+                        }
+                    }
+                },
+                "Ems": {
+                    "icon_text": "Em",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "ems"
+                            }
+                        }
+                    }
+                },
+                "Main-Donau-Kanal": {
+                    "icon_text": "MDK",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "main-donau-kanal"
+                            }
+                        }
+                    }
+                },
+                "Mittellandkanal": {
+                    "icon_text": "MLK",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "mittellandkanal"
+                            }
+                        }
+                    }
+                },
+                "Mosel": {
+                    "icon_text": "Mo",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "mosel"
+                            }
+                        }
+                    }
+                },
+                "Neckar": {
+                    "icon_text": "Ne",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "neckar"
+                            }
+                        }
+                    }
+                },
+                "Nord-Ostsee-Kanal": {
+                    "icon_text": "NOK",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "nord-ostsee-kanal"
+                            }
+                        }
+                    }
+                },
+                "Nordsee": {
+                    "icon_text": "NSee",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "nordsee"
+                            }
+                        }
+                    }
+                },
+                "Oder": {
+                    "icon_text": "Od",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "oder"
+                            }
+                        }
+                    }
+                },
+                "Ostsee": {
+                    "icon_text": "OSee",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "ostsee"
+                            }
+                        }
+                    }
+                },
+                "Rhein": {
+                    "icon_text": "Rh",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "rhein"
+                            }
+                        }
+                    }
+                },
+                "Weser": {
+                    "icon_text": "We",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "bwstr-bwastr_name.phrase": "weser"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "baw_abteilung",
+            "label": "Abteilung",
+            "facets": {
+                "bautechnik": {
+                    "label": "Bautechnik",
+                    "icon_text": "B",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "b"
+                            }
+                        }
+                    }
+                },
+                "geotechnik": {
+                    "label": "Geotechnik",
+                    "icon_text": "G",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "g"
+                            }
+                        }
+                    }
+                },
+                "binnenbereich": {
+                    "label": "Wasserbau im Binnenbereich",
+                    "icon_text": "W",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "w"
+                            }
+                        }
+                    }
+                },
+                "kuestenbereich": {
+                    "label": "Wasserbau im Küstenbereich",
+                    "icon_text": "K",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "k"
+                            }
+                        }
+                    }
+                },
+                "zentral": {
+                    "label": "Zentraler Service",
+                    "icon_text": "MLK",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "z"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+hit_search:
+    facet_config: [
+        {
+            "id": "baw_abteilung",
+            "label": "Abteilung",
+            "facets": {
+                "bautechnik": {
+                    "label": "Bautechnik",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "b"
+                            }
+                        }
+                    }
+                },
+                "geotechnik": {
+                    "label": "Geotechnik",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "g"
+                            }
+                        }
+                    }
+                },
+                "binnenbereich": {
+                    "label": "Wasserbau im Binnenbereich",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "w"
+                            }
+                        }
+                    }
+                },
+                "kuestenbereich": {
+                    "label": "Wasserbau im Küstenbereich",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "k"
+                            }
+                        }
+                    }
+                },
+                "zentral": {
+                    "label": "Zentraler Service",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "baw_abteilung_short": "z"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "waterway",
+            "list_limit": 6,
+            "query": {
+                "terms": {
+                    "field": "bwstr-bwastr_name",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "bwstr-bwastr_name:%s"
+        },
+        {
+            "id": "baw_datenkategorie",
+            "label": "Datenkategorie",
+            "facets": {
+                "projekt": {
+                    "label": "Projekt/Auftrag",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "4"
+                            }
+                        }
+                    }
+                },
+                "luftbilder": {
+                    "label": "Luftbilder",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "data_category": "Luftbilder"
+                            }
+                        }
+                    }
+                },
+                "cat_simulationsdaten": {
+                    "label": "Simulationsdaten",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "data_category": "Simulationsdaten"
+                            }
+                        }
+                    }
+                },
+                "messdaten": {
+                    "label": "Messdaten",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "data_category": "Messdaten"
+                            }
+                        }
+                    }
+                },
+                "visualisierung": {
+                    "label": "Visualisierung",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "data_category": "Visualisierung"
+                            }
+                        }
+                    }
+                },
+                "geodienst": {
+                    "label": "Geodienst",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "3"
+                            }
+                        }
+                    }
+                },
+                "software": {
+                    "label": "Software",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "6"
+                            }
+                        }
+                    }
+                },
+                "sonstiges": {
+                    "label": "Sonstiges",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "data_category": "Sonstiges"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "simulation",
+            "facets": {
+                "preprocessing": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Preprocessing"
+                            }
+                        }
+                    }
+                },
+                "variant": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Variante"
+                            }
+                        }
+                    }
+                },
+                "scenario": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Szenario"
+                            }
+                        }
+                    }
+                },
+                "model": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Simulationsmodell"
+                            }
+                        }
+                    }
+                },
+                "run": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Simulationslauf"
+                            }
+                        }
+                    }
+                },
+                "file": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Simulationsdatei"
+                            }
+                        }
+                    }
+                },
+                "postprocessing": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simulation_data_type": "Postprocessing"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "verfahren",
+            "label": "Verfahren",
+            "list_limit": 6,
+            "query": {
+                "terms": {
+                    "field": "method",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "method:%s"
+        },
+        {
+            "id": "simmodeltype",
+            "label": "Modelldaten",
+            "facets": {
+                "basisdaten": {
+                    "label": "Basisdaten",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "simparamtype": "Randbedingung"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "simparamtype": "Anfangsbedingung"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "simparamtype": "Peilung"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "simparamtype": "Bathymetrie"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "simparamtype": "Kennwort"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "modellergebnisse": {
+                    "label": "Modellergebnisse",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simparamtype": "Ergebnis"
+                            }
+                        }
+                    }
+                },
+                "scenario": {
+                    "label": "Fachliche Abbildungen/Grafiken",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "simparamtype": "Grafik"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "simspatialdimension",
+            "label": "Räumliche Dimensionalität",
+            "list_limit": 6,
+            "query": {
+                "terms": {
+                    "field": "simspatialdimension",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "t017_url_ref.datatype:%s"
+        },
+        {
+            "id": "datenformat",
+            "label": "Datenformat",
+            "list_limit": 6,
+            "query": {
+                "terms": {
+                    "field": "t017_url_ref.datatype",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "t017_url_ref.datatype:%s"
+        },
+        {
+            "id": "timeref",
+            "filter": "{\"range\": {\"t01_object.time_from\": {\"gte\": \"%s0*\", \"lte\": \"%s9*\"}}}"
+        },
+        {
+            "id": "bbox",
+            "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
+        }
+    ]

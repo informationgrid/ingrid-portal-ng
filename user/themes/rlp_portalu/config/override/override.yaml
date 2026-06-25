@@ -1,0 +1,123 @@
+categories:
+    facet_config: [
+    ]
+hit_search:
+    facet_config: [
+        {
+            "id": "type",
+            "facets": {
+                "www": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "datatype": "www"
+                            }
+                        }
+                    }
+                },
+                "metadata": {
+                    "display_sort_hits_on_selection": true,
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "datatype": "metadata"
+                            }
+                        }
+                    }
+                },
+                "inspire": {
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "inspire"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "inspireidentifiziert"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "opendata": {
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendata"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "opendataident"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "hvd": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "is_hvd": "true"
+                            }
+                        }
+                    }
+                },
+                "maps": {
+                    "query": {
+                        "filter": {
+                            "wildcard": {
+                                "capabilities_url": "http*"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "metadata_group",
+            "open_by": {
+                "type": "metadata",
+            },
+            "select_other": {
+                "type": "metadata",
+            },
+            "display_sort_hits_on_selection": true,
+            "codelist": "8000",
+            "query": {
+                "terms": {
+                    "field": "t01_object.obj_class",
+                    "exclude": "1000",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "t01_object.obj_class:%d"
+        },
+        {
+            "id": "provider",
+            "codelist": "111",
+            "list_limit": 6,
+            "query": {
+                "terms": {
+                    "field": "provider",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "provider:%s"
+        },
+        {
+            "id": "bbox",
+            "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
+        }
+    ]
