@@ -461,17 +461,17 @@ if [ -f "$INGRID_GRAV_THEME_CONFIG_YAML" ]; then
   yq -i '.measure.url = "/mvis/index.html"' "$INGRID_GRAV_THEME_CONFIG_YAML"
 
   # Remove facets config
-  yq 'del(.home.hits.requested_fields)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.home.hits.source)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.home.hits.query_string_operator)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.home.categories.facet_config)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_search.facet_config)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_search.requested_fields)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_search.source)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_search.query_string_operator)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_detail.requested_fields)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_detail.source)' "$INGRID_GRAV_THEME_CONFIG_YAML"
-  yq 'del(.hit_detail.query_string_operator)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.home.hits.requested_fields)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.home.hits.source)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.home.hits.query_string_operator)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.home.categories.facet_config)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_search.facet_config)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_search.requested_fields)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_search.source)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_search.query_string_operator)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_detail.requested_fields)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_detail.source)' "$INGRID_GRAV_THEME_CONFIG_YAML"
+  yq -i 'del(.hit_detail.query_string_operator)' "$INGRID_GRAV_THEME_CONFIG_YAML"
 fi
 
 INGRID_PAGES_CONTACT_FORM=/var/www/"$GRAV_FOLDER"/user/pages/contact/form/default.md
