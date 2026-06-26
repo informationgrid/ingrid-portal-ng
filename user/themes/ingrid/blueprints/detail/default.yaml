@@ -5,17 +5,6 @@ form:
       title: THEME.ADMIN.HIT_DETAIL.TITLE
       underline: true
 
-    hit_detail.query_string_operator:
-      type: toggle
-      label: THEME.ADMIN.HIT_DETAIL.QUERY_STRING_OPERATOR.LABEL
-      help: THEME.ADMIN.HIT_DETAIL.QUERY_STRING_OPERATOR.HELP
-      highlight: AND
-      options:
-        "AND": AND
-        "OR": OR
-      validate:
-        type: text
-
     hit_detail.display_use_constraints_json:
       type: toggle
       label: THEME.ADMIN.HIT_DETAIL.DISPLAY_USE_CONSTRAINTS_JSON.LABEL
@@ -37,27 +26,6 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: text
-
-    hit_detail.requested_fields:
-      type: selectize
-      label: THEME.ADMIN.HIT_DETAIL.REQUESTED_FIELDS.LABEL
-      help: THEME.ADMIN.HIT_DETAIL.REQUESTED_FIELDS.HELP
-      validate:
-        type: commalist
-
-    hit_detail.source.include:
-      type: selectize
-      label: THEME.ADMIN.HIT_DETAIL.SOURCE.INCLUDE.LABEL
-      help: THEME.ADMIN.HIT_DETAIL.SOURCE.INCLUDE.HELP
-      validate:
-        type: commalist
-
-    hit_detail.source.exclude:
-      type: selectize
-      label: THEME.ADMIN.HIT_DETAIL.SOURCE.EXCLUDE.LABEL
-      help: THEME.ADMIN.HIT_DETAIL.SOURCE.EXCLUDE.HELP
-      validate:
-        type: commalist
 
     hit_detail.summary_replace_newline:
       type: text

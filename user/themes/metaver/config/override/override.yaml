@@ -1,4 +1,12 @@
 home:
+    hits:
+        requested_fields:
+        source:
+            include:
+            exclude:
+                - content
+                - idf
+        query_string_operator: AND
     categories:
         facet_config: [
             {
@@ -60,6 +68,11 @@ home:
                                             "term": {
                                                 "t04_search.searchterm": "opendataident"
                                             }
+                                        },
+                                        {
+                                            "term": {
+                                                "keywords.term": "opendata"
+                                            }
                                         }
                                     ]
                                 }
@@ -77,7 +90,8 @@ home:
                         },
                     },
                 }
-            },{
+            },
+            {
                 "id": "provider",
                 "label": "Bundesländern",
                 "facets": {
@@ -90,7 +104,7 @@ home:
                                     "partner": "bw"
                                 }
                             }
-                        },
+                        }
                     },
                     "by": {
                         "icon": "images/partner/svg/by.svg",
@@ -101,7 +115,7 @@ home:
                                     "partner": "by"
                                 }
                             }
-                        },
+                        }
                     },
                     "be": {
                         "icon": "images/partner/svg/be.svg",
@@ -112,7 +126,7 @@ home:
                                     "partner": "be"
                                 }
                             }
-                        },
+                        }
                     },
                     "bb": {
                         "icon": "images/partner/svg/bb.svg",
@@ -123,7 +137,7 @@ home:
                                     "partner": "bb"
                                 }
                             }
-                        },
+                        }
                     },
                     "hb": {
                         "icon": "images/partner/svg/hb.svg",
@@ -134,7 +148,7 @@ home:
                                     "partner": "hb"
                                 }
                             }
-                        },
+                        }
                     },
                     "hh": {
                         "icon": "images/partner/svg/hh.svg",
@@ -145,7 +159,7 @@ home:
                                     "partner": "hh"
                                 }
                             }
-                        },
+                        }
                     },
                     "he": {
                         "icon": "images/partner/svg/he.svg",
@@ -156,7 +170,7 @@ home:
                                     "partner": "he"
                                 }
                             }
-                        },
+                        }
                     },
                     "mv": {
                         "icon": "images/partner/svg/mv.svg",
@@ -167,7 +181,7 @@ home:
                                     "partner": "mv"
                                 }
                             }
-                        },
+                        }
                     },
                     "ni": {
                         "icon": "images/partner/svg/ni.svg",
@@ -178,7 +192,7 @@ home:
                                     "partner": "ni"
                                 }
                             }
-                        },
+                        }
                     },
                     "nw": {
                         "icon": "images/partner/svg/nw.svg",
@@ -189,7 +203,7 @@ home:
                                     "partner": "nw"
                                 }
                             }
-                        },
+                        }
                     },
                     "rp": {
                         "icon": "images/partner/svg/rp.svg",
@@ -200,7 +214,7 @@ home:
                                     "partner": "rp"
                                 }
                             }
-                        },
+                        }
                     },
                     "sl": {
                         "icon": "images/partner/svg/sl.svg",
@@ -211,7 +225,7 @@ home:
                                     "partner": "sl"
                                 }
                             }
-                        },
+                        }
                     },
                     "sn": {
                         "icon": "images/partner/svg/sn.svg",
@@ -222,7 +236,7 @@ home:
                                     "partner": "sn"
                                 }
                             }
-                        },
+                        }
                     },
                     "st": {
                         "icon": "images/partner/svg/st.svg",
@@ -233,7 +247,7 @@ home:
                                     "partner": "st"
                                 }
                             }
-                        },
+                        }
                     },
                     "sh": {
                         "icon": "images/partner/svg/sh.svg",
@@ -244,7 +258,7 @@ home:
                                     "partner": "sh"
                                 }
                             }
-                        },
+                        }
                     },
                     "th": {
                         "icon": "images/partner/svg/th.svg",
@@ -255,10 +269,10 @@ home:
                                     "partner": "th"
                                 }
                             }
-                        },
-                    },
+                        }
+                    }
                 }
-            },
+            }
         ]
 hit_search:
     facet_config: [
@@ -290,21 +304,32 @@ hit_search:
                     "query": {
                         "filter": {
                             "bool": {
-                                "should": [
+                                "must": [
                                     {
-                                        "term": {
-                                            "t04_search.searchterm": "opendata"
-                                        }
-                                    },
-                                    {
-                                        "term": {
-                                            "t04_search.searchterm": "opendataident"
+                                        "bool": {
+                                            "should": [
+                                                {
+                                                    "term": {
+                                                        "t04_search.searchterm": "opendata"
+                                                    }
+                                                },
+                                                {
+                                                    "term": {
+                                                        "t04_search.searchterm": "opendataident"
+                                                    }
+                                                },
+                                                {
+                                                    "term": {
+                                                        "keywords.term": "opendata"
+                                                    }
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
                             }
                         }
-                    },
+                    }
                 },
                 "hvd": {
                     "query": {
@@ -313,7 +338,7 @@ hit_search:
                                 "is_hvd": "true"
                             }
                         }
-                    },
+                    }
                 },
                 "adv": {
                     "query": {
@@ -333,7 +358,7 @@ hit_search:
                                 ]
                             }
                         }
-                    },
+                    }
                 },
                 "maps": {
                     "query": {
@@ -342,7 +367,7 @@ hit_search:
                                 "capabilities_url": "http*"
                             }
                         }
-                    },
+                    }
                 },
                 "metadata": {
                     "display_sort_hits_on_selection": true,
@@ -352,7 +377,7 @@ hit_search:
                                 "datatype": "metadata"
                             }
                         }
-                    },
+                    }
                 },
                 "www": {
                     "query": {
@@ -370,16 +395,409 @@ hit_search:
             "open_by": {
                 "type": "metadata",
             },
+            "select_other": {
+                "type": "metadata",
+            },
             "display_sort_hits_on_selection": true,
-            "codelist": "8000",
+            "facets": {
+                "0": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "0",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "0"
+                            }
+                        }
+                    }
+                },
+                "1": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "1",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "1"
+                            }
+                        }
+                    }
+                },
+                "2": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "2",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "2"
+                            }
+                        }
+                    }
+                },
+                "3": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "3",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "3"
+                            }
+                        }
+                    }
+                },
+                "4": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "4",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "4"
+                            }
+                        }
+                    }
+                },
+                "5": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "5",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "5"
+                            }
+                        }
+                    }
+                },
+                "6": {
+                    "codelist": "8000",
+                    "codelist_entry_id": "6",
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "t01_object.obj_class": "6"
+                            }
+                        }
+                    }
+                },
+                "opendata_metadata": {
+                    "query": {
+                        "filter": {
+                            "term": {
+                                "keywords.source": "THEMES"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "opendata_keywords",
+            "facets": {
+                "agri": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "1",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "AGRI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "1"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "econ": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "2",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "ECON"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "2"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "educ": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "3",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "EDUC"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "3"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "ener": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "4",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "ENER"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "4"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "envi": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "5",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "ENVI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "5"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "heal": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "6",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "HEAL"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "6"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "intr": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "7",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "INTR"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "7"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "just": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "8",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "JUST"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "8"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "soci": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "9",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "SOCI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "9"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "gove": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "10",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "GOVE"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "10"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "regi": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "11",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "REGI"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "11"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "tech": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "12",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "TECH"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "12"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "tran": {
+                    "codelist": "6400",
+                    "codelist_entry_id": "13",
+                    "query": {
+                        "filter": {
+                            "bool": {
+                                "should": [
+                                    {
+                                        "term": {
+                                            "t04_search.searchterm": "TRAN"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.id": "13"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "id": "opendata_licenses",
             "query": {
                 "terms": {
-                    "field": "t01_object.obj_class",
-                    "exclude": "1000",
+                    "field": "distributions.license.name",
                     "min_doc_count": 0
                 }
             },
-            "search": "t01_object.obj_class:%d"
+            "search": "distributions.license.name:%s"
+        },
+        {
+            "id": "opendata_formats",
+            "query": {
+                "terms": {
+                    "field": "distributions.format",
+                    "min_doc_count": 0
+                }
+            },
+            "search": "distributions.format:%s"
         },
         {
             "id": "modtime",
@@ -467,3 +885,36 @@ hit_search:
             "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
         }
     ]
+    requested_fields:
+      - t04_search.searchterm
+      - t017_url_ref.url_link
+      - t017_url_ref.content
+      - t017_url_ref.special_ref
+      - t017_url_ref.datatype
+      - object_reference.obj_uuid
+      - object_reference.obj_name
+      - object_reference.obj_class
+      - object_reference.type
+      - object_reference.version
+      - refering.object_reference.obj_uuid
+      - refering.object_reference.obj_name
+      - refering.object_reference.obj_class
+      - refering.object_reference.type
+      - refering.object_reference.version
+    source:
+      include:
+      exclude:
+        - content
+        - idf
+    query_string_operator: AND
+hit_detail:
+    requested_fields:
+        - partner
+        - provider
+        - t03_catalogue.cat_name
+        - t01_object.obj_class
+    source:
+        include:
+        exclude:
+            - content
+    query_string_operator: AND

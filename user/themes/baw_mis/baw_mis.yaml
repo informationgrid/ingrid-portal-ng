@@ -148,28 +148,6 @@ hit_search:
     - summary.ngram^0.2
     - content^0.2
     - content.ngram^0.1
-  requested_fields:
-    - t04_search.searchterm
-    - t017_url_ref.url_link
-    - t017_url_ref.content
-    - t017_url_ref.special_ref
-    - t017_url_ref.datatype
-    - object_reference.obj_uuid
-    - object_reference.obj_name
-    - object_reference.obj_class
-    - object_reference.type
-    - object_reference.version
-    - refering.object_reference.obj_uuid
-    - refering.object_reference.obj_name
-    - refering.object_reference.obj_class
-    - refering.object_reference.type
-    - refering.object_reference.version
-  source:
-      include:
-      exclude:
-        - content
-        - idf
-  query_string_operator: AND
   sort:
     enabled: false
     sortByDate: false
@@ -215,21 +193,6 @@ hit_detail:
     - owner
     - processor
     - author
-  requested_fields:
-    - partner
-    - provider
-    - t03_catalogue.cat_name
-  source:
-    include:
-      - idf
-      - dataSourceName
-      - iPlugId
-      - title
-      - simulation_data_type
-      - t01_object.obj_class
-    exclude:
-      - content
-  query_string_operator: AND
   display_use_constraints_json: true
   remove_use_constraints_prefix: false
   keywords_as_link: false

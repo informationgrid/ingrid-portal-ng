@@ -1267,22 +1267,9 @@ THEME:
             ADD_TO_SEARCH:
                 LABEL: Suche erweitern
                 HELP: Suche erweitern
-            QUERY_STRING_OPERATOR:
-                LABEL: Query String Operator
-                HELP: Query String Operator
             QUERY_FIELDS:
                 LABEL: Indexfelder für die Suche
                 HELP: Indexfelder für die Suche
-            REQUESTED_FIELDS:
-                LABEL: Felder anfragen
-                HELP: Felder anfragen
-            SOURCE:
-                INCLUDE:
-                    LABEL: Indexfelder anfordern
-                    HELP: Indexfelder anfordern
-                EXCLUDE:
-                    LABEL: Indexfelder ausschließen
-                    HELP: Indexfelder ausschließen
             SORT:
                 ENABLED:
                     LABEL: Suchergebnis-Sortierung
@@ -1324,25 +1311,12 @@ THEME:
                     HELP: Aktivieren Sie die Darstellung der "Ähnliche Begriffe" auf der Suchseite.
         HIT_DETAIL:
             TITLE: Detaildarstellung
-            QUERY_STRING_OPERATOR:
-                LABEL: Query String Operator
-                HELP: Query String Operator
             DISPLAY_USE_CONSTRAINTS_JSON:
                 LABEL: Nutzungsbedingungen im JSON-Format anzeigen
                 HELP: Nutzungsbedingungen im JSON-Format können angezeigt bzw. ausgeblendet werden.
             REMOVE_USE_CONSTRAINTS_PREFIX:
                 LABEL: "Präfix \"Quellenvermerk: \" bei Nutzungsbedingungen entfernen"
                 HELP: "Präfix \"Quellenvermerk: \" bei Nutzungsbedingungen wird entfernt."
-            REQUESTED_FIELDS:
-                LABEL: Felder anfragen
-                HELP: Felder anfragen
-            SOURCE:
-                INCLUDE:
-                    LABEL: Indexfelder anfordern
-                    HELP: Indexfelder anfordern
-                EXCLUDE:
-                    LABEL: Indexfelder ausschließen
-                    HELP: Indexfelder ausschließen
             SUMMARY_REPLACE_NEWLINE:
                 LABEL: Zeilenumbrüche des Beschreibungstextes ersetzen
                 HELP: Lege die Zeilenumbrüche des Beschreibungstextes fest.

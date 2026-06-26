@@ -24,19 +24,6 @@ hit_detail:
     - owner
     - processor
     - author
-  requested_fields:
-    - partner
-    - provider
-    - t03_catalogue.cat_name
-  source:
-    include:
-      - idf
-      - dataSourceName
-      - iPlugId
-      - title
-    exclude:
-      - content
-  query_string_operator: AND
   display_use_constraints_json: true
   remove_use_constraints_prefix: false
   keywords_as_link: false

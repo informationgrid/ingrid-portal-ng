@@ -77,42 +77,10 @@ form:
         min: 0
         max: 10
 
-    home.hits.query_string_operator:
-      type: toggle
-      label: THEME.ADMIN.HOME.HITS.QUERY_STRING_OPERATOR.LABEL
-      help: THEME.ADMIN.HOME.HITS.QUERY_STRING_OPERATOR.HELP
-      highlight: AND
-      options:
-        "AND": AND
-        "OR": OR
-      validate:
-        type: text
-
     home.hits.query_fields:
       type: selectize
       label: THEME.ADMIN.HOME.HITS.QUERY_FIELDS.LABEL
       help: THEME.ADMIN.HOME.HITS.QUERY_FIELDS.HELP
-      validate:
-        type: commalist
-
-    home.hits.requested_fields:
-      type: selectize
-      label: THEME.ADMIN.HOME.HITS.REQUESTED_FIELDS.LABEL
-      help: THEME.ADMIN.HOME.HITS.REQUESTED_FIELDS.HELP
-      validate:
-        type: commalist
-
-    home.hits.source.include:
-      type: selectize
-      label: THEME.ADMIN.HOME.HITS.SOURCE.INCLUDE.LABEL
-      help: THEME.ADMIN.HOME.HITS.SOURCE.INCLUDE.HELP
-      validate:
-        type: commalist
-
-    home.hits.source.exclude:
-      type: selectize
-      label: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.LABEL
-      help: THEME.ADMIN.HOME.HITS.SOURCE.EXCLUDE.HELP
       validate:
         type: commalist
 

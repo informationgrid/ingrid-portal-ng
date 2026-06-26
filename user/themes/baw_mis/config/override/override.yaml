@@ -1,4 +1,12 @@
 home:
+    hits:
+        requested_fields:
+        source:
+            include:
+            exclude:
+                - content
+                - idf
+        query_string_operator: AND
     categories:
         facet_config: [
             {
@@ -538,3 +546,39 @@ hit_search:
             "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
         }
     ]
+    requested_fields:
+        - t04_search.searchterm
+        - t017_url_ref.url_link
+        - t017_url_ref.content
+        - t017_url_ref.special_ref
+        - t017_url_ref.datatype
+        - object_reference.obj_uuid
+        - object_reference.obj_name
+        - object_reference.obj_class
+        - object_reference.type
+        - object_reference.version
+        - refering.object_reference.obj_uuid
+        - refering.object_reference.obj_name
+        - refering.object_reference.obj_class
+        - refering.object_reference.type
+        - refering.object_reference.version
+    source:
+        include:
+        exclude:
+            - content
+            - idf
+    query_string_operator: AND
+hit_detail:
+    requested_fields:
+        - partner
+        - provider
+        - t03_catalogue.cat_name
+    source:
+        include:
+            - idf
+            - dataSourceName
+            - iPlugId
+            - title
+        exclude:
+            - content
+    query_string_operator: AND

@@ -110,13 +110,6 @@ home:
       - '-datatype:www'
       - '-isfolder:true'
     query_fields:
-    requested_fields:
-    source:
-      include:
-      exclude:
-        - content
-        - idf
-    query_string_operator: AND
     hits_num: 2
     sort:
       sortByDate: true
@@ -135,13 +128,6 @@ hit_search:
     - summary.ngram^0.2
     - content^0.2
     - content.ngram^0.1
-  requested_fields:
-  source:
-    include:
-    exclude:
-      - content
-      - idf
-  query_string_operator: AND
   sort:
     enabled: true
     sortByDate: false
@@ -193,12 +179,6 @@ hit_detail:
     - owner
     - processor
     - author
-  requested_fields:
-  source:
-    include:
-    exclude:
-      - content
-  query_string_operator: AND
   display_use_constraints_json: true
   remove_use_constraints_prefix: false
   keywords_as_link: false

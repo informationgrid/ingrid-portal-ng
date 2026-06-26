@@ -1,4 +1,12 @@
 home:
+    hits:
+        requested_fields:
+        source:
+            include:
+            exclude:
+                - content
+                - idf
+        query_string_operator: AND
     categories:
         facet_config: [
             {
@@ -2321,3 +2329,17 @@ hit_search:
             "filter": "{\"bool\": {\"should\": [{\"nested\": {\"path\": \"spatial\",\"query\": {\"bool\": {\"must\": [{\"geo_bounding_box\": {\"spatial.geometries\": {\"top_left\": [%f,%f],\"bottom_right\": [%f,%f]}}},{\"exists\": {\"field\": \"spatial.geometries\"}}]}}}},{\"bool\": {\"must\": [{\"range\": {\"x1\": {\"gte\": %f}}},{\"range\": {\"y2\": {\"lte\": %f}}},{\"range\": {\"y1\": {\"gte\": %f}}},{\"range\": {\"x2\": {\"lte\": %f}}}],\"must_not\":{\"nested\":{\"path\":\"spatial\",\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"spatial.geometries\"}}]}}}}}}],\"minimum_should_match\": 1}}"
         }
     ]
+    requested_fields:
+    source:
+      include:
+      exclude:
+        - content
+        - idf
+    query_string_operator: AND
+hit_detail:
+    requested_fields:
+    source:
+        include:
+        exclude:
+            - content
+    query_string_operator: AND
