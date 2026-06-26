@@ -28,7 +28,7 @@ class BawMis extends Theme
                 $themeOverrideConfig = $file->content();
                 $this->config->set(
                     "themes.{$this->name}",
-                    array_replace($this->config(), $themeOverrideConfig)
+                    array_replace_recursive($this->config(), $themeOverrideConfig)
                 );
             }
         }
