@@ -195,7 +195,7 @@ hit_detail:
     - author
   display_use_constraints_json: true
   remove_use_constraints_prefix: false
-  keywords_as_link: false
+  keywords_as_link: true
   link_sort_asc: true
 map:
   url:
