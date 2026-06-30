@@ -149,11 +149,6 @@ hit_search:
                                                     "term": {
                                                         "t04_search.searchterm": "opendataident"
                                                     }
-                                                },
-                                                {
-                                                    "term": {
-                                                        "keywords.term": "opendata"
-                                                    }
                                                 }
                                             ]
                                         }

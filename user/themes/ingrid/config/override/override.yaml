@@ -47,6 +47,16 @@ home:
                                             "term": {
                                                 "t04_search.searchterm": "inspireidentifiziert"
                                             }
+                                        },
+                                        {
+                                            "term": {
+                                                "keywords.term": "inspire"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "keywords.term": "inspireidentifiziert"
+                                            }
                                         }
                                     ]
                                 }
@@ -72,6 +82,11 @@ home:
                                         {
                                             "term": {
                                                 "keywords.term": "opendata"
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "keywords.term": "opendataident"
                                             }
                                         }
                                     ]
@@ -447,6 +462,16 @@ hit_search:
                                         "term": {
                                             "t04_search.searchterm": "inspireidentifiziert"
                                         }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.term": "inspire"
+                                        }
+                                    },
+                                    {
+                                        "term": {
+                                            "keywords.term": "inspireidentifiziert"
+                                        }
                                     }
                                 ]
                             }
@@ -474,6 +499,11 @@ hit_search:
                                                 {
                                                     "term": {
                                                         "keywords.term": "opendata"
+                                                    }
+                                                },
+                                                {
+                                                    "term": {
+                                                        "keywords.term": "opendataident"
                                                     }
                                                 }
                                             ]
