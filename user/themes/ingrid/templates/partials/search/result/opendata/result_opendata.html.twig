@@ -9,7 +9,7 @@
 {% set isOpendata = false %}
 {% set hasAccessConstraint = false %}
 {% set isHVD = false %}
-{{ vardump(hit) }}
+
 {% for keyword in hit.keywords %}
     {% set value = keyword.term %}
     {% switch value %}
