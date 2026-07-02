@@ -1,5 +1,3 @@
-{% import 'macros/hit_macros.html.twig' as hit_macros %}
-
 <a id="{{ hitOpenId }}" class="js-expander {% if isHitOpen %}is-hidden{% endif %}" title="{{ "SEARCH_RESULT.INFO_MORE"|t }}" href="#" {% if bboxes|length > 0 %}onclick="resizeMap({{ hitMapId }})"{% endif %}>
     <span class="icon  ic-ic-plus"></span>
     <span class="text">{{ "SEARCH_RESULT.INFO_MORE"|t }}</span>

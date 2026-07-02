@@ -10,6 +10,20 @@
 {% set uuid = hit.id %}
 {% set title = hit.title %}
 {% set partners = partners %}
+{% set isInspire = false %}
+{% set isOpendata = false %}
+{% set hasAccessConstraint = false %}
+{% set isHVD = false %}
+
+{% for keyword in hit.keywords %}
+    {% set value = keyword.term %}
+    {% switch value %}
+        {% case 'opendata' or 'opendataident' %}
+            {% set isOpendata = true %}
+        {% case 'inspire' or 'inspireidentifiziert'  %}
+            {% set isInspire = true %}
+    {% endswitch %}
+{% endfor %}
 
 {# Vorschau #}
 {% set previews = hit.previews %}
@@ -55,6 +69,6 @@
 {% set metaInfoRefs = {} %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "uuid", hit.id) %}
 {% set metaInfoRefs = addKeyValue(metaInfoRefs, "modified", hit.metadata.modified) %}
-{% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_data_source_name", hit.dataSourceName) %}
-{% set metaInfoRefs = addKeyValue(metaInfoRefs, "plug_providers", hit.providers) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "dataSourceName", hit.dataSourceName) %}
+{% set metaInfoRefs = addKeyValue(metaInfoRefs, "providers", hit.providers) %}
 {% include 'partials/detail/opendata/detail_opendata_profile_settings.html.twig' %}

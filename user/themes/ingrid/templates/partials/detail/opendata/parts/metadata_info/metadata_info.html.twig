@@ -8,7 +8,7 @@
 {# Objekt-ID #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_OBJ_ID"|t, metaInfoRefs.uuid) }}
 {# Geändert am #}
-    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.MODIFIED.TITLE"|t, timeRefs.modified|date('d.m.Y H:i:s'), null, "text-capitalize") }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.OPENDATA.MODIFIED.TITLE"|t, metaInfoRefs.modified|date('d.m.Y H:i:s'), null, "text-capitalize") }}
 {# Sprache Metadatensatz #}
     {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T01_OBJECT_METADATA_LANGUAGE"|t, metaInfoRefs.lang) }}
 {# Datensatz/Datenserie #}

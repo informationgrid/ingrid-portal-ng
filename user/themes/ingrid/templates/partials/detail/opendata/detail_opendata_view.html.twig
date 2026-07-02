@@ -51,6 +51,7 @@
                         <span class="ic-ic-folder-open" title="{{ "SEARCH_RESULT.OPENDATA.CLASS.TITLE"|t }}"></span>
                         <span class="text">{{ "SEARCH_RESULT.OPENDATA.CLASS.TITLE"|t }}</span>
                     </div>
+                    {{ hit_macros.render_hit_searchterm(isInspire, isOpendata, hasAccessConstraint, isHVD) }}
                     <h2>{{ removeHashLocale(title) }}</h2>
                 </div>
             </div>

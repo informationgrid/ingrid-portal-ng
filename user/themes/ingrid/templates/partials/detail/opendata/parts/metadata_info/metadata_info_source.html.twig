@@ -1,5 +1,5 @@
 {# Metadatenquellen #}
-{% if metaInfoRefs.plug_data_source_name or metaInfoRefs.plug_providers %}
+{% if metaInfoRefs.partner or metaInfoRefs.providers %}
     <div class="table table--lined">
         <table>
             <tbody>
@@ -7,11 +7,11 @@
                 <th>{{ "SEARCH_DETAIL.METADATA_SOURCE"|t }}</th>
                 <td>
                     <div>
-                        {{ metaInfoRefs.plug_data_source_name }}
+                        {{ metaInfoRefs.dataSourceName }}
                     </div>
                 </td>
             </tr>
-            {% for provider in metaInfoRefs.plug_providers %}
+            {% for provider in metaInfoRefs.providers %}
                 <tr>
                     <th></th>
                     <td>

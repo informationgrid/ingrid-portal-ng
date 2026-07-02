@@ -1,7 +1,24 @@
+{% import 'macros/hit_macros.html.twig' as hit_macros %}
+
 {% set partner_logo = theme_var('hit_search.partner_logo_enabled') %}
 {% set summary_lines_limit = theme_var('hit_search.summary_lines_limit') %}
 {% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
 {% set isExpandable = theme_var('hit_search.expandable.enabled') %}
+
+{% set isInspire = false %}
+{% set isOpendata = false %}
+{% set hasAccessConstraint = false %}
+{% set isHVD = false %}
+{{ vardump(hit) }}
+{% for keyword in hit.keywords %}
+    {% set value = keyword.term %}
+    {% switch value %}
+        {% case 'opendata' or 'opendataident' %}
+            {% set isOpendata = true %}
+        {% case 'inspire' or 'inspireidentifiziert'  %}
+            {% set isInspire = true %}
+    {% endswitch %}
+{% endfor %}
 
 {% set detailLink = page.find('/detail').url ~ "?docuuid=" ~ hit.id %}
 {% set queries = uri.query(null, true) %}
@@ -34,6 +51,7 @@
             <span class="ic-ic-folder-open" title="{{ "SEARCH_RESULT.OPENDATA.CLASS.TITLE"|t }}"></span>
             <span class="text">{{ "SEARCH_RESULT.OPENDATA.CLASS.TITLE"|t }}</span>
         </div>
+        {{ hit_macros.render_hit_searchterm(isInspire, isOpendata, hasAccessConstraint, isHVD) }}
         <a href="{{ detailLink }}" title="{{ removeHashLocale(hit.title) }}">
             <h2 class="header">{{ removeHashLocale(hit.title) }}</h2>
         </a>
