@@ -171,10 +171,6 @@ hit_detail:
         - t03_catalogue.cat_name
     source:
         include:
-            - idf
-            - dataSourceName
-            - iPlugId
-            - title
         exclude:
             - content
     query_string_operator: AND
