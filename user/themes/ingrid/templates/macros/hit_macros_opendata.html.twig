@@ -251,6 +251,7 @@
 {% endmacro %}
 
 {% macro render_label_link_image_list (title, entries, type, page, isFacts, breakListCounter, partners) %}
+    {% set summary_replace_newline = theme_var('hit_search.summary_replace_newline') %}
     {% if entries and entries|length > 0 %}
         {% set isDownload = false %}
         {% set isExternal = false %}
@@ -302,7 +303,7 @@
                             {% if entry.description %}
                                 <tr>
                                     <th>{{ "SEARCH_DETAIL.OPENDATA.DISTRIBUTIONS.DESCRIPTION"|t }}</th>
-                                    <td>{{ convertUrlInText(removeHashLocale(entry.description))|raw }}</td>
+                                    <td>{{ convertUrlInText(removeHashLocale(entry.description))|replace({'\n': summary_replace_newline, '\r': summary_replace_newline})|raw }}</td>
                                 </tr>
                             {% endif %}
                             {% if entry.modified %}
