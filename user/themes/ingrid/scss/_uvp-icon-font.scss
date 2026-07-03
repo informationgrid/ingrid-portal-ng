@@ -294,6 +294,17 @@
   mask-size: cover;
   background-color: currentColor;
 }
+.ic-ic-dataset:before {
+  display: block;
+  width: 20px;
+  height: 30px;
+  content: '';
+  -webkit-mask: url('../images/template/dataset.svg') no-repeat 50% 50%;
+  mask: url('../images/template/dataset.svg') no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  background-color: currentColor;
+}
 .ic-ic-people:before {
   content: "\e90c";
 }
