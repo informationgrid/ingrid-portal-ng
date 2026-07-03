@@ -18,9 +18,12 @@
     {% endif %}
 
     <div class="logo" role="banner">
-        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}">
-            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
-            <div class="text">Landesanstalt für Umwelt<br>Baden-Württemberg</div>
+        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t }}" aria-label="{{ "PAGES.HOME_MENU_TITLE"|t }}">
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" aria-hidden="true" />
+            <div class="text">
+                <div>Landesanstalt für Umwelt</div>
+                <div>Baden-Württemberg</div>
+            </div>
         </a>
     </div>
 {% endif %}

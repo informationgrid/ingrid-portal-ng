@@ -18,8 +18,8 @@
     {% endif %}
 
     <div class="logo" role="banner">
-        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
-            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" />
+        <a href="{{ page.find('/home').url }}" title="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}" aria-label="{{ "PAGES.HOME_MENU_TITLE"|t(header_title_extend) }}">
+            <img src="{{ url(header_logo_file) }}" alt="{{ site.title }}" aria-hidden="true" />
         </a>
     </div>
 {% endif %}
