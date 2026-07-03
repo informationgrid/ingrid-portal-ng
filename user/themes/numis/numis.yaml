@@ -168,11 +168,11 @@ hit_search:
   expandable:
     enabled: true
   summary_replace_newline: '<br>'
-  summary_lines_limit: 5
+  summary_lines_limit: 2
   links_max: 5
   csw_enabled: true
   rdf_enabled: true
-  partner_logo_enabled: true
+  partner_logo_enabled: false
   link_sort_asc: false
   sns:
     similar_terms:
@@ -217,9 +217,9 @@ map:
     epsg: '3857'
     bg:
       layer:
-        wmts: { url: 'https://tile.geofabrik.de/a9533739a5c445e5937b953c9b1f6c58/{z}/{x}/{y}.png' }
+        wmts: { url: 'https://maps.omniscale.net/v2/numis-c567ec5e/style.default/{z}/{x}/{y}.png' }
         wms: { url: null, name: null }
-        attribution: '&copy; <a target=\"_blank\" class=\"external-link\" href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors'
+        attribution: 'Copyright &copy; Omniscale&#44; Kartendaten: OpenStreetMap (Lizenz: ODbL)'
         opacity: 1
     bbox:
       color: '#3278B9'
@@ -246,11 +246,11 @@ redirect:
   pages_to_404:
   pages_to_redirect:
 catalog:
-  open_nodes_level: 0
+  open_nodes_level: 3
   display_partner: false
   sort_by_name: true
   open_on_new_tab: true
-  address_folder_closed: false
+  address_folder_closed: true
 help:
   default_hkey: about-1
 datasource:

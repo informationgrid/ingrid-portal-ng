@@ -10,15 +10,21 @@ PAGES:
   SITEMAP_CONTENT: Inhalt
   DATASOURCE: Datenquellen
   PROVIDER: Anbieter
+  API_CONTENT: Programmierschnittstellen
 
 CONTACT:
   SUCCESS: Ihre Anfrage wurde erfolgreich an das Support-Team NUMIS gesendet. Sie haben eine Bestätigungsmail erhalten.
   SUCCESS_LINK: Zurück zur Startseite
 
+COMMON:
+  XML_LINK: Metadaten als ISO/XML herunterladen
+
 SEARCH:
   PORTLET_TITLE_1: Umweltinformationen
   PORTLET_TITLE_2: für Niedersachsen<br>finden&nbsp;
   PORTLET_TITLE_3: 'z.B. Aktuelles, Daten, Karten & Webangebote'
+  QUERY_SEARCH: NUMIS Suche
+  QUERY_SUBMIT: NUMIS Suche
 
 FACETS:
   FACET_LABEL:
