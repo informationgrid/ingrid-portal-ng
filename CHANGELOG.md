@@ -1,4 +1,39 @@
 
+## 8.4.0 (06.07.2026)
+
+### Features
+
+* Portal: Kennzeichnung OpenData-Datensätze mit "offenes Schloss" Symbol (#9219)
+* OpenData-Facetten im Portal (TEST) einblenden (#9024)
+* Link in Hilfetext aktualisieren (#8898)
+* Portal: auf Schlagwort klicken führt zu Suche mit diesem Begriff (#8887)
+* Umstellung Portal auf neue Portal-Technologie (#8023)
+* Portal-Anpassungen für NLPV (#7339)
+* "Ansprechpartner Metadaten" - Text in Editor und Portal vereinheitlichen (#6707)
+* Überarbeitung der Literatur-Objektklasse im BAW-Profil (#6679)
+* Export des aktuellen Datenbestandes aus dem Metadatenkatalog Sachsen-Anhalt (Livesystem) in des Testsystem  (#6673)
+* Detailimport aus beliebiger Website (#6668)
+* Offene Punkte der Startseite für Weiterentwicklung und Abnahme (#6663)
+* Barrierefreiheit Portal verbessern (#6280)
+
+### Bugfixes
+
+* Portal beachtet Umbrüche in der Beschreibung nicht (#9221)
+* Portal: Icon für "Datensätze" ändern (#9180)
+* AdV-MIS: Portal: Klick im Navigationspanel (Detailanzeige) führt auf falsche Seiten-Ansicht (#9124)
+* Portal: AdV-MIS und evtl. BKG-MIS: Kontaktformular - in versendeter Mail fehlt eine Angabe (#9092)
+* Anfragen über das Kontaktformular ergeben eine Fehlermeldung und erreichen uns nicht (#9076)
+* Portal-Administration ermöglichen (#9015)
+* METAVER Startet nicht (#8927)
+* rsync hängt sich bei Portal-Container Startup auf (#8919)
+* AdV-MIS: PROD und TEST: bei Wahl einer Kachel auf Startseite > Filterung fehlt tlw. (#8911)
+* Portal AdV-MIS und BKG-MIS: Kontaktformular - Layout der Zusammenfassung (#8844)
+* URL zum Einloggen korrigieren auf DEMO-System (#6676)
+* GET/random liefert immer das gleiche Objekt (#6670)
+* PROD: Fotofreigabe in directus nicht verfügbar (#6665)
+* Löschen unfertiger Indizes beim Starten (#6661)
+* Fehler bei ISO-Schema-Validierung mit GDI Testsuite (#6660)
+    
 ## 8.2.0 (12.01.2026)
 
 ### Features
