@@ -8954,9 +8954,7 @@ footer .footer-top-link:hover {
   overflow-x: auto;
 }
 .search-filtered .table.table--lined--list table tr th {
-  font-weight: normal;
-  font-family: "Roboto-Bold";
-  border: 0;
+  color: #333333;
 }
 .search-filtered .table.table--lined--sub .table--sub--header th {
   color: #3A566D;
