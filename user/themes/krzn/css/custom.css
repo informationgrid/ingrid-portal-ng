@@ -1358,6 +1358,9 @@ header .menu-tab-row .menu-tab {
 .search-filtered .table h4, .search-filtered .table h5 {
     color: #1F427C;
 }
+.search-filtered .table.table--lined--list table tr th {
+    color: #1F427C;
+}
 
 .search-filtered .teaser-data.is-active h2.header,
 .search-filtered .teaser-data.is-active .arrow {

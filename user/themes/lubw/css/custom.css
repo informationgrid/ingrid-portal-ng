@@ -21,6 +21,12 @@
  * **************************************************#
 */
 
+/* variables */
+:root {
+  --color-default: #3f3f3f;
+  --color-primary: #296e4b;
+}
+
 /* custom fonts */
 @font-face {
   font-family: 'EB-Garamond-Regular';
@@ -43,7 +49,7 @@
 }
 
 body {
-  color: #3f3f3f;
+  color: var(--color-default);
   background: #fffef9;
   font-family: "Gudea-Regular", sans-serif;
 }
@@ -1990,6 +1996,9 @@ header .menu-tab-row .menu-tab {
 /* detail */
 .search-filtered .table {
   margin-bottom: 4px;
+}
+.search-filtered .table.table--lined--list table tr th {
+  color: var(--color-primary);
 }
 
 /* easy language */
