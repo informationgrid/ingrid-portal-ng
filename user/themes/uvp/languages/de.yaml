@@ -95,11 +95,15 @@ SEARCH_DETAIL:
   UVP_PHASE3_DATE: Datum der Entscheidung
   UVP_PHASE3_DOC_APPROVALDOCS: Auslegungsinformationen
   UVP_PHASE3_DOC_DESIGNDOCS: Entscheidung
+  UVP_SCOPEOFINVESTIGATION_DATE: Scoping-Termin
+  UVP_SCOPEOFINVESTIGATION_DOC_SCOPINGGENERALDOCS: Informationen zum Scoping-Termin
+  UVP_SCOPEOFINVESTIGATION_DOC_SCOPINGDATEDOCS: Scoping-Unterlagen
   UVP_NEG_DATE: Datum der Entscheidung
   UVP_NEG_DOC_UVPNEGATIVERELEVANTDOCS: Ergebnis der UVP-Vorprüfung
   STEPS_UVP_PHASE1: Öffentliche Auslegung
   STEPS_UVP_PHASE2: Erörterungstermin
   STEPS_UVP_PHASE3: Entscheidung über die Zulassung
+  STEPS_UVP_SCOPEOFINVESTIGATION: Unterrichtung über den Untersuchungsrahmen
   STEPS_UVP_DATE_INFO: Hinweis
 
 CATEGORIES:

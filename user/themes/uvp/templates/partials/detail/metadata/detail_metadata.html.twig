@@ -202,7 +202,7 @@
                                                 <span class="ic-ic-check icon"></span>
                                             </h2>
                                         {% endif %}
-                                        {# Datum der Entscheidung / Zeitraum der Auslegung #}
+                                        {# Datum der Entscheidung / Zeitraum der Auslegung / Scoping-Termin #}
                                         {% set dateInfo = ("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO")|t %}
                                         {% if dateInfo == "SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DATE_INFO" %}
                                             {% set dateInfo = null %}
@@ -224,6 +224,10 @@
                                         {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_APPROVALDOCS")|t, step.approvalDocs, "approvalDocs") }}
                                         {# Entscheidung #}
                                         {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_DESIGNDOCS")|t, step.designDocs, "designDocs") }}
+                                        {# Informationen zum Scoping-Termin #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_SCOPINGGENERALDOCS")|t, step.scopingGeneralDocs, "scopingGeneralDocs") }}
+                                        {# Scoping-Unterlagen #}
+                                        {{ _self.renderTableToTree(("SEARCH_DETAIL.UVP_" ~ type|upper ~ "_DOC_SCOPINGDATEDOCS")|t, step.scopingDateDocs, "scopingDateDocs") }}
                                     {% endif %}
                                 {% endfor %}
                                 <h2 class="icon-dot icon-dot-small">
