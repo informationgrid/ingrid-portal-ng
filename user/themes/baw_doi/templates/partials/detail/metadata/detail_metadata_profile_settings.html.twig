@@ -73,10 +73,6 @@
 
 {% switch simulationType %}
     {% case 'Simulationsdaten' %}
-        {% set simulation = addKeyValue(simulation, "verticalSpatialSystems", hit.verticalSpatialSystems) %}
-        {% set simulation = addKeyValue(simulation, "verticalExtent", hit.verticalExtent) %}
-        {% set simulation = addKeyValue(simulation, "references", hit.references) %}
-
         {% set simulation = addKeyValue(simulation, "simulationMethod", hit.simulationMethod) %}
         {% set simulation = addKeyValue(simulation, "simulationMethodVersion", hit.simulationMethodVersion) %}
         {% set simulation = addKeyValue(simulation, "simulationMethodDependency", hit.simulationMethodDependency) %}
