@@ -1,0 +1,48 @@
+{# Simulationsdaten Bautechnik #}
+
+{% if hasSimulationBautechnik %}
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_simulationBautechnik }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.TITLE"|t) }}
+{# Objekt #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.OBJECT"|t, simulationBautechnik.object) }}
+{# Objektteil #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.OBJECT_PART"|t, simulationBautechnik.objectPart) }}
+{# Untersuchungsziel #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.INVESTIGATION.GOAL"|t, simulationBautechnik.investigationGoal) }}
+{# Dimensionen #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.DIMENSION.SPATIAL"|t, simulationBautechnik.spatialDimensionalityStructuralEngineering) }}
+{# Zeitliche Dimension (Checkbox) #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.DIMENSION.TIME"|t, simulationBautechnik.timeDimension) }}
+{# Level der Untersuchung #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.INVESTIGATION.LEVEL"|t, simulationBautechnik.investigationLevel) }}
+{# Untersuchungsstufe #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.INVESTIGATION.STAGE"|t, simulationBautechnik.investigationStage) }}
+{# Berechnungskonzepte (Materiell/Geometrisch linear|t, Imperfektionen) #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.CONCEPT.MATERIAL"|t, simulationBautechnik.materialConcept) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.CONCEPT.GEOMETRY"|t, simulationBautechnik.geometryConcept) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.CONCEPT.IMPERFECTIONS"|t, simulationBautechnik.imperfections) }}
+{# Werkstoffe #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.MATERIALS"|t, simulationBautechnik.materials) }}
+{# Fließgrenze Bewehrung #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.YIELD_STRENGTH.REINFORCEMENT"|t, simulationBautechnik.reinforcementYieldStrength) }}
+{# Fließgrenze Stahl #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.YIELD_STRENGTH.STEEL"|t, simulationBautechnik.steelYieldStrength) }}
+{# Betondruckfestigkeit #}
+    {% set header = [
+        "SEARCH_DETAIL.SIMULATION.BAUTECHNIK.CONCRETE_COMPRESSIVE_STRENGTH.VALUE"|t,
+        "SEARCH_DETAIL.SIMULATION.BAUTECHNIK.CONCRETE_COMPRESSIVE_STRENGTH.UNIT"|t,
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.CONCRETE_COMPRESSIVE_STRENGTH.TITLE"|t, header, simulationBautechnik.concreteCompressiveStrength, [0,1]) }}
+{# Materialmodell #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.MATERIAL_MODEL"|t, simulationBautechnik.materialModel) }}
+{# Elementtypen #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.ELEMENT_TYPE"|t, simulationBautechnik.elementType) }}
+{# Einwirkung #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.IMPACT"|t, simulationBautechnik.impact) }}
+{# Physik #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.PHYSICS"|t, simulationBautechnik.physics) }}
+{# Analysetyp #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.BAUTECHNIK.ANALYSIS_TYPE"|t, simulationBautechnik.analysisType) }}
+</div>
+{% endif %}

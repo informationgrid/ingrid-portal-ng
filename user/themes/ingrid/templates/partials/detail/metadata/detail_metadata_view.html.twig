@@ -105,6 +105,12 @@
             {% if hasInfo %}
                 {% include 'partials/detail/metadata/parts/information/information.html.twig' %}
             {% endif %}
+            {% if hasMeasurement %}
+                {% include 'partials/detail/metadata/parts/measurement/measurement.html.twig' ignore missing %}
+            {% endif %}
+            {% if hasSimulation %}
+                {% include 'partials/detail/metadata/parts/simulation/simulation.html.twig' ignore missing %}
+            {% endif %}
 {# Datenqualität #}
             {% if hasDataquality %}
                 {% include 'partials/detail/metadata/parts/dataquality/dataquality.html.twig' %}

@@ -4,75 +4,81 @@
         {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
 {# Datenformat #}
         {% set header = [
-            "Format",
-            "Version"
+            "SEARCH_DETAIL.DATA_FORMAT.FORMAT"|t,
+            "SEARCH_DETAIL.DATA_FORMAT.VERSION"|t
         ] %}
-        {{ hit_macros.render_table("Datenformat", header, infoRefs.dataFormat) }}
-{# Verfahren #}
-        {{ hit_macros.render_label_text_row("Verfahren", infoRefs.procedure) }}
-{# Modellart #}
-        {{ hit_macros.render_label_text_list_row("Modellart"|t, infoRefs.modelTypes) }}
-{# Räumliche Dimensionalität #}
-        {{ hit_macros.render_label_text_row("Räumliche Dimensionalität", infoRefs.spatialDimensionality) }}
-{# Zeitschrittgröße #}
-        {{ hit_macros.render_label_text_row("Zeitschrittgröße &lsqb;s&rsqb;", infoRefs.timestepSize) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_FORMAT.TITLE"|t, header, infoRefs.dataFormat) }}
 {# Parameter und Zustandsgrößen #}
         {% set header = [
-            "Rolle",
-            "Name",
-            "Einheit",
-            "Wert"
+            "SEARCH_DETAIL.DATA_QUALITIES.ROLE"|t,
+            "SEARCH_DETAIL.DATA_QUALITIES.NAME"|t,
+            "SEARCH_DETAIL.DATA_QUALITIES.UNIT"|t,
+            "SEARCH_DETAIL.DATA_QUALITIES.VALUE"|t
         ] %}
-        {{ hit_macros.render_table("Parameter und Zustandsgrößen", header, infoRefs.dataQualities) }}
+        {{ hit_macros.render_table("SEARCH_DETAIL.DATA_QUALITIES.TITLE"|t, header, infoRefs.dataQualities) }}
 {# Fachliche Grundlage #}
         {{ hit_macros.render_label_text_row("SEARCH_DETAIL.T011_OBJ_GEO_SPECIAL_BASE"|t, infoRefs.lineageStatement) }}
     </div>
 {% elseif class == "6" %}
     <div class="sub-section">
-        <a class="anchor" id="${hashDetail5}_technical_information"></a>
+        <a class="anchor" id="{{ hash_info }}_technical_information"></a>
         {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION_6"|t) }}
 {# Einsatzzweck #}
-        {{ hit_macros.render_label_text_row("Einsatzzweck"|t, infoRefs.einsatzzweck) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SOFTWARE.PURPOSE"|t, infoRefs.einsatzzweck) }}
 {# Nutzerkreis #}
         {% set header = [
-            "",
-            "BAW",
-            "WSV",
-            "Extern"
+            "SEARCH_DETAIL.SOFTWARE.USER.HEADER_1"|t,
+            "SEARCH_DETAIL.SOFTWARE.USER.HEADER_2"|t,
+            "SEARCH_DETAIL.SOFTWARE.USER.HEADER_3"|t,
+            "SEARCH_DETAIL.SOFTWARE.USER.HEADER_4"|t
         ] %}
-        {{ hit_macros.render_table_info("Nutzerkreis", header, infoRefs.nutzerkreis, [], 'Anmerkungen') }}
+        {{ hit_macros.render_table_info("SEARCH_DETAIL.SOFTWARE.USER.TITLE"|t, header, infoRefs.nutzerkreis, [], "SEARCH_DETAIL.SOFTWARE.USER.NOTE"|t) }}
 {# Produktiver Einsatz #}
         {% set header = [
-            "",
-            "WSV-Auftrag",
-            "FuE",
-            "Andere"
+            "SEARCH_DETAIL.SOFTWARE.USE.HEADER_1"|t,
+            "SEARCH_DETAIL.SOFTWARE.USE.HEADER_2"|t,
+            "SEARCH_DETAIL.SOFTWARE.USE.HEADER_3"|t,
+            "SEARCH_DETAIL.SOFTWARE.USE.HEADER_4"|t
         ] %}
-        {{ hit_macros.render_table_info("Produktiver Einsatz", header, infoRefs.produktiverEinsatz, [], 'Anmerkungen') }}
+        {{ hit_macros.render_table_info("SEARCH_DETAIL.SOFTWARE.USE.TITLE"|t, header, infoRefs.produktiverEinsatz, [], "SEARCH_DETAIL.SOFTWARE.USE.NOTE"|t) }}
 {# Ergänzungsmodul zu Marktsoftware #}
-        {{ hit_macros.render_label_text_row("Ergänzungsmodul zu Marktsoftware"|t, infoRefs.ergaenzungsModul) }}
-        {{ hit_macros.render_label_text_row("Name der Marktsoftware"|t, infoRefs.ergaenzteSoftware) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SOFTWARE.SUPPLEMENTARY"|t, infoRefs.ergaenzungsModul) }}
+{# Name der Marktsoftware #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SOFTWARE.ADDITIONAL"|t, infoRefs.ergaenzteSoftware) }}
 {# Betriebssystem #}
         {% set header = [
-            "",
-            "Windows",
-            "Linux"
+            "SEARCH_DETAIL.SOFTWARE.SYSTEM.HEADER_1"|t,
+            "SEARCH_DETAIL.SOFTWARE.SYSTEM.HEADER_2"|t,
+            "SEARCH_DETAIL.SOFTWARE.SYSTEM.HEADER_3"|t
         ] %}
-        {{ hit_macros.render_table_info("Betriebssystem", header, infoRefs.betriebssystem, [], 'Anmerkungen') }}
+        {{ hit_macros.render_table_info("SEARCH_DETAIL.SOFTWARE.SYSTEM.TITLE"|t, header, infoRefs.betriebssystem, [], 'Anmerkungen') }}
 {# Programmiersprache #}
-        {{ hit_macros.render_label_text_list_row("Programmiersprache"|t, infoRefs.programmiersprache) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SOFTWARE.CONTRACT.LANGUAGE"|t, infoRefs.programmiersprache) }}
 {# Entwicklungsumgebung #}
-        {{ hit_macros.render_label_text_list_row("Entwicklungsumgebung"|t, infoRefs.entwicklungsumgebung) }}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SOFTWARE.CONTRACT.ENVIRONMENT"|t, infoRefs.entwicklungsumgebung) }}
 {# Bibliotheken #}
-        {{ hit_macros.render_label_text_list_row("Bibliotheken"|t, infoRefs.bibliotheken) }}
-        {% include 'partials/detail/metadata/parts/information/information_type_software_support.html.twig' ignore missing %}
+        {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SOFTWARE.CONTRACT.LIBRARIES"|t, infoRefs.bibliotheken) }}
+{# Erstellungsvertrag #}
+        {{ hit_macros.render_table_group(
+            "SEARCH_DETAIL.SOFTWARE.CONTRACT.CREATION.TITLE"|t,
+            ["SEARCH_DETAIL.SOFTWARE.CONTRACT.CREATION.HEADER_1"|t,"SEARCH_DETAIL.SOFTWARE.CONTRACT.CREATION.HEADER_2"|t],
+            [infoRefs.erstellungsvertragsnummer, infoRefs.erstellungsvertragsdatum],
+            true
+        ) }}
+{# Supportvertrag #}
+        {{ hit_macros.render_table_group(
+            "SEARCH_DETAIL.SOFTWARE.CONTRACT.SUPPORT.TITLE"|t,
+            ["SEARCH_DETAIL.SOFTWARE.CONTRACT.SUPPORT.HEADER_1"|t,"SEARCH_DETAIL.SOFTWARE.CONTRACT.SUPPORT.HEADER_2"|t,"SEARCH_DETAIL.SOFTWARE.CONTRACT.SUPPORT.HEADER_3"|t],
+            [infoRefs.supportvertragsnummer, infoRefs.supportvertragsdatum, infoRefs.supportvertragsInfo],
+            true
+        ) }}
 {# Installationsort #}
         {{ hit_macros.render_table_group(
-            "Installationsort",
-            ['Lokal','HLR','Name des HLRs','Server','Servername'],
+            "SEARCH_DETAIL.SOFTWARE.LOCATION.TITLE"|t,
+            ["SEARCH_DETAIL.SOFTWARE.LOCATION.HEADER_1"|t,"SEARCH_DETAIL.SOFTWARE.LOCATION.HEADER_2"|t,"SEARCH_DETAIL.SOFTWARE.LOCATION.HEADER_3"|t,"SEARCH_DETAIL.SOFTWARE.LOCATION.HEADER_4"|t,"SEARCH_DETAIL.SOFTWARE.LOCATION.HEADER_5"|t],
             [infoRefs.installationsortlokal, infoRefs.installationsorthlr, infoRefs.installationsorthlrName, infoRefs.installationsortserver, infoRefs.installationsortservername]
         ) }}
 {# Installation über #}
-        {{ hit_macros.render_label_text_row("Installation über"|t, infoRefs.installationsMethode) }}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SOFTWARE.METHOD"|t, infoRefs.installationsMethode) }}
     </div>
 {% endif %}

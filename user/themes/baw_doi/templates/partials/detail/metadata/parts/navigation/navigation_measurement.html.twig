@@ -5,11 +5,16 @@
         <a href="#{{ hash_measurement }}" class="accordion-title js-anchor-target" aria-hidden="true" id="{{ hash_measurement }}-accordion-label">
             <span class="text">{{ "SEARCH_DETAIL.MEASUREMENT.TITLE"|t }}</span>
         </a>
-        <div class="accordion-content {% if not hasMeasurementBautechnik %}is-hidden{% endif %}" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_measurement }}-accordion-label" id="{{ hash_measurement }}-accordion">
+        <div class="accordion-content {% if not hasMeasurementHydraulic %}is-hidden{% endif %}" data-tab-content role="tabpanel" aria-hidden="true" aria-labelledby="{{ hash_measurement }}-accordion-label" id="{{ hash_measurement }}-accordion">
             <div class="boxes">
-                {% if hasMeasurementBautechnik %}
-                    {% set tmpHash = hash_measurementBautechnik %}
-                    {% set tmpTitle = "SEARCH_DETAIL.MEASUREMENT.BAUTECHNIK.TITLE"|t %}
+                {% if hasMeasurement %}
+                    {% set tmpHash = hash_measurement %}
+                    {% set tmpTitle = "SEARCH_DETAIL.MEASUREMENT.TITLE"|t %}
+                    {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
+                {% endif %}
+                {% if hasMeasurementHydraulic %}
+                    {% set tmpHash = hash_measurementHydraulic %}
+                    {% set tmpTitle = "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.TITLE"|t %}
                     {{ hit_macros.render_sub_navigation(tmpTitle, tmpHash) }}
                 {% endif %}
             </div>

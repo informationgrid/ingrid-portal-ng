@@ -2,14 +2,14 @@
 
 {# BAW-Rechte an den Quellen #}
 {% set titles = [
-    "BAW-Rechte an den Quellen",
-    "Anmerkungen",
+    "SEARCH_DETAIL.SOFTWARE.USE.RIGHTS.SOURCE.TITLE"|t,
+    "SEARCH_DETAIL.SOFTWARE.USE.RIGHTS.SOURCE.NOTE"|t,
 ] %}
 {{ hit_macros.render_titles_entries_group(titles, useRefs.useRights) }}
 
 {# Rechte bei Nutzung der SW durch Dritte #}
 {% set titles = [
-    "Rechte bei Nutzung der SW durch Dritte",
-    "Anmerkungen",
+    "SEARCH_DETAIL.SOFTWARE.USE.RIGHTS.THIRD_PARTY.TITLE"|t,
+    "SEARCH_DETAIL.SOFTWARE.USE.RIGHTS.THIRD_PARTY.NOTE"|t,
 ] %}
 {{ hit_macros.render_titles_entries_group(titles, useRefs.sourceCodeRights) }}

@@ -20,29 +20,7 @@ SEARCH_RESULT:
 SEARCH_DETAIL:
     MEASUREMENT:
         TITLE: Messdaten
-        BAUTECHNIK:
-            TITLE: Bautechnik
         INFOMETHOD: Verfahren
-        SPATIALORIENTATION: Räumlichkeit
-        MINDISCHARGE: Abfluss Q min [m&#0179;/s]
-        MAXDISCHARGE: Abfluss Q max [m&#0179;/s]
-        MEASUREMENTFREQUENCY: Frequenz der Messung [s]
-        DATAQUALITYDESCRIPTION: Beschreibung der Datenqualität
-        MEASUREMENTDEPTH:
-            TITLE: Messtiefe
-            DEPTH: Messtiefe
-            UOM: Maßeinheit
-            VERTICALCRS: Höhenbezugssystem
-        MEANWATERLEVEL:
-            TITLE: Gemittelter Wasserstand, auf den sich die Messwerte beziehen
-            WATERLEVEL: Wasserstand
-            UOM: Maßeinheit
-        GAUGEDATUM:
-            TITLE: Pegelnullpunkt
-            DATUM: Pegelnullpunkt
-            UOM: Maßeinheit
-            VERTICALCRS: Höhenbezugssystem
-            DESCRIPTION: Beschreibung
         MEASUREMENTDEVICE:
             TITLE: Messgerät
             NAME: Gerätename
@@ -55,6 +33,29 @@ SEARCH_DETAIL:
             TYPE: Art
             UOM: Maßeinheit
             CALCULATIONFORMULA: Formel/Funktion
+        HYDRAULIC:
+            TITLE: Messdaten (Wasserbau)
+            SPATIALORIENTATION: Räumlichkeit
+            MEASUREMENTDEPTH:
+                TITLE: Messtiefe
+                DEPTH: Messtiefe
+                UOM: Maßeinheit
+                VERTICALCRS: Höhenbezugssystem
+            TIME_MEASUREMENT: Zeitliche Genauigkeit
+            MEASUREMENTFREQUENCY: Frequenz der Messung [s]
+            MEANWATERLEVEL:
+                TITLE: Gemittelter Wasserstand, auf den sich die Messwerte beziehen
+                WATERLEVEL: Wasserstand
+                UOM: Maßeinheit
+            GAUGEDATUM:
+                TITLE: Pegelnullpunkt
+                DATUM: Pegelnullpunkt
+                UOM: Maßeinheit
+                VERTICALCRS: Höhenbezugssystem
+                DESCRIPTION: Beschreibung
+            MINDISCHARGE: Abfluss Q min [m&#0179;/s]
+            MAXDISCHARGE: Abfluss Q max [m&#0179;/s]
+            DATAQUALITYDESCRIPTION: Beschreibung der Datenqualität
     GEOMETRICS:
         CONTEXT:
             TITLE: Geometrie-Kontext
@@ -68,12 +69,119 @@ SEARCH_DETAIL:
     HIT_TYPE_NAME_MEASURE: Messdaten
     BAW_KEYWORDS: BAW Schlagworte
     SUBSOIL_KEYWORDS: Baugrunddynamik-Schlagworte
-    LABORATORY:
-        TITLE: Labordaten
     SIMULATION:
         TITLE: Simulationsdaten
         BAUTECHNIK:
-            TITLE: Bautechnik
+            TITLE: Simulationsdaten (Bautechnik)
+            OBJECT: Objekt
+            OBJECT_PART: Objektteil
+            DIMENSION:
+                SPATIAL: Dimension
+                TIME: Zeitliche Dimension
+            INVESTIGATION:
+                GOAL: Untersuchungsziel
+                LEVEL: Level der Untersuchung
+                STAGE: Untersuchungsstufe
+            CONCEPT:
+                TITLE: Berechnungskonzepte
+                MATERIAL: Materiell
+                GEOMETRY: Geometrisch
+                IMPERFECTIONS: Imperfektionen
+            MATERIALS: Werkstoffe
+            YIELD_STRENGTH:
+                REINFORCEMENT: Fließgrenze der Bewehrung [N/mm²]
+                STEEL: Fließgrenze Stahl [N/mm²]
+            CONCRETE_COMPRESSIVE_STRENGTH:
+                TITLE: Vertikale Ausdehnung (Min/Max)
+                VALUE: Wert
+                UNIT: Einheit
+            MATERIAL_MODEL: Materialmodell
+            ELEMENT_TYPE: Elementtypen
+            IMPACT: Einwirkung
+            PHYSICS: Physik
+            ANALYSIS_TYPE: Analysetyp
+        METHOD:
+            TITLE: Simulationsverfahren
+            VERSION: Version
+            DEPENDENCY: Erweiterung
+        DIMENSIONALITY: Räumliche Dimensionalität
+        TIME: Zeitliche Genauigkeit [s]
+        MODEL:
+            TITLE: Simulationsmodellart
+        PARAMETER:
+            TITLE: Simulationsparameter
+            NAME: Name
+            ROLE: Rolle
+            VALUE: Wert/Wertebereich
+            UNIT: Maßeinheit
+        CFD:
+            TITLE: CFD-Simulationen (Schiff)
+            SHIP_NAME: BAW-Schiffsname
+            STATEMENT_ABOUT_PHYSICS: Angaben zur Physik
+            CONSTANT_CROSS_SECTION: Konstante Querschnitt
+            PROPULSION: Propulsion
+            MOVEMENT_TYPES: Bewegungsarten
+            TRAJECTORY: Trajektorie
+            CELL_COUNT: Zellanzahl
+    DATA_FORMAT:
+        TITLE: Datenformat
+        FORMAT: Format
+        VERSION: Version
+    DATA_QUALITIES:
+        TITLE: Parameter und Zustandsgrößen
+        ROLE: Rolle
+        NAME: Name
+        UNIT: Einheit
+        VALUE: Wert
+    SOFTWARE:
+        PURPOSE: Einsatzzweck
+        USER:
+            TITLE: Nutzerkreis
+            NOTE: Anmerkungen
+            HEADER_1:
+            HEADER_2: BAW
+            HEADER_3: WSV
+            HEADER_4: Extern
+        USE:
+            TITLE: Produktiver Einsatz
+            NOTE: Anmerkungen
+            HEADER_1:
+            HEADER_2: WSV-Auftrag
+            HEADER_3: FuE
+            HEADER_4: Andere
+        SUPPLEMENTARY: Ergänzungsmodul zu Marktsoftware
+        ADDITIONAL: Name der Marktsoftware
+        SYSTEM:
+            TITLE: Betriebssystem
+            NOTE: Anmerkungen
+            HEADER_1:
+            HEADER_2: Windows
+            HEADER_3: Linux
+        LANGUAGE: Programmiersprache
+        ENVIRONMENT: Entwicklungsumgebung
+        LIBRARIES: Bibliotheken
+        LOCATION:
+            TITLE: Installationsort
+            HEADER_1: Lokal
+            HEADER_2: HLR
+            HEADER_3: Name des HLRs
+            HEADER_4: Server
+            HEADER_5: Servername
+        METHOD: Installation über
+        CONTRACT:
+            CREATION:
+                TITLE: Erstellungsvertrag
+                HEADER_1: Vertragsnr
+                HEADER_2: Datum
+            SUPPORT:
+                TITLE: Supportvertrag
+                HEADER_1: Vertragsnr
+                HEADER_2: Datum
+                HEADER_3: Anmerkungen
+
+    ORDER:
+        NUMBER: Auftragsnummer
+        TITLE: Auftragstitel
 
 FACETS:
     FACET_LABEL:

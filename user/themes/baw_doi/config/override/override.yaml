@@ -498,6 +498,8 @@ hit_detail:
             - dataSourceName
             - iPlugId
             - title
+            - t01_object.obj_class
+            - simulation_data_type
         exclude:
             - content
     query_string_operator: AND
