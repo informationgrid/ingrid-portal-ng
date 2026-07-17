@@ -1,0 +1,30 @@
+{# Messdaten #}
+<div class="section">
+    <a class="anchor" id="{{ hash_measurement }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.MEASUREMENT.TITLE"|t) }}
+    <div class="row columns">
+        <div class="sub-section">
+        {# Messverfahren #}
+            {{ hit_macros.render_label_text_list_row("Messverfahren", measurement.measurementMethod) }}
+        {# Messgerät (Name/ID/Modell) #}
+            {% set header = [
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.NAME"|t,
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.ID"|t,
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.MODEL"|t,
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.DESCRIPTION"|t
+            ] %}
+            {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREMENTDEVICE.TITLE"|t, header, measurement.measurementDevice) }}
+        {# Zielparameter #}
+            {% set header = [
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.NAME"|t,
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.TYPE"|t,
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.UOM"|t,
+                "SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.CALCULATIONFORMULA"|t
+            ] %}
+            {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.MEASUREDQUANTITIES.TITLE"|t, header, measurement.measurementParameter) }}
+        </div>
+
+        {# Messdaten (Wasserbau) #}
+        {% include 'partials/detail/metadata/parts/measurement/measurement_hydraulic.html.twig' ignore missing %}
+    </div>
+</div>

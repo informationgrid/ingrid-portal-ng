@@ -1,0 +1,21 @@
+{# Simulationsdaten CFD #}
+
+{% if hasSimulationCFD %}
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_simulationCFD }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.SIMULATION.CFD.TITLE"|t) }}
+{# BAW-Schiffsname  #}
+    {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.CFD.SHIP_NAME"|t, simulationCFD.shipName) }}
+{# Angaben zur Physik #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.CFD.STATEMENT_ABOUT_PHYSICS"|t, simulationCFD.statementAboutPhysics) }}
+{# Eigenschaften #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.CFD.CONSTANT_CROSS_SECTION"|t, simulationCFD.constantCrossSection) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.CFD.PROPULSION"|t, simulationCFD.propulsion) }}
+{# Bewegungsarten #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.CFD.MOVEMENT_TYPES"|t, simulationCFD.movementTypes) }}
+{# Trajektorie #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.CFD.TRAJECTORY"|t, simulationCFD.trajectory) }}
+{# Zellanzahl #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.CFD.CELL_COUNT"|t, simulationCFD.cellCount) }}
+</div>
+{% endif %}

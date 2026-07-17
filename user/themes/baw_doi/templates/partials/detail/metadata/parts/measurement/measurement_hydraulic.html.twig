@@ -1,0 +1,40 @@
+{# Messdaten (Wasserbau) #}
+
+{% if hasMeasurementHydraulic %}
+<div class="sub-section">
+    <a class="anchor" id="{{ hash_measurementHydraulic }}"></a>
+    {{ hit_macros.render_group_title("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.TITLE"|t) }}
+{# Räumlichkeit #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.SPATIALORIENTATION"|t, measurementHydraulic.measurementSpatiality) }}
+{# Messtiefe #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEASUREMENTDEPTH.DEPTH"|t,
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEASUREMENTDEPTH.UOM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEASUREMENTDEPTH.VERTICALCRS"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEASUREMENTDEPTH.TITLE"|t, header, measurementHydraulic.measurementDepth) }}
+{# Zeitliche Genauigkeit #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.TIME_MEASUREMENT"|t, measurementHydraulic.temporalAccuracy) }}
+{# Frequenz der Messung #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEASUREMENTFREQUENCY"|t, measurementHydraulic.measurementFrequency) }}
+{# Gemittelter Wasserstand #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEANWATERLEVEL.WATERLEVEL"|t,
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEANWATERLEVEL.UOM"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MEANWATERLEVEL.TITLE"|t, header, measurementHydraulic.meanWaterLevel) }}
+{# Pegelnullpunkt #}
+    {% set header = [
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.GAUGEDATUM.DATUM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.GAUGEDATUM.UOM"|t,
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.GAUGEDATUM.VERTICALCRS"|t,
+        "SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.GAUGEDATUM.DESCRIPTION"|t
+    ] %}
+    {{ hit_macros.render_table("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.GAUGEDATUM.TITLE"|t, header, measurementHydraulic.gaugeZeroPoint) }}
+{# Abfluss (min/max) #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MINDISCHARGE"|t, measurementHydraulic.minDischarge) }}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.MAXDISCHARGE"|t, measurementHydraulic.maxDischarge) }}
+{# Datenqualität (Beschreibung) #}
+    {{ hit_macros.render_label_text_row("SEARCH_DETAIL.MEASUREMENT.HYDRAULIC.DATAQUALITYDESCRIPTION"|t, measurementHydraulic.dataQualityDescription) }}
+</div>
+{% endif %}

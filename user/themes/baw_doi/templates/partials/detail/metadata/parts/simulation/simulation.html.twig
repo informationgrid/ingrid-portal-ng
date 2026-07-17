@@ -1,0 +1,34 @@
+{# Simulationsdaten #}
+<div class="section">
+    <a class="anchor" id="{{ hash_simulation }}"></a>
+    {{ hit_macros.render_title("SEARCH_DETAIL.SIMULATION.TITLE"|t) }}
+    <div class="row columns">
+        <div class="sub-section">
+        {# Simulationsverfahren #}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.METHOD.TITLE"|t, simulation.simulationMethod) }}
+        {# Version #}
+            {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.METHOD.VERSION"|t, simulation.simulationMethodVersion) }}
+        {# Erweiterung #}
+            {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.METHOD.DEPENDENCY"|t, simulation.simulationMethodDependency) }}
+        {# Räumliche Dimensionalität #}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.DIMENSIONALITY"|t, simulation.spatialDimensionality) }}
+        {# Zeitliche Genauigkeit #}
+            {{ hit_macros.render_label_text_row("SEARCH_DETAIL.SIMULATION.TIME"|t, simulation.timeStepSize) }}
+        {# Simulationsmodellart #}
+            {{ hit_macros.render_label_text_list_row("SEARCH_DETAIL.SIMULATION.MODEL.TITLE"|t, simulation.simulationModelType) }}
+        {# Simulationsparameter #}
+            {% set header = [
+                "SEARCH_DETAIL.SIMULATION.PARAMETER.NAME"|t,
+                "SEARCH_DETAIL.SIMULATION.PARAMETER.ROLE"|t,
+                "SEARCH_DETAIL.SIMULATION.PARAMETER.VALUE"|t,
+                "SEARCH_DETAIL.SIMULATION.PARAMETER.UNIT"|t
+            ] %}
+            {{ hit_macros.render_table("SEARCH_DETAIL.SIMULATION.PARAMETER.TITLE"|t, header, simulation.simulationParameter, [0]) }}
+        </div>
+        {# Simulationsdaten Bautechnik #}
+        {% include 'partials/detail/metadata/parts/simulation/simulation_bautechnik.html.twig' ignore missing %}
+
+        {# Simulationsdaten CFD #}
+        {% include 'partials/detail/metadata/parts/simulation/simulation_cfd.html.twig' ignore missing %}
+    </div>
+</div>
