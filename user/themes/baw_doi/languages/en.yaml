@@ -92,7 +92,7 @@ SEARCH_DETAIL:
                 REINFORCEMENT: Fließgrenze der Bewehrung [N/mm²]
                 STEEL: Fließgrenze Stahl [N/mm²]
             CONCRETE_COMPRESSIVE_STRENGTH:
-                TITLE: Vertikale Ausdehnung (Min/Max)
+                TITLE: Betondruckfestigkeit
                 VALUE: Wert
                 UNIT: Einheit
             MATERIAL_MODEL: Materialmodell

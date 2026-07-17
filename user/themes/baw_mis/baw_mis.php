@@ -216,16 +216,6 @@ class BawMis extends Theme
         // Baugrunddynamik-Schlagworte
         $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords[gmd:thesaurusName/*/*/gco:CharacterString="Baugrunddynamik-Schlagwortkatalog"]/gmd:keyword/gco:CharacterString';
         $hit->subsoilKeywords = IdfHelper::getNodeValueList($node, $xpathExpression);
-        // Raumbezugssystem (Höhe)
-        $xpathExpression = './gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gco:CharacterString';
-        $hit->verticalSpatialSystems = IdfHelper::getNodeValue($node, $xpathExpression);
-        // Vertikale Ausdehnung (Min/Max)
-        $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:verticalElement/gmd:EX_VerticalExtent';
-        $xpathExpressionSub = [
-            "./gmd:minimumValue",
-            "./gmd:maximumValue"
-        ];
-        $hit->verticalExtent = IdfHelper::getNodeValueListWithSubEntries($node, $xpathExpression, $xpathExpressionSub);
         // Bwstr Bezug (Name / Kennung)
         $xpathExpression = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicDescription';
         $hit->references = IdfHelper::getNodeValue($node, $xpathExpression);
@@ -238,7 +228,7 @@ class BawMis extends Theme
 
                         $xpathExpressionDefault = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation/baw:BAW_Metadata/baw:measurement/baw:Measurement';
 
-                // Messdaten
+                    // Messdaten
 
                         // Messverfahren
                         $xpathExpression = $xpathExpressionDefault . '/baw:measurementMethod/gco:CharacterString';
@@ -265,7 +255,7 @@ class BawMis extends Theme
                         $xpathExpression = $xpathExpressionDefault . '/baw:hydraulicEngineeringMeasurement/baw:HydraulicEngineeringMeasurement/baw:measurementSpatiality/gco:CharacterString';
                         $hit->measurementSpatiality = IdfHelper::getNodeValue($node, $xpathExpression);
                         // Messtiefe
-                        $xpathExpression = $xpathExpressionDefault . '/baw:hydraulicEngineeringMeasurement/baw:HydraulicEngineeringMeasurement/baw:measurementDepth/baw:MeasurementDepth';
+                        $xpathExpression = $xpathExpressionDefault . '/baw:hydraulicEngineeringMeasurement/baw:HydraulicEngineeringMeasurement/baw:measurementDepth/baw:MeasurementDepth[./*]';
                         $xpathExpressionSub = [
                             "./baw:measurementDepth/gco:Decimal",
                             "./baw:uom/gco:CharacterString",
@@ -309,7 +299,7 @@ class BawMis extends Theme
 
                         $xpathExpressionDefault = './gmd:identificationInfo/gmd:MD_DataIdentification/gmd:supplementalInformation/baw:BAW_Metadata/baw:simulation/baw:Simulation';
 
-                    // Simulationsdaten
+                // Simulationsdaten
 
                         // Simulationsverfahren
                         $xpathExpression = $xpathExpressionDefault . '/baw:simulationMethod/gco:CharacterString';

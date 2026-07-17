@@ -2,6 +2,8 @@
     <div class="sub-section">
         <a class="anchor" id="{{ hash_info }}_technical_information"></a>
         {{ hit_macros.render_group_title("SEARCH_DETAIL.TECHNICAL_INFORMATION"|t) }}
+{# Identifikator der Datenquelle #}
+        {{ hit_macros.render_label_text_row("SEARCH_DETAIL.IDENTIFIER"|t, infoRefs.identifierCode) }}
 {# Datenformat #}
         {% set header = [
             "SEARCH_DETAIL.DATA_FORMAT.FORMAT"|t,
